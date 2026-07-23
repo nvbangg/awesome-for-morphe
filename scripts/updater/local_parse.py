@@ -1,0 +1,212 @@
+# Copyright (c) 2026 nvbangg (github.com/nvbangg)
+
+from pathlib import Path
+from typing import Dict, Any, Optional
+import re
+import json
+from datetime import datetime
+
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from utils import load_json
+
+compatibilities_list = []
+compatibilities_map = {}
+
+
+def get_compat_key(compat_data: list) -> int:
+    compat_json = json.dumps(compat_data, sort_keys=True)
+    if compat_json in compatibilities_map:
+        return compatibilities_map[compat_json]
+    else:
+        idx = len(compatibilities_list)
+        compatibilities_list.append(compat_data)
+        compatibilities_map[compat_json] = idx
+        return idx
+
+
+def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Optional[Dict[str, Any]]:
+    out: Dict[str, Any] = {}
+    if "name" in patch:
+        out["name"] = patch["name"]
+    if patch.get("description"):
+        out["description"] = patch["description"]
+
+    if patch.get("default", True) is False:
+        out["default"] = False
+
+    if "options" in patch:
+        options_list = []
+        for option_item in patch["options"]:
+            option_obj = {}
+            if "key" in option_item:
+                option_obj["key"] = option_item["key"]
+            if option_item.get("title"):
+                option_obj["title"] = option_item["title"]
+            if option_item.get("description"):
+                option_obj["description"] = option_item["description"]
+            if option_obj:
+                options_list.append(option_obj)
+        if options_list:
+            out["options"] = options_list
+
+    compatible_packages = patch.get("compatiblePackages")
+    out_compat = []
+    has_real_app = False
+
+    if isinstance(compatible_packages, dict):
+        for package_name, versions in compatible_packages.items():
+            if package_name == "universal":
+                continue
+            has_real_app = True
+            targets = []
+            if versions:
+                for version_item in versions:
+                    if isinstance(version_item, str):
+                        targets.append({"version": version_item})
+                    elif isinstance(version_item, dict) and "version" in version_item:
+                        targets.append({"version": version_item["version"]})
+            out_compat.append({"packageName": package_name, "targets": targets})
+    elif isinstance(compatible_packages, list):
+        for entry in compatible_packages:
+            if not isinstance(entry, dict):
+                continue
+            package_name = entry.get("packageName")
+            if package_name == "universal" or not package_name:
+                continue
+            if name := entry.get("name"):
+                discovered_names[package_name] = name
+            has_real_app = True
+            targets = []
+            for target_item in entry.get("targets", []):
+                target_out = {}
+                if "version" in target_item:
+                    target_out["version"] = target_item["version"]
+                if target_item.get("isExperimental"):
+                    target_out["isExperimental"] = True
+                if target_out:
+                    targets.append(target_out)
+            package_out = {"packageName": package_name}
+            if targets:
+                package_out["targets"] = targets
+            out_compat.append(package_out)
+
+    if has_real_app and out_compat:
+        out["compatiblePackages"] = out_compat
+
+    return out
+
+
+def generate_fallback_name(repo_name: str) -> str:
+    name = repo_name.replace("-", " ")
+    name = re.sub(r"([a-z])([A-Z])", r"\1 \2", name)
+    return name.title()
+
+
+def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir: Path) -> list:
+    bundles_dir = data_dir / "bundles"
+    patches_dir = data_dir / "patches"
+
+    print("Parsing local patches and bundles...")
+
+    for base_key, source_entry in bundle_sources.items():
+        source = source_entry.get("source")
+        owner_repo = source_entry.get("repo")
+        if not source or not owner_repo:
+            continue
+
+        try:
+            owner, repo_name = owner_repo.split("/", 1)
+        except ValueError:
+            continue
+
+        file_prefix = f"{source}~{owner}~{repo_name}"
+
+        main_bundle_path = bundles_dir / f"{file_prefix}~main.json"
+        main_list_path = patches_dir / f"{file_prefix}~main.json"
+
+        dev_bundle_path = bundles_dir / f"{file_prefix}~dev.json"
+        dev_list_path = patches_dir / f"{file_prefix}~dev.json"
+
+        main_json = load_json(main_bundle_path) if main_bundle_path.exists() and main_list_path.exists() else None
+        dev_json = load_json(dev_bundle_path) if dev_bundle_path.exists() and dev_list_path.exists() else None
+
+        if not main_json and not dev_json:
+            continue
+
+        target_json = main_json if main_json else dev_json
+        source_entry["isPreRelease"] = not bool(main_json)
+
+        if "name" not in source_entry or not source_entry["name"]:
+            source_entry["name"] = generate_fallback_name(repo_name)
+
+        updated_at = 0
+        try:
+            if main_json and "created_at" in main_json:
+                dt = datetime.fromisoformat(main_json["created_at"].replace("Z", "+00:00"))
+                updated_at = int(dt.timestamp() * 1000)
+            elif dev_json and "created_at" in dev_json:
+                dt = datetime.fromisoformat(dev_json["created_at"].replace("Z", "+00:00"))
+                updated_at = int(dt.timestamp() * 1000)
+        except Exception:
+            pass
+
+        source_entry["updatedAt"] = updated_at
+
+        list_path = main_list_path if main_json else dev_list_path
+        patches_list_json = load_json(list_path, [])
+        if isinstance(patches_list_json, list):
+            patches_list_json = {"patches": patches_list_json}
+
+        patches = patches_list_json.get("patches", [])
+
+        valid_patches = []
+        target_apps_set = set()
+        discovered_names = {}
+
+        for patch in patches:
+            name = patch.get("name")
+            if not name:
+                continue
+
+            app_name = patch.get("appName")
+
+            patch_dict = strip_patch(patch, discovered_names)
+            if not patch_dict:
+                continue
+
+            if patch_dict.get("compatiblePackages"):
+                for compat_pkg in patch_dict["compatiblePackages"]:
+                    package_name = compat_pkg.get("packageName")
+                    if package_name:
+                        target_apps_set.add(package_name)
+                        discovered_app_name = discovered_names.get(package_name) or app_name
+                        if discovered_app_name:
+                            if package_name not in apps_dict:
+                                apps_dict[package_name] = {}
+                            if not apps_dict[package_name].get("name"):
+                                apps_dict[package_name]["name"] = discovered_app_name
+
+                patch_dict["compatiblePackagesKey"] = get_compat_key(patch_dict["compatiblePackages"])
+                del patch_dict["compatiblePackages"]
+
+            valid_patches.append(patch_dict)
+
+        source_entry["patches"] = valid_patches
+        source_entry["targetApps"] = sorted(list(target_apps_set))
+        if "universal" in target_apps_set:
+            source_entry["targetApps"].append("universal")
+            source_entry["targetApps"].remove("universal")
+
+    keys_to_remove = []
+    for base_key, source_entry in bundle_sources.items():
+        if not source_entry.get("patches"):
+            print(f"Warning: Bundle '{base_key}' has no patches. Skipping and excluding from bundles.json.")
+            keys_to_remove.append(base_key)
+
+    for key in keys_to_remove:
+        del bundle_sources[key]
+
+    return compatibilities_list

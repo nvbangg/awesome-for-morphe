@@ -1,3 +1,5 @@
+# Copyright (c) 2026 nvbangg (github.com/nvbangg)
+
 import sys
 import json
 import urllib.request
@@ -53,7 +55,7 @@ def process_repo_branch(
     owner_repo: str,
     branch: str,
     current_sha: Optional[str],
-) -> Tuple[str, str, str, Optional[str], Optional[Dict[str, Any]], Optional[Dict[str, Any]], bool, bool]:
+) -> Tuple[str, str, str, Optional[str], Optional[str], Optional[str], bool, bool]:
     key = f"{source}:{owner_repo}:{branch}"
     try:
         remote_sha = get_file_sha(source, owner_repo, branch)
@@ -80,23 +82,31 @@ def process_repo_branch(
         raw_bundle_url = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
         raw_patches_list_url = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-list.json/raw?ref={branch}"
 
-    bundle_json = None
+    bundle_text = None
     try:
         bundle_text = fetch(raw_bundle_url)
-        bundle_json = json.loads(bundle_text)
+    except urllib.error.HTTPError as error:
+        if error.code == 404:
+            return source, owner_repo, branch, None, None, None, True, True
+        print(f"[{key}] Failed to download patches-bundle.json: {error}")
+        return source, owner_repo, branch, current_sha, None, None, False, False
     except Exception as error:
-        print(f"[{key}] Failed to download or parse patches-bundle.json: {error}")
+        print(f"[{key}] Failed to download patches-bundle.json: {error}")
         return source, owner_repo, branch, current_sha, None, None, False, False
 
-    patches_json = None
+    patches_text = None
     try:
         patches_text = fetch(raw_patches_list_url)
-        patches_json = json.loads(patches_text)
+    except urllib.error.HTTPError as error:
+        if error.code == 404:
+            return source, owner_repo, branch, None, None, None, True, True
+        print(f"[{key}] Failed to download patches-list.json: {error}")
+        return source, owner_repo, branch, current_sha, None, None, False, False
     except Exception as error:
-        print(f"[{key}] Failed to download or parse patches-list.json: {error}")
+        print(f"[{key}] Failed to download patches-list.json: {error}")
         return source, owner_repo, branch, current_sha, None, None, False, False
 
-    return source, owner_repo, branch, remote_sha, bundle_json, patches_json, True, False
+    return source, owner_repo, branch, remote_sha, bundle_text, patches_text, True, False
 
 
 def fetch_all_repos() -> None:
@@ -132,7 +142,7 @@ def fetch_all_repos() -> None:
         futures = [executor.submit(process_repo_branch, source, owner_repo, branch, current_sha) for source, owner_repo, branch, current_sha in tasks]
 
         for future in as_completed(futures):
-            source, owner_repo, branch, new_sha, bundle_json, patches_json, status_changed, is_404 = future.result()
+            source, owner_repo, branch, new_sha, bundle_text, patches_text, status_changed, is_404 = future.result()
             base_key = f"{source}:{owner_repo}"
 
             if not status_changed:
@@ -144,10 +154,10 @@ def fetch_all_repos() -> None:
             if not is_404 and new_sha is not None:
                 owner, repo = owner_repo.split("/", 1)
                 file_prefix = f"{source}~{owner}~{repo}~{branch}.json"
-                if bundle_json:
-                    save_json(BUNDLES_DIR / file_prefix, bundle_json)
-                if patches_json:
-                    save_json(PATCHES_DIR / file_prefix, patches_json)
+                if bundle_text:
+                    (BUNDLES_DIR / file_prefix).write_text(bundle_text, encoding="utf-8")
+                if patches_text:
+                    (PATCHES_DIR / file_prefix).write_text(patches_text, encoding="utf-8")
 
     save_json(REPOS_JSON_PATH, new_repos_data)
     print(f"[+] Fetch completed. Updated {updated_count} targets.")

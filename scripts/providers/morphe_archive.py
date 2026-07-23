@@ -10,7 +10,7 @@ from utils import fetch, save_json
 
 
 README_URL = "https://raw.githubusercontent.com/rushiforai/morphe-archive/main/README.md"
-OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "repos" / "morphe-archive.json"
+OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "morphe-archive.json"
 
 _REPO_RE = re.compile(r"morphe\.software/add-source\?(github|gitlab)=([^)\s]+)")
 
@@ -19,13 +19,13 @@ def discover():
     print("  [morphe_archive] Fetching README.md...")
     try:
         content = fetch(README_URL)
-    except Exception as e:
-        print(f"  [morphe_archive] Failed: {e}")
+    except Exception as error:
+        print(f"  [morphe_archive] Failed: {error}")
         return {}
 
     discovered = {}
-    for m in _REPO_RE.finditer(content):
-        platform, repo_path = m.group(1), m.group(2).strip()
+    for match in _REPO_RE.finditer(content):
+        platform, repo_path = match.group(1), match.group(2).strip()
         parts = repo_path.split("/", 1)
         if len(parts) == 2:
             owner, repo = parts[0].strip(), parts[1].strip()

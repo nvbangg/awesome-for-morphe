@@ -43,19 +43,26 @@ def collect_apps(list_json):
 
 
 def build_current_bundles():
-    stable_dict, dev_dict = {}, {}
+    main_dict, dev_dict = {}, {}
     for patch_file in sorted(PATCHES_DIR.glob("*.json"), key=lambda p: p.name.lower()):
-        match = re.match(r"(.*)-(stable|dev)\.json$", patch_file.name)
+        match = re.match(r"(.*)~(main|dev)\.json$", patch_file.name)
         if not match:
             continue
         base, channel = match.groups()
+        # base here is something like "github~AlexNaga~android-patches"
+        # we need to convert it to "github:AlexNaga/android-patches"
+        if "~" in base:
+            parts = base.split("~")
+            if len(parts) >= 3:
+                base = f"{parts[0]}:{parts[1]}/{parts[2]}"
+
         list_json = load_json(patch_file)
         if not list_json:
             continue
-        target = stable_dict if channel == "stable" else dev_dict
+        target = main_dict if channel == "main" else dev_dict
         target[base] = collect_apps(list_json)
 
-    return stable_dict, dev_dict
+    return main_dict, dev_dict
 
 
 # Inspired by code from Paresh Maheshwari

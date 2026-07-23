@@ -18,21 +18,19 @@ def fetch(
 
     for attempt in range(3):
         try:
-            req = urllib.request.Request(url, headers=headers)
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
-                content = resp.read().decode("utf-8")
+            request = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                content = response.read().decode("utf-8")
             return json.loads(content) if as_json else content
 
-        except urllib.error.HTTPError as e:
-            if e.code in (401, 403, 429) and attempt < 2:
+        except urllib.error.HTTPError as error:
+            if error.code in (401, 403, 429) and attempt < 2:
                 wait = 2**attempt
-                print(f"    Rate limited (HTTP {e.code}), waiting {wait}s...")
                 time.sleep(wait)
             else:
                 raise
         except (urllib.error.URLError, TimeoutError):
             if attempt < 2:
-                print(f"    Network error, retry {attempt + 1}/3")
                 time.sleep(1)
             else:
                 raise
@@ -45,8 +43,8 @@ def load_json(path: Union[str, Path], default: Any = None) -> Any:
     if not path.exists():
         return default if default is not None else {}
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+        with open(path, "r", encoding="utf-8") as file:
+            return json.load(file)
     except json.JSONDecodeError:
         print(f"Warning: Corrupted JSON file: {path}")
         return default if default is not None else {}
@@ -57,6 +55,6 @@ def load_json(path: Union[str, Path], default: Any = None) -> Any:
 def save_json(path: Union[str, Path], data: Any) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
+    with open(path, "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=2, ensure_ascii=False)
+        file.write("\n")

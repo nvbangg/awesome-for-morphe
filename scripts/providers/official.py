@@ -1,6 +1,5 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-import re
 import sys
 from pathlib import Path
 
@@ -10,15 +9,13 @@ from utils import fetch, load_json, save_json
 
 
 BUNDLES_URL = "https://morphe-patches.software/data/bundles.json"
-OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "repos" / "official.json"
-SNAPSHOT_PATH = Path(__file__).resolve().parents[2] / "data" / "snapshots" / "official-bundles.json"
+OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "official.json"
+SNAPSHOT_PATH = Path(__file__).resolve().parents[2] / "data" / "official-bundles.json"
 
 HEADERS = {
     "Referer": "https://morphe-patches.software/",
     "User-Agent": "AwesomeMorphe/1.0 (+https://github.com/nvbangg/awesome-morphe)",
 }
-
-_PATCHES_RE = re.compile(r"(?:'s\s+patches|\s+patches)$", re.IGNORECASE)
 
 
 def discover():
@@ -26,8 +23,8 @@ def discover():
     try:
         data = fetch(BUNDLES_URL, headers=HEADERS, timeout=30, as_json=True)
         save_json(SNAPSHOT_PATH, data)
-    except Exception as e:
-        print(f"  [official] Failed: {e}")
+    except Exception as error:
+        print(f"  [official] Failed: {error}")
         data = load_json(SNAPSHOT_PATH)
         if not data:
             return {}
@@ -40,8 +37,7 @@ def discover():
         repo = bundle.get("repo")
         if not source or not repo:
             continue
-        name = _PATCHES_RE.sub("", bundle.get("name", "")).strip()
-        discovered[f"{source.lower()}:{repo}"] = {"name": name} if name else {}
+        discovered[f"{source.lower()}:{repo}"] = {}
 
     print(f"  [official] Discovered {len(discovered)} repos")
     if not discovered:

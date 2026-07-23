@@ -14,8 +14,8 @@ from utils import fetch, load_json, save_json
 
 TREE_API_URL = "https://api.github.com/repos/Jman-Github/ReVanced-Patch-Bundles/git/trees/bundles?recursive=1"
 RAW_BASE = "https://raw.githubusercontent.com/Jman-Github/ReVanced-Patch-Bundles/bundles"
-OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "repos" / "jman.json"
-SNAPSHOT_PATH = Path(__file__).resolve().parents[2] / "data" / "snapshots" / "discover.json"
+OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "jman.json"
+SNAPSHOT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "snapshot.json"
 
 _REPO_RE = re.compile(r"(github|gitlab)\.com/([^/]+)/([^/\s\"']+)")
 
@@ -33,9 +33,9 @@ def _extract_canonical_key(bundle_json):
     ]:
         if not url:
             continue
-        m = _REPO_RE.search(url)
-        if m:
-            platform, owner, repo = m.groups()
+        match = _REPO_RE.search(url)
+        if match:
+            platform, owner, repo = match.groups()
             return f"{platform}:{owner}/{repo}"
     return None
 
@@ -48,8 +48,8 @@ def _process_bundle(bundle_name, bundle_path, blob_sha, cached):
     try:
         content = fetch(f"{RAW_BASE}/{bundle_path}", timeout=10)
         canonical_key = _extract_canonical_key(json.loads(content))
-    except Exception as e:
-        print(f"  [jman] Failed to fetch {bundle_name}: {e}")
+    except Exception as error:
+        print(f"  [jman] Failed to fetch {bundle_name}: {error}")
         return bundle_name, None, None
 
     return bundle_name, blob_sha, canonical_key
@@ -63,8 +63,8 @@ def discover():
 
     try:
         tree_data = fetch(TREE_API_URL, headers=headers, timeout=30, as_json=True)
-    except Exception as e:
-        print(f"  [jman] Failed to fetch tree: {e}")
+    except Exception as error:
+        print(f"  [jman] Failed to fetch tree: {error}")
         return {}
 
     tree_sha = tree_data.get("sha", "")

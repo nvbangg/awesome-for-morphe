@@ -59,8 +59,8 @@ jobs:
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-            TAG=$(date +'%Y.%m.%d')
-            DAY=$(date +'%B %-d')
+            TAG=$(date -d "-12 hours" +'%Y.%m.%d')
+            DAY=$(date -d "-12 hours" +'%B %-d')
 
             git commit -m "Update release history (${TAG})"
             git push origin HEAD:main

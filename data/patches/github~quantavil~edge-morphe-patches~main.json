@@ -1,0 +1,80 @@
+{
+  "version": "1.33.0",
+  "patches": [
+    {
+      "name": "Copilot feature toggle",
+      "description": "Disables all Copilot and Bing Chat feature flags by forcing boolean feature evaluation methods to return false.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.microsoft.emmx",
+          "name": "Microsoft Edge",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "150.0.4078.81",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Play Store updates",
+      "description": "Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.microsoft.emmx",
+          "name": "Microsoft Edge",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "150.0.4078.81",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Telemetry elimination",
+      "description": "Eliminates Microsoft Edge telemetry by redirecting data collection endpoints to localhost and short-circuiting OneDS Logger event methods.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.microsoft.emmx",
+          "name": "Microsoft Edge",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "150.0.4078.81",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.10.2",
+  "patches": [
+    {
+      "name": "Inline pairip call wrappers",
+      "description": "Inlines pairip's static call-wrapper stubs ($<number>) back into their call sites and removes the stubs.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove pairip protection",
+      "description": "Restores obfuscated strings and removes pairip bytecode protection.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Restore extracted methods",
+      "description": "Inlines methods hidden in $c<number> helper classes back into the host class, then removes those helper and reflection method-holder classes.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Strip debug info",
+      "description": "Removes .line (line numbers) and .source (source file name) debug data from every class. Optional, disabled by default.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Disable TargoBank root check",
+      "description": "Neutralises the splash 'rooted device' block by forcing the security verdict getters (o.aNj.con/Aux/AuX) to return false, so the app proceeds to the login screen. Validated on V12.68.1 (versionCode 2019102761). Note: re-signing breaks Play Integrity app-recognition; keep the app in the Magisk denylist.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.targo_prod.bad",
+          "name": "TARGOBANK",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": null,
+          "signatures": [
+            "543468cf37c5536717b8950168f7990e7d5bc61ea8dc5b39d8d4ff249f892a4c"
+          ],
+          "targets": [
+            {
+              "version": "V12.68.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": "v1.0.6",
+  "patches": [
+    {
+      "name": "Bypass Passport signature mismatch crash",
+      "description": "Strips the IllegalStateException + PassportRuntime handler block in c0.releaseRuntimeChecks (smali-aligned).",
+      "use": false,
+      "dependencies": [],
+      "compatiblePackages": {
+        "ru.yandex.yandexnavi": [
+          "28.6.5"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Debuggable application manifest",
+      "description": "Sets android:debuggable=true on <application> (Passport allows non-Play signature on that path).",
+      "use": false,
+      "dependencies": [],
+      "compatiblePackages": {
+        "ru.yandex.yandexnavi": [
+          "28.6.5"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Enable debug panel",
+      "description": "Unlocks the internal Maps-shell debug panel gate (Yandexoid prefs + swipable experiment).",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "ru.yandex.yandexnavi": [
+          "28.6.5"
+        ]
+      },
+      "options": []
+    }
+  ]
+}

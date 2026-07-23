@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0-dev.19",
+  "patches": [
+    {
+      "name": "Remove ads",
+      "description": "Bypasses ad-removal premium checks by forcing PremiumState.isRemoveAdPremium() to always return true.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "droom.sleepIfUCan": [
+          "26.23.0"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Unlock Pro subscription",
+      "description": "Bypasses premium checks by forcing PremiumState.isPremium() to always return true.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "droom.sleepIfUCan": [
+          "26.23.0"
+        ]
+      },
+      "options": []
+    }
+  ]
+}

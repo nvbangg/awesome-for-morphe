@@ -1,0 +1,94 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.13.1",
+  "patches": [
+    {
+      "name": "Ads Free Rewards",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "No Ads",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "blockInterstitials",
+          "title": "Block Interstitials",
+          "description": "Blocks interstitial and app open ads.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockBanners",
+          "title": "Block Banners",
+          "description": "Blocks banner and MREC ads.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockAppOpen",
+          "title": "Block App Open",
+          "description": "Blocks app open ads.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockMRec",
+          "title": "Block MREC",
+          "description": "Blocks MREC ads.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockRewarded",
+          "title": "Block Rewarded",
+          "description": "Blocks rewarded ads. Disable this if using Ads Free Rewards patch.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Pairip Application Redirect",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "realAppClass",
+          "title": "Real Application Class",
+          "description": "The real app's Application class. Leave empty to auto-discover.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Spoof Play Store Install Source",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    }
+  ]
+}

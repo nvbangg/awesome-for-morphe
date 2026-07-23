@@ -1,0 +1,162 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.3.0",
+  "patches": [
+    {
+      "name": "Bypass License Check",
+      "description": "Bypasses Google Play Store license verification in com.pairip.licensecheck.LicenseClient to prevent System.exit(0) on non-Play Store installs.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.org.npci.upiapp",
+          "name": "BHIM UPI",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#097969",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.0.24",
+              "versionCodes": {},
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass License Paywall",
+      "description": "Neutralizes the license paywall and error dialog at the source by patching LicenseClient.processResponse, startPaywallActivity, and handleError to return immediately.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.org.npci.upiapp",
+          "name": "BHIM UPI",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#097969",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.0.24",
+              "versionCodes": {},
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass License Activity",
+      "description": "Neutralizes LicenseActivity.onStart to prevent the paywall and error dialog from being displayed, acting as a catch-all guard if LicenseActivity is ever started.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.org.npci.upiapp",
+          "name": "BHIM UPI",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#097969",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.0.24",
+              "versionCodes": {},
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass Signature Verification",
+      "description": "Bypasses APK signature verification in com.pairip.SignatureCheck to prevent SignatureTamperedException on modified APKs.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.org.npci.upiapp",
+          "name": "BHIM UPI",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#097969",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.0.24",
+              "versionCodes": {},
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Blacklisting",
+      "description": "Disables the blacklisting check in the affirmation flow to prevent the app from blocking rooted devices server-side.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.org.npci.upiapp",
+          "name": "BHIM UPI",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#097969",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.0.24",
+              "versionCodes": {},
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Force Safe Root Status",
+      "description": "Forces the root status to 'safe' in device details and skips root status comparison logic to bypass root detection on the client side.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.org.npci.upiapp",
+          "name": "BHIM UPI",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#097969",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.0.24",
+              "versionCodes": {},
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

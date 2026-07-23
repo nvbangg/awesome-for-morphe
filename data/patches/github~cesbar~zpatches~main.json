@@ -1,0 +1,93 @@
+{
+  "version": "1.6.0",
+  "patches": [
+    {
+      "name": "Custom Maps API Key",
+      "description": "Replace Velo'v Google Maps key with your own to fix it",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": [
+        {
+          "key": "mapApiKey",
+          "title": "Google Maps API key",
+          "description": "Google Maps API key",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Disable Internet and Telemetry",
+      "description": "Disable Internet and Telemetry by removing all non-necessary permissions from the manifest",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "ee.dustland.android.minesweeper": null,
+        "ee.dustland.android.solitaire": null
+      },
+      "options": []
+    },
+    {
+      "name": "Disable map animations",
+      "description": "Disable the map zoom-in animation",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlock all purchasables options",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "ee.dustland.android.minesweeper": null,
+        "ee.dustland.android.solitaire": null
+      },
+      "options": []
+    },
+    {
+      "name": "Export all activities",
+      "description": "Makes all activities launchable externally by setting android:exported=\"true\" in the manifest",
+      "use": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "No geolocalisation check",
+      "description": "Allows you to unlock a bike even if you're not near the station.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Spoof package signature",
+      "description": "Spoofs the package signature required for Firebase, fixes notifications",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": []
+    }
+  ]
+}

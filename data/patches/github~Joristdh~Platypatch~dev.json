@@ -1,0 +1,71 @@
+{
+  "version": "1.2.0-dev.2",
+  "appNames": {
+    "com.laurencedawson.reddit_sync": "Sync for Reddit",
+    "com.laurencedawson.reddit_sync.pro": "Sync for Reddit Pro",
+    "com.laurencedawson.reddit_sync.dev": "Sync for Reddit Dev"
+  },
+  "patches": [
+    {
+      "name": "Experimental: Restore \"Swipe to return\" translucency",
+      "description": "Fixes the opaque background when using the \"Swipe to return\" option. Experimental due to animation issues. Incompatible with the Predictive Back Gesture patch.",
+      "use": false,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.laurencedawson.reddit_sync": [
+          "v23.06.30-13:39"
+        ],
+        "com.laurencedawson.reddit_sync.pro": null,
+        "com.laurencedawson.reddit_sync.dev": null
+      },
+      "compatibility": [
+        {
+          "name": "Sync for Reddit",
+          "packageName": "com.laurencedawson.reddit_sync",
+          "description": null,
+          "appIconColor": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "experimental": false
+            }
+          ]
+        },
+        {
+          "name": "Sync for Reddit Pro",
+          "packageName": "com.laurencedawson.reddit_sync.pro",
+          "description": null,
+          "appIconColor": null,
+          "targets": [
+            {
+              "version": "",
+              "experimental": false
+            }
+          ]
+        },
+        {
+          "name": "Sync for Reddit Dev",
+          "packageName": "com.laurencedawson.reddit_sync.dev",
+          "description": null,
+          "appIconColor": null,
+          "targets": [
+            {
+              "version": "",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Predictive back gesture",
+      "description": "Enables the predictive back gesture introduced on Android 13.",
+      "use": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "compatibility": [],
+      "options": []
+    }
+  ]
+}

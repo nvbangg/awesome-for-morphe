@@ -1,0 +1,355 @@
+{
+  "version": "1.5.7-dev.3",
+  "appNames": {
+    "com.fox.foxone": "Fox One Android TV",
+    "com.peacocktv.peacockandroid": "Peacock TV Android TV",
+    "com.amazon.amazonvideo.livingroom": "Prime Video Android TV",
+    "com.tubitv": "Tubi Android TV",
+    "com.univision.prendetv": "ViX Android TV",
+    "com.disney.disneyplus": "Disney+ Android TV",
+    "com.wbd.hbomax": "HBO Max Android TV",
+    "com.bamnetworks.mobile.android.gameday.atbat": "MLB.tv Android TV",
+    "com.cbs.ott": "Paramount+ Android TV"
+  },
+  "patches": [
+    {
+      "name": "Disable auto-updates",
+      "description": "Prevents Google Play Store from automatically replacing the patched APK with the official unpatched version.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.amazon.amazonvideo.livingroom": [
+          "6.23.23+v15.5.0.70-armv7a"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Prime Video Android TV",
+          "packageName": "com.amazon.amazonvideo.livingroom",
+          "description": null,
+          "appIconColor": 1539022,
+          "targets": [
+            {
+              "version": "6.23.23+v15.5.0.70-armv7a",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disney+ Android TV",
+      "description": "Removes mid-roll / pre-roll ads and pause ads.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.disney.disneyplus": [
+          "26.6.0+rc5-2026.04.21",
+          "26.8.0+rc6-2026.05.20",
+          "26.9.2+rc1-2026.06.12"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Disney+ Android TV",
+          "packageName": "com.disney.disneyplus",
+          "description": null,
+          "appIconColor": 1129679,
+          "targets": [
+            {
+              "version": "26.6.0+rc5-2026.04.21",
+              "experimental": false
+            },
+            {
+              "version": "26.8.0+rc6-2026.05.20",
+              "experimental": false
+            },
+            {
+              "version": "26.9.2+rc1-2026.06.12",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "HBO Max - Disable Ads",
+      "description": "Suppresses nonlinear overlay ads (Bolt), SSAI linear ad timeline registration (GMSS/AdSparx), and live stream preroll ad timeline entry generation for all content types.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.wbd.hbomax": [
+          "7.5.0.73",
+          "7.2.0.41"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "HBO Max Android TV",
+          "packageName": "com.wbd.hbomax",
+          "description": null,
+          "appIconColor": 16777215,
+          "targets": [
+            {
+              "version": "7.5.0.73",
+              "experimental": false
+            },
+            {
+              "version": "7.2.0.41",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "MLB At Bat Android TV",
+      "description": "Removes VOD ads and shows a commercial-break overlay over live gambling ads while preserving live game playback.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.bamnetworks.mobile.android.gameday.atbat": [
+          "26.8.1.1"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "MLB.tv Android TV",
+          "packageName": "com.bamnetworks.mobile.android.gameday.atbat",
+          "description": null,
+          "appIconColor": 11634,
+          "targets": [
+            {
+              "version": "26.8.1.1",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Override certificate pinning",
+      "description": "Allows HTTPS traffic inspection tools like AdGuard Premium to intercept app connections. Enables consistent pre-roll suppression when used alongside AdGuard Premium.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.amazon.amazonvideo.livingroom": [
+          "6.23.23+v15.5.0.70-armv7a"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Prime Video Android TV",
+          "packageName": "com.amazon.amazonvideo.livingroom",
+          "description": null,
+          "appIconColor": 1539022,
+          "targets": [
+            {
+              "version": "6.23.23+v15.5.0.70-armv7a",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Paramount+ Android TV",
+      "description": "Removes VOD ads and pause ads while preserving live TV.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.cbs.ott": [
+          "16.12.0",
+          "16.8.0"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Paramount+ Android TV",
+          "packageName": "com.cbs.ott",
+          "description": null,
+          "appIconColor": 25855,
+          "targets": [
+            {
+              "version": "16.12.0",
+              "experimental": false
+            },
+            {
+              "version": "16.8.0",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Prime Video extension",
+      "description": "Integrates the Prime Video ATV extension for ad group skipping.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.amazon.amazonvideo.livingroom": [
+          "6.23.23+v15.5.0.70-armv7a"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Prime Video Android TV",
+          "packageName": "com.amazon.amazonvideo.livingroom",
+          "description": null,
+          "appIconColor": 1539022,
+          "targets": [
+            {
+              "version": "6.23.23+v15.5.0.70-armv7a",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip ads",
+      "description": "Suppresses all ad delivery systems in Fox One Android TV: Google IMA/DAI for VOD, Yospace SSAI for live content.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.fox.foxone": [
+          "1.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Fox One Android TV",
+          "packageName": "com.fox.foxone",
+          "description": null,
+          "appIconColor": 199450,
+          "targets": [
+            {
+              "version": "1.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip ads",
+      "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.peacocktv.peacockandroid": [
+          "7.5.102",
+          "7.6.100"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Peacock TV Android TV",
+          "packageName": "com.peacocktv.peacockandroid",
+          "description": null,
+          "appIconColor": 0,
+          "targets": [
+            {
+              "version": "7.5.102",
+              "experimental": false
+            },
+            {
+              "version": "7.6.100",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip ads",
+      "description": "Multi-layer ad suppression targeting the SSAI schedule, impression reporting, and the Volley network chokepoint.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.amazon.amazonvideo.livingroom": [
+          "6.23.23+v15.5.0.70-armv7a"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Prime Video Android TV",
+          "packageName": "com.amazon.amazonvideo.livingroom",
+          "description": null,
+          "appIconColor": 1539022,
+          "targets": [
+            {
+              "version": "6.23.23+v15.5.0.70-armv7a",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip ads",
+      "description": "Suppresses all ad delivery systems in Tubi Android TV.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.tubitv": [
+          "10.20.5000"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Tubi Android TV",
+          "packageName": "com.tubitv",
+          "description": null,
+          "appIconColor": 15276060,
+          "targets": [
+            {
+              "version": "10.20.5000",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip ads",
+      "description": "Suppresses ViX ad delivery by disabling the FreeWheel ad provider at the config level and preventing the Innovid SSAI overlay from mounting.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.univision.prendetv": [
+          "4.46.0_tv"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "ViX Android TV",
+          "packageName": "com.univision.prendetv",
+          "description": null,
+          "appIconColor": 41193,
+          "targets": [
+            {
+              "version": "4.46.0_tv",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.1.0",
+  "patches": [
+    {
+      "name": "Block trackers",
+      "description": "Blocks analytics and tracking. The app routes every event through the util.n1 dispatcher, which forwards each one to both Firebase Analytics and Facebook (AppEventsLogger). This neutralizes that dispatcher so no tracking event is ever sent.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.dubani.dub",
+          "name": "Venabox Hub",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1A237E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.3.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Premium",
+      "description": "Unlocks premium. Makes the app's session helper report a valid, active subscription so locked content and premium-only features become available, and removes ads. Note: media that the server streams and authorizes per-account may still depend on the backend honouring the account.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.dubani.dub",
+          "name": "Venabox Hub",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1A237E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.3.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

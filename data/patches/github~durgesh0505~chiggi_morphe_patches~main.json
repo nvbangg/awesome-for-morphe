@@ -1,0 +1,1602 @@
+{
+  "version": "1.18.0",
+  "patches": [
+    {
+      "name": "Add food search bar",
+      "description": "Adds a live search box below each meal-time header in the day/meal form. Typing filters that meal's food chips as you type; filtering only hides chips, so items you have already added stay added. The hardest patch to keep working — it hooks the obfuscated form adapter and will likely need re-fingerprinting after Nutrilio updates.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "net.nutrilio",
+          "name": "Nutrilio",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#36D4C3",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.20.2",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Auto skip intro and recap",
+      "description": "Automatically skips the intro, recap and song segments as soon as the 'Skip' button would appear, without waiting for a tap.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sonyliv",
+          "name": "SonyLIV",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#7460A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.23.1",
+              "isExperimental": false,
+              "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Auto-skip Up Next",
+      "description": "Plays the next episode immediately when the \"Up Next\" card appears, skipping the auto-play countdown.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sonyliv",
+          "name": "SonyLIV",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#7460A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.23.1",
+              "isExperimental": false,
+              "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass Play license check",
+      "description": "Stops Google Play's Automatic Integrity Protection (PairIP) license check that, on a re-signed/sideloaded build, redirects the app to the Play Store (\"get it on Google Play\"). Neuters both entry points of com.pairip.licensecheck.LicenseClient (checkLicense / initializeLicenseCheck) so the check never runs. Required for the patched app to open at all.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.crazygames.crazygamesapp",
+          "name": "CrazyGames",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0C0D14",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.6.7",
+              "isExperimental": false,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass proxy/VPN security block",
+      "description": "Stops the \"Something is interfering with your secure connection\" (NET_201) screen that JioHotstar shows when it detects a VPN/proxy. The app self-enforces a proxy verdict the server sends via the X-Hs-SetProxyState response header: the client stores it and, when it is BLOCKED/RESTRICTED, shows the security error. This neuters the handler that stores that verdict, so the client keeps reporting a clean (unblocked) proxy state and never blocks itself. It also neuters the store's periodic proxy-state refresh coroutines, which would otherwise re-fetch endlessly (the verdict is never stored, so the TTL check always sees it expired) and make the app feel laggy/retrying. Note: if JioHotstar also refuses playback server-side based on the connection IP, video may still fail even though the error screen is gone.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Change app name",
+      "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.easybrain.arrow.puzzle.game",
+          "name": "Arrow Puzzle",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2D6CDF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.7.0",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name shown under the app icon.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Arrow Puzzle Morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change app name",
+      "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.crazygames.crazygamesapp",
+          "name": "CrazyGames",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0C0D14",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.6.7",
+              "isExperimental": false,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name shown under the app icon.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "CrazyGames Morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change app name",
+      "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name shown under the app icon.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "JioHotstar Morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change app name",
+      "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.jio.media.jiotvplus",
+          "name": "Jiotv+: LiveTV & OTT",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#0C2074",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.6.4_2076",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name shown under the app icon.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "JioTV+ Morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change app name",
+      "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "net.nutrilio",
+          "name": "Nutrilio",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#36D4C3",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.20.2",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name shown under the app icon.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Nutrilio Morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change app name",
+      "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sonyliv",
+          "name": "SonyLIV",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#7460A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.23.1",
+              "isExperimental": false,
+              "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name shown under the app icon.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Sony LIV",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change app name",
+      "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.instagram.barcelona",
+          "name": "Threads",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "434.0.0.41.74",
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name shown under the app icon.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Threads Morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change app name",
+      "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vimtv",
+          "name": "Vi Movies and TV",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#EE1C25",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "10.8",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name shown under the app icon.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Vi Movies and TV Morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change package name",
+      "description": "Changes the app package name so the patched app installs alongside the original. Set the desired package name in the patch options. WARNING: this game ships native integrity/signing libraries; a renamed + re-signed package may trip a native tamper check. Disable this patch if the app crashes or closes on launch.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.easybrain.arrow.puzzle.game",
+          "name": "Arrow Puzzle",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2D6CDF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.7.0",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "packageName",
+          "title": "Package name",
+          "description": "The new application package name (e.g. com.easybrain.arrow.puzzle.game.morphe).",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "com.easybrain.arrow.puzzle.game.morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change package name",
+      "description": "Changes the app package name so the patched app installs alongside the original. Set the desired package name in the patch options. Changing the package name can cause unexpected issues with some app features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "net.nutrilio",
+          "name": "Nutrilio",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#36D4C3",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.20.2",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "packageName",
+          "title": "Package name",
+          "description": "The new application package name (e.g. net.nutrilio.morphe).",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "net.nutrilio.morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change package name",
+      "description": "Changes the app package name so the patched app installs alongside the original. Set the desired package name in the patch options. Changing the package name can cause unexpected issues with some app features.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sonyliv",
+          "name": "SonyLIV",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#7460A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.23.1",
+              "isExperimental": false,
+              "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "packageName",
+          "title": "Package name",
+          "description": "The new application package name (e.g. com.sonyliv.chiggi).",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "com.sonyliv.chiggi",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change package name",
+      "description": "Changes the app package name so the patched app installs alongside the original Threads. Set the desired package name in the patch options. WARNING: Meta apps hardcode many component/provider references — renaming the package can break Facebook login (SSO), content providers, or push. Disable this patch if you hit such issues.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.instagram.barcelona",
+          "name": "Threads",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "434.0.0.41.74",
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "packageName",
+          "title": "Package name",
+          "description": "The new application package name (e.g. com.instagram.barcelona.morphe).",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "com.instagram.barcelona.morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Disable AppsFlyer tracking",
+      "description": "Disables AppsFlyer attribution and event tracking. Other SDKs (CleverTap, Firebase Analytics/Crashlytics) are not affected by this patch.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sonyliv",
+          "name": "SonyLIV",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#7460A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.23.1",
+              "isExperimental": false,
+              "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Firebase tracking",
+      "description": "Disables Firebase Analytics, Crashlytics and Performance data collection via manifest flags. Push notifications are unaffected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sonyliv",
+          "name": "SonyLIV",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#7460A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.23.1",
+              "isExperimental": false,
+              "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Stops Easybrain analytics event upload (Unity AnalyticsPlugin send + the central AnalyticsController collector). SDK init is left intact so ad removal stays stable. Does not disable deep GMS/Firebase auto-collection; pair with Remove AD_ID for advertising-id.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.easybrain.arrow.puzzle.game",
+          "name": "Arrow Puzzle",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2D6CDF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.7.0",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Stops native Sentry crash/telemetry upload by neutering the Capacitor Sentry plugin's native init (io.sentry.capacitor.SentryCapacitor.initNativeSdk), so it resolves without starting the native Sentry SDK. Firebase auth, ConfigCat and push are unaffected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.crazygames.crazygamesapp",
+          "name": "CrazyGames",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0C0D14",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.6.7",
+              "isExperimental": false,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables Firebase/Google Analytics, Crashlytics and Performance data collection via manifest flags. CleverTap is left intact (it drives in-app UI and disabling it would crash the app). Push notifications are unaffected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables Firebase/Google Analytics, Crashlytics and Performance data collection via manifest flags. CleverTap is left intact (it drives in-app UI and disabling it would crash the app). Push notifications are unaffected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.jio.media.jiotvplus",
+          "name": "Jiotv+: LiveTV & OTT",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#0C2074",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.6.4_2076",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables Firebase/Google Analytics, Crashlytics and Performance data collection via manifest flags and removes the advertising-id (AD_ID) permissions. Push notifications are unaffected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "net.nutrilio",
+          "name": "Nutrilio",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#36D4C3",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.20.2",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables Firebase/Google Analytics, Crashlytics and Performance data collection via manifest flags. CleverTap is left intact (it drives in-app UI and disabling it would crash the app). Push notifications are unaffected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vimtv",
+          "name": "Vi Movies and TV",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#EE1C25",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "10.8",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable forced update",
+      "description": "Removes the forced ('immediate') and optional ('flexi') 'update available' popup shown on the home screen.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sonyliv",
+          "name": "SonyLIV",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#7460A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.23.1",
+              "isExperimental": false,
+              "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable forced update",
+      "description": "Removes the 'update available' popup (both the forced/non-cancelable and the optional variant) shown on splash/home. The pinned 10.8 re-signed build would otherwise be nagged — or hard-blocked — to update whenever the server reports a newer version. The popup is gated on ClientInfo.getVersionNumber(); forcing it to \"0\" makes the version check in SplashActivity and MainActivity conclude no update is needed.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vimtv",
+          "name": "Vi Movies and TV",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#EE1C25",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "10.8",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable all codecs",
+      "description": "Forces all video codecs (H265/VP9/AV1) and 4K support on by bypassing the capability/blacklist checks. Off by default: forcing a codec/resolution a TV cannot actually decode can break playback. Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable screen mirroring",
+      "description": "Allows playback to continue while screen mirroring or an external HDMI display is connected, instead of showing the multiple-display block. Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable screenshots",
+      "description": "Removes screenshot and screen-recording restrictions on the app UI (the DRM video itself stays protected by Widevine). Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Food search bar layout",
+      "description": "Adds the search box view below each meal-time header in the day/meal form. Enabled automatically by \"Add food search bar\".",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "net.nutrilio",
+          "name": "Nutrilio",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#36D4C3",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.20.2",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Force HDR10",
+      "description": "Forces HDR10 / HDR10+ / Dolby Vision playback by bypassing the capability/blacklist check. Off by default: forcing HDR on a panel that cannot render it can wash out or break playback. Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide ads",
+      "description": "Hides sponsored posts and injected \"suggested\" netego units from the Threads feed. Marks every media as organic (Media.DED) and blocks the feed ad-injection scheduler (BarcelonaSpoolFeedCacheHandler). Client-side only.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.instagram.barcelona",
+          "name": "Threads",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "434.0.0.41.74",
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide promo banners",
+      "description": "Hides the CleverTap-driven subscribe/premium promo banners and promo trays on the home screen. Content rows and CleverTap pop-ups/overlays are not affected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sonyliv",
+          "name": "SonyLIV",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#7460A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.23.1",
+              "isExperimental": false,
+              "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Local backup & restore",
+      "description": "Adds a native \"Local backup & restore\" row to the Backup screen (above Restore Backup) that opens Nutrilio's built-in (but normally hidden) local file backup/restore. There you can export a complete backup — all entries, images and settings — to a portable .nutrilio file (a ZIP) via the share sheet, and restore one from a file you pick. No Google account, no premium needed. (Google Drive auto-backup is separate and still requires sign-in, which does not work on a re-signed app.)",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "net.nutrilio",
+          "name": "Nutrilio",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#36D4C3",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.20.2",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Make installable on TV",
+      "description": "For PHONE builds only: makes a phone APK installable on Android TV / Google TV by marking touchscreen, portrait-screen and other phone-only features optional (they are why the TV installer reports \"not compatible with your TV\"), declaring the leanback feature optional, and adding the leanback launcher category. Off by default because the JioHotstar TV build (.apkm) is already a native leanback D-pad app and does not need it. Note: a phone build patched this way still shows a portrait touch UI — a mouse or air-remote may be needed since it expects touch, not a D-pad.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Premium unlock",
+      "description": "Unlocks premium UI state: shows the subscribed badge, enables the download button for all content and suppresses subscription nudges during playback. This is a UI unlock only — it does not grant access to DRM content you are not entitled to. Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Premium unlock (UI)",
+      "description": "Forces the client 'subscribed' flags true so premium UI state shows unlocked. OFF by default: Vi Movies and TV enforces entitlement server-side with Widevine DRM, so this does NOT grant content you are not entitled to — it only changes UI, and content that appears playable may still be refused by the server. Cosmetic UI change only.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vimtv",
+          "name": "Vi Movies and TV",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#EE1C25",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "10.8",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove AD_ID permission",
+      "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Topics and Attribution signals cannot be read for ad tracking.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.easybrain.arrow.puzzle.game",
+          "name": "Arrow Puzzle",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2D6CDF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.7.0",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove AD_ID permission",
+      "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Topics, Attribution and Custom Audience signals cannot be read for ad tracking.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.crazygames.crazygamesapp",
+          "name": "CrazyGames",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0C0D14",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.6.7",
+              "isExperimental": false,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove AD_ID permission",
+      "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Attribution and Topics signals cannot be read for ad tracking.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove AD_ID permission",
+      "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Attribution and Topics signals cannot be read for ad tracking.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.jio.media.jiotvplus",
+          "name": "Jiotv+: LiveTV & OTT",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#0C2074",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.6.4_2076",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove AD_ID permission",
+      "description": "Removes the advertising-id (AD_ID) permissions so the device advertising id cannot be read for ad tracking. Does not disable Meta's core analytics.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.instagram.barcelona",
+          "name": "Threads",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "434.0.0.41.74",
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove AD_ID permission",
+      "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Attribution and Topics signals cannot be read for ad tracking.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vimtv",
+          "name": "Vi Movies and TV",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#EE1C25",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "10.8",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Removes ALL ads (banner, interstitial and rewarded) by neutering the Unity<->Android ad facade (com.easybrain.ads.unity.AdsPlugin): availability/show booleans return false, banner shows are no-ops and banner height is 0. The game treats every ad type as never ready. Note: rewarded ads are also removed, so watch-to-earn rewards no longer work.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.easybrain.arrow.puzzle.game",
+          "name": "Arrow Puzzle",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2D6CDF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.7.0",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Removes native ads (AdMob and its Pangle/Audience Network mediation) by neutering the Capacitor AdMob plugin (com.getcapacitor.community.admob.AdMob): no video is shown for interstitial or rewarded ads — instead the show methods fire the ad's lifecycle events so the game's loading overlay dismisses and rewarded ads still credit their reward; banners never display. Note: in-page web video ads served remotely inside the WebView (from crazygames.com) are not part of the app bytecode and cannot be removed here.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.crazygames.crazygamesapp",
+          "name": "CrazyGames",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0C0D14",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.6.7",
+              "isExperimental": false,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Removes pre-roll, mid-roll and live-match video ads by clearing the SSAI ad tag in the AdMetadata constructor, so the client requests a clean, non-ad-stitched stream at the source. This surgical approach lets the app's own ad machinery see \"no ads\" and behave normally (no retry loops, no empty ad slots). Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Removes JioTV+ ads. Display/banner ads are neutered at the JioAds SDK entry (JioAdView.loadAd / cacheAd), and player video ads (pre-roll, mid-roll, post-roll and SSAI stitched ads) are removed by no-oping VMAPAdsHelper.fetchAds — the single method that fetches and sets up all player ads from the playback-rights model.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.jio.media.jiotvplus",
+          "name": "Jiotv+: LiveTV & OTT",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#0C2074",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.6.4_2076",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Removes pre-roll, mid-roll and SSAI video ads. The player builds its IMA/SSAI ad-tag URL from AdUrlResponse.getAdUrlTypes(); forcing that to null (and the TorcAiAdConfig.isAdEnabled() gate to false) means no ad tag is ever loaded, so no ad plays.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vimtv",
+          "name": "Vi Movies and TV",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#EE1C25",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "10.8",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove player watermark",
+      "description": "Removes the per-content watermark/logo overlaid on the video (the one that changes depending on what you play). The player only shows the watermark ImageView when Configs.getWaterMarkInfoOnPlayer() returns non-empty JSON; forcing that getter to null makes the player's own guard hide the overlay. Client render only, so this is fully removable (it is not baked into the stream).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vimtv",
+          "name": "Vi Movies and TV",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#EE1C25",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "10.8",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove video ads",
+      "description": "Forces PlayerUtil.isAdEnable() to false so the player neither requests nor plays ads. Removes client-side (Google IMA) ads. Server-side stitched ads on some live content (MediaTailor/SSAI) may still appear.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sonyliv",
+          "name": "SonyLIV",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#7460A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.23.1",
+              "isExperimental": false,
+              "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Spoof device attestation",
+      "description": "Forces the device-attestation blob JioHotstar sends to the server to report a clean device (IsTampered/IsRooted/IsProxy/isVpnActive/IsEmulator/suspicious-file/open-ports/debugger all false). The re-signed build otherwise sends IsTampered=true, which the server flags as \"suspicious activity\" and locks the account for 24 hours (error NM-4290). WARNING: this reduces one client-sent signal but does NOT make the account safe — the server still sees the VPN exit IP, and an already-flagged account stays on Hotstar's radar. Do not run this on an account you cannot afford to lose.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Spoof device id",
+      "description": "Replaces the device id JioHotstar derives from Settings.Secure ANDROID_ID with a stable-per-install random UUID, so the re-signed build presents as a device the server has never flagged. This is the verified single source of both the X-HS-Device-Id request header and the /v2/start body device ids; ANDROID_ID otherwise survives an app-data clear (it is keyed to the signing key), which is why a flagged device kept getting the \"device logged out / suspicious activity\" page on every launch. The id is persisted, and regenerates on an app-data clear so a re-flagged device can be rotated. NOTE: the server also sees the connection IP — pair this with a clean (ideally residential) India IP; a flagged exit IP is not something the client can change. Do not run on an account you cannot afford to lose.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Spoof device-integrity self-report",
+      "description": "Forces JioHotstar's security-suite checks (VPN, proxy, root, debugger, open ports, suspicious files) to report false, so the device-integrity attestation the app sends to the server looks clean. Helps rooted/modded devices and complements the VPN bypass. Note: the attestation is also server-validated (signed nonce) and the server sees the connection IP, so this is not guaranteed to defeat a server-side check on its own.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "in.startv.hotstar",
+          "name": "JioHotstar",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1F80E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.06.22.3",
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Suppress geo / VPN block",
+      "description": "Stops the dedicated \"not available in your region\" and \"VPN detected\" block screens by downgrading the geo/EPD block to a generic error. Geoblocking is enforced server-side by IP, so this does not grant access without a valid in-region IP (e.g. a working India connection).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sonyliv",
+          "name": "SonyLIV",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#7460A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.23.1",
+              "isExperimental": false,
+              "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Plus",
+      "description": "Unlocks Nutrilio PLUS+ by forcing the premium gate (PremiumModule.t2()) to return true. Every premium feature (custom colors, all charts, app lock, all tracking options) and the paywall treat the user as a subscriber. Client-side only; does not grant a real Google Play subscription.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "net.nutrilio",
+          "name": "Nutrilio",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#36D4C3",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.20.2",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks AYA Baby AI premium without a purchase by forcing the Apphud SDK entitlement checks Apphud.hasPremiumAccess() and hasActiveSubscription() to return true. The app gates premium features on these, so the app treats the user as subscribed. Because it uses an ads-or-premium model, unlocking premium also stops the Appodeal/AdMob ads. No Google Play purchase is made or needed.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.cry.analyzer",
+          "name": "AYA Baby AI",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#F5A8C0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.8",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks the paid 'premium' upgrade (IAP com.mediocre.commute.premium) without a purchase. The native game asks the Java billing bridge AndroidStore whether the product is owned via isProductIdRestored() and reads the store status via getStatusAsString(); this forces the former to true and the latter to \"2\" (STORE_SUCCEEDED), so the game treats premium as owned. No Play purchase is made or needed. Note: the game's actual entitlement logic is in native libcommute.so, which cannot be patched here — if it independently re-verifies the purchase, this may not take effect.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mediocre.commute",
+          "name": "Does Not Commute",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2E7D6F",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.5",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks Cry Analyzer premium and removes all usage limits without a purchase. Forces BillingClientWrapper.isPurchased(...) true (every ownership check reports owned) and UserData.getRestrictionRelease() true (the master 'restrictions removed' flag). Together this gives unlimited analyses with no free-count / rewarded-ad requirement, no ads, and no free-analysis reminder nag. No Google Play purchase is made or needed.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "jp.firstascent.cryanalyzer",
+          "name": "Cry Analyzer",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4FC3F7",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.3.28",
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

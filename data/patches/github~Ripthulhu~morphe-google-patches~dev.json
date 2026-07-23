@@ -1,0 +1,81 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.1.4",
+  "patches": [
+    {
+      "name": "Install as standalone app",
+      "description": "Changes the Google app package identity so the patched APK can be installed beside the system Google app.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.googlequicksearchbox",
+          "name": "Google",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#4285F4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "17.34.30.ve.arm64",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "packageName",
+          "title": "Package name",
+          "description": "The package name to use for the standalone patched app.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "app.ripthulhu.googlequicksearchbox",
+          "values": {
+            "Default": "app.ripthulhu.googlequicksearchbox"
+          }
+        },
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The launcher name to use for the standalone patched app.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Google Morphe",
+          "values": {
+            "Default": "Google Morphe"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Remove Discover feed ads",
+      "description": "Filters likely ad nodes from the Google app Discover feed.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.googlequicksearchbox",
+          "name": "Google",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#4285F4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "17.34.30.ve.arm64",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

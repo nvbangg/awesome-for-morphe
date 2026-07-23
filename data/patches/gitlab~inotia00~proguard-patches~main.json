@@ -1,0 +1,40 @@
+{
+  "version": "1.0.3",
+  "patches": [
+    {
+      "name": "Assemble LSPosed module",
+      "description": "Assembles LSPosed modules based on the JSON file.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.java.inspector",
+          "name": "Java Inspector",
+          "description": "https://gitlab.com/inotia00/JavaInspector",
+          "apkFileType": "APK",
+          "appIconColor": "#6750A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.0.0",
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Find dummy classes",
+      "description": "Find the dummy classes and write them to a JSON file",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "version": "2.3.0",
+  "patches": [
+    {
+      "name": "Custom Maps API Key",
+      "description": "Replace Transit Google Maps key with your own Android Maps SDK key for re-signed APKs.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.thetransitapp.droid": null
+      },
+      "options": [
+        {
+          "key": "mapsApiKey",
+          "title": "Google Maps API key",
+          "description": "Android Maps SDK key",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Pro Features Unlock",
+      "description": "Unlock all pro features in Transit",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.thetransitapp.droid": null
+      },
+      "options": []
+    }
+  ]
+}

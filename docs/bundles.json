@@ -6232,6 +6232,12 @@
           "compatiblePackagesKey": 22
         },
         {
+          "name": "Show author identifier",
+          "description": "Adds options to show the author identifier next to the nickname in posts, post lists, and the recently-viewed posts list. The recently-viewed list only shows it for posts opened after this patch is installed.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 22
+        },
+        {
           "name": "Show chatroom channel ID",
           "description": "Shows the channel ID in chatroom settings and copies it when tapping the chat side title.",
           "compatiblePackagesKey": 23
@@ -6297,7 +6303,7 @@
           "compatiblePackagesKey": 23
         }
       ],
-      "createdAt": "2026-07-24T15:47:25",
+      "createdAt": "2026-07-24T18:32:08",
       "targetApps": [
         "com.dcinside.app.android",
         "com.flexcil.flexcilnote",
@@ -6633,17 +6639,17 @@
         {
           "name": "Bypass Passport signature mismatch crash",
           "description": "Strips the IllegalStateException + PassportRuntime handler block in c0.releaseRuntimeChecks (smali-aligned).",
-          "compatiblePackagesKey": 565
+          "compatiblePackagesKey": 562
         },
         {
           "name": "Debuggable application manifest",
           "description": "Sets android:debuggable=true on <application> (Passport allows non-Play signature on that path).",
-          "compatiblePackagesKey": 565
+          "compatiblePackagesKey": 562
         },
         {
           "name": "Enable debug panel",
           "description": "Unlocks the internal Maps-shell debug panel gate (Yandexoid prefs + swipable experiment).",
-          "compatiblePackagesKey": 565
+          "compatiblePackagesKey": 562
         }
       ],
       "createdAt": "2026-04-20T14:53:42",
@@ -6912,12 +6918,12 @@
           "name": "AMOLED dark theme",
           "description": "Makes dark-theme page, app navigation and system bars pure black (AMOLED) while keeping elevated cards, sheets and controls gray so their boundaries remain visible.",
           "default": false,
-          "compatiblePackagesKey": 581
+          "compatiblePackagesKey": 578
         },
         {
           "name": "Block listings",
           "description": "Hides Avito offers from blacklisted adverts or sellers and adds a blacklist manager (import/export compatible with the Ave Blacklist extension).",
-          "compatiblePackagesKey": 581
+          "compatiblePackagesKey": 578
         },
         {
           "name": "Bypass anti-tamper",
@@ -6929,7 +6935,7 @@
               "description": "Fails when a current integrity-check target no longer matches. Intended for automated builds."
             }
           ],
-          "compatiblePackagesKey": 582
+          "compatiblePackagesKey": 579
         },
         {
           "name": "Disable Adjust",
@@ -6986,17 +6992,17 @@
               "description": "Fail patching when a known Avito telemetry entry point cannot be found."
             }
           ],
-          "compatiblePackagesKey": 581
+          "compatiblePackagesKey": 578
         },
         {
           "name": "Disable update prompts",
           "description": "Prevents Avito's force-update screen opener from launching update screens. Toggleable in Настройки Morphe.",
-          "compatiblePackagesKey": 581
+          "compatiblePackagesKey": 578
         },
         {
           "name": "Hide professional sellers",
           "description": "Adds a maximum seller review count to Avito search filters and hides or dims offers from sellers above that limit.",
-          "compatiblePackagesKey": 581
+          "compatiblePackagesKey": 578
         },
         {
           "name": "Morphe settings",
@@ -7009,12 +7015,12 @@
               "description": "Fail patching when the Avito settings entry or Konveyor bind hook cannot be applied."
             }
           ],
-          "compatiblePackagesKey": 581
+          "compatiblePackagesKey": 578
         },
         {
           "name": "Remove ads",
           "description": "Disables Avito ads by removing ad SDK entry points and short-circuiting commercial banner loading.",
-          "compatiblePackagesKey": 581
+          "compatiblePackagesKey": 578
         },
         {
           "name": "Remove Ozon ads",
@@ -7031,7 +7037,7 @@
               "description": "Fails when a current ad surface no longer matches. Intended for automated builds."
             }
           ],
-          "compatiblePackagesKey": 583
+          "compatiblePackagesKey": 580
         },
         {
           "name": "Remove TBank ads",
@@ -7043,7 +7049,7 @@
               "description": "Fails when a current promotional surface no longer matches. Intended for automated builds."
             }
           ],
-          "compatiblePackagesKey": 582
+          "compatiblePackagesKey": 579
         },
         {
           "name": "Remove Wildberries ads",
@@ -7060,7 +7066,7 @@
               "description": "Fails when a current banner or recommendation surface no longer matches. Intended for automated builds."
             }
           ],
-          "compatiblePackagesKey": 584
+          "compatiblePackagesKey": 581
         },
         {
           "name": "Spoof emulator status",
@@ -7084,7 +7090,7 @@
         },
         {
           "name": "UI tweaks",
-          "description": "Optional interface tweaks, each toggleable in Настройки Morphe: single-row home categories, hide the \"Подписки\" tab in Избранное, hide installments (Рассрочка) and the \"Спросите у продавца\" block on offers, expand descriptions by default (no \"Читать далее\"), and hide the Avi assistant tab in the bottom navigation.",
+          "description": "Optional interface tweaks, each toggleable in Настройки Morphe: single-row home categories, hide the \"Подписки\" tab in Избранное, hide installments (Рассрочка) and the \"Спросите у продавца\" block on offers, expand descriptions by default (no \"Читать далее\"), hide offer recommendations, hide profile raffle, referral and Avito Pro promos, and hide the Avi assistant tab in the bottom navigation.",
           "options": [
             {
               "key": "strictFavoritesTabs",
@@ -7092,10 +7098,10 @@
               "description": "Fail patching when the Favorites-tab filtering hook cannot be applied."
             }
           ],
-          "compatiblePackagesKey": 581
+          "compatiblePackagesKey": 578
         }
       ],
-      "createdAt": "2026-07-24T03:59:18",
+      "createdAt": "2026-07-24T20:50:12",
       "targetApps": [
         "com.avito.android",
         "com.idamob.tinkoff.android",
@@ -11252,7 +11258,7 @@
               "description": "Strings that must be used as local variables rather than global variables to restore the original method structure"
             }
           ],
-          "compatiblePackagesKey": 566
+          "compatiblePackagesKey": 563
         },
         {
           "name": "Abstract shim layer for method",
@@ -11264,12 +11270,12 @@
               "description": "If true, a shim layer for the synthetic method is added.\n\nEnable if testing is required."
             }
           ],
-          "compatiblePackagesKey": 566
+          "compatiblePackagesKey": 563
         },
         {
           "name": "Abstract shim layer for native library",
           "description": "Adds an abstracted shim layer for native libraries, which improves compatibility to allow legacy patches to work.",
-          "compatiblePackagesKey": 566
+          "compatiblePackagesKey": 563
         }
       ],
       "createdAt": "2026-07-03T00:31:26",
@@ -11994,6 +12000,18 @@
           "compatiblePackagesKey": 28
         },
         {
+          "name": "Settings menu filter",
+          "description": "Adds an option to hide items on the standard YouTube Music settings screen by their visible name.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 28
+        },
+        {
+          "name": "Settings menu filter",
+          "description": "Adds an option to hide items on the standard YouTube settings screen by their visible name.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 27
+        },
+        {
           "name": "Shorts components",
           "description": "Adds options to hide or change components related to YouTube Shorts.",
           "compatiblePackagesKey": 27
@@ -12072,6 +12090,18 @@
               "description": "Base64-encoded string of the certificate."
             }
           ]
+        },
+        {
+          "name": "Spoof video streams",
+          "description": "Adds options to spoof the client video streams to fix playback.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 28
+        },
+        {
+          "name": "Spoof video streams",
+          "description": "Adds options to spoof the client video streams to fix playback.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 27
         },
         {
           "name": "Spoof watch history",
@@ -12214,7 +12244,7 @@
           "compatiblePackagesKey": 28
         }
       ],
-      "createdAt": "2026-07-16T16:12:10",
+      "createdAt": "2026-07-24T18:03:29",
       "targetApps": [
         "com.google.android.apps.youtube.music",
         "com.google.android.youtube",
@@ -12240,22 +12270,22 @@
               "description": "Google Maps API key"
             }
           ],
-          "compatiblePackagesKey": 586
+          "compatiblePackagesKey": 583
         },
         {
           "name": "Disable Internet and Telemetry",
           "description": "Disable Internet and Telemetry by removing all non-necessary permissions from the manifest",
-          "compatiblePackagesKey": 587
+          "compatiblePackagesKey": 584
         },
         {
           "name": "Disable map animations",
           "description": "Disable the map zoom-in animation",
-          "compatiblePackagesKey": 586
+          "compatiblePackagesKey": 583
         },
         {
           "name": "Enable Premium",
           "description": "Unlock all purchasables options",
-          "compatiblePackagesKey": 587
+          "compatiblePackagesKey": 584
         },
         {
           "name": "Export all activities",
@@ -12264,12 +12294,12 @@
         {
           "name": "No geolocalisation check",
           "description": "Allows you to unlock a bike even if you're not near the station.",
-          "compatiblePackagesKey": 586
+          "compatiblePackagesKey": 583
         },
         {
           "name": "Spoof package signature",
           "description": "Spoofs the package signature required for Firebase, fixes notifications",
-          "compatiblePackagesKey": 586
+          "compatiblePackagesKey": 583
         }
       ],
       "createdAt": "2026-07-19T16:59:19",
@@ -12614,7 +12644,7 @@
         {
           "name": "Disable TargoBank root check",
           "description": "Neutralises the splash 'rooted device' block by forcing the security verdict getters (o.aNj.con/Aux/AuX) to return false, so the app proceeds to the login screen. Validated on V12.68.1 (versionCode 2019102761). Note: re-signing breaks Play Integrity app-recognition; keep the app in the Magisk denylist.",
-          "compatiblePackagesKey": 585
+          "compatiblePackagesKey": 582
         }
       ],
       "createdAt": "2026-06-25T14:51:54",
@@ -12969,72 +12999,72 @@
         {
           "name": "Disable PairIP license check",
           "description": "Disable the PairIP client-side license check",
-          "compatiblePackagesKey": 567
+          "compatiblePackagesKey": 564
         },
         {
           "name": "Unlock BASE Strength Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 568
+          "compatiblePackagesKey": 565
         },
         {
           "name": "Unlock Boostcamp Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 569
+          "compatiblePackagesKey": 566
         },
         {
           "name": "Unlock Built With Science Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 570
+          "compatiblePackagesKey": 567
         },
         {
           "name": "Unlock FST-7 Subscription",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 571
+          "compatiblePackagesKey": 568
         },
         {
           "name": "Unlock Ganbaru Method Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 572
+          "compatiblePackagesKey": 569
         },
         {
           "name": "Unlock JuggernautAI Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 573
+          "compatiblePackagesKey": 570
         },
         {
           "name": "Unlock MH Physique Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 574
+          "compatiblePackagesKey": 571
         },
         {
           "name": "Unlock MyoAdapt Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 575
+          "compatiblePackagesKey": 572
         },
         {
           "name": "Unlock Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 576
+          "compatiblePackagesKey": 573
         },
         {
           "name": "Unlock RP Hypertrophy Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 577
+          "compatiblePackagesKey": 574
         },
         {
           "name": "Unlock STNDRD Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 578
+          "compatiblePackagesKey": 575
         },
         {
           "name": "Unlock THENX Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 579
+          "compatiblePackagesKey": 576
         },
         {
           "name": "Unlock Video Player Premium",
           "description": "Unlock all Paid features",
-          "compatiblePackagesKey": 580
+          "compatiblePackagesKey": 577
         }
       ],
       "createdAt": "2026-07-16T19:22:50",
@@ -14587,47 +14617,47 @@
         {
           "name": "Add to queue",
           "description": "Overrides the feed flyout 'Play next in queue' with the Morphe video queue.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Alternative thumbnails",
           "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Ambient mode",
           "description": "Adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Bypass certificate checks",
           "description": "Bypasses certificate checks which prevent YouTube Music from working on Android Auto.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Bypass image region restrictions",
           "description": "Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Bypass link redirects",
           "description": "Adds an option to bypass redirects and open the original link directly.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Captions",
           "description": "Adds an option to disable captions from being automatically enabled or to set caption cookies.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Cat lock",
           "description": "Adds a cat button to the video player that locks the screen so a pet can watch without accidentally swiping the video away; unlock by quickly tapping alternating opposite sides of the screen.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Change form factor",
           "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Change header",
@@ -14639,7 +14669,7 @@
               "description": "Folder with images to use as a custom header logo.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\nEach of the folders must contain the following file(s):\n- morphe_header_custom_dark.png\n\nRequired dimensions:\n- drawable-hdpi: 121x36 px\n- drawable-xhdpi: 160x48 px\n- drawable-xxhdpi: 240x72 px\n- drawable-xxxhdpi: 320x96 px"
             }
           ],
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Change header",
@@ -14651,12 +14681,12 @@
               "description": "Folder with images to use as a custom header logo.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\nEach of the folders must contain the following file(s):\n- morphe_header_custom_light.png\n- morphe_header_custom_dark.png\n\nRequired dimensions:\n- drawable-hdpi: 194x72 px\n- drawable-xhdpi: 258x96 px\n- drawable-xxhdpi: 387x144 px\n- drawable-xxxhdpi: 512x192 px"
             }
           ],
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Change miniplayer color",
           "description": "Adds an option to change the miniplayer background color to match the fullscreen player.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Change package name",
@@ -14683,27 +14713,32 @@
         {
           "name": "Change start page",
           "description": "Adds an option to set which page the app opens in instead of the homepage.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Change start page",
           "description": "Adds an option to set which page the app opens in instead of the homepage.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Check watch history domain name resolution",
           "description": "Checks if the device DNS server is preventing user watch history from being saved.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Check watch history domain name resolution",
           "description": "Checks if the device DNS server is preventing user watch history from being saved.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Copy video link",
           "description": "Adds options to display buttons in the video player to copy video links.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
+        },
+        {
+          "name": "Crossfade",
+          "description": "Adds a true dual-player crossfade between consecutive tracks. Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Custom branding",
@@ -14720,7 +14755,7 @@
               "description": "Folder with images to use as a custom icon.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n\nEach of the folders must contain all of the following files:\nmorphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n\nThe image dimensions must be as follows:\n- mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\nOptionally, the path contains a 'drawable' folder with a monochrome icon file:\nmorphe_adaptive_monochrome_custom.xml\n\nOptionally, the path contains a notification icon in one of the following formats:\n- XML vector drawable placed in 'drawable':\nmorphe_notification_icon_custom.xml\n- PNG raster images placed in the matching 'drawable-<dpi>' folders:\n- drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)"
             }
           ],
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Custom branding",
@@ -14737,7 +14772,7 @@
               "description": "Folder with images to use as a custom icon.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n\nEach of the folders must contain all of the following files:\nmorphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n\nThe image dimensions must be as follows:\n- mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\nOptionally, the path contains a 'drawable' folder with a monochrome icon file:\nmorphe_adaptive_monochrome_custom.xml\n\nOptionally, the path contains a notification icon in one of the following formats:\n- XML vector drawable placed in 'drawable':\nmorphe_notification_icon_custom.xml\n- PNG raster images placed in the matching 'drawable-<dpi>' folders:\n- drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)"
             }
           ],
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Custom branding name for Reddit",
@@ -14750,52 +14785,57 @@
               "description": "The name of the app."
             }
           ],
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
+        },
+        {
+          "name": "Custom font",
+          "description": "Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime.",
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Custom player overlay opacity",
           "description": "Adds an option to change the opacity of the video player background when player controls are visible.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable dislike redirection",
           "description": "Adds an option to prevent skipping to the next track when the dislike button is pressed.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Disable double tap actions",
           "description": "Adds an option to disable player double tap gestures.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable DRC audio",
           "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Disable DRC audio",
           "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable fullscreen gestures",
           "description": "Adds options to selectively disable gestures for entering and exiting fullscreen mode.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable haptic feedback",
           "description": "Adds an option to disable haptic feedback in the player for various actions.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable layout updates",
           "description": "Adds an option to disable server side layout updates and use an older UI.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable modern home",
           "description": "Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Disable Play Store updates",
@@ -14805,213 +14845,218 @@
         {
           "name": "Disable player popup panels",
           "description": "Adds an option to disable panels (such as live chat) from opening automatically.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable QUIC protocol",
           "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Disable QUIC protocol",
           "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable rolling number animations",
           "description": "Adds an option to disable rolling number animations of video view count, user likes, and upload time.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable screenshot popup",
           "description": "Adds an option to disable the popup that appears when taking a screenshot.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Disable Shorts resuming on startup",
           "description": "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable sign in to TV popup",
           "description": "Adds an option to disable the popup asking to sign into a TV on the same local network.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Disable video codecs",
           "description": "Adds options to disable HDR and VP9 codecs.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Double tap to seek",
           "description": "Adds additional double-tap to seek values to the YouTube settings menu.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Downloads",
           "description": "Adds support to download songs with an external downloader app using the in-app download button.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Downloads",
           "description": "Adds support to download videos with an external downloader app using the in-app download button or a video player action button.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Enable debugging",
           "description": "Adds options for debugging and exporting Morphe logs to the clipboard.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Enable debugging",
           "description": "Adds options for debugging and exporting Morphe logs to the clipboard.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Enable exclusive audio playback",
           "description": "Enables the option to play audio without video.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Enable forced miniplayer",
           "description": "Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Enable swipe to dismiss miniplayer",
           "description": "Adds an option to enable dismissing the miniplayer by swiping down on it.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Exit fullscreen mode",
           "description": "Adds options to automatically exit fullscreen mode when a video reaches the end.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Force original audio",
           "description": "Adds an option to always use the original audio track.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Force original audio",
           "description": "Adds an option to always use the original audio track.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
+        },
+        {
+          "name": "Force system font",
+          "description": "Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto.",
+          "compatiblePackagesKey": 306
         },
         {
           "name": "GmsCore support",
           "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "GmsCore support",
           "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide ads",
           "description": "Adds options to hide fullscreen ads, Premium promotions and video ads.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Hide ads",
           "description": "Adds options to hide ads.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Hide ads",
           "description": "Adds options to hide general ads, Premium promotions and video ads.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide Ask button",
           "description": "Adds an option to hide Ask button in the search bar.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Hide autoplay preview",
           "description": "Adds an option to hide the autoplay preview at the end of videos.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide buttons",
           "description": "Adds options to hide the cast, history, notification, and search buttons.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Hide communities shelf",
           "description": "Adds an option to hide the related or suggested communities shelf in subreddits.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Hide end screen cards",
           "description": "Adds an option to hide suggested video cards at the end of videos.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide end screen suggested video",
           "description": "Adds an option to hide the suggested video at the end of videos.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide filter bar",
           "description": "Adds an option to hide the filter bar at the top of the homepage.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Hide flyout menu components",
           "description": "Adds options to hide individual items from the player and queue flyout menus.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Hide info cards",
           "description": "Adds an option to hide info cards that creators add in the video player.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide layout components",
           "description": "Adds options to hide general layout components.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Hide layout components",
           "description": "Adds options to hide general layout components.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide music action buttons",
           "description": "Adds options to hide action buttons under the player.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Hide navigation buttons",
           "description": "Adds options to hide buttons in the navigation bar.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Hide player flyout menu components",
           "description": "Adds options to hide menu components that appear when pressing the gear icon in the video player.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide player overlay buttons",
           "description": "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and the player control buttons background.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide Reddit search",
           "description": "Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting",
           "default": false,
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Hide related video overlay",
           "description": "Adds an option to hide the related video overlay shown when swiping up in fullscreen.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide related videos",
           "description": "Adds options to hide related videos.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide Shorts components",
@@ -15028,102 +15073,102 @@
               "description": "Permanently hides the launcher widget Shorts button."
             }
           ],
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide sidebar components",
           "description": "Adds options to hide the sidebar components.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Hide timestamp",
           "description": "Adds an option to hide the timestamp in the bottom left of the video player.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Hide Trending shelves",
           "description": "Adds an option to hide the Trending shelves from feed and search suggestions.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Hide video action buttons",
           "description": "Adds options to hide video action buttons in fullscreen and portrait modes.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Loop video",
           "description": "Adds an option to loop videos and display loop video button in the video player.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Media notification controls",
           "description": "Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Miniplayer",
-          "description": "Adds options to change the in-app minimized player.",
-          "compatiblePackagesKey": 562
+          "description": "Adds options to change the in-app minimized player. Patching 21.28.206 and lower has more miniplayer types to choose from.",
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Miniplayer previous and next buttons",
           "description": "Adds options to show previous and next track buttons in the miniplayer.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Navigation bar",
           "description": "Adds options to hide navigation bar, labels and buttons.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Navigation bar",
           "description": "Adds options to hide and change the bottom navigation bar (such as the Shorts button)  and the upper navigation toolbar. Patching version 20.21.37 and lower also adds a setting to use a wide searchbar.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Network proxy",
           "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Network proxy",
           "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Open channel of live avatar",
           "description": "Adds an option to prevent a channel's current live video from opening when tapping its avatar.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Open links directly",
           "description": "Adds an option to skip over redirection URLs in external links.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Open links externally",
           "description": "Adds an option to always open links in your browser instead of with the in-app-browser.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Open links externally",
           "description": "Adds an option to always open links in your browser instead of with the in-app browser.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Open Shorts in regular player",
           "description": "Adds options to open Shorts in the regular video player.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Open system share sheet",
           "description": "Adds an option to always open the system share sheet instead of the in-app share sheet.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Open videos fullscreen",
           "description": "Adds options to automatically open videos in fullscreen portrait or landscape mode.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Override certificate pinning",
@@ -15133,142 +15178,157 @@
         {
           "name": "Override YouTube Music buttons",
           "description": "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Play all",
           "description": "Adds an option to play all the videos from a channel and to display play all button in the video player.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Playback speed",
           "description": "Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Reload video",
           "description": "Adds an option to display reload video button in the video player.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Remember repeat state",
           "description": "Adds an option to remember the repeat state when playing a new track or playlist.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Remember shuffle state",
           "description": "Adds an option to remember the shuffle state when playing a new track or playlist.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Remove background playback restrictions",
           "description": "Removes restrictions on background playback, including playing kids videos in the background.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Remove background playback restrictions",
           "description": "Removes restrictions on background playback, including playing kids videos in the background.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Remove subreddit dialog",
           "description": "Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Remove viewer discretion dialog",
           "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
+        },
+        {
+          "name": "Return YouTube Dislike",
+          "description": "Adds an option to show the dislike count of tracks with Return YouTube Dislike.",
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Return YouTube Dislike",
           "description": "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Sanitize sharing links",
           "description": "Removes the tracking query parameters from shared links.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Sanitize sharing links",
           "description": "Adds an option to sanitize sharing links by removing tracking query parameters.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Sanitize sharing links",
           "description": "Removes the tracking query parameters from shared links.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Save to watch later",
           "description": "Adds an option to display save to watch later button in the video player.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Scrobbling",
           "description": "Adds options to add played tracks to Last.fm and ListenBrainz.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Seekbar",
           "description": "Adds options to disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in livestreams, and expanding the livestream DVR duration.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
+        },
+        {
+          "name": "Settings menu filter",
+          "description": "Adds an option to hide items on the standard YouTube Music settings screen by their visible name.",
+          "compatiblePackagesKey": 305
+        },
+        {
+          "name": "Settings menu filter",
+          "description": "Adds an option to hide items on the standard YouTube settings screen by their visible name.",
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Shorts autoplay",
           "description": "Adds options to automatically play the next Short.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Show view count",
           "description": "Adds an option to show the view count of Posts.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "SponsorBlock",
           "description": "Adds options to enable and configure SponsorBlock, which can skip non-music segments.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "SponsorBlock",
           "description": "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Spoof app version",
           "description": "Adds an option to trick the app into thinking you are running an older version.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Spoof app version",
           "description": "Adds an option to trick the app into thinking you are running an older version.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Spoof device dimensions",
           "description": "Adds an option to spoof the device dimensions which can unlock higher video qualities.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Spoof signature",
           "description": "Spoofs the signature of the app to fix notification issues.",
-          "compatiblePackagesKey": 564
+          "compatiblePackagesKey": 306
         },
         {
           "name": "Spoof video streams",
           "description": "Adds options to spoof the client video streams to fix playback.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Spoof video streams",
           "description": "Adds options to spoof the client video streams to fix playback.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Swipe controls",
           "description": "Adds options to enable and configure volume and brightness swipe controls.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Theme",
@@ -15280,7 +15340,7 @@
               "description": "Can be a hex color (#RRGGBB) or a color resource reference."
             }
           ],
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 305
         },
         {
           "name": "Theme",
@@ -15297,25 +15357,20 @@
               "description": "Can be a hex color (#RRGGBB) or a color resource reference."
             }
           ],
-          "compatiblePackagesKey": 562
-        },
-        {
-          "name": "Track crossfade",
-          "description": "Adds a true dual-player crossfade between consecutive tracks. Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
-          "compatiblePackagesKey": 563
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Video quality",
           "description": "Adds options to set default video qualities and always use the advanced video quality menu.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         },
         {
           "name": "Voice over translation",
           "description": "Adds additional voice over languages using text-to-speech synchronized to the video playback.",
-          "compatiblePackagesKey": 562
+          "compatiblePackagesKey": 304
         }
       ],
-      "createdAt": "2026-07-18T06:22:34",
+      "createdAt": "2026-07-24T18:25:57",
       "targetApps": [
         "com.google.android.apps.youtube.music",
         "com.google.android.youtube",
@@ -21964,94 +22019,6 @@
         "targets": [
           {
             "version": "7.63.0"
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.google.android.youtube",
-        "targets": [
-          {
-            "version": "21.26.360",
-            "isExperimental": true
-          },
-          {
-            "version": "21.25.523",
-            "isExperimental": true
-          },
-          {
-            "version": "21.24.360",
-            "isExperimental": true
-          },
-          {
-            "version": "21.05.265",
-            "isExperimental": true
-          },
-          {
-            "version": "21.04.223"
-          },
-          {
-            "version": "20.51.39"
-          },
-          {
-            "version": "20.31.42"
-          },
-          {
-            "version": "20.21.37"
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.google.android.apps.youtube.music",
-        "targets": [
-          {
-            "version": "9.26.51",
-            "isExperimental": true
-          },
-          {
-            "version": "9.25.50",
-            "isExperimental": true
-          },
-          {
-            "version": "9.24.51",
-            "isExperimental": true
-          },
-          {
-            "version": "9.15.51"
-          },
-          {
-            "version": "8.51.51"
-          },
-          {
-            "version": "7.29.52"
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.reddit.frontpage",
-        "targets": [
-          {
-            "version": "2026.28.0",
-            "isExperimental": true
-          },
-          {
-            "version": "2026.27.0",
-            "isExperimental": true
-          },
-          {
-            "version": "2026.24.0",
-            "isExperimental": true
-          },
-          {
-            "version": "2026.14.0"
-          },
-          {
-            "version": "2026.04.0"
           }
         ]
       }

@@ -1000,15 +1000,15 @@
         "com.instagram.android": 1784764800000,
         "com.twitter.android": 1784764800000
       },
-      "stars": 4409,
+      "stars": 4411,
       "updatedAt": 1782518400000,
       "firstSeen": 1773154796000,
       "appFirstSeen": {
         "com.twitter.android": 1773154796000,
         "com.instagram.android": 1773154796000
       },
-      "starsGained7d": 37,
-      "starsGained40d": 37
+      "starsGained7d": 39,
+      "starsGained40d": 39
     },
     {
       "source": "github",
@@ -4630,7 +4630,7 @@
         "com.nytimes.crossword"
       ],
       "appUpdates": {},
-      "stars": 224,
+      "stars": 226,
       "updatedAt": 1784764800000,
       "firstSeen": 1780395687718,
       "appFirstSeen": {
@@ -4823,8 +4823,8 @@
         "com.urbandroid.kinestop": 1783291168540,
         "com.nytimes.crossword": 1783875617302
       },
-      "starsGained7d": 32,
-      "starsGained40d": 32
+      "starsGained7d": 34,
+      "starsGained40d": 34
     },
     {
       "source": "gitlab",
@@ -6157,7 +6157,7 @@
         "me.edgan.redditslide"
       ],
       "appUpdates": {},
-      "stars": 723,
+      "stars": 725,
       "updatedAt": 1775520000000,
       "firstSeen": 1767402720000,
       "appFirstSeen": {
@@ -6172,8 +6172,8 @@
         "org.cygnusx1.continuum": 1767402720000,
         "me.edgan.redditslide": 1767402720000
       },
-      "starsGained7d": 8,
-      "starsGained40d": 8
+      "starsGained7d": 10,
+      "starsGained40d": 10
     },
     {
       "source": "github",
@@ -12494,12 +12494,12 @@
       "patchCount": 4,
       "targetApps": [],
       "appUpdates": {},
-      "stars": 197,
+      "stars": 208,
       "updatedAt": 1784678400000,
       "firstSeen": 1783021319050,
       "appFirstSeen": {},
-      "starsGained7d": 12,
-      "starsGained40d": 12
+      "starsGained7d": 23,
+      "starsGained40d": 23
     },
     {
       "source": "github",
@@ -14069,6 +14069,129 @@
     },
     {
       "source": "github",
+      "repo": "ilikeadofai/vocacolle-morphe-patches",
+      "name": "VocaColle patches",
+      "author": "ilikeadofai",
+      "patches": [
+        {
+          "name": "Customize VocaColle branding",
+          "description": "Optionally changes the launcher name and icon while preserving the original Japanese branding by default.",
+          "default": false,
+          "options": [
+            {
+              "key": "vocacolleAppName",
+              "title": "App name",
+              "description": "Launcher name. Keep ボカコレ to preserve the original Japanese name.",
+              "required": false,
+              "type": "kotlin.String",
+              "default": "ボカコレ",
+              "values": null
+            },
+            {
+              "key": "vocacolleAppIconPath",
+              "title": "App icon PNG path",
+              "description": "Path to a square PNG. Leave empty to preserve the original icon.",
+              "required": false,
+              "type": "kotlin.String",
+              "default": "",
+              "values": null
+            }
+          ],
+          "compatiblePackagesKey": 580
+        },
+        {
+          "name": "English UI",
+          "description": "Adds complete English static, hardcoded, and server-provided UI localization.",
+          "default": true,
+          "options": [],
+          "compatiblePackagesKey": 580
+        },
+        {
+          "name": "Korean UI",
+          "description": "Adds complete Korean static, hardcoded, and server-provided UI localization.",
+          "default": true,
+          "options": [],
+          "compatiblePackagesKey": 580
+        },
+        {
+          "name": "VocaColle Morphe settings",
+          "description": "Adds display-language, cache, diagnostic, and patch-version controls to native Morphe settings.",
+          "default": true,
+          "options": [],
+          "compatiblePackagesKey": 580
+        },
+        {
+          "name": "VocaColle compatibility probe",
+          "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
+          "default": false,
+          "options": [],
+          "compatiblePackagesKey": 580
+        },
+        {
+          "name": "VocaColle ad control",
+          "description": "Adds opt-in controls for VocaColle advertising surfaces.",
+          "default": false,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 580
+        }
+      ],
+      "changelog": "## [1.1.0](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.0.0...v1.1.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* add native Morphe settings row ([7a6ac24](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/7a6ac24c3b5bbe869d2710ea8b62788435687fbe))\n* harden network and cache runtime safety ([8c0d133](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/8c0d133f54c84055ee1d5411cb3537805fb7575f))\n* keep desktop image types out of patch metadata ([9edd493](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/9edd4933fa80ccaa9bff8bd69fb8be434144c778))\n* redesign Morphe settings for native theming ([d7a149d](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/d7a149dfcafbca38554a40b48f43b9765b23e25e))\n* select Korean localization patches by default ([64cc95d](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/64cc95d4724eb66af499e1b0ed63eeb8e9b9d078))\n\n### ✨ New Features\n\n* complete VocaColle Morphe v1.1 ([23fa3f9](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/23fa3f9051177f747f4c250101cf86071f6ef052))\n* consolidate language patches ([672bdcf](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/672bdcf63548d1d18bba3735872c93d78a67bb40))\n\n## [1.1.0-dev.6](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.1.0-dev.5...v1.1.0-dev.6) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* redesign Morphe settings for native theming ([d7a149d](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/d7a149dfcafbca38554a40b48f43b9765b23e25e))\n\n## [1.1.0-dev.5](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.1.0-dev.4...v1.1.0-dev.5) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* add native Morphe settings row ([7a6ac24](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/7a6ac24c3b5bbe869d2710ea8b62788435687fbe))\n\n## [1.1.0-dev.4](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.1.0-dev.3...v1.1.0-dev.4) (2026-07-23)\n\n### ✨ New Features\n\n* consolidate language patches ([672bdcf](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/672bdcf63548d1d18bba3735872c93d78a67bb40))\n\n## [1.1.0-dev.3](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.1.0-dev.2...v1.1.0-dev.3) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* keep desktop image types out of patch metadata ([9edd493](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/9edd4933fa80ccaa9bff8bd69fb8be434144c778))\n\n## [1.1.0-dev.2](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* harden network and cache runtime safety ([8c0d133](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/8c0d133f54c84055ee1d5411cb3537805fb7575f))\n\n## [1.1.0-dev.1](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.0.1-dev.1...v1.1.0-dev.1) (2026-07-23)\n\n### ✨ New Features\n\n* complete VocaColle Morphe v1.1 ([23fa3f9](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/23fa3f9051177f747f4c250101cf86071f6ef052))\n\n## [1.0.1-dev.1](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.0.0...v1.0.1-dev.1) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* select Korean localization patches by default ([64cc95d](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/64cc95d4724eb66af499e1b0ed63eeb8e9b9d078))\n\n## 1.0.0 (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* clean verification artifacts before release ([6bf2160](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/6bf216064de5624f30ce9dcbbfabce9d7dcab0b0))\n* update repository URLs after rename ([c54ecd4](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/c54ecd4bbbb89b8d096fa56a88f3b3e4786a7675))\n\n### ✨ New Features\n\n* add VocaColle Korean translation patches ([027c28e](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/027c28e37e07a5502d42b4254fab490d6ae6aba6))\n* publish VocaColle Korean translation patches ([60a650c](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/60a650c44bc7874184c08685b2f4ca2873a15c09))\n\n## [1.0.0-dev.3](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* update repository URLs after rename ([c54ecd4](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/c54ecd4bbbb89b8d096fa56a88f3b3e4786a7675))\n\n## [1.0.0-dev.2](https://github.com/ilikeadofai/morphe-patches-template/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* clean verification artifacts before release ([6bf2160](https://github.com/ilikeadofai/morphe-patches-template/commit/6bf216064de5624f30ce9dcbbfabce9d7dcab0b0))\n\n## 1.0.0-dev.1 (2026-07-23)\n\n### ✨ New Features\n\n* add VocaColle Korean translation patches ([027c28e](https://github.com/ilikeadofai/morphe-patches-template/commit/027c28e37e07a5502d42b4254fab490d6ae6aba6))",
+      "fullChangelogUrl": null,
+      "repoDescription": "Korean translation patches for VocaColle, built for Morphe.",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/129715411?v=4&size=168",
+      "bundleIconUrl": null,
+      "deepLink": "https://morphe.software/add-source?github=ilikeadofai/vocacolle-morphe-patches",
+      "patchCount": 6,
+      "targetApps": [
+        "jp.nicovideo.nicobox"
+      ],
+      "appUpdates": {},
+      "stars": 0,
+      "updatedAt": 1784764800000,
+      "firstSeen": 1784887231838,
+      "appFirstSeen": {
+        "jp.nicovideo.nicobox": 1784887231838
+      },
+      "starsGained7d": 0,
+      "starsGained40d": 0
+    },
+    {
+      "source": "github",
+      "repo": "tiaruebar1024/tiaruebar-patches",
+      "name": "Tiaruebar1024 patches",
+      "author": "tiaruebar1024",
+      "patches": [
+        {
+          "name": "Devices Tycoon Premium",
+          "description": "Instantly completes all IAP purchases (remove ads, research coins, budget) on tap and disables all ads in Devices Tycoon.",
+          "default": true,
+          "options": [],
+          "compatiblePackagesKey": 581
+        }
+      ],
+      "changelog": "## [1.3.2](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.1...v1.3.2) (2026-07-22)\n\n### 🚀 Updated App Support\n\n* remove apps actually ([8fa0ade](https://github.com/tiaruebar1024/tiaruebar-patches/commit/8fa0adefcb16de7b66ab699af1f21359439219c6))\n\n## [1.3.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.0...v1.3.1) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* add Play Integrity bypass for Eatventure ([1133e31](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1133e31c584a28d6b9b17b05e95fa76ee07edddd))\n* add signature spoof for Eatventure billing ([6759612](https://github.com/tiaruebar1024/tiaruebar-patches/commit/67596122a98ae5ae25e7594d429a092c7b93926b))\n* Eatventure prob will be removed ([9d78ffd](https://github.com/tiaruebar1024/tiaruebar-patches/commit/9d78ffda4f075e67482a45025aa130c07be128a9))\n\n## [1.3.1-dev.2](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.1-dev.1...v1.3.1-dev.2) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* add signature spoof for Eatventure billing ([6759612](https://github.com/tiaruebar1024/tiaruebar-patches/commit/67596122a98ae5ae25e7594d429a092c7b93926b))\n\n## [1.3.1-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.0...v1.3.1-dev.1) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* add Play Integrity bypass for Eatventure ([1133e31](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1133e31c584a28d6b9b17b05e95fa76ee07edddd))\n\n## [1.3.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.2.0...v1.3.0) (2026-07-22)\n\n### ✨ New Features\n\n* add Eatventure IAP patch ([1da0d26](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1da0d268e74f3f1cb41c7c9d6a6a5adcfccc9dc0))\n\n### 🚀 Updated App Support\n\n* add support for eatventure ([eb831c8](https://github.com/tiaruebar1024/tiaruebar-patches/commit/eb831c863c2a4814fe04d52df76be576e6d1c9a3))\n\n## [1.3.0-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-07-22)\n\n### ✨ New Features\n\n* add Eatventure IAP patch ([1da0d26](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1da0d268e74f3f1cb41c7c9d6a6a5adcfccc9dc0))\n\n## [1.2.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.1...v1.2.0) (2026-07-22)\n\n### ✨ New Features\n\n* remove mysterium vpn patches ([73e044c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/73e044ce3b41368e4edd009d69b01f63c68ed3e9))\n\n## [1.2.0-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.1...v1.2.0-dev.1) (2026-07-22)\n\n### ✨ New Features\n\n* remove mysterium vpn patches ([73e044c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/73e044ce3b41368e4edd009d69b01f63c68ed3e9))\n\n## [1.1.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.0...v1.1.1) (2026-07-21)\n\n### 🐛 Bug Fixes\n\n* update patch bundle metadata to tiaruebar-patches ([d6ac9ff](https://github.com/tiaruebar1024/tiaruebar-patches/commit/d6ac9ff7cb6bb1320a246ee45704170ea901e6c8))\n\n## [1.1.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.0.0...v1.1.0) (2026-07-21)\n\n### ✨ New Features\n\n* add consumable IAP bypass for Device Tycoon (coins + budget) ([b2b702c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/b2b702cdda00695feaa914d33208e5cce15027c6))\n\n## 1.0.0 (2026-07-21)\n\n### ✨ New Features\n\n* add Device Tycoon premium patch ([fea42f1](https://github.com/tiaruebar1024/tiaruebar-patches/commit/fea42f12242cb9a98b16adaed7a6b64fdcd192e2))",
+      "fullChangelogUrl": null,
+      "repoDescription": null,
+      "avatarUrl": "https://avatars.githubusercontent.com/u/107429446?v=4&size=168",
+      "bundleIconUrl": null,
+      "deepLink": "https://morphe.software/add-source?github=tiaruebar1024/tiaruebar-patches",
+      "patchCount": 1,
+      "targetApps": [
+        "com.roasterygames.devicestycoon"
+      ],
+      "appUpdates": {},
+      "stars": 0,
+      "updatedAt": 1784678400000,
+      "firstSeen": 1784887231839,
+      "appFirstSeen": {
+        "com.roasterygames.devicestycoon": 1784887231838
+      },
+      "starsGained7d": 0,
+      "starsGained40d": 0
+    },
+    {
+      "source": "github",
       "repo": "rabilrbl/fluffy-patches",
       "name": "Fluffy patches",
       "author": "Rabilrbl",
@@ -14079,14 +14202,14 @@
           "description": "Bypasses ad-removal premium checks by forcing PremiumState.isRemoveAdPremium() to always return true.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 580
+          "compatiblePackagesKey": 582
         },
         {
           "name": "Unlock Pro subscription",
           "description": "Bypasses premium checks by forcing PremiumState.isPremium() to always return true.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 580
+          "compatiblePackagesKey": 582
         }
       ],
       "changelog": "# [1.0.0-dev.19](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.18...v1.0.0-dev.19) (2026-06-04)\n\n\n### Bug Fixes\n\n* **alarmy:** remove pairip bypass patches and docs ([9178d49](https://github.com/rabilrbl/fluffy-patches/commit/9178d49f0a2cdbe1cc9110781ca61eda1ea243d5))\n\n# [1.0.0-dev.18](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.17...v1.0.0-dev.18) (2026-06-04)\n\n# [1.0.0-dev.16](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.15...v1.0.0-dev.16) (2026-06-03)\n\n# [1.0.0-dev.15](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.14...v1.0.0-dev.15) (2026-06-03)\n\n\n### Features\n\n* **alarmy:** add unlock pro and remove ads patches ([e23da2c](https://github.com/rabilrbl/fluffy-patches/commit/e23da2ce2d3e21290375f663509d8e50909466d8))\n\n# [1.0.0-dev.14](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.13...v1.0.0-dev.14) (2026-04-06)\n\n# [1.0.0-dev.13](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.12...v1.0.0-dev.13) (2026-04-06)\n\n\n### Features\n\n* add jiotv-base-patched-temporary-files to .gitignore ([fa335d8](https://github.com/rabilrbl/fluffy-patches/commit/fa335d8053f19263166372a2bc2c11ee6eafedd3))\n* add play store disabled log for debugging purposes ([436f19e](https://github.com/rabilrbl/fluffy-patches/commit/436f19ee23f287b75d028cdc645ab0d34553d5f8))\n* update dismiss Google Play error dialog patch to prevent dialog from appearing on license check failure ([fca2782](https://github.com/rabilrbl/fluffy-patches/commit/fca27827d54ba84e0c5c55c62cf068121d836cb0))\n\n# [1.0.0-dev.12](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.11...v1.0.0-dev.12) (2026-04-06)\n\n\n### Features\n\n* add dismiss Google Play error dialog patch and remove obsolete license check patch ([7ba9dff](https://github.com/rabilrbl/fluffy-patches/commit/7ba9dff920100ffaa639b95d94c351e29a464137))\n\n# [1.0.0-dev.11](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.10...v1.0.0-dev.11) (2026-04-05)\n\n\n### Features\n\n* Enhance APK analysis documentation and add JADX CLI usage instructions across multiple files ([c58ab08](https://github.com/rabilrbl/fluffy-patches/commit/c58ab086e6b18d0dea5bf5e704632872f92ccb3b))\n\n# [1.0.0-dev.10](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.9...v1.0.0-dev.10) (2026-04-05)\n\n\n### Features\n\n* Add new commands and skills for OpenSpec workflow ([7f98188](https://github.com/rabilrbl/fluffy-patches/commit/7f981887fbfbd965bf4085f79b16a850bb33fc39))\n\n# [1.0.0-dev.9](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.8...v1.0.0-dev.9) (2026-04-04)\n\n\n### Bug Fixes\n\n* bypass AppDataManager.inu flag and remove broken constructor no-op ([e78b041](https://github.com/rabilrbl/fluffy-patches/commit/e78b0411bfb0f5431a2281dbe116a66e36a2dc4a))\n\n# [1.0.0-dev.8](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.7...v1.0.0-dev.8) (2026-04-03)\n\n\n### Bug Fixes\n\n* inject setCheckAppUpaduteData(null) at start of HomeActivity.onCreate and no-op onResume ([77fb430](https://github.com/rabilrbl/fluffy-patches/commit/77fb430c0ec5bf87d3ab2185b51b38b8f1d9e8fb))\n\n# [1.0.0-dev.7](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.6...v1.0.0-dev.7) (2026-04-03)\n\n\n### Bug Fixes\n\n* add AppUpdateHelper constructor no-op and AppUpdateManagerFactory.create null return ([e795f5f](https://github.com/rabilrbl/fluffy-patches/commit/e795f5fda0ac45b86d5716c0b43cffa363f95234))\n\n# [1.0.0-dev.6](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.5...v1.0.0-dev.6) (2026-04-03)\n\n\n### Bug Fixes\n\n* bypass app update checks by modifying CommonUtils and AppUpdateHelper methods ([4c43c6d](https://github.com/rabilrbl/fluffy-patches/commit/4c43c6de1bb56cb789c4fb33a23feb4f278c7624))\n\n# [1.0.0-dev.5](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.4...v1.0.0-dev.5) (2026-04-03)\n\n\n### Bug Fixes\n\n# [1.0.0-dev.4](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.3...v1.0.0-dev.4) (2026-04-03)",
@@ -14169,14 +14292,14 @@
           "description": "Disables the scan counter increment, preventing the scan count from increasing",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 581
+          "compatiblePackagesKey": 583
         },
         {
           "name": "Increase scan limit",
           "description": "Increases the free scan limit from 30 to 50 scans",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 581
+          "compatiblePackagesKey": 583
         }
       ],
       "changelog": "# 1.0.0-dev.1 (2026-01-30)\n\n\n### Features\n\n* add pokecardex patches ([#1](https://github.com/Almewty/my-morphe-patches/issues/1)) ([8110646](https://github.com/Almewty/my-morphe-patches/commit/81106460d7bb1922ae6befc3bde618d897442053))",
@@ -14220,14 +14343,14 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 582
+          "compatiblePackagesKey": 584
         },
         {
           "name": "Pro Features Unlock",
           "description": "Unlock all pro features in Transit",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 582
+          "compatiblePackagesKey": 584
         }
       ],
       "changelog": "# [2.3.0](https://github.com/andronedev/morphe-patches/compare/v2.2.1...v2.3.0) (2026-04-01)\n\n\n### Features\n\n* Update Morphe dependencies and refactor Transit compatibility ([1613c6b](https://github.com/andronedev/morphe-patches/commit/1613c6b1e7b21be9b25e403ec2e45516115156ff))\n\n# [2.3.0-dev.1](https://github.com/andronedev/morphe-patches/compare/v2.2.1...v2.3.0-dev.1) (2026-04-01)\n\n\n### Features\n\n* Update Morphe dependencies and refactor Transit compatibility ([1613c6b](https://github.com/andronedev/morphe-patches/commit/1613c6b1e7b21be9b25e403ec2e45516115156ff))\n\n## [2.2.1](https://github.com/andronedev/morphe-patches/compare/v2.2.0...v2.2.1) (2026-04-01)\n\n\n### Bug Fixes\n\n* replace rawResourcePatch with native document() API for Maps key patching ([5d50f38](https://github.com/andronedev/morphe-patches/commit/5d50f3879a3a29d79c4a9c1809ffcd242cb31125))\n\n## [2.2.1-dev.1](https://github.com/andronedev/morphe-patches/compare/v2.2.0...v2.2.1-dev.1) (2026-04-01)\n\n\n### Bug Fixes\n\n* replace rawResourcePatch with native document() API for Maps key patching ([5d50f38](https://github.com/andronedev/morphe-patches/commit/5d50f3879a3a29d79c4a9c1809ffcd242cb31125))\n\n# [2.2.0](https://github.com/andronedev/morphe-patches/compare/v2.1.0...v2.2.0) (2026-02-12)\n\n\n### Features\n\n* Add Custom Maps API Key patch and update README with new patch details ([c2db592](https://github.com/andronedev/morphe-patches/commit/c2db5921014b9508fae2db7146d6d73b28f3fdd6))\n\n# [2.2.0-dev.1](https://github.com/andronedev/morphe-patches/compare/v2.1.0...v2.2.0-dev.1) (2026-02-12)\n\n\n### Features\n\n* Add Custom Maps API Key patch and update README with new patch details ([c2db592](https://github.com/andronedev/morphe-patches/commit/c2db5921014b9508fae2db7146d6d73b28f3fdd6))\n\n# [2.1.0](https://github.com/andronedev/morphe-patches/compare/v2.0.1...v2.1.0) (2026-02-11)\n\n\n### Features\n\n* **transit:** support v6.1.0 fingerprint and bump version to 2.1.0 ([dc7f31e](https://github.com/andronedev/morphe-patches/commit/dc7f31ea98dac04ceaf48dd5c219904e2f226089))\n\n## [2.0.1](https://github.com/andronedev/revanced-patches/compare/v2.0.0...v2.0.1) (2026-02-11)",
@@ -14263,7 +14386,7 @@
           "description": "Enables features by skipping checks",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 583
+          "compatiblePackagesKey": 585
         }
       ],
       "changelog": "## [1.0.1](https://github.com/abhis1n/Morphe-Patches/compare/v1.0.0...v1.0.1) (2026-06-17)\n\n\n### Bug Fixes\n\n* bump version to 26.5.5 ([759d14c](https://github.com/abhis1n/Morphe-Patches/commit/759d14ca5ae9367e42390af42c6416ac574294c5))\n* force release v26.5.5 after non-semantic commits ([7fb1e15](https://github.com/abhis1n/Morphe-Patches/commit/7fb1e15a5319b042a508f285757ef0c37a9cbd5e))\n\n## [1.0.1-dev.1](https://github.com/abhis1n/Morphe-Patches/compare/v1.0.0...v1.0.1-dev.1) (2026-06-17)\n\n\n### Bug Fixes\n\n* force release v26.5.5 after non-semantic commits ([7fb1e15](https://github.com/abhis1n/Morphe-Patches/commit/7fb1e15a5319b042a508f285757ef0c37a9cbd5e))\n\n# 1.0.0 (2026-04-29)\n\n\n### Features\n\n* add support for splitwise ([db3c952](https://github.com/abhis1n/Morphe-Patches/commit/db3c952afba7f3746826a626b104250f9ab1f991))\n\n# 1.0.0-dev.1 (2026-04-29)\n\n\n### Features\n\n* add support for splitwise ([db3c952](https://github.com/abhis1n/Morphe-Patches/commit/db3c952afba7f3746826a626b104250f9ab1f991))",
@@ -14297,7 +14420,7 @@
           "description": "Disables ads in Mafra AdView.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 584
+          "compatiblePackagesKey": 586
         }
       ],
       "changelog": "# 1.0.0 (2026-05-15)\n\n\n### Bug Fixes\n\n* build ([20649c8](https://github.com/kolaron/morphe-patcher/commit/20649c8a8a5f85643958fdc680c110f6e6ff1f7e))\n* Update README with installation instructions ([b56aba3](https://github.com/kolaron/morphe-patcher/commit/b56aba33db3d20f4fb4f59caac6afcf4b0e6cb59))\n\n\n### Features\n\n* **idos:** Basic fingerprint and bytecodePatch ([13aca21](https://github.com/kolaron/morphe-patcher/commit/13aca21b29b67bc98c808ae14fc1aa61132eef02))",
@@ -14333,7 +14456,7 @@
           "description": "Removes Ekşi Sözlük ad placements and disables ad loading.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 585
+          "compatiblePackagesKey": 587
         }
       ],
       "changelog": null,
@@ -14367,14 +14490,14 @@
           "description": "Applies a dark theme to all backgrounds, dialogs, and popups.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 586
+          "compatiblePackagesKey": 588
         },
         {
           "name": "Enable Premium",
           "description": "Removes item/list limits and unlocks premium features (copy to list, manual sort, etc.).",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 586
+          "compatiblePackagesKey": 588
         }
       ],
       "changelog": "# [1.30.0](https://github.com/AlexNaga/android-patches/compare/v1.29.0...v1.30.0) (2026-05-05)\n\n\n### Bug Fixes\n\n* drop npm cache from release workflow ([e4316c1](https://github.com/AlexNaga/android-patches/commit/e4316c1972604285581fefdcc346d85fc8032cd3))\n\n\n### Features\n\n* switch release pipeline to semantic-release ([e64a398](https://github.com/AlexNaga/android-patches/commit/e64a398b6aaa2114e51bca6eafeaa1f3b6110e49))",
@@ -14408,7 +14531,7 @@
           "description": "Forces you to check the IP address only on Yandex",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 587
+          "compatiblePackagesKey": 589
         }
       ],
       "changelog": "## [1.1.1](https://github.com/RealCyberwash/max-patches/compare/v1.1.0...v1.1.1) (2026-04-06)\n\n\n### Bug Fixes\n\n* metadata ([2c0a1b0](https://github.com/RealCyberwash/max-patches/commit/2c0a1b0634067d8e8ec90dc0432656dd4334a11c))\n\n# [1.1.0](https://github.com/RealCyberwash/max-patches/compare/v1.0.1...v1.1.0) (2026-04-06)\n\n\n### Features\n\n* compatibility with version 26.11.3 ([4d39910](https://github.com/RealCyberwash/max-patches/commit/4d3991030f87d813f511e0154cdde3c5798104c6))\n\n## [1.0.1](https://github.com/RealCyberwash/max-patches/compare/v1.0.0...v1.0.1) (2026-04-06)\n\n\n### Bug Fixes\n\n* **release:** permissions ([b9ccd91](https://github.com/RealCyberwash/max-patches/commit/b9ccd9163b4dd701eba677bbf68f8d5b907828ff))\n\n# 1.0.0 (2026-04-06)\n\n\n### Features\n\n* bypass vpn check ([7c8a65e](https://github.com/RealCyberwash/max-patches/commit/7c8a65e27e49cd22e389b9f9b98d327223f5fd1d))",
@@ -14442,21 +14565,21 @@
           "description": "Unlocks all Soundbrenner Plus features and Home Customization.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 588
+          "compatiblePackagesKey": 590
         },
         {
           "name": "Unlock Premium",
           "description": "Unlocks all premium features (search, speed reading, unlimited highlights).",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 589
+          "compatiblePackagesKey": 591
         },
         {
           "name": "Unlock Premium",
           "description": "Unlocks all premium wallpapers and removes license verification features.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 590
+          "compatiblePackagesKey": 592
         }
       ],
       "changelog": "## [1.3.1](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.3.0...v1.3.1) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* **Depth Live Wallpapers:** fixed certain icons appearing as a default pencil ([1e33787](https://github.com/LaKakaReal/LaKakaShitPatches/commit/1e33787acc411707d9a717119f5dcc26126cee63))\n\n## [1.3.1-dev.1](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.3.0...v1.3.1-dev.1) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* **Depth Live Wallpapers:** fixed certain icons appearing as a default pencil ([1e33787](https://github.com/LaKakaReal/LaKakaShitPatches/commit/1e33787acc411707d9a717119f5dcc26126cee63))\n\n## [1.3.0](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.2.0...v1.3.0) (2026-07-08)\n\n### ✨ New Features\n\n* **Instapaper:** added instapaper ([4050e7a](https://github.com/LaKakaReal/LaKakaShitPatches/commit/4050e7ae6e494c067471692c9ecd12f8ae786e8f))\n* **Soundbrenner:** added soundbrenner ([b98bf61](https://github.com/LaKakaReal/LaKakaShitPatches/commit/b98bf61ffef0e435bd91a74bbabcc72472c96dc3))\n\n## [1.3.0-dev.1](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.2.0...v1.3.0-dev.1) (2026-07-08)\n\n### ✨ New Features\n\n* **Instapaper:** added instapaper ([4050e7a](https://github.com/LaKakaReal/LaKakaShitPatches/commit/4050e7ae6e494c067471692c9ecd12f8ae786e8f))\n* **Soundbrenner:** added soundbrenner ([b98bf61](https://github.com/LaKakaReal/LaKakaShitPatches/commit/b98bf61ffef0e435bd91a74bbabcc72472c96dc3))\n\n## [1.2.0](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.1.1...v1.2.0) (2026-06-22)\n\n### ✨ New Features\n\n* **wallpaper:** added universal version compatibility ([d4bd326](https://github.com/LaKakaReal/LaKakaShitPatches/commit/d4bd326de1fee5c1ad5ec95e9c46af88b36eb329))\n\n## [1.2.0-dev.1](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.1.1-dev.1...v1.2.0-dev.1) (2026-06-22)\n\n### ✨ New Features\n\n* **wallpaper:** added universal version compatibility ([d4bd326](https://github.com/LaKakaReal/LaKakaShitPatches/commit/d4bd326de1fee5c1ad5ec95e9c46af88b36eb329))\n\n## [1.1.1-dev.1](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.1.0...v1.1.1-dev.1) (2026-06-12)\n## [1.1.1](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.1.0...v1.1.1) (2026-06-12)\n\n### 🐛 Bug Fixes\n\n* push target version constraints ([f7ce9cd](https://github.com/LaKakaReal/LaKakaShitPatches/commit/f7ce9cdd7e00f3aa98a971651364874457121865))\n\n## [1.1.0](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.0.0...v1.1.0) (2026-06-10)\n\n### 🐛 Bug Fixes\n\n* included new fingerprints forgot to publish them smh ([b13aac5](https://github.com/LaKakaReal/LaKakaShitPatches/commit/b13aac547be84e9235fbeea2adbc3c5eed88622b))\n\n### ✨ New Features\n\n* fix pairip integrity resource crash using free asset fallback ([4837b8d](https://github.com/LaKakaReal/LaKakaShitPatches/commit/4837b8d503c6c1e27e90da11c60d184fc52de6d2))\n\n## [1.1.0-dev.1](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.0.0...v1.1.0-dev.1) (2026-06-10)\n\n### 🐛 Bug Fixes\n\n* included new fingerprints forgot to publish them smh ([b13aac5](https://github.com/LaKakaReal/LaKakaShitPatches/commit/b13aac547be84e9235fbeea2adbc3c5eed88622b))\n\n### ✨ New Features\n\n* fix pairip integrity resource crash using free asset fallback ([4837b8d](https://github.com/LaKakaReal/LaKakaShitPatches/commit/4837b8d503c6c1e27e90da11c60d184fc52de6d2))\n\n## [1.0.0-dev.2](https://github.com/LaKakaReal/LaKakaShitPatches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-06-10)\n\n### 🐛 Bug Fixes\n\n* included new fingerprints forgot to publish them smh ([b13aac5](https://github.com/LaKakaReal/LaKakaShitPatches/commit/b13aac547be84e9235fbeea2adbc3c5eed88622b))\n\n### ✨ New Features\n\n* fix pairip integrity resource crash using free asset fallback ([4837b8d](https://github.com/LaKakaReal/LaKakaShitPatches/commit/4837b8d503c6c1e27e90da11c60d184fc52de6d2))\n\n## 1.0.0-dev.1 (2026-06-07)\n## 1.0.0 (2026-06-07)\n\n### ✨ New Features\n\n* Made first doodoo patch - Depth Wallpapers premium unlocked ([c5fd928](https://github.com/LaKakaReal/LaKakaShitPatches/commit/c5fd928c6bcb343fe5cd6506b497823d42b2e153))",
@@ -14508,7 +14631,7 @@
           "options": [],
           "preRelease": true,
           "compatiblePackagesKey": 261,
-          "compatibilityKey": 591
+          "compatibilityKey": 593
         }
       ],
       "changelog": "## [1.1.3](https://github.com/Joristdh/Platypatch/compare/v1.1.2...v1.1.3) (2026-04-16)\n\n\n### Bug Fixes\n\n* complete renaming ([abf5e29](https://github.com/Joristdh/Platypatch/commit/abf5e299fdcd27e6ef4dfda4adb79a6e57e7dc3c))\n\n## [1.1.2](https://github.com/Joristdh/Morphe/compare/v1.1.1...v1.1.2) (2026-04-16)\n\n\n### Bug Fixes\n\n* brand update ([87d037e](https://github.com/Joristdh/Morphe/commit/87d037e1ba89bda7712da81dd9f3dab274e4c6c4))\n\n## [1.1.1](https://github.com/Joristdh/Morphe/compare/v1.1.0...v1.1.1) (2026-04-16)\n\n\n### Bug Fixes\n\n* Remove obsolete patch ([885bf3b](https://github.com/Joristdh/Morphe/commit/885bf3b2b6cc94a21404cd2c4426550173f2e08e))\n\n# [1.1.0](https://github.com/Joristdh/Morphe/compare/v1.0.0...v1.1.0) (2026-04-14)\n\n\n### Features\n\n* this should trigger a release ([b859465](https://github.com/Joristdh/Morphe/commit/b85946550f1944f675f383be93cb3f164820068d))\n\n# 1.0.0 (2026-04-14)\n\n\n### Bug Fixes\n\n* **ci:** restore semantic-release rules so feat, fix, and release commits trigger versions ([3728b97](https://github.com/Joristdh/De-ReVanced/commit/3728b978519854968a56847075aa9d58565a85e3))\n* google photos patch logic ([58f8bc8](https://github.com/Joristdh/De-ReVanced/commit/58f8bc80dfd601cfe5a5dfee81e64d78bab0f496))\n* make Google Photos spoof build patch self-contained ([7b431dd](https://github.com/Joristdh/De-ReVanced/commit/7b431dd5a707231b5289db60a6fdee5d24b27832))\n* make gradlew executable ([3be2ec5](https://github.com/Joristdh/De-ReVanced/commit/3be2ec51fff5990c174c166e7a02625971832063))\n* release 1.0.1 ([b68b315](https://github.com/Joristdh/De-ReVanced/commit/b68b31503e57a9253237a3bf2be8bacfd23f7c86))\n* release 1.0.1 ([26175cf](https://github.com/Joristdh/De-ReVanced/commit/26175cf2910917be08734a741087018e127a1648))\n* release v1.0.3 with Google Recorder fix ([c03c701](https://github.com/Joristdh/De-ReVanced/commit/c03c701a6ba658afb4f4f2093faca9e6bc91e49c))\n\n\n### Features\n\n* fork predictive back gesture patch ([b116877](https://github.com/Joristdh/De-ReVanced/commit/b116877bd2d67e6fe92393ae7268022ba4ae7b8b))\n* release v1.1.0 ([901b2ec](https://github.com/Joristdh/De-ReVanced/commit/901b2ec28fb8e5863d2085d471f0cf529de08422))\n\n## [1.0.3](https://github.com/RookieEnough/De-ReVanced/compare/v1.0.2...v1.0.3) (2026-04-02)\n\n\n### Bug Fixes\n\n* release v1.0.3 with Google Recorder fix ([c03c701](https://github.com/RookieEnough/De-ReVanced/commit/c03c701a6ba658afb4f4f2093faca9e6bc91e49c))\n\n\n\n\n\n### Bug Fixes\n\n* **Google Recorder — Remove device restrictions:** fingerprint and bytecode hook updated for current app builds — match `RecorderApplication.onCreate` without a fixed feature string, detect any `com.google.android.feature…PIXEL…` `const-string`, and apply the restriction bypass (fixes fingerprint mismatch on newer Recorder versions).\n\n### Maintenance\n\n* **Attribution:** add a standard `Forked from` source header across Kotlin sources that were still missing it.\n\n## [1.0.2](https://github.com/RookieEnough/De-ReVanced/compare/v1.0.1...v1.0.2) (2026-04-02)\n\n\n### Bug Fixes\n\n* **ci:** restore semantic-release rules so feat, fix, and release commits trigger versions ([3728b97](https://github.com/RookieEnough/De-ReVanced/commit/3728b978519854968a56847075aa9d58565a85e3))\n* release v1.0.3 with Google Recorder fix ([c03c701](https://github.com/RookieEnough/De-ReVanced/commit/c03c701a6ba658afb4f4f2093faca9e6bc91e49c))\n\n\n\n\n\n### Bug Fixes\n\n* **ci:** restore semantic-release rules so feat, fix, and release commits trigger versions ([3728b97](https://github.com/RookieEnough/De-ReVanced/commit/3728b978519854968a56847075aa9d58565a85e3))\n* **ci:** append `CHANGELOG.md` section to GitHub release notes when present\n\n### Morphe Manager integration\n\n* Bumped Morphe Gradle plugin to **1.2.0** and **morphe-patcher** to **1.3.3** (GitHub Packages: `gpr.user` / `gpr.key`).\n* All patches declare **`compatibleWith(Compatibility(...))`** via `AppCompatibilities` so Manager shows human-readable app titles and icon tint colors.\n* **`patches-list.json`** now includes a root **`appNames`** map (package → display name) and, for each patch, a **`compatibility`** array with `name`, `packageName`, `appIconColor`, optional `description`, and **`targets`** (version pins). This fixes the detail view where only package IDs appeared after tapping an app.\n* **Bundle artwork:** place **`patch-bundle.png`** in the same directory as **`patch-bundles.json`** so Morphe Manager can show that image instead of the user avatar for the bundle (per upstream guidance).\n\n### Compatibility tuning\n\n* **Google News** (`com.google.android.apps.magazines`): pinned to version **5.108.0.644447823** for all News-related patches.\n* **TikTok:** **Settings** and **Enable Open Debug** remain **43.6.2-only** (not supported on 43.8.3); descriptions state this explicitly. Other TikTok patches keep their existing 43.6.2 / 43.8.3 splits.\n\n### New app targets (16)\n\nPatches and extensions were added or expanded for:\n\n1. Bandcamp  \n2. Angulus  \n3. GMX Mail  \n4. Free Phone (GMX)  \n5. Hex Editor  \n6. Google Recorder  \n7. irplus  \n8. NU.nl  \n9. Nothing X  \n10. Peacock TV  \n11. Viber  \n12. TikTok  \n13. Twitch  \n14. Adobe Photoshop Mix  \n15. Threads  \n16. Facebook  \n\n### Notes\n\n* Regenerate **`patches-list.json`** with `./gradlew :patches:generatePatchesList` (or full `:patches:build`) after changes.\n\n## [1.0.3](https://github.com/RookieEnough/De-ReVanced/compare/v1.0.2...v1.0.3) (2026-04-01)\n\n### Bug Fixes\n\n* **Google Recorder — Remove device restrictions:** fingerprint and bytecode hook updated for current app builds — match `RecorderApplication.onCreate` without a fixed feature string, detect any `com.google.android.feature…PIXEL…` `const-string`, and apply the restriction bypass (fixes fingerprint mismatch on newer Recorder versions).\n\n### Maintenance\n\n* **Attribution:** add a standard `Forked from` source header across Kotlin sources that were still missing it.\n\n## [1.0.2](https://github.com/RookieEnough/De-ReVanced/compare/v1.0.1...v1.0.2) (2026-04-01)\n\n### Bug Fixes\n\n* **ci:** restore semantic-release rules so feat, fix, and release commits trigger versions ([3728b97](https://github.com/RookieEnough/De-ReVanced/commit/3728b978519854968a56847075aa9d58565a85e3))\n* **ci:** append `CHANGELOG.md` section to GitHub release notes when present\n\n### Morphe Manager integration\n\n* Bumped Morphe Gradle plugin to **1.2.0** and **morphe-patcher** to **1.3.3** (GitHub Packages: `gpr.user` / `gpr.key`).\n* All patches declare **`compatibleWith(Compatibility(...))`** via `AppCompatibilities` so Manager shows human-readable app titles and icon tint colors.\n* **`patches-list.json`** now includes a root **`appNames`** map (package → display name) and, for each patch, a **`compatibility`** array with `name`, `packageName`, `appIconColor`, optional `description`, and **`targets`** (version pins). This fixes the detail view where only package IDs appeared after tapping an app.\n* **Bundle artwork:** place **`patch-bundle.png`** in the same directory as **`patch-bundles.json`** so Morphe Manager can show that image instead of the user avatar for the bundle (per upstream guidance).\n\n### Compatibility tuning\n\n* **Google News** (`com.google.android.apps.magazines`): pinned to version **5.108.0.644447823** for all News-related patches.\n* **TikTok:** **Settings** and **Enable Open Debug** remain **43.6.2-only** (not supported on 43.8.3); descriptions state this explicitly. Other TikTok patches keep their existing 43.6.2 / 43.8.3 splits.\n\n### New app targets (16)\n\nPatches and extensions were added or expanded for:\n\n1. Bandcamp  \n2. Angulus  \n3. GMX Mail  \n4. Free Phone (GMX)  \n5. Hex Editor  \n6. Google Recorder  \n7. irplus  \n8. NU.nl  \n9. Nothing X  \n10. Peacock TV  \n11. Viber  \n12. TikTok  \n13. Twitch  \n14. Adobe Photoshop Mix  \n15. Threads  \n16. Facebook  \n\n### Notes\n\n* Regenerate **`patches-list.json`** with `./gradlew :patches:generatePatchesList` (or full `:patches:build`) after changes.\n\n---\n\n## [1.0.1](https://github.com/RookieEnough/De-ReVanced/compare/v1.0.0...v1.0.1) (2026-03-06)\n\n### Bug Fixes\n\n* Fixed all issues related to Google Photos  ([58f8bc8](https://github.com/RookieEnough/De-ReVanced/commit/58f8bc80dfd601cfe5a5dfee81e64d78bab0f496))\n\n### Features\n\n* Added Messenger patches — disable typing indicator, hide inbox ads, hide inbox subtabs, hide Facebook button, remove Meta AI ([58f8bc8](https://github.com/RookieEnough/De-ReVanced/commit/58f8bc80dfd601cfe5a5dfee81e64d78bab0f496))\n* Added Inshorts patches — hide ads ([58f8bc8](https://github.com/RookieEnough/De-ReVanced/commit/58f8bc80dfd601cfe5a5dfee81e64d78bab0f496))\n* Added Amazon Shopping patches — always allow deep-linking ([58f8bc8](https://github.com/RookieEnough/De-ReVanced/commit/58f8bc80dfd601cfe5a5dfee81e64d78bab0f496))",
@@ -18607,6 +18730,18 @@
       "iconUrl": "https://play-lh.googleusercontent.com/JaPb4H1zwQJ298uyVYxUwvc5d_047vlahSokl-ifbucuKSw9q9V-QPU9JxwTO-xJkxQkrnhommnk3SH09IttFA",
       "description": "Me Caller Id &amp; SPAM Protection reveal the true callers name avoid unwanted calls",
       "firstSeen": 1784629087177
+    },
+    "jp.nicovideo.nicobox": {
+      "name": "VocaColle",
+      "iconUrl": "https://play-lh.googleusercontent.com/KebeLOyAcJvXyvUm-S7prz8gMMUqdNKq96lcSJrAtcLcGV6xrGPN9nwEC38nUmAIgdurDRLOksD10mL8WSThMQ",
+      "description": "vocacolle is a music player that specializes in Vocaloid songs!",
+      "firstSeen": 1784887231838
+    },
+    "com.roasterygames.devicestycoon": {
+      "name": "Devices Tycoon",
+      "iconUrl": "https://play-lh.googleusercontent.com/D7ZeEeEbTOHre_sCohLA-jZ0anMOstAaSmS9Q1-tSRuclV29i5vg4tQfr_7RP5crq3e3bcZCt3wTthLGq-C35A",
+      "description": "Build your devices empire!",
+      "firstSeen": 1784887231838
     },
     "droom.sleepIfUCan": {
       "name": "Alarmy",
@@ -29075,6 +29210,44 @@
             "version": null,
             "versionCodes": null,
             "isExperimental": true,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "jp.nicovideo.nicobox",
+        "name": "VocaColle",
+        "description": null,
+        "apkFileType": "APK",
+        "appIconColor": null,
+        "signatures": null,
+        "targets": [
+          {
+            "version": "7.40.0",
+            "versionCodes": null,
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.roasterygames.devicestycoon",
+        "name": "Devices Tycoon",
+        "description": null,
+        "apkFileType": "APK",
+        "appIconColor": "#1565C0",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "4.0.1",
+            "versionCodes": null,
+            "isExperimental": false,
             "minSdk": null,
             "description": null
           }

@@ -1,298 +1,143 @@
 {
-  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.7.0",
-  "patches": [
-    {
-      "name": "Block trackers",
-      "description": "Stops the Insider, TikTok Business SDK and Mixpanel Session Replay trackers from initializing (event/attribution/session-replay tracking never starts). Leaves AWS Amplify, Firebase core/RemoteConfig/FCM and Google Ads init untouched so app data, push and the remote ad-config the ads patch relies on keep working.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+    "version": "1.7.0",
+    "patches": [
         {
-          "packageName": "com.telenor.pakistan.mytelenor",
-          "name": "My Telenor",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#00A8E0",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "4.2.62",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 24,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Block trackers (manifest flags)",
-      "description": "Disables Firebase Analytics + Google advertiser-id auto-collection and the Facebook SDK's auto app-events / advertiser-id / auto-init via AndroidManifest <meta-data> flags — the SDK-side auto-collection that no bytecode init-stub can reach. Leaves Firebase core (FCM push, RemoteConfig) and the Facebook ContentProvider intact. Separate from the bytecode Block trackers patch so you can pick either or both.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.telenor.pakistan.mytelenor": [
+                    "4.2.62"
+                ]
+            },
+            "dependencies": [],
+            "description": "Stops the Insider, TikTok Business SDK and Mixpanel Session Replay trackers from initializing (event/attribution/session-replay tracking never starts). Leaves AWS Amplify, Firebase core/RemoteConfig/FCM and Google Ads init untouched so app data, push and the remote ad-config the ads patch relies on keep working.",
+            "name": "Block trackers",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.telenor.pakistan.mytelenor",
-          "name": "My Telenor",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#00A8E0",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "4.2.62",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 24,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Bypass PairIP license check",
-      "description": "Disables Google PairIP's license/installer check (com.pairip.licensecheck) so a re-signed build runs on a real device instead of being redirected to the Play Store and killed. No-ops the LicenseContentProvider entry point and LicenseClient.initializeLicenseCheck().",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.telenor.pakistan.mytelenor": [
+                    "4.2.62"
+                ]
+            },
+            "dependencies": [],
+            "description": "Disables Firebase Analytics + Google advertiser-id auto-collection and the Facebook SDK's auto app-events / advertiser-id / auto-init via AndroidManifest <meta-data> flags — the SDK-side auto-collection that no bytecode init-stub can reach. Leaves Firebase core (FCM push, RemoteConfig) and the Facebook ContentProvider intact. Separate from the bytecode Block trackers patch so you can pick either or both.",
+            "name": "Block trackers (manifest flags)",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.blueinklabs.investifystocks.free",
-          "name": "Investify",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#1E88E5",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "5.6.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 24,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Bypass device validation",
-      "description": "Neutralizes the client-side device-validation gate (anti-root / anti-emulator / anti-Frida / anti-Xposed / anti-tamper battery) that shows a \"Device validation failed\" toast and kills the app via finishAffinity() on a rooted, emulated or re-signed build. Redirects the single failure callback to the success path so all ~16 checks report as passed and the app keeps running pre- and post-login.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.telenor.pakistan.mytelenor": [
+                    "4.2.62"
+                ]
+            },
+            "dependencies": [],
+            "description": "Neutralizes the client-side device-validation gate (anti-root / anti-emulator / anti-Frida / anti-Xposed / anti-tamper battery) that shows a \"Device validation failed\" toast and kills the app via finishAffinity() on a rooted, emulated or re-signed build. Redirects the single failure callback to the success path so all ~16 checks report as passed and the app keeps running pre- and post-login.",
+            "name": "Bypass device validation",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.telenor.pakistan.mytelenor",
-          "name": "My Telenor",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#00A8E0",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "4.2.62",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 24,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Bypass signature verification",
-      "description": "Disables Simosa's anti-tamper signature check so a re-signed APK launches normally instead of stalling on the splash / \"version is not correct\" dialog.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.blueinklabs.investifystocks.free": [
+                    "5.6.0"
+                ]
+            },
+            "dependencies": [],
+            "description": "Disables Google PairIP's license/installer check (com.pairip.licensecheck) so a re-signed build runs on a real device instead of being redirected to the Play Store and killed. No-ops the LicenseContentProvider entry point and LicenseClient.initializeLicenseCheck().",
+            "name": "Bypass PairIP license check",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.jazz.jazzworld",
-          "name": "Simosa",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#FF6B35",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "3.3.2",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 23,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Remove ads",
-      "description": "Removes every Google Ad Manager ad (banners + interstitials) across Daily Rewards, Home, Test Your Skills and Explore by nulling the remote ad-config chokepoint, so each surface renders its no-ads layout and never requests an interstitial.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.jazz.jazzworld": [
+                    "3.3.2"
+                ]
+            },
+            "dependencies": [],
+            "description": "Disables Simosa's anti-tamper signature check so a re-signed APK launches normally instead of stalling on the splash / \"version is not correct\" dialog.",
+            "name": "Bypass signature verification",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.telenor.pakistan.mytelenor",
-          "name": "My Telenor",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#00A8E0",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "4.2.62",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 24,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Remove ads & tracking",
-      "description": "Removes every ad (AdMob) and every tracker (Firebase Analytics, AppsFlyer, Facebook, TikTok, and the Veridium SDK's own Google Analytics) — event sends, full SDK init (AppsFlyer init, TikTok initializeSdk/startTrack, MobileAds.initialize), and auto-collection. Pushwoosh push is left intact. The app then phones home only to its own Zong API.",
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.telenor.pakistan.mytelenor": [
+                    "4.2.62"
+                ]
+            },
+            "dependencies": [],
+            "description": "Removes every Google Ad Manager ad (banners + interstitials) across Daily Rewards, Home, Test Your Skills and Explore by nulling the remote ad-config chokepoint, so each surface renders its no-ads layout and never requests an interstitial.",
+            "name": "Remove ads",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.zong.customercare",
-          "name": "MyZong",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#00A94F",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "5.19.19.112",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 21,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Remove ads & tracking",
-      "description": "Removes every ad (interstitial, banner, daily-reward) and every tracker (Mixpanel, Firebase, Facebook, AppsFlyer) — app events, network sends, ad-SDK requests (Google Ads / AppLovin / AnyMind / Prebid), SDK auto-collection, and the ipify IP leak. The app then phones home only to its own Jazz API.",
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.zong.customercare": [
+                    "5.19.19.112"
+                ]
+            },
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "description": "Removes every ad (AdMob) and every tracker (Firebase Analytics, AppsFlyer, Facebook, TikTok, and the Veridium SDK's own Google Analytics) — event sends, full SDK init (AppsFlyer init, TikTok initializeSdk/startTrack, MobileAds.initialize), and auto-collection. Pushwoosh push is left intact. The app then phones home only to its own Zong API.",
+            "name": "Remove ads & tracking",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.jazz.jazzworld",
-          "name": "Simosa",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#FF6B35",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "3.3.2",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 23,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock daily reward (skip ad)",
-      "description": "Claim MyZong's daily reward with no 'watch ad' popup and no ad. Forces the reward-bubble tap to take the app's own direct-claim branch (the same claim call the post-ad path makes), upstream of both the popup and the rewarded ad.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.jazz.jazzworld": [
+                    "3.3.2"
+                ]
+            },
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "description": "Removes every ad (interstitial, banner, daily-reward) and every tracker (Mixpanel, Firebase, Facebook, AppsFlyer) — app events, network sends, ad-SDK requests (Google Ads / AppLovin / AnyMind / Prebid), SDK auto-collection, and the ipify IP leak. The app then phones home only to its own Jazz API.",
+            "name": "Remove ads & tracking",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.zong.customercare",
-          "name": "MyZong",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#00A94F",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "5.19.19.112",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 21,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock premium (NetMonster)",
-      "description": "Unlocks NetMonster Premium — forces the premium repo's derived flows so real-time LTE/NR-NSA location calculation is unlocked, ads are removed, and the status shows Active (far-future expiry) without an Adapty subscription.",
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.zong.customercare": [
+                    "5.19.19.112"
+                ]
+            },
+            "dependencies": [],
+            "description": "Claim MyZong's daily reward with no 'watch ad' popup and no ad. Forces the reward-bubble tap to take the app's own direct-claim branch (the same claim call the post-ad path makes), upstream of both the popup and the rewarded ad.",
+            "name": "Unlock daily reward (skip ad)",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "cz.mroczis.netmonster",
-          "name": "NetMonster",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#00BCD4",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "3.4.1",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 26,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock premium (remove ads)",
-      "description": "Unlocks Investify premium — forces the backend `no_ads` entitlement getter to report true in both the model and its Realm proxy, so the app treats the account as ad-free without any purchase. Ad SDK loads are gated on this flag app-wide.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "cz.mroczis.netmonster": [
+                    "3.4.1"
+                ]
+            },
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "description": "Unlocks NetMonster Premium — forces the premium repo's derived flows so real-time LTE/NR-NSA location calculation is unlocked, ads are removed, and the status shows Active (far-future expiry) without an Adapty subscription.",
+            "name": "Unlock premium (NetMonster)",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.blueinklabs.investifystocks.free",
-          "name": "Investify",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#1E88E5",
-          "signatures": [],
-          "targets": [
-            {
-              "version": "5.6.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 24,
-              "description": null
-            }
-          ]
+            "compatiblePackages": {
+                "com.blueinklabs.investifystocks.free": [
+                    "5.6.0"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlocks Investify premium — forces the backend `no_ads` entitlement getter to report true in both the model and its Realm proxy, so the app treats the account as ad-free without any purchase. Ad SDK loads are gated on this flag app-wide.",
+            "name": "Unlock premium (remove ads)",
+            "options": [],
+            "use": true
         }
-      ],
-      "options": []
-    }
-  ]
+    ]
 }

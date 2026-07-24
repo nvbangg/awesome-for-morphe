@@ -1,707 +1,316 @@
 {
-  "version": "2.12.0",
-  "patches": [
-    {
-      "name": "AdFree Account",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+    "version": "2.12.0",
+    "patches": [
         {
-          "packageName": "org.zwanoo.android.speedtest",
-          "name": "Speedtest",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "org.zwanoo.android.speedtest": [
+                    "7.0.4"
+                ]
             },
-            {
-              "version": "7.0.4",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Bypass ADB/Developer Options Detection",
-      "description": null,
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "Bypass Blocks Limit",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "dependencies": [],
+            "description": "",
+            "name": "AdFree Account",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.llamalab.automate",
-          "name": "Automate",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "1.51.1",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Disable Facebook SDK Tracking",
-      "description": null,
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "Disable Firebase(Google) Analytics",
-      "description": null,
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "Disable In-App Telemetry",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "",
+            "name": "Bypass ADB/Developer Options Detection",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.vitotechnology.sky.tonight.map.star.walk",
-          "name": "Sky Tonight",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.5.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Disable In-App Telemetry",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.llamalab.automate": [
+                    "1.51.1"
+                ]
+            },
+            "dependencies": [],
+            "description": "",
+            "name": "Bypass Blocks Limit",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.vitotechnology.StarWalk2Free",
-          "name": "Star Walk 2",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.20.3",
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Disable Logging(analytics)",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "",
+            "name": "Disable Facebook SDK Tracking",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "org.zwanoo.android.speedtest",
-          "name": "Speedtest",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "7.0.4",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Disable Telemetry",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "",
+            "name": "Disable Firebase(Google) Analytics",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "pl.solidexplorer2",
-          "name": "Solid Explorer",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.vitotechnology.sky.tonight.map.star.walk": [
+                    "2.5.0"
+                ]
             },
-            {
-              "version": "3.4.10",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "3.5.7b",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide Location Permission Popup",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "dependencies": [
+                "Disable Firebase(Google) Analytics"
+            ],
+            "description": "",
+            "name": "Disable In-App Telemetry",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.atmfee",
-          "name": "ATM Fee Saver",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.vitotechnology.StarWalk2Free": [
+                    "2.20.3"
+                ]
             },
-            {
-              "version": "3.7.9",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Install Extended (Deep Sky) Catalog",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "dependencies": [
+                "Disable Firebase(Google) Analytics"
+            ],
+            "description": "",
+            "name": "Disable In-App Telemetry",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.noctuasoftware.stellarium_free",
-          "name": "Stellarium",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.16.2",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "org.zwanoo.android.speedtest": [
+                    "7.0.4"
+                ]
             },
-            {
-              "version": "1.16.3",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Purchase All Items",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "dependencies": [],
+            "description": "",
+            "name": "Disable Logging(analytics)",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.ttxapps.autosync",
-          "name": "Autosync",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "pl.solidexplorer2": [
+                    "3.4.10",
+                    "3.5.7b"
+                ]
             },
-            {
-              "version": "7.5.10",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Remove Ads",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "dependencies": [
+                "Disable Firebase(Google) Analytics"
+            ],
+            "description": "",
+            "name": "Disable Telemetry",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.nis.app",
-          "name": "Inshorts",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.atmfee": [
+                    "3.7.9"
+                ]
             },
-            {
-              "version": "6.12.15",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "6.12.18",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Skip Login",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "dependencies": [],
+            "description": "",
+            "name": "Hide Location Permission Popup",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.nis.app",
-          "name": "Inshorts",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.noctuasoftware.stellarium_free": [
+                    "1.16.2",
+                    "1.16.3"
+                ]
             },
-            {
-              "version": "6.12.15",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "6.12.18",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock All Features",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Install Extended (Deep Sky) Catalog",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.proto.circuitsimulator",
-          "name": "PROTO - circuit simulator",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.ttxapps.autosync": [
+                    "7.5.10"
+                ]
             },
-            {
-              "version": "1.48.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Purchase All Items",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "com.nis.app": [
+                    "6.12.15",
+                    "6.12.18"
+                ]
             },
-            {
-              "version": "1.49.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Plus",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "dependencies": [],
+            "description": "",
+            "name": "Remove Ads",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.noctuasoftware.stellarium_free",
-          "name": "Stellarium",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.16.2",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.nis.app": [
+                    "6.12.15",
+                    "6.12.18"
+                ]
             },
-            {
-              "version": "1.16.3",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "dependencies": [],
+            "description": "",
+            "name": "Skip Login",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.atmfee",
-          "name": "ATM Fee Saver",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.proto.circuitsimulator": [
+                    "1.48.0",
+                    "1.49.0"
+                ]
             },
-            {
-              "version": "3.7.9",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "BytecodePatch",
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "dependencies": [
+                "Disable Firebase(Google) Analytics"
+            ],
+            "description": "",
+            "name": "Unlock All Features",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.backdrops.wallpapers",
-          "name": "Backdrops",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "6.1.2",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "io.funswitch.blocker",
-          "name": "BlockerX",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.noctuasoftware.stellarium_free": [
+                    "1.16.2",
+                    "1.16.3"
+                ]
             },
-            {
-              "version": "5.0.67",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "dependencies": [
+                "Disable Firebase(Google) Analytics"
+            ],
+            "description": "",
+            "name": "Unlock Plus",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.vitotechnology.sky.tonight.map.star.walk",
-          "name": "Sky Tonight",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.5.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.vitotechnology.StarWalk2Free",
-          "name": "Star Walk 2",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.20.3",
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "BytecodePatch",
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.ufovpn.connect.velnet",
-          "name": "UFO VPN",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.atmfee": [
+                    "3.7.9"
+                ]
             },
-            {
-              "version": "2.5.5",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "2.5.8",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
+            "dependencies": [
+                "Disable Firebase(Google) Analytics"
+            ],
+            "description": "",
+            "name": "Unlock Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.vpn.free.hotspot.secure.vpnify",
-          "name": "vpnify",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.2.9",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Pro",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.backdrops.wallpapers": [
+                    "6.1.2"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch",
+                "Disable Firebase(Google) Analytics"
+            ],
+            "description": "",
+            "name": "Unlock Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "pl.solidexplorer2",
-          "name": "Solid Explorer",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "io.funswitch.blocker": [
+                    "5.0.67"
+                ]
             },
-            {
-              "version": "3.4.10",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
+            "dependencies": [],
+            "description": "",
+            "name": "Unlock Premium",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "com.vitotechnology.sky.tonight.map.star.walk": [
+                    "2.5.0"
+                ]
             },
-            {
-              "version": "3.5.7b",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "dependencies": [],
+            "description": "",
+            "name": "Unlock Premium",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "com.vitotechnology.StarWalk2Free": [
+                    "2.20.3"
+                ]
+            },
+            "dependencies": [],
+            "description": "",
+            "name": "Unlock Premium",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "com.ufovpn.connect.velnet": [
+                    "2.5.5",
+                    "2.5.8"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch",
+                "Disable Firebase(Google) Analytics"
+            ],
+            "description": "",
+            "name": "Unlock Premium",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "com.vpn.free.hotspot.secure.vpnify": [
+                    "2.2.9"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch",
+                "Disable Firebase(Google) Analytics"
+            ],
+            "description": "",
+            "name": "Unlock Premium",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "pl.solidexplorer2": [
+                    "3.4.10",
+                    "3.5.7b"
+                ]
+            },
+            "dependencies": [],
+            "description": "",
+            "name": "Unlock Pro",
+            "options": [],
+            "use": true
         }
-      ],
-      "options": []
-    }
-  ]
+    ]
 }

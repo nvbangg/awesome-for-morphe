@@ -1,105 +1,41 @@
 {
-  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.0-dev.2",
-  "patches": [
-    {
-      "name": "Disable AI features",
-      "description": "Patch to disable the AI features.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+    "version": "1.1.0-dev.2",
+    "patches": [
         {
-          "packageName": "com.android.gallery3d",
-          "name": "ZTE Gallery",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF0045",
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.android.gallery3d": [
+                    "16.0.002.000.2601041449"
+                ]
             },
-            {
-              "version": "16.0.002.000.2601041449",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Fix Background Service",
-      "description": "Patch to make the PolicyForegroundService background service not start.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "dependencies": [],
+            "description": "Patch to disable the AI features.",
+            "name": "Disable AI features",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.android.gallery3d",
-          "name": "ZTE Gallery",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF0045",
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.android.gallery3d": [
+                    "16.0.002.000.2601041449"
+                ]
             },
-            {
-              "version": "16.0.002.000.2601041449",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Fix storage permission",
-      "description": "Patch to fix the storage permission.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "dependencies": [],
+            "description": "Patch to make the PolicyForegroundService background service not start.",
+            "name": "Fix Background Service",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.android.gallery3d",
-          "name": "ZTE Gallery",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF0045",
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.android.gallery3d": [
+                    "16.0.002.000.2601041449"
+                ]
             },
-            {
-              "version": "16.0.002.000.2601041449",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "dependencies": [],
+            "description": "Patch to fix the storage permission.",
+            "name": "Fix storage permission",
+            "options": [],
+            "use": true
         }
-      ],
-      "options": []
-    }
-  ]
+    ]
 }

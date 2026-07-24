@@ -102,7 +102,7 @@ Scans community patch repositories and merges them into `data/discover/discover.
 
 #### Customization
 
-Customize target repositories in [`data/discover/custom.json`](data/discover/custom.json) to add, remove, or customize bundles. Supported fields include `name`, `enabled`, `bundleUrl:<branch>`, and `patchesUrl:<branch>`:
+Customize target repositories in [`data/discover/custom.json`](data/discover/custom.json) to add, remove, or customize bundles. Supported fields include `name` and `enabled`:
 
 ```json
 {

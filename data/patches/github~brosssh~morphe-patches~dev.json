@@ -1,766 +1,403 @@
 {
-  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.8.1",
-  "patches": [
-    {
-      "name": "Bypass signature check",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+    "version": "2.8.1",
+    "patches": [
         {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Clone",
-      "description": "Changes the package name and the app name. This allows you to install the patched app alongside the original Instagram app.\nCaution: Do not select the official Morphe's \"Change package name\" universal patch.",
-      "default": false,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": [
-        {
-          "key": "packageName",
-          "title": "Package name",
-          "description": "A new package name for the patched app.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "com.instagram.android.brosssh",
-          "values": null
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [],
+            "description": "",
+            "name": "Bypass signature check",
+            "options": [],
+            "use": true
         },
         {
-          "key": "appName",
-          "title": "App name",
-          "description": "A new app name (label). Entering \"Instagram\" will skip changing the app name.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "Instagram Distraction Free",
-          "values": null
-        }
-      ]
-    },
-    {
-      "name": "Disable Reels scrolling",
-      "description": "Disables the endless scrolling behavior in Instagram Reels, preventing swiping to the next Reel. Note: On a clean install, the 'Tip' animation may appear but will stop on its own after a few seconds.",
-      "default": true,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Disable story auto flipping",
-      "description": "Disable stories automatically flipping/skipping after some seconds.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Disable video autoplay",
-      "description": "Disable video autoplay from feed",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide Instants",
-      "description": "Hides Instants from DMs page.",
-      "default": false,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide Reels save button",
-      "description": null,
-      "default": false,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide Threads profile button",
-      "description": "Hides the Threads button from the profile page action bar (top right of the profile page).",
-      "default": false,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide ads",
-      "description": null,
-      "default": true,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide all stories",
-      "description": "Hides all stories from the tray in the feed page.\nYou may need to clean app data after the initial use of this patch to see its effects.",
-      "default": false,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide explore feed",
-      "description": "Hides posts and reels from the explore/search page.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide feed content",
-      "description": "Hide the feed content, leaving only stories in the home page.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide navigation buttons",
-      "description": "Hides navigation bar buttons, such as the Reels and Create button. Choose what button to hide using the patch options.",
-      "default": true,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": [
-        {
-          "key": "hideHome",
-          "title": "Hide Home",
-          "description": "Permanently hides the Home button. App starts at next available tab.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": false,
-          "values": null
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Changes the package name and the app name. This allows you to install the patched app alongside the original Instagram app.\nCaution: Do not select the official Morphe's \"Change package name\" universal patch.",
+            "name": "Clone",
+            "options": [
+                {
+                    "default": "com.instagram.android.brosssh",
+                    "description": "A new package name for the patched app.",
+                    "key": "packageName",
+                    "required": true,
+                    "title": "Package name",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "Instagram Distraction Free",
+                    "description": "A new app name (label). Entering \"Instagram\" will skip changing the app name.",
+                    "key": "appName",
+                    "required": true,
+                    "title": "App name",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ],
+            "use": false
         },
         {
-          "key": "hideReels",
-          "title": "Hide Reels",
-          "description": "Permanently hides the Reels button.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": true,
-          "values": null
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Disables the endless scrolling behavior in Instagram Reels, preventing swiping to the next Reel. Note: On a clean install, the 'Tip' animation may appear but will stop on its own after a few seconds.",
+            "name": "Disable Reels scrolling",
+            "options": [],
+            "use": true
         },
         {
-          "key": "hideDirect",
-          "title": "Hide Direct",
-          "description": "Permanently hides the Direct button.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": false,
-          "values": null
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [],
+            "description": "Disable stories automatically flipping/skipping after some seconds.",
+            "name": "Disable story auto flipping",
+            "options": [],
+            "use": true
         },
         {
-          "key": "hideSearch",
-          "title": "Hide Search",
-          "description": "Permanently hides the Search button.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": false,
-          "values": null
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [],
+            "description": "Disable video autoplay from feed",
+            "name": "Disable video autoplay",
+            "options": [],
+            "use": false
         },
         {
-          "key": "hideProfile",
-          "title": "Hide Profile",
-          "description": "Permanently hides the Profile button.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": false,
-          "values": null
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Hide ads",
+            "options": [],
+            "use": true
         },
         {
-          "key": "hideCreate",
-          "title": "Hide Create",
-          "description": "Permanently hides the Create button.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": true,
-          "values": null
-        }
-      ]
-    },
-    {
-      "name": "Hide notes tray",
-      "description": "Hides the notes tray from the direct tab.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide reshare button",
-      "description": "Hides the reshare button from both posts and reels.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide suggested content",
-      "description": "Choose the suggested content to hide using the patch options.",
-      "default": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": [
-        {
-          "key": "hideSuggestedReels",
-          "title": "Hide suggested reels",
-          "description": "Hides suggested reels from feed and reels tab.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": true,
-          "values": null
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Hides all stories from the tray in the feed page.\nYou may need to clean app data after the initial use of this patch to see its effects.",
+            "name": "Hide all stories",
+            "options": [],
+            "use": false
         },
         {
-          "key": "hideSuggestedStories",
-          "title": "Hide suggested stories",
-          "description": "Hides suggested stories/users from story tray.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": true,
-          "values": null
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [],
+            "description": "Hides posts and reels from the explore/search page.",
+            "name": "Hide explore feed",
+            "options": [],
+            "use": true
         },
         {
-          "key": "hideHighlightStories",
-          "title": "Hide highlights in stories",
-          "description": "Hides highlighted stories from story tray, sponsored stories which have no set expiration.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": true,
-          "values": null
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [],
+            "description": "Hide the feed content, leaving only stories in the home page.",
+            "name": "Hide feed content",
+            "options": [],
+            "use": false
         },
         {
-          "key": "hideSuggestedAccount",
-          "title": "Hide suggested accounts",
-          "description": "Hides suggested accounts from the list of followers and from other profiles.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": true,
-          "values": null
-        }
-      ]
-    },
-    {
-      "name": "Limit feed to following profiles",
-      "description": "Filters the home feed to display only content from profiles you follow.",
-      "default": true,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "Hides Instants from DMs page.",
+            "name": "Hide Instants",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Remove build expired popup",
-      "description": "Removes the popup that appears after a while, when the app version ages.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Hides navigation bar buttons, such as the Reels and Create button. Choose what button to hide using the patch options.",
+            "name": "Hide navigation buttons",
+            "options": [
+                {
+                    "default": false,
+                    "description": "Permanently hides the Home button. App starts at next available tab.",
+                    "key": "hideHome",
+                    "required": false,
+                    "title": "Hide Home",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": true,
+                    "description": "Permanently hides the Reels button.",
+                    "key": "hideReels",
+                    "required": false,
+                    "title": "Hide Reels",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": false,
+                    "description": "Permanently hides the Direct button.",
+                    "key": "hideDirect",
+                    "required": false,
+                    "title": "Hide Direct",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": false,
+                    "description": "Permanently hides the Search button.",
+                    "key": "hideSearch",
+                    "required": false,
+                    "title": "Hide Search",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": false,
+                    "description": "Permanently hides the Profile button.",
+                    "key": "hideProfile",
+                    "required": false,
+                    "title": "Hide Profile",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": true,
+                    "description": "Permanently hides the Create button.",
+                    "key": "hideCreate",
+                    "required": false,
+                    "title": "Hide Create",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                }
+            ],
+            "use": true
+        },
         {
-          "packageName": "com.instagram.android",
-          "name": "Instagram",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "435.0.0.37.76",
-              "versionCodes": {
-                "ARM64_V8A": 384109456,
-                "ARMEABI_V7A": 384109422
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium features",
-      "description": "Unlock Premium features. You have to be logged in with an account.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [],
+            "description": "Hides the notes tray from the direct tab.",
+            "name": "Hide notes tray",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "fr.chargeprice.app",
-          "name": "Chargeprice",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#007AFF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "3.9.2",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium features",
-      "description": "Unlock Premium features. Some features are not possible to patch (server sided), such as saving a multi-days hike.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Hide Reels save button",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "de.komoot.android",
-          "name": "Komoot",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#ECEBB4",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2026.26.7",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Pro features",
-      "description": "Unlock Pro features (park4night +). You have to be logged in with an account.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [],
+            "description": "Hides the reshare button from both posts and reels.",
+            "name": "Hide reshare button",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "fr.tramb.park4night",
-          "name": "park4night",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#FFFFFF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "7.1.11",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock premium features",
-      "description": null,
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "Choose the suggested content to hide using the patch options.",
+            "name": "Hide suggested content",
+            "options": [
+                {
+                    "default": true,
+                    "description": "Hides suggested reels from feed and reels tab.",
+                    "key": "hideSuggestedReels",
+                    "required": false,
+                    "title": "Hide suggested reels",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": true,
+                    "description": "Hides suggested stories/users from story tray.",
+                    "key": "hideSuggestedStories",
+                    "required": false,
+                    "title": "Hide suggested stories",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": true,
+                    "description": "Hides highlighted stories from story tray, sponsored stories which have no set expiration.",
+                    "key": "hideHighlightStories",
+                    "required": false,
+                    "title": "Hide highlights in stories",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": true,
+                    "description": "Hides suggested accounts from the list of followers and from other profiles.",
+                    "key": "hideSuggestedAccount",
+                    "required": false,
+                    "title": "Hide suggested accounts",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                }
+            ],
+            "use": true
+        },
         {
-          "packageName": "cz.seznam.mapy",
-          "name": "Mapy.com",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#32CF11",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "26.5.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Hides the Threads button from the profile page action bar (top right of the profile page).",
+            "name": "Hide Threads profile button",
+            "options": [],
+            "use": false
+        },
+        {
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Filters the home feed to display only content from profiles you follow.",
+            "name": "Limit feed to following profiles",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "com.instagram.android": [
+                    "435.0.0.37.76"
+                ]
+            },
+            "dependencies": [],
+            "description": "Removes the popup that appears after a while, when the app version ages.",
+            "name": "Remove build expired popup",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "fr.chargeprice.app": [
+                    "3.9.2"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock Premium features. You have to be logged in with an account.",
+            "name": "Unlock Premium features",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "de.komoot.android": [
+                    "2026.26.7"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock Premium features. Some features are not possible to patch (server sided), such as saving a multi-days hike.",
+            "name": "Unlock Premium features",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "cz.seznam.mapy": [
+                    "26.5.0"
+                ]
+            },
+            "dependencies": [],
+            "description": "",
+            "name": "Unlock premium features",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "fr.tramb.park4night": [
+                    "7.1.11"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock Pro features (park4night +). You have to be logged in with an account.",
+            "name": "Unlock Pro features",
+            "options": [],
+            "use": true
         }
-      ],
-      "options": []
-    }
-  ]
+    ]
 }

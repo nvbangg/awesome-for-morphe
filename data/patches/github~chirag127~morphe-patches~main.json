@@ -1,1583 +1,654 @@
 {
-  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.6.0",
-  "patches": [
-    {
-      "name": "AdoboColorizeCommentIndentLines (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.reddit.frontpage.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+    "version": "1.6.0",
+    "patches": [
         {
-          "packageName": "com.reddit.frontpage",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "AmazonShoppingRemoveSponsoredProducts (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on in.amazon.mShop.android.shopping.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.reddit.frontpage": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.reddit.frontpage.",
+            "name": "AdoboColorizeCommentIndentLines (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "in.amazon.mShop.android.shopping",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "DuolingoStreakShieldSpoof (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.duolingo.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "in.amazon.mShop.android.shopping": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on in.amazon.mShop.android.shopping.",
+            "name": "AmazonShoppingRemoveSponsoredProducts (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.duolingo",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "DuolingoSuperMaxUnlock (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.duolingo.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.duolingo": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.duolingo.",
+            "name": "DuolingoStreakShieldSpoof (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.duolingo",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "FacebookRemoveSponsoredPosts (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.facebook.katana.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.duolingo": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.duolingo.",
+            "name": "DuolingoSuperMaxUnlock (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.facebook.katana",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Force hasSystemFeature true (narrow)",
-      "description": "Return true from public static boolean methods calling PackageManager.hasSystemFeature with a String arg. Narrow-scoped to avoid lifecycle callbacks.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "GitHub — AMOLED comment surface (STUB)",
-      "description": "STUB: extend AMOLED theme to comment-card backgrounds. Depends on base AMOLED patch; ViewHolder fingerprints pending.",
-      "default": false,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.facebook.katana": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.facebook.katana.",
+            "name": "FacebookRemoveSponsoredPosts (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.github.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "GitHub — AMOLED dark theme (STUB)",
-      "description": "STUB: rewrite dark-theme backgrounds to true-black #000000. Resource-XML overrides pending; see file-level TODO.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "Return true from public static boolean methods calling PackageManager.hasSystemFeature with a String arg. Narrow-scoped to avoid lifecycle callbacks.",
+            "name": "Force hasSystemFeature true (narrow)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.github.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "GitHub — all patches",
-      "description": "Enables AMOLED theme + comment surface + telemetry strip. Water-only; no behavior or network changes.",
-      "default": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.github.android": []
+            },
+            "dependencies": [
+                "GitHub — AMOLED dark theme (STUB)",
+                "GitHub — AMOLED comment surface (STUB)",
+                "GitHub — telemetry strip (STUB)"
+            ],
+            "description": "Enables AMOLED theme + comment surface + telemetry strip. Water-only; no behavior or network changes.",
+            "name": "GitHub — all patches",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.github.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "GitHub — extended comment UX (STUB)",
-      "description": "STUB placeholder for opt-in comment-UX enhancements (reactions summary, author-association badge, etc.). No behavior/network changes.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.github.android": []
+            },
+            "dependencies": [
+                "GitHub — AMOLED dark theme (STUB)"
+            ],
+            "description": "STUB: extend AMOLED theme to comment-card backgrounds. Depends on base AMOLED patch; ViewHolder fingerprints pending.",
+            "name": "GitHub — AMOLED comment surface (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.github.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "GitHub — telemetry strip (STUB)",
-      "description": "STUB: no-op Firebase Analytics logEvent/setUserProperty/setUserId. No network interception; water-only.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.github.android": []
+            },
+            "dependencies": [],
+            "description": "STUB: rewrite dark-theme backgrounds to true-black #000000. Resource-XML overrides pending; see file-level TODO.",
+            "name": "GitHub — AMOLED dark theme (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.github.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Google News — all patches",
-      "description": "Enables every atomic Google News patch above. Toggle individual patches to opt out.",
-      "default": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.github.android": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder for opt-in comment-UX enhancements (reactions summary, author-association badge, etc.). No behavior/network changes.",
+            "name": "GitHub — extended comment UX (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.google.android.apps.magazines",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Google News — hide sponsored article cards (STUB)",
-      "description": "STUB: hide SPONSORED_ARTICLE_AD feed cards. Fingerprints not yet authored.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.github.android": []
+            },
+            "dependencies": [],
+            "description": "STUB: no-op Firebase Analytics logEvent/setUserProperty/setUserId. No network interception; water-only.",
+            "name": "GitHub — telemetry strip (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.google.android.apps.magazines",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Google News — remove ads (STUB)",
-      "description": "STUB: no-op ad-loader init methods for the news feed. Fingerprints not yet authored.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.google.android.apps.magazines": []
+            },
+            "dependencies": [
+                "Google News — remove ads (STUB)",
+                "Google News — hide sponsored article cards (STUB)"
+            ],
+            "description": "Enables every atomic Google News patch above. Toggle individual patches to opt out.",
+            "name": "Google News — all patches",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.google.android.apps.magazines",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "GoogleMapsAdStripDirections (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.google.android.apps.maps.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.google.android.apps.magazines": []
+            },
+            "dependencies": [],
+            "description": "STUB: hide SPONSORED_ARTICLE_AD feed cards. Fingerprints not yet authored.",
+            "name": "Google News — hide sponsored article cards (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.google.android.apps.maps",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "GoogleMapsHideSponsoredPOIs (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.google.android.apps.maps.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.google.android.apps.magazines": []
+            },
+            "dependencies": [],
+            "description": "STUB: no-op ad-loader init methods for the news feed. Fingerprints not yet authored.",
+            "name": "Google News — remove ads (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.google.android.apps.maps",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "InstagramHideReelsCompletely (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.instagram.android.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.google.android.apps.maps": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.google.android.apps.maps.",
+            "name": "GoogleMapsAdStripDirections (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.instagram.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "LinkedInRemovePromotedPosts (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.linkedin.android.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.google.android.apps.maps": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.google.android.apps.maps.",
+            "name": "GoogleMapsHideSponsoredPOIs (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.linkedin.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "MoonReaderObsidianExport (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.flyersoft.moonreaderp.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.instagram.android": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.instagram.android.",
+            "name": "InstagramHideReelsCompletely (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.flyersoft.moonreaderp",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "MoonReaderReadingTimeTracker (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.flyersoft.moonreaderp.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.linkedin.android": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.linkedin.android.",
+            "name": "LinkedInRemovePromotedPosts (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.flyersoft.moonreaderp",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "PikoInlineThreadExpansion (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.twitter.android.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.flyersoft.moonreaderp": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.flyersoft.moonreaderp.",
+            "name": "MoonReaderObsidianExport (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.twitter.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "PikoQuoteTweetWithoutRetweet (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.twitter.android.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.flyersoft.moonreaderp": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.flyersoft.moonreaderp.",
+            "name": "MoonReaderReadingTimeTracker (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.twitter.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Pixel Recorder unlock (Poco F7)",
-      "description": "Bypass in-APK Pixel-only gates on Pixel Recorder for non-Pixel devices. Server-side Gemini transcription NOT covered.",
-      "default": false,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.twitter.android": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.twitter.android.",
+            "name": "PikoInlineThreadExpansion (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.google.android.apps.recorder",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Pixel Screenshots unlock (Poco F7) — EXPERIMENTAL",
-      "description": "Bypass in-APK Pixel-only gates on Pixel Screenshots. AI indexing (on-device Gemini Nano) requires Tensor G3+ and will not work on Snapdragon.",
-      "default": false,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.twitter.android": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.twitter.android.",
+            "name": "PikoQuoteTweetWithoutRetweet (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.google.android.apps.pixel.agent",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Pixel Studio unlock (Poco F7)",
-      "description": "Bypass in-APK Pixel-only gates on Poco F7. Uses narrowed fingerprints to avoid lifecycle-callback match. Server-side Play Integrity NOT bypassed.",
-      "default": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.google.android.apps.recorder": []
+            },
+            "dependencies": [
+                "Force hasSystemFeature true (narrow)",
+                "Spoof Pixel model check (narrow)",
+                "Strip root detection (narrow)"
+            ],
+            "description": "Bypass in-APK Pixel-only gates on Pixel Recorder for non-Pixel devices. Server-side Gemini transcription NOT covered.",
+            "name": "Pixel Recorder unlock (Poco F7)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.google.android.apps.pixel.creativeassistant",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Pixel Weather unlock (Poco F7)",
-      "description": "Bypass in-APK Pixel-only gates on Pixel Weather for non-Pixel devices.",
-      "default": false,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.google.android.apps.pixel.agent": []
+            },
+            "dependencies": [
+                "Force hasSystemFeature true (narrow)",
+                "Spoof Pixel model check (narrow)",
+                "Strip root detection (narrow)"
+            ],
+            "description": "Bypass in-APK Pixel-only gates on Pixel Screenshots. AI indexing (on-device Gemini Nano) requires Tensor G3+ and will not work on Snapdragon.",
+            "name": "Pixel Screenshots unlock (Poco F7) — EXPERIMENTAL",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.google.android.apps.weather",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "PrimeVideoRegionUnlock (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.amazon.avod.thirdpartyclient.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.google.android.apps.pixel.creativeassistant": []
+            },
+            "dependencies": [
+                "Force hasSystemFeature true (narrow)",
+                "Spoof Pixel model check (narrow)",
+                "Strip root detection (narrow)"
+            ],
+            "description": "Bypass in-APK Pixel-only gates on Poco F7. Uses narrowed fingerprints to avoid lifecycle-callback match. Server-side Play Integrity NOT bypassed.",
+            "name": "Pixel Studio unlock (Poco F7)",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.amazon.avod.thirdpartyclient",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "PrimeVideoRemoveFreeTierAds (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.amazon.avod.thirdpartyclient.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.google.android.apps.weather": []
+            },
+            "dependencies": [
+                "Force hasSystemFeature true (narrow)",
+                "Spoof Pixel model check (narrow)",
+                "Strip root detection (narrow)"
+            ],
+            "description": "Bypass in-APK Pixel-only gates on Pixel Weather for non-Pixel devices.",
+            "name": "Pixel Weather unlock (Poco F7)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.amazon.avod.thirdpartyclient",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "SnapchatRemoveAds (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.snapchat.android.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.amazon.avod.thirdpartyclient": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.amazon.avod.thirdpartyclient.",
+            "name": "PrimeVideoRegionUnlock (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.snapchat.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "SnapchatSaveWithoutNotif (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.snapchat.android.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.amazon.avod.thirdpartyclient": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.amazon.avod.thirdpartyclient.",
+            "name": "PrimeVideoRemoveFreeTierAds (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.snapchat.android",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Spoof Pixel model check (narrow)",
-      "description": "In-APK utility methods checking Pixel model return true. Narrow-scoped to avoid lifecycle callbacks.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "SpotifyNoAds (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.spotify.music.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.snapchat.android": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.snapchat.android.",
+            "name": "SnapchatRemoveAds (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.spotify.music",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "SpotifyPremiumUnlock (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.spotify.music.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.snapchat.android": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.snapchat.android.",
+            "name": "SnapchatSaveWithoutNotif (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.spotify.music",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Strip root detection (narrow)",
-      "description": "Force public static boolean methods referencing \"Magisk\" to return false. Narrow-scoped.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "ThreadsDistractionFree (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.instagram.barcelona.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "In-APK utility methods checking Pixel model return true. Narrow-scoped to avoid lifecycle callbacks.",
+            "name": "Spoof Pixel model check (narrow)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.instagram.barcelona",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "ThreadsNoAds (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.instagram.barcelona.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.spotify.music": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.spotify.music.",
+            "name": "SpotifyNoAds (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.instagram.barcelona",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "TikTokIndiaRegionUnlock (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.zhiliaoapp.musically.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.spotify.music": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.spotify.music.",
+            "name": "SpotifyPremiumUnlock (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.zhiliaoapp.musically",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — GMS sign-in bypass",
-      "description": "Forces SMS-based OTP verification instead of GMS SmsRetriever, fixing sign-in on re-signed APKs.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "Force public static boolean methods referencing \"Magisk\" to return false. Narrow-scoped.",
+            "name": "Strip root detection (narrow)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — Google Drive sync fix (STUB)",
-      "description": "STUB (requires MicroG-RE): restore Google Drive backup / sync on re-signed APKs. Fingerprints not yet discovered.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.instagram.barcelona": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.instagram.barcelona.",
+            "name": "ThreadsDistractionFree (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — Premium unlock",
-      "description": "Unlocks premium features (GOLD tier + all features + block server revocation + block expired-notification worker).",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.instagram.barcelona": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.instagram.barcelona.",
+            "name": "ThreadsNoAds (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — all patches",
-      "description": "Enables every atomic Truecaller patch above. Toggle individual patches to opt out.",
-      "default": true,
-      "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.zhiliaoapp.musically": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.zhiliaoapp.musically.",
+            "name": "TikTokIndiaRegionUnlock (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — disable contact upload (STUB)",
-      "description": "STUB: prevent local contact book from being uploaded to Truecaller servers. Fingerprints not yet discovered.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [
+                "Truecaller — hide Assistant tab",
+                "Truecaller — hide Family Protection button",
+                "Truecaller — hide Premium from settings",
+                "Truecaller — hide Premium tab",
+                "Truecaller — hide Scams tab",
+                "Truecaller — disable telemetry",
+                "Truecaller — disable update check",
+                "Truecaller — GMS sign-in bypass",
+                "Truecaller — strip third-party analytics + ad SDKs",
+                "Truecaller — Premium unlock",
+                "Truecaller — remove ads",
+                "Truecaller — hide Get Premium banners",
+                "Truecaller — hide Premium upgrade UI",
+                "Truecaller — mock Premium badge only",
+                "Truecaller — remove Premium UI (nav drawer + tab)",
+                "Truecaller — disable contact upload (STUB)",
+                "Truecaller — Google Drive sync fix (STUB)",
+                "Truecaller — strip outbound SMS watermark (STUB)",
+                "Truecaller — region unlock (STUB)"
+            ],
+            "description": "Enables every atomic Truecaller patch above. Toggle individual patches to opt out.",
+            "name": "Truecaller — all patches",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — disable telemetry",
-      "description": "Disables AppStartTracker and other telemetry points.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "STUB: prevent local contact book from being uploaded to Truecaller servers. Fingerprints not yet discovered.",
+            "name": "Truecaller — disable contact upload (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — disable update check",
-      "description": "Disables the in-app update check / update nag.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Disables AppStartTracker and other telemetry points.",
+            "name": "Truecaller — disable telemetry",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — hide Assistant tab",
-      "description": "Hides the Assistant tab from the bottom navigation bar.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Disables the in-app update check / update nag.",
+            "name": "Truecaller — disable update check",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — hide Family Protection button",
-      "description": "Hides the Family Protection button from the bottom navigation bar.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Forces SMS-based OTP verification instead of GMS SmsRetriever, fixing sign-in on re-signed APKs.",
+            "name": "Truecaller — GMS sign-in bypass",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — hide Get Premium banners",
-      "description": "Immediately finishes the full-screen paywall activity so promotional banners never render.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "STUB (requires MicroG-RE): restore Google Drive backup / sync on re-signed APKs. Fingerprints not yet discovered.",
+            "name": "Truecaller — Google Drive sync fix (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — hide Premium from settings",
-      "description": "Hides the Premium options from the settings and user details pages.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Hides the Assistant tab from the bottom navigation bar.",
+            "name": "Truecaller — hide Assistant tab",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — hide Premium tab",
-      "description": "Hides the Premium tab from the bottom navigation bar.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Hides the Family Protection button from the bottom navigation bar.",
+            "name": "Truecaller — hide Family Protection button",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — hide Premium upgrade UI",
-      "description": "Kills paywall activity onCreate as a safety-net when Premium unlock is enabled.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Immediately finishes the full-screen paywall activity so promotional banners never render.",
+            "name": "Truecaller — hide Get Premium banners",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — hide Scams tab",
-      "description": "Hides the Scams tab from the bottom navigation bar.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Hides the Premium options from the settings and user details pages.",
+            "name": "Truecaller — hide Premium from settings",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — mock Premium badge only",
-      "description": "Paints the Premium badge in UI without unlocking features (cosmetic-only variant of Premium unlock).",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Hides the Premium tab from the bottom navigation bar.",
+            "name": "Truecaller — hide Premium tab",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — region unlock (STUB)",
-      "description": "STUB: unlock region-locked features. Fingerprints not yet discovered.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Kills paywall activity onCreate as a safety-net when Premium unlock is enabled.",
+            "name": "Truecaller — hide Premium upgrade UI",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — remove Premium UI (nav drawer + tab)",
-      "description": "Hides bottom-nav Premium tab + PremiumNavDrawerItemView (sets GONE in onAttachedToWindow).",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Hides the Scams tab from the bottom navigation bar.",
+            "name": "Truecaller — hide Scams tab",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — remove ads",
-      "description": "No-ops after-call ad update sites (Lcom/truecaller/acs/ui/baz;->Rh and Ltw1/f;->Th).",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Paints the Premium badge in UI without unlocking features (cosmetic-only variant of Premium unlock).",
+            "name": "Truecaller — mock Premium badge only",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — strip outbound SMS watermark (STUB)",
-      "description": "STUB: remove the \"Sent via Truecaller\" trailer from outbound SMS. Fingerprints not yet discovered.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Unlocks premium features (GOLD tier + all features + block server revocation + block expired-notification worker).",
+            "name": "Truecaller — Premium unlock",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Truecaller — strip third-party analytics + ad SDKs",
-      "description": "No-ops third-party telemetry, ad-network, and tracking SDK init calls (Clarity, CleverTap, AppsFlyer, Moloco, HMS, Freshchat, InMobi, Appnext, Vungle, Fyber, Mintegral, IronSource, HyBid, MLKit, Presence stream).",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "STUB: unlock region-locked features. Fingerprints not yet discovered.",
+            "name": "Truecaller — region unlock (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.truecaller",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "WhatsAppDualAccount (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.whatsapp.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "No-ops after-call ad update sites (Lcom/truecaller/acs/ui/baz;->Rh and Ltw1/f;->Th).",
+            "name": "Truecaller — remove ads",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.whatsapp",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "WhatsAppReadReceiptSpoof (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.whatsapp.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "Hides bottom-nav Premium tab + PremiumNavDrawerItemView (sets GONE in onAttachedToWindow).",
+            "name": "Truecaller — remove Premium UI (nav drawer + tab)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.whatsapp",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "YouTubeDislikeAutoNext (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.google.android.youtube.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "STUB: remove the \"Sent via Truecaller\" trailer from outbound SMS. Fingerprints not yet discovered.",
+            "name": "Truecaller — strip outbound SMS watermark (STUB)",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.google.android.youtube",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "YouTubeLikeAutoNext (STUB)",
-      "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.google.android.youtube.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.truecaller": []
+            },
+            "dependencies": [],
+            "description": "No-ops third-party telemetry, ad-network, and tracking SDK init calls (Clarity, CleverTap, AppsFlyer, Moloco, HMS, Freshchat, InMobi, Appnext, Vungle, Fyber, Mintegral, IronSource, HyBid, MLKit, Presence stream).",
+            "name": "Truecaller — strip third-party analytics + ad SDKs",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.google.android.youtube",
-          "name": null,
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "compatiblePackages": {
+                "com.whatsapp": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.whatsapp.",
+            "name": "WhatsAppDualAccount (STUB)",
+            "options": [],
+            "use": false
+        },
+        {
+            "compatiblePackages": {
+                "com.whatsapp": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.whatsapp.",
+            "name": "WhatsAppReadReceiptSpoof (STUB)",
+            "options": [],
+            "use": false
+        },
+        {
+            "compatiblePackages": {
+                "com.google.android.youtube": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.google.android.youtube.",
+            "name": "YouTubeDislikeAutoNext (STUB)",
+            "options": [],
+            "use": false
+        },
+        {
+            "compatiblePackages": {
+                "com.google.android.youtube": []
+            },
+            "dependencies": [],
+            "description": "STUB placeholder. Real behavior authored after disassemble.yml runs on com.google.android.youtube.",
+            "name": "YouTubeLikeAutoNext (STUB)",
+            "options": [],
+            "use": false
         }
-      ],
-      "options": []
-    }
-  ]
+    ]
 }

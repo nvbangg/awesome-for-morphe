@@ -1,434 +1,195 @@
 {
-  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "3.3.0",
-  "patches": [
-    {
-      "name": "Disable PairIP license check",
-      "description": "Disable the PairIP client-side license check",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+    "version": "3.3.0",
+    "patches": [
         {
-          "packageName": "com.trainwiseapp.app",
-          "name": "TrainWise - Workout & Fitness Coach",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#00C853",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.4.10",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "compatiblePackages": {
+                "app.mhphysique.fitness": [
+                    "1.28.2"
+                ],
+                "com.rp.hypertrophy": [
+                    "1.2.0"
+                ],
+                "com.sysops.thenx": [
+                    "6.7.0"
+                ],
+                "com.trainwiseapp.app": [
+                    "1.4.10"
+                ]
+            },
+            "dependencies": [],
+            "description": "Disable the PairIP client-side license check",
+            "name": "Disable PairIP license check",
+            "options": [],
+            "use": true
         },
         {
-          "packageName": "app.mhphysique.fitness",
-          "name": "MH Physique",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#2563EB",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.28.2",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "compatiblePackages": {
+                "com.skynetcoaching.bromleyapp": [
+                    "2.0.82"
+                ]
+            },
+            "dependencies": [
+                "RawResourcePatch"
+            ],
+            "description": "Unlock all Paid features",
+            "name": "Unlock BASE Strength Premium",
+            "options": [],
+            "use": true
         },
         {
-          "packageName": "com.rp.hypertrophy",
-          "name": "RP Hypertrophy",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#EC0915",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.2.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "compatiblePackages": {
+                "com.bpmhealth.boostcamp": [
+                    "262"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock all Paid features",
+            "name": "Unlock Boostcamp Premium",
+            "options": [],
+            "use": true
         },
         {
-          "packageName": "com.sysops.thenx",
-          "name": "THENX",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#E53935",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "6.7.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock BASE Strength Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [
-        "RawResourcePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.bws.appv2": [
+                    "3.18.4"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock all Paid features",
+            "name": "Unlock Built With Science Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.skynetcoaching.bromleyapp",
-          "name": "BASE Strength AI",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#DDFF00",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.0.82",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Boostcamp Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.influencers.fst7": [
+                    "4.0.1"
+                ]
+            },
+            "dependencies": [
+                "RawResourcePatch"
+            ],
+            "description": "Unlock all Paid features",
+            "name": "Unlock FST-7 Subscription",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.bpmhealth.boostcamp",
-          "name": "Boostcamp",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#2A2132",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "262",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Built With Science Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.ganbaru.method": [
+                    "4.46.2"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock all Paid features",
+            "name": "Unlock Ganbaru Method Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.bws.appv2",
-          "name": "Built With Science",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#111827",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "3.18.4",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock FST-7 Subscription",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [
-        "RawResourcePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.jtsstrength.juggernautai": [
+                    "2.6.6"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock all Paid features",
+            "name": "Unlock JuggernautAI Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.influencers.fst7",
-          "name": "FST-7",
-          "description": null,
-          "apkFileType": "APKS",
-          "appIconColor": "#D7262E",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "4.0.1",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Ganbaru Method Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "app.mhphysique.fitness": [
+                    "1.28.2"
+                ]
+            },
+            "dependencies": [
+                "RawResourcePatch",
+                "Disable PairIP license check"
+            ],
+            "description": "Unlock all Paid features",
+            "name": "Unlock MH Physique Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.ganbaru.method",
-          "name": "Ganbaru Method",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#111111",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "4.46.2",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock JuggernautAI Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.myoadapt.app.android": [
+                    "1.5.1"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock all Paid features",
+            "name": "Unlock MyoAdapt Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.jtsstrength.juggernautai",
-          "name": "JuggernautAI",
-          "description": null,
-          "apkFileType": "APKS",
-          "appIconColor": "#111316",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.6.6",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock MH Physique Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [
-        "RawResourcePatch",
-        "Disable PairIP license check"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.trainwiseapp.app": [
+                    "1.4.10"
+                ]
+            },
+            "dependencies": [
+                "Disable PairIP license check"
+            ],
+            "description": "Unlock all Paid features",
+            "name": "Unlock Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "app.mhphysique.fitness",
-          "name": "MH Physique",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#2563EB",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.28.2",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock MyoAdapt Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.rp.hypertrophy": [
+                    "1.2.0"
+                ]
+            },
+            "dependencies": [
+                "Disable PairIP license check"
+            ],
+            "description": "Unlock all Paid features",
+            "name": "Unlock RP Hypertrophy Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.myoadapt.app.android",
-          "name": "MyoAdapt - Build Muscle Fast",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#111111",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.5.1",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [
-        "Disable PairIP license check"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "uni.cbum": [
+                    "4.1.44"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock all Paid features",
+            "name": "Unlock STNDRD Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.trainwiseapp.app",
-          "name": "TrainWise - Workout & Fitness Coach",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#00C853",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.4.10",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock RP Hypertrophy Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [
-        "Disable PairIP license check"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.sysops.thenx": [
+                    "6.7.0"
+                ]
+            },
+            "dependencies": [
+                "Disable PairIP license check"
+            ],
+            "description": "Unlock all Paid features",
+            "name": "Unlock THENX Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.rp.hypertrophy",
-          "name": "RP Hypertrophy",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#EC0915",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.2.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "compatiblePackages": {
+                "video.player.videoplayer": [
+                    "2.7.3"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock all Paid features",
+            "name": "Unlock Video Player Premium",
+            "options": [],
+            "use": true
         }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock STNDRD Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "uni.cbum",
-          "name": "STNDRD - Workout & Fitness Plans",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#111111",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "4.1.44",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock THENX Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [
-        "Disable PairIP license check"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.sysops.thenx",
-          "name": "THENX",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#E53935",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "6.7.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Video Player Premium",
-      "description": "Unlock all Paid features",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "video.player.videoplayer",
-          "name": "Video Player All Format",
-          "description": null,
-          "apkFileType": "APKM",
-          "appIconColor": "#18DC14",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.7.3",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    }
-  ]
+    ]
 }

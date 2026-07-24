@@ -1,110 +1,53 @@
 {
-  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.0-dev.1",
-  "patches": [
-    {
-      "name": "Flud Ad-Free & Bypasses",
-      "description": "Unlock ad-free experience (disable banners/interstitials), bypass storage permission setup block, and disable Google Play Integrity licensing check.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+    "version": "1.2.0-dev.1",
+    "patches": [
         {
-          "packageName": "com.delphicoder.flud",
-          "name": "Flud",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#2196F3",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.0.12",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "RSS Reader Premium",
-      "description": "Unlock premium features and remove ads in RSS Reader.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.delphicoder.flud": [
+                    "2.0.12"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock ad-free experience (disable banners/interstitials), bypass storage permission setup block, and disable Google Play Integrity licensing check.",
+            "name": "Flud Ad-Free & Bypasses",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.vanniktech.rssreader",
-          "name": "RSS Reader",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF4500",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.48.2",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium",
-      "description": "Unlocks all premium features by forcing KineService.Companion.isTrial() to return false (pro state).",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.vanniktech.rssreader": [
+                    "1.48.2"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlock premium features and remove ads in RSS Reader.",
+            "name": "RSS Reader Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.urbandroid.kinestop",
-          "name": "KineStop",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FFC107",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "5.1",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Unlock Premium",
-      "description": "Unlocks all premium features of Pinnit by bypassing the RevenueCat entitlement and purchase checks.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "com.urbandroid.kinestop": [
+                    "5.1"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlocks all premium features by forcing KineService.Companion.isTrial() to return false (pro state).",
+            "name": "Unlock Premium",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "dev.sasikanth.pinnit",
-          "name": "Pinnit",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FFC107",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.12.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "compatiblePackages": {
+                "dev.sasikanth.pinnit": [
+                    "1.12.0"
+                ]
+            },
+            "dependencies": [],
+            "description": "Unlocks all premium features of Pinnit by bypassing the RevenueCat entitlement and purchase checks.",
+            "name": "Unlock Premium",
+            "options": [],
+            "use": true
         }
-      ],
-      "options": []
-    }
-  ]
+    ]
 }

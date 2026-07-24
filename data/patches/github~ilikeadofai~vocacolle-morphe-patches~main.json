@@ -1,163 +1,92 @@
 {
-  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.0",
-  "patches": [
-    {
-      "name": "Customize VocaColle branding",
-      "description": "Optionally changes the launcher name and icon while preserving the original Japanese branding by default.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
+    "version": "1.1.0",
+    "patches": [
         {
-          "packageName": "jp.nicovideo.nicobox",
-          "name": "VocaColle",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "7.40.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": [
-        {
-          "key": "vocacolleAppName",
-          "title": "App name",
-          "description": "Launcher name. Keep ボカコレ to preserve the original Japanese name.",
-          "required": false,
-          "type": "kotlin.String",
-          "default": "ボカコレ",
-          "values": null
+            "compatiblePackages": {
+                "jp.nicovideo.nicobox": [
+                    "7.40.0"
+                ]
+            },
+            "dependencies": [],
+            "description": "Optionally changes the launcher name and icon while preserving the original Japanese branding by default.",
+            "name": "Customize VocaColle branding",
+            "options": [
+                {
+                    "default": "ボカコレ",
+                    "description": "Launcher name. Keep ボカコレ to preserve the original Japanese name.",
+                    "key": "vocacolleAppName",
+                    "required": false,
+                    "title": "App name",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "",
+                    "description": "Path to a square PNG. Leave empty to preserve the original icon.",
+                    "key": "vocacolleAppIconPath",
+                    "required": false,
+                    "title": "App icon PNG path",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ],
+            "use": false
         },
         {
-          "key": "vocacolleAppIconPath",
-          "title": "App icon PNG path",
-          "description": "Path to a square PNG. Leave empty to preserve the original icon.",
-          "required": false,
-          "type": "kotlin.String",
-          "default": "",
-          "values": null
-        }
-      ]
-    },
-    {
-      "name": "English UI",
-      "description": "Adds complete English static, hardcoded, and server-provided UI localization.",
-      "default": true,
-      "dependencies": [
-        "ResourcePatch",
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "jp.nicovideo.nicobox": [
+                    "7.40.0"
+                ]
+            },
+            "dependencies": [
+                "ResourcePatch",
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "Adds complete English static, hardcoded, and server-provided UI localization.",
+            "name": "English UI",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "jp.nicovideo.nicobox",
-          "name": "VocaColle",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "7.40.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Korean UI",
-      "description": "Adds complete Korean static, hardcoded, and server-provided UI localization.",
-      "default": true,
-      "dependencies": [
-        "ResourcePatch",
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "jp.nicovideo.nicobox": [
+                    "7.40.0"
+                ]
+            },
+            "dependencies": [
+                "ResourcePatch",
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "Adds complete Korean static, hardcoded, and server-provided UI localization.",
+            "name": "Korean UI",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "jp.nicovideo.nicobox",
-          "name": "VocaColle",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "7.40.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "VocaColle Morphe settings",
-      "description": "Adds display-language, cache, diagnostic, and patch-version controls to native Morphe settings.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "jp.nicovideo.nicobox": [
+                    "7.40.0"
+                ]
+            },
+            "dependencies": [],
+            "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
+            "name": "VocaColle compatibility probe",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "jp.nicovideo.nicobox",
-          "name": "VocaColle",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "7.40.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "compatiblePackages": {
+                "jp.nicovideo.nicobox": [
+                    "7.40.0"
+                ]
+            },
+            "dependencies": [],
+            "description": "Adds display-language, cache, diagnostic, and patch-version controls to native Morphe settings.",
+            "name": "VocaColle Morphe settings",
+            "options": [],
+            "use": true
         }
-      ],
-      "options": []
-    },
-    {
-      "name": "VocaColle compatibility probe",
-      "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "jp.nicovideo.nicobox",
-          "name": "VocaColle",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "7.40.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    }
-  ]
+    ]
 }

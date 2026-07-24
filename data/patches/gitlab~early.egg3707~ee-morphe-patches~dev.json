@@ -1,308 +1,212 @@
 {
-  "version": "1.5.0-dev.9",
-  "patches": [
-    {
-      "name": "Change package name",
-      "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": [
+    "version": "1.5.0-dev.9",
+    "patches": [
         {
-          "key": "packageName",
-          "title": "Package name",
-          "description": "The name of the package to rename the app to.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "Default",
-          "values": {
-            "Default": "Default"
-          }
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
+            "name": "Change package name",
+            "options": [
+                {
+                    "default": "Default",
+                    "description": "The name of the package to rename the app to.",
+                    "key": "packageName",
+                    "required": true,
+                    "title": "Package name",
+                    "type": "kotlin.String",
+                    "values": {
+                        "Default": "Default"
+                    }
+                },
+                {
+                    "default": false,
+                    "description": "Update compatibility receiver permissions. Enabling this can fix installation errors, but this can also break features in certain apps.",
+                    "key": "updatePermissions",
+                    "required": false,
+                    "title": "Update permissions",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": false,
+                    "description": "Update provider names declared by the app. Enabling this can fix installation errors, but this can also break features in certain apps.",
+                    "key": "updateProviders",
+                    "required": false,
+                    "title": "Update providers",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                }
+            ],
+            "use": false
         },
         {
-          "key": "updatePermissions",
-          "title": "Update permissions",
-          "description": "Update compatibility receiver permissions. Enabling this can fix installation errors, but this can also break features in certain apps.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": false,
-          "values": null
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "Renames the app and manifest package so it can be installed alongside another copy. By default this appends \" B\" to the launcher name and appends \"B\" to the package's main segment.",
+            "name": "Clone app",
+            "options": [
+                {
+                    "default": "Default",
+                    "description": "The app name to use. Leave as Default to keep the original name and append the configured suffix.",
+                    "key": "appName",
+                    "required": true,
+                    "title": "App name",
+                    "type": "kotlin.String",
+                    "values": {
+                        "Default": "Default"
+                    }
+                },
+                {
+                    "default": " B",
+                    "description": "Suffix appended to the original app name when App name is left on Default.",
+                    "key": "appNameSuffix",
+                    "required": true,
+                    "title": "App name suffix",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "Default",
+                    "description": "Full package name to use. Leave as Default to generate one from the original package name.",
+                    "key": "packageName",
+                    "required": true,
+                    "title": "Package name",
+                    "type": "kotlin.String",
+                    "values": {
+                        "Default": "Default"
+                    }
+                },
+                {
+                    "default": "B",
+                    "description": "Suffix appended to the app's main package segment when Package name is left on Default.",
+                    "key": "packageSegmentSuffix",
+                    "required": true,
+                    "title": "Package suffix",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "",
+                    "description": "Optional prefix to prepend to the generated package name. Ignored when a full Package name is set.",
+                    "key": "packagePrefix",
+                    "required": true,
+                    "title": "Package prefix",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ],
+            "use": false
         },
         {
-          "key": "updateProviders",
-          "title": "Update providers",
-          "description": "Update provider names declared by the app. Enabling this can fix installation errors, but this can also break features in certain apps.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": false,
-          "values": null
-        }
-      ]
-    },
-    {
-      "name": "Clone app",
-      "description": "Renames the app and manifest package so it can be installed alongside another copy. By default this appends \" B\" to the launcher name and appends \"B\" to the package's main segment.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": [
-        {
-          "key": "appName",
-          "title": "App name",
-          "description": "The app name to use. Leave as Default to keep the original name and append the configured suffix.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "Default",
-          "values": {
-            "Default": "Default"
-          }
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization.",
+            "name": "Disable Pairip license check",
+            "options": [],
+            "use": false
         },
         {
-          "key": "appNameSuffix",
-          "title": "App name suffix",
-          "description": "Suffix appended to the original app name when App name is left on Default.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": " B",
-          "values": {}
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "Enables debugging on the app by setting android:debuggable=\"true\".",
+            "name": "Enable debug",
+            "options": [],
+            "use": false
         },
         {
-          "key": "packageName",
-          "title": "Package name",
-          "description": "Full package name to use. Leave as Default to generate one from the original package name.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "Default",
-          "values": {
-            "Default": "Default"
-          }
-        },
-        {
-          "key": "packageSegmentSuffix",
-          "title": "Package suffix",
-          "description": "Suffix appended to the app's main package segment when Package name is left on Default.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "B",
-          "values": {}
-        },
-        {
-          "key": "packagePrefix",
-          "title": "Package prefix",
-          "description": "Optional prefix to prepend to the generated package name. Ignored when a full Package name is set.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "",
-          "values": {}
-        }
-      ]
-    },
-    {
-      "name": "Disable Pairip license check",
-      "description": "Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "Enable Online Pro",
-      "description": "Experimental companion patch that keeps byAir's online Pro gates open without forcing the crash-prone global entitlement refresh path.",
-      "default": false,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.byairapp.android",
-          "name": "byAir",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#1F6FEB",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.36.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Enable Pro",
-      "description": "Enables Appsales features locked behind the subscription paywall and disables UI prompts for Appsales Premium.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "net.tsapps.appsales",
-          "name": "AppSales",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#428BCA",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "12.3",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Enable Pro",
-      "description": "Suppresses the main byAir paywall, unlock banners, and local user gating without forcing the shared entitlement path globally.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.byairapp.android",
-          "name": "byAir",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#1F6FEB",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.36.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Enable Pro",
-      "description": "Forces Going (Going) subscription checks to always pass and disables the app-specific PairIP license redirect.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.going.mobile",
-          "name": "Going",
-          "description": null,
-          "apkFileType": "XAPK",
-          "appIconColor": "#004449",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "4.18.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Enable Pro",
-      "description": "Forces HypnoBox subscription entitlement checks to always pass.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "epixler.de.hypnobox_android",
-          "name": "HypnoBox",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#5EA15A",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "4.2.81",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
+            "compatiblePackages": {
+                "com.byairapp.android": [
+                    "2.36.0"
+                ]
             },
-            {
-              "version": ">=4.2.81",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Enable Pro",
-      "description": "Forces Inoreader to always pass pro checks and disables free.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "dependencies": [
+                "Enable Pro"
+            ],
+            "description": "Experimental companion patch that keeps byAir's online Pro gates open without forcing the crash-prone global entitlement refresh path.",
+            "name": "Enable Online Pro",
+            "options": [],
+            "use": false
+        },
         {
-          "packageName": "com.innologica.inoreader",
-          "name": "Inoreader",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#5A4EE3",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "7.9.11",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Enable debug",
-      "description": "Enables debugging on the app by setting android:debuggable=\"true\".",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "Hide app icon",
-      "description": "Hides the app icon from the Android launcher.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "Increase Daily Limits",
-      "description": "Forces daily usage and other limits to 500 when loading from server.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
+            "compatiblePackages": {
+                "net.tsapps.appsales": [
+                    "12.3"
+                ]
+            },
+            "dependencies": [],
+            "description": "Enables Appsales features locked behind the subscription paywall and disables UI prompts for Appsales Premium.",
+            "name": "Enable Pro",
+            "options": [],
+            "use": true
+        },
         {
-          "packageName": "com.innologica.inoreader",
-          "name": "Inoreader",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#5A4EE3",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "7.9.11",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
+            "compatiblePackages": {
+                "com.byairapp.android": [
+                    "2.36.0"
+                ]
+            },
+            "dependencies": [],
+            "description": "Suppresses the main byAir paywall, unlock banners, and local user gating without forcing the shared entitlement path globally.",
+            "name": "Enable Pro",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "com.going.mobile": [
+                    "4.18.0"
+                ]
+            },
+            "dependencies": [],
+            "description": "Forces Going (Going) subscription checks to always pass and disables the app-specific PairIP license redirect.",
+            "name": "Enable Pro",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "epixler.de.hypnobox_android": [
+                    "4.2.81",
+                    ">=4.2.81"
+                ]
+            },
+            "dependencies": [],
+            "description": "Forces HypnoBox subscription entitlement checks to always pass.",
+            "name": "Enable Pro",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": {
+                "com.innologica.inoreader": [
+                    "7.9.11"
+                ]
+            },
+            "dependencies": [],
+            "description": "Forces Inoreader to always pass pro checks and disables free.",
+            "name": "Enable Pro",
+            "options": [],
+            "use": true
+        },
+        {
+            "compatiblePackages": null,
+            "dependencies": [],
+            "description": "Hides the app icon from the Android launcher.",
+            "name": "Hide app icon",
+            "options": [],
+            "use": false
+        },
+        {
+            "compatiblePackages": {
+                "com.innologica.inoreader": [
+                    "7.9.11"
+                ]
+            },
+            "dependencies": [],
+            "description": "Forces daily usage and other limits to 500 when loading from server.",
+            "name": "Increase Daily Limits",
+            "options": [],
+            "use": true
         }
-      ],
-      "options": []
-    }
-  ]
+    ]
 }

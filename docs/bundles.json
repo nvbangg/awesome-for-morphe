@@ -5034,7 +5034,6 @@
         {
           "name": "Custom share menu",
           "description": "Overrides existing share menu and adds a new one",
-          "isPreRelease": true,
           "compatiblePackagesKey": 327
         },
         {
@@ -5161,7 +5160,6 @@
         {
           "name": "Disable swipe to create",
           "description": "Prevents opening the creation screen by swiping right on the home tab.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 66
         },
         {
@@ -5232,7 +5230,6 @@
         {
           "name": "Filter stories",
           "description": "Filter stories to hide based on different categories",
-          "isPreRelease": true,
           "compatiblePackagesKey": 66
         },
         {
@@ -5402,13 +5399,11 @@
         {
           "name": "Mark chat as read manually",
           "description": "Adds option to mark a thread aka message as read manually",
-          "isPreRelease": true,
           "compatiblePackagesKey": 66
         },
         {
           "name": "More information on profile",
           "description": "Adds more details on the profile page",
-          "isPreRelease": true,
           "compatiblePackagesKey": 327
         },
         {
@@ -5530,7 +5525,6 @@
         },
         {
           "name": "Support external downloader",
-          "isPreRelease": true,
           "compatiblePackagesKey": 327
         },
         {
@@ -5544,7 +5538,6 @@
               "description": "By default this patch applies a Material You dynamic theme that follows your device's light/dark setting. Turn this on to override it with a pure-black AMOLED theme instead. Note: a few server-driven pages (notifications, DM inbox, About-this-account) and full-screen media/Reels keep Instagram's own colours in both modes."
             }
           ],
-          "isPreRelease": true,
           "compatiblePackagesKey": 66
         },
         {
@@ -5585,7 +5578,7 @@
           "compatiblePackagesKey": 66
         }
       ],
-      "createdAt": "2026-07-23T05:51:45",
+      "createdAt": "2026-07-24T16:32:23",
       "targetApps": [
         "com.instagram.android",
         "com.twitter.android"
@@ -5919,6 +5912,12 @@
           "compatiblePackagesKey": 22
         },
         {
+          "name": "Disable ads",
+          "description": "Disables CHZZK advertisements, including live stream pre-roll, mid-roll and post-roll ads and clip feed ads.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 24
+        },
+        {
           "name": "Disable chat room list ad",
           "description": "Disable the chat room list ad.",
           "compatiblePackagesKey": 23
@@ -6070,6 +6069,12 @@
           "compatiblePackagesKey": 22
         },
         {
+          "name": "Hide home banners",
+          "description": "Hides promotional banners on the CHZZK home recommend tab, including the top banner carousel and the in-feed event and image banners.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 24
+        },
+        {
           "name": "Hide home components",
           "description": "Adds settings to hide selected DCInside home screen components.",
           "compatiblePackagesKey": 22
@@ -6131,9 +6136,24 @@
           "compatiblePackagesKey": 23
         },
         {
+          "name": "Remove banner ads",
+          "description": "Removes the VOD companion and search banner ads.",
+          "compatiblePackagesKey": 26
+        },
+        {
           "name": "Remove BizBoard ads",
           "description": "Removes the BizBoard ad by forcing its dimensions to 0x0 and visibility to GONE in onMeasure.",
           "compatiblePackagesKey": 23
+        },
+        {
+          "name": "Remove Catch ads",
+          "description": "Removes the ads inserted between clips in the Catch feed by reporting no ad slots.",
+          "compatiblePackagesKey": 26
+        },
+        {
+          "name": "Remove exit dialog ad",
+          "description": "Removes the ad area shown in the app-exit confirmation dialog, keeping the dialog itself.",
+          "compatiblePackagesKey": 26
         },
         {
           "name": "Remove feed ad",
@@ -6144,6 +6164,31 @@
           "name": "Remove focus ad",
           "description": "Removes the focus ad from the app.",
           "compatiblePackagesKey": 23
+        },
+        {
+          "name": "Remove intro ads",
+          "description": "Removes the image, video and cinema intro ad banners shown on launch.",
+          "compatiblePackagesKey": 26
+        },
+        {
+          "name": "Remove list banner ads",
+          "description": "Removes the native banner ads under the live player and in feeds by stopping their ad request, so no banner is fetched or shown.",
+          "compatiblePackagesKey": 26
+        },
+        {
+          "name": "Remove live ads",
+          "description": "Removes the live pre-roll ad by routing every ad decision into the app's own no-video path so the stream starts immediately.",
+          "compatiblePackagesKey": 26
+        },
+        {
+          "name": "Remove live banner ads",
+          "description": "Removes the banner ads shown under the live player by stopping their driver from attaching the banner fragments.",
+          "compatiblePackagesKey": 26
+        },
+        {
+          "name": "Remove main board ads",
+          "description": "Removes the native \"main board\" banner ad shown in feeds and under the live player.",
+          "compatiblePackagesKey": 26
         },
         {
           "name": "Remove More tab ad",
@@ -6169,6 +6214,11 @@
           "name": "Remove Short-form Tab",
           "description": "Removes the Short-form tab from the now fragment.",
           "compatiblePackagesKey": 23
+        },
+        {
+          "name": "Remove VOD ads",
+          "description": "Removes VOD pre-roll ads by reporting every stream as QuickView Plus to the player's own ad-skip check.",
+          "compatiblePackagesKey": 26
         },
         {
           "name": "Render big DCCon as normal size",
@@ -6231,6 +6281,12 @@
           "compatiblePackagesKey": 23
         },
         {
+          "name": "Unlock cheat key",
+          "description": "Unlocks CHZZK cheat key subscription benefits without an active subscription.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 24
+        },
+        {
           "name": "Unlock Premium features",
           "description": "Enables app features locked behind the subscription paywall.",
           "compatiblePackagesKey": 25
@@ -6241,7 +6297,7 @@
           "compatiblePackagesKey": 23
         }
       ],
-      "createdAt": "2026-07-23T17:24:03",
+      "createdAt": "2026-07-24T15:47:25",
       "targetApps": [
         "com.dcinside.app.android",
         "com.flexcil.flexcilnote",

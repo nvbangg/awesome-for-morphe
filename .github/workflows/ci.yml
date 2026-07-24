@@ -26,9 +26,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/discover.py
-          python scripts/download.py --bundles
+          python scripts/fetch.py
           if [ -n "$(git status --porcelain)" ]; then
-            python scripts/download.py
             pip install google-play-scraper
             python scripts/update.py
             echo "changed=true" >> $GITHUB_OUTPUT

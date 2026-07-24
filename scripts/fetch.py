@@ -22,9 +22,9 @@ BRANCHES = ["main", "dev"]
 CONCURRENCY = 8
 
 
-def get_file_sha(source: str, owner_repo: str, branch: str) -> Optional[str]:
+def get_file_sha(source: str, owner_repo: str, branch: str, bundle_url: Optional[str] = None) -> Optional[str]:
     if source == "github":
-        url = f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
+        url = bundle_url if bundle_url else f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
         try:
             request = urllib.request.Request(url, method="HEAD")
             with urllib.request.urlopen(request) as response:
@@ -38,7 +38,7 @@ def get_file_sha(source: str, owner_repo: str, branch: str) -> Optional[str]:
             raise error
     elif source == "gitlab":
         encoded_repo = urllib.parse.quote(owner_repo, safe="")
-        url = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
+        url = bundle_url if bundle_url else f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
         try:
             request = urllib.request.Request(url, method="HEAD")
             with urllib.request.urlopen(request) as response:
@@ -55,10 +55,12 @@ def process_repo_branch(
     owner_repo: str,
     branch: str,
     current_sha: Optional[str],
+    patches_url: Optional[str] = None,
+    bundle_url: Optional[str] = None
 ) -> Tuple[str, str, str, Optional[str], Optional[str], Optional[str], bool, bool]:
     key = f"{source}:{owner_repo}:{branch}"
     try:
-        remote_sha = get_file_sha(source, owner_repo, branch)
+        remote_sha = get_file_sha(source, owner_repo, branch, bundle_url)
     except urllib.error.HTTPError as error:
         if error.code == 404:
             return source, owner_repo, branch, None, None, None, current_sha is not None, True
@@ -75,12 +77,12 @@ def process_repo_branch(
         return source, owner_repo, branch, None, None, None, True, True
 
     if source == "github":
-        raw_bundle_url = f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
-        raw_patches_list_url = f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-list.json"
+        raw_bundle_url = bundle_url if bundle_url else f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
+        raw_patches_list_url = patches_url if patches_url else f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-list.json"
     else:
         encoded_repo = urllib.parse.quote(owner_repo, safe="")
-        raw_bundle_url = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
-        raw_patches_list_url = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-list.json/raw?ref={branch}"
+        raw_bundle_url = bundle_url if bundle_url else f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
+        raw_patches_list_url = patches_url if patches_url else f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-list.json/raw?ref={branch}"
 
     bundle_text = None
     try:
@@ -133,13 +135,15 @@ def fetch_all_repos() -> None:
         source, owner_repo = base_key.split(":", 1)
         for branch in BRANCHES:
             current_sha = repo_meta.get(branch)
-            tasks.append((source, owner_repo, branch, current_sha))
+            patches_url = discover_data.get(base_key, {}).get(f"patchesUrl:{branch}")
+            bundle_url = discover_data.get(base_key, {}).get(f"bundleUrl:{branch}")
+            tasks.append((source, owner_repo, branch, current_sha, patches_url, bundle_url))
 
     print(f"[+] Processing {len(tasks)} branch targets...")
     updated_count = 0
 
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
-        futures = [executor.submit(process_repo_branch, source, owner_repo, branch, current_sha) for source, owner_repo, branch, current_sha in tasks]
+        futures = [executor.submit(process_repo_branch, source, owner_repo, branch, current_sha, p_url, b_url) for source, owner_repo, branch, current_sha, p_url, b_url in tasks]
 
         for future in as_completed(futures):
             source, owner_repo, branch, new_sha, bundle_text, patches_text, status_changed, is_404 = future.result()

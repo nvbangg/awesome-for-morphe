@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.93",
+  "version": "1.4.94",
   "patches": [
     {
       "name": "Add Boost Search bottom navigation",
@@ -147,9 +147,12 @@
     },
     {
       "name": "Boost Morphe settings",
-      "description": "Adds Boost Morphe settings for Search keyboard behavior, inline media previews, undelete toggles, adaptive refresh rate, source text visibility, and preview alignment.",
+      "description": "Adds dedicated Morphe settings and Morphe-owned Material-style Settings v4 pages with a classic fallback.",
       "default": false,
-      "dependencies": [],
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.rubenmayayo.reddit",
@@ -1608,7 +1611,7 @@
       "default": false,
       "dependencies": [
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": [
         {

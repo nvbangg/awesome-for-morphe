@@ -1,9 +1,9 @@
 {
-  "version": "1.7.1",
+  "version": "1.8.0",
   "patches": [
     {
       "name": "AMOLED dark theme",
-      "description": "Makes the dark theme fully pure-black (AMOLED): backgrounds and surfaces/cards/bars become #000000. Dark mode only; borders, dividers and branded fills are kept for readability.",
+      "description": "Makes dark-theme page, app navigation and system bars pure black (AMOLED) while keeping elevated cards, sheets and controls gray so their boundaries remain visible.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -321,6 +321,69 @@
     {
       "name": "Disable update prompts",
       "description": "Prevents Avito's force-update screen opener from launching update screens. Toggleable in Настройки Morphe.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.avito.android",
+          "name": "Avito",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00AAFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "229.1",
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "228.0",
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "227.0",
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "226.5",
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "225.5",
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "224.6",
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide professional sellers",
+      "description": "Adds a maximum seller review count to Avito search filters and hides or dims offers from sellers above that limit.",
       "default": true,
       "dependencies": [
         "BytecodePatch"

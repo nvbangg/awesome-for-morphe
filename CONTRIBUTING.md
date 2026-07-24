@@ -15,24 +15,24 @@
 │   ├── ISSUE_TEMPLATE/
 │   │   └── bundle-request.yml           # Issue template to add, remove, or customize a bundle source
 │   └── workflows/
-│       ├── ci.yml                       # Sync workflow (every 3 hours)
+│       ├── ci.yml                       # Sync workflow (every 2 hours)
 │       └── release.yml                  # Daily release workflow (23:00 UTC)
 ├── data/
-│   ├── bundles/                         # Raw patch bundles from upstream
-│   ├── patches/                         # Raw patch lists from upstream
-│   ├── repos/
-│   │   ├── custom.json                  # Custom entries to add, remove, or customize the name/key of bundles
+│   ├── bundles/                         # Raw patch bundles downloaded from upstream
+│   ├── patches/                         # Raw patch lists downloaded from upstream
+│   ├── discover/                        # Discovered sources data
+│   │   ├── custom.json                  # Custom entries to add, remove, or customize bundles
+│   │   ├── discover.json                # Compiled list of all discovered bundles
 │   │   ├── jman.json                    # Bundles discovered from Jman
 │   │   ├── morphe-archive.json          # Bundles discovered from Morphe Archive
-│   │   └── official.json                # Bundles discovered from the Official Website
-│   ├── snapshots/
-│   │   ├── discover.json                # Snapshots of discovered providers
-│   │   └── official-bundles.json        # Snapshots of official bundles
+│   │   ├── official.json                # Bundles discovered from the Official Website
+│   │   └── snapshot.json                # Snapshots of the discovered state
 │   ├── history.json                     # Baseline sync state for tracking patch updates
-│   └── repos.json                       # Compiled database of all discovered bundles
-├── docs/                                 # Website deployment folder (GitHub Pages)
-│   ├── assets/                          # Contains compiled assets and other assets needed for the website
-│   ├── apps.json                        # Metadata containing target app names/icons
+│   ├── official-bundles.json            # Cached official bundle details
+│   └── repos.json                       # Database tracking remote ETags/SHAs of all discovered bundles
+├── docs/                                # Website deployment folder
+│   ├── assets/                          # Contains assets needed for the website
+│   ├── apps.json                        # Metadata of all apps
 │   ├── bundles.json                     # Central compiled index of all active bundles
 │   ├── index.html                       # Frontend main webpage interface (compiled)
 │   └── whats-new.json                   # Rolling changelog JSON of last 30 releases
@@ -41,12 +41,17 @@
 │   │   ├── jman.py                      # Jman repository parser
 │   │   ├── morphe_archive.py            # Morphe Archive parser
 │   │   └── official.py                  # Official Website parser
-│   ├── discover.py                      # Scans community patch repositories
-│   ├── download.py                      # Downloads raw bundle and patch list database metadata
-│   ├── telegram.py                      # Sends Telegram notifications
+│   ├── updater/                         # Modules for data compilation
+│   │   ├── gplay_scrape.py              # Scrapes app metadata from Google Play
+│   │   ├── local_parse.py               # Parses local bundle and patch data
+│   │   ├── official_sync.py             # Syncs official bundle details
+│   │   └── repo_info.py                 # Fetches repository info
+│   ├── discover.py                      # Scans providers and merges discoveries into data/discover/discover.json
+│   ├── fetch.py                         # Fetches raw patch lists and bundles based on discovered repos
 │   ├── update.py                        # Processes raw databases into optimized web formats
-│   ├── utils.py                         # Shared utility functions
+│   ├── telegram.py                      # Sends Telegram notifications
 │   └── whats_new.py                     # Diffs updates and compiles rolling release logs
+│   ├── utils.py                         # Shared utility functions
 ├── web/                                 # Website source code and Vite bundler configuration
 ├── CONTRIBUTING.md
 ├── LICENSE
@@ -57,26 +62,25 @@
 
 This project uses GitHub Actions to automate data synchronization and release cycles:
 
-### 1. Sync Workflow (`ci.yml` - Every 3 hours)
+### 1. Sync Workflow (`ci.yml` - Every 2 hours)
 
 Checks for upstream bundle changes and updates the compiled website database:
 
 1. Discover patch repositories: `python scripts/discover.py`
-2. Download raw bundle metadata: `python scripts/download.py --bundles`
+2. Fetch raw bundle metadata and patch lists: `python scripts/fetch.py`
 3. If changes are detected:
-   - Download corresponding patch lists: `python scripts/download.py`
    - Compile optimized web assets: `python scripts/update.py`
-   - Commit and push changes directly to `main` branch.
+   - Commit and push changes directly to the `main` branch.
 
 ### 2. Release Workflow (`release.yml` - Daily at 23:00 UTC)
 
 Runs daily maintenance, builds release notes, and notifies subscribers:
 
 1. Discover patch repositories: `python scripts/discover.py`
-2. Check upstream updates: `python scripts/download.py --bundles` (and `python scripts/download.py` if changed).
-3. Compile data: `python scripts/update.py --all` (on the 1st of the month) or `python scripts/update.py --daily` (other days).
+2. Fetch upstream updates: `python scripts/fetch.py`
+3. Compile data: `python scripts/update.py --month` (on the 1st of the month) or `python scripts/update.py --daily` (other days).
 4. Generate release changelog: `python scripts/whats_new.py`
-5. Commit and push updates, then create a new GitHub Release
+5. Commit and push updates, then create a new GitHub Release.
 6. Send notification to Telegram channel: `python scripts/telegram.py`
 
 ## 🛠️ Usage / Scripts
@@ -85,7 +89,7 @@ All core automation logic is written in Python inside the `scripts/` directory.
 
 ### `discover.py`
 
-Scans community patch repositories and compiles them to `data/repos.json`.
+Scans community patch repositories and merges them into `data/discover/discover.json`.
 
 - `python scripts/discover.py`
 
@@ -94,16 +98,15 @@ Scans community patch repositories and compiles them to `data/repos.json`.
 - [Morphe Community Patches](https://morphe-patches.software)
 - [Jman's ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles)
 - [Morphe Archive](https://github.com/rushiforai/morphe-archive)
-- My custom sources defined in [`custom.json`](data/repos/custom.json)
+- My custom sources defined in [`data/discover/custom.json`](data/discover/custom.json)
 
 #### Customization
 
-Customize target repositories in [`custom.json`](data/repos/custom.json) to add, remove, or customize the name/key of bundles:
+Customize target repositories in [`data/discover/custom.json`](data/discover/custom.json) to add, remove, or customize bundles. Supported fields include `name`, `enabled`, `bundleUrl:<branch>`, and `patchesUrl:<branch>`:
 
 ```json
 {
   "github:owner/repo": {
-    "key": "custom-key",
     "name": "Custom Name"
   },
   "gitlab:owner/repo-to-exclude": {
@@ -112,24 +115,21 @@ Customize target repositories in [`custom.json`](data/repos/custom.json) to add,
 }
 ```
 
-### `download.py`
+### `fetch.py`
 
-Downloads raw patch and bundle metadata from remote sources.
+Downloads raw patch lists and bundle metadata from remote sources based on `data/discover/discover.json`.
+It checks for new SHAs and downloads updated files to `data/bundles/` and `data/patches/`, updating `data/repos.json` with the latest commit SHAs.
 
-- `python scripts/download.py --bundles`: Downloads raw bundles to `data/bundles/`.
-- `python scripts/download.py`: Fetches corresponding patch lists to `data/patches/`.
+- `python scripts/fetch.py`
 
 ### `update.py`
 
-Parses raw JSON files and compiles optimized web assets inside `docs/` for UI rendering. Data is extracted directly from `data/bundles/` and `data/patches/`. Missing data is retrieved from `official-bundles.json`, scraped from Google Play, or customized manually.
+Parses raw JSON files and compiles optimized web assets inside `docs/` for UI rendering. Data is extracted from `data/bundles/` and `data/patches/`. Missing data is retrieved from `data/official-bundles.json`, scraped from Google Play, or fetched via GitHub/GitLab APIs.
 
-- `python scripts/update.py`: Compiles database index files.
+- `python scripts/update.py`: Compiles database index files with default mode.
 - Optional flags:
-  - `--stars`: Updates GitHub/GitLab stars for all bundles.
-  - `--avatars`: Forces updates of avatars for all bundles.
-  - `--icons`: Forces updates of app icons/names for all apps.
-  - `--daily`: Runs daily maintenance (updates stars for all bundles, fetches missing avatars, and fetches missing app icons/names).
-  - `--all`: Forces a full update of all data (stars, avatars, and app icons/names for everything).
+  - `--daily`: Runs daily update (fetches GitHub/GitLab stars, avatars, and missing Google Play apps).
+  - `--month`: Runs monthly update (forces Google Play scrape for all apps, along with daily tasks).
 
 ### `whats_new.py`
 

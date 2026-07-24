@@ -1,12 +1,12 @@
 name: Bundle Request
-description: Request to add, remove, or customize the name/key of a bundle source
+description: Request to add, remove, or customize a bundle source
 title: "[Bundle Request] "
 labels: ["bundle-request"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting a request! Use this template to add, remove, or customize the name/key of a bundle source.
+        Thanks for submitting a request! Use this template to add, remove, or customize a bundle source.
   - type: dropdown
     id: action
     attributes:
@@ -15,7 +15,7 @@ body:
       options:
         - Add Bundle
         - Remove Bundle
-        - Customize Name / Key Bundle
+        - Customize Bundle
       default: 0
     validations:
       required: true
@@ -32,13 +32,6 @@ body:
     attributes:
       label: Custom Display Name (Optional)
       placeholder: e.g. My Name
-    validations:
-      required: false
-  - type: input
-    id: custom-key
-    attributes:
-      label: Custom Key (Optional)
-      placeholder: e.g. my-key
     validations:
       required: false
   - type: checkboxes

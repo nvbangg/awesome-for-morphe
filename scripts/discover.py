@@ -78,6 +78,14 @@ def _build_output(merged):
         repo_data = {}
         if entry.get("name"):
             repo_data["name"] = entry["name"]
+        if entry.get("patchesUrl:main"):
+            repo_data["patchesUrl:main"] = entry["patchesUrl:main"]
+        if entry.get("patchesUrl:dev"):
+            repo_data["patchesUrl:dev"] = entry["patchesUrl:dev"]
+        if entry.get("bundleUrl:main"):
+            repo_data["bundleUrl:main"] = entry["bundleUrl:main"]
+        if entry.get("bundleUrl:dev"):
+            repo_data["bundleUrl:dev"] = entry["bundleUrl:dev"]
 
         repos_output[canonical_key] = repo_data
 

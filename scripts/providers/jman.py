@@ -8,15 +8,12 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
 from utils import fetch, load_json, save_json
-
 
 TREE_API_URL = "https://api.github.com/repos/Jman-Github/ReVanced-Patch-Bundles/git/trees/bundles?recursive=1"
 RAW_BASE = "https://raw.githubusercontent.com/Jman-Github/ReVanced-Patch-Bundles/bundles"
 OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "jman.json"
 SNAPSHOT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "snapshot.json"
-
 _REPO_RE = re.compile(r"(github|gitlab)\.com/([^/]+)/([^/\s\"']+)")
 
 
@@ -33,6 +30,7 @@ def _extract_canonical_key(bundle_json):
     ]:
         if not url:
             continue
+
         match = _REPO_RE.search(url)
         if match:
             platform, owner, repo = match.groups()
@@ -49,14 +47,12 @@ def _process_bundle(bundle_name, bundle_path, blob_sha, cached):
         content = fetch(f"{RAW_BASE}/{bundle_path}", timeout=10)
         canonical_key = _extract_canonical_key(json.loads(content))
     except Exception as error:
-        print(f"  [jman] Failed to fetch {bundle_name}: {error}")
+        print(f"[-] [jman] Failed to fetch {bundle_name}: {error}")
         return bundle_name, None, None
-
     return bundle_name, blob_sha, canonical_key
 
 
 def discover():
-    print("  [jman] Fetching bundle tree from API...")
     headers = {}
     if os.environ.get("GITHUB_TOKEN"):
         headers["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
@@ -64,18 +60,18 @@ def discover():
     try:
         tree_data = fetch(TREE_API_URL, headers=headers, timeout=30, as_json=True)
     except Exception as error:
-        print(f"  [jman] Failed to fetch tree: {error}")
-        return {}
+        existing_data = load_json(OUTPUT_PATH)
+        print(f"::warning title=Discover:: [-] [jman] Failed to fetch tree: {error}. Kept {len(existing_data)} sources in jman.json")
+        return existing_data
 
     tree_sha = tree_data.get("sha", "")
     snapshot = load_json(SNAPSHOT_PATH)
 
     if tree_sha and tree_sha == snapshot.get("jman_tree_sha"):
-        print("  [jman] Tree unchanged, loading cached result...")
-        return load_json(OUTPUT_PATH)
-
+        existing_data = load_json(OUTPUT_PATH)
+        print(f"[jman] No changes detected. Kept {len(existing_data)} sources in jman.json")
+        return existing_data
     tree_files = tree_data.get("tree", [])
-    print(f"  [jman] Tree changed, parsing {len(tree_files)} files...")
 
     bundles = {}
     for item in tree_files:
@@ -86,9 +82,9 @@ def discover():
             name = folder.removesuffix("-patch-bundles").removesuffix("-patches")
             bundles[name] = (path, item.get("sha", ""))
 
-    print(f"  [jman] Found {len(bundles)} latest bundles")
-
     cached_bundles = snapshot.get("jman_bundles", {})
+    changed_count = sum(1 for name, (_, blob_sha) in bundles.items() if blob_sha != (cached_bundles.get(name) or {}).get("sha"))
+    print(f"[jman] Tree changed, {changed_count} bundles updated")
     new_bundles = {}
     discovered = {}
 
@@ -105,11 +101,12 @@ def discover():
     snapshot["jman_bundles"] = dict(sorted(new_bundles.items(), key=lambda item: item[0].lower()))
     save_json(SNAPSHOT_PATH, snapshot)
 
-    print(f"  [jman] Discovered {len(discovered)} repos with .mpp bundles")
     if not discovered:
-        print("  [jman] Warning: empty result, keeping existing file")
-        return {}
+        existing_data = load_json(OUTPUT_PATH)
+        print(f"::warning title=Discover:: [-] [jman] Empty result. Kept {len(existing_data)} sources in jman.json")
+        return existing_data
     save_json(OUTPUT_PATH, dict(sorted(discovered.items(), key=lambda item: item[0].lower())))
+    print(f"[jman] Exported {len(discovered)} sources to jman.json")
     return discovered
 
 

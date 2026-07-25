@@ -1,16 +1,17 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-from pathlib import Path
-from typing import Dict, Any, Optional
-import re
 import json
-from datetime import datetime
-
+import re
 import sys
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, Optional
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from utils import load_json, parse_timestamp
 
-from utils import load_json
+DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
+REPOS_JSON_PATH = DATA_DIR / "repos.json"
 
 compatibilities_list = []
 compatibilities_map = {}
@@ -34,7 +35,8 @@ def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Opti
     if patch.get("description"):
         out["description"] = patch["description"]
 
-    if patch.get("default", True) is False:
+    is_default = patch.get("default", True)
+    if is_default is False:
         out["default"] = False
 
     if "options" in patch:
@@ -95,22 +97,14 @@ def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Opti
 
     if has_real_app and out_compat:
         out["compatiblePackages"] = out_compat
-
     return out
-
-
-def generate_fallback_name(repo_name: str) -> str:
-    name = repo_name.replace("-", " ")
-    name = re.sub(r"([a-z])([A-Z])", r"\1 \2", name)
-    return name.title()
 
 
 def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir: Path) -> list:
     bundles_dir = data_dir / "bundles"
     patches_dir = data_dir / "patches"
-
-    print("Parsing local patches and bundles...")
-
+    keys_to_remove = []
+    print(f"\nParsing local patches and bundles for {len(bundle_sources)} sources...")
     for base_key, source_entry in bundle_sources.items():
         source = source_entry.get("source")
         owner_repo = source_entry.get("repo")
@@ -123,35 +117,24 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
             continue
 
         file_prefix = f"{source}~{owner}~{repo_name}"
-
         main_bundle_path = bundles_dir / f"{file_prefix}~main.json"
         main_list_path = patches_dir / f"{file_prefix}~main.json"
-
         dev_bundle_path = bundles_dir / f"{file_prefix}~dev.json"
         dev_list_path = patches_dir / f"{file_prefix}~dev.json"
 
         main_json = load_json(main_bundle_path) if main_bundle_path.exists() and main_list_path.exists() else None
         dev_json = load_json(dev_bundle_path) if dev_bundle_path.exists() and dev_list_path.exists() else None
-
         if not main_json and not dev_json:
+            keys_to_remove.append(base_key)
             continue
-
         target_json = main_json if main_json else dev_json
         source_entry["isPreRelease"] = not bool(main_json)
 
-        if "name" not in source_entry or not source_entry["name"]:
-            source_entry["name"] = generate_fallback_name(repo_name)
-
         updated_at = 0
-        try:
-            if main_json and "created_at" in main_json:
-                dt = datetime.fromisoformat(main_json["created_at"].replace("Z", "+00:00"))
-                updated_at = int(dt.timestamp() * 1000)
-            elif dev_json and "created_at" in dev_json:
-                dt = datetime.fromisoformat(dev_json["created_at"].replace("Z", "+00:00"))
-                updated_at = int(dt.timestamp() * 1000)
-        except Exception:
-            pass
+        if main_json and "created_at" in main_json:
+            updated_at = parse_timestamp(main_json["created_at"])
+        elif dev_json and "created_at" in dev_json:
+            updated_at = parse_timestamp(dev_json["created_at"])
 
         source_entry["updatedAt"] = updated_at
 
@@ -160,8 +143,14 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
         if isinstance(patches_list_json, list):
             patches_list_json = {"patches": patches_list_json}
 
+        bundle_name = patches_list_json.get("name")
+        cleaned_name = ""
+        if bundle_name:
+            cleaned_name = re.sub(r"(?i)\s*morphe patches$", "", bundle_name).strip()
+            cleaned_name = re.sub(r"(?i)['’]s patches$", "", cleaned_name).strip()
+            cleaned_name = re.sub(r"(?i)\s*patches$", "", cleaned_name).strip()
+        source_entry["name"] = cleaned_name if cleaned_name else owner
         patches = patches_list_json.get("patches", [])
-
         valid_patches = []
         target_apps_set = set()
         discovered_names = {}
@@ -170,9 +159,7 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
             name = patch.get("name")
             if not name:
                 continue
-
             app_name = patch.get("appName")
-
             patch_dict = strip_patch(patch, discovered_names)
             if not patch_dict:
                 continue
@@ -191,7 +178,6 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
 
                 patch_dict["compatiblePackagesKey"] = get_compat_key(patch_dict["compatiblePackages"])
                 del patch_dict["compatiblePackages"]
-
             valid_patches.append(patch_dict)
 
         source_entry["patches"] = valid_patches
@@ -200,13 +186,33 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
             source_entry["targetApps"].append("universal")
             source_entry["targetApps"].remove("universal")
 
-    keys_to_remove = []
     for base_key, source_entry in bundle_sources.items():
+        if base_key in keys_to_remove:
+            continue
         if not source_entry.get("patches"):
-            print(f"Warning: Bundle '{base_key}' has no patches. Skipping and excluding from bundles.json.")
+            print(f"[-] Bundle '{base_key}' has no patches. Skipping and excluding from bundles.json.")
             keys_to_remove.append(base_key)
-
+        elif set(source_entry.get("targetApps", [])) == {"com.example.app"}:
+            print(f"[-] Bundle '{base_key}' only has example app (com.example.app). Skipping and excluding from bundles.json.")
+            keys_to_remove.append(base_key)
     for key in keys_to_remove:
-        del bundle_sources[key]
+        bundle_sources.pop(key, None)
 
+    valid_prefixes = set()
+    repos_data = load_json(REPOS_JSON_PATH, {})
+    for base_key in repos_data:
+        if ":" in base_key:
+            source, owner_repo = base_key.split(":", 1)
+            try:
+                owner, repo_name = owner_repo.split("/", 1)
+                valid_prefixes.add(f"{source}~{owner}~{repo_name}")
+            except ValueError:
+                pass
+
+    for directory in [bundles_dir, patches_dir]:
+        if directory.exists():
+            for filepath in directory.glob("*.json"):
+                prefix = filepath.name.removesuffix("~main.json").removesuffix("~dev.json")
+                if prefix not in valid_prefixes:
+                    filepath.unlink()
     return compatibilities_list

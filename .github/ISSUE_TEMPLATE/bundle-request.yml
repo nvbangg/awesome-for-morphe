@@ -1,12 +1,12 @@
 name: Bundle Request
-description: Request to add, remove, or customize a bundle source
+description: Request to add or remove a bundle source
 title: "[Bundle Request] "
 labels: ["bundle-request"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting a request! Use this template to add, remove, or customize a bundle source.
+        Thanks for submitting a request! Use this template to add or remove a bundle source.
   - type: dropdown
     id: action
     attributes:
@@ -15,7 +15,6 @@ body:
       options:
         - Add Bundle
         - Remove Bundle
-        - Customize Bundle
       default: 0
     validations:
       required: true
@@ -27,13 +26,6 @@ body:
       placeholder: https://github.com/username/morphe-patches
     validations:
       required: true
-  - type: input
-    id: custom-name
-    attributes:
-      label: Custom Display Name (Optional)
-      placeholder: e.g. My Name
-    validations:
-      required: false
   - type: checkboxes
     id: confirm
     attributes:

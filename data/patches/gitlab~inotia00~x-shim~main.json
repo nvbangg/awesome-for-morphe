@@ -1,10 +1,12 @@
 {
     "version": "1.7.0",
+    "name": "X Shim",
     "patches": [
         {
             "compatiblePackages": {
                 "com.twitter.android": []
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "BytecodePatch"
@@ -30,13 +32,13 @@
                     "type": "kotlin.collections.List<kotlin.String>",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
                 "com.twitter.android": []
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch",
                 "BytecodePatch",
@@ -71,20 +73,19 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
                 "com.twitter.android": []
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Adds an abstracted shim layer for native libraries, which improves compatibility to allow legacy patches to work.",
             "name": "Abstract shim layer for native library",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

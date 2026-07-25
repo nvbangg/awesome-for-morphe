@@ -1,8 +1,10 @@
 {
     "version": "1.0.3",
+    "name": "RIVanced Universal Patches",
     "patches": [
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Appends \".rivanced\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
             "name": "Change package name",
@@ -36,11 +38,11 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Changes the version code of the app. This will turn off app store updates and allows downgrading an existing app install to an older app version.",
             "name": "Change version code",
@@ -57,11 +59,11 @@
                         "Lowest": 1
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Allows trusting custom certificate authorities for a specific domain.",
             "name": "Custom network security",
@@ -129,11 +131,11 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disable PairIP license and VM checks.",
             "name": "Disable PairIP license check",
@@ -147,37 +149,37 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Prevents apps from using Play Integrity by pretending it is not available.",
             "name": "Disable Play Integrity",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables Sentry telemetry. See https://sentry.io/for/android/ for more information.",
             "name": "Disable Sentry telemetry",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Enables Android debugging capabilities. This can slow down the app.",
             "name": "Enable Android debugging",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs the signature via the manifest meta-data \"fake-signature\". This patch only works with ROMs that support signature spoofing.",
             "name": "Enable ROM signature spoofing",
@@ -191,29 +193,29 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Makes all app activities exportable.",
             "name": "Export all activities",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Exports a documents provider that grants access to the internal data directory of this app to file managers and other apps that support the Storage Access Framework.",
             "name": "Export internal data documents provider",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "RawResourcePatch"
             ],
@@ -229,105 +231,105 @@
                     "type": "kotlin.collections.List<kotlin.String>",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Hides enabled development settings and/or ADB.",
             "name": "Hide ADB status",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Hides the app icon from the Android launcher.",
             "name": "Hide app icon",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Prevents the app from knowing the device location is being mocked by a third party app.",
             "name": "Hide mock location",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "Enable Android debugging"
             ],
             "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
             "name": "Override certificate pinning",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Enables the predictive back gesture introduced on Android 13.",
             "name": "Predictive back gesture",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Removes the registration of all screen capture callbacks. This prevents the app from detecting screenshots.",
             "name": "Prevent screenshot detection",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "ResourcePatch",
                 "BytecodePatch"
             ],
             "description": "Removes the restriction of capturing audio from apps that normally wouldn't allow it.",
             "name": "Remove screen capture restriction",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
             "description": "Removes the restriction of taking screenshots in apps that normally wouldn't allow it.",
             "name": "Remove screenshot restriction",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Removes share targets like directly sharing to a frequent contact.",
             "name": "Remove share targets",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Changes the target SDK to version 34 (Android 14). For devices running Android 15+, this will disable edge-to-edge display.",
             "name": "Set target SDK version 34",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
@@ -550,19 +552,19 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Forces apps to see Keymaster and Attestation security levels as 'StrongBox' (Level 2).",
             "name": "Spoof keystore security level",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs Google Play data about the user's age and verification status.",
             "name": "Spoof Play Age Signals",
@@ -601,19 +603,19 @@
                         "VERIFIED": 0
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs device integrity states (Locked Bootloader, Verified OS) for apps that perform local certificate attestation.",
             "name": "Spoof root of trust",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
@@ -1219,18 +1221,17 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Spoofs an existing Wi-Fi connection.",
             "name": "Spoof Wi-Fi connection",
-            "options": [],
-            "use": false
+            "options": []
         }
     ]
 }

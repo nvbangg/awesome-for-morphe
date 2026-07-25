@@ -1,18 +1,20 @@
 {
     "version": "1.3.0",
+    "name": "Lain Patches",
     "patches": [
         {
             "compatiblePackages": {
                 "jp.co.shueisha.mangaplus": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Bypass 'First Time Free' read limitation for all languages. Only affect 'Standard/Deluxe' plan titles, exclusive 'Deluxe' plan titles are server-driven.",
             "name": "Bypass Reading Limitation",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
             "name": "Change package name",
@@ -46,8 +48,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -55,6 +56,7 @@
                     "24.1.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Fix course maps not rendered by using your own Google Maps API key.",
             "name": "Course Maps Fix",
@@ -68,8 +70,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -77,120 +78,120 @@
                     "9.9"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disable banner, splash, and rewarded ads.",
             "name": "Disable Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.kcstream.cing": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Disable banner & splash ads.",
             "name": "Disable Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.jeyluta.timestampcamerafree": [],
                 "com.jeyluta.timestampcamerafreeent": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Disable banner ads.",
             "name": "Disable Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.medibang.android.paint.tablet": []
             },
+            "default": false,
             "dependencies": [],
             "description": "Disables app tracker, Google & Firebase Analytics",
             "name": "Disable Analytics",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.kcstream.cing": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Disable Anti-Tamper detection that force quit the app.",
             "name": "Disable Anti-Tamper Detection",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization.",
             "name": "Disable Pairip license check",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.getepic.Epic": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Bypass restricted region contents; access it anywhere, anytime.",
             "name": "Disable Region Lock",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.kcstream.cing": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Allow app network traffic to be inspected.",
             "name": "Enable Certificate Pinning",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "jp.co.shueisha.mangaplus": []
             },
+            "default": false,
             "dependencies": [],
             "description": "Enable Deluxe plan badge on settings. Bypass the 'First Time Free' read limitation only for English language on 'Standard/Deluxe' plan titles. Other languages aren't affected.",
             "name": "Enable Deluxe Plan",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.getepic.Epic": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock access to all books, videos and audiobooks for lifetime.",
             "name": "Enable Epic Family",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "studio.muggle.chatboost": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock all premium benefits.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.ilovepdf.www": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock premium features such as Unlimited access to PDF tools, Enable Cloud Storage; Split, Merge, Compress documents, and more. Google login or Google Drive storage is broken, need MicroG integration patch.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -198,34 +199,34 @@
                     "1.2.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch",
                 "Disable Pairip license check"
             ],
             "description": "Unlock all features in Pro.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.medibang.android.medibangpro": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Disable trial time counter.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.adsk.sketchbook": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock premium features such as Advanced Color Tools, Clipping Masks & Alpha Masks, Manage layers with Groups, Import & customize brushes, and more...",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -233,23 +234,23 @@
                     "5.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Unlock all pro features.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.jlindemann.science": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock all PRO+ features.",
             "name": "Enable PRO+",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -257,11 +258,11 @@
                     "5.4.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Force enable DNG raw capture option.",
             "name": "Enable Raw Capture",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -269,11 +270,11 @@
                     "2.2.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Fix opening Camera FV-5 Lite when entering camera mode.",
             "name": "Fix Camera Mode Intent",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -281,19 +282,19 @@
                     "5.4.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Fix opening Cinema FV-5 Lite from video recording menu.",
             "name": "Fix Video Recording Intent",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Hides the app icon from the Android launcher.",
             "name": "Hide app icon",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -301,11 +302,11 @@
                     "5.4.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock higher image resolutions that the device support.",
             "name": "Higher Image Resolution",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -313,11 +314,11 @@
                     "2.2.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock higher resolutions that limited by the app.",
             "name": "Higher Video Resolution",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -325,22 +326,23 @@
                     "24.1.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Fix login issue by spoofing the installation source to Play Store.",
             "name": "Login Fix",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
             "name": "Override certificate pinning",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs package installer checks to report the configured package name as the installation source. Default is Play Store.",
             "name": "Spoof Install Source",
@@ -356,8 +358,7 @@
                         "com.android.vending": "com.android.vending"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -365,43 +366,43 @@
                     "4.5.1"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Unlock plus features such as Exclusive Themes, Custom Layout & Home Screen, Enhanced Bulk Downloader.",
             "name": "Unlock Plus",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.azefsw.audioconnect": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.hopefactory2021.fakegpslocation": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.chimbori.hermitcrab": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Enable premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -409,33 +410,33 @@
                     "7.34"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Unlock premium features such as Disable Ads and access AI Assistant.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.medibang.android.paint.tablet": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock premium features such as No Ads, Premium Brushes, Filters & Fonts; Simultaneous Layer Operation. Server-side features is NOT included!",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.imaginstudio.imagetools.pixellab": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock 'Remove Ads' premium feature.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -443,21 +444,21 @@
                     "24.1.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enable premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.surmin.photofancie.lite": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Enable pro features.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -465,13 +466,13 @@
                     "3.2.2"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Unlock pro features such as Unlimited proxy usage, Allow/disallow specific apps, Block apps in firewall and many more...",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

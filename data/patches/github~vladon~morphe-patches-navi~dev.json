@@ -1,5 +1,6 @@
 {
     "version": "1.0.5",
+    "name": "Yandex Navigator (navi) patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,11 +8,11 @@
                     "28.6.5"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Strips the IllegalStateException + PassportRuntime handler block in c0.releaseRuntimeChecks (smali-aligned).",
             "name": "Bypass Passport signature mismatch crash",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -19,11 +20,11 @@
                     "28.6.5"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Sets android:debuggable=true on <application> (Passport allows non-Play signature on that path).",
             "name": "Debuggable application manifest",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -31,11 +32,11 @@
                     "28.6.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks the internal Maps-shell debug panel gate (Yandexoid prefs + swipable experiment).",
             "name": "Enable debug panel",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

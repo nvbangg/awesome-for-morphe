@@ -1,8 +1,10 @@
 {
     "version": "1.4.1",
+    "name": "EE Morphe Patches",
     "patches": [
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
             "name": "Change package name",
@@ -36,11 +38,11 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Renames the app and manifest package so it can be installed alongside another copy. By default this appends \" B\" to the launcher name and appends \"B\" to the package's main segment.",
             "name": "Clone app",
@@ -94,24 +96,23 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization.",
             "name": "Disable Pairip license check",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Enables debugging on the app by setting android:debuggable=\"true\".",
             "name": "Enable debug",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -119,13 +120,13 @@
                     "2.36.0"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Enable Pro"
             ],
             "description": "Experimental companion patch that keeps byAir's online Pro gates open without forcing the crash-prone global entitlement refresh path.",
             "name": "Enable Online Pro",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -133,11 +134,11 @@
                     "12.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables Appsales features locked behind the subscription paywall and disables UI prompts for Appsales Premium.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -145,11 +146,11 @@
                     "2.36.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Suppresses the main byAir paywall, unlock banners, and local user gating without forcing the shared entitlement path globally.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -158,19 +159,19 @@
                     ">=4.2.81"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces HypnoBox subscription entitlement checks to always pass.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Hides the app icon from the Android launcher.",
             "name": "Hide app icon",
-            "options": [],
-            "use": false
+            "options": []
         }
     ]
 }

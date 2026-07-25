@@ -190,9 +190,11 @@ private class LegacyPatchBuilder(private val className: String) {
     }
 }
 
-fun parseLegacyPatchBundle(file: File): JsonArray {
+fun parseLegacyPatchBundle(file: File): PatchListResult {
     val patches = mutableListOf<LegacyPatch>()
+    var bundleName: String? = null
     JarFile(file).use { jar ->
+        bundleName = jar.manifest?.mainAttributes?.getValue("Name")
         val entries = jar.entries()
         while (entries.hasMoreElements()) {
             val entry = entries.nextElement()
@@ -212,5 +214,5 @@ fun parseLegacyPatchBundle(file: File): JsonArray {
     }
     val patchesByClass = patches.associateBy { it.className }
     val jsonPatches = patches.map { it.toJson(patchesByClass) }
-    return JsonArray(jsonPatches)
+    return PatchListResult(JsonArray(jsonPatches), bundleName)
 }

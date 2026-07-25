@@ -1,5 +1,6 @@
 {
     "version": "1.7.0-dev.1",
+    "name": "Pinterest Morphed",
     "patches": [
         {
             "compatiblePackages": {
@@ -14,11 +15,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the AD_SERVICES_CONFIG property so Android Privacy Sandbox ad APIs (Topics, Attribution Reporting, Custom Audiences) are not opted into.",
             "name": "Disable Android Privacy Sandbox Ad Services",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -33,11 +34,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Neutralises the AppsFlyer attribution / tracking SDK. init() becomes a no-op and isStopped() always returns true, so no events, installs, uninstalls or attribution data are transmitted.",
             "name": "Disable AppsFlyer tracking",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -52,11 +53,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the Bugsnag API key metadata so the crash reporting SDK cannot initialize or upload telemetry.",
             "name": "Disable Bugsnag crash tracking",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -71,11 +72,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Adds the officially documented Firebase off-switches (`firebase_analytics_collection_deactivated`, `firebase_crashlytics_collection_enabled=false`, `firebase_performance_collection_deactivated`, `google_analytics_adid_collection_enabled=false`) so the Firebase Analytics, Crashlytics and Performance SDKs go dormant.",
             "name": "Disable Firebase services",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -90,11 +91,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the Google Mobile Ads (AdMob) initialization metadata so the SDK never starts.",
             "name": "Disable Google Ads SDK",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -109,11 +110,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the Google Engage broadcast receiver so Pinterest cannot publish content recommendations back to Google (Discover, Assistant, Play Store, etc.).",
             "name": "Disable Google Engage integration",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -128,11 +129,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Rewrites GoogleEngageWorker.createWork() to return null so WorkManager fails the periodic job and no content recommendations are ever published to Google.",
             "name": "Disable Google Engage worker",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -147,11 +148,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Collapses Pinterest's ad-specific views (TextAdView, promoted closeup action bars, board sponsor headers, …) to zero-size on construction, so ad chrome never draws even if the feed adapter tries to render one.",
             "name": "Hide ad views",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -166,11 +167,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Neutralises every ad-indicator field on the Pinterest pin/story models (is_promoted, promoted_is_*, is_native, ad_data, ...) so Promoted Pins, shopping-carousel ads, native-content ads and click-out CTAs are never rendered or fired.",
             "name": "Hide promoted pins",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -185,11 +186,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Sets the default Google Analytics consent flags to false so the Firebase Measurement SDK does not collect analytics, ad data or personalization signals.",
             "name": "Opt out of Google Analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -204,11 +205,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Strips the com.google.android.gms.permission.AD_ID permission so any residual SDK cannot read the device's Google Advertising ID.",
             "name": "Remove Advertising ID permission",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -223,11 +224,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Adds the microG-RE signature-spoof meta-data so \"Continue with Google\" works on devices that use microG-RE instead of Google Play Services. Ignored by vanilla Play Services.",
             "name": "Restore Google login (microG-RE)",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -242,11 +243,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Resolves Pinterest short URLs (pin.it/…, pinterest.com/url_shortener/…) to their canonical pin URL before they are placed on the system clipboard, so \"Copy link\" no longer produces a fingerprinted short link.",
             "name": "Sanitize copied links",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -261,11 +262,11 @@
                     "14.20.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Strips UTM and click-ID tracking parameters from the URL the app puts on the Android share sheet, so friends receive clean pin links.",
             "name": "Sanitize sharing links",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

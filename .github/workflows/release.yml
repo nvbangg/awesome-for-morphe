@@ -20,12 +20,19 @@ jobs:
         with:
           ref: main
 
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Download and process data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/discover.py
           python scripts/fetch.py
+          python scripts/parse.py
 
           pip install google-play-scraper
           DAY_OF_MONTH=$(date +%d)

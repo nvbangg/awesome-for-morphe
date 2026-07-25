@@ -1,5 +1,6 @@
 {
     "version": "1.0.2",
+    "name": "Me Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,11 +8,11 @@
                     "7.17.47"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Skips full-screen interstitial ads (including the one on launch). Calls the app's own \"no ad, continue\" callback so navigation is unaffected.",
             "name": "Disable interstitial ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -19,11 +20,11 @@
                     "7.17.47"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes all inline banner and native ads (call log, contacts, dialer, caller pop-up, profiles, menu, etc.) by neutering the ad host views.",
             "name": "Hide ads",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

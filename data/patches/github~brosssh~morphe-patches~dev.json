@@ -1,5 +1,6 @@
 {
     "version": "2.8.1",
+    "name": "Brosssh Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,11 +8,11 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "",
             "name": "Bypass signature check",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -19,6 +20,7 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
@@ -43,8 +45,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -52,13 +53,13 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Disables the endless scrolling behavior in Instagram Reels, preventing swiping to the next Reel. Note: On a clean install, the 'Tip' animation may appear but will stop on its own after a few seconds.",
             "name": "Disable Reels scrolling",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -66,11 +67,11 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disable stories automatically flipping/skipping after some seconds.",
             "name": "Disable story auto flipping",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -78,11 +79,11 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Disable video autoplay from feed",
             "name": "Disable video autoplay",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -90,13 +91,13 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "",
             "name": "Hide ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -104,13 +105,13 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Hides all stories from the tray in the feed page.\nYou may need to clean app data after the initial use of this patch to see its effects.",
             "name": "Hide all stories",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -118,11 +119,11 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Hides posts and reels from the explore/search page.",
             "name": "Hide explore feed",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -130,11 +131,11 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Hide the feed content, leaving only stories in the home page.",
             "name": "Hide feed content",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -142,14 +143,14 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
             "description": "Hides Instants from DMs page.",
             "name": "Hide Instants",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -157,6 +158,7 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
@@ -217,8 +219,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -226,11 +227,11 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Hides the notes tray from the direct tab.",
             "name": "Hide notes tray",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -238,13 +239,13 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "",
             "name": "Hide Reels save button",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -252,11 +253,11 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Hides the reshare button from both posts and reels.",
             "name": "Hide reshare button",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -264,6 +265,7 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -308,8 +310,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -317,13 +318,13 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Hides the Threads button from the profile page action bar (top right of the profile page).",
             "name": "Hide Threads profile button",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -331,13 +332,13 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Filters the home feed to display only content from profiles you follow.",
             "name": "Limit feed to following profiles",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -345,11 +346,11 @@
                     "435.0.0.37.76"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the popup that appears after a while, when the app version ages.",
             "name": "Remove build expired popup",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -357,11 +358,11 @@
                     "3.9.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock Premium features. You have to be logged in with an account.",
             "name": "Unlock Premium features",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -369,11 +370,11 @@
                     "2026.26.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock Premium features. Some features are not possible to patch (server sided), such as saving a multi-days hike.",
             "name": "Unlock Premium features",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -381,11 +382,11 @@
                     "26.5.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "",
             "name": "Unlock premium features",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -393,11 +394,11 @@
                     "7.1.11"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock Pro features (park4night +). You have to be logged in with an account.",
             "name": "Unlock Pro features",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

@@ -2,16 +2,14 @@
 
 import concurrent.futures
 import os
+import sys
 import time
+import urllib.error
 import urllib.parse
 from pathlib import Path
-from typing import Dict, Any, List
-import urllib.error
-
-import sys
+from typing import Any, Dict, List
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
 from utils import fetch, load_json, save_json
 
 GITHUB_CONCURRENCY = 8
@@ -44,12 +42,7 @@ def fetch_repo_details(repo_url: str) -> dict:
                     avatar = response.get("owner", {}).get("avatar_url")
                     if avatar and isinstance(avatar, str):
                         avatar = f"{avatar}&size=128" if "?" in avatar else f"{avatar}?size=128"
-                    return {
-                        "stars": response.get("stargazers_count", 0),
-                        "description": response.get("description"),
-                        "avatar_url": avatar,
-                        "full_name": response.get("full_name"),
-                    }
+                    return {"stars": response.get("stargazers_count", 0), "description": response.get("description"), "avatar_url": avatar, "full_name": response.get("full_name")}
 
                 try:
                     time.sleep(0.2)
@@ -60,13 +53,18 @@ def fetch_repo_details(repo_url: str) -> dict:
                             time.sleep(1)
                             return fetch_details(use_token=False)
                         except Exception as inner_exception:
-                            print(f"Error fetching details (no token) for {repo_url}: {inner_exception}")
+                            if isinstance(inner_exception, urllib.error.HTTPError) and inner_exception.code == 404:
+                                print(f"[-] Repo not found (404) for {repo_url}")
+                                return {"is_404": True}
+                            print(f"[-] Error fetching details (no token) for {repo_url}: {inner_exception}")
                             return {}
-                    else:
-                        print(f"Error fetching details for {repo_url}: {error}")
-                        return {}
+                    if error.code == 404:
+                        print(f"[-] Repo not found (404) for {repo_url}")
+                        return {"is_404": True}
+                    print(f"[-] Error fetching details for {repo_url}: {error}")
+                    return {}
                 except Exception as error:
-                    print(f"Error fetching details for {repo_url}: {error}")
+                    print(f"[-] Error fetching details for {repo_url}: {error}")
                     return {}
 
     elif "gitlab.com" in repo_url:
@@ -82,23 +80,16 @@ def fetch_repo_details(repo_url: str) -> dict:
                     avatar = response.get("avatar_url")
                     if avatar and isinstance(avatar, str):
                         avatar = avatar.replace("s=80", "s=128")
-                    return {
-                        "stars": response.get("star_count", 0),
-                        "description": response.get("description"),
-                        "avatar_url": avatar,
-                        "full_name": response.get("path_with_namespace"),
-                    }
+                    return {"stars": response.get("star_count", 0), "description": response.get("description"), "avatar_url": avatar, "full_name": response.get("path_with_namespace")}
             except Exception as error:
-                print(f"Error fetching GitLab details for {repo_url}: {error}")
+                print(f"[-] Error fetching GitLab details for {repo_url}: {error}")
                 return {}
-
     return {}
 
 
 def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[str, Any]) -> None:
     tasks = {}
     for base_key, source_entry in bundle_sources.items():
-
         if mode == "default":
             # In default mode, ONLY process new bundles (not present in existing_bundles)
             if base_key in existing_bundles:
@@ -114,12 +105,14 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
     if not tasks:
         return
 
-    print(f"Fetching API details for {len(tasks)} bundles...")
+    print(f"\nFetching repo info for {len(tasks)} bundles...")
+    if mode == "default":
+        for key in tasks:
+            print(f"  -> {key}")
 
     custom_data = load_json(CUSTOM_JSON_PATH, {})
     repos_data = load_json(REPOS_JSON_PATH, {})
     has_renames = False
-
     with concurrent.futures.ThreadPoolExecutor(max_workers=GITHUB_CONCURRENCY) as executor:
         future_to_base_key = {executor.submit(fetch_repo_details, url): base_key for base_key, url in tasks.items()}
         for future in concurrent.futures.as_completed(future_to_base_key):
@@ -128,13 +121,29 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
                 details = future.result()
                 if not details:
                     continue
+                if details.get("is_404"):
+                    print(f"[-] Disabling {base_key} due to 404 Not Found")
+                    custom_data[base_key] = {"enabled": False, "note": "Automatically disabled by GitHub Actions (404 Not Found)"}
+                    has_renames = True
+                    continue
 
                 source_entry = bundle_sources[base_key]
                 source_entry["stars"] = details.get("stars", 0)
 
                 if details.get("description"):
                     source_entry["repoDescription"] = details["description"]
-                if details.get("avatar_url"):
+
+                source = source_entry.get("source")
+                owner_repo = source_entry.get("repo")
+                image_sha = repos_data.get(base_key, {}).get("image")
+
+                if image_sha and source and owner_repo:
+                    if source == "github":
+                        source_entry["avatarUrl"] = f"https://raw.githubusercontent.com/{owner_repo}/main/patches-bundle.png"
+                    elif source == "gitlab":
+                        encoded_repo = urllib.parse.quote(owner_repo, safe="")
+                        source_entry["avatarUrl"] = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.png/raw?ref=main"
+                elif details.get("avatar_url"):
                     source_entry["avatarUrl"] = details["avatar_url"]
 
                 full_name = details.get("full_name")
@@ -148,29 +157,10 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
 
                     old_key = f"{source}:{old_repo}"
                     new_key = f"{source}:{full_name}"
-
-                    custom_data[old_key] = {"enabled": False}
-                    custom_data[new_key] = {}
-
-                    if old_key in repos_data:
-                        repos_data[new_key] = repos_data.pop(old_key)
-
-                    # Rename physical files
-                    old_owner, old_repo_name = old_repo.split("/", 1)
-                    new_owner, new_repo_name = full_name.split("/", 1)
-                    old_prefix = f"{source}~{old_owner}~{old_repo_name}"
-                    new_prefix = f"{source}~{new_owner}~{new_repo_name}"
-
-                    for directory in [BUNDLES_DIR, PATCHES_DIR]:
-                        for branch in ["main", "dev"]:
-                            old_file = directory / f"{old_prefix}~{branch}.json"
-                            new_file = directory / f"{new_prefix}~{branch}.json"
-                            if old_file.exists():
-                                old_file.rename(new_file)
-
-                    source_entry["repo"] = full_name
+                    custom_data[old_key] = {"enabled": False, "note": f"Automatically disabled by GitHub Actions (Redirected/Renamed to {full_name})"}
+                    custom_data[new_key] = {"note": f"Automatically added by GitHub Actions (Redirected/Renamed from {old_repo})"}
             except Exception as error:
-                print(f"Failed to fetch details for {base_key}: {error}")
+                print(f"[-] Failed to fetch details for {base_key}: {error}")
 
     if has_renames:
         save_json(CUSTOM_JSON_PATH, custom_data)

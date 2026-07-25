@@ -1,8 +1,10 @@
 {
     "version": "1.38.0",
+    "name": "Prathxm Patches",
     "patches": [
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
@@ -47,8 +49,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -58,6 +59,7 @@
                     "7.29.52"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -65,8 +67,7 @@
             ],
             "description": "Displays the currently playing track on your Discord profile.",
             "name": "Discord Rich Presence",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -76,6 +77,7 @@
                     "7.29.52"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -83,8 +85,7 @@
             ],
             "description": "Adds options to add played tracks to Last.fm and ListenBrainz.",
             "name": "Scrobbling",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

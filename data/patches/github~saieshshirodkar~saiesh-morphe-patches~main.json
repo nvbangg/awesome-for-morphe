@@ -1,5 +1,6 @@
 {
     "version": "1.0.7",
+    "name": "Saiesh's Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,24 +8,25 @@
                     "0.99"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables PairIP signature verification and Google Play LVL license check. Required for the app to launch after re-signing.",
             "name": "Disable PairIP DRM",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "Provide Original app certificate"
             ],
             "description": "Fixes Firebase services (push notifications, Remote Config, Firebase Auth) that break after Morphe re-signs the app with a different certificate.\n\nApply with Original app certificate patch no other config needed.",
             "name": "Fix Firebase after re-signing",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "Provide Original app certificate",
                 "ResourcePatch"
@@ -67,11 +69,11 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "By Default it Reads the signing certificate from the original app installed. Required for GmsCore, Firebase, and Signature spoof patches. Only fill options below if the original is uninstalled.",
             "name": "Provide Original app certificate",
@@ -112,11 +114,11 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "ResourcePatch",
                 "Provide Original app certificate",
@@ -134,11 +136,11 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Makes the app think it was installed from a specific store (default: Google Play).\n\nUseful when an app blocks features or shows errors because it detects it was not installed from the Play Store.\n\nOnly affects what the app itself sees - does not change the real system install record.",
             "name": "Spoof install source",
@@ -158,11 +160,11 @@
                         "Samsung Galaxy Store": "com.sec.android.app.samsungapps"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Reports Widevine L1 (hardware DRM) to apps that check DRM level locally.\n\nUseful for apps that refuse to play HD/4K content on L3 devices or after re-signing.\n\nDoes not bypass server-side DRM - Netflix, Disney+ and similar are not affected.",
             "name": "Spoof Widevine / DRM level",
@@ -194,8 +196,7 @@
                         "None (disable)": "HDCP_LEVEL_NONE"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -203,11 +204,11 @@
                     "0.99"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features by forcing the premium state to true in the purchase manager.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -215,11 +216,11 @@
                     "8.5.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features by forcing the pro_version SharedPreferences check to always return true.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -227,11 +228,11 @@
                     "4.71"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features by bypassing the native library premium check.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

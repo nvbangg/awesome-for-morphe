@@ -1,5 +1,6 @@
 {
     "version": "1.40.0-dev.4",
+    "name": "Hoodles Morphe Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,13 +8,13 @@
                     "1.267.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Changes the default dark theme to use true blacks for AMOLED screens.",
             "name": "AMOLED dark theme",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -21,13 +22,13 @@
                     "2026.04.27-release"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Changes the default dark theme to use true blacks for AMOLED screens.",
             "name": "AMOLED dark theme",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -35,28 +36,17 @@
                     "1.2.75"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Blocks the request of notification permissions on load of app.",
             "name": "Block Permissions Request",
-            "options": [],
-            "use": true
-        },
-        {
-            "compatiblePackages": {
-                "net.teuida.teuida": [
-                    "1.21.16"
-                ]
-            },
-            "dependencies": [],
-            "description": "Blocks the nag that forces a required update from the Play Store.",
-            "name": "Block update nag",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
             "name": "Change package name",
@@ -90,8 +80,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -99,23 +88,23 @@
                     "2.75.0 Build 3"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Disables all ads contained within the UI.",
             "name": "Disable ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.pandora.android": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables ads during audio streaming.",
             "name": "Disable ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -123,11 +112,11 @@
                     "25.12.17"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables all ads contained within the UI.",
             "name": "Disable ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -135,11 +124,11 @@
                     "18.24"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables various anti-tamper checks that causes the app to force-close.",
             "name": "Disable anti-tamper",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -147,21 +136,21 @@
                     "6.86.5"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Prevents Duolingo from changing the app icon. Only the default icon will be available.",
             "name": "Disable dynamic app icon",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization.",
             "name": "Disable Pairip license check",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -169,11 +158,11 @@
                     "6.6 build 002"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the anti-tamper protection, which verifies apk signature, causing the app to force close.",
             "name": "Disable signature check",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -181,14 +170,14 @@
                     "7.20.0.2606230000"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
             "description": "Disables CamScanner's custom telemetry system.",
             "name": "Disable telemetry",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -197,13 +186,13 @@
                     "1.9.3-storage"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Disables event logging sent to the app's custom endpoint.",
             "name": "Disable telemetry",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -211,11 +200,11 @@
                     "2026.04.27-release"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables SoundCloud's telemetry system.",
             "name": "Disable telemetry",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -223,13 +212,13 @@
                     "6.6.3"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Blocks SuperChinese's custom telemetry reporting.",
             "name": "Disable telemetry",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -237,19 +226,19 @@
                     "5.161.0.931240252"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Open articles using your default browser.",
             "name": "Enable custom tabs",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Enables debugging on the app by setting android:debuggable=\"true\".",
             "name": "Enable debug",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -257,13 +246,13 @@
                     "6.86.5"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Enables hidden debug menu in settings.",
             "name": "Enable debug mode",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -271,13 +260,13 @@
                     "226.16092.20260302"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable FotMob+",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -286,14 +275,14 @@
                     "1.16.15"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Niagara Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -301,11 +290,11 @@
                     "26.3.20"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables some app features locked behind the subscription paywall. Not all premium functionality is available.",
             "name": "Enable Peak membership",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -313,13 +302,13 @@
                     "6.4.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Enable Plus membership (not all features are available). There is a strict version requirement for this patch.",
             "name": "Enable Plus",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -327,11 +316,11 @@
                     "4.12.81"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -339,11 +328,11 @@
                     "3.0.18"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -351,11 +340,11 @@
                     "32.30.0(1575420)"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -363,13 +352,13 @@
                     "7.20.0.2606230000"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Enables some app features locked behind the subscription paywall. Certain server-side functionality may be unavailable.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -377,13 +366,13 @@
                     "6.0.7"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -391,6 +380,7 @@
                     "6.86.5"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
@@ -409,8 +399,7 @@
                         "Duolingo Super": "SUPER"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -418,11 +407,11 @@
                     "4.12.19"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -430,11 +419,11 @@
                     "3.34.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -442,13 +431,13 @@
                     "7.10.20"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -456,14 +445,14 @@
                     "1.1.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Disable Pairip license check"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -471,13 +460,13 @@
                     "1.2.75"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -485,13 +474,13 @@
                     "1.551"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Disable Pairip license check"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -502,6 +491,7 @@
                     "1.2.1"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -509,8 +499,7 @@
             ],
             "description": "REQUIRES ROOT MOUNT INSTALL! Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -518,11 +507,11 @@
                     "2026.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -530,13 +519,13 @@
                     "8.3_arm64"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -544,11 +533,11 @@
                     "3.70.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -556,11 +545,11 @@
                     "20260526"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -568,23 +557,11 @@
                     "2.27.3.6291"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
-        },
-        {
-            "compatiblePackages": {
-                "net.teuida.teuida": [
-                    "1.21.16"
-                ]
-            },
-            "dependencies": [],
-            "description": "Enables app features locked behind the subscription paywall.",
-            "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -592,13 +569,13 @@
                     "1.16.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -606,11 +583,11 @@
                     "53.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -618,21 +595,21 @@
                     "3.61.01"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.merriamwebster": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -640,13 +617,13 @@
                     "50.1.1"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Enables some app features locked behind the subscription paywall. Not all premium functionality is available.",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -654,11 +631,11 @@
                     "26.21.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Premium+",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -666,11 +643,11 @@
                     "81042 (8.5.1)"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enable Nova Launcher Prime and app locked behind the subscription paywall.",
             "name": "Enable Prime",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -678,11 +655,11 @@
                     "14.0.6"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Prime membership",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -690,13 +667,13 @@
                     "8.4.4"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -704,11 +681,11 @@
                     "4.6826"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -716,13 +693,13 @@
                     "9.11"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -730,13 +707,13 @@
                     "2.2.2"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -744,11 +721,11 @@
                     "3.9.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -756,13 +733,13 @@
                     "6.6 build 002"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Disable signature check"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -770,11 +747,11 @@
                     "3.4.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -782,13 +759,13 @@
                     "18.24"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Disable anti-tamper"
             ],
             "description": "Enables app features locked behind the subscription paywall. Login is required and AI functionality is unavailable.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -796,13 +773,13 @@
                     "10.15.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -810,14 +787,14 @@
                     "2.5.1.1"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
             "description": "",
             "name": "Enable Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -825,13 +802,13 @@
                     "2026.04.27-release"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Enables app features locked behind the subscription paywall.",
             "name": "Enable SoundCloud Go",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -839,11 +816,11 @@
                     "3.0.452.1047"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables experimental speed control to the video player.",
             "name": "Enable speed control",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -851,19 +828,19 @@
                     "4.12.19"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "When typing in normal lessons, Eggbun forces you to use their own on-screen keyboard. This patches forces the use of the default OS keyboard.",
             "name": "Force Native Keyboard",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Hides the app icon from the Android launcher.",
             "name": "Hide app icon",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -871,6 +848,7 @@
                     "6.0.7"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "ResourcePatch",
@@ -878,8 +856,7 @@
             ],
             "description": "Allows the app to work without root by using MicroG instead of Google Play Services.",
             "name": "MicroG integration",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -887,6 +864,7 @@
                     "5.161.0.931240252"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "ResourcePatch",
@@ -894,8 +872,7 @@
             ],
             "description": "Allows the app to work without root by using MicroG instead of Google Play Services.",
             "name": "MicroG integration",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -903,6 +880,7 @@
                     "2026.4"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "ResourcePatch",
@@ -910,8 +888,7 @@
             ],
             "description": "Allows the app to work without root by using MicroG instead of Google Play Services.",
             "name": "MicroG integration",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -919,6 +896,7 @@
                     "3.4.1"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "ResourcePatch",
@@ -926,24 +904,7 @@
             ],
             "description": "Allows the app to work without root by using MicroG instead of Google Play Services.",
             "name": "MicroG integration",
-            "options": [],
-            "use": true
-        },
-        {
-            "compatiblePackages": {
-                "net.teuida.teuida": [
-                    "1.21.16"
-                ]
-            },
-            "dependencies": [
-                "ResourcePatch",
-                "ResourcePatch",
-                "BytecodePatch"
-            ],
-            "description": "Allows the app to work without root by using MicroG instead of Google Play Services.",
-            "name": "MicroG integration",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -951,11 +912,11 @@
                     "5.19.43.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the imposed delay when changing VPN servers.",
             "name": "Remove delay",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -964,13 +925,13 @@
                     "1.9.3-storage"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Removes the imposed 6-hour trial usage limit.",
             "name": "Remove trial limit",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -978,11 +939,11 @@
                     "3.0.452.1047"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Rename certain permissions shared across Amazon apps. Applying this patch can fix installation errors, but can also break features in certain apps.",
             "name": "Rename shared permissions",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -990,23 +951,23 @@
                     "3.0.452.1047"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Automatically skips ads baked into the video stream.",
             "name": "Skip ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.pandora.android": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables the limit for skipping songs during playback.",
             "name": "Unlimited skips",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1014,13 +975,13 @@
                     "6.6.3"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Only unlocks lessons on the client UI! This is useful for pre-downloading content during free trial periods.",
             "name": "Unlock all lessons",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1028,11 +989,11 @@
                     "5.19.43.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables the custom DNS feature usually locked behind the Proton Plus paywall.",
             "name": "Unlock custom DNS",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1040,11 +1001,11 @@
                     "5.19.43.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables the LAN connections feature usually locked behind the Proton Plus paywall.",
             "name": "Unlock LAN connections",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1052,13 +1013,13 @@
                     "1.21.0-release"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Disable Pairip license check"
             ],
             "description": "Enables app features locked behind the subscription paywall. Some UI elements may not show an active membership, but this does not effect functionality.",
             "name": "Unlock premium features",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1066,11 +1027,11 @@
                     "5.19.43.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables the split tunneling feature usually locked behind the Proton Plus paywall.",
             "name": "Unlock split tunneling",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

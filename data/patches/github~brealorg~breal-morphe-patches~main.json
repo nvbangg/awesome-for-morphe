@@ -1,0 +1,1297 @@
+{
+    "version": "1.4.94",
+    "name": "Breal Morphe Patches",
+    "patches": [
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Add archive links to context menu",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "Add Boost Search bottom navigation host",
+                "BytecodePatch"
+            ],
+            "description": "Shows Boost's native Home, Search, Subscriptions, Inbox and Profile menu in Search and Go To.",
+            "name": "Add Boost Search bottom navigation",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Autoplays selected Reddit gallery GIF and video media while preserving Boost's poster, data preferences, and full-screen media route.",
+            "name": "Animate media in Boost gallery previews",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": false,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Automatically undelete Imgur images",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": false,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Automatically undelete Reddit content",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": false,
+            "dependencies": [
+                "BytecodePatch",
+                "Boost Morphe settings resources"
+            ],
+            "description": "Adds dedicated Morphe settings and Morphe-owned Material-style Settings v4 pages with a classic fallback.",
+            "name": "Boost Morphe settings",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Starts Boost search on an instant cached active-subreddit landing with Reddit-native labels.",
+            "name": "Boost search default discovery",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Allows Boost to use a custom self-hosted Synccit API endpoint.",
+            "name": "Custom Synccit URL",
+            "options": [
+                {
+                    "default": "https://api.synccit.com/api.php",
+                    "description": "Full HTTP or HTTPS URL to a Synccit-compatible API endpoint, including api.php.",
+                    "key": "synccit-url",
+                    "required": false,
+                    "title": "Synccit API URL",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "Remove Boost ad SDK auto-init providers"
+            ],
+            "description": "",
+            "name": "Disable ads",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "o.o.joey": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Disable ads",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "io.syncapps.lemmy_sync": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Disable ads",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.laurencedawson.reddit_sync": [
+                    "v23.06.30-13:39"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "",
+            "name": "Disable ads",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "Remove Boost Crashlytics registrar"
+            ],
+            "description": "Disables Boost's Crashlytics startup initialization while keeping Firebase Analytics and other Firebase components.",
+            "name": "Disable Boost Crashlytics startup network calls",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.laurencedawson.reddit_sync": [
+                    "v23.06.30-13:39"
+                ],
+                "com.laurencedawson.reddit_sync.dev": [],
+                "com.laurencedawson.reddit_sync.pro": []
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Disables the bottom sheet at the startup that asks you to signup to \"Sync for Lemmy\".",
+            "name": "Disable Sync for Lemmy bottom sheet",
+            "options": []
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Enables Android developer debugging capabilities. Including this patch can slow down the app.",
+            "name": "Enable Android debugging",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.andrewshu.android.reddit": [
+                    "5.6.22"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Allows using pro features without ads.",
+            "name": "Fake reddit premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Fix /r/all",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Fix /s/ links",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "free.reddit.news": [
+                    "10.2.40"
+                ],
+                "reddit.news": [
+                    "10.2.40"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Fix /s/ links",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.laurencedawson.reddit_sync": [
+                    "v23.06.30-13:39"
+                ],
+                "com.laurencedawson.reddit_sync.dev": [],
+                "com.laurencedawson.reddit_sync.pro": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Fix /s/ links",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Preserves Reddit code blocks by normalizing multiline <code> HTML and malformed fenced selftext to Boost's native <pre> renderer path.",
+            "name": "Fix Boost code block rendering",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Removes the duplicate native comments title by disabling the SlidrTheme window title/actionbar layer while preserving Boost's selected light/dark theme, toolbar title, and dynamic sort subtitle.",
+            "name": "Fix Boost comments Lemmy-style toolbar UI",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Synchronizes Boost FAB hide/show with collapsing-header and nested-scroll motion.",
+            "name": "Fix Boost FAB nested scroll",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Prevents Boost's image widget from opening a stale post by making the CommentsActivity PendingIntent data unique per widget update.",
+            "name": "Fix Boost image widget click target",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": false,
+            "dependencies": [],
+            "description": "Forces Boost's single-image submit flow to use Reddit's native image submission kind instead of creating external uploaded-media link posts.",
+            "name": "Fix Boost native image upload",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Adds runtime system bar inset handling for Boost bottom controls and drawer content on Android 15+ target SDK builds.",
+            "name": "Fix Boost navigation bar overlap",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": false,
+            "dependencies": [
+                "Set Boost target SDK 35",
+                "BytecodePatch"
+            ],
+            "description": "Sets Boost for Reddit's target SDK to 35 and fixes BillingClient receiver registration for newer Android versions.",
+            "name": "Fix Boost target SDK 35 compatibility",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Opens the original YouTube link externally when Boost's legacy embedded YouTube player is unavailable.",
+            "name": "Fix Boost YouTube playback fallback",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Moves completed download notifications to a separate default-importance channel so download completion is visible while progress notifications remain low-priority.",
+            "name": "Fix download completed notification visibility",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Stabilizes Boost feed position handling and prevents invalid-index crashes when hiding read posts.",
+            "name": "Fix Hide crash",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "Fixes audio missing in videos downloaded from v.redd.it.",
+            "name": "Fix missing audio in video downloads",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.laurencedawson.reddit_sync": [
+                    "v23.06.30-13:39"
+                ],
+                "com.laurencedawson.reddit_sync.dev": [],
+                "com.laurencedawson.reddit_sync.pro": []
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Fixes loading post thumbnails by correcting their URLs.",
+            "name": "Fix post thumbnails",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Normalizes Boost's broken r/random route by resolving a live non-NSFW subreddit through Reddit search and subscriber-count filtering.",
+            "name": "Fix Random subreddit",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.onelouder.baconreader": [
+                    "6.1.4"
+                ],
+                "com.onelouder.baconreader.premium": [
+                    "6.1.4"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Fix Redgifs API",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Fix Redgifs API",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.laurencedawson.reddit_sync": [
+                    "v23.06.30-13:39"
+                ],
+                "com.laurencedawson.reddit_sync.dev": [],
+                "com.laurencedawson.reddit_sync.pro": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "",
+            "name": "Fix Redgifs API",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Bypasses Boost's slow Giphy API resolver and uses Boost's direct media.giphy.com MP4 fallback for Giphy posts.",
+            "name": "Fix slow Giphy loading",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.laurencedawson.reddit_sync": [
+                    "v23.06.30-13:39"
+                ],
+                "com.laurencedawson.reddit_sync.dev": [],
+                "com.laurencedawson.reddit_sync.pro": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Fixes a bug in Sync's MPD parser resulting in only the audio-track being saved.",
+            "name": "Fix video downloads",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": false,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Hook the exception handler in Boost. Don't enable except for development purposes",
+            "name": "Hook exception handler",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.onelouder.baconreader": [
+                    "6.1.4"
+                ],
+                "com.onelouder.baconreader.premium": [
+                    "6.1.4"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Modify the WebView used for logging into reddit to prevent login issues",
+            "name": "Modify login WebView",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Modify the WebView used for logging into reddit to prevent login issues",
+            "name": "Modify login WebView",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "ml.docilealligator.infinityforreddit.patreon": [],
+                "ml.docilealligator.infinityforreddit.plus": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Modify the WebView used for logging into reddit to prevent login issues",
+            "name": "Modify login WebView",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "o.o.joey": [],
+                "o.o.joey.dev": [],
+                "o.o.joey.pro": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Modify the WebView used for logging into reddit to prevent login issues",
+            "name": "Modify login WebView",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.andrewshu.android.reddit": [
+                    "5.6.22"
+                ],
+                "com.andrewshu.android.redditdonation": [
+                    "5.6.22"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Modify the WebView used for logging into reddit to prevent login issues",
+            "name": "Modify login WebView",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "free.reddit.news": [
+                    "10.2.40"
+                ],
+                "reddit.news": [
+                    "10.2.40"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Modify the WebView used for logging into reddit to prevent login issues",
+            "name": "Modify login WebView",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.laurencedawson.reddit_sync": [
+                    "v23.06.30-13:39"
+                ],
+                "com.laurencedawson.reddit_sync.dev": [],
+                "com.laurencedawson.reddit_sync.pro": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Modify the WebView used for logging into reddit to prevent login issues",
+            "name": "Modify login WebView",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": false,
+            "dependencies": [
+                "BytecodePatch",
+                "Boost Morphe settings"
+            ],
+            "description": "Requests a high display refresh rate for Boost on adaptive-refresh devices.",
+            "name": "Prefer high refresh rate",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Removes the legacy Gilded and Friends tabs from Boost profiles.",
+            "name": "Remove obsolete profile tabs",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Prompts after Boost patch updates to reopen Android's Open by default settings so supported Reddit links can be re-enabled.",
+            "name": "Restore Boost Open by default prompt",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Uses native trending data when renderable, otherwise supplies HOT post rows and fixes the global community-limit control.",
+            "name": "Restore Boost sidebar Trending today",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": false,
+            "dependencies": [],
+            "description": "Fingerprint-only probe for Boost compose/reply GIF insertion through FormattingBar. No runtime behavior change.",
+            "name": "Restore GIF search integration probe",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": false,
+            "dependencies": [],
+            "description": "Adds provider-independent manual GIF URL insertion to Boost's existing image menu.",
+            "name": "Restore GIF URL insertion",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.imgur.mobile": [
+                    "7.33.0.0"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Makes Imgur direct media sharing use the selected media item instead of the parent gallery. Can share either the raw media/download URL or the Imgur item permalink.",
+            "name": "Share selected media",
+            "options": [
+                {
+                    "default": "raw_media",
+                    "description": "raw_media shares the direct media/download URL. item_permalink shares the Imgur gallery URL with the selected media fragment.",
+                    "key": "link-mode",
+                    "required": false,
+                    "title": "Link mode",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "com.imgur.mobile": [
+                    "7.33.0.0"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Makes Imgur post-detail media long-press share the selected media file. Also replaces Imgur's Download share action with direct file sharing. The selected media is cached privately, shared with Android's share sheet, and is not saved permanently to /sdcard/Download/Imgur.",
+            "name": "Share selected media file",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Adds inline media previews below Boost comment text for Giphy links and direct static image URLs.",
+            "name": "Show inline Giphy previews in comments",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.onelouder.baconreader": [
+                    "6.1.4"
+                ],
+                "com.onelouder.baconreader.premium": [
+                    "6.1.4"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Restores functionality of the app by using custom client ID.",
+            "name": "Spoof client",
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Restores functionality of the app by using custom client ID.",
+            "name": "Spoof client",
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "org.cygnusx1.continuum": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "ResourcePatch"
+            ],
+            "description": "Allows modifying Continuum's client ID, redirect URI and user agent in API Keys settings menu. Patch options will modify default values.",
+            "name": "Spoof client",
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "ml.docilealligator.infinityforreddit.patreon": [],
+                "ml.docilealligator.infinityforreddit.plus": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch",
+                "ResourcePatch"
+            ],
+            "description": "Restores functionality of the app by using custom client ID.",
+            "name": "Spoof client",
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "o.o.joey": [],
+                "o.o.joey.dev": [],
+                "o.o.joey.pro": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Restores functionality of the app by using custom client ID.",
+            "name": "Spoof client",
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "com.andrewshu.android.reddit": [
+                    "5.6.22"
+                ],
+                "com.andrewshu.android.redditdonation": [
+                    "5.6.22"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Restores functionality of the app by using custom client ID.",
+            "name": "Spoof client",
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "free.reddit.news": [
+                    "10.2.40"
+                ],
+                "reddit.news": [
+                    "10.2.40"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Restores functionality of the app by using custom client ID.",
+            "name": "Spoof client",
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "me.edgan.redditslide": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Allows modifying Slide's client ID, redirect URI and user agent in settings. Patch options will modify default values.",
+            "name": "Spoof client",
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "com.laurencedawson.reddit_sync": [
+                    "v23.06.30-13:39"
+                ],
+                "com.laurencedawson.reddit_sync.dev": [],
+                "com.laurencedawson.reddit_sync.pro": []
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "description": "Restores functionality of the app by using custom client ID.",
+            "name": "Spoof client",
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Applies theme contrast and gesture-inset surface handling to SubredditActivity while preserving native selection and routes.",
+            "name": "Stabilize Boost subreddit bottom navigation surface",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Applies one destination, listener, selection, tint, and system-surface contract to Boost's Material bottom navigation.",
+            "name": "Standardize Boost bottom navigation",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Keeps Home/Subreddit, Random, Inbox and Profile FABs 16 dp above native canonical navigation.",
+            "name": "Standardize Boost bottom-navigation FAB clearance",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Applies the canonical five-destination Material navigation and native Home tint when MainActivity resumes.",
+            "name": "Standardize Boost Home bottom navigation",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Applies the canonical five-destination Material bottom-navigation contract after Inbox and Profile complete lifecycle setup.",
+            "name": "Standardize Boost Inbox and Profile bottom navigation",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": false,
+            "dependencies": [],
+            "description": "Enables keyboard GIF/image rich content insertion through Android receive-content when a public URL is available.",
+            "name": "Support keyboard GIF insertion",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.rubenmayayo.reddit": [
+                    "1.12.12"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Uses the active theme primary text color for Boost preference icons.",
+            "name": "Theme Boost settings icons",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.laurencedawson.reddit_sync": [
+                    "v23.06.30-13:39"
+                ],
+                "com.laurencedawson.reddit_sync.dev": [],
+                "com.laurencedawson.reddit_sync.pro": []
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Replaces the deprecated endpoint for viewing user profiles /u with /user, that used to fix a bug.",
+            "name": "Use /user/ endpoint",
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.andrewshu.android.reddit": [
+                    "5.6.22"
+                ],
+                "com.andrewshu.android.redditdonation": [
+                    "5.6.22"
+                ]
+            },
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Fix imgur albums not loading.",
+            "name": "Use public imgur API",
+            "options": []
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 {
     "version": "1.2.0-dev.2",
+    "name": "ilikeadofai Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,6 +8,7 @@
                     "7.40.0"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Optionally changes the launcher name and icon while preserving the original Japanese branding by default.",
             "name": "Customize VocaColle branding",
@@ -29,8 +31,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -38,6 +39,7 @@
                     "7.40.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "BytecodePatch",
@@ -45,8 +47,7 @@
             ],
             "description": "Adds complete English static, hardcoded, and server-provided UI localization.",
             "name": "English UI",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -54,6 +55,7 @@
                     "7.40.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "BytecodePatch",
@@ -61,8 +63,7 @@
             ],
             "description": "Adds complete Korean static, hardcoded, and server-provided UI localization.",
             "name": "Korean UI",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -70,13 +71,13 @@
                     "7.40.0"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "VocaColle Morphe settings"
             ],
             "description": "Adds opt-in controls for VocaColle advertising surfaces.",
             "name": "VocaColle ad control",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -84,11 +85,11 @@
                     "7.40.0"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
             "name": "VocaColle compatibility probe",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -96,11 +97,11 @@
                     "7.40.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Adds display-language, cache, diagnostic, and patch-version controls to native Morphe settings.",
             "name": "VocaColle Morphe settings",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

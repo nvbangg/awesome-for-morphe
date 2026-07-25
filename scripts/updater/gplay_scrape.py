@@ -1,12 +1,12 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-from pathlib import Path
-from typing import Dict, Any, Tuple, Optional
 import concurrent.futures
-
 import sys
+from pathlib import Path
+from typing import Any, Dict, Optional, Tuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from utils import load_json
 
 try:
     from google_play_scraper import app as gplay_app
@@ -16,83 +16,146 @@ except ImportError:
     NotFoundError = Exception
 
 GPLAY_CONCURRENCY = 8
+DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
+OFFICIAL_BUNDLES_PATH = DATA_DIR / "official-bundles.json"
+
+# Inspired by code from Paresh Maheshwari
+SKIP_WORDS = {
+    "com",
+    "org",
+    "net",
+    "io",
+    "co",
+    "tv",
+    "me",
+    "xyz",
+    "ai",
+    "cn",
+    "ru",
+    "jp",
+    "ch",
+    "cz",
+    "de",
+    "fr",
+    "kr",
+    "in",
+    "nl",
+    "pl",
+    "se",
+    "dk",
+    "ee",
+    "eu",
+    "it",
+    "android",
+    "app",
+    "apps",
+    "player",
+    "client",
+    "mobile",
+    "thirdpartyclient",
+    "free",
+    "pro",
+    "lite",
+    "dev",
+    "beta",
+    "premium",
+    "inc",
+    "corp",
+    "llc",
+    "studio",
+    "studios",
+    "game",
+    "games",
+    "software",
+}
 
 
-def fetch_app_details(package_name: str) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+def fetch_app_details(package_name: str) -> Tuple[Optional[str], Optional[str], Optional[str], bool]:
     if not gplay_app:
-        return None, None, None
+        return None, None, None, False
     try:
         result = gplay_app(package_name, lang="en", country="us")
         if not result:
-            return None, None, None
+            return None, None, None, False
 
         icon_url = result.get("icon")
         if icon_url:
             icon_url += "=s64"
-
         description = result.get("summary")
         if description is None:
             description = ""
-
-        return result.get("title"), icon_url, description
+        return result.get("title"), icon_url, description, False
     except NotFoundError:
-        return None, None, None
+        return None, None, None, True
     except Exception as error:
-        print(f"Error fetching Google Play details for {package_name}: {error}")
-        return None, None, None
+        print(f"[-] Error fetching Google Play details for {package_name}: {error}")
+        return None, None, None, False
 
 
 def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any]) -> None:
     if not gplay_app:
-        print("Warning: google-play-scraper is not installed. Run: pip install google-play-scraper")
+        print("[-] google-play-scraper is not installed. Run: pip install google-play-scraper")
         return
 
-    tasks = []
+    official_apps = {}
+    official_data = load_json(OFFICIAL_BUNDLES_PATH, {})
+    if isinstance(official_data, dict) and "apps" in official_data:
+        official_apps = official_data["apps"]
 
-    for package_name, app_data in apps_dict.items():
+    def apply_official_fallback(pkg_name: str, app: Dict[str, Any]) -> None:
+        off_app = official_apps.get(pkg_name)
+        if off_app:
+            for attr in ("name", "iconUrl", "description"):
+                if not app.get(attr) and off_app.get(attr):
+                    app[attr] = off_app[attr]
+                    if attr == "iconUrl" and "googleusercontent.com" in app[attr] and "=s" not in app[attr]:
+                        app[attr] += "=s64"
+
+    tasks = [pkg for pkg, data in apps_dict.items() if mode == "month" or pkg not in existing_apps or any(data.get(a) is None for a in ("name", "iconUrl", "description"))]
+
+    if tasks:
+        print(f"\nScraping Google Play for {len(tasks)} apps (mode: {mode})...")
         if mode == "default":
-            if package_name not in existing_apps:
-                tasks.append(package_name)
-        elif mode == "daily":
-            if package_name not in existing_apps:
-                tasks.append(package_name)
-            else:
-                if app_data.get("name") is None or app_data.get("iconUrl") is None or app_data.get("description") is None:
-                    tasks.append(package_name)
-        elif mode == "month":
-            tasks.append(package_name)
-
-    if not tasks:
-        return
-
-    print(f"Scraping Google Play for {len(tasks)} apps (mode: {mode})...")
-    with concurrent.futures.ThreadPoolExecutor(max_workers=GPLAY_CONCURRENCY) as executor:
-        future_to_package = {executor.submit(fetch_app_details, package_name): package_name for package_name in tasks}
-        for future in concurrent.futures.as_completed(future_to_package):
-            package_name = future_to_package[future]
-            try:
-                name, icon, description = future.result()
-
-                if package_name not in apps_dict:
-                    apps_dict[package_name] = {}
-
-                if name is not None or icon is not None or description is not None:
-                    if mode == "month" or apps_dict[package_name].get("name") is None:
+            for task in tasks:
+                print(f"  -> {task}")
+        with concurrent.futures.ThreadPoolExecutor(max_workers=GPLAY_CONCURRENCY) as executor:
+            future_to_package = {executor.submit(fetch_app_details, package_name): package_name for package_name in tasks}
+            for future in concurrent.futures.as_completed(future_to_package):
+                package_name = future_to_package[future]
+                try:
+                    name, icon, description, is_404 = future.result()
+                    app = apps_dict.setdefault(package_name, {})
+                    if not is_404 and (name is not None or icon is not None or description is not None):
                         if name is not None:
-                            apps_dict[package_name]["name"] = name
-                    if mode == "month" or apps_dict[package_name].get("iconUrl") is None:
-                        if icon is not None:
-                            apps_dict[package_name]["iconUrl"] = icon
-                    if mode == "month" or apps_dict[package_name].get("description") is None:
-                        if description is not None:
-                            apps_dict[package_name]["description"] = description
-                else:
-                    if "name" not in apps_dict[package_name]:
-                        apps_dict[package_name]["name"] = None
-                    if "iconUrl" not in apps_dict[package_name]:
-                        apps_dict[package_name]["iconUrl"] = None
-                    if "description" not in apps_dict[package_name]:
-                        apps_dict[package_name]["description"] = None
+                            app["name"] = name
+                        elif app.get("name") is None:
+                            app["name"] = ""
 
-            except Exception as error:
-                print(f"Error processing future for {package_name}: {error}")
+                        if icon is not None:
+                            app["iconUrl"] = icon
+                        elif app.get("iconUrl") is None:
+                            app["iconUrl"] = ""
+
+                        if description is not None:
+                            app["description"] = description
+                        elif app.get("description") is None:
+                            app["description"] = ""
+                    elif is_404:
+                        for attr in ("name", "iconUrl", "description"):
+                            if app.get(attr) is None:
+                                app[attr] = ""
+                except Exception as error:
+                    print(f"[-] Error processing future for {package_name}: {error}")
+
+    def derive_name(pkg_name: str) -> str:
+        parts = [part for part in pkg_name.split(".") if part not in SKIP_WORDS and len(part) > 1]
+        name = parts[-1] if parts else pkg_name.split(".")[-1]
+        return name.replace("-", " ").replace("_", " ").title()
+
+    # Fallback to official data AFTER scraping (ONLY for missing fields, NEVER overrides)
+    for package_name, app_data in apps_dict.items():
+        apply_official_fallback(package_name, app_data)
+        if not app_data.get("name"):
+            app_data["altName"] = derive_name(package_name)
+        else:
+            app_data.pop("altName", None)

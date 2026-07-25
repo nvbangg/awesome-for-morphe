@@ -1,5 +1,6 @@
 {
     "version": "1.0.0",
+    "name": "Pepper Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -14,13 +15,13 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [
                 "Unlock tier-locked icons"
             ],
             "description": "Shows every event-themed app icon in the picker, even when its event is not currently active.",
             "name": "Always show event-theming icons",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -35,11 +36,11 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server.",
             "name": "Block Pepper analytics-event-report tracker",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -54,11 +55,11 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": false,
             "dependencies": [],
             "description": "Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits.",
             "name": "Compact deal cards",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -73,14 +74,14 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost",
                 "Neuter tracker auto-init ContentProviders"
             ],
             "description": "Stops the Adjust SDK from initialising and tracking events.",
             "name": "Disable Adjust SDK",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -95,6 +96,7 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost",
                 "Neuter tracker auto-init ContentProviders",
@@ -102,8 +104,7 @@
             ],
             "description": "Blocks Google's Ad SDK from fetching native ads after init.",
             "name": "Disable Google Mobile Ads ad-load entry points",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -118,24 +119,24 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost",
                 "Neuter tracker auto-init ContentProviders"
             ],
             "description": "Stops the Google Mobile Ads SDK from initialising.",
             "name": "Disable Google Mobile Ads SDK init",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "com.pepperdeals": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes Google Play's install-source DRM check from the US Pepper.com build, allowing sideloaded APKs to open.",
             "name": "Disable PAIRIP license check",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -150,6 +151,7 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": false,
             "dependencies": [],
             "description": "Re-enables the hidden debug menu in the main activity.",
             "name": "Enable debug menu",
@@ -163,8 +165,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -179,6 +180,7 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [
                 "Hide banner ads in feed"
             ],
@@ -212,8 +214,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -228,11 +229,11 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the banner ads in the deal feed.",
             "name": "Hide banner ads in feed",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -247,11 +248,11 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Keeps the chosen event-themed app icon after the event ends.",
             "name": "Keep event icon after restart",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -266,14 +267,14 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost",
                 "Neuter tracker auto-init ContentProviders"
             ],
             "description": "Blocks Crashlytics report and Firebase log uploads from leaving the device.",
             "name": "Kill Datatransport upload pipeline",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -288,11 +289,11 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID.",
             "name": "Kill Pepper first-party pixel tracking",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -307,13 +308,13 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost"
             ],
             "description": "Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start.",
             "name": "Neuter tracker auto-init ContentProviders",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -328,11 +329,11 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network.",
             "name": "Redirect tracker URLs to localhost",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -347,13 +348,13 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost"
             ],
             "description": "Skips the Usercentrics consent screen and its loading wait on cold start.",
             "name": "Skip Usercentrics consent screen",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -368,11 +369,11 @@
                 "com.tippingcanoe.promodescuentos": [],
                 "se.pepperdeals": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all membership-tier app icons in the icon picker.",
             "name": "Unlock tier-locked icons",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

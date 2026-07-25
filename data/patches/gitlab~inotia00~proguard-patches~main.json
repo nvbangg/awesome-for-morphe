@@ -1,5 +1,6 @@
 {
     "version": "1.0.3",
+    "name": "ProGuard Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,21 +8,21 @@
                     "1.0.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Assembles LSPosed modules based on the JSON file.",
             "name": "Assemble LSPosed module",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Find the dummy classes and write them to a JSON file",
             "name": "Find dummy classes",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

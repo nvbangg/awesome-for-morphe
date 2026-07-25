@@ -1,5 +1,6 @@
 {
     "version": "1.5.0-dev.1",
+    "name": "T2C App Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,6 +8,7 @@
                     "3.2.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Points the app to a custom backend server by modifying environment variables.",
             "name": "Change API endpoint",
@@ -20,8 +22,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -29,6 +30,7 @@
                     "3.2.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Points the app to a custom Umami analytics server.",
             "name": "Custom Umami endpoint",
@@ -51,8 +53,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -60,6 +61,7 @@
                     "3.2.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Replaces the production environment variables with the developer or local ones.",
             "name": "Force environment",
@@ -76,8 +78,7 @@
                         "Local": "local"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -85,11 +86,11 @@
                     "3.2.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes Firebase App ID and Crashlytics API keys to disable Google tracking.",
             "name": "Remove Firebase tracking",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -97,11 +98,11 @@
                     "3.2.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the Google Maps API key from the manifest to stop Google tracking.",
             "name": "Remove Google Maps API key",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -109,11 +110,11 @@
                     "3.2.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables Umami tracking safely by modifying existing environment values.",
             "name": "Remove Umami tracking",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

@@ -1,5 +1,6 @@
 {
     "version": "1.18.0",
+    "name": "Chiggi Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,13 +8,13 @@
                     "1.20.2"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Food search bar layout"
             ],
             "description": "Adds a live search box below each meal-time header in the day/meal form. Typing filters that meal's food chips as you type; filtering only hides chips, so items you have already added stay added. The hardest patch to keep working — it hooks the obfuscated form adapter and will likely need re-fingerprinting after Nutrilio updates.",
             "name": "Add food search bar",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -21,11 +22,11 @@
                     "6.23.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Automatically skips the intro, recap and song segments as soon as the 'Skip' button would appear, without waiting for a tap.",
             "name": "Auto skip intro and recap",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -33,11 +34,11 @@
                     "6.23.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Plays the next episode immediately when the \"Up Next\" card appears, skipping the auto-play countdown.",
             "name": "Auto-skip Up Next",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -45,11 +46,11 @@
                     "1.6.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Stops Google Play's Automatic Integrity Protection (PairIP) license check that, on a re-signed/sideloaded build, redirects the app to the Play Store (\"get it on Google Play\"). Neuters both entry points of com.pairip.licensecheck.LicenseClient (checkLicense / initializeLicenseCheck) so the check never runs. Required for the patched app to open at all.",
             "name": "Bypass Play license check",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -57,11 +58,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Stops the \"Something is interfering with your secure connection\" (NET_201) screen that JioHotstar shows when it detects a VPN/proxy. The app self-enforces a proxy verdict the server sends via the X-Hs-SetProxyState response header: the client stores it and, when it is BLOCKED/RESTRICTED, shows the security error. This neuters the handler that stores that verdict, so the client keeps reporting a clean (unblocked) proxy state and never blocks itself. It also neuters the store's periodic proxy-state refresh coroutines, which would otherwise re-fetch endlessly (the verdict is never stored, so the TTL check always sees it expired) and make the app feel laggy/retrying. Note: if JioHotstar also refuses playback server-side based on the connection IP, video may still fail even though the error screen is gone.",
             "name": "Bypass proxy/VPN security block",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -69,6 +70,7 @@
                     "1.7.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
             "name": "Change app name",
@@ -82,8 +84,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -91,6 +92,7 @@
                     "1.6.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
             "name": "Change app name",
@@ -104,8 +106,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -113,6 +114,7 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
             "name": "Change app name",
@@ -126,8 +128,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -135,6 +136,7 @@
                     "2.6.4_2076"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
             "name": "Change app name",
@@ -148,8 +150,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -157,6 +158,7 @@
                     "1.20.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
             "name": "Change app name",
@@ -170,8 +172,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -179,6 +180,7 @@
                     "6.23.1"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
             "name": "Change app name",
@@ -192,8 +194,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -201,6 +202,7 @@
                     "434.0.0.41.74"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
             "name": "Change app name",
@@ -214,8 +216,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -223,6 +224,7 @@
                     "10.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
             "name": "Change app name",
@@ -236,8 +238,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -245,6 +246,7 @@
                     "1.7.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the app package name so the patched app installs alongside the original. Set the desired package name in the patch options. WARNING: this game ships native integrity/signing libraries; a renamed + re-signed package may trip a native tamper check. Disable this patch if the app crashes or closes on launch.",
             "name": "Change package name",
@@ -258,8 +260,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -267,6 +268,7 @@
                     "1.20.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the app package name so the patched app installs alongside the original. Set the desired package name in the patch options. Changing the package name can cause unexpected issues with some app features.",
             "name": "Change package name",
@@ -280,8 +282,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -289,6 +290,7 @@
                     "6.23.1"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Changes the app package name so the patched app installs alongside the original. Set the desired package name in the patch options. Changing the package name can cause unexpected issues with some app features.",
             "name": "Change package name",
@@ -302,8 +304,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -311,6 +312,7 @@
                     "434.0.0.41.74"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the app package name so the patched app installs alongside the original Threads. Set the desired package name in the patch options. WARNING: Meta apps hardcode many component/provider references — renaming the package can break Facebook login (SSO), content providers, or push. Disable this patch if you hit such issues.",
             "name": "Change package name",
@@ -324,8 +326,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -333,11 +334,11 @@
                     "1.7.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Stops Easybrain analytics event upload (Unity AnalyticsPlugin send + the central AnalyticsController collector). SDK init is left intact so ad removal stays stable. Does not disable deep GMS/Firebase auto-collection; pair with Remove AD_ID for advertising-id.",
             "name": "Disable analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -345,11 +346,11 @@
                     "1.6.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Stops native Sentry crash/telemetry upload by neutering the Capacitor Sentry plugin's native init (io.sentry.capacitor.SentryCapacitor.initNativeSdk), so it resolves without starting the native Sentry SDK. Firebase auth, ConfigCat and push are unaffected.",
             "name": "Disable analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -357,11 +358,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables Firebase/Google Analytics, Crashlytics and Performance data collection via manifest flags. CleverTap is left intact (it drives in-app UI and disabling it would crash the app). Push notifications are unaffected.",
             "name": "Disable analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -369,11 +370,11 @@
                     "2.6.4_2076"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables Firebase/Google Analytics, Crashlytics and Performance data collection via manifest flags. CleverTap is left intact (it drives in-app UI and disabling it would crash the app). Push notifications are unaffected.",
             "name": "Disable analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -381,11 +382,11 @@
                     "1.20.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables Firebase/Google Analytics, Crashlytics and Performance data collection via manifest flags and removes the advertising-id (AD_ID) permissions. Push notifications are unaffected.",
             "name": "Disable analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -393,11 +394,11 @@
                     "10.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables Firebase/Google Analytics, Crashlytics and Performance data collection via manifest flags. CleverTap is left intact (it drives in-app UI and disabling it would crash the app). Push notifications are unaffected.",
             "name": "Disable analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -405,11 +406,11 @@
                     "6.23.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables AppsFlyer attribution and event tracking. Other SDKs (CleverTap, Firebase Analytics/Crashlytics) are not affected by this patch.",
             "name": "Disable AppsFlyer tracking",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -417,11 +418,11 @@
                     "6.23.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables Firebase Analytics, Crashlytics and Performance data collection via manifest flags. Push notifications are unaffected.",
             "name": "Disable Firebase tracking",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -429,11 +430,11 @@
                     "6.23.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the forced ('immediate') and optional ('flexi') 'update available' popup shown on the home screen.",
             "name": "Disable forced update",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -441,11 +442,11 @@
                     "10.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the 'update available' popup (both the forced/non-cancelable and the optional variant) shown on splash/home. The pinned 10.8 re-signed build would otherwise be nagged — or hard-blocked — to update whenever the server reports a newer version. The popup is gated on ClientInfo.getVersionNumber(); forcing it to \"0\" makes the version check in SplashActivity and MainActivity conclude no update is needed.",
             "name": "Disable forced update",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -453,11 +454,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces all video codecs (H265/VP9/AV1) and 4K support on by bypassing the capability/blacklist checks. Off by default: forcing a codec/resolution a TV cannot actually decode can break playback. Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
             "name": "Enable all codecs",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -465,11 +466,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Allows playback to continue while screen mirroring or an external HDMI display is connected, instead of showing the multiple-display block. Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
             "name": "Enable screen mirroring",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -477,11 +478,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes screenshot and screen-recording restrictions on the app UI (the DRM video itself stays protected by Widevine). Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
             "name": "Enable screenshots",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -489,11 +490,11 @@
                     "1.20.2"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Adds the search box view below each meal-time header in the day/meal form. Enabled automatically by \"Add food search bar\".",
             "name": "Food search bar layout",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -501,11 +502,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces HDR10 / HDR10+ / Dolby Vision playback by bypassing the capability/blacklist check. Off by default: forcing HDR on a panel that cannot render it can wash out or break playback. Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
             "name": "Force HDR10",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -513,11 +514,11 @@
                     "434.0.0.41.74"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Hides sponsored posts and injected \"suggested\" netego units from the Threads feed. Marks every media as organic (Media.DED) and blocks the feed ad-injection scheduler (BarcelonaSpoolFeedCacheHandler). Client-side only.",
             "name": "Hide ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -525,11 +526,11 @@
                     "6.23.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Hides the CleverTap-driven subscribe/premium promo banners and promo trays on the home screen. Content rows and CleverTap pop-ups/overlays are not affected.",
             "name": "Hide promo banners",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -537,11 +538,11 @@
                     "1.20.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Adds a native \"Local backup & restore\" row to the Backup screen (above Restore Backup) that opens Nutrilio's built-in (but normally hidden) local file backup/restore. There you can export a complete backup — all entries, images and settings — to a portable .nutrilio file (a ZIP) via the share sheet, and restore one from a file you pick. No Google account, no premium needed. (Google Drive auto-backup is separate and still requires sign-in, which does not work on a re-signed app.)",
             "name": "Local backup & restore",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -549,11 +550,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "For PHONE builds only: makes a phone APK installable on Android TV / Google TV by marking touchscreen, portrait-screen and other phone-only features optional (they are why the TV installer reports \"not compatible with your TV\"), declaring the leanback feature optional, and adding the leanback launcher category. Off by default because the JioHotstar TV build (.apkm) is already a native leanback D-pad app and does not need it. Note: a phone build patched this way still shows a portrait touch UI — a mouse or air-remote may be needed since it expects touch, not a D-pad.",
             "name": "Make installable on TV",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -561,11 +562,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium UI state: shows the subscribed badge, enables the download button for all content and suppresses subscription nudges during playback. This is a UI unlock only — it does not grant access to DRM content you are not entitled to. Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
             "name": "Premium unlock",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -573,11 +574,11 @@
                     "10.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces the client 'subscribed' flags true so premium UI state shows unlocked. OFF by default: Vi Movies and TV enforces entitlement server-side with Widevine DRM, so this does NOT grant content you are not entitled to — it only changes UI, and content that appears playable may still be refused by the server. Cosmetic UI change only.",
             "name": "Premium unlock (UI)",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -585,11 +586,11 @@
                     "1.7.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Topics and Attribution signals cannot be read for ad tracking.",
             "name": "Remove AD_ID permission",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -597,11 +598,11 @@
                     "1.6.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Topics, Attribution and Custom Audience signals cannot be read for ad tracking.",
             "name": "Remove AD_ID permission",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -609,11 +610,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Attribution and Topics signals cannot be read for ad tracking.",
             "name": "Remove AD_ID permission",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -621,11 +622,11 @@
                     "2.6.4_2076"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Attribution and Topics signals cannot be read for ad tracking.",
             "name": "Remove AD_ID permission",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -633,11 +634,11 @@
                     "434.0.0.41.74"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the advertising-id (AD_ID) permissions so the device advertising id cannot be read for ad tracking. Does not disable Meta's core analytics.",
             "name": "Remove AD_ID permission",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -645,11 +646,11 @@
                     "10.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Attribution and Topics signals cannot be read for ad tracking.",
             "name": "Remove AD_ID permission",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -657,11 +658,11 @@
                     "1.7.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes ALL ads (banner, interstitial and rewarded) by neutering the Unity<->Android ad facade (com.easybrain.ads.unity.AdsPlugin): availability/show booleans return false, banner shows are no-ops and banner height is 0. The game treats every ad type as never ready. Note: rewarded ads are also removed, so watch-to-earn rewards no longer work.",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -669,11 +670,11 @@
                     "1.6.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes native ads (AdMob and its Pangle/Audience Network mediation) by neutering the Capacitor AdMob plugin (com.getcapacitor.community.admob.AdMob): no video is shown for interstitial or rewarded ads — instead the show methods fire the ad's lifecycle events so the game's loading overlay dismisses and rewarded ads still credit their reward; banners never display. Note: in-page web video ads served remotely inside the WebView (from crazygames.com) are not part of the app bytecode and cannot be removed here.",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -681,11 +682,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes pre-roll, mid-roll and live-match video ads by clearing the SSAI ad tag in the AdMetadata constructor, so the client requests a clean, non-ad-stitched stream at the source. This surgical approach lets the app's own ad machinery see \"no ads\" and behave normally (no retry loops, no empty ad slots). Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -693,11 +694,11 @@
                     "2.6.4_2076"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes JioTV+ ads. Display/banner ads are neutered at the JioAds SDK entry (JioAdView.loadAd / cacheAd), and player video ads (pre-roll, mid-roll, post-roll and SSAI stitched ads) are removed by no-oping VMAPAdsHelper.fetchAds — the single method that fetches and sets up all player ads from the playback-rights model.",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -705,11 +706,11 @@
                     "10.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes pre-roll, mid-roll and SSAI video ads. The player builds its IMA/SSAI ad-tag URL from AdUrlResponse.getAdUrlTypes(); forcing that to null (and the TorcAiAdConfig.isAdEnabled() gate to false) means no ad tag is ever loaded, so no ad plays.",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -717,11 +718,11 @@
                     "10.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the per-content watermark/logo overlaid on the video (the one that changes depending on what you play). The player only shows the watermark ImageView when Configs.getWaterMarkInfoOnPlayer() returns non-empty JSON; forcing that getter to null makes the player's own guard hide the overlay. Client render only, so this is fully removable (it is not baked into the stream).",
             "name": "Remove player watermark",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -729,11 +730,11 @@
                     "6.23.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces PlayerUtil.isAdEnable() to false so the player neither requests nor plays ads. Removes client-side (Google IMA) ads. Server-side stitched ads on some live content (MediaTailor/SSAI) may still appear.",
             "name": "Remove video ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -741,11 +742,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces the device-attestation blob JioHotstar sends to the server to report a clean device (IsTampered/IsRooted/IsProxy/isVpnActive/IsEmulator/suspicious-file/open-ports/debugger all false). The re-signed build otherwise sends IsTampered=true, which the server flags as \"suspicious activity\" and locks the account for 24 hours (error NM-4290). WARNING: this reduces one client-sent signal but does NOT make the account safe — the server still sees the VPN exit IP, and an already-flagged account stays on Hotstar's radar. Do not run this on an account you cannot afford to lose.",
             "name": "Spoof device attestation",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -753,11 +754,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Replaces the device id JioHotstar derives from Settings.Secure ANDROID_ID with a stable-per-install random UUID, so the re-signed build presents as a device the server has never flagged. This is the verified single source of both the X-HS-Device-Id request header and the /v2/start body device ids; ANDROID_ID otherwise survives an app-data clear (it is keyed to the signing key), which is why a flagged device kept getting the \"device logged out / suspicious activity\" page on every launch. The id is persisted, and regenerates on an app-data clear so a re-flagged device can be rotated. NOTE: the server also sees the connection IP — pair this with a clean (ideally residential) India IP; a flagged exit IP is not something the client can change. Do not run on an account you cannot afford to lose.",
             "name": "Spoof device id",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -765,11 +766,11 @@
                     "26.06.22.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces JioHotstar's security-suite checks (VPN, proxy, root, debugger, open ports, suspicious files) to report false, so the device-integrity attestation the app sends to the server looks clean. Helps rooted/modded devices and complements the VPN bypass. Note: the attestation is also server-validated (signed nonce) and the server sees the connection IP, so this is not guaranteed to defeat a server-side check on its own.",
             "name": "Spoof device-integrity self-report",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -777,11 +778,11 @@
                     "6.23.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Stops the dedicated \"not available in your region\" and \"VPN detected\" block screens by downgrading the geo/EPD block to a generic error. Geoblocking is enforced server-side by IP, so this does not grant access without a valid in-region IP (e.g. a working India connection).",
             "name": "Suppress geo / VPN block",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -789,11 +790,11 @@
                     "1.20.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Nutrilio PLUS+ by forcing the premium gate (PremiumModule.t2()) to return true. Every premium feature (custom colors, all charts, app lock, all tracking options) and the paywall treat the user as a subscriber. Client-side only; does not grant a real Google Play subscription.",
             "name": "Unlock Plus",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -801,11 +802,11 @@
                     "6.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks AYA Baby AI premium without a purchase by forcing the Apphud SDK entitlement checks Apphud.hasPremiumAccess() and hasActiveSubscription() to return true. The app gates premium features on these, so the app treats the user as subscribed. Because it uses an ads-or-premium model, unlocking premium also stops the Appodeal/AdMob ads. No Google Play purchase is made or needed.",
             "name": "Unlock premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -813,11 +814,11 @@
                     "1.5.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks the paid 'premium' upgrade (IAP com.mediocre.commute.premium) without a purchase. The native game asks the Java billing bridge AndroidStore whether the product is owned via isProductIdRestored() and reads the store status via getStatusAsString(); this forces the former to true and the latter to \"2\" (STORE_SUCCEEDED), so the game treats premium as owned. No Play purchase is made or needed. Note: the game's actual entitlement logic is in native libcommute.so, which cannot be patched here — if it independently re-verifies the purchase, this may not take effect.",
             "name": "Unlock premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -825,11 +826,11 @@
                     "1.3.28"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Cry Analyzer premium and removes all usage limits without a purchase. Forces BillingClientWrapper.isPurchased(...) true (every ownership check reports owned) and UserData.getRestrictionRelease() true (the master 'restrictions removed' flag). Together this gives unlimited analyses with no free-count / rewarded-ad requirement, no ads, and no free-analysis reminder nag. No Google Play purchase is made or needed.",
             "name": "Unlock premium",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

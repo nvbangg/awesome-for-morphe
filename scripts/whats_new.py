@@ -4,17 +4,21 @@ import datetime
 import re
 import urllib.parse
 from pathlib import Path
-
 from utils import load_json, save_json
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 PATCHES_DIR = DATA_DIR / "patches"
 HISTORY_PATH = DATA_DIR / "history.json"
+BUNDLES_JSON_PATH = ROOT / "docs" / "bundles.json"
 APPS_JSON_PATH = ROOT / "docs" / "apps.json"
-SKIP_WORDS_PATH = ROOT / "docs" / "assets" / "skip-words.json"
 WHATS_NEW_PATH = ROOT / "whats-new.md"
 WHATS_NEW_JSON_PATH = ROOT / "docs" / "whats-new.json"
+
+
+def get_bundle_names():
+    bundles_json = load_json(BUNDLES_JSON_PATH, {})
+    return {f"{bundle['source']}:{bundle['repo']}": bundle.get("name", bundle["repo"].split("/")[-1]) for bundle in bundles_json.get("bundles", [])}
 
 
 def collect_apps(list_json):
@@ -28,17 +32,14 @@ def collect_apps(list_json):
         package_names = set()
 
         if isinstance(compatible, dict):
-            # Old format: dict of package names
             package_names.update(compatible.keys())
         elif isinstance(compatible, list):
-            # New format: list of objects
             for item in compatible:
                 if isinstance(item, dict) and (package_name := item.get("packageName")):
                     package_names.add(package_name)
 
         for package_name in package_names or {"universal"}:
             patches_dict.setdefault(package_name, set()).add(patch_name)
-
     return {package_name: sorted(list(patches_dict[package_name])) for package_name in sorted(patches_dict)}
 
 
@@ -49,8 +50,6 @@ def build_current_bundles():
         if not match:
             continue
         base, channel = match.groups()
-        # base here is something like "github~AlexNaga~android-patches"
-        # we need to convert it to "github:AlexNaga/android-patches"
         if "~" in base:
             parts = base.split("~")
             if len(parts) >= 3:
@@ -61,24 +60,16 @@ def build_current_bundles():
             continue
         target = main_dict if channel == "main" else dev_dict
         target[base] = collect_apps(list_json)
-
     return main_dict, dev_dict
 
 
-# Inspired by code from Paresh Maheshwari
-def derive_name(package_name, skip_words):
-    parts = [part for part in package_name.split(".") if part not in skip_words and len(part) > 1]
-    name = parts[-1] if parts else package_name.split(".")[-1]
-    return name.replace("-", " ").replace("_", " ").title()
-
-
-def format_app_name(package_name, app_metadata, skip_words):
+def format_app_name(package_name, app_metadata):
     meta = app_metadata.get(package_name)
-    if isinstance(meta, dict) and meta.get("name"):
-        return meta["name"]
+    if isinstance(meta, dict):
+        return meta.get("name") or meta.get("altName") or package_name
     if isinstance(meta, str):
         return meta
-    return derive_name(package_name, skip_words)
+    return package_name
 
 
 def format_patch(patch_name):
@@ -117,8 +108,8 @@ def make_url(bundle, app=None, patches=None):
     if patches:
         trie_dict = {bundle: {app: list(patches)}}
         trie_str = stringify_trie(trie_dict)
-        q = urllib.parse.quote(trie_str, safe=':,"()')
-        query.append(f"show={q}")
+        encoded_trie = urllib.parse.quote(trie_str, safe=':,"()')
+        query.append(f"show={encoded_trie}")
     elif app:
         query.append(f"show={bundle}:{app}")
     else:
@@ -134,20 +125,22 @@ def is_valid_pkg(package_name):
     return ("." in package_name and " " not in package_name) or package_name == "universal"
 
 
-def build_json_diff(old_bundles, new_bundles, app_metadata, skip_words):
+def build_json_diff(old_bundles, new_bundles, app_metadata, bundle_names):
     json_diff = {}
 
     def app_sort_key(pkg):
         return (
             pkg == "universal",
-            format_app_name(pkg, app_metadata, skip_words).lower(),
+            format_app_name(pkg, app_metadata).lower(),
         )
 
     for key, patches_dict in sorted(new_bundles.items(), key=lambda x: x[0].lower()):
         new_package_names = {pkg for pkg in patches_dict if is_valid_pkg(pkg)}
+        display_name = bundle_names.get(key, key.split("/")[-1] if "/" in key else key)
 
         if key not in old_bundles:
             json_diff[key] = {
+                "name": display_name,
                 "isNew": True,
                 "apps": {
                     pkg: {
@@ -177,18 +170,22 @@ def build_json_diff(old_bundles, new_bundles, app_metadata, skip_words):
                         }
 
             if apps_dict:
-                json_diff[key] = {"isNew": False, "apps": apps_dict}
-
+                json_diff[key] = {
+                    "name": display_name,
+                    "isNew": False,
+                    "apps": apps_dict,
+                }
     return json_diff
 
 
-def generate_markdown(json_diff, app_metadata, skip_words):
+def generate_markdown(json_diff, app_metadata):
     all_changes = {}
     markdown_lines = []
 
     for bundle_key, bundle_data in json_diff.items():
         is_new_bundle = bundle_data.get("isNew", False)
         apps_data = bundle_data.get("apps", {})
+        display_name = bundle_data.get("name", bundle_key)
 
         if is_new_bundle:
             all_changes[bundle_key] = {}
@@ -212,11 +209,11 @@ def generate_markdown(json_diff, app_metadata, skip_words):
 
         if is_new_bundle:
             url = make_url(bundle_key)
-            link = f"[{bundle_key}]({url})"
-            bundle_md = [f"+ 📦 {link} (✨New)"]
+            link = f"[{display_name}]({url})"
+            bundle_md = [f"+ 📦 (✨New) {link}"]
 
             for package_name in apps_data.keys():
-                app_name = format_app_name(package_name, app_metadata, skip_words)
+                app_name = format_app_name(package_name, app_metadata)
                 bundle_md.append(f"    - 📱 {app_name}")
 
             markdown_lines.append("\n".join(bundle_md))
@@ -230,22 +227,22 @@ def generate_markdown(json_diff, app_metadata, skip_words):
 
             trie_dict = {bundle_key: bundle_changes}
             trie_str = stringify_trie(trie_dict)
-            q = urllib.parse.quote(trie_str, safe=':,"')
-            url = f"https://awesome-morphe.vercel.app/?show={q}#whats-new"
+            encoded_trie = urllib.parse.quote(trie_str, safe=':,"')
+            url = f"https://awesome-morphe.vercel.app/?show={encoded_trie}#whats-new"
 
-            link = f"[{bundle_key}]({url})"
+            link = f"[{display_name}]({url})"
             bundle_md = [f"- 📦 {link}"]
 
             for package_name in apps_data.keys():
                 app_data = apps_data[package_name]
-                app_name = format_app_name(package_name, app_metadata, skip_words)
+                app_name = format_app_name(package_name, app_metadata)
 
                 if app_data.get("isNew", False):
-                    bundle_md.append(f"    + 📱 {app_name} (✨New)")
+                    bundle_md.append(f"    + 📱 (✨New) {app_name}")
                 else:
                     bundle_md.append(f"    - 📱 {app_name}")
-                    for p in sorted(app_data.get("patches", [])):
-                        bundle_md.append(f"        + 🧩 `{p}` (✨New)")
+                    for patch_name in sorted(app_data.get("patches", [])):
+                        bundle_md.append(f"        + 🧩 (✨New) `{patch_name}`")
 
             markdown_lines.append("\n".join(bundle_md))
 
@@ -270,22 +267,23 @@ def main():
 
     old_history = load_json(HISTORY_PATH, {}) or {}
     app_metadata = load_json(APPS_JSON_PATH, {})
-    skip_words = load_json(SKIP_WORDS_PATH, []) or []
+
     whats_new_data = load_json(WHATS_NEW_JSON_PATH, []) or []
+    bundle_names = get_bundle_names()
 
     # Shift time back by 12 hours to handle GitHub Actions delays
     now = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=12)
     today_str = now.strftime(f"%B {now.day}, %Y")
 
     _, new_dev = build_current_bundles()
-    json_diff = build_json_diff(old_history, new_dev, app_metadata, skip_words)
+    json_diff = build_json_diff(old_history, new_dev, app_metadata, bundle_names)
 
     if not json_diff:
         print("No changes found.")
         return
 
     # Create markdown
-    markdown_str = generate_markdown(json_diff, app_metadata, skip_words)
+    markdown_str = generate_markdown(json_diff, app_metadata)
     if markdown_str:
         WHATS_NEW_PATH.write_text(markdown_str + "\n", encoding="utf8")
         print("What's New MD created.")

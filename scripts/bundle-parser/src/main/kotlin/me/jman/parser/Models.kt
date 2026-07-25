@@ -28,5 +28,11 @@ data class LegacyBundleFile(
 @Serializable
 data class LocalPatchesFile(
     val version: String,
+    val name: String? = null,
     val patches: JsonArray
+)
+
+data class PatchListResult(
+    val patches: JsonArray,
+    val name: String? = null
 )

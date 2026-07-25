@@ -2,6 +2,7 @@ import json
 import time
 import urllib.request
 import urllib.error
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional, Union
 
@@ -46,7 +47,7 @@ def load_json(path: Union[str, Path], default: Any = None) -> Any:
         with open(path, "r", encoding="utf-8") as file:
             return json.load(file)
     except json.JSONDecodeError:
-        print(f"Warning: Corrupted JSON file: {path}")
+        print(f"[-] Corrupted JSON file: {path}")
         return default if default is not None else {}
     except IOError:
         return default if default is not None else {}
@@ -58,3 +59,17 @@ def save_json(path: Union[str, Path], data: Any) -> None:
     with open(path, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=2, ensure_ascii=False)
         file.write("\n")
+
+
+def parse_timestamp(timestamp: Any) -> int:
+    if not timestamp:
+        return 0
+    if isinstance(timestamp, int):
+        return timestamp
+    if isinstance(timestamp, str) and timestamp.isdigit():
+        return int(timestamp)
+    try:
+        dt = datetime.fromisoformat(str(timestamp).replace("Z", "+00:00"))
+        return int(dt.timestamp() * 1000)
+    except Exception:
+        return 0

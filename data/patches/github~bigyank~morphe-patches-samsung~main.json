@@ -1,5 +1,6 @@
 {
     "version": "1.2.1",
+    "name": "Bigyank Samsung Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -9,11 +10,11 @@
                     "6.31.3.013"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Replaces com.osp.app.signin with com.notsamsung.dummy in dex and routes account lookups through Android AccountManager instead of Samsung Account's provider.",
             "name": "Bypass Samsung Account provider checks",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -23,11 +24,11 @@
                     "6.31.3.013"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Bypass Knox, root, warranty bit, and SAK checks so Samsung Health runs on Knox-tripped devices (0x1) without root.",
             "name": "Disable Knox integrity checks",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

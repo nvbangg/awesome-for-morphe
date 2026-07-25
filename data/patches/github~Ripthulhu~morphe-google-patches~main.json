@@ -1,5 +1,6 @@
 {
     "version": "1.1.4",
+    "name": "Google Feed Ads Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,6 +8,7 @@
                     "17.34.30.ve.arm64"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Changes the Google app package identity so the patched APK can be installed beside the system Google app.",
             "name": "Install as standalone app",
@@ -33,8 +35,7 @@
                         "Default": "Google Morphe"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -42,11 +43,11 @@
                     "17.34.30.ve.arm64"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Filters likely ad nodes from the Google app Discover feed.",
             "name": "Remove Discover feed ads",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

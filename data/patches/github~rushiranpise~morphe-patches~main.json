@@ -1,5 +1,6 @@
 {
     "version": "1.15.1",
+    "name": "Rushi's Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,6 +8,7 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Configures radar/camera and hazard alert announcement distances.\nWrites all key variants (truncated _ + underscore + space) for resilience across versions.\nCredits: Waze CGE Mod.\nOfficial → default values (metres):\nAccident 600→2000 | Alert 600→1000 | Police 600→1000 |\nFreeways 2000→1200 | Highways 1000→900 | Streets 500→700 |\nHazard 600→500 | Heavy Traffic 600→3000 | Between Alerts 300→200",
             "name": "Alert Distances",
@@ -92,8 +94,7 @@
                     "type": "kotlin.Long",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -101,11 +102,11 @@
                     "7.85.0.952162352"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Makes Google Photos dark surfaces true black.",
             "name": "AMOLED dark theme",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -113,6 +114,7 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Controls how aggressively the map zooms in/out based on driving speed.\nCredits: Waze Chuppito Mod (Speed Factor 20, Gradient Speed Threshold 60).",
             "name": "AutoZoom",
@@ -153,8 +155,7 @@
                     "type": "kotlin.Long",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -162,11 +163,11 @@
                     "1.0.943911795"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces all APK install verification sessions to be bypassed, preventing the verifier from blocking sideloaded or unsigned apps on Android 16+ devices.Important: Requires pushing the patched APK as a system app replacement (e.g. via Magisk module or ADB with root)since the original holds DEVELOPER_VERIFICATION_AGENT permission. ADB installs are exempt from verification regardless.",
             "name": "Bypass developer verification",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -174,11 +175,11 @@
                     "26.29.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Bypasses PairIP DRM license verification to prevent forced app shutdown on non-Play-licensed installs.",
             "name": "Bypass License Check",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -186,11 +187,11 @@
                     "26.29.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Bypasses the subscription paywall in-app.",
             "name": "Bypass Subscription Paywall",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -198,6 +199,7 @@
                     "7.85.0.952162352"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Installs Google Photos beside the system Photos app by changing package, permissions, providers, and app name.",
             "name": "Change package name",
@@ -220,11 +222,11 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Changes android:versionCode.",
             "name": "Change version code",
@@ -238,8 +240,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -250,6 +251,7 @@
                     "32.12.4.300"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
@@ -269,16 +271,15 @@
                         "Off": "off"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "No-ops common ad SDK load/show/init/fetch methods in bundled ad packages.",
             "name": "Disable ad SDK calls",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -286,11 +287,11 @@
                     "1.8.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Prevents the AppOpen ad preloader from initialising.",
             "name": "Disable Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -298,11 +299,11 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Suppresses all Waze ad systems via bundled preferences file:\n• AdMob SDK (Ad_.*)\n• Google Ads (Google_Ads.*)\n• Ads Inventory Prediction\n• ExternalPOI pins, coupons, popups (ExternalPO_ + Extern__POI both key variants)\n• Search autocomplete server ads\nCredits: Waze CGE Mod (ExternalPOI keys), Waze Chuppito (dual-key coverage).",
             "name": "Disable Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -310,11 +311,11 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Stubs AdvilRequest.getPageUrl() → \"\" so the Advil ad server receives no page URL and returns no ad content. Target: Lcom/waze/jni/protos/AdvilRequest;->getPageUrl() in classes6.dex (verified ✓).",
             "name": "Disable Advil Ad Requests",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -322,19 +323,19 @@
                     "6.38.8"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Disables App Analytics / Telemetry.",
             "name": "Disable Analytics / Telemetry",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Blocks app clipboard reads and writes.",
             "name": "Disable clipboard access",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -345,19 +346,19 @@
                     "32.12.4.300"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Prevents search keypress and focus events from being sent with suggestion requests.",
             "name": "Disable search suggestions tracking",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Skips SensorManager.registerListener calls that can power shake-to-ad behavior.",
             "name": "Disable shake ads",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -365,11 +366,11 @@
                     "7.20.5.2606250000"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables CamScanner's custom telemetry/log-agent system.",
             "name": "Disable telemetry",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -377,11 +378,11 @@
                     "4.4.3.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables analytics and telemetry in ES File Explorer",
             "name": "Disable Tracking",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -392,11 +393,11 @@
                     "32.12.4.300"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Prevents videos from autoplaying in Amazon's in-app WebView pages.",
             "name": "Disable video autoplay",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -407,19 +408,19 @@
                     "32.12.4.300"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Prevents product and ad videos from autoplaying.",
             "name": "Disable video autoplay",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Sets android:debuggable=true.",
             "name": "Enable Android debugging",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -427,19 +428,19 @@
                     "7.85.0.952162352"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Allows controlling Camera and other DCIM folder backup individually.",
             "name": "Enable DCIM folders backup control",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Forces compatible BUILD_TARGET debug providers to debug=true.",
             "name": "Enable debug build target",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -447,14 +448,15 @@
                     "6.88.2"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Enables Duolingo's hidden debug menu in settings.",
             "name": "Enable Debug Menu",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Adds fake-signature permission and metadata.",
             "name": "Enable ROM signature spoofing",
@@ -468,8 +470,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -477,6 +478,7 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Increases speedometer digit size for better readability.\nDefault: speed < 100 → 28sp (orig 20sp), speed ≥ 100 → 21sp (orig 13sp).\nTarget: Lcom/waze/main_screen/h/b/d;->f() in classes6.dex (verified ✓).\nNote: the two const/16 values are non-consecutive (goto between them) — scanned independently.",
             "name": "Enlarged Speedometer",
@@ -499,26 +501,25 @@
                     "type": "kotlin.Long",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Makes all activities exportable.",
             "name": "Export all activities",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Registers an extension DocumentsProvider for the app internal data directory.",
             "name": "Export internal data documents provider",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -529,11 +530,11 @@
                     "32.12.4.300"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Updates shared Amazon permissions so other Amazon apps can coexist.",
             "name": "Fix Amazon manifest conflicts",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -541,31 +542,31 @@
                     "7.85.0.952162352"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Prevents non-Camera DCIM folders from being grouped as Camera.",
             "name": "Fix DCIM folder classification",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "Provide Original app certificate"
             ],
             "description": "Fixes Firebase services (push notifications, Remote Config, Firebase Auth) that break after Morphe re-signs the app with a different certificate.\n\nApply with Original app certificate patch no other config needed.",
             "name": "Fix Firebase after re-signing",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Forces common AppCompat, UiModeManager, and Configuration dark-mode checks to night mode.",
             "name": "Force dark theme",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -573,16 +574,17 @@
                     "7.85.0.952162352"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Adds MicroG/GmsCore support metadata for Google Photos.",
             "name": "GmsCore support",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "Provide Original app certificate",
                 "ResourcePatch"
@@ -625,27 +627,27 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Hides adb_enabled and development_settings_enabled.",
             "name": "Hide ADB status",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Removes launcher category from MAIN launcher filters.",
             "name": "Hide app icon",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Hides mock-location signals from app checks.",
             "name": "Hide mock location",
@@ -690,8 +692,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -702,19 +703,19 @@
                     "32.12.4.300"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the Rufus AI assistant tab from Amazon's bottom navigation bar.",
             "name": "Hide Rufus tab",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Hides common VPN transport/interface and Java proxy property checks.",
             "name": "Hide VPN and proxy",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -722,6 +723,7 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Applies Chuppito's 'Vitamin C' map skin. All visual values configurable.\n• Night: true black AMOLED background (saves battery, prevents burn-in)\n• Day: warm beige background\n• Larger font labels across the board\n• Wider navigation arrow head for better visibility\n• Custom car 3D models: Batmobile, Riddler, race car, 3D arrow\nNote: skin changes require a fresh APK install; updating an existing patched install may keep cached skin files.\nCredits: ALEX02-GTT (skin design), Waze Chuppito Mod (integration).",
             "name": "Map Skin (Vitamin C)",
@@ -789,8 +791,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -798,6 +799,7 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Configures navigation and map behaviour:\n• Nearing destination distance (Credits: CGE Mod)\n• Android Auto head-up alert distances\n• Map turn mode (auto-zoom to upcoming turn)\n• Traffic bar minimum time threshold\n• GPS icon visibility\n• Route notifications (hazard, school zone) — both disabled by default\nCredits: Waze CGE Mod (nearing destination), Waze Chuppito (remaining keys).",
             "name": "Navigation & Map",
@@ -886,8 +888,7 @@
                         "Enabled": "1"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -898,19 +899,19 @@
                     "32.12.4.300"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Opens non-Amazon URLs in the default browser instead of the in-app WebView.",
             "name": "Open links in browser",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Forces network security config trust anchors to override pins.",
             "name": "Override certificate pinning",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -918,6 +919,7 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Prevents promotional and ad popups from appearing while driving.\nRaises the minimum trigger speed to a near-impossible value so popups never appear.\nWrites both Popup_ and Popu__ key variants for version resilience.\nCredits: Waze Chuppito Mod.",
             "name": "Popup Suppression",
@@ -967,16 +969,15 @@
                     "type": "kotlin.Long",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Enables Android predictive back gesture.",
             "name": "Predictive back gesture",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -987,14 +988,15 @@
                     "32.12.4.300"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Injects Keepa and CamelCamelCamel price history charts on Amazon product pages.",
             "name": "Price history charts",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "By Default it Reads the signing certificate from the original app installed. Required for GmsCore, Firebase, and Signature spoof patches. Only fill options below if the original is uninstalled.",
             "name": "Provide Original app certificate",
@@ -1035,8 +1037,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -1044,19 +1045,19 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Plays radar/speed camera sound alerts regardless of current speed. Official Waze only alerts when over the speed limit.\nPatches CONFIG_VALUE_ALERTS_PLAY_SPEED_CAMERA_SOUND_BELOW_SPEED_LIMIT (ordinal 632) via setConfigValueBoolNTV on every server config sync.\nTarget: Lcom/waze/ConfigManager;->onConfigSyncedFromServer() in classes5.dex (verified ✓).",
             "name": "Radar Sound (Any Speed)",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Removes common ad SDK permissions, services, providers, libraries, and metadata.",
             "name": "Remove ad manifest entries",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1064,11 +1065,11 @@
                     "1.6.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Remove in-app ads",
             "name": "Remove ADS",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1076,11 +1077,11 @@
                     "2.0.13-beta02"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes all ads in app",
             "name": "Remove Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1088,11 +1089,11 @@
                     "18.0.356"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes interstitial and exit native ads from m-Indicator.",
             "name": "Remove Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1100,11 +1101,11 @@
                     "14.1.2254.83278"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Blocks all ad display across Opera News's five ad networks and all mediation layers (AdsFacade, AppLovin MAX, TopOn, MCSDK, SmartDigiMkt).",
             "name": "Remove Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1112,11 +1113,11 @@
                     "2.0.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks the Remove Ads purchase in qBitConnect by injecting IAP ownership flags into SharedPreferences before Flutter reads them.",
             "name": "Remove Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1124,11 +1125,11 @@
                     "1.4.22"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes ads.",
             "name": "Remove Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1136,11 +1137,11 @@
                     "2.0.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes ads from TorrDroid.",
             "name": "Remove Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1148,11 +1149,11 @@
                     "4.14.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Remove in-app ads.",
             "name": "Remove Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1160,11 +1161,11 @@
                     "2.21"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Stubs all ad loading paths: banner/interstitial loaders, billing callbacks, and ad SDK init.",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1175,11 +1176,11 @@
                     "32.12.4.300"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Hides sponsored and ad content in Amazon Shopping via CSS injection.",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1187,13 +1188,13 @@
                     "6.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Disables Block Puzzle AdMob initialization, banner, and interstitial ads.",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1201,11 +1202,11 @@
                     "9.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables LiveScore banner, native, and interstitial ad requests.",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1213,11 +1214,11 @@
                     "479"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces SubscriptionStateImpl.getStatus() (LB2/c.h) to always return HAS_UNLIMITED_SUBSCRIPTION and getPurchase() (LB2/c.g) to return a well-formed fake Purchase, removing ads and the upgrade button/banner without crashing on the now-expected non-null Purchase object.",
             "name": "Remove Ads / Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1225,19 +1226,19 @@
                     "26.29.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes all  item limits in-app.",
             "name": "Remove Item Limits",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Removes chooser/direct share targets.",
             "name": "Remove share targets",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1245,11 +1246,11 @@
                     "1.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the 10-minute waiting period before playing a sound on a detected tracker.",
             "name": "Remove Sound Delay",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1257,11 +1258,11 @@
                     "2.369.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes watermarks from Canva exports and previews.",
             "name": "Remove Watermark",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1269,19 +1270,19 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Adds a Report option when tapping the speedometer to report wrong or missing speed limits. Not available in the official version.\nKey: Map.Speedometer report speed enable_: 1",
             "name": "Report Speed Limit",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Sets targetSdkVersion to 34.",
             "name": "Set target SDK 34",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1289,6 +1290,7 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Sets the speed limit sign style shown on the map.\n• us (default) — large circular US-style sign, more readable at a glance\n• metric — smaller local-style sign\nKey: Map.Speedometer sign style",
             "name": "Speed Limit Sign",
@@ -1305,11 +1307,11 @@
                         "US circular — large, more readable": "us"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs Settings.Secure android_id reads.",
             "name": "Spoof Android ID",
@@ -1323,11 +1325,11 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "ResourcePatch",
                 "Provide Original app certificate",
@@ -1345,11 +1347,11 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs Bluetooth adapter name and MAC address reads.",
             "name": "Spoof Bluetooth identifiers",
@@ -1372,11 +1374,11 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs common android.os.Build fields with configurable values.",
             "name": "Spoof build info",
@@ -1453,8 +1455,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -1462,6 +1463,7 @@
                     "7.85.0.952162352"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Spoofs selectable Pixel Photos build and feature flags.",
             "name": "Spoof features",
@@ -1530,11 +1532,11 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Makes the app think it was installed from a specific store (default: Google Play).\n\nUseful when an app blocks features or shows errors because it detects it was not installed from the Play Store.\n\nOnly affects what the app itself sees - does not change the real system install record.",
             "name": "Spoof install source",
@@ -1554,19 +1556,19 @@
                         "Samsung Galaxy Store": "com.sec.android.app.samsungapps"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Forces key/security level getters to software/trusted-environment style values.",
             "name": "Spoof keystore security level",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Ports PixelSpoof-style Build, system property, and Pixel feature spoofing.",
             "name": "Spoof Pixel device",
@@ -1591,11 +1593,11 @@
                         "System properties only": "props"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs Play age signal result getters.",
             "name": "Spoof Play age signals",
@@ -1618,19 +1620,19 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs common RootOfTrust verified boot getters.",
             "name": "Spoof root of trust",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs TelephonyManager SIM/network provider values.",
             "name": "Spoof SIM provider",
@@ -1662,11 +1664,11 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs IMEI, MEID, subscriber ID, SIM serial, and line number reads.",
             "name": "Spoof telephony IDs",
@@ -1716,8 +1718,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -1725,22 +1726,23 @@
                     "6.38.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks WARP+ UI locally.",
             "name": "Spoof WARP+ Unlimited UI",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Forces common connectivity checks to connected/unmetered.",
             "name": "Spoof Wi-Fi connection",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs Wi-Fi SSID, BSSID, and MAC address reads.",
             "name": "Spoof Wi-Fi identifiers",
@@ -1772,11 +1774,11 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Reports Widevine L1 (hardware DRM) to apps that check DRM level locally.\n\nUseful for apps that refuse to play HD/4K content on L3 devices or after re-signing.\n\nDoes not bypass server-side DRM - Netflix, Disney+ and similar are not affected.",
             "name": "Spoof Widevine / DRM level",
@@ -1808,8 +1810,7 @@
                         "None (disable)": "HDCP_LEVEL_NONE"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -1817,11 +1818,11 @@
                     "1.8.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Suppresses the in-app paywall.",
             "name": "Suppress Paywall",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1829,11 +1830,11 @@
                     "26.29.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Supress all premium promotions in-app.",
             "name": "Suppress Premium Promotions",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1841,11 +1842,11 @@
                     "5.21.90.800"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Shows exact fixed and mobile speed camera locations, including those not yet in the official Waze radar zone. Enables enforcement alerts via preferences keys:\nAlerts.Enable Enforcement Alert_ / Alert / Polic_ (truncated + full variants).\nCredits: Waze CGE Mod.",
             "name": "Uncensored Radar / Camera Display",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1853,11 +1854,11 @@
                     "5.15.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces FlightAware ad-free subscribed state.",
             "name": "Unlock Ad-Free",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1865,11 +1866,11 @@
                     "7.0.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes ads and unlocks ad-free status in Speedtest by Ookla.",
             "name": "Unlock Ad-Free",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1877,11 +1878,11 @@
                     "24.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks All access in Nzb360.",
             "name": "Unlock All Access",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1889,11 +1890,11 @@
                     "1.3.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Bypasses PairIP DRM license check, removes all paywalls, and unlocks all premium features including cloud sync and remote access.",
             "name": "Unlock All Features",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1901,11 +1902,11 @@
                     "11.7.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Business/Gold premium features in Flightradar24: ad-free map, weather layers, ATC, 3D view, flight history, and unlimited saved locations.",
             "name": "Unlock Business Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1913,11 +1914,11 @@
                     "5.1049.4.908"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks BluramsGuard cloud storage, AI detection, and playback features.",
             "name": "Unlock Cloud Service",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1925,11 +1926,11 @@
                     "11.55.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Citymapper Club Membership Note: Need to manually Purchase inside APP!.",
             "name": "Unlock Club",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1937,11 +1938,11 @@
                     "2.6.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks the Deluxe subscription.",
             "name": "Unlock Deluxe",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1949,11 +1950,11 @@
                     "7.1.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces h0() to return \"yes\" so donate dialog never shows and providers unlock.",
             "name": "Unlock donation",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1961,11 +1962,11 @@
                     "5.1.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium donation features in Greenify.",
             "name": "Unlock Donation Features",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1973,11 +1974,11 @@
                     "3.29.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Bypasses the IAA (ad-watch-to-unlock) episode gate for drama mini-series.",
             "name": "Unlock Drama Episodes",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1985,11 +1986,11 @@
                     "17.2.9"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks JEFIT Elite features in app.",
             "name": "Unlock Elite",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1997,11 +1998,11 @@
                     "2.8.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Enterprise features in app.",
             "name": "Unlock Enterprise",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2009,6 +2010,7 @@
                     "16.0.20131.20080"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "BytecodePatch",
@@ -2019,8 +2021,7 @@
             ],
             "description": "Removes login requirement, unlocks premium, blocks ads, bypasses signature and code transparency checks.",
             "name": "Unlock Excel",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2028,11 +2029,11 @@
                     "26.29.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks the Followed Locations premium feature.",
             "name": "Unlock Followed Locations",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2040,11 +2041,11 @@
                     "build107.0.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all features in Inure App Manager.",
             "name": "Unlock Full Version",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2052,11 +2053,11 @@
                     "6.6.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Kahoot! Plus Gold features in app.",
             "name": "Unlock Gold",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2064,11 +2065,11 @@
                     "1.5.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks lifetime subscription features in BlockerHero.",
             "name": "Unlock Lifetime",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2076,11 +2077,11 @@
                     "1.19.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Lifetime features in Proxyman.",
             "name": "Unlock Lifetime",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2088,11 +2089,11 @@
                     "1.1.98"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks SHAREit lifetime premium.",
             "name": "Unlock Lifetime",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2100,11 +2101,11 @@
                     "4.14.68"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all features locked behind the subscription paywall.",
             "name": "Unlock Lifetime Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2112,11 +2113,11 @@
                     "5.196.0.1794"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Moovit+",
             "name": "Unlock Moovit+",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2124,11 +2125,11 @@
                     "8.14"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Pocket Casts Patron yearly feature checks.",
             "name": "Unlock Patron",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2136,6 +2137,7 @@
                     "26.27.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch",
                 "Fix Firebase after re-signing",
@@ -2144,8 +2146,7 @@
             ],
             "description": "Unlocks Life360 Platinum feature in app.",
             "name": "Unlock Platinum",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2153,11 +2154,11 @@
                     "262.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces Clue Plus subscription active, unlocking all premium features.",
             "name": "Unlock Plus",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2165,11 +2166,11 @@
                     "15.2.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all SpotAngels Plus features in app",
             "name": "Unlock Plus",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2177,11 +2178,11 @@
                     "3.35.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Sticker.ly PLUS subscriptionNote: For Facebook Login, Uninstall Facebook App.",
             "name": "Unlock Plus",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2189,13 +2190,13 @@
                     "1.2.10"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Unlocks Subway Now Plus.",
             "name": "Unlock Plus",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2203,11 +2204,11 @@
                     "2.1.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks AccuBattery Pro by bypassing server offer validity, the Google Play purchase gate, and all UI premium banners.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2215,11 +2216,11 @@
                     "1.6.0.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium features in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2227,11 +2228,11 @@
                     "4.2.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks AiScore Premium Features in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2239,11 +2240,11 @@
                     "3.2.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2251,11 +2252,11 @@
                     "v4.37.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks the Remove Ads purchase in Ampere by bypassing the isProVersion getter, purchase verifier, and payment-needed gate.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2263,11 +2264,11 @@
                     "1.5.28"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks AndroPods Pro: voice call integration, assistant control, ear detection auto-pause/resume, and all premium preferences.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2275,11 +2276,11 @@
                     "1.0.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium wallpapers.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2287,11 +2288,11 @@
                     "2.5.0.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium and marks the yearly plan as purchased.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2299,11 +2300,11 @@
                     "7.20"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks BatteryPods Pro: removes all advertisements and enables premium features including all widget themes and device customization options.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2311,14 +2312,14 @@
                     "2.9.4"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Disable License Check",
                 "Bypass PairIP License Check"
             ],
             "description": "Unlock Premium Features in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2326,11 +2327,11 @@
                     "2026.07.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Calimoto LIFETIME membership by spoofing the membership getter.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2338,11 +2339,11 @@
                     "2.4.281"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Premium Features In the App.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2350,11 +2351,11 @@
                     "6.100.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Calm lifetime subscription",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2362,11 +2363,11 @@
                     "3.6.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Calory Pro and removes ads.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2374,11 +2375,11 @@
                     "2.76.5891"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Carbon premium subscription.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2386,11 +2387,11 @@
                     "2.9.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Charge Meter premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2398,13 +2399,13 @@
                     "4.8.6"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Unlocks ColorNote premium and removes advertising ID permissions.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2412,11 +2413,11 @@
                     "3.2.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features in Countdown Widget",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2424,11 +2425,11 @@
                     "1.59"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium features in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2436,11 +2437,11 @@
                     "26.29.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Premium Features In the App.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2448,11 +2449,11 @@
                     "34.0.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium features after login.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2460,11 +2461,11 @@
                     "2.1.06"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium wallpapers.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2472,11 +2473,11 @@
                     "3.0.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Electron premium features",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2484,11 +2485,11 @@
                     "8.26.0-0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Fitbod premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2496,13 +2497,13 @@
                     "1.7.1"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Unlocks premium features in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2510,11 +2511,11 @@
                     "7.5.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock Premium features in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2522,11 +2523,11 @@
                     "AARCH64_1.248.400"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2534,11 +2535,11 @@
                     "3.7.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features in Image & Video Date Fixer.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2546,11 +2547,11 @@
                     "7.1.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium in Clickmate",
             "name": "Unlock Premium ",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2558,11 +2559,11 @@
                     "8.1.13.36552.GP"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock Premium features after login.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2570,11 +2571,11 @@
                     "2026.29.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium features and all map packs.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2582,11 +2583,11 @@
                     "2026.10.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium features in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2594,13 +2595,13 @@
                     "6.7.2"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Unlocks Premium Features in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2608,11 +2609,11 @@
                     "26.7.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Premium features in app after login.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2620,11 +2621,11 @@
                     "15.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Material Capsule pro.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2632,11 +2633,11 @@
                     "6.70"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all pro features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2644,11 +2645,11 @@
                     "1.3.01"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock all premium widgets.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2656,11 +2657,11 @@
                     "0.9.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium in Beta by Mirko.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2668,11 +2669,11 @@
                     "16.4.60095"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks MobiOffice premium and removes ads.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2680,11 +2681,11 @@
                     "8.71.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks MyRadar's yearly premium features",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2692,11 +2693,11 @@
                     "3.4.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2704,11 +2705,11 @@
                     "26.28.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Premium features in app..",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2716,11 +2717,11 @@
                     "1.4.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Ninja VPN premium.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2728,11 +2729,11 @@
                     "4.9"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features including advanced diagnostics, live sensor data, freeze frame, and removes the daily usage quota.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2740,11 +2741,11 @@
                     "3.0.11"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2752,11 +2753,11 @@
                     "8.3.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium features after login.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2764,11 +2765,11 @@
                     "13.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Photo Editor premium features",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2776,6 +2777,7 @@
                     "2.9.31"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch",
                 "ResourcePatch",
@@ -2784,8 +2786,7 @@
             ],
             "description": "Unlocks Picture Mushroom premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2793,14 +2794,14 @@
                     "5.31.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
             "description": "Unlocks PictureThis premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2838,13 +2839,13 @@
                     "3.28.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "UNlock Premium "
             ],
             "description": "Unlocks Pocket Prep premium subscription gates and full question bank.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2852,11 +2853,11 @@
                     "1.3.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks lifetime pro by bypassing all entitlement checks and poisoning the account cache.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2864,11 +2865,11 @@
                     "5.19.61.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks local Proton VPN premium  features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2876,11 +2877,11 @@
                     "1.4.22"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock premium features in RecipeBro.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2888,11 +2889,11 @@
                     "8.25.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features in Rename & Organize.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2900,11 +2901,11 @@
                     "13.15.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Rocket Money Premium Features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2912,11 +2913,11 @@
                     "2.3.0.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium features in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2924,11 +2925,11 @@
                     "1.23.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium feature in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2936,11 +2937,11 @@
                     "2026.14"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2948,11 +2949,11 @@
                     "4.1.14"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Premium features in Snipd: AI Podcast Player by spoofing the RevenueCat CustomerInfo.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2960,11 +2961,11 @@
                     "8.0.8"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2972,11 +2973,11 @@
                     "1.1.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Social Gamebox premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2984,11 +2985,11 @@
                     "1.0.10-5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Sticker Maker premium and ad-free checks.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2996,11 +2997,11 @@
                     "471.11"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Premium features in app. Also re-enables password login after OTP.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3008,11 +3009,11 @@
                     "1.5.6.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium/lifetime featuers in app.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3020,11 +3021,11 @@
                     "1.3.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Tag Tracker PRO: unlimited trackers, advanced detection, full history, and ad-free experience.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3032,11 +3033,11 @@
                     "13.142.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Bypasses The Athletic article paywall by spoofing the NYT subscription entitlement check.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3044,11 +3045,11 @@
                     "16.14.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks The Weather Channel's Premium and Premium Pro subscription tiers. Enables the ad-free experience, extended 15-day hourly forecast, real-feel temperature, air quality index, minute-by-minute precipitation, severe weather notifications, and radar overlays gated behind the subscription paywall.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3056,11 +3057,11 @@
                     "2.5.0-6"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3068,6 +3069,7 @@
                     "3.6.316-beta"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks TomTom GO premium features for the selected vehicle type.",
             "name": "Unlock Premium",
@@ -3084,8 +3086,7 @@
                         "Truck": "truck"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -3093,11 +3094,11 @@
                     "1.17.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Toxly Premium",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3105,11 +3106,11 @@
                     "1.20.78.1.1002330"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Ultimate plan features, disables all paywalls and upgrade dialogs, suppresses payment-banned blocking errors, and grants access to all benefits including bar replay, custom intervals, multiple charts, study-on-study, server-side alerts, and ad-free charts.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3117,11 +3118,11 @@
                     "1.8.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Premium Features In the App.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3129,11 +3130,11 @@
                     "5.7.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Wavve Boating GPS premium features: charts, weather, tide data, and removes subscription paywall.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3141,11 +3142,11 @@
                     "4.2.2328"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Windscribe premium account.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3153,11 +3154,11 @@
                     "50.1.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Windy Pro features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3165,13 +3166,13 @@
                     "7.2"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Unlocks AmoledPix premium features and disables ads.",
             "name": "Unlock premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3179,11 +3180,11 @@
                     "12.0.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks NAVITIME Japan Travel Premium features in app",
             "name": "Unlock premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3191,11 +3192,11 @@
                     "3.1.16"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock Premium features in app",
             "name": "Unlock premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3203,11 +3204,11 @@
                     "21.1.13-1-rc"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks AccuWeather's Premium+ subscription tier without a Play Store purchase. Enables the full 15-day and hourly forecast detail, MinuteCast extended precision, air quality and health indexes, real-feel temperature, severe weather notifications, and widget customisation.",
             "name": "Unlock Premium+",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3215,11 +3216,11 @@
                     "2.1.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all PRO features in app",
             "name": "Unlock PRO",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3227,11 +3228,11 @@
                     "3.4.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks the Pro upgrade in Bluetooth Volume Manager by forcing isUpgraded=true in the billing Info constructor.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3239,11 +3240,11 @@
                     "5.4.13"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Box Box Pro",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3251,11 +3252,11 @@
                     "5.2.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks the Pro.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3263,11 +3264,11 @@
                     "5.5.4"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features in Case Tracker — Immigration.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3275,11 +3276,11 @@
                     "6.6.11"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock Pro Features in Cashew App",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3287,11 +3288,11 @@
                     "0.1301.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Citizen Plus/Protect features: Safety Network, Safety Center, Zones, Live Agent, Offender alerts, Clarity crime map, incident video, and more.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3299,11 +3300,11 @@
                     "2.56.10"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all pro features in Hibernator.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3311,13 +3312,13 @@
                     "2.3.4"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Bypass PairIP License Check"
             ],
             "description": "Unlock Pro Features in app.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3325,11 +3326,11 @@
                     "1.57.9"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all pro features in KillApps.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3337,11 +3338,11 @@
                     "16.10(261970902)(8daeddaf4d)"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Pro features.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3349,11 +3350,11 @@
                     "5.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all pro features in ML Manager.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3361,11 +3362,11 @@
                     "2.2.0-rc0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Pro features in app.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3373,11 +3374,11 @@
                     "2.335"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all pro features in NetGuard.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3385,11 +3386,11 @@
                     "277"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Pro features in app.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3397,11 +3398,11 @@
                     "1.9-beta5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock Pro features.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3409,11 +3410,11 @@
                     "1.1.0-rc0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks the Pro upgrade in Octi.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3421,6 +3422,7 @@
                     "5.21"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -3429,8 +3431,7 @@
             ],
             "description": "Unlocks 1Tap Cleaner PRO features: history export, app-group filters, unlimited cache targets, and ad removal.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3438,11 +3439,11 @@
                     "4.0.9123"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Pro Features in app.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3450,11 +3451,11 @@
                     "1.29.0-260420093"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium features in app.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3462,11 +3463,11 @@
                     "7.23.build133"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes ads and unlocks the no-ads subscription in RAR.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3474,13 +3475,13 @@
                     "2.3.1"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Unlocks SAI PRO gates and removes ads.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3488,11 +3489,11 @@
                     "1.7.5-rc0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks SD Maid SE Pro features.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3500,11 +3501,11 @@
                     "3.4.6.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Pro features in app.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3512,11 +3513,11 @@
                     "26.7.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Splitwise Pro features, removes ad banners, and suppresses all upgrade upsell prompts.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3524,11 +3525,11 @@
                     "2.3.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all pro features and removes ads .",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3536,11 +3537,11 @@
                     "1.16.13"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks UbikiTouch Pro features in app.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3548,11 +3549,11 @@
                     "24.2.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks UDisc Pro subscription.",
             "name": "Unlock Pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3560,11 +3561,11 @@
                     "5.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all pro features.",
             "name": "Unlock pro",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3572,11 +3573,11 @@
                     "2.29.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Pro/No Ads feature in app",
             "name": "Unlock Pro / No Ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3584,11 +3585,11 @@
                     "1.7.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock Pro features in app.",
             "name": "Unlock Pro features",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3596,11 +3597,11 @@
                     "1.0.8.20260601651"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Professional features inapp.",
             "name": "Unlock Professional",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3608,11 +3609,11 @@
                     "6.1.12"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Transit Royale Membership.",
             "name": "Unlock Royale",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3620,11 +3621,11 @@
                     "70.3.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks SPIN Plus",
             "name": "Unlock SPIN Plus",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3632,6 +3633,7 @@
                     "6.88.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks user-selectable Duolingo subscription tiers.",
             "name": "Unlock Subscription",
@@ -3655,8 +3657,7 @@
                         "Super Immersive Family": "super_immersive_family"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -3664,11 +3665,11 @@
                     "3.3.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all subscription features in TWT App.",
             "name": "Unlock Subscription",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3676,11 +3677,11 @@
                     "6.35.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks subscription in app",
             "name": "Unlock subscription",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3688,13 +3689,13 @@
                     "3.2.82"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Strip ad manifest entries"
             ],
             "description": "Unlocks SViP features in app.",
             "name": "Unlock SVIP",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3702,11 +3703,11 @@
                     "7.34"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Turbo subscription after login.",
             "name": "Unlock Turbo",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3714,13 +3715,13 @@
                     "2.0.3 (41-d04e542)"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Unlocks Ultimate Ad-Free + Android TV.",
             "name": "Unlock Ultimate",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3728,11 +3729,11 @@
                     "7.41.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Ultra features in app.",
             "name": "Unlock Ultra",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3740,11 +3741,11 @@
                     "10.4.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock ViP features in app.",
             "name": "Unlock VIP",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3752,11 +3753,23 @@
                     "4.20.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Dubox Drive VIP/SVIP (Premium+)",
             "name": "Unlock VIP",
-            "options": [],
-            "use": true
+            "options": []
+        },
+        {
+            "compatiblePackages": {
+                "com.community.mbox.tv": [
+                    "1.1.5.0711.03"
+                ]
+            },
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks VIP Features in app.",
+            "name": "Unlock VIP",
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3767,23 +3780,11 @@
                     "3.0.16.0709.03"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks VIP features in app.",
             "name": "Unlock VIP",
-            "options": [],
-            "use": true
-        },
-        {
-            "compatiblePackages": {
-                "com.community.mbox.tv": [
-                    "1.1.5.0711.03"
-                ]
-            },
-            "dependencies": [],
-            "description": "Unlocks VIP Features in app.",
-            "name": "Unlock VIP",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3791,11 +3792,11 @@
                     "2.7.50.12"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock VIP subscription in app.",
             "name": "Unlock VIP",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3803,11 +3804,11 @@
                     "5.0.5"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks Yatri VIP by forcing active plan status and spoofing active plan DB query.",
             "name": "Unlock VIP",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3815,11 +3816,11 @@
                     "2.11.7-ad_mob"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Forces permanent professional VIP tier, removes ads and upgrade popups, bypasses PairIP.",
             "name": "Unlock VIP (Lifetime)",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3827,11 +3828,11 @@
                     "4.4.3.7"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock Vip Features in APP.",
             "name": "Unlock VIP Lifetime",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3839,6 +3840,7 @@
                     "16.0.20131.20080"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "BytecodePatch",
@@ -3849,8 +3851,7 @@
             ],
             "description": "Removes login requirement, unlocks premium, blocks ads, bypasses signature and code transparency checks.",
             "name": "Unlock Word",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3858,11 +3859,11 @@
                     "7.20.5.2606250000"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium features without login. Note: Login Won't Work",
             "name": "Yearly Unlock",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

@@ -1,8 +1,10 @@
 {
     "version": "1.17.0",
+    "name": "Kondratjev Patches",
     "patches": [
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Changes the app version code, allowing installation over existing versions.",
             "name": "Change version code",
@@ -19,8 +21,7 @@
                         "Lowest": "1"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -28,21 +29,21 @@
                     "1.104.0.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes all advertisements from the app.",
             "name": "Disable ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore.",
             "name": "Disable analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -50,13 +51,13 @@
                     "0.6.12"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Disable analytics"
             ],
             "description": "Disables PulseSDK analytics.",
             "name": "Disable analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -64,14 +65,14 @@
                     "1.104.0.2"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "Disable analytics"
             ],
             "description": "Disables VK-specific analytics.",
             "name": "Disable analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -79,13 +80,13 @@
                     "2026.06.25-release"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Disable analytics"
             ],
             "description": "Disables SoundCloud's analytics.",
             "name": "Disable analytics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -93,11 +94,11 @@
                     "1.104.0.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables the periodic Kaspersky background device scan.",
             "name": "Disable background scan",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -105,13 +106,13 @@
                     "11.6.0.1"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Hides the News/Community tab from the bottom navigation.",
             "name": "Disable community tab",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -119,11 +120,11 @@
                     "2026.06.25-release"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables the OneTrust consent/cookies popup on first launch.",
             "name": "Disable consent popup",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -131,11 +132,11 @@
                     "11.6.0.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Makes the 'App must update' dialog skippable.",
             "name": "Disable force update dialog",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -143,11 +144,11 @@
                     "1.104.0.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen.",
             "name": "Disable gaming profile",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -155,19 +156,19 @@
                     "1.104.0.2"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface.",
             "name": "Disable Mine redesign",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables the Pairip license verification check.",
             "name": "Disable Pairip license check",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -175,11 +176,11 @@
                     "2026.06.25-release"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables all premium features, hides upsell UI and ads.",
             "name": "Enable SoundCloud Go+",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -187,11 +188,11 @@
                     "1.104.0.2"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes the login requirement when updating apps.",
             "name": "Skip update auth",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -199,13 +200,13 @@
                     "11.6.0.1"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Unlocks all FatSecret Gold features and hides the Premium tab.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -213,11 +214,11 @@
                     "20.6.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -225,13 +226,13 @@
                     "1.575"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Disable Pairip license check"
             ],
             "description": "Unlocks all premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -239,11 +240,11 @@
                     "9.50.3"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -251,11 +252,11 @@
                     "3.5.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Muscle Motion Strength Training Pro/Individual/Business features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -263,13 +264,13 @@
                     "4.15.1"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Unlocks part of Ornament Pro features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -277,13 +278,13 @@
                     "3.0.11"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
             "description": "Unlocks premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -291,11 +292,11 @@
                     "0.6.12"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks premium features and removes ads.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -303,13 +304,13 @@
                     "1.3.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Disable Pairip license check"
             ],
             "description": "ROOT ONLY. Unlocks all premium features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -317,11 +318,11 @@
                     "12.87.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlocks all Yazio Pro features.",
             "name": "Unlock Premium",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

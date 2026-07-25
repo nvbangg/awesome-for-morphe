@@ -1,5 +1,6 @@
 {
     "version": "1.6.0",
+    "name": "zPatches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,6 +8,7 @@
                     "3.1.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Replace Velo'v Google Maps key with your own to fix it",
             "name": "Custom Maps API Key",
@@ -20,19 +22,18 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
                 "ee.dustland.android.minesweeper": [],
                 "ee.dustland.android.solitaire": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Disable Internet and Telemetry by removing all non-necessary permissions from the manifest",
             "name": "Disable Internet and Telemetry",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -40,30 +41,30 @@
                     "3.1.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disable the map zoom-in animation",
             "name": "Disable map animations",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
                 "ee.dustland.android.minesweeper": [],
                 "ee.dustland.android.solitaire": []
             },
+            "default": true,
             "dependencies": [],
             "description": "Unlock all purchasables options",
             "name": "Enable Premium",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Makes all activities launchable externally by setting android:exported=\"true\" in the manifest",
             "name": "Export all activities",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -71,11 +72,11 @@
                     "3.1.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Allows you to unlock a bike even if you're not near the station.",
             "name": "No geolocalisation check",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -83,11 +84,11 @@
                     "3.1.1"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Spoofs the package signature required for Firebase, fixes notifications",
             "name": "Spoof package signature",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

@@ -1,5 +1,6 @@
 {
     "version": "1.0.0-dev.19",
+    "name": "Fluffy Patches for use with Morphe",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,11 +8,11 @@
                     "26.23.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Bypasses ad-removal premium checks by forcing PremiumState.isRemoveAdPremium() to always return true.",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -19,11 +20,11 @@
                     "26.23.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Bypasses premium checks by forcing PremiumState.isPremium() to always return true.",
             "name": "Unlock Pro subscription",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

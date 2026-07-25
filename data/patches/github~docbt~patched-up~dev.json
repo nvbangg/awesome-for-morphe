@@ -1,8 +1,10 @@
 {
     "version": "1.10.0",
+    "name": "Patched-Up",
     "patches": [
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
             "name": "Change package name",
@@ -36,8 +38,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -45,13 +46,13 @@
                     "5.163.0.947799485"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Change package name"
             ],
             "description": "Enables CustomTabs to open articles in your default browser.",
             "name": "Enable CustomTabs",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -62,14 +63,14 @@
                     "5.156.0.892791979"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "Change package name"
             ],
             "description": "Allows Google News to sign in via MicroG (GmsCore) instead of Google Play Services when installed under a renamed package.",
             "name": "GmsCore support",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -79,11 +80,11 @@
                     "2026.14.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Hides sponsored ads and Google Ads. Also disables Microsoft Clarity analytics.",
             "name": "Hide ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -93,11 +94,11 @@
                     "2026.14.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Hides the Pur ad-free subscription option from the settings menu.",
             "name": "Hide Pur",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -107,11 +108,11 @@
                     "2026.14.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Strips UTM tracking parameters from URLs shared via the in-app share function.",
             "name": "Remove tracking parameters from share URLs",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

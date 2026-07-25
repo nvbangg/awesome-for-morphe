@@ -1,5 +1,6 @@
 {
     "version": "1.0.2",
+    "name": "SNI Patch",
     "patches": [
         {
             "compatiblePackages": {
@@ -10,6 +11,7 @@
                     "20.21.37"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Patches bundled arm64 libcronet so TLS SNI is forced to a configurable hostname in the SSLClientSocket path. URL and HTTP Host remain unchanged.",
             "name": "Force Cronet SNI (YouTube arm64)",
@@ -32,8 +34,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -44,6 +45,7 @@
                     "7.10.53"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Patches bundled arm64 libcronet so TLS SNI is forced to a configurable hostname in the SSLClientSocket path. URL and HTTP Host remain unchanged.",
             "name": "Force Cronet SNI (YouTube Music arm64)",
@@ -66,8 +68,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         }
     ]
 }

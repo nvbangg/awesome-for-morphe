@@ -1,5 +1,6 @@
 {
     "version": "1.2.0-dev.2",
+    "name": "Platypatch",
     "patches": [
         {
             "compatiblePackages": {
@@ -9,19 +10,19 @@
                 "com.laurencedawson.reddit_sync.dev": [],
                 "com.laurencedawson.reddit_sync.pro": []
             },
+            "default": false,
             "dependencies": [],
             "description": "Fixes the opaque background when using the \"Swipe to return\" option. Experimental due to animation issues. Incompatible with the Predictive Back Gesture patch.",
             "name": "Experimental: Restore \"Swipe to return\" translucency",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Enables the predictive back gesture introduced on Android 13.",
             "name": "Predictive back gesture",
-            "options": [],
-            "use": false
+            "options": []
         }
     ]
 }

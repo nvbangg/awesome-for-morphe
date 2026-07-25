@@ -1,5 +1,6 @@
 {
     "version": "1.0.0",
+    "name": "emorphe-patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -7,13 +8,13 @@
                     "8.47.56"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Routes YouTube Music traffic through a runtime-configurable app-level HTTP proxy.",
             "name": "YouTube Music proxy",
-            "options": [],
-            "use": false
+            "options": []
         }
     ]
 }

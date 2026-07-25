@@ -20,6 +20,12 @@ jobs:
         with:
           ref: main
 
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Download and update bundles
         id: update
         env:
@@ -28,6 +34,7 @@ jobs:
           python scripts/discover.py
           python scripts/fetch.py
           if [ -n "$(git status --porcelain)" ]; then
+            python scripts/parse.py
             pip install google-play-scraper
             python scripts/update.py
             echo "changed=true" >> $GITHUB_OUTPUT

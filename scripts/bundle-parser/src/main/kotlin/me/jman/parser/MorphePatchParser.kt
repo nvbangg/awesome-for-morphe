@@ -17,7 +17,7 @@ import java.util.jar.JarFile
 
 private const val MORPHE_PATCHER_CLASSPATH_PROPERTY = "morphe.patcher.classpath"
 
-internal fun generateMorphePatchList(downloadUri: URI): JsonArray? {
+internal fun generateMorphePatchList(downloadUri: URI): PatchListResult? {
     val patchesFile = File.createTempFile("morphe-patches", ".mpp")
     return try {
         val classpathFiles = morpheClasspathFiles()
@@ -29,7 +29,9 @@ internal fun generateMorphePatchList(downloadUri: URI): JsonArray? {
                 Logger.warning("No patches were found in the Morphe patch bundle.")
                 null
             } else {
-                JsonArray(jsonPatches)
+                val jarFile = JarFile(patchesFile)
+                val name = jarFile.manifest?.mainAttributes?.getValue("Name")
+                PatchListResult(JsonArray(jsonPatches), name)
             }
         }
     } catch (_: FileNotFoundException) {

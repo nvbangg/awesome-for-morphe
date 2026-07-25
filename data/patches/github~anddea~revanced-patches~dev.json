@@ -1,5 +1,6 @@
 {
     "version": "4.2.0-dev.8",
+    "name": "RVX Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -14,6 +15,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -22,8 +24,7 @@
             ],
             "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video.",
             "name": "Alternative thumbnails",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -38,14 +39,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "ResourcePatch"
             ],
             "description": "Adds options to disable Ambient mode and to bypass Ambient mode restrictions.",
             "name": "Ambient mode control",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -62,13 +63,13 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music"
             ],
             "description": "Sets the audio quality to 'Always High' when you first install the app.",
             "name": "Bitrate default value",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -85,14 +86,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "BytecodePatch"
             ],
             "description": "Adds an option to use a different host for static images, so that images blocked in some countries can be received.",
             "name": "Bypass image region restrictions",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -107,14 +108,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube"
             ],
             "description": "Adds an option to use a different host for static images, so that images blocked in some countries can be received.",
             "name": "Bypass image region restrictions",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -129,14 +130,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube"
             ],
             "description": "Adds an option to bypass URL redirects and open the original URL directly.",
             "name": "Bypass URL redirects",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -153,11 +154,11 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Enables YouTube Music to work with Android Auto by spoofing the YouTube Music certificate.",
             "name": "Certificate spoof",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -172,6 +173,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -180,18 +182,17 @@
             ],
             "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
             "name": "Change form factor",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Spoof the installer package name to make it appear that the app was installed from the Google Play Store.",
             "name": "Change installer package name",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -206,13 +207,13 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube"
             ],
             "description": "Adds an option to use text toggles instead of switch toggles within the additional settings menu.",
             "name": "Change player flyout menu toggles",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -229,6 +230,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "BytecodePatch",
@@ -236,8 +238,7 @@
             ],
             "description": "Adds an option to change the in-app share sheet to the system share sheet.",
             "name": "Change share sheet",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -252,6 +253,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -259,8 +261,7 @@
             ],
             "description": "Adds an option to change the in-app share sheet to the system share sheet.",
             "name": "Change share sheet",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -277,14 +278,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "Settings for YouTube Music"
             ],
             "description": "Adds an option to set which page the app opens in instead of the homepage.",
             "name": "Change start page",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -299,17 +300,18 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube"
             ],
             "description": "Adds an option to set which page the app opens in instead of the homepage.",
             "name": "Change start page",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Changes the version code of the app to the value specified in patch options. Except when mounting, this can prevent app stores from updating the app and allow the app to be installed over an existing installation that has a higher version code. By default, the highest version code is set.",
             "name": "Change version code",
@@ -326,8 +328,7 @@
                         "Lowest": "1"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -342,6 +343,7 @@
                     "20.51.39"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Settings for YouTube",
                 "ResourcePatch"
@@ -399,8 +401,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -417,6 +418,7 @@
                     "9.15.51"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch"
@@ -467,8 +469,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -483,6 +484,7 @@
                     "20.51.39"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Settings for YouTube"
             ],
@@ -503,8 +505,7 @@
                         "YouTube RVX": "YouTube RVX"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -521,6 +522,7 @@
                     "9.15.51"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Settings for YouTube Music"
             ],
@@ -555,8 +557,7 @@
                         "YouTube Music": "YouTube Music"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -571,6 +572,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube"
             ],
@@ -586,8 +588,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -602,6 +603,7 @@
                     "20.51.39"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Settings for YouTube"
             ],
@@ -619,8 +621,7 @@
                         "Custom branding icon": "custom_branding_icon"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -637,6 +638,7 @@
                     "9.15.51"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube Music"
@@ -655,8 +657,7 @@
                         "Custom branding icon": "custom_branding_icon"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -671,6 +672,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "ResourcePatch"
@@ -694,8 +696,7 @@
                         "YoutubeOutline": "youtubeoutline"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -712,6 +713,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
@@ -745,8 +747,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -761,6 +762,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -774,8 +776,7 @@
             ],
             "description": "Adds options to hide and disable description components.",
             "name": "Description components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -788,6 +789,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch",
@@ -795,8 +797,7 @@
             ],
             "description": "Adds an option to disable Cairo splash animation.",
             "name": "Disable Cairo splash animation",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -813,22 +814,22 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch"
             ],
             "description": "Adds an option to disable redirection to the next track when clicking the Dislike button.",
             "name": "Disable dislike redirection",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disable forced edge-to-edge display on Android 15+ by changing the app's target SDK version. This patch does not work if the app is installed by mounting.",
             "name": "Disable edge-to-edge display",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -845,6 +846,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch",
@@ -852,8 +854,7 @@
             ],
             "description": "Adds an option to disable audio tracks from being automatically enabled.",
             "name": "Disable forced auto audio tracks",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -868,6 +869,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "ResourcePatch",
@@ -875,8 +877,7 @@
             ],
             "description": "Adds an option to disable audio tracks from being automatically enabled.",
             "name": "Disable forced auto audio tracks",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -893,14 +894,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube Music"
             ],
             "description": "Adds an option to disable captions from being automatically enabled.",
             "name": "Disable forced auto captions",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -915,6 +916,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube",
@@ -922,8 +924,7 @@
             ],
             "description": "Adds an option to disable captions from being automatically enabled.",
             "name": "Disable forced auto captions",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -938,14 +939,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch"
             ],
             "description": "Adds options to disable haptic feedback when swiping in the video player.",
             "name": "Disable haptic feedback",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -960,13 +961,13 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube"
             ],
             "description": "Adds an option to disable layout updates by server.",
             "name": "Disable layout updates",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -983,6 +984,7 @@
                     "9.15.51"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch",
@@ -991,8 +993,7 @@
             ],
             "description": "Adds option to redirect music videos from albums for non-premium users.",
             "name": "Disable music video in album",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1009,14 +1010,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "BytecodePatch"
             ],
             "description": "Adds an option to disable CronetEngine's QUIC protocol.",
             "name": "Disable QUIC protocol",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1031,14 +1032,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch"
             ],
             "description": "Adds an option to disable CronetEngine's QUIC protocol.",
             "name": "Disable QUIC protocol",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1053,13 +1054,13 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube"
             ],
             "description": "Adds an option to disable the Miniplayer 'Continue watching' from resuming on app startup.",
             "name": "Disable resuming Miniplayer on startup",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1074,6 +1075,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube",
@@ -1081,8 +1083,7 @@
             ],
             "description": "Adds an option to disable the Shorts player from resuming on app startup when Shorts were last being watched.",
             "name": "Disable resuming Shorts on startup",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1097,14 +1098,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "ResourcePatch"
             ],
             "description": "Adds an option to disable the popup asking to sign into a TV on the same local network.",
             "name": "Disable sign in to TV popup",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1119,6 +1120,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "Settings for YouTube",
@@ -1126,8 +1128,7 @@
             ],
             "description": "Adds an option to disable the splash animation on app startup.",
             "name": "Disable splash animation",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1144,13 +1145,13 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music"
             ],
             "description": "Adds an option for debugging.",
             "name": "Enable debug logging",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1165,6 +1166,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -1172,8 +1174,7 @@
             ],
             "description": "Adds an option for debugging and exporting RVX logs to the clipboard.",
             "name": "Enable debug logging",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1188,13 +1189,13 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube"
             ],
             "description": "Adds an option to enable the gradient loading screen.",
             "name": "Enable gradient loading screen",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1211,14 +1212,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "Settings for YouTube Music"
             ],
             "description": "Adds an option to enable landscape mode when rotating the screen on phones.",
             "name": "Enable landscape mode",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1235,6 +1236,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch",
@@ -1247,8 +1249,7 @@
             ],
             "description": "Adds options to hide or change flyout menu components.",
             "name": "Flyout menu components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1263,6 +1264,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube"
             ],
@@ -1291,8 +1293,7 @@
                         "Transparent": "@android:color/transparent"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -1307,6 +1308,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -1320,8 +1322,7 @@
             ],
             "description": "Adds options to hide or change components related to fullscreen.",
             "name": "Fullscreen components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1338,6 +1339,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "BytecodePatch"
@@ -1409,8 +1411,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -1425,6 +1426,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "BytecodePatch"
@@ -1496,8 +1498,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -1512,13 +1513,13 @@
                     "20.51.39"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Settings for YouTube"
             ],
             "description": "Removes, at compile time, accessibility controls dialog 'Turn on accessibility controls for the video player?'.",
             "name": "Hide accessibility controls dialog",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1535,14 +1536,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "Settings for YouTube Music"
             ],
             "description": "Adds options to hide components related to the account menu.",
             "name": "Hide account components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1559,6 +1560,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "BytecodePatch",
@@ -1569,8 +1571,7 @@
             ],
             "description": "Adds options to hide action bar components and replace the offline download button with an external download button.",
             "name": "Hide action bar components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1585,6 +1586,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -1599,8 +1601,7 @@
             ],
             "description": "Adds options to hide action buttons under videos.",
             "name": "Hide action buttons",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1617,6 +1618,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "BytecodePatch",
@@ -1629,8 +1631,7 @@
             ],
             "description": "Adds options to hide ads.",
             "name": "Hide ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1645,6 +1646,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -1657,8 +1659,7 @@
             ],
             "description": "Adds options to hide ads.",
             "name": "Hide ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1673,6 +1674,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -1686,8 +1688,7 @@
             ],
             "description": "Adds options to hide components related to comments.",
             "name": "Hide comments components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1702,6 +1703,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -1713,8 +1715,7 @@
             ],
             "description": "Adds options to hide components related to feeds.",
             "name": "Hide feed components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1729,14 +1730,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "Settings for YouTube"
             ],
             "description": "Adds the ability to hide feed flyout menu components using a custom filter.",
             "name": "Hide feed flyout menu",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1753,6 +1754,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "BytecodePatch",
@@ -1761,8 +1763,7 @@
             ],
             "description": "Adds options to hide general layout components.",
             "name": "Hide layout components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1777,6 +1778,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -1787,8 +1789,7 @@
             ],
             "description": "Adds options to hide general layout components.",
             "name": "Hide layout components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1805,14 +1806,14 @@
                     "9.15.51"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Settings for YouTube Music",
                 "BytecodePatch"
             ],
             "description": "Removes, at compile time, the dark overlay that appears when player flyout menus are open.",
             "name": "Hide overlay filter",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1827,6 +1828,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "ResourcePatch",
@@ -1835,8 +1837,7 @@
             ],
             "description": "Adds options to hide buttons in the video player.",
             "name": "Hide player buttons",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1851,6 +1852,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -1864,8 +1866,7 @@
             ],
             "description": "Adds options to hide player flyout menu components.",
             "name": "Hide player flyout menu",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1882,11 +1883,11 @@
                     "9.15.51"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Removes, at compile time, the dark overlay that appears when single-tapping in the player.",
             "name": "Hide player overlay filter",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1901,6 +1902,7 @@
                     "20.51.39"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Settings for YouTube",
                 "ResourcePatch"
@@ -1944,8 +1946,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -1960,13 +1961,13 @@
                     "20.51.39"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "Settings for YouTube"
             ],
             "description": "Removes, at compile time, the dimming effect at the top and bottom of Shorts videos.",
             "name": "Hide Shorts dimming",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -1981,13 +1982,13 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Adds support to download videos with an external downloader app using the in-app download button.",
             "name": "Hook download actions",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2002,13 +2003,13 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube"
             ],
             "description": "Adds support for opening music in RVX Music using the in-app YouTube Music button.",
             "name": "Hook YouTube Music actions",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2023,14 +2024,14 @@
                     "20.51.39"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "ResourcePatch",
                 "Settings for YouTube"
             ],
             "description": "Applies the MaterialYou theme for Android 12+ devices.",
             "name": "MaterialYou",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2045,6 +2046,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "Settings for YouTube",
@@ -2052,8 +2054,7 @@
             ],
             "description": "Adds options to change the in-app minimized player, and if patching target 19.16+ adds options to use modern miniplayers.",
             "name": "Miniplayer",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2070,6 +2071,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Change start page",
                 "ResourcePatch",
@@ -2079,8 +2081,7 @@
             ],
             "description": "Adds options to hide or change components related to the navigation bar.",
             "name": "Navigation bar components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2095,6 +2096,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "Settings for YouTube",
@@ -2106,8 +2108,7 @@
             ],
             "description": "Adds options to hide or change components related to the navigation bar.",
             "name": "Navigation bar components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2122,14 +2123,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube"
             ],
             "description": "Adds an option to always open links in your browser instead of the in-app browser.",
             "name": "Open links externally",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2144,6 +2145,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -2202,16 +2204,15 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
             "name": "Override certificate pinning",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2228,6 +2229,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch",
@@ -2249,8 +2251,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -2265,6 +2266,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -2283,8 +2285,7 @@
             ],
             "description": "Adds options to hide or change components related to the video player.",
             "name": "Player components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2296,6 +2297,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "BytecodePatch",
@@ -2303,8 +2305,7 @@
             ],
             "description": "Adds an option to display a button in the video player to reload the current video.",
             "name": "Reload video",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2321,14 +2322,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch"
             ],
             "description": "Removes restrictions on background playback, including for kids videos.",
             "name": "Remove background playback restrictions",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2343,6 +2344,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube",
@@ -2350,8 +2352,7 @@
             ],
             "description": "Removes restrictions on background playback, including for music and kids videos.",
             "name": "Remove background playback restrictions",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2368,14 +2369,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube Music"
             ],
             "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
             "name": "Remove viewer discretion dialog",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2390,14 +2391,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube"
             ],
             "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
             "name": "Remove viewer discretion dialog",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2414,13 +2415,13 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music"
             ],
             "description": "Adds an option to return the Library tab to the old style.",
             "name": "Restore old style library shelf",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2437,14 +2438,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube Music"
             ],
             "description": "Adds an option to show the dislike count of songs using the Return YouTube Dislike API.",
             "name": "Return YouTube Dislike",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2459,6 +2460,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -2470,8 +2472,7 @@
             ],
             "description": "Adds an option to show the dislike count of videos using the Return YouTube Dislike API.",
             "name": "Return YouTube Dislike",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2488,6 +2489,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube Music",
@@ -2495,8 +2497,7 @@
             ],
             "description": "Adds an option to replace YouTube handles with usernames in comments using YouTube Data API v3.",
             "name": "Return YouTube Username",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2511,14 +2512,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube"
             ],
             "description": "Adds an option to replace YouTube handles with usernames in comments using YouTube Data API v3.",
             "name": "Return YouTube Username",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2535,14 +2536,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch"
             ],
             "description": "Adds an option to sanitize sharing links by removing tracking query parameters.",
             "name": "Sanitize sharing links",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2557,13 +2558,13 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube"
             ],
             "description": "Adds an option to sanitize sharing links by removing tracking query parameters.",
             "name": "Sanitize sharing links",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2578,6 +2579,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -2589,8 +2591,7 @@
             ],
             "description": "Adds options to hide or change components related to the seekbar.",
             "name": "Seekbar components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2605,6 +2606,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch",
@@ -2612,8 +2614,7 @@
             ],
             "description": "Adds an option to set Cookies in YouTube Transcript API requests.",
             "name": "Set transcript cookies",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2628,6 +2629,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "ResourcePatch",
@@ -2651,8 +2653,7 @@
                         "ReVanced Extended": "ReVanced Extended"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -2669,6 +2670,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "ResourcePatch"
@@ -2708,8 +2710,7 @@
                         "ReVanced Extended": "ReVanced Extended"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -2726,14 +2727,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "BytecodePatch"
             ],
             "description": "Adds an option to hide items on the standard YouTube Music settings screen by their visible name.",
             "name": "Settings menu filter",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2748,14 +2749,14 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch"
             ],
             "description": "Adds an option to hide items on the standard YouTube settings screen by their visible name.",
             "name": "Settings menu filter",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2770,6 +2771,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "ResourcePatch",
@@ -2793,8 +2795,7 @@
             ],
             "description": "Adds options to hide or change components related to YouTube Shorts.",
             "name": "Shorts components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2809,6 +2810,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch"
@@ -2885,8 +2887,7 @@
                         "None": ""
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -2903,14 +2904,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube Music"
             ],
             "description": "Adds options to enable and configure SponsorBlock, which can skip undesired video segments, such as non-music sections.",
             "name": "SponsorBlock",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2925,6 +2926,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -2945,8 +2947,7 @@
                         "Right": "right"
                     }
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -2961,6 +2962,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -2969,8 +2971,7 @@
             ],
             "description": "Adds options to spoof the YouTube client version. This can be used to restore old UI elements and features.",
             "name": "Spoof app version",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -2984,6 +2985,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube Music",
@@ -2991,11 +2993,11 @@
             ],
             "description": "Adds options to spoof the YouTube Music client version. This can be used to restore old lyrics UI.",
             "name": "Spoof app version for lyrics",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
@@ -3020,8 +3022,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -3038,6 +3039,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch",
@@ -3050,8 +3052,7 @@
             ],
             "description": "Adds options to spoof the client video streams to fix playback.",
             "name": "Spoof video streams",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3066,6 +3067,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "ResourcePatch",
@@ -3078,8 +3080,7 @@
             ],
             "description": "Adds options to spoof the client video streams to fix playback.",
             "name": "Spoof video streams",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3094,24 +3095,24 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "BytecodePatch"
             ],
             "description": "Adds an option to change the domain of the watch history or check its status.",
             "name": "Spoof watch history",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
             "description": "Spoofs an existing Wi-Fi connection.",
             "name": "Spoof Wi-Fi connection",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3126,6 +3127,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -3136,8 +3138,7 @@
             ],
             "description": "Adds options for controlling volume and brightness with swiping, and whether to enter fullscreen when swiping down below the player.",
             "name": "Swipe controls",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3152,6 +3153,7 @@
                     "20.51.39"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "ResourcePatch",
                 "Settings for YouTube"
@@ -3199,8 +3201,7 @@
                         "White": "@android:color/white"
                     }
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -3215,6 +3216,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
@@ -3225,8 +3227,7 @@
             ],
             "description": "Adds options to hide or change components located on the toolbar, such as the search bar, header, and toolbar buttons.",
             "name": "Toolbar components",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3243,6 +3244,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube Music",
@@ -3251,8 +3253,7 @@
             ],
             "description": "Adds a true dual-player crossfade between consecutive tracks. Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
             "name": "Track crossfade",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3267,6 +3268,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube"
@@ -3301,8 +3303,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -3319,6 +3320,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Settings for YouTube Music"
@@ -3353,8 +3355,7 @@
                     "type": "kotlin.String",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -3371,6 +3372,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "ResourcePatch",
@@ -3382,8 +3384,7 @@
             ],
             "description": "Adds options to customize settings related to video playback, such as default video quality and playback speed.",
             "name": "Video playback",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3398,6 +3399,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube",
                 "ResourcePatch",
@@ -3418,8 +3420,7 @@
             ],
             "description": "Adds options to customize settings related to video playback, such as default video quality and playback speed.",
             "name": "Video playback",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3434,6 +3435,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube"
             ],
@@ -3467,8 +3469,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -3485,6 +3486,7 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music"
             ],
@@ -3518,8 +3520,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -3534,6 +3535,7 @@
                     "20.51.39"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Overlay buttons",
                 "BytecodePatch",
@@ -3542,8 +3544,7 @@
             ],
             "description": "Adds an option to enable Yandex voice-over translation of video audio tracks.",
             "name": "Voice Over Translation",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -3560,14 +3561,14 @@
                     "9.15.51"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Settings for YouTube Music",
                 "BytecodePatch"
             ],
             "description": "Adds an option to change the domain of the watch history or check its status.",
             "name": "Watch history",
-            "options": [],
-            "use": true
+            "options": []
         }
     ]
 }

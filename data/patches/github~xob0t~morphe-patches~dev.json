@@ -1,5 +1,6 @@
 {
     "version": "1.9.0",
+    "name": "xob0t Morphe Patches",
     "patches": [
         {
             "compatiblePackages": {
@@ -12,11 +13,11 @@
                     "224.6"
                 ]
             },
+            "default": false,
             "dependencies": [],
             "description": "Makes dark-theme page, app navigation and system bars pure black (AMOLED) while keeping elevated cards, sheets and controls gray so their boundaries remain visible.",
             "name": "AMOLED dark theme",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -29,14 +30,14 @@
                     "224.6"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Morphe settings",
                 "ResourcePatch"
             ],
             "description": "Hides Avito offers from blacklisted adverts or sellers and adds a blacklist manager (import/export compatible with the Ave Blacklist extension).",
             "name": "Block listings",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -45,6 +46,7 @@
                     "7.36.0"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Stubs TBank's native RASP executor calls and neutralizes tamper flag reporting.",
             "name": "Bypass anti-tamper",
@@ -58,82 +60,81 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables Adjust attribution manifest entry points.",
             "name": "Disable Adjust",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Disables AppMetrica and legacy Yandex Metrica SDK entry points.",
             "name": "Disable AppMetrica",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables AppsFlyer install referrer and attribution manifest entry points.",
             "name": "Disable AppsFlyer",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables Firebase telemetry collection flags and DataTransport sender entry points.",
             "name": "Disable Firebase telemetry",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables the freeRASP mobile security SDK startup.",
             "name": "Disable freeRASP",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables legacy Google Analytics manifest entry points.",
             "name": "Disable Google Analytics",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables MyTracker manifest entry points.",
             "name": "Disable MyTracker",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables RuStore metrics manifest entry points.",
             "name": "Disable RuStore metrics",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Disables Sentry telemetry by turning off SDK auto-init and clearing the DSN.",
             "name": "Disable Sentry telemetry",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -146,6 +147,7 @@
                     "224.6"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Disables Avito first-party clickstream analytics and Avito's direct Adjust telemetry wrapper.",
             "name": "Disable telemetry",
@@ -159,8 +161,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -173,13 +174,13 @@
                     "224.6"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Morphe settings"
             ],
             "description": "Prevents Avito's force-update screen opener from launching update screens. Toggleable in Настройки Morphe.",
             "name": "Disable update prompts",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -192,13 +193,13 @@
                     "224.6"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Morphe settings"
             ],
             "description": "Adds a maximum seller review count to Avito search filters and hides or dims offers from sellers above that limit.",
             "name": "Hide professional sellers",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -211,6 +212,7 @@
                     "224.6"
                 ]
             },
+            "default": false,
             "dependencies": [
                 "ResourcePatch"
             ],
@@ -226,8 +228,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": false
+            ]
         },
         {
             "compatiblePackages": {
@@ -240,13 +241,13 @@
                     "224.6"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
             "description": "Disables Avito ads by removing ad SDK entry points and short-circuiting commercial banner loading.",
             "name": "Remove ads",
-            "options": [],
-            "use": true
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -257,6 +258,7 @@
                     "18.37.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
@@ -281,8 +283,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -291,6 +292,7 @@
                     "7.36.0"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
@@ -306,8 +308,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": {
@@ -318,6 +319,7 @@
                     "7.0.6000"
                 ]
             },
+            "default": true,
             "dependencies": [],
             "description": "Removes Wildberries home banners, grid banners, promo headers, product recommendations, and lottery popups.",
             "name": "Remove Wildberries ads",
@@ -340,40 +342,39 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs emulator state through common Build, QEMU file, command, and system property checks.",
             "name": "Spoof emulator status",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs package installer checks to report Google Play as the install source.",
             "name": "Spoof install source",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs USB debugging and related developer settings through common Android APIs.",
             "name": "Spoof USB debugging status",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": null,
+            "default": false,
             "dependencies": [],
             "description": "Spoofs VPN state through common Android network APIs.",
             "name": "Spoof VPN status",
-            "options": [],
-            "use": false
+            "options": []
         },
         {
             "compatiblePackages": {
@@ -386,6 +387,7 @@
                     "224.6"
                 ]
             },
+            "default": true,
             "dependencies": [
                 "Morphe settings"
             ],
@@ -401,8 +403,7 @@
                     "type": "kotlin.Boolean",
                     "values": null
                 }
-            ],
-            "use": true
+            ]
         }
     ]
 }

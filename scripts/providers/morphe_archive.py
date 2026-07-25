@@ -5,23 +5,20 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
 from utils import fetch, save_json
-
 
 README_URL = "https://raw.githubusercontent.com/rushiforai/morphe-archive/main/README.md"
 OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "morphe-archive.json"
-
 _REPO_RE = re.compile(r"morphe\.software/add-source\?(github|gitlab)=([^)\s]+)")
 
 
 def discover():
-    print("  [morphe_archive] Fetching README.md...")
     try:
         content = fetch(README_URL)
     except Exception as error:
-        print(f"  [morphe_archive] Failed: {error}")
-        return {}
+        existing_data = load_json(OUTPUT_PATH)
+        print(f"::warning title=Discover:: [-] [morphe-archive] Failed: {error}. Kept {len(existing_data)} sources in morphe-archive.json")
+        return existing_data
 
     discovered = {}
     for match in _REPO_RE.finditer(content):
@@ -31,11 +28,12 @@ def discover():
             owner, repo = parts[0].strip(), parts[1].strip()
             discovered[f"{platform}:{owner}/{repo}"] = {}
 
-    print(f"  [morphe_archive] Discovered {len(discovered)} repos")
     if not discovered:
-        print("  [morphe_archive] Warning: empty result, keeping existing file")
-        return {}
+        existing_data = load_json(OUTPUT_PATH)
+        print(f"::warning title=Discover:: [-] [morphe-archive] Empty result. Kept {len(existing_data)} sources in morphe-archive.json")
+        return existing_data
     save_json(OUTPUT_PATH, dict(sorted(discovered.items(), key=lambda item: item[0].lower())))
+    print(f"[morphe-archive] Exported {len(discovered)} sources to morphe-archive.json")
     return discovered
 
 

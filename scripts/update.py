@@ -63,11 +63,18 @@ def main() -> int:
         if bundle.get("isPreRelease"):
             ordered_bundle["isPreRelease"] = True
         final_bundles.append(ordered_bundle)
-    for app_data in apps_dict.values():
+    ordered_apps_dict = {}
+    for pkg_name, app_data in apps_dict.items():
         app_data.setdefault("firstSeen", now_ms)
         app_data.pop("updatedAt", None)
+        ordered_app = {}
+        for key in ["name", "iconUrl", "description", "minInstalls", "score", "genre", "editorsChoice", "firstSeen"]:
+            if key in app_data:
+                ordered_app[key] = app_data[key]
+        ordered_apps_dict[pkg_name] = ordered_app
+
     save_json(BUNDLES_JSON_PATH, {"bundles": final_bundles, "compatibilities": compatibilities_list})
-    save_json(APPS_JSON_PATH, apps_dict)
+    save_json(APPS_JSON_PATH, ordered_apps_dict)
     print(f"Update completed. Saved {len(final_bundles)} bundles and {len(apps_dict)} apps.")
 
     invalid_repos = [key for key in repos_data if key not in {f"{bundle['source']}:{bundle['repo']}" for bundle in final_bundles}]

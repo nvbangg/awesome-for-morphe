@@ -70,13 +70,13 @@ SKIP_WORDS = {
 }
 
 
-def fetch_app_details(package_name: str) -> Tuple[Optional[str], Optional[str], Optional[str], bool]:
+def fetch_app_details(package_name: str) -> Tuple[Optional[Dict[str, Any]], bool]:
     if not gplay_app:
-        return None, None, None, False
+        return None, False
     try:
         result = gplay_app(package_name, lang="en", country="us")
         if not result:
-            return None, None, None, False
+            return None, False
 
         icon_url = result.get("icon")
         if icon_url:
@@ -84,12 +84,26 @@ def fetch_app_details(package_name: str) -> Tuple[Optional[str], Optional[str], 
         description = result.get("summary")
         if description is None:
             description = ""
-        return result.get("title"), icon_url, description, False
+        score_raw = result.get("score")
+        score = round(score_raw, 1) if score_raw else 0.0
+
+        details = {
+            "name": result.get("title"),
+            "iconUrl": icon_url,
+            "description": description,
+            "minInstalls": result.get("minInstalls") or 0,
+            "score": score,
+            "genre": result.get("genre") or "Outside Google Play",
+        }
+        if result.get("editorsChoice"):
+            details["editorsChoice"] = True
+
+        return details, False
     except NotFoundError:
-        return None, None, None, True
+        return None, True
     except Exception as error:
         print(f"[-] Error fetching Google Play details for {package_name}: {error}")
-        return None, None, None, False
+        return None, False
 
 
 def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any]) -> None:
@@ -111,7 +125,9 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
                     if attr == "iconUrl" and "googleusercontent.com" in app[attr] and "=s" not in app[attr]:
                         app[attr] += "=s64"
 
-    tasks = [pkg for pkg, data in apps_dict.items() if mode == "month" or pkg not in existing_apps or any(data.get(a) is None for a in ("name", "iconUrl", "description"))]
+    tasks = [
+        pkg for pkg, data in apps_dict.items() if mode == "month" or pkg not in existing_apps or any(data.get(a) is None for a in ("name", "iconUrl", "description", "minInstalls", "score", "genre"))
+    ]
 
     if tasks:
         print(f"\nScraping Google Play for {len(tasks)} apps (mode: {mode})...")
@@ -123,27 +139,23 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
             for future in concurrent.futures.as_completed(future_to_package):
                 package_name = future_to_package[future]
                 try:
-                    name, icon, description, is_404 = future.result()
+                    details, is_404 = future.result()
                     app = apps_dict.setdefault(package_name, {})
-                    if not is_404 and (name is not None or icon is not None or description is not None):
-                        if name is not None:
-                            app["name"] = name
-                        elif app.get("name") is None:
-                            app["name"] = ""
 
-                        if icon is not None:
-                            app["iconUrl"] = icon
-                        elif app.get("iconUrl") is None:
-                            app["iconUrl"] = ""
-
-                        if description is not None:
-                            app["description"] = description
-                        elif app.get("description") is None:
-                            app["description"] = ""
+                    if not is_404 and details:
+                        for key, value in details.items():
+                            if value is not None:
+                                app[key] = value
+                        for attr in ("name", "iconUrl", "description"):
+                            if app.get(attr) is None:
+                                app[attr] = ""
                     elif is_404:
                         for attr in ("name", "iconUrl", "description"):
                             if app.get(attr) is None:
                                 app[attr] = ""
+                        app["genre"] = "Outside Google Play"
+                        app["minInstalls"] = 0
+                        app["score"] = 0.0
                 except Exception as error:
                     print(f"[-] Error processing future for {package_name}: {error}")
 

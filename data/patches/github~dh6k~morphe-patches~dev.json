@@ -1,0 +1,58 @@
+{
+    "version": "1.1.0",
+    "name": "Brave and universal patches",
+    "patches": [
+        {
+            "compatiblePackages": {
+                "com.brave.browser": [
+                    "1.92.140"
+                ],
+                "com.brave.browser_beta": [],
+                "com.brave.browser_nightly": []
+            },
+            "default": true,
+            "dependencies": [
+                "Brave Origin Resource Defaults"
+            ],
+            "description": "Unlocks Brave Origin and enables feature toggle controls.",
+            "name": "Brave Origin",
+            "options": []
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Changes the Android launcher icon using a custom PNG image. Use a square image with transparent adaptive-icon padding.",
+            "name": "Change app icon",
+            "options": [
+                {
+                    "default": null,
+                    "description": "Square PNG, 48-4096 px, maximum 256 KiB. Recommended: 432x432 px with transparent padding.",
+                    "key": "customIcon",
+                    "required": true,
+                    "title": "Custom app icon",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Changes the app name shown by Android launchers. Set the desired name in the patch options.",
+            "name": "Change app name",
+            "options": [
+                {
+                    "default": "Patched",
+                    "description": "The name shown under the app icon.",
+                    "key": "appName",
+                    "required": true,
+                    "title": "App name",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        }
+    ]
+}

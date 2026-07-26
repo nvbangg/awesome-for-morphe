@@ -3,7 +3,6 @@
 import json
 import re
 import sys
-from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -17,45 +16,45 @@ compatibilities_list = []
 compatibilities_map = {}
 
 
-def get_compat_key(compat_data: list) -> int:
-    compat_json = json.dumps(compat_data, sort_keys=True)
-    if compat_json in compatibilities_map:
-        return compatibilities_map[compat_json]
-    else:
-        idx = len(compatibilities_list)
-        compatibilities_list.append(compat_data)
-        compatibilities_map[compat_json] = idx
-        return idx
+def get_compat_key(compatibility_data: list) -> int:
+    compatibility_json = json.dumps(compatibility_data, sort_keys=True)
+    if compatibility_json in compatibilities_map:
+        return compatibilities_map[compatibility_json]
+    index = len(compatibilities_list)
+    compatibilities_list.append(compatibility_data)
+    compatibilities_map[compatibility_json] = index
+    return index
 
 
 def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Optional[Dict[str, Any]]:
-    out: Dict[str, Any] = {}
+    output: Dict[str, Any] = {}
     if "name" in patch:
-        out["name"] = patch["name"]
+        output["name"] = patch["name"]
     if patch.get("description"):
-        out["description"] = patch["description"]
+        output["description"] = patch["description"]
+    if patch.get("isPreRelease"):
+        output["isPreRelease"] = True
 
-    is_default = patch.get("default", True)
-    if is_default is False:
-        out["default"] = False
+    if patch.get("default") is False:
+        output["default"] = False
 
     if "options" in patch:
         options_list = []
         for option_item in patch["options"]:
-            option_obj = {}
+            option_object = {}
             if "key" in option_item:
-                option_obj["key"] = option_item["key"]
+                option_object["key"] = option_item["key"]
             if option_item.get("title"):
-                option_obj["title"] = option_item["title"]
+                option_object["title"] = option_item["title"]
             if option_item.get("description"):
-                option_obj["description"] = option_item["description"]
-            if option_obj:
-                options_list.append(option_obj)
+                option_object["description"] = option_item["description"]
+            if option_object:
+                options_list.append(option_object)
         if options_list:
-            out["options"] = options_list
+            output["options"] = options_list
 
     compatible_packages = patch.get("compatiblePackages")
-    out_compat = []
+    compatibility_targets = []
     has_real_app = False
 
     if isinstance(compatible_packages, dict):
@@ -70,7 +69,7 @@ def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Opti
                         targets.append({"version": version_item})
                     elif isinstance(version_item, dict) and "version" in version_item:
                         targets.append({"version": version_item["version"]})
-            out_compat.append({"packageName": package_name, "targets": targets})
+            compatibility_targets.append({"packageName": package_name, "targets": targets})
     elif isinstance(compatible_packages, list):
         for entry in compatible_packages:
             if not isinstance(entry, dict):
@@ -93,11 +92,11 @@ def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Opti
             package_out = {"packageName": package_name}
             if targets:
                 package_out["targets"] = targets
-            out_compat.append(package_out)
+            compatibility_targets.append(package_out)
 
-    if has_real_app and out_compat:
-        out["compatiblePackages"] = out_compat
-    return out
+    if has_real_app and compatibility_targets:
+        output["compatiblePackages"] = compatibility_targets
+    return output
 
 
 def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir: Path) -> list:
@@ -127,18 +126,24 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
         if not main_json and not dev_json:
             keys_to_remove.append(base_key)
             continue
-        target_json = main_json if main_json else dev_json
+
+        main_timestamp = parse_timestamp(main_json["created_at"]) if main_json and "created_at" in main_json else 0
+        dev_timestamp = parse_timestamp(dev_json["created_at"]) if dev_json and "created_at" in dev_json else 0
+
+        is_latest_dev = bool(dev_json and dev_timestamp > main_timestamp)
+        list_path = dev_list_path if is_latest_dev else (main_list_path if main_json else dev_list_path)
+        updated_at = dev_timestamp if is_latest_dev else (main_timestamp if main_json else dev_timestamp)
+
         source_entry["isPreRelease"] = not bool(main_json)
-
-        updated_at = 0
-        if main_json and "created_at" in main_json:
-            updated_at = parse_timestamp(main_json["created_at"])
-        elif dev_json and "created_at" in dev_json:
-            updated_at = parse_timestamp(dev_json["created_at"])
-
         source_entry["updatedAt"] = updated_at
 
-        list_path = main_list_path if main_json else dev_list_path
+        main_patch_names = set()
+        if is_latest_dev and main_json and main_list_path.exists():
+            main_list_raw = load_json(main_list_path, [])
+            main_patches_raw = main_list_raw.get("patches", []) if isinstance(main_list_raw, dict) else main_list_raw
+            if isinstance(main_patches_raw, list):
+                main_patch_names = {patch.get("name") for patch in main_patches_raw if isinstance(patch, dict) and patch.get("name")}
+
         patches_list_json = load_json(list_path, [])
         if isinstance(patches_list_json, list):
             patches_list_json = {"patches": patches_list_json}
@@ -162,14 +167,18 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
             name = patch.get("name")
             if not name:
                 continue
+
+            if is_latest_dev and main_json and name not in main_patch_names:
+                patch["isPreRelease"] = True
+
             app_name = patch.get("appName")
             patch_dict = strip_patch(patch, discovered_names)
             if not patch_dict:
                 continue
 
             if patch_dict.get("compatiblePackages"):
-                for compat_pkg in patch_dict["compatiblePackages"]:
-                    package_name = compat_pkg.get("packageName")
+                for compatibility_package in patch_dict["compatiblePackages"]:
+                    package_name = compatibility_package.get("packageName")
                     if package_name:
                         target_apps_set.add(package_name)
                         discovered_app_name = discovered_names.get(package_name) or app_name

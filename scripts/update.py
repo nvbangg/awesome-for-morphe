@@ -55,7 +55,6 @@ def main() -> int:
             "name": bundle.get("name"),
             "repoDescription": bundle.get("repoDescription"),
             "avatarUrl": bundle.get("avatarUrl"),
-            "targetApps": bundle.get("targetApps", []),
             "stars": bundle.get("stars", 0),
             "updatedAt": bundle.get("updatedAt", 0),
             "firstSeen": parse_timestamp(existing_bundles.get(key, {}).get("firstSeen", now_ms)),

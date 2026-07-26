@@ -21,46 +21,35 @@ def get_bundle_names():
     return {f"{bundle['source']}:{bundle['repo']}": bundle.get("name", bundle["repo"].split("/")[-1]) for bundle in bundles_json.get("bundles", [])}
 
 
-def collect_apps(list_json):
-    patches_dict = {}
-    for patch in list_json.get("patches") or []:
-        patch_name = patch.get("name")
-        if not patch_name:
-            continue
+def build_new_bundles():
+    bundles_json = load_json(BUNDLES_JSON_PATH, {})
+    bundles_list = bundles_json.get("bundles", [])
+    compatibilities = bundles_json.get("compatibilities", [])
 
-        compatible = patch.get("compatiblePackages")
-        package_names = set()
+    new_dict = {}
+    for bundle in bundles_list:
+        base = f"{bundle['source']}:{bundle['repo']}"
+        patches_dict = {}
 
-        if isinstance(compatible, dict):
-            package_names.update(compatible.keys())
-        elif isinstance(compatible, list):
-            for item in compatible:
-                if isinstance(item, dict) and (package_name := item.get("packageName")):
-                    package_names.add(package_name)
+        for patch in bundle.get("patches", []):
+            patch_name = patch.get("name")
+            if not patch_name:
+                continue
 
-        for package_name in package_names or {"universal"}:
-            patches_dict.setdefault(package_name, set()).add(patch_name)
-    return {package_name: sorted(list(patches_dict[package_name])) for package_name in sorted(patches_dict)}
+            package_names = set()
+            compat_key = patch.get("compatiblePackagesKey")
+            if compat_key is not None and compat_key < len(compatibilities):
+                compat_list = compatibilities[compat_key]
+                for item in compat_list:
+                    if isinstance(item, dict) and (pkg := item.get("packageName")):
+                        package_names.add(pkg)
 
+            for package_name in package_names or {"universal"}:
+                patches_dict.setdefault(package_name, set()).add(patch_name)
 
-def build_current_bundles():
-    main_dict, dev_dict = {}, {}
-    for patch_file in sorted(PATCHES_DIR.glob("*.json"), key=lambda p: p.name.lower()):
-        match = re.match(r"(.*)~(main|dev)\.json$", patch_file.name)
-        if not match:
-            continue
-        base, channel = match.groups()
-        if "~" in base:
-            parts = base.split("~")
-            if len(parts) >= 3:
-                base = f"{parts[0]}:{parts[1]}/{parts[2]}"
-
-        list_json = load_json(patch_file)
-        if not list_json:
-            continue
-        target = main_dict if channel == "main" else dev_dict
-        target[base] = collect_apps(list_json)
-    return main_dict, dev_dict
+        if patches_dict:
+            new_dict[base] = {pkg: sorted(list(patches_dict[pkg])) for pkg in sorted(patches_dict)}
+    return new_dict
 
 
 def format_app_name(package_name, app_metadata):
@@ -105,15 +94,19 @@ def make_url(bundle, app=None, patches=None):
     url = "https://awesome-morphe.vercel.app/"
     query = []
 
+    if ":" not in bundle:
+        return url + "#whats-new"
+
+    source, rest = bundle.split(":", 1)
     if patches:
-        trie_dict = {bundle: {app: list(patches)}}
+        trie_dict = {rest: {app: list(patches)}}
         trie_str = stringify_trie(trie_dict)
-        encoded_trie = urllib.parse.quote(trie_str, safe=':,"()')
-        query.append(f"show={encoded_trie}")
+        encoded_trie = urllib.parse.quote(trie_str, safe=':,"()/')
+        query.append(f"{source}={encoded_trie}")
     elif app:
-        query.append(f"show={bundle}:{app}")
+        query.append(f"{source}={rest}:{app}")
     else:
-        query.append(f"show={bundle}")
+        query.append(f"{source}={rest}")
 
     if query:
         url += "?" + "&".join(query)
@@ -137,18 +130,20 @@ def build_json_diff(old_bundles, new_bundles, app_metadata, bundle_names):
     for key, patches_dict in sorted(new_bundles.items(), key=lambda x: x[0].lower()):
         new_package_names = {pkg for pkg in patches_dict if is_valid_pkg(pkg)}
         display_name = bundle_names.get(key, key.split("/")[-1] if "/" in key else key)
+        source, repo = key.split(":", 1) if ":" in key else ("github", key)
 
         if key not in old_bundles:
-            json_diff[key] = {
-                "name": display_name,
+            apps = {}
+            for pkg in sorted(new_package_names, key=app_sort_key):
+                apps[pkg] = {
+                    "patches": sorted(list(patches_dict.get(pkg, []))),
+                    "isNew": True,
+                }
+            json_diff[display_name] = {
+                "source": source,
+                "repo": repo,
+                "apps": apps,
                 "isNew": True,
-                "apps": {
-                    pkg: {
-                        "isNew": True,
-                        "patches": sorted(list(patches_dict.get(pkg, []))),
-                    }
-                    for pkg in sorted(new_package_names, key=app_sort_key)
-                },
             }
         else:
             old_patches_dict = old_bundles[key]
@@ -158,21 +153,20 @@ def build_json_diff(old_bundles, new_bundles, app_metadata, bundle_names):
             for pkg in sorted(new_package_names, key=app_sort_key):
                 if pkg not in old_package_names:
                     apps_dict[pkg] = {
-                        "isNew": True,
                         "patches": sorted(list(patches_dict.get(pkg, []))),
+                        "isNew": True,
                     }
                 else:
                     added_patches = set(patches_dict.get(pkg, [])) - set(old_patches_dict.get(pkg, []))
                     if added_patches:
                         apps_dict[pkg] = {
-                            "isNew": False,
                             "patches": sorted(list(added_patches)),
                         }
 
             if apps_dict:
-                json_diff[key] = {
-                    "name": display_name,
-                    "isNew": False,
+                json_diff[display_name] = {
+                    "source": source,
+                    "repo": repo,
                     "apps": apps_dict,
                 }
     return json_diff
@@ -182,10 +176,12 @@ def generate_markdown(json_diff, app_metadata):
     all_changes = {}
     markdown_lines = []
 
-    for bundle_key, bundle_data in json_diff.items():
+    for display_name, bundle_data in json_diff.items():
         is_new_bundle = bundle_data.get("isNew", False)
         apps_data = bundle_data.get("apps", {})
-        display_name = bundle_data.get("name", bundle_key)
+        source = bundle_data.get("source", "github")
+        repo = bundle_data.get("repo", "")
+        bundle_key = f"{source}:{repo}" if repo else display_name
 
         if is_new_bundle:
             all_changes[bundle_key] = {}
@@ -225,10 +221,14 @@ def generate_markdown(json_diff, app_metadata):
                 else:
                     bundle_changes[package_name] = sorted(data.get("patches", []))
 
-            trie_dict = {bundle_key: bundle_changes}
+            if ":" not in bundle_key:
+                continue
+
+            source, rest = bundle_key.split(":", 1)
+            trie_dict = {rest: bundle_changes}
             trie_str = stringify_trie(trie_dict)
-            encoded_trie = urllib.parse.quote(trie_str, safe=':,"')
-            url = f"https://awesome-morphe.vercel.app/?show={encoded_trie}#whats-new"
+            encoded_trie = urllib.parse.quote(trie_str, safe=':,"/')
+            url = f"https://awesome-morphe.vercel.app/?{source}={encoded_trie}#whats-new"
 
             link = f"[{display_name}]({url})"
             bundle_md = [f"- 📦 {link}"]
@@ -262,9 +262,6 @@ def generate_markdown(json_diff, app_metadata):
 
 
 def main():
-    if not any(PATCHES_DIR.glob("*.json")):
-        raise SystemExit("No patches found — run download.py first")
-
     old_history = load_json(HISTORY_PATH, {}) or {}
     app_metadata = load_json(APPS_JSON_PATH, {})
 
@@ -275,8 +272,8 @@ def main():
     now = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=12)
     today_str = now.strftime(f"%B {now.day}, %Y")
 
-    _, new_dev = build_current_bundles()
-    json_diff = build_json_diff(old_history, new_dev, app_metadata, bundle_names)
+    new_bundles = build_new_bundles()
+    json_diff = build_json_diff(old_history, new_bundles, app_metadata, bundle_names)
 
     if not json_diff:
         print("No changes found.")
@@ -297,7 +294,7 @@ def main():
     save_json(WHATS_NEW_JSON_PATH, whats_new_data)
     print("Updated whats-new.json.")
 
-    save_json(HISTORY_PATH, new_dev)
+    save_json(HISTORY_PATH, new_bundles)
     print("History updated for a new baseline.")
 
 

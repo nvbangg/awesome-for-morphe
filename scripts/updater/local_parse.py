@@ -144,11 +144,14 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
             patches_list_json = {"patches": patches_list_json}
 
         bundle_name = patches_list_json.get("name")
-        cleaned_name = ""
-        if bundle_name:
-            cleaned_name = re.sub(r"(?i)\s*morphe patches$", "", bundle_name).strip()
-            cleaned_name = re.sub(r"(?i)['’]s patches$", "", cleaned_name).strip()
-            cleaned_name = re.sub(r"(?i)\s*patches$", "", cleaned_name).strip()
+        cleaned_name = bundle_name if bundle_name else ""
+        if cleaned_name:
+            if cleaned_name.lower() == "morphe patches":
+                cleaned_name = ""
+            else:
+                pattern = re.compile(r"(?i)(?: for use with morphe| for morphe|['’]s morphe patches|['’]s patches| morphe| patches| patch)+$")
+                cleaned_name = pattern.sub("", cleaned_name).strip("- ")
+
         source_entry["name"] = cleaned_name if cleaned_name else owner
         patches = patches_list_json.get("patches", [])
         valid_patches = []
@@ -181,10 +184,7 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
             valid_patches.append(patch_dict)
 
         source_entry["patches"] = valid_patches
-        source_entry["targetApps"] = sorted(list(target_apps_set))
-        if "universal" in target_apps_set:
-            source_entry["targetApps"].append("universal")
-            source_entry["targetApps"].remove("universal")
+        source_entry["_internal_apps_set"] = target_apps_set
 
     for base_key, source_entry in bundle_sources.items():
         if base_key in keys_to_remove:
@@ -192,7 +192,7 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
         if not source_entry.get("patches"):
             print(f"[-] Bundle '{base_key}' has no patches. Skipping and excluding from bundles.json.")
             keys_to_remove.append(base_key)
-        elif set(source_entry.get("targetApps", [])) == {"com.example.app"}:
+        elif source_entry.pop("_internal_apps_set", set()) == {"com.example.app"}:
             print(f"[-] Bundle '{base_key}' only has example app (com.example.app). Skipping and excluding from bundles.json.")
             keys_to_remove.append(base_key)
     for key in keys_to_remove:

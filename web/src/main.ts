@@ -1,7 +1,7 @@
 // Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 import { createApp, ref, computed, onMounted, watch, reactive, nextTick } from "vue";
-import { filterRows, getFilterOptions, getFilterOptionsFromBundles, loadInitialData, summarizeRows, appName, fetchJson } from "./data.js";
+import { filterRows, getFilterOptions, loadInitialData, loadAppsJson, summarizeRows, appName, fetchJson } from "./data.js";
 import type { ActiveData, RowItem, Bundle, PatchOption, VersionItem, AppNameMeta } from "./data.js";
 
 if (typeof window !== "undefined" && "serviceWorker" in navigator) {
@@ -18,6 +18,7 @@ interface AppElement {
   appIcon?: string;
   packageName?: string;
   versions?: VersionItem[];
+  isAppPreRelease?: boolean;
 }
 
 interface PatchGroupItem {
@@ -27,6 +28,7 @@ interface PatchGroupItem {
   enabled?: boolean;
   options?: PatchOption[];
   apps: AppElement[];
+  isPatchPreRelease?: boolean;
 }
 
 interface GroupItem {
@@ -131,8 +133,6 @@ function useListUI(namespace: string = "") {
   const overflowingAppLists = reactive(new Set<string>());
   const expandedVersions = reactive(new Set<string>());
   const appListRefs = new Map<string, HTMLElementWithObserver>();
-  const activeSwipeGroup = ref<string>("");
-  const swipeDirection = ref<string>("");
   const touchStartX = ref<number>(0);
   const touchStartY = ref<number>(0);
 
@@ -202,8 +202,6 @@ function useListUI(namespace: string = "") {
   };
 
   const selectApp = (groupKey: string, clickedApp: AppElement, appsList: AppElement[]) => {
-    activeSwipeGroup.value = "";
-    swipeDirection.value = "";
     const clickedKey = `${namespace}app_${groupKey}_${clickedApp.id}`;
     const isCurrentlyExpanded = expandedOptions.has(clickedKey);
 
@@ -249,12 +247,8 @@ function useListUI(namespace: string = "") {
       const currentIndex = appsList.findIndex((app) => app.id === currentApp.id);
       if (currentIndex !== -1) {
         if (deltaX < 0 && currentIndex < appsList.length - 1) {
-          activeSwipeGroup.value = groupKey;
-          swipeDirection.value = "left";
           selectApp(groupKey, appsList[currentIndex + 1], appsList);
         } else if (deltaX > 0 && currentIndex > 0) {
-          activeSwipeGroup.value = groupKey;
-          swipeDirection.value = "right";
           selectApp(groupKey, appsList[currentIndex - 1], appsList);
         }
       }
@@ -272,8 +266,6 @@ function useListUI(namespace: string = "") {
     expandedAppLists,
     overflowingAppLists,
     expandedVersions,
-    activeSwipeGroup,
-    swipeDirection,
     toggleOptions,
     toggleVersions,
     setupOverflowObserver,
@@ -333,7 +325,6 @@ const app = createApp({
 
     const activeData = ref<ActiveData | null>(null);
     const isLoading = ref<boolean>(true);
-    const patchesLoaded = ref(false);
     const errorMsg = ref("");
 
     const localQuery = ref(query.value);
@@ -362,18 +353,6 @@ const app = createApp({
     const whatsNewHighlights = ref<string[]>([]);
     const rawShowParam = ref<string>("");
 
-    const initialParams = new URLSearchParams(location.search);
-    const backgroundReady = ref<boolean>(!initialParams.get("show"));
-    watch(activeData, (newData) => {
-      if (newData && !backgroundReady.value) {
-        nextTick(() => {
-          setTimeout(() => {
-            backgroundReady.value = true;
-          }, 150);
-        });
-      }
-    });
-
     const buildUrlString = (targetHash?: string) => {
       const urlParts: string[] = [];
       if (query.value) urlParts.push(`q=${encodeURIComponent(query.value)}`);
@@ -382,8 +361,12 @@ const app = createApp({
 
       if (showOptions.value.length > 0) {
         const showStr = isWhatsNewView.value && rawShowParam.value ? rawShowParam.value : showOptions.value.join(",");
-        const encodedShow = encodeURIComponent(showStr).replace(/%3A/g, ":").replace(/%2C/g, ",").replace(/%28/g, "(").replace(/%29/g, ")");
-        urlParts.push(`show=${encodedShow}`);
+        const firstColon = showStr.indexOf(":");
+        if (firstColon > 0) {
+          const source = showStr.substring(0, firstColon);
+          const rest = showStr.substring(firstColon + 1);
+          urlParts.push(`${source}=${encodeURIComponent(rest).replace(/%3A/g, ":").replace(/%2C/g, ",").replace(/%28/g, "(").replace(/%29/g, ")").replace(/%2F/g, "/")}`);
+        }
       }
       if (popupSearchQuery.value) urlParts.push(`pq=${encodeURIComponent(popupSearchQuery.value)}`);
       if (sortOrder.value !== "stars") urlParts.push(`sort=${sortOrder.value}`);
@@ -408,9 +391,12 @@ const app = createApp({
       }
 
       let urlChanged = false;
-      if (isWhatsNewView.value && params.has("channel")) {
-        params.delete("channel");
-        urlChanged = true;
+      const validParams = ["q", "sort", "view", "pq", "bundle", "app", "github", "gitlab"];
+      for (const key of Array.from(params.keys())) {
+        if (!validParams.includes(key)) {
+          params.delete(key);
+          urlChanged = true;
+        }
       }
 
       const validSortOrders = ["stars", "latest", "apps"];
@@ -436,14 +422,27 @@ const app = createApp({
       bundle.value = params.get("bundle") || "";
       app.value = params.get("app") || "";
 
-      const rawParam = params.get("show");
+      let rawParam = params.get("github");
+      let source = "github";
+      if (!rawParam) {
+        rawParam = params.get("gitlab");
+        source = "gitlab";
+      }
+
       let showArr: string[] = [];
       let foundValidPopup = false;
 
       if (rawParam) {
-        rawShowParam.value = decodeURIComponent(rawParam);
+        rawShowParam.value = decodeURIComponent(`${source}:${rawParam}`);
         showArr = parseShowTrie(rawShowParam.value);
-        const bundlesInShow = new Set(showArr.map((item) => item.split(":")[0]).filter(Boolean));
+        const bundlesInShow = new Set(
+          showArr
+            .map((item) => {
+              const parts = item.split(":");
+              return parts.length >= 2 ? `${parts[0]}:${parts[1]}` : null;
+            })
+            .filter(Boolean) as string[],
+        );
 
         if (bundlesInShow.size === 1) {
           foundValidPopup = true;
@@ -454,7 +453,8 @@ const app = createApp({
             document.body.style.overflow = "hidden";
           }
         } else {
-          params.delete("show");
+          params.delete("github");
+          params.delete("gitlab");
           safeUpdateHistory(`${location.pathname}?${params.toString().replace(/=&/g, "&").replace(/=$/, "")}#whats-new`);
           nextTick(() => {
             isSyncing = false;
@@ -482,14 +482,15 @@ const app = createApp({
 
     onMounted(async () => {
       syncFromUrl(location.search);
-      if (isWhatsNewView.value && whatsNewHistory.value.length === 0) {
-        await loadWhatsNewData();
-        setTimeout(loadData, 300);
+      if (isWhatsNewView.value && popupBundleKey.value) {
+        await loadData();
+        if (whatsNewHistory.value.length === 0) loadWhatsNewData();
+      } else if (isWhatsNewView.value) {
+        if (whatsNewHistory.value.length === 0) await loadWhatsNewData();
+        if (!activeData.value) loadData();
       } else {
-        loadData();
-        setTimeout(() => {
-          if (whatsNewHistory.value.length === 0) loadWhatsNewData();
-        }, 1000);
+        await loadData();
+        if (whatsNewHistory.value.length === 0) loadWhatsNewData();
       }
       window.addEventListener("popstate", () => syncFromUrl(location.search));
       window.addEventListener("hashchange", () => syncFromUrl(location.search));
@@ -521,19 +522,10 @@ const app = createApp({
 
     const loadData = async () => {
       isLoading.value = true;
-      patchesLoaded.value = false;
       errorMsg.value = "";
       try {
-        activeData.value = await loadInitialData((isUpdate) => {
-          if (isUpdate === null) {
-            patchesLoaded.value = true;
-            isLoading.value = false;
-          } else if (activeData.value) {
-            activeData.value.rows = [...activeData.value.rows];
-            if (isUpdate === true && showOptions.value.length > 0 && !query.value) isLoading.value = false;
-          }
-        });
-        if (!query.value && showOptions.value.length === 0) isLoading.value = false;
+        activeData.value = await loadInitialData();
+        isLoading.value = false;
       } catch (error) {
         if (error instanceof Error) errorMsg.value = error.message;
         else errorMsg.value = String(error);
@@ -548,14 +540,9 @@ const app = createApp({
     const loadWhatsNewData = async () => {
       isWhatsNewLoading.value = true;
       try {
-        const data = await fetchJson<any>("whats-new.json").catch(() => []);
-        if (Array.isArray(data)) {
-          whatsNewHistory.value = data;
-          whatsNewAppsData.value = {};
-        } else {
-          whatsNewHistory.value = data?.history || [];
-          whatsNewAppsData.value = data?.apps || {};
-        }
+        const [data, appsMeta] = await Promise.all([fetchJson<unknown[]>("whats-new.json", []), loadAppsJson()]);
+        whatsNewAppsData.value = { ...appsMeta };
+        whatsNewHistory.value = Array.isArray(data) ? data : [];
       } catch (err) {
         console.error("Failed to load what's new data", err);
       } finally {
@@ -564,12 +551,18 @@ const app = createApp({
     };
 
     const navigateToWhatsNewShow = (trieStr: string) => {
-      const encodedShow = encodeURIComponent(trieStr).replace(/%3A/g, ":").replace(/%2C/g, ",").replace(/%28/g, "(").replace(/%29/g, ")");
+      const firstColon = trieStr.indexOf(":");
+      if (firstColon <= 0) return;
+
+      const source = trieStr.substring(0, firstColon);
+      const rest = trieStr.substring(firstColon + 1);
+
+      const encodedShow = encodeURIComponent(rest).replace(/%3A/g, ":").replace(/%2C/g, ",").replace(/%28/g, "(").replace(/%29/g, ")").replace(/%2F/g, "/");
       const params = new URLSearchParams(location.search);
       const urlParts: string[] = [];
       if (params.get("sort") && params.get("sort") !== "stars") urlParts.push(`sort=${params.get("sort")}`);
       if (params.get("view") === "list") urlParts.push("view=list");
-      urlParts.push(`show=${encodedShow}`);
+      urlParts.push(`${source}=${encodedShow}`);
 
       const newUrl = `${location.pathname}?${urlParts.join("&")}#whats-new`;
       try {
@@ -583,39 +576,57 @@ const app = createApp({
       patches?: string[];
     }
     interface WhatsNewBundle {
+      source?: string;
+      repo?: string;
       isNew?: boolean;
       apps?: Record<string, WhatsNewApp>;
     }
 
+    const getFullBundleKey = (bundleKey: string, bundleData: WhatsNewBundle): string => {
+      if (bundleData?.source && bundleData?.repo) {
+        return `${bundleData.source}:${bundleData.repo}`;
+      }
+      return bundleKey;
+    };
+
     const openBundlePopup = (bundleKey: string, bundleData: WhatsNewBundle) => {
-      if (!bundleData || bundleData.isNew) return navigateToWhatsNewShow(bundleKey);
+      const fullKey = getFullBundleKey(bundleKey, bundleData);
+      if (!bundleData || bundleData.isNew) return navigateToWhatsNewShow(fullKey);
       const bundleChanges: Record<string, string[]> = {};
       for (const [packageName, data] of Object.entries<WhatsNewApp>(bundleData.apps || {})) {
         bundleChanges[packageName] = data.isNew ? [] : [...(data.patches || [])].sort();
       }
-      navigateToWhatsNewShow(stringifyTrie({ [bundleKey]: bundleChanges }));
+      navigateToWhatsNewShow(stringifyTrie({ [fullKey]: bundleChanges }));
     };
 
-    const openAppPopup = (bundleKey: string, packageName: string, appData: WhatsNewApp) => {
+    const openAppPopup = (bundleKey: string, bundleData: WhatsNewBundle, packageName: string, appData: WhatsNewApp) => {
+      const fullKey = getFullBundleKey(bundleKey, bundleData);
       navigateToWhatsNewShow(
         !appData || appData.isNew
-          ? `${bundleKey}:${packageName}`
+          ? `${fullKey}:${packageName}`
           : stringifyTrie({
-              [bundleKey]: {
+              [fullKey]: {
                 [packageName]: [...(appData.patches || [])].sort(),
               },
             }),
       );
     };
 
-    const openPatchPopup = (bundleKey: string, packageName: string, patchName: string) => navigateToWhatsNewShow(stringifyTrie({ [bundleKey]: { [packageName]: [patchName] } }));
+    const openPatchPopup = (bundleKey: string, bundleData: WhatsNewBundle, packageName: string, patchName: string) => {
+      const fullKey = getFullBundleKey(bundleKey, bundleData);
+      navigateToWhatsNewShow(stringifyTrie({ [fullKey]: { [packageName]: [patchName] } }));
+    };
 
     watch(isWhatsNewView, (newVal) => {
-      if (newVal && whatsNewHistory.value.length === 0) loadWhatsNewData();
+      if (newVal) {
+        if (whatsNewHistory.value.length === 0) loadWhatsNewData();
+      } else {
+        if (!activeData.value) loadData();
+      }
     });
 
     const filteredRows = computed(() => {
-      if (!activeData.value || !backgroundReady.value) return [];
+      if (!activeData.value) return [];
       const targetPrefix = `${bundle.value || ""}${app.value ? ":" + app.value : ""}`;
       const currentShowOptions = targetPrefix ? [targetPrefix] : [];
       return filterRows(activeData.value, {
@@ -630,21 +641,28 @@ const app = createApp({
       const enrichAndSortBundleOptions = (options: { value: string; label: string }[]) => {
         return options
           .map((option) => {
-            const bundleObject = activeData.value?.bundleMap[option.value];
+            const bundleObject = activeData.value?.bundleMap[option.value.toLowerCase()];
             return {
               ...option,
+              label: bundleObject?.name || option.label,
               repo: bundleObject?.repo?.toLowerCase() || "",
               icon: bundleObject?.avatarUrl || "",
             };
           })
           .sort((firstItem, secondItem) =>
-            sortBundlesHelper(activeData.value?.bundleMap[firstItem.value], activeData.value?.bundleMap[secondItem.value], firstItem.value, secondItem.value, sortOrder.value),
+            sortBundlesHelper(
+              activeData.value?.bundleMap[firstItem.value.toLowerCase()],
+              activeData.value?.bundleMap[secondItem.value.toLowerCase()],
+              firstItem.value,
+              secondItem.value,
+              sortOrder.value,
+            ),
           );
       };
 
       const noFilters = !query.value && !app.value && !bundle.value;
       if (noFilters && activeData.value.bundles?.length > 0) {
-        const options = getFilterOptionsFromBundles(activeData.value.bundles, activeData.value.namesMap, activeData.value.skipSet);
+        const options = getFilterOptions(activeData.value.rows, activeData.value.namesMap);
         return {
           bundleOptions: enrichAndSortBundleOptions(options.bundleOptions),
           appOptions: options.appOptions,
@@ -681,7 +699,7 @@ const app = createApp({
       return [{ value: "", label: allOptionLabel }, ...filtered];
     };
 
-    const buildGroupFromRows = (bundleItem: Bundle, rows: RowItem[], hasFilters: boolean) => {
+    const buildGroupFromRows = (bundleItem: Bundle, rows: RowItem[]) => {
       const patchIdMap = new Map<string, PatchGroupItem>();
       for (const row of rows) {
         if (!patchIdMap.has(row.patchId)) {
@@ -692,6 +710,7 @@ const app = createApp({
             enabled: row.enabled,
             options: row.options || [],
             apps: [],
+            isPatchPreRelease: row.isPatchPreRelease,
           });
         }
         if (row.packageName || row.appName) {
@@ -701,38 +720,13 @@ const app = createApp({
             appIcon: row.appIcon,
             packageName: row.packageName,
             versions: row.versions,
+            isAppPreRelease: row.isAppPreRelease,
           });
         }
       }
       const patches = Array.from(patchIdMap.values()).sort((firstItem: PatchGroupItem, secondItem: PatchGroupItem) => firstItem.patchName.localeCompare(secondItem.patchName));
       const appsMap = new Map<string, AppElement>();
 
-      if (!patchesLoaded.value && bundleItem.targetApps && bundleItem.targetApps.length > 0 && !hasFilters) {
-        for (const packageName of bundleItem.targetApps) {
-          if (packageName !== "universal") {
-            if (!appsMap.has(packageName)) {
-              const meta = activeData.value!.namesMap[packageName];
-              appsMap.set(packageName, {
-                id: `patch_app_${packageName}`,
-                packageName,
-                appName: appName(packageName, activeData.value!.namesMap, activeData.value!.skipSet),
-                appIcon: typeof meta === "object" && meta !== null ? (meta as AppNameMeta).iconUrl || "" : "",
-              });
-            }
-            if (bundleItem.targetApps && bundleItem.targetApps.length === 1) {
-              appsMap.get(packageName)!.appName = bundleItem.name || appsMap.get(packageName)!.appName;
-            }
-          } else {
-            appsMap.set(packageName, {
-              id: `${bundleItem.key}:${packageName}`,
-              appName: appName(packageName, activeData.value?.namesMap || {}, activeData.value?.skipSet),
-              appIcon: "",
-              packageName,
-              versions: [],
-            });
-          }
-        }
-      }
       for (const patch of patches) for (const appItem of patch.apps) appsMap.set(appItem.packageName || "universal", appItem);
 
       const appsList = Array.from(appsMap.values()).sort((firstItem: AppElement, secondItem: AppElement) => {
@@ -751,41 +745,16 @@ const app = createApp({
     };
 
     const bundlesGroups = computed(() => {
-      if (!activeData.value || !backgroundReady.value) return [];
-      const queryWords = (query.value || "").toLowerCase().split(/\s+/).filter(Boolean);
-      const targetPrefix = `${bundle.value || ""}${app.value ? ":" + app.value : ""}`;
-      const hasFilters = queryWords.length > 0 || !!targetPrefix;
+      if (!activeData.value) return [];
 
       return activeData.value.bundles
         .map((bundleItem) =>
           buildGroupFromRows(
             bundleItem,
             filteredRows.value.filter((row) => row.bundleKey === bundleItem.key),
-            hasFilters,
           ),
         )
-        .filter((group) => {
-          if (group.rows.length > 0) return true;
-          if (patchesLoaded.value) return false;
-
-          const currentShowOptions = targetPrefix ? [targetPrefix] : [];
-          if (currentShowOptions.length > 0) {
-            const matched = currentShowOptions.some((showOpt) => {
-              const parts = showOpt.split(":");
-              if (parts[0] && parts[0] !== group.key) return false;
-              if (parts[1] && parts[1] !== "universal" && !group.bundle.targetApps?.includes(parts[1])) return false;
-              return true;
-            });
-            if (!matched) return false;
-          }
-
-          if (queryWords.length > 0) {
-            const appNamesStr = (group.bundle.targetApps || []).map((packageName) => appName(packageName, activeData.value?.namesMap || {}, activeData.value?.skipSet)).join(" ");
-            const searchable = [group.key, group.bundle.repo, ...(group.bundle.targetApps || []), appNamesStr].join(" ").toLowerCase();
-            if (!queryWords.every((word) => searchable.includes(word))) return false;
-          }
-          return true;
-        })
+        .filter((group) => group.rows.length > 0)
         .sort((firstItem: GroupItem, secondItem: GroupItem) => sortBundlesHelper(firstItem.bundle, secondItem.bundle, firstItem.key, secondItem.key, sortOrder.value));
     });
 
@@ -803,16 +772,6 @@ const app = createApp({
       });
     };
     const collapseAll = () => bundlesGroups.value.forEach((group: GroupItem) => mainUI.collapseBundle(group));
-    const toggleBundle = (groupItem: GroupItem) => {
-      if (groupItem.appsList?.length > 0) {
-        if (groupItem.appsList.some((appItem: AppElement) => mainUI.expandedOptions.has(`app_${groupItem.key}_${appItem.id}`)) || mainUI.expandedAppLists.has(groupItem.key)) {
-          mainUI.collapseBundle(groupItem);
-        } else {
-          mainUI.expandedAppLists.add(groupItem.key);
-          mainUI.expandedOptions.add(`app_${groupItem.key}_${groupItem.appsList[0].id}`);
-        }
-      }
-    };
 
     watch(bundlesGroups, (newGroups) => {
       if (newGroups && !popupBundleKey.value) {
@@ -829,9 +788,13 @@ const app = createApp({
     });
 
     const openPopupFast = (groupKey: string) => {
-      const params = new URLSearchParams();
-      params.set("show", groupKey);
-      const newUrl = `?${params.toString()}${location.hash === "#whats-new" ? "#whats-new" : ""}`;
+      const firstColon = groupKey.indexOf(":");
+      if (firstColon <= 0) return;
+
+      const source = groupKey.substring(0, firstColon);
+      const rest = groupKey.substring(firstColon + 1);
+      const encodedRest = encodeURIComponent(rest).replace(/%3A/g, ":").replace(/%2C/g, ",").replace(/%28/g, "(").replace(/%29/g, ")").replace(/%2F/g, "/");
+      const newUrl = `?${source}=${encodedRest}${location.hash === "#whats-new" ? "#whats-new" : ""}`;
       safeUpdateHistory(newUrl, true);
       syncFromUrl(newUrl.split("#")[0]);
     };
@@ -842,6 +805,8 @@ const app = createApp({
       popupSearchQuery.value = "";
       const urlParams = new URLSearchParams(location.search);
       urlParams.delete("show");
+      urlParams.delete("github");
+      urlParams.delete("gitlab");
       urlParams.delete("pq");
       const newUrl = `${location.pathname}${urlParams.toString() ? "?" + urlParams.toString() : ""}${isWhatsNewView.value ? "#whats-new" : location.hash}`;
       safeUpdateHistory(newUrl, !isWhatsNewView.value);
@@ -853,38 +818,53 @@ const app = createApp({
       if (popupBundleKey.value) {
         const group = popupGroup.value;
         if (group && group.key === popupBundleKey.value && group.appsList?.length > 0) {
-          const targetApp = app.value ? group.appsList.find((firstItem) => firstItem.packageName === app.value) : null;
-          if (targetApp && !group.appsList.some((appElement) => popupUI.expandedOptions.has(`popup_app_${group.key}_${appElement.id}`))) {
-            popupUI.expandedOptions.add(`popup_app_${group.key}_${targetApp.id}`);
+          if (isWhatsNewView.value) {
+            group.appsList.forEach((appElement) => {
+              popupUI.expandedOptions.add(`popup_app_${group.key}_${appElement.id}`);
+            });
+          } else {
+            const targetApp = app.value ? group.appsList.find((firstItem) => firstItem.packageName === app.value) : null;
+            if (targetApp && !group.appsList.some((appElement) => popupUI.expandedOptions.has(`popup_app_${group.key}_${appElement.id}`))) {
+              popupUI.expandedOptions.add(`popup_app_${group.key}_${targetApp.id}`);
+            }
           }
         }
       }
     };
 
     watch(popupBundleKey, (newKey) => {
-      if (newKey) autoExpandPopupApp();
-      else popupUI.clearState();
-    });
-    watch(patchesLoaded, (loaded) => {
-      if (loaded && popupBundleKey.value) {
-        popupUI.expandedOptions.clear();
-        nextTick(autoExpandPopupApp);
+      if (newKey) {
+        if (!activeData.value) loadData();
+        autoExpandPopupApp();
+      } else {
+        popupUI.clearState();
       }
     });
 
     const popupGroup = computed(() => {
       if (!activeData.value || !popupBundleKey.value) return null;
-      const bundleItem = activeData.value.bundles.find((bundleElement: Bundle) => bundleElement.key === popupBundleKey.value);
+      const targetKey = popupBundleKey.value.toLowerCase();
+      const bundleItem = activeData.value.bundles.find((bundleElement: Bundle) => bundleElement.key.toLowerCase() === targetKey);
       if (!bundleItem) return null;
       const rows = filterRows(activeData.value, {
         query: popupSearchQuery.value,
         showOptions: showOptions.value,
-      }).filter((row) => row.bundleKey === popupBundleKey.value);
-      return buildGroupFromRows(bundleItem, rows, (popupSearchQuery.value || "").trim().length > 0 || showOptions.value.length > 0);
+      }).filter((row) => row.bundleKey.toLowerCase() === targetKey);
+      return buildGroupFromRows(bundleItem, rows);
     });
 
     watch(popupGroup, (newGroup) => {
-      if (!newGroup) return;
+      if (!newGroup) {
+        if (popupBundleKey.value && activeData.value?.bundles?.length) closePopup();
+        return;
+      }
+
+      if (isWhatsNewView.value) {
+        newGroup.appsList?.forEach((appElement: AppElement) => {
+          popupUI.expandedOptions.add(`popup_app_${newGroup.key}_${appElement.id}`);
+        });
+        return;
+      }
 
       const hasExpanded = newGroup.appsList?.some((appElement: AppElement) => popupUI.expandedOptions.has(`popup_app_${newGroup.key}_${appElement.id}`));
 
@@ -1008,7 +988,6 @@ const app = createApp({
       popupUI,
       expandAll,
       collapseAll,
-      toggleBundle,
       filterByApp,
       resetFilters,
       closeWhatsNew: () => {
@@ -1046,21 +1025,30 @@ const app = createApp({
         const meta = activeData.value?.namesMap?.[packageName];
         return typeof meta === "object" && meta !== null ? (meta as AppNameMeta).iconUrl || "" : "";
       },
-      formatWhatsNewAppName: (packageName: string) =>
-        appName(packageName, Object.keys(whatsNewAppsData.value).length > 0 ? whatsNewAppsData.value : activeData.value?.namesMap || {}, activeData.value?.skipSet),
-      getAppName: (packageName: string) => (packageName ? appName(packageName, activeData.value?.namesMap || {}, activeData.value?.skipSet) : "All Apps"),
+      formatWhatsNewAppName: (packageName: string) => appName(packageName, Object.keys(whatsNewAppsData.value).length > 0 ? whatsNewAppsData.value : activeData.value?.namesMap || {}),
+      getAppName: (packageName: string) => (packageName ? appName(packageName, activeData.value?.namesMap || {}) : "All Apps"),
       getAppIcon: (packageName: string) => {
         const meta = activeData.value?.namesMap[packageName];
         return typeof meta === "object" && meta !== null ? (meta as AppNameMeta).iconUrl || "" : "";
       },
-      getBundleIcon: (key: string) => activeData.value?.bundleMap[key]?.avatarUrl || "",
+      getBundleName: (key: string) => (key && activeData.value ? activeData.value.bundleMap[key.toLowerCase()]?.name || key : "All Bundles"),
+      getBundleIcon: (key: string) => (key && activeData.value ? activeData.value.bundleMap[key.toLowerCase()]?.avatarUrl || "" : ""),
       toggleColumns: () => (isTwoColumns.value = !isTwoColumns.value),
       isNewBundle: (group: GroupItem) => !isWhatsNewView.value && !!group?.bundle?.firstSeen && (Date.now() - new Date(group.bundle.firstSeen).getTime()) / 86400000 <= 7,
-      hasHighlight: (prefix: string) => isWhatsNewView.value && whatsNewHighlights.value.includes(prefix),
+      hasHighlight: (prefix: string) => isWhatsNewView.value && whatsNewHighlights.value.some((h) => h.toLowerCase() === prefix.toLowerCase()),
       isAppHighlighted: (groupKey: string, appItem: AppElement) =>
-        isWhatsNewView.value && (whatsNewHighlights.value.includes(`${groupKey}:${appItem.packageName}`) || whatsNewHighlights.value.includes(`${groupKey}:${appItem.appName}`)),
+        isWhatsNewView.value &&
+        whatsNewHighlights.value.some((h) => {
+          const lowerH = h.toLowerCase();
+          return lowerH === `${groupKey}:${appItem.packageName}`.toLowerCase() || lowerH === `${groupKey}:${appItem.appName}`.toLowerCase();
+        }),
     };
   },
+});
+
+app.component("patch-item", {
+  template: "#patch-item-template",
+  props: ["patchItem", "appItem", "group", "ui", "copiedStates", "copyText", "hasHighlight"],
 });
 
 app.mount("#app");

@@ -38,8 +38,8 @@
       gtag("js", new Date());
       gtag("config", "G-80G574QRZ0");
     </script>
-    <script type="module" crossorigin src="./assets/index.js?v=1784765691662"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index.css?v=1784765691662">
+    <script type="module" crossorigin src="./assets/index.js?v=1785036131122"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index.css?v=1785036131122" />
   </head>
 
   <body class="bg-black min-h-screen relative overflow-x-hidden">
@@ -83,10 +83,10 @@
       </aside>
 
       <section class="mt-1 md:mt-4 max-w-4xl mx-auto px-0 sm:px-3 flex flex-col gap-2 md:gap-4" aria-label="Main Content">
-        <div class="border-2 border-lightGray rounded-2xl shadow-lg relative z-10 mt-0">
+        <div class="border-2 border-lightGray rounded-2xl shadow-lg relative z-50 mt-0">
           <div class="bg-dark rounded-[14px] overflow-hidden h-full">
             <!-- Header: Logo and Menu -->
-            <div class="relative flex items-center justify-center border-b-2 border-blue/10 h-[52px] px-3">
+            <div class="relative flex items-center justify-center border-b-2 border-blue/10 h-13 px-3">
               <button
                 @click="toggleSideMenu"
                 class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-lg border border-lightGray bg-black text-white active:scale-90 transition-all hover:border-white/50 z-20"
@@ -107,7 +107,7 @@
               <div class="flex flex-col md:flex-row gap-2.5">
                 <!-- Reset & Bundle Container -->
                 <div class="flex items-center gap-2 w-full md:w-1/2 min-w-0">
-                  <button @click="resetFilters" class="badge badge-md shrink-0 h-[34px]">
+                  <button @click="resetFilters" class="badge badge-md shrink-0 h-8.5">
                     <i class="fa-solid fa-arrow-rotate-left"></i>
                     <span>Reset Filters</span>
                   </button>
@@ -117,7 +117,7 @@
                     <button
                       type="button"
                       onclick="toggleDropdown('bundle-dd')"
-                      class="w-full h-[34px] px-2.5 sm:px-3 bg-black border border-lightGray rounded-md text-sm text-white flex items-center gap-2 sm:gap-3 hover:border-white/50 transition-all cursor-pointer"
+                      class="w-full h-8.5 px-2.5 sm:px-3 bg-black border border-lightGray rounded-md text-sm text-white flex items-center gap-2 sm:gap-3 hover:border-white/50 transition-all cursor-pointer"
                       aria-label="Patch Bundles filter"
                     >
                       <template v-if="bundle">
@@ -125,10 +125,10 @@
                         <i v-else class="fa-solid fa-layer-group text-light text-base shrink-0 -ml-1 sm:ml-0 icon-center"></i>
                       </template>
                       <i v-else class="fa-solid fa-layer-group text-light text-base shrink-0 -ml-1 sm:ml-0 icon-center"></i>
-                      <span class="flex-1 truncate text-left">{{ bundle || 'All Bundles' }}</span>
+                      <span class="flex-1 truncate text-left">{{ getBundleName(bundle) }}</span>
                       <i class="fa-solid fa-chevron-down dd-chevron text-light text-xs shrink-0 transition-transform duration-200 -mr-0.5 sm:mr-0"></i>
                     </button>
-                    <div class="dd-panel max-h-[400px] overflow-y-auto bg-gray border border-lightGray rounded-md shadow-xl py-1 divide-y divide-white/10">
+                    <div class="dd-panel z-100 max-h-100 overflow-y-auto bg-gray border border-lightGray rounded-md shadow-xl py-1 divide-y divide-white/10">
                       <div class="sticky top-0 bg-gray px-2 pb-2 pt-1 border-b border-lightGray/30 z-10">
                         <div class="relative">
                           <span class="absolute left-2 top-0 h-8 flex items-center text-light pointer-events-none">
@@ -165,7 +165,7 @@
                   <button
                     type="button"
                     onclick="toggleDropdown('app-dd')"
-                    class="w-full h-[34px] px-2.5 sm:px-3 bg-black border border-lightGray rounded-md text-sm text-white flex items-center gap-2 sm:gap-3 hover:border-white/50 transition-all cursor-pointer"
+                    class="w-full h-8.5 px-2.5 sm:px-3 bg-black border border-lightGray rounded-md text-sm text-white flex items-center gap-2 sm:gap-3 hover:border-white/50 transition-all cursor-pointer"
                     aria-label="Apps filter"
                   >
                     <template v-if="app">
@@ -176,7 +176,7 @@
                     <span class="flex-1 truncate text-left">{{ getAppName(app) }}</span>
                     <i class="fa-solid fa-chevron-down dd-chevron text-light text-xs shrink-0 transition-transform duration-200 -mr-0.5 sm:mr-0"></i>
                   </button>
-                  <div class="dd-panel max-h-[400px] overflow-y-auto bg-gray border border-lightGray rounded-md shadow-xl py-1 divide-y divide-white/10">
+                  <div class="dd-panel z-100 max-h-100 overflow-y-auto bg-gray border border-lightGray rounded-md shadow-xl py-1 divide-y divide-white/10">
                     <div class="sticky top-0 bg-gray px-2 pb-2 pt-1 border-b border-lightGray/30 z-10">
                       <div class="relative">
                         <span class="absolute left-2 top-0 h-8 flex items-center text-light pointer-events-none">
@@ -213,7 +213,7 @@
                 <!-- Search Patches -->
                 <div class="w-full md:w-1/2 min-w-0">
                   <form @submit.prevent="blurSearchInput($event)" class="relative w-full mt-0">
-                    <span class="absolute left-3 top-0 h-[34px] flex items-center text-light pointer-events-none">
+                    <span class="absolute left-3 top-0 h-8.5 flex items-center text-light pointer-events-none">
                       <i class="fa-solid fa-magnifying-glass text-xs icon-center"></i>
                     </span>
                     <input
@@ -222,13 +222,13 @@
                       autocomplete="off"
                       enterkeyhint="search"
                       placeholder="Search patches"
-                      class="w-full h-[34px] pl-8 pr-9 bg-black border border-lightGray hover:border-white/50 rounded-md focus:border-light focus:ring-2 focus:ring-light/20 outline-none transition-all text-sm text-white"
+                      class="w-full h-8.5 pl-8 pr-9 bg-black border border-lightGray hover:border-white/50 rounded-md focus:border-light focus:ring-2 focus:ring-light/20 outline-none transition-all text-sm text-white"
                     />
                     <button
                       v-if="localQuery"
                       type="button"
                       @click="localQuery = ''"
-                      class="absolute right-0 top-0 h-[34px] w-9 flex items-center justify-center text-light hover:text-white transition-colors"
+                      class="absolute right-0 top-0 h-8.5 w-9 flex items-center justify-center text-light hover:text-white transition-colors"
                       title="Clear search"
                     >
                       <i class="fa-solid fa-circle-xmark icon-center"></i>
@@ -256,7 +256,7 @@
             <p class="text-light text-sm">Recently added bundles, apps &amp; patches</p>
           </div>
 
-          <div v-if="isWhatsNewLoading" class="grid min-h-[220px] place-items-center text-light">Loading history...</div>
+          <div v-if="isWhatsNewLoading" class="grid min-h-55 place-items-center text-light">Loading history...</div>
           <div v-else class="flex flex-col gap-4">
             <div v-for="day in whatsNewHistory" :key="day.date">
               <div class="sticky top-0 bg-black z-10 py-2 mb-2 pl-2 md:pl-4">
@@ -268,19 +268,19 @@
 
               <div class="flex flex-col gap-2 pl-2 pr-2 sm:pr-0 md:pl-4">
                 <div v-for="(bundleData, bundleKey) in day.bundles" :key="bundleKey" class="bg-dark border border-lightGray rounded-lg p-2.5 md:p-3">
-                  <div class="flex items-center gap-2 mb-2 cursor-pointer hover:opacity-80 transition-opacity w-fit" @click="openBundlePopup(bundleKey, bundleData)">
-                    <i class="fa-solid fa-layer-group text-light text-sm"></i>
-                    <h4 class="text-base font-bold text-white leading-snug">{{ bundleKey }}</h4>
-                    <span v-if="bundleData.isNew" class="badge badge-sm text-yellow">✨ New</span>
+                  <div class="mb-2 cursor-pointer hover:opacity-80 transition-opacity flex items-center flex-wrap gap-2" @click="openBundlePopup(bundleKey, bundleData)">
+                    <i class="fa-solid fa-layer-group text-light text-sm shrink-0"></i>
+                    <span v-if="bundleData.isNew" class="badge badge-sm text-yellow shrink-0">✨ New</span>
+                    <h4 class="text-base font-bold text-white leading-tight wrap-break-word min-w-0">{{ bundleData.name || bundleKey }}</h4>
                   </div>
 
                   <div class="ml-3 md:ml-5 flex flex-col gap-2 border-l-2 border-lightGray/30 pl-2.5 md:pl-3">
                     <div v-for="(appData, packageName) in bundleData.apps" :key="packageName">
-                      <div class="flex items-center gap-1.5 mb-1.5 cursor-pointer hover:opacity-80 transition-opacity w-fit" @click="openAppPopup(bundleKey, packageName, appData)">
+                      <div class="flex items-center gap-1.5 mb-1.5 cursor-pointer hover:opacity-80 transition-opacity w-fit" @click="openAppPopup(bundleKey, bundleData, packageName, appData)">
                         <img v-if="getWhatsNewAppIcon(packageName)" :src="getWhatsNewAppIcon(packageName)" class="w-4 h-4 rounded-sm object-contain shrink-0" alt="" loading="lazy" />
                         <i v-else class="fa-brands fa-android text-green text-sm w-4 text-center icon-center shrink-0"></i>
+                        <span v-if="appData.isNew && !bundleData.isNew" class="badge badge-sm text-yellow shrink-0">✨ New</span>
                         <h5 class="font-medium text-sm text-white leading-snug">{{ formatWhatsNewAppName(packageName) }}</h5>
-                        <span v-if="appData.isNew && !bundleData.isNew" class="badge badge-sm text-yellow">✨ New</span>
                       </div>
 
                       <div class="ml-2 md:ml-3 border-l-2 border-lightGray/30 pl-2 md:pl-3">
@@ -289,10 +289,10 @@
                             v-for="patch in appData.patches"
                             :key="patch"
                             class="badge badge-sm border-lightGray hover:border-white/50 text-light cursor-pointer bg-gray shrink-0"
-                            @click="openPatchPopup(bundleKey, packageName, patch)"
+                            @click="openPatchPopup(bundleKey, bundleData, packageName, patch)"
                           >
+                            <span v-if="!appData.isNew && !bundleData.isNew" class="text-yellow font-bold mr-1 shrink-0">✨ New</span>
                             {{ patch }}
-                            <span v-if="!appData.isNew && !bundleData.isNew" class="badge badge-sm text-yellow">✨ New</span>
                           </div>
                         </div>
                       </div>
@@ -306,8 +306,8 @@
 
         <!-- Main Content View -->
         <div v-show="!isWhatsNewView">
-          <div v-if="isLoading" class="grid min-h-[220px] place-items-center text-light">Loading data...</div>
-          <div v-else-if="errorMsg" class="grid min-h-[220px] place-items-center">
+          <div v-if="isLoading" class="grid min-h-55 place-items-center text-light">Loading data...</div>
+          <div v-else-if="errorMsg" class="grid min-h-55 place-items-center">
             <div class="text-center p-8 bg-dark/40 border border-lightGray rounded-2xl shadow-sm mx-3 sm:mx-0">
               <h2 class="text-lg font-bold mb-2">Could not load data</h2>
               <p class="text-light">{{ errorMsg }}</p>
@@ -315,7 +315,7 @@
           </div>
 
           <div v-else>
-            <div v-if="!bundlesGroups.length" class="grid min-h-[220px] place-items-center">
+            <div v-if="!bundlesGroups.length" class="grid min-h-55 place-items-center">
               <div class="text-center p-8 bg-dark/40 border border-lightGray rounded-2xl max-w-lg w-auto sm:w-full mx-3 sm:mx-0 shadow-sm">
                 <h2 class="text-lg font-bold mb-2">No patch bundles found</h2>
                 <p class="text-light mb-4">Try changing the search or filters.</p>
@@ -353,7 +353,7 @@
                   </button>
 
                   <!-- Sort Dropdown -->
-                  <div class="relative w-[115px] shrink-0 flex items-center">
+                  <div class="relative w-28.75 shrink-0 flex items-center">
                     <select
                       v-model="sortOrder"
                       class="w-full h-6 pl-7 pr-4 appearance-none bg-black border border-lightGray hover:border-white/50 rounded-full text-xs text-white font-semibold focus:border-light outline-none transition-all cursor-pointer"
@@ -370,24 +370,23 @@
 
               <!-- Grid Container -->
               <div class="grid gap-4 items-start" :class="effectiveTwoColumns ? 'md:grid-cols-2' : 'grid-cols-1'">
-                <div v-for="group in bundlesGroups" :key="group.key" class="bg-gray border-2 border-lightGray rounded-2xl overflow-hidden group/bundle shadow-sm flex flex-col">
-                  <div
-                    @click="toggleBundle(group)"
-                    class="flex justify-between py-2 px-2 sm:px-3 cursor-pointer"
-                    :class="!effectiveTwoColumns ? 'gap-3 flex-col md:flex-row items-stretch md:items-center' : 'gap-2 flex-col items-stretch'"
-                  >
+                <div
+                  v-for="group in bundlesGroups"
+                  :key="group.key"
+                  class="bg-gray border-2 border-lightGray rounded-2xl overflow-hidden group/bundle shadow-sm flex flex-col cursor-pointer hover:border-light transition-all"
+                  @click="openPopupFast(group.key)"
+                >
+                  <div class="flex justify-between py-2 px-2 sm:px-3" :class="!effectiveTwoColumns ? 'gap-3 flex-col md:flex-row items-stretch md:items-center' : 'gap-2 flex-col items-stretch'">
                     <div class="flex items-center gap-3 min-w-0 flex-1 w-full text-left" :class="!effectiveTwoColumns ? 'justify-center md:justify-start md:w-auto' : 'justify-center'">
                       <img
                         v-if="group.bundle.avatarUrl"
                         :src="group.bundle.avatarUrl"
                         alt="Avatar"
-                        @click.stop="openPopupFast(group.key)"
                         title="View this bundle"
                         class="w-12 h-12 rounded-lg bg-lightGray/20 border border-lightGray object-cover shrink-0 sm:mt-0.5 cursor-pointer hover:opacity-80 transition-opacity"
                       />
                       <div
                         v-else
-                        @click.stop="openPopupFast(group.key)"
                         title="View this bundle"
                         class="w-12 h-12 rounded-lg bg-lightGray/20 border border-lightGray flex items-center justify-center shrink-0 sm:mt-0.5 cursor-pointer hover:bg-lightGray/35 transition-colors"
                       >
@@ -395,12 +394,9 @@
                       </div>
                       <div class="flex flex-col min-w-0 justify-center items-start gap-1 sm:gap-1.5 max-w-full">
                         <!-- Title Row -->
-                        <div class="flex flex-wrap items-center gap-2 min-w-0 w-full" :class="!effectiveTwoColumns ? 'justify-center md:justify-start' : 'justify-center'">
-                          <strong
-                            @click.stop="openPopupFast(group.key)"
-                            title="View this bundle"
-                            class="font-bold text-lg sm:text-xl text-white wrap-break-word leading-tight cursor-pointer hover:opacity-80 transition-all"
-                            >{{ group.key }}</strong
+                        <div class="min-w-0 w-full flex flex-wrap items-center gap-2" :class="!effectiveTwoColumns ? 'justify-center md:justify-start' : 'justify-center'">
+                          <strong title="View this bundle" class="font-bold text-lg sm:text-xl text-white wrap-break-word cursor-pointer hover:opacity-80 transition-all"
+                            >{{ group.bundle.name || group.key }}</strong
                           >
                           <span v-if="hasHighlight(group.key) || isNewBundle(group)" class="badge badge-sm text-yellow shrink-0">✨ New</span>
                           <span v-if="group.bundle.isPreRelease" class="badge badge-sm text-yellow shrink-0"><i class="fa-solid fa-flask"></i> Pre-release</span>
@@ -416,7 +412,7 @@
                           class="flex items-start sm:items-center gap-1 text-sm sm:text-base text-blue hover:brightness-125 transition-all max-w-full"
                         >
                           <i
-                            class="mt-[2px] sm:mt-0"
+                            class="mt-0.5 sm:mt-0"
                             :class="group.bundle.source === 'github' ? 'fa-brands fa-github text-white' : group.bundle.source === 'gitlab' ? 'fa-brands fa-gitlab text-orange' : 'fa-solid fa-globe'"
                           ></i>
                           <span class="break-all text-left">{{ group.bundle.repo }}</span>
@@ -436,17 +432,9 @@
                           <i class="fa-solid fa-plus icon-center"></i>
                           <span>Add to Morphe</span>
                         </a>
-                        <a
-                          v-if="group.bundle.createdAt"
-                          :href="group.bundle.changelogUrl || (group.bundle.repoUrl ? group.bundle.repoUrl + '/releases' : '#')"
-                          target="_blank"
-                          rel="noreferrer"
-                          @click.stop
-                          class="badge"
-                          title="View changelog"
-                        >
+                        <a v-if="group.bundle.updatedAt" :href="group.bundle.changelogUrl" target="_blank" rel="noreferrer" @click.stop class="badge" title="View changelog">
                           <i class="fa-solid fa-clock-rotate-left"></i>
-                          <span>{{ formatDate(group.bundle.createdAt) }}</span>
+                          <span>{{ formatDate(group.bundle.updatedAt) }}</span>
                         </a>
                       </span>
                     </span>
@@ -479,7 +467,7 @@
                         <button
                           v-show="mainUI.overflowingAppLists.has(group.key)"
                           @click.stop="mainUI.toggleAppList(group.key)"
-                          class="absolute right-1 top-[5px] z-10 w-7 h-7 flex items-center justify-center rounded-full bg-white border border-light text-gray hover:bg-light transition-all cursor-pointer shadow-md"
+                          class="absolute right-1 top-1.25 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-white border border-light text-gray hover:bg-light transition-all cursor-pointer shadow-md"
                           :title="mainUI.expandedAppLists.has(group.key) ? 'Collapse apps' : 'Expand apps'"
                         >
                           <i class="fa-solid text-xs" :class="mainUI.expandedAppLists.has(group.key) ? 'fa-compress' : 'fa-expand'"></i>
@@ -491,7 +479,8 @@
                           v-if="mainUI.expandedOptions.has('app_' + group.key + '_' + appItem.id)"
                           @touchstart="mainUI.handleTouchStart"
                           @touchend="mainUI.handleTouchEnd($event, group.key, appItem, appsList)"
-                          class="flex flex-col gap-2 shadow-inner pt-2 pb-3"
+                          class="flex flex-col gap-2 shadow-inner pt-2 pb-3 cursor-default"
+                          @click.stop
                         >
                           <div v-if="appItem.packageName" class="flex flex-wrap items-center gap-2 min-w-0 px-3 sm:px-4">
                             <button @click.stop="filterByApp(appItem.packageName)" class="badge shrink-0 select-none">
@@ -522,91 +511,17 @@
 
                           <div class="pl-6 pr-1 sm:px-4">
                             <div class="flex flex-col gap-1.5 pr-1.5 sm:pr-0 py-0.5 max-h-[45vh] overflow-y-auto">
-                              <div
+                              <patch-item
                                 v-for="patchItem in group.patches.filter(patchElement => patchElement.apps.some(appElement => appElement.packageName === appItem.packageName))"
                                 :key="patchItem.id"
-                                @click="patchItem.options.length && mainUI.toggleOptions(patchItem.id)"
-                                class="bg-dark py-1 pl-2.5 pr-1 sm:px-2.5 rounded-xl border border-lightGray shadow-sm flex flex-col shrink-0"
-                                :class="{'cursor-pointer': patchItem.options.length}"
-                              >
-                                <div class="flex flex-wrap items-center justify-end gap-x-1 gap-y-1 mb-0.5">
-                                  <div class="flex items-center gap-2 flex-wrap min-w-0 mr-auto">
-                                    <strong class="font-bold text-white text-sm flex items-center gap-2">
-                                      {{ patchItem.patchName }}
-                                      <span v-if="hasHighlight(group.key + ':' + appItem.packageName + ':' + patchItem.patchName)" class="badge badge-sm text-yellow">✨ New</span>
-                                      <span v-if="patchItem.isPatchPreRelease && !appItem.isAppPreRelease && !group.bundle.isPreRelease" class="badge badge-sm text-yellow"
-                                        ><i class="fa-solid fa-flask"></i> Pre-release</span
-                                      >
-                                    </strong>
-                                    <span v-if="!patchItem.enabled" class="badge badge-sm text-yellow cursor-help" title="off by default">off</span>
-                                    <button
-                                      v-if="patchItem.options.length"
-                                      @click.stop="mainUI.toggleOptions(patchItem.id)"
-                                      class="text-light hover:text-white px-1 shrink-0"
-                                      :title="mainUI.expandedOptions.has(patchItem.id) ? 'Hide options' : 'Show options'"
-                                    >
-                                      <i class="fa-solid fa-chevron-down transition-transform" :class="{'rotate-180': mainUI.expandedOptions.has(patchItem.id)}"></i>
-                                    </button>
-                                  </div>
-                                  <template
-                                    v-for="appElement in patchItem.apps.filter(appEl => (appEl.packageName || appEl.appName || 'any') === (appItem.packageName || appItem.appName || 'any'))"
-                                    :key="appElement.id"
-                                  >
-                                    <template v-if="appElement.versions && appElement.versions.length">
-                                      <template v-if="!mainUI.expandedVersions.has(appElement.id)">
-                                        <button
-                                          @click.stop="copyText(appElement.versions[0].version, 'ver_' + appElement.id + '_last')"
-                                          class="badge badge-sm relative"
-                                          :class="[{ 'z-50': copiedStates['ver_' + appElement.id + '_last'] }, appElement.versions[0].version === 'Any version' ? 'text-light' : 'text-green']"
-                                          :title="appElement.versions[0].isExperimental ? 'Copy experimental version' : 'Copy app version'"
-                                        >
-                                          <span
-                                            v-if="copiedStates['ver_' + appElement.id + '_last']"
-                                            class="absolute top-full right-0 mt-1 px-1.5 py-0.5 text-[10px] leading-none text-white bg-lightGray rounded shadow-lg whitespace-nowrap z-60 pointer-events-none animate-float-in"
-                                            >Copied!</span
-                                          >
-                                          <i v-if="appElement.versions[0].isExperimental" class="fa-solid fa-flask text-yellow"></i>
-                                          <span>{{ appElement.versions[0].version }}</span>
-                                        </button>
-                                        <button v-if="appElement.versions.length > 1" @click.stop="mainUI.toggleVersions(appElement.id)" class="badge badge-sm text-blue">
-                                          <span>+{{ appElement.versions.length - 1 }}</span>
-                                        </button>
-                                      </template>
-                                      <template v-else>
-                                        <button
-                                          v-for="versionItem in appElement.versions"
-                                          :key="versionItem.version"
-                                          @click.stop="copyText(versionItem.version, 'ver_' + appElement.id + '_' + versionItem.version)"
-                                          class="badge badge-sm relative"
-                                          :class="[{ 'z-50': copiedStates['ver_' + appElement.id + '_' + versionItem.version] }, versionItem.version === 'Any version' ? 'text-light' : 'text-green']"
-                                          :title="versionItem.isExperimental ? 'Copy experimental version' : 'Copy app version'"
-                                        >
-                                          <span
-                                            v-if="copiedStates['ver_' + appElement.id + '_' + versionItem.version]"
-                                            class="absolute top-full right-0 mt-1 px-1.5 py-0.5 text-[10px] leading-none text-white bg-lightGray rounded shadow-lg whitespace-nowrap z-60 pointer-events-none animate-float-in"
-                                            >Copied!</span
-                                          >
-                                          <i v-if="versionItem.isExperimental" class="fa-solid fa-flask text-yellow"></i>
-                                          <span>{{ versionItem.version }}</span>
-                                        </button>
-                                        <button @click.stop="mainUI.toggleVersions(appElement.id)" class="badge badge-sm text-blue">
-                                          <span>Less</span>
-                                        </button>
-                                      </template>
-                                    </template>
-                                    <span v-else class="badge badge-sm text-light">Any version</span>
-                                  </template>
-                                </div>
-
-                                <p class="text-xs text-light">{{ patchItem.description }}</p>
-
-                                <div v-if="mainUI.expandedOptions.has(patchItem.id)" class="mt-1.5 py-1 px-2 bg-lightGray border border-lightGray rounded flex flex-col gap-1 shadow-inner">
-                                  <div v-for="optionItem in patchItem.options" :key="optionItem.key">
-                                    <strong class="font-bold text-xs text-white block">{{ optionItem.title || optionItem.key }}</strong>
-                                    <p class="text-[10px] text-light">{{ optionItem.description }}</p>
-                                  </div>
-                                </div>
-                              </div>
+                                :patch-item="patchItem"
+                                :app-item="appItem"
+                                :group="group"
+                                :ui="mainUI"
+                                :copied-states="copiedStates"
+                                :copy-text="copyText"
+                                :has-highlight="hasHighlight(group.key + ':' + appItem.packageName + ':' + patchItem.patchName)"
+                              ></patch-item>
                             </div>
                           </div>
                         </div>
@@ -652,7 +567,7 @@
             <div class="flex items-center gap-2 w-full sm:w-[320px] max-w-sm flex-1 min-w-0" @click.self="closePopup">
               <!-- Patch Search -->
               <form @submit.prevent="$event.target.querySelector('input').blur()" @click.stop class="relative flex-1 min-w-0 w-full">
-                <span class="absolute left-3 top-0 h-[34px] flex items-center text-light pointer-events-none">
+                <span class="absolute left-3 top-0 h-8.5 flex items-center text-light pointer-events-none">
                   <i class="fa-solid fa-magnifying-glass text-xs icon-center"></i>
                 </span>
                 <input
@@ -661,13 +576,13 @@
                   autocomplete="off"
                   enterkeyhint="search"
                   placeholder="Search patches"
-                  class="w-full h-[34px] pl-8 pr-9 bg-black border border-lightGray hover:border-white/50 rounded-md focus:border-light focus:ring-2 focus:ring-light/20 outline-none transition-all text-sm text-white"
+                  class="w-full h-8.5 pl-8 pr-9 bg-black border border-lightGray hover:border-white/50 rounded-md focus:border-light focus:ring-2 focus:ring-light/20 outline-none transition-all text-sm text-white"
                 />
                 <button
                   v-if="localPopupSearchQuery"
                   @click="localPopupSearchQuery = ''"
                   type="button"
-                  class="absolute right-0 top-0 h-[34px] w-9 flex items-center justify-center text-light hover:text-white transition-colors"
+                  class="absolute right-0 top-0 h-8.5 w-9 flex items-center justify-center text-light hover:text-white transition-colors"
                   title="Clear search"
                 >
                   <i class="fa-solid fa-circle-xmark icon-center"></i>
@@ -701,10 +616,10 @@
                     <i class="fa-solid fa-layer-group text-light text-xl icon-center"></i>
                   </div>
                   <div class="flex flex-col min-w-0 justify-center items-start gap-1 sm:gap-1.5 max-w-full">
-                    <div class="flex flex-wrap items-center gap-2 min-w-0 w-full justify-center md:justify-start">
-                      <strong class="font-bold text-lg sm:text-xl text-white wrap-break-word leading-tight">{{ group.key }}</strong>
-                      <span v-if="hasHighlight(group.key) || isNewBundle(group)" class="badge badge-sm text-yellow">✨ New</span>
-                      <span v-if="group.bundle.isPreRelease" class="badge badge-sm text-yellow"><i class="fa-solid fa-flask"></i> Pre-release</span>
+                    <div class="min-w-0 w-full flex flex-wrap items-center gap-2 justify-center md:justify-start">
+                      <strong class="font-bold text-lg sm:text-xl text-white wrap-break-word">{{ group.bundle.name || group.key }}</strong>
+                      <span v-if="hasHighlight(group.key) || isNewBundle(group)" class="badge badge-sm text-yellow shrink-0">✨ New</span>
+                      <span v-if="group.bundle.isPreRelease" class="badge badge-sm text-yellow shrink-0"><i class="fa-solid fa-flask"></i> Pre-release</span>
                       <span v-if="group.bundle.stars !== undefined" class="badge badge-sm shrink-0"> <i class="fa-solid fa-star text-yellow"></i>{{ group.bundle.stars }}</span>
                     </div>
 
@@ -717,7 +632,7 @@
                       class="flex items-start sm:items-center gap-1 text-sm sm:text-base text-blue hover:brightness-125 transition-all max-w-full"
                     >
                       <i
-                        class="mt-[2px] sm:mt-0"
+                        class="mt-0.5 sm:mt-0"
                         :class="group.bundle.source === 'github' ? 'fa-brands fa-github text-white' : group.bundle.source === 'gitlab' ? 'fa-brands fa-gitlab text-orange' : 'fa-solid fa-globe'"
                       ></i>
                       <span class="break-all text-left">{{ group.bundle.repo }}</span>
@@ -736,17 +651,9 @@
                     <i class="fa-solid fa-plus icon-center"></i>
                     <span>Add to Morphe</span>
                   </a>
-                  <a
-                    v-if="group.bundle.createdAt"
-                    :href="group.bundle.changelogUrl || (group.bundle.repoUrl ? group.bundle.repoUrl + '/releases' : '#')"
-                    target="_blank"
-                    rel="noreferrer"
-                    @click.stop
-                    class="badge"
-                    title="View changelog"
-                  >
+                  <a v-if="group.bundle.updatedAt" :href="group.bundle.changelogUrl" target="_blank" rel="noreferrer" @click.stop class="badge" title="View changelog">
                     <i class="fa-solid fa-clock-rotate-left"></i>
-                    <span>{{ formatDate(group.bundle.createdAt) }}</span>
+                    <span>{{ formatDate(group.bundle.updatedAt) }}</span>
                   </a>
                 </span>
               </div>
@@ -787,8 +694,7 @@
                       v-if="popupUI.expandedOptions.has('popup_app_' + group.key + '_' + appItem.id)"
                       @touchstart="popupUI.handleTouchStart"
                       @touchend="popupUI.handleTouchEnd($event, group.key, appItem, appsList)"
-                      class="flex flex-col gap-2 shadow-inner pt-2 pb-3"
-                      :class="(popupUI.activeSwipeGroup === group.key && popupUI.swipeDirection ? 'swipe-transition-' + popupUI.swipeDirection : '') + ' border-b-2 border-lightGray/30'"
+                      class="flex flex-col gap-2 shadow-inner pt-2 pb-3 border-b-2 border-lightGray/30"
                     >
                       <div v-if="appItem.packageName" class="flex flex-wrap items-center gap-2 min-w-0 px-4 shrink-0">
                         <button @click.stop="filterByApp(appItem.packageName)" class="badge shrink-0 select-none">
@@ -819,91 +725,17 @@
 
                       <div class="px-4 flex flex-col">
                         <div class="flex flex-col gap-1.5 pr-0 py-0.5">
-                          <div
+                          <patch-item
                             v-for="patchItem in group.patches.filter(patchElement => patchElement.apps.some(appElement => appElement.packageName === appItem.packageName))"
                             :key="patchItem.id"
-                            @click="patchItem.options.length && popupUI.toggleOptions(patchItem.id)"
-                            class="bg-dark py-1 pl-2.5 pr-1 sm:px-2.5 rounded-xl border border-lightGray shadow-sm flex flex-col shrink-0"
-                            :class="{'cursor-pointer': patchItem.options.length}"
-                          >
-                            <div class="flex flex-wrap items-center justify-end gap-x-1 gap-y-1 mb-0.5">
-                              <div class="flex items-center gap-2 flex-wrap min-w-0 mr-auto">
-                                <strong class="font-bold text-white text-sm flex items-center gap-2">
-                                  {{ patchItem.patchName }}
-                                  <span v-if="hasHighlight(group.key + ':' + appItem.packageName + ':' + patchItem.patchName)" class="badge badge-sm text-yellow">✨ New</span>
-                                  <span v-if="patchItem.isPatchPreRelease && !appItem.isAppPreRelease && !group.bundle.isPreRelease" class="badge badge-sm text-yellow"
-                                    ><i class="fa-solid fa-flask"></i> Pre-release</span
-                                  >
-                                </strong>
-                                <span v-if="!patchItem.enabled" class="badge badge-sm text-yellow cursor-help" title="off by default">off</span>
-                                <button
-                                  v-if="patchItem.options.length"
-                                  @click.stop="popupUI.toggleOptions(patchItem.id)"
-                                  class="text-light hover:text-white px-1 shrink-0"
-                                  :title="popupUI.expandedOptions.has(patchItem.id) ? 'Hide options' : 'Show options'"
-                                >
-                                  <i class="fa-solid fa-chevron-down transition-transform" :class="{'rotate-180': popupUI.expandedOptions.has(patchItem.id)}"></i>
-                                </button>
-                              </div>
-                              <template
-                                v-for="appElement in patchItem.apps.filter(appEl => (appEl.packageName || appEl.appName || 'any') === (appItem.packageName || appItem.appName || 'any'))"
-                                :key="appElement.id"
-                              >
-                                <template v-if="appElement.versions && appElement.versions.length">
-                                  <template v-if="!popupUI.expandedVersions.has(appElement.id)">
-                                    <button
-                                      @click.stop="copyText(appElement.versions[0].version, 'ver_' + appElement.id + '_last')"
-                                      class="badge badge-sm relative"
-                                      :class="[{ 'z-50': copiedStates['ver_' + appElement.id + '_last'] }, appElement.versions[0].version === 'Any version' ? 'text-light' : 'text-green']"
-                                      :title="appElement.versions[0].isExperimental ? 'Copy experimental version' : 'Copy app version'"
-                                    >
-                                      <span
-                                        v-if="copiedStates['ver_' + appElement.id + '_last']"
-                                        class="absolute top-full right-0 mt-1 px-1.5 py-0.5 text-[10px] leading-none text-white bg-lightGray rounded shadow-lg whitespace-nowrap z-60 pointer-events-none animate-float-in"
-                                        >Copied!</span
-                                      >
-                                      <i v-if="appElement.versions[0].isExperimental" class="fa-solid fa-flask text-yellow"></i>
-                                      <span>{{ appElement.versions[0].version }}</span>
-                                    </button>
-                                    <button v-if="appElement.versions.length > 1" @click.stop="popupUI.toggleVersions(appElement.id)" class="badge badge-sm text-blue">
-                                      <span>+{{ appElement.versions.length - 1 }}</span>
-                                    </button>
-                                  </template>
-                                  <template v-else>
-                                    <button
-                                      v-for="versionItem in appElement.versions"
-                                      :key="versionItem.version"
-                                      @click.stop="copyText(versionItem.version, 'ver_' + appElement.id + '_' + versionItem.version)"
-                                      class="badge badge-sm relative"
-                                      :class="[{ 'z-50': copiedStates['ver_' + appElement.id + '_' + versionItem.version] }, versionItem.version === 'Any version' ? 'text-light' : 'text-green']"
-                                      :title="versionItem.isExperimental ? 'Copy experimental version' : 'Copy app version'"
-                                    >
-                                      <span
-                                        v-if="copiedStates['ver_' + appElement.id + '_' + versionItem.version]"
-                                        class="absolute top-full right-0 mt-1 px-1.5 py-0.5 text-[10px] leading-none text-white bg-lightGray rounded shadow-lg whitespace-nowrap z-60 pointer-events-none animate-float-in"
-                                        >Copied!</span
-                                      >
-                                      <i v-if="versionItem.isExperimental" class="fa-solid fa-flask text-yellow"></i>
-                                      <span>{{ versionItem.version }}</span>
-                                    </button>
-                                    <button @click.stop="popupUI.toggleVersions(appElement.id)" class="badge badge-sm text-blue">
-                                      <span>Less</span>
-                                    </button>
-                                  </template>
-                                </template>
-                                <span v-else class="badge badge-sm text-light">Any version</span>
-                              </template>
-                            </div>
-
-                            <p class="text-xs text-light">{{ patchItem.description }}</p>
-
-                            <div v-if="popupUI.expandedOptions.has(patchItem.id)" class="mt-1.5 py-1 px-2 bg-lightGray border border-lightGray rounded flex flex-col gap-1 shadow-inner">
-                              <div v-for="optionItem in patchItem.options" :key="optionItem.key">
-                                <strong class="font-bold text-xs text-white block">{{ optionItem.title || optionItem.key }}</strong>
-                                <p class="text-[10px] text-light">{{ optionItem.description }}</p>
-                              </div>
-                            </div>
-                          </div>
+                            :patch-item="patchItem"
+                            :app-item="appItem"
+                            :group="group"
+                            :ui="popupUI"
+                            :copied-states="copiedStates"
+                            :copy-text="copyText"
+                            :has-highlight="hasHighlight(group.key + ':' + appItem.packageName + ':' + patchItem.patchName)"
+                          ></patch-item>
                         </div>
                       </div>
                     </div>
@@ -919,7 +751,7 @@
       <nav aria-label="Primary" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-9990 flex items-center gap-2 px-3 py-2 rounded-full border border-lightGray bg-dark/90 backdrop-blur-md shadow-2xl">
         <button
           @click="handleBottomNav('bundles')"
-          class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] px-2 py-1.5 rounded-xl cursor-pointer active:scale-95 transition-all"
+          class="flex flex-col items-center justify-center gap-0.5 min-w-16 px-2 py-1.5 rounded-xl cursor-pointer active:scale-95 transition-all"
           :class="!isWhatsNewView ? 'bg-blue/20 text-blue font-bold' : 'text-light hover:text-white'"
         >
           <i class="fa-solid fa-layer-group text-lg"></i>
@@ -930,7 +762,7 @@
 
         <button
           @click="handleBottomNav('whatsnew')"
-          class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] px-2 py-1.5 rounded-xl cursor-pointer active:scale-95 transition-all"
+          class="flex flex-col items-center justify-center gap-0.5 min-w-16 px-2 py-1.5 rounded-xl cursor-pointer active:scale-95 transition-all"
           :class="isWhatsNewView ? 'bg-blue/20 text-blue font-bold' : 'text-light hover:text-white'"
         >
           <i class="fa-solid fa-clock-rotate-left text-lg"></i>
@@ -938,6 +770,91 @@
         </button>
       </nav>
     </div>
+    <script type="text/x-template" id="patch-item-template">
+      <div
+        @click="patchItem.options.length && ui.toggleOptions(patchItem.id)"
+        class="bg-dark py-1 pl-2.5 pr-1 sm:px-2.5 rounded-xl border border-lightGray shadow-sm flex flex-col shrink-0"
+        :class="{'cursor-pointer': patchItem.options.length}"
+      >
+        <div class="flex flex-wrap items-center justify-end gap-x-1 gap-y-1 mb-0.5">
+          <div class="flex items-center gap-2 flex-wrap min-w-0 mr-auto">
+            <strong class="font-bold text-white text-sm flex items-center gap-2">
+              {{ patchItem.patchName }}
+              <span v-if="hasHighlight" class="badge badge-sm text-yellow">✨ New</span>
+              <span v-if="patchItem.isPatchPreRelease && !appItem.isAppPreRelease && !group.bundle.isPreRelease" class="badge badge-sm text-yellow"
+                ><i class="fa-solid fa-flask"></i> Pre-release</span
+              >
+            </strong>
+            <span v-if="!patchItem.enabled" class="badge badge-sm text-yellow cursor-help" title="off by default">off</span>
+            <button
+              v-if="patchItem.options.length"
+              @click.stop="ui.toggleOptions(patchItem.id)"
+              class="text-light hover:text-white px-1 shrink-0"
+              :title="ui.expandedOptions.has(patchItem.id) ? 'Hide options' : 'Show options'"
+            >
+              <i class="fa-solid fa-chevron-down transition-transform" :class="{'rotate-180': ui.expandedOptions.has(patchItem.id)}"></i>
+            </button>
+          </div>
+          <template
+            v-for="appElement in patchItem.apps.filter(appEl => (appEl.packageName || appEl.appName || 'any') === (appItem.packageName || appItem.appName || 'any'))"
+            :key="appElement.id"
+          >
+            <template v-if="appElement.versions && appElement.versions.length">
+              <template v-if="!ui.expandedVersions.has(appElement.id)">
+                <button
+                  @click.stop="copyText(appElement.versions[0].version, 'ver_' + appElement.id + '_last')"
+                  class="badge badge-sm relative"
+                  :class="[{ 'z-50': copiedStates['ver_' + appElement.id + '_last'] }, appElement.versions[0].version === 'Any version' ? 'text-light' : 'text-green']"
+                  :title="appElement.versions[0].isExperimental ? 'Copy experimental version' : 'Copy app version'"
+                >
+                  <span
+                    v-if="copiedStates['ver_' + appElement.id + '_last']"
+                    class="absolute top-full right-0 mt-1 px-1.5 py-0.5 text-[10px] leading-none text-white bg-lightGray rounded shadow-lg whitespace-nowrap z-60 pointer-events-none animate-float-in"
+                    >Copied!</span
+                  >
+                  <i v-if="appElement.versions[0].isExperimental" class="fa-solid fa-flask text-yellow"></i>
+                  <span>{{ appElement.versions[0].version }}</span>
+                </button>
+                <button v-if="appElement.versions.length > 1" @click.stop="ui.toggleVersions(appElement.id)" class="badge badge-sm text-blue">
+                  <span>+{{ appElement.versions.length - 1 }}</span>
+                </button>
+              </template>
+              <template v-else>
+                <button
+                  v-for="versionItem in appElement.versions"
+                  :key="versionItem.version"
+                  @click.stop="copyText(versionItem.version, 'ver_' + appElement.id + '_' + versionItem.version)"
+                  class="badge badge-sm relative"
+                  :class="[{ 'z-50': copiedStates['ver_' + appElement.id + '_' + versionItem.version] }, versionItem.version === 'Any version' ? 'text-light' : 'text-green']"
+                  :title="versionItem.isExperimental ? 'Copy experimental version' : 'Copy app version'"
+                >
+                  <span
+                    v-if="copiedStates['ver_' + appElement.id + '_' + versionItem.version]"
+                    class="absolute top-full right-0 mt-1 px-1.5 py-0.5 text-[10px] leading-none text-white bg-lightGray rounded shadow-lg whitespace-nowrap z-60 pointer-events-none animate-float-in"
+                    >Copied!</span
+                  >
+                  <i v-if="versionItem.isExperimental" class="fa-solid fa-flask text-yellow"></i>
+                  <span>{{ versionItem.version }}</span>
+                </button>
+                <button @click.stop="ui.toggleVersions(appElement.id)" class="badge badge-sm text-blue">
+                  <span>Less</span>
+                </button>
+              </template>
+            </template>
+            <span v-else class="badge badge-sm text-light">Any version</span>
+          </template>
+        </div>
+
+        <p class="text-xs text-light">{{ patchItem.description }}</p>
+
+        <div v-if="ui.expandedOptions.has(patchItem.id)" class="mt-1.5 py-1 px-2 bg-lightGray border border-lightGray rounded flex flex-col gap-1 shadow-inner">
+          <div v-for="optionItem in patchItem.options" :key="optionItem.key">
+            <strong class="font-bold text-xs text-white block">{{ optionItem.title || optionItem.key }}</strong>
+            <p class="text-[10px] text-light">{{ optionItem.description }}</p>
+          </div>
+        </div>
+      </div>
+    </script>
 
     <script>
       function closeAllDropdowns() {
@@ -993,6 +910,13 @@
           closeAllDropdowns();
         }
       });
+      window.addEventListener(
+        "scroll",
+        function () {
+          closeAllDropdowns();
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>

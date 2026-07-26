@@ -1,13 +1,5 @@
 // Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-export interface AppItem {
-  id: string;
-  appName: string;
-  appIcon?: string;
-  packageName?: string;
-  isAppPreRelease?: boolean;
-}
-
 export interface Bundle {
   key: string;
   name?: string;
@@ -17,11 +9,10 @@ export interface Bundle {
   avatarUrl?: string;
   repoUrl?: string;
   changelogUrl?: string;
-  createdAt?: string;
+  updatedAt?: number;
   createdTimestamp?: number;
   patches?: PatchItem[];
   version?: string;
-  targetApps?: string[];
   appCount?: number;
   stars?: number;
   firstSeen?: string | Date;
@@ -68,7 +59,7 @@ export interface RowItem {
   bundleKey: string;
   repo: string;
   bundleVersion: string;
-  bundleCreatedAt: string;
+  bundleCreatedAt: number;
   patchName: string;
   description: string;
   packageName: string;
@@ -93,8 +84,6 @@ export interface ActiveData {
   rows: RowItem[];
   bundleMap: Record<string, Bundle>;
   namesMap: Record<string, AppNameMeta | string>;
-  skipSet: Set<string>;
-  compatibilities: CompatibilityItem[][];
 }
 
 const jsonCache = new Map<string, Promise<unknown>>();
@@ -139,7 +128,7 @@ export function buildBundleUrls(source: string | undefined, repo: string | undef
   };
 }
 
-export function appName(packageName: string | undefined, metadata: Record<string, AppNameMeta | string>, skipSet?: Set<string>): string {
+export function appName(packageName: string | undefined, metadata: Record<string, AppNameMeta | string>): string {
   const key = packageName || "universal";
   const meta = metadata[key] || {};
 
@@ -147,10 +136,7 @@ export function appName(packageName: string | undefined, metadata: Record<string
   if (typeof meta === "string") return meta;
   if (!packageName) return key;
 
-  const skip = skipSet || new Set();
-  const parts = packageName.split(".").filter((part) => part.length > 1 && !skip.has(part));
-  const last = parts.at(-1) || packageName.split(".").at(-1) || packageName;
-
+  const last = packageName.split(".").at(-1) || packageName;
   return last.replace(/[-_]/g, " ").replace(/\b[a-z]/g, (char) => char.toUpperCase());
 }
 
@@ -177,10 +163,11 @@ function extractVersions(value: unknown): VersionItem[] {
     );
 }
 
-export async function loadInitialData(onPatchLoaded?: (v: boolean | null) => void): Promise<ActiveData> {
+export const loadAppsJson = () => fetchJson<Record<string, AppNameMeta>>("apps.json", {} as Record<string, AppNameMeta>);
+
+export async function loadInitialData(): Promise<ActiveData> {
   if (dataCache.has("latest")) {
     const cachedData = await dataCache.get("latest");
-    if (onPatchLoaded) onPatchLoaded(null);
     return cachedData as ActiveData;
   }
 
@@ -190,13 +177,10 @@ export async function loadInitialData(onPatchLoaded?: (v: boolean | null) => voi
   });
   dataCache.set("latest", cachePromise);
 
-  const [namesMap, sourcesData, skipWordsArray] = await Promise.all([
-    fetchJson<Record<string, AppNameMeta>>("apps.json", {} as Record<string, AppNameMeta>).catch(() => ({}) as Record<string, AppNameMeta>),
+  const [namesMap, sourcesData] = await Promise.all([
+    loadAppsJson(),
     fetchJson<{ bundles: Bundle[]; compatibilities: CompatibilityItem[][] }>("bundles.json", { bundles: [], compatibilities: [] }).catch(() => ({ bundles: [], compatibilities: [] })),
-    fetchJson<string[]>("assets/skip-words.json", []).catch(() => []),
   ]);
-
-  const skipSet = new Set<string>(skipWordsArray);
   const bundlesListRaw = sourcesData.bundles || [];
   const compatibilities = sourcesData.compatibilities || [];
 
@@ -204,11 +188,12 @@ export async function loadInitialData(onPatchLoaded?: (v: boolean | null) => voi
   const rows: RowItem[] = [];
 
   for (const bundleObj of bundlesListRaw) {
-    const key = bundleObj.key;
+    const key = `${bundleObj.source}:${bundleObj.repo}`;
     if (!bundleObj.patches) continue;
 
     bundleObj.key = key;
-    bundleObj.createdTimestamp = bundleObj.createdAt ? new Date(bundleObj.createdAt).getTime() : 0;
+    bundleObj.createdTimestamp = bundleObj.updatedAt || 0;
+    const uniqueApps = new Set<string>();
     const urls = buildBundleUrls(bundleObj.source, bundleObj.repo, bundleObj.isPreRelease);
     bundleObj.repoUrl = urls.repoUrl;
     bundleObj.deepLink = urls.deepLink;
@@ -218,7 +203,7 @@ export async function loadInitialData(onPatchLoaded?: (v: boolean | null) => voi
 
     const repo = bundleObj.repo || "";
     const bundleVersion = bundleObj.version || "";
-    const bundleCreatedAt = bundleObj.createdAt || "";
+    const bundleCreatedAt = bundleObj.updatedAt || 0;
 
     const patchRows = bundleObj.patches.flatMap((patch: PatchItem, patchIndex: number) => {
       const patchId = `${key}:${patchIndex}`;
@@ -244,8 +229,9 @@ export async function loadInitialData(onPatchLoaded?: (v: boolean | null) => voi
       }
 
       return packageRows.map((target, targetIndex) => {
-        const packageName = target.packageName || "";
-        const name = appName(packageName, namesMap, skipSet);
+        const packageName = target.packageName || "universal";
+        uniqueApps.add(packageName);
+        const name = appName(packageName, namesMap);
         const options = Array.isArray(patch.options) ? patch.options : [];
 
         const searchPatchesTextParts = [patch.name, patch.description];
@@ -275,20 +261,20 @@ export async function loadInitialData(onPatchLoaded?: (v: boolean | null) => voi
       });
     });
 
+    bundleObj.appCount = uniqueApps.size;
     rows.push(...patchRows);
   }
+
+  const bundleMap: Record<string, Bundle> = {};
+  for (const bundle of bundleList) bundleMap[bundle.key.toLowerCase()] = bundle;
 
   const activeData: ActiveData = {
     bundles: bundleList,
     rows,
-    bundleMap: Object.fromEntries(bundleList.map((bundle) => [bundle.key, bundle])),
+    bundleMap,
     namesMap,
-    skipSet,
-    compatibilities,
   };
 
-  if (onPatchLoaded && rows.length > 0) onPatchLoaded(true);
-  if (onPatchLoaded) onPatchLoaded(null);
   resolveCache(activeData);
 
   return activeData;
@@ -305,11 +291,20 @@ export function filterRows(data: ActiveData, filters: FilterOptions): RowItem[] 
   let parsedShowOptions = null;
   if (filters.showOptions && filters.showOptions.length > 0) {
     parsedShowOptions = filters.showOptions.map((showOption: string) => {
+      if (showOption.startsWith(":")) {
+        const parts = showOption.slice(1).split(":");
+        return {
+          bundle: "",
+          app: parts[0] || "",
+          patch: parts.length > 1 ? parts.slice(1).join(":") : "",
+        };
+      }
       const parts = showOption.split(":");
+      const bundle = parts.length >= 2 ? `${parts[0]}:${parts[1]}` : parts[0];
       return {
-        bundle: parts[0],
-        app: parts.length >= 2 ? parts[1] : "",
-        patch: parts.length > 2 ? parts.slice(2).join(":") : "",
+        bundle: bundle,
+        app: parts.length >= 3 ? parts[2] : "",
+        patch: parts.length > 3 ? parts.slice(3).join(":") : "",
       };
     });
   }
@@ -317,14 +312,11 @@ export function filterRows(data: ActiveData, filters: FilterOptions): RowItem[] 
   return data.rows.filter((row) => {
     if (parsedShowOptions) {
       const matched = parsedShowOptions.some((showFilter: { bundle: string; app: string; patch: string }) => {
-        if (showFilter.bundle && row.bundleKey !== showFilter.bundle) return false;
+        if (showFilter.bundle && row.bundleKey.toLowerCase() !== showFilter.bundle.toLowerCase()) return false;
 
-        if (showFilter.app) {
-          const appMatch = showFilter.app === "universal" ? !row.packageName || row.packageName === "universal" : row.packageName === showFilter.app;
-          if (!appMatch) return false;
-        }
+        if (showFilter.app && row.packageName.toLowerCase() !== showFilter.app.toLowerCase()) return false;
 
-        if (showFilter.patch && row.patchName !== showFilter.patch) return false;
+        if (showFilter.patch && row.patchName.toLowerCase() !== showFilter.patch.toLowerCase()) return false;
 
         return true;
       });
@@ -357,12 +349,11 @@ function buildFilterOptions(
     .sort((appA, appB) => appA.label.localeCompare(appB.label) || appA.value.localeCompare(appB.value));
 
   if (hasUniversal) {
-    const universalMeta = namesMap["universal"] as AppNameMeta | string | undefined;
-    const isObject = typeof universalMeta === "object" && universalMeta !== null;
+    const meta = namesMap["universal"];
     appOptions.unshift({
       value: "universal",
-      label: (isObject && (universalMeta as AppNameMeta).name) || (typeof universalMeta === "string" ? universalMeta : "universal"),
-      icon: (isObject && (universalMeta as AppNameMeta).iconUrl) || "",
+      label: appName("universal", namesMap),
+      icon: (typeof meta === "object" && meta !== null ? (meta as AppNameMeta).iconUrl : "") || "",
     });
   }
 
@@ -404,38 +395,7 @@ export function summarizeRows(rows: RowItem[]): {
   for (const row of rows) {
     bundles.add(row.bundleKey);
     patches.add(row.patchId);
-    if (row.packageName && row.packageName !== "universal") apps.add(row.packageName);
+    apps.add(row.packageName);
   }
   return { bundles: bundles.size, patches: patches.size, apps: apps.size };
-}
-
-export function getFilterOptionsFromBundles(
-  bundles: Bundle[],
-  namesMap: Record<string, AppNameMeta | string> = {},
-  skipSet: Set<string> = new Set(),
-): { bundleOptions: DropdownOption[]; appOptions: DropdownOption[] } {
-  const appMap = new Map<string, { label: string; icon: string }>();
-  const bundleSet = new Set<string>();
-  let hasUniversal = false;
-
-  for (const bundle of bundles) {
-    bundleSet.add(bundle.key);
-    if (bundle.targetApps) {
-      for (const packageName of bundle.targetApps) {
-        if (packageName !== "universal") {
-          if (!appMap.has(packageName)) {
-            const meta = namesMap[packageName];
-            appMap.set(packageName, {
-              label: appName(packageName, namesMap, skipSet),
-              icon: typeof meta === "object" && meta !== null ? meta.iconUrl || "" : "",
-            });
-          }
-        } else {
-          hasUniversal = true;
-        }
-      }
-    }
-  }
-
-  return buildFilterOptions(appMap, bundleSet, namesMap, hasUniversal);
 }

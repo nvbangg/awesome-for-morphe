@@ -181,12 +181,12 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
                     package_name = compatibility_package.get("packageName")
                     if package_name:
                         target_apps_set.add(package_name)
+                        if package_name not in apps_dict:
+                            apps_dict[package_name] = {}
+
                         discovered_app_name = discovered_names.get(package_name) or app_name
-                        if discovered_app_name:
-                            if package_name not in apps_dict:
-                                apps_dict[package_name] = {}
-                            if not apps_dict[package_name].get("name"):
-                                apps_dict[package_name]["name"] = discovered_app_name
+                        if discovered_app_name and not apps_dict[package_name].get("name"):
+                            apps_dict[package_name]["name"] = discovered_app_name
 
                 patch_dict["compatiblePackagesKey"] = get_compat_key(patch_dict["compatiblePackages"])
                 del patch_dict["compatiblePackages"]

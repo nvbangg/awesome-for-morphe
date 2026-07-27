@@ -3,15 +3,28 @@
     "name": "Remove Permanent Ban Banner Patch",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.reddit.frontpage": [
-                    "2026.10.0"
-                ]
-            },
+            "name": "Hide permanent ban banner",
+            "description": "Hides Reddit's persistent permanent-ban account banner without changing account state or API behavior.",
             "default": true,
             "dependencies": [],
-            "description": "Hides Reddit's persistent permanent-ban account banner without changing account state or API behavior.",
-            "name": "Hide permanent ban banner",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.reddit.frontpage",
+                    "name": "Reddit",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4500",
+                    "signatures": [
+                        "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+                    ],
+                    "targets": [
+                        {
+                            "version": "2026.10.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

@@ -3,25 +3,51 @@
     "name": "Platypatch",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ],
-                "com.laurencedawson.reddit_sync.dev": [],
-                "com.laurencedawson.reddit_sync.pro": []
-            },
+            "name": "Experimental: Restore \"Swipe to return\" translucency",
+            "description": "Fixes the opaque background when using the \"Swipe to return\" option. Experimental due to animation issues. Incompatible with the Predictive Back Gesture patch.",
             "default": false,
             "dependencies": [],
-            "description": "Fixes the opaque background when using the \"Swipe to return\" option. Experimental due to animation issues. Incompatible with the Predictive Back Gesture patch.",
-            "name": "Experimental: Restore \"Swipe to return\" translucency",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.pro",
+                    "name": "Sync for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.dev",
+                    "name": "Sync for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Predictive back gesture",
+            "description": "Enables the predictive back gesture introduced on Android 13.",
             "default": false,
             "dependencies": [],
-            "description": "Enables the predictive back gesture introduced on Android 13.",
-            "name": "Predictive back gesture",
+            "compatiblePackages": null,
             "options": []
         }
     ]

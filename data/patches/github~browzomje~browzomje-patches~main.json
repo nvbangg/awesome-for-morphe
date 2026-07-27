@@ -3,65 +3,135 @@
     "name": "browzomje Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.pinterest": [
-                    "14.23.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Adds a 'Copy direct link' option to the pin menu to copy a link under the direct CDN media format instead of the standard Pinterest web link.",
             "name": "Copy direct link",
+            "description": "Adds a 'Copy direct link' option to the pin menu to copy a link under the direct CDN media format instead of the standard Pinterest web link.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.24.0",
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.pinterest": [
-                    "14.23.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds.",
             "name": "Disable ads",
+            "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.24.0",
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.pinterest": [
-                    "14.23.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Adds a 'Download video' option to the pin menu for video pins, saving the clip to the Downloads folder.",
             "name": "Download video",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.pinterest": [
-                    "14.23.0"
-                ]
-            },
+            "description": "Adds a 'Download video' option to the pin menu for video pins, saving the clip to the Downloads folder.",
             "default": true,
             "dependencies": [],
-            "description": "Returns an empty Google Advertising ID and forces ‘limit ad tracking’, disabling ad tracking without causing the app to crash.",
-            "name": "Neutralize advertising ID",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.24.0",
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.pinterest": [
-                    "14.23.0"
-                ]
-            },
+            "name": "Neutralize advertising ID",
+            "description": "Returns an empty Google Advertising ID and forces ‘limit ad tracking’, disabling ad tracking without causing the app to crash.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.24.0",
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Set pin as wallpaper",
+            "description": "It adds the ‘Set as wallpaper’ option to the pin menu, which downloads uses the image and sets it as the device’s wallpaper.",
             "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
-            "description": "It adds the ‘Set as wallpaper’ option to the pin menu, which downloads uses the image and sets it as the device’s wallpaper.",
-            "name": "Set pin as wallpaper",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.24.0",
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

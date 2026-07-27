@@ -3,27 +3,47 @@
     "name": "Fluffy Patches for use with Morphe",
     "patches": [
         {
-            "compatiblePackages": {
-                "droom.sleepIfUCan": [
-                    "26.23.0"
-                ]
-            },
+            "name": "Remove ads",
+            "description": "Bypasses ad-removal premium checks by forcing PremiumState.isRemoveAdPremium() to always return true.",
             "default": true,
             "dependencies": [],
-            "description": "Bypasses ad-removal premium checks by forcing PremiumState.isRemoveAdPremium() to always return true.",
-            "name": "Remove ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "droom.sleepIfUCan",
+                    "name": "Alarmy",
+                    "apkFileType": "XAPK",
+                    "appIconColor": "#FF6B4C",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "26.23.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "droom.sleepIfUCan": [
-                    "26.23.0"
-                ]
-            },
+            "name": "Unlock Pro subscription",
+            "description": "Bypasses premium checks by forcing PremiumState.isPremium() to always return true.",
             "default": true,
             "dependencies": [],
-            "description": "Bypasses premium checks by forcing PremiumState.isPremium() to always return true.",
-            "name": "Unlock Pro subscription",
+            "compatiblePackages": [
+                {
+                    "packageName": "droom.sleepIfUCan",
+                    "name": "Alarmy",
+                    "apkFileType": "XAPK",
+                    "appIconColor": "#FF6B4C",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "26.23.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

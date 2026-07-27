@@ -3,314 +3,546 @@
     "name": "Xtra Android Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "org.zwanoo.android.speedtest": [
-                    "7.0.4"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "",
             "name": "AdFree Account",
+            "description": "",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "org.zwanoo.android.speedtest",
+                    "name": "Speedtest",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "7.0.4",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "",
             "name": "Bypass ADB/Developer Options Detection",
+            "description": "",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.llamalab.automate": [
-                    "1.51.1"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "",
             "name": "Bypass Blocks Limit",
+            "description": "",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.llamalab.automate",
+                    "name": "Automate",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "1.51.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "",
             "name": "Disable Facebook SDK Tracking",
-            "options": []
-        },
-        {
-            "compatiblePackages": null,
+            "description": "",
             "default": false,
             "dependencies": [],
-            "description": "",
+            "compatiblePackages": null,
+            "options": []
+        },
+        {
             "name": "Disable Firebase(Google) Analytics",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.vitotechnology.sky.tonight.map.star.walk": [
-                    "2.5.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "Disable Firebase(Google) Analytics"
-            ],
             "description": "",
-            "name": "Disable In-App Telemetry",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.vitotechnology.StarWalk2Free": [
-                    "2.20.3"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "Disable Firebase(Google) Analytics"
-            ],
-            "description": "",
-            "name": "Disable In-App Telemetry",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "org.zwanoo.android.speedtest": [
-                    "7.0.4"
-                ]
-            },
-            "default": true,
+            "default": false,
             "dependencies": [],
+            "compatiblePackages": null,
+            "options": []
+        },
+        {
+            "name": "Disable In-App Telemetry",
             "description": "",
+            "default": true,
+            "dependencies": [
+                "Disable Firebase(Google) Analytics"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.vitotechnology.sky.tonight.map.star.walk",
+                    "name": "Sky Tonight",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.5.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Disable In-App Telemetry",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "Disable Firebase(Google) Analytics"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.vitotechnology.StarWalk2Free",
+                    "name": "Star Walk 2",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.20.3",
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Disable Logging(analytics)",
+            "description": "",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "org.zwanoo.android.speedtest",
+                    "name": "Speedtest",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "7.0.4",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "pl.solidexplorer2": [
-                    "3.4.10",
-                    "3.5.7b"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "Disable Firebase(Google) Analytics"
-            ],
-            "description": "",
             "name": "Disable Telemetry",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "Disable Firebase(Google) Analytics"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "pl.solidexplorer2",
+                    "name": "Solid Explorer",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "3.4.10",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "3.5.7b",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.atmfee": [
-                    "3.7.9"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "",
             "name": "Hide Location Permission Popup",
+            "description": "",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.atmfee",
+                    "name": "ATM Fee Saver",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "3.7.9",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.noctuasoftware.stellarium_free": [
-                    "1.16.2",
-                    "1.16.3"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "",
             "name": "Install Extended (Deep Sky) Catalog",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.noctuasoftware.stellarium_free",
+                    "name": "Stellarium",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.16.2",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "1.16.3",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.ttxapps.autosync": [
-                    "7.5.10"
-                ]
-            },
+            "name": "Purchase All Items",
+            "description": "",
             "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "",
-            "name": "Purchase All Items",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.ttxapps.autosync",
+                    "name": "Autosync",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "7.5.10",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.nis.app": [
-                    "6.12.15",
-                    "6.12.18"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "",
             "name": "Remove Ads",
+            "description": "",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.nis.app",
+                    "name": "Inshorts",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "6.12.15",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "6.12.18",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.nis.app": [
-                    "6.12.15",
-                    "6.12.18"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "",
             "name": "Skip Login",
+            "description": "",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.nis.app",
+                    "name": "Inshorts",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "6.12.15",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "6.12.18",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.proto.circuitsimulator": [
-                    "1.48.0",
-                    "1.49.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "Disable Firebase(Google) Analytics"
-            ],
-            "description": "",
             "name": "Unlock All Features",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.noctuasoftware.stellarium_free": [
-                    "1.16.2",
-                    "1.16.3"
-                ]
-            },
+            "description": "",
             "default": true,
             "dependencies": [
                 "Disable Firebase(Google) Analytics"
             ],
-            "description": "",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.proto.circuitsimulator",
+                    "name": "PROTO - circuit simulator",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "1.48.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "1.49.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Unlock Plus",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.atmfee": [
-                    "3.7.9"
-                ]
-            },
+            "description": "",
             "default": true,
             "dependencies": [
                 "Disable Firebase(Google) Analytics"
             ],
-            "description": "",
-            "name": "Unlock Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.noctuasoftware.stellarium_free",
+                    "name": "Stellarium",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.16.2",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "1.16.3",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.backdrops.wallpapers": [
-                    "6.1.2"
-                ]
-            },
+            "name": "Unlock Premium",
+            "description": "",
             "default": true,
             "dependencies": [
-                "BytecodePatch",
                 "Disable Firebase(Google) Analytics"
             ],
-            "description": "",
-            "name": "Unlock Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.atmfee",
+                    "name": "ATM Fee Saver",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "3.7.9",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "io.funswitch.blocker": [
-                    "5.0.67"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "",
             "name": "Unlock Premium",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.vitotechnology.sky.tonight.map.star.walk": [
-                    "2.5.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
             "description": "",
-            "name": "Unlock Premium",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.vitotechnology.StarWalk2Free": [
-                    "2.20.3"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "",
-            "name": "Unlock Premium",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.ufovpn.connect.velnet": [
-                    "2.5.5",
-                    "2.5.8"
-                ]
-            },
             "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "Disable Firebase(Google) Analytics"
             ],
-            "description": "",
-            "name": "Unlock Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.backdrops.wallpapers",
+                    "name": "Backdrops",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.1.2",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.vpn.free.hotspot.secure.vpnify": [
-                    "2.2.9"
-                ]
-            },
+            "name": "Unlock Premium",
+            "description": "",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "io.funswitch.blocker",
+                    "name": "BlockerX",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "5.0.67",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Premium",
+            "description": "",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.vitotechnology.sky.tonight.map.star.walk",
+                    "name": "Sky Tonight",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.5.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Premium",
+            "description": "",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.vitotechnology.StarWalk2Free",
+                    "name": "Star Walk 2",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.20.3",
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Premium",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "Disable Firebase(Google) Analytics"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.ufovpn.connect.velnet",
+                    "name": "UFO VPN",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "2.5.5",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "2.5.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Premium",
+            "description": "",
             "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
                 "Disable Firebase(Google) Analytics"
             ],
-            "description": "",
-            "name": "Unlock Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.vpn.free.hotspot.secure.vpnify",
+                    "name": "vpnify",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.2.9",
+                            "versionCodes": "{ARM64_V8A=2290052, ARMEABI_V7A=2290052, X86_64=2290052, X86=2290052}",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "pl.solidexplorer2": [
-                    "3.4.10",
-                    "3.5.7b"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "",
             "name": "Unlock Pro",
+            "description": "",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "pl.solidexplorer2",
+                    "name": "Solid Explorer",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        },
+                        {
+                            "version": "3.4.10",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "3.5.7b",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

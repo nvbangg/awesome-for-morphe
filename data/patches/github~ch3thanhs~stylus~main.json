@@ -3,15 +3,28 @@
     "name": "Stylus",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.x8bit.bitwarden": [
-                    "2026.6.1"
-                ]
-            },
+            "name": "Force system font (Bitwarden)",
+            "description": "Renders the app using the device's system font instead of DM Sans / Roboto.",
             "default": true,
             "dependencies": [],
-            "description": "Renders the app using the device's system font instead of DM Sans / Roboto.",
-            "name": "Force system font (Bitwarden)",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.x8bit.bitwarden",
+                    "name": "Bitwarden",
+                    "apkFileType": "APK_REQUIRED",
+                    "appIconColor": "#175DDC",
+                    "signatures": [
+                        "24e06c04c208048f19f1c993b4dda4430ea8b06db8375ea0e37b834696b9ac3a"
+                    ],
+                    "targets": [
+                        {
+                            "version": "2026.6.1",
+                            "isExperimental": false,
+                            "minSdk": 29
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

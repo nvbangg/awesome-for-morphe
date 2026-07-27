@@ -3,25 +3,37 @@
     "name": "ProGuard Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.java.inspector": [
-                    "1.0.0"
-                ]
-            },
+            "name": "Assemble LSPosed module",
+            "description": "Assembles LSPosed modules based on the JSON file.",
             "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
-            "description": "Assembles LSPosed modules based on the JSON file.",
-            "name": "Assemble LSPosed module",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.java.inspector",
+                    "name": "Java Inspector",
+                    "description": "https://gitlab.com/inotia00/JavaInspector",
+                    "apkFileType": "APK",
+                    "appIconColor": "#6750A4",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.0.0",
+                            "isExperimental": false,
+                            "minSdk": 29
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Find dummy classes",
+            "description": "Find the dummy classes and write them to a JSON file",
             "default": false,
             "dependencies": [],
-            "description": "Find the dummy classes and write them to a JSON file",
-            "name": "Find dummy classes",
+            "compatiblePackages": null,
             "options": []
         }
     ]

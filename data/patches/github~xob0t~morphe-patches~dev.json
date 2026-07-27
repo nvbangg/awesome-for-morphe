@@ -1,55 +1,146 @@
 {
-    "version": "1.10.0",
+    "version": "1.10.1",
     "name": "xob0t Morphe Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.avito.android": [
-                    "229.1",
-                    "228.0",
-                    "227.0",
-                    "226.5",
-                    "225.5",
-                    "224.6"
-                ]
-            },
+            "name": "AMOLED dark theme",
+            "description": "Makes dark-theme page, app navigation and system bars pure black (AMOLED) while keeping elevated cards, sheets and controls gray so their boundaries remain visible.",
             "default": false,
             "dependencies": [],
-            "description": "Makes dark-theme page, app navigation and system bars pure black (AMOLED) while keeping elevated cards, sheets and controls gray so their boundaries remain visible.",
-            "name": "AMOLED dark theme",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.avito.android",
+                    "name": "Avito",
+                    "apkFileType": "APK",
+                    "appIconColor": "#00AAFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "229.1",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "228.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "227.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "226.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "225.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "224.6",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.avito.android": [
-                    "229.1",
-                    "228.0",
-                    "227.0",
-                    "226.5",
-                    "225.5",
-                    "224.6"
-                ]
-            },
+            "name": "Block listings",
+            "description": "Hides Avito offers from blacklisted adverts or sellers and adds a blacklist manager (import/export compatible with the Ave Blacklist extension).",
             "default": true,
             "dependencies": [
                 "Morphe settings",
                 "ResourcePatch"
             ],
-            "description": "Hides Avito offers from blacklisted adverts or sellers and adds a blacklist manager (import/export compatible with the Ave Blacklist extension).",
-            "name": "Block listings",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.avito.android",
+                    "name": "Avito",
+                    "apkFileType": "APK",
+                    "appIconColor": "#00AAFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "229.1",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "228.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "227.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "226.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "225.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "224.6",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.idamob.tinkoff.android": [
-                    "7.40.0",
-                    "7.36.0"
-                ]
-            },
+            "name": "Bypass anti-tamper",
+            "description": "Stubs TBank's native RASP executor calls and neutralizes tamper flag reporting.",
             "default": true,
             "dependencies": [],
-            "description": "Stubs TBank's native RASP executor calls and neutralizes tamper flag reporting.",
-            "name": "Bypass anti-tamper",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.idamob.tinkoff.android",
+                    "name": "TBank",
+                    "apkFileType": "APK",
+                    "appIconColor": "#FFDD2D",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "7.40.0",
+                            "versionCodes": "{ARM64_V8A=12840, ARMEABI_V7A=12840, X86_64=12840, X86=12840}",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "7.36.0",
+                            "versionCodes": "{ARM64_V8A=12526, ARMEABI_V7A=12526, X86_64=12526, X86=12526}",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": false,
@@ -63,94 +154,129 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Disable Adjust",
+            "description": "Disables Adjust attribution manifest entry points.",
             "default": false,
             "dependencies": [],
-            "description": "Disables Adjust attribution manifest entry points.",
-            "name": "Disable Adjust",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Disable AppMetrica",
+            "description": "Disables AppMetrica and legacy Yandex Metrica SDK entry points.",
             "default": false,
             "dependencies": [
                 "ResourcePatch"
             ],
-            "description": "Disables AppMetrica and legacy Yandex Metrica SDK entry points.",
-            "name": "Disable AppMetrica",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Disables AppsFlyer install referrer and attribution manifest entry points.",
             "name": "Disable AppsFlyer",
+            "description": "Disables AppsFlyer install referrer and attribution manifest entry points.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Disables Firebase telemetry collection flags and DataTransport sender entry points.",
             "name": "Disable Firebase telemetry",
+            "description": "Disables Firebase telemetry collection flags and DataTransport sender entry points.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Disables the freeRASP mobile security SDK startup.",
             "name": "Disable freeRASP",
+            "description": "Disables the freeRASP mobile security SDK startup.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Disables legacy Google Analytics manifest entry points.",
             "name": "Disable Google Analytics",
+            "description": "Disables legacy Google Analytics manifest entry points.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Disables MyTracker manifest entry points.",
             "name": "Disable MyTracker",
+            "description": "Disables MyTracker manifest entry points.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Disables RuStore metrics manifest entry points.",
             "name": "Disable RuStore metrics",
-            "options": []
-        },
-        {
-            "compatiblePackages": null,
+            "description": "Disables RuStore metrics manifest entry points.",
             "default": false,
             "dependencies": [],
-            "description": "Disables Sentry telemetry by turning off SDK auto-init and clearing the DSN.",
-            "name": "Disable Sentry telemetry",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.avito.android": [
-                    "229.1",
-                    "228.0",
-                    "227.0",
-                    "226.5",
-                    "225.5",
-                    "224.6"
-                ]
-            },
+            "name": "Disable Sentry telemetry",
+            "description": "Disables Sentry telemetry by turning off SDK auto-init and clearing the DSN.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
+            "options": []
+        },
+        {
+            "name": "Disable telemetry",
+            "description": "Disables Avito first-party clickstream analytics and Avito's direct Adjust telemetry wrapper.",
             "default": true,
             "dependencies": [],
-            "description": "Disables Avito first-party clickstream analytics and Avito's direct Adjust telemetry wrapper.",
-            "name": "Disable telemetry",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.avito.android",
+                    "name": "Avito",
+                    "apkFileType": "APK",
+                    "appIconColor": "#00AAFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "229.1",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "228.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "227.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "226.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "225.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "224.6",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": false,
@@ -164,60 +290,165 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.avito.android": [
-                    "229.1",
-                    "228.0",
-                    "227.0",
-                    "226.5",
-                    "225.5",
-                    "224.6"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "Morphe settings"
-            ],
-            "description": "Prevents Avito's force-update screen opener from launching update screens. Toggleable in Настройки Morphe.",
             "name": "Disable update prompts",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.avito.android": [
-                    "229.1",
-                    "228.0",
-                    "227.0",
-                    "226.5",
-                    "225.5",
-                    "224.6"
-                ]
-            },
+            "description": "Prevents Avito's force-update screen opener from launching update screens. Toggleable in Настройки Morphe.",
             "default": true,
             "dependencies": [
                 "Morphe settings"
             ],
-            "description": "Adds a maximum seller review count to Avito search filters and hides or dims offers from sellers above that limit.",
-            "name": "Hide professional sellers",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.avito.android",
+                    "name": "Avito",
+                    "apkFileType": "APK",
+                    "appIconColor": "#00AAFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "229.1",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "228.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "227.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "226.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "225.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "224.6",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.avito.android": [
-                    "229.1",
-                    "228.0",
-                    "227.0",
-                    "226.5",
-                    "225.5",
-                    "224.6"
-                ]
-            },
+            "name": "Hide professional sellers",
+            "description": "Adds a maximum seller review count to Avito search filters and hides or dims offers from sellers above that limit.",
+            "default": true,
+            "dependencies": [
+                "Morphe settings"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.avito.android",
+                    "name": "Avito",
+                    "apkFileType": "APK",
+                    "appIconColor": "#00AAFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "229.1",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "228.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "227.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "226.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "225.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "224.6",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Morphe settings",
+            "description": "Adds a \"Настройки Morphe\" entry to Avito's settings that hosts the configuration for the other Morphe patches.",
             "default": false,
             "dependencies": [
                 "ResourcePatch"
             ],
-            "description": "Adds a \"Настройки Morphe\" entry to Avito's settings that hosts the configuration for the other Morphe patches.",
-            "name": "Morphe settings",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.avito.android",
+                    "name": "Avito",
+                    "apkFileType": "APK",
+                    "appIconColor": "#00AAFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "229.1",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "228.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "227.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "226.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "225.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "224.6",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": false,
@@ -231,39 +462,105 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.avito.android": [
-                    "229.1",
-                    "228.0",
-                    "227.0",
-                    "226.5",
-                    "225.5",
-                    "224.6"
-                ]
-            },
+            "name": "Remove ads",
+            "description": "Disables Avito ads by removing ad SDK entry points and short-circuiting commercial banner loading.",
             "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
-            "description": "Disables Avito ads by removing ad SDK entry points and short-circuiting commercial banner loading.",
-            "name": "Remove ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.avito.android",
+                    "name": "Avito",
+                    "apkFileType": "APK",
+                    "appIconColor": "#00AAFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "229.1",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "228.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "227.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "226.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "225.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "224.6",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "ru.ozon.app.android": [
-                    "19.27.0",
-                    "19.22.0",
-                    "19.16.0",
-                    "18.37.0"
-                ]
-            },
+            "name": "Remove Ozon ads",
+            "description": "Removes Ozon ad widgets, banner carousels, video ads, and PDP promo blocks.",
             "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
-            "description": "Removes Ozon ad widgets, banner carousels, video ads, and PDP promo blocks.",
-            "name": "Remove Ozon ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "ru.ozon.app.android",
+                    "name": "Ozon",
+                    "apkFileType": "APK",
+                    "appIconColor": "#005BFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "19.27.0",
+                            "versionCodes": "{ARM64_V8A=2697, ARMEABI_V7A=2697, X86_64=2697, X86=2697}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "19.22.0",
+                            "versionCodes": "{ARM64_V8A=2687, ARMEABI_V7A=2687, X86_64=2687, X86=2687}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "19.16.0",
+                            "versionCodes": "{ARM64_V8A=2677, ARMEABI_V7A=2677, X86_64=2677, X86=2677}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "18.37.0",
+                            "versionCodes": "{ARM64_V8A=2613, ARMEABI_V7A=2613, X86_64=2613, X86=2613}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 26
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": true,
@@ -286,18 +583,39 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.idamob.tinkoff.android": [
-                    "7.40.0",
-                    "7.36.0"
-                ]
-            },
+            "name": "Remove TBank ads",
+            "description": "Removes TBank stories and promotional surfaces.",
             "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
-            "description": "Removes TBank stories and promotional surfaces.",
-            "name": "Remove TBank ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.idamob.tinkoff.android",
+                    "name": "TBank",
+                    "apkFileType": "APK",
+                    "appIconColor": "#FFDD2D",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "7.40.0",
+                            "versionCodes": "{ARM64_V8A=12840, ARMEABI_V7A=12840, X86_64=12840, X86=12840}",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "7.36.0",
+                            "versionCodes": "{ARM64_V8A=12526, ARMEABI_V7A=12526, X86_64=12526, X86=12526}",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": false,
@@ -311,18 +629,49 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.wildberries.ru": [
-                    "7.7.2001-rustore",
-                    "7.6.8001",
-                    "7.6.1000-rustore",
-                    "7.0.6000"
-                ]
-            },
+            "name": "Remove Wildberries ads",
+            "description": "Removes Wildberries home banners, grid banners, profile banners, promo headers, product recommendations, and lottery popups.",
             "default": true,
             "dependencies": [],
-            "description": "Removes Wildberries home banners, grid banners, profile banners, promo headers, product recommendations, and lottery popups.",
-            "name": "Remove Wildberries ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.wildberries.ru",
+                    "name": "Wildberries",
+                    "apkFileType": "APK",
+                    "appIconColor": "#A73AFD",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "7.7.2001-rustore",
+                            "versionCodes": "{ARM64_V8A=61050, ARMEABI_V7A=61050, X86_64=61050, X86=61050}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "7.6.8001",
+                            "versionCodes": "{ARM64_V8A=10061041, ARMEABI_V7A=10061041, X86_64=10061041, X86=10061041}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "7.6.1000-rustore",
+                            "versionCodes": "{ARM64_V8A=61016, ARMEABI_V7A=61016, X86_64=61016, X86=61016}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "7.0.6000",
+                            "versionCodes": "{ARM64_V8A=10060832, ARMEABI_V7A=10060832, X86_64=10060832, X86=10060832}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 26
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": true,
@@ -345,54 +694,89 @@
             ]
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Spoofs emulator state through common Build, QEMU file, command, and system property checks.",
             "name": "Spoof emulator status",
+            "description": "Spoofs emulator state through common Build, QEMU file, command, and system property checks.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Spoofs package installer checks to report Google Play as the install source.",
             "name": "Spoof install source",
+            "description": "Spoofs package installer checks to report Google Play as the install source.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Spoofs USB debugging and related developer settings through common Android APIs.",
             "name": "Spoof USB debugging status",
-            "options": []
-        },
-        {
-            "compatiblePackages": null,
+            "description": "Spoofs USB debugging and related developer settings through common Android APIs.",
             "default": false,
             "dependencies": [],
-            "description": "Spoofs VPN state through common Android network APIs.",
-            "name": "Spoof VPN status",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.avito.android": [
-                    "229.1",
-                    "228.0",
-                    "227.0",
-                    "226.5",
-                    "225.5",
-                    "224.6"
-                ]
-            },
+            "name": "Spoof VPN status",
+            "description": "Spoofs VPN state through common Android network APIs.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
+            "options": []
+        },
+        {
+            "name": "UI tweaks",
+            "description": "Optional interface tweaks, each toggleable in Настройки Morphe: single-row home categories, hide the \"Подписки\" tab in Избранное, hide installments (Рассрочка) and the \"Спросите у продавца\" block on offers, expand descriptions by default (no \"Читать далее\"), hide offer recommendations, hide profile raffle, referral and Avito Pro promos, and hide the Avi assistant tab in the bottom navigation.",
             "default": true,
             "dependencies": [
                 "Morphe settings"
             ],
-            "description": "Optional interface tweaks, each toggleable in Настройки Morphe: single-row home categories, hide the \"Подписки\" tab in Избранное, hide installments (Рассрочка) and the \"Спросите у продавца\" block on offers, expand descriptions by default (no \"Читать далее\"), hide offer recommendations, hide profile raffle, referral and Avito Pro promos, and hide the Avi assistant tab in the bottom navigation.",
-            "name": "UI tweaks",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.avito.android",
+                    "name": "Avito",
+                    "apkFileType": "APK",
+                    "appIconColor": "#00AAFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "229.1",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "228.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "227.0",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "226.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "225.5",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "224.6",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "isExperimental": true,
+                            "minSdk": 28
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": false,

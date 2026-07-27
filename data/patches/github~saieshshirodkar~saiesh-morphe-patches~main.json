@@ -3,36 +3,46 @@
     "name": "Saiesh's Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.overdevs.at4k": [
-                    "0.99"
-                ]
-            },
+            "name": "Disable PairIP DRM",
+            "description": "Disables PairIP signature verification and Google Play LVL license check. Required for the app to launch after re-signing.",
             "default": true,
             "dependencies": [],
-            "description": "Disables PairIP signature verification and Google Play LVL license check. Required for the app to launch after re-signing.",
-            "name": "Disable PairIP DRM",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.overdevs.at4k",
+                    "name": "AT4K Launcher (Android TV)",
+                    "appIconColor": "#98B098",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "0.99",
+                            "versionCodes": "{ARM64_V8A=12, ARMEABI_V7A=12, X86_64=12, X86=12}",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Fix Firebase after re-signing",
+            "description": "Fixes Firebase services (push notifications, Remote Config, Firebase Auth) that break after Morphe re-signs the app with a different certificate.\n\nApply with Original app certificate patch no other config needed.",
             "default": false,
             "dependencies": [
                 "Provide Original app certificate"
             ],
-            "description": "Fixes Firebase services (push notifications, Remote Config, Firebase Auth) that break after Morphe re-signs the app with a different certificate.\n\nApply with Original app certificate patch no other config needed.",
-            "name": "Fix Firebase after re-signing",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "GmsCore support (MicroG)",
+            "description": "Routes Google Play Services calls through MicroG instead of real GPS.\n\nWorks for: Google apps (YouTube, Maps, News, Photos) and third-party apps using classic Google Sign-In (Android 13 and below).\n\nDoes not work for: Android 14+ Credential Manager sign-in (most modern third-party apps), Play Integrity / SafetyNet checks, or apps with custom auth.\n\nRequires MicroG RE installed. Apply with Original app certificate patch.",
             "default": false,
             "dependencies": [
                 "Provide Original app certificate",
                 "ResourcePatch"
             ],
-            "description": "Routes Google Play Services calls through MicroG instead of real GPS.\n\nWorks for: Google apps (YouTube, Maps, News, Photos) and third-party apps using classic Google Sign-In (Android 13 and below).\n\nDoes not work for: Android 14+ Credential Manager sign-in (most modern third-party apps), Play Integrity / SafetyNet checks, or apps with custom auth.\n\nRequires MicroG RE installed. Apply with Original app certificate patch.",
-            "name": "GmsCore support (MicroG)",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": "app.revanced.android.gms",
@@ -72,11 +82,11 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Provide Original app certificate",
+            "description": "By Default it Reads the signing certificate from the original app installed. Required for GmsCore, Firebase, and Signature spoof patches. Only fill options below if the original is uninstalled.",
             "default": false,
             "dependencies": [],
-            "description": "By Default it Reads the signing certificate from the original app installed. Required for GmsCore, Firebase, and Signature spoof patches. Only fill options below if the original is uninstalled.",
-            "name": "Provide Original app certificate",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": null,
@@ -117,15 +127,15 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Spoof app signature",
+            "description": "Makes the app think its signing certificate is unchanged after Morphe re-signs it.\n\nUseful when an app crashes or shows a tamper warning because it checks its own certificate.\n\nDoes not bypass Play Integrity / SafetyNet hardware attestation.\n\nApply with Original app certificate patch.",
             "default": false,
             "dependencies": [
                 "ResourcePatch",
                 "Provide Original app certificate",
                 "ResourcePatch"
             ],
-            "description": "Makes the app think its signing certificate is unchanged after Morphe re-signs it.\n\nUseful when an app crashes or shows a tamper warning because it checks its own certificate.\n\nDoes not bypass Play Integrity / SafetyNet hardware attestation.\n\nApply with Original app certificate patch.",
-            "name": "Spoof app signature",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": null,
@@ -139,11 +149,11 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Spoof install source",
+            "description": "Makes the app think it was installed from a specific store (default: Google Play).\n\nUseful when an app blocks features or shows errors because it detects it was not installed from the Play Store.\n\nOnly affects what the app itself sees - does not change the real system install record.",
             "default": false,
             "dependencies": [],
-            "description": "Makes the app think it was installed from a specific store (default: Google Play).\n\nUseful when an app blocks features or shows errors because it detects it was not installed from the Play Store.\n\nOnly affects what the app itself sees - does not change the real system install record.",
-            "name": "Spoof install source",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": "com.android.vending",
@@ -163,11 +173,11 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Spoof Widevine / DRM level",
+            "description": "Reports Widevine L1 (hardware DRM) to apps that check DRM level locally.\n\nUseful for apps that refuse to play HD/4K content on L3 devices or after re-signing.\n\nDoes not bypass server-side DRM - Netflix, Disney+ and similar are not affected.",
             "default": false,
             "dependencies": [],
-            "description": "Reports Widevine L1 (hardware DRM) to apps that check DRM level locally.\n\nUseful for apps that refuse to play HD/4K content on L3 devices or after re-signing.\n\nDoes not bypass server-side DRM - Netflix, Disney+ and similar are not affected.",
-            "name": "Spoof Widevine / DRM level",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": "L1",
@@ -199,39 +209,69 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.overdevs.at4k": [
-                    "0.99"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks all premium features by forcing the premium state to true in the purchase manager.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.overdevs.at4k",
+                    "name": "AT4K Launcher (Android TV)",
+                    "appIconColor": "#98B098",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "0.99",
+                            "versionCodes": "{ARM64_V8A=12, ARMEABI_V7A=12, X86_64=12, X86=12}",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.nicedayapps.iss_free": [
-                    "8.5.3"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks all premium features by forcing the pro_version SharedPreferences check to always return true.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.nicedayapps.iss_free",
+                    "name": "ISS Live Now",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.5.3",
+                            "versionCodes": "{ARM64_V8A=853001, ARMEABI_V7A=853001, X86_64=853001, X86=853001}",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.spocky.projengmenu": [
-                    "4.71"
-                ]
-            },
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium features by bypassing the native library premium check.",
             "default": true,
             "dependencies": [],
-            "description": "Unlocks all premium features by bypassing the native library premium check.",
-            "name": "Unlock Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.spocky.projengmenu",
+                    "name": "Projectivy Launcher",
+                    "appIconColor": "#FFDD00",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.71",
+                            "versionCodes": "{ARM64_V8A=95, ARMEABI_V7A=95, X86_64=95, X86=95}",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

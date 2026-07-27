@@ -3,15 +3,25 @@
     "name": "tiaruebar-patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.roasterygames.devicestycoon": [
-                    "4.0.1"
-                ]
-            },
+            "name": "Devices Tycoon Premium",
+            "description": "Instantly completes all IAP purchases (remove ads, research coins, budget) on tap and disables all ads in Devices Tycoon.",
             "default": true,
             "dependencies": [],
-            "description": "Instantly completes all IAP purchases (remove ads, research coins, budget) on tap and disables all ads in Devices Tycoon.",
-            "name": "Devices Tycoon Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.roasterygames.devicestycoon",
+                    "name": "Devices Tycoon",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1565C0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.0.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

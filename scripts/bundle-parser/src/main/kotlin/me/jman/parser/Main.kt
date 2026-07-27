@@ -283,16 +283,45 @@ private fun readExistingPatches(file: File): LocalPatchesFile? {
 private fun canonicalizeElement(element: JsonElement): JsonElement {
     return when (element) {
         is JsonObject -> {
-            val sortedKeys = element.keys.map { if (it == "use") "default" else it }.toSet().sorted()
+            val remappedKeys = element.keys.associateWith { if (it == "use") "default" else it }
+            val mappedValues = remappedKeys.values.toSet()
+            val sortedKeys = sortJsonObjectKeys(mappedValues)
             buildJsonObject {
-                for (key in sortedKeys) {
-                    val originalKey = if (key == "default" && "default" !in element && "use" in element) "use" else key
-                    put(key, canonicalizeElement(element.getValue(originalKey)))
+                for (outputKey in sortedKeys) {
+                    val originalKey = remappedKeys.entries.first { it.value == outputKey }.key
+                    put(outputKey, canonicalizeElement(element.getValue(originalKey)))
                 }
             }
         }
         is JsonArray -> JsonArray(element.map(::canonicalizeElement))
         else -> element
+    }
+}
+
+private fun sortJsonObjectKeys(keys: Set<String>): List<String> {
+    val patchOrder = listOf("name", "description", "default", "dependencies", "compatiblePackages", "options")
+    val compatiblePackageOrder = listOf("packageName", "name", "description", "apkFileType", "appIconColor", "signatures", "targets")
+    val targetOrder = listOf("version", "versionCodes", "isExperimental", "minSdk", "description")
+    
+    val orderedList = when {
+        keys.containsAll(patchOrder.filter { it in keys }) && 
+        (keys.contains("compatiblePackages") || keys.contains("dependencies")) -> patchOrder
+        
+        keys.containsAll(compatiblePackageOrder.filter { it in keys }) && 
+        keys.contains("packageName") -> compatiblePackageOrder
+        
+        keys.containsAll(targetOrder.filter { it in keys }) && 
+        keys.contains("version") -> targetOrder
+        
+        else -> null
+    }
+    
+    return if (orderedList != null) {
+        val ordered = orderedList.filter { it in keys }
+        val remaining = keys.filter { it !in ordered }.sorted()
+        ordered + remaining
+    } else {
+        keys.sorted()
     }
 }
 
@@ -543,19 +572,9 @@ private fun processBundle(bundleFolder: File) {
             } ?: run {
                 Logger.info("Resolving patch list for ${parsedBundle.downloadUrl}...")
                 val created = when (parsedBundle.format) {
-                    BundleFormat.MODERN -> {
-                        if (isMorphePatchBundle(downloadUri)) {
-                            generateMorphePatchListFromSource(downloadUri, parsedBundle.version)
-                                ?: generateModernPatchList(downloadUri)
-                        } else {
-                            generateModernPatchList(downloadUri)
-                        }
-                    }
+                    BundleFormat.MODERN -> generateModernPatchList(downloadUri)
                     BundleFormat.LEGACY -> generateLegacyPatchList(downloadUri)
-                } ?: run {
-                    Logger.info("Falling back to release metadata for ${parsedBundle.downloadUrl}...")
-                    generatePatchListFromReleaseAsset(downloadUri, parsedBundle.version)
-                } ?: return@processVariant
+                } ?: throw IllegalStateException("Failed to resolve patches from bundle at ${parsedBundle.downloadUrl}")
                 patchCache[cacheKey] = created
                 created
             }
@@ -596,18 +615,16 @@ fun main(args: Array<String>) {
         .forEach { file ->
             Logger.setContext(file.name)
             Logger.info("Processing bundle ${file.name}")
-            var success = false
+            var failed = true
             try {
                 if (processSingleBundleFile(file, patchesOutDir)) {
                     successCount.incrementAndGet()
-                    success = true
+                    failed = false
                 }
             } catch (e: Exception) {
-                Logger.error("Error processing: ${e.formatForLog()}")
+                Logger.error("Something went wrong while processing ${file.name}. ${e.formatForLog()}")
             } finally {
-                if (!success) {
-                    failedFiles.add(file.name)
-                }
+                if (failed) failedFiles.add(file.name)
                 Logger.setContext(null)
             }
         }
@@ -624,17 +641,13 @@ private fun processSingleBundleFile(bundleFile: File, outDir: File): Boolean {
     val variant = BundleVariant(bundleFile, "", ReleaseType.LATEST)
     val parsedBundle = parseBundleMetadata(variant) ?: return false
     val outputPatchesFile = File(outDir, bundleFile.name)
-    
     val downloadUri = try {
         URI(parsedBundle.downloadUrl)
     } catch (_: Exception) {
-        Logger.warning("Download URL invalid")
+        Logger.warning("Download URL is invalid.")
         return false
     }
-    
-    val generated = generateModernPatchList(downloadUri) ?: run {
-        generateLegacyPatchList(downloadUri)
-    } ?: return false
+    val generated = generateModernPatchList(downloadUri) ?: generateLegacyPatchList(downloadUri) ?: return false
     writePatchList(outputPatchesFile, parsedBundle.version, generated)
     return true
 }

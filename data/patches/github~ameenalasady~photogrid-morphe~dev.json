@@ -3,15 +3,25 @@
     "name": "PhotoGrid Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.roidapp.photogrid": [
-                    "8.81"
-                ]
-            },
+            "name": "Unlock Premium",
+            "description": "Unlocks all PhotoGrid premium features by making IabUtils always report the user as premium.",
             "default": true,
             "dependencies": [],
-            "description": "Unlocks all PhotoGrid premium features by making IabUtils always report the user as premium.",
-            "name": "Unlock Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.roidapp.photogrid",
+                    "name": "PhotoGrid",
+                    "apkFileType": "APK",
+                    "appIconColor": "#4A90D9",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.81",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

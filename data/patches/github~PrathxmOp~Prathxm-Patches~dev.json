@@ -3,114 +3,261 @@
     "name": "Prathxm Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.chess": [
-                    "4.9.49",
-                    "4.9.49-googleplay",
-                    "4.10.0",
-                    "4.10.0-googleplay"
-                ]
-            },
+            "name": "Ad-Free",
+            "description": "Removes advertisements",
             "default": true,
             "dependencies": [],
-            "description": "Removes advertisements",
-            "name": "Ad-Free",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.chess",
+                    "name": "Chess.com",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#81B64C",
+                    "signatures": [
+                        "aa8c9ff93efbdc4226a113e49fc9645b2c02092a314305da2d76be6cdf8abfc3"
+                    ],
+                    "targets": [
+                        {
+                            "version": "4.9.49",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.9.49-googleplay",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0-googleplay",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chess": [
-                    "4.9.49",
-                    "4.9.49-googleplay",
-                    "4.10.0",
-                    "4.10.0-googleplay"
-                ]
-            },
+            "name": "Clone Chess.com",
+            "description": "Changes the package name to com.chess.prathxm, allowing the patched app to be installed side-by-side with the original Chess.com app.",
             "default": false,
             "dependencies": [],
-            "description": "Changes the package name to com.chess.prathxm, allowing the patched app to be installed side-by-side with the original Chess.com app.",
-            "name": "Clone Chess.com",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.chess",
+                    "name": "Chess.com",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#81B64C",
+                    "signatures": [
+                        "aa8c9ff93efbdc4226a113e49fc9645b2c02092a314305da2d76be6cdf8abfc3"
+                    ],
+                    "targets": [
+                        {
+                            "version": "4.9.49",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.9.49-googleplay",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0-googleplay",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chess": [
-                    "4.9.49",
-                    "4.9.49-googleplay",
-                    "4.10.0",
-                    "4.10.0-googleplay"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Fetches and applies custom titles for users from a remote database. DM PrathxmOp to get yours for fun lol!",
             "name": "Custom Titles",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.chess": [
-                    "4.9.49",
-                    "4.9.49-googleplay",
-                    "4.10.0",
-                    "4.10.0-googleplay"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "description": "Catches uncaught exceptions and displays a custom crash screen with details to report issues.",
-            "name": "Global Crash Handler",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.chess": [
-                    "4.9.49",
-                    "4.9.49-googleplay",
-                    "4.10.0",
-                    "4.10.0-googleplay"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "description": "Loads daily puzzles from Lichess and bypasses Chess.com puzzle premium limits.",
-            "name": "Lichess Puzzles",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.chess": [
-                    "4.9.49",
-                    "4.9.49-googleplay",
-                    "4.10.0",
-                    "4.10.0-googleplay"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "description": "Enables local Stockfish engine for post-game review & analysis.",
-            "name": "Local Stockfish Analysis",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.chess": [
-                    "4.9.49",
-                    "4.9.49-googleplay",
-                    "4.10.0",
-                    "4.10.0-googleplay"
-                ]
-            },
+            "description": "Fetches and applies custom titles for users from a remote database. DM PrathxmOp to get yours for fun lol!",
             "default": true,
             "dependencies": [],
-            "description": "Unlocks all premium and restricted bots in the Versus Bots feature.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.chess",
+                    "name": "Chess.com",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#81B64C",
+                    "signatures": [
+                        "aa8c9ff93efbdc4226a113e49fc9645b2c02092a314305da2d76be6cdf8abfc3"
+                    ],
+                    "targets": [
+                        {
+                            "version": "4.9.49",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.9.49-googleplay",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0-googleplay",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Global Crash Handler",
+            "description": "Catches uncaught exceptions and displays a custom crash screen with details to report issues.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.chess",
+                    "name": "Chess.com",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#81B64C",
+                    "signatures": [
+                        "aa8c9ff93efbdc4226a113e49fc9645b2c02092a314305da2d76be6cdf8abfc3"
+                    ],
+                    "targets": [
+                        {
+                            "version": "4.9.49",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.9.49-googleplay",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0-googleplay",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Lichess Puzzles",
+            "description": "Loads daily puzzles from Lichess and bypasses Chess.com puzzle premium limits.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.chess",
+                    "name": "Chess.com",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#81B64C",
+                    "signatures": [
+                        "aa8c9ff93efbdc4226a113e49fc9645b2c02092a314305da2d76be6cdf8abfc3"
+                    ],
+                    "targets": [
+                        {
+                            "version": "4.9.49",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.9.49-googleplay",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0-googleplay",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Local Stockfish Analysis",
+            "description": "Enables local Stockfish engine for post-game review & analysis.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.chess",
+                    "name": "Chess.com",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#81B64C",
+                    "signatures": [
+                        "aa8c9ff93efbdc4226a113e49fc9645b2c02092a314305da2d76be6cdf8abfc3"
+                    ],
+                    "targets": [
+                        {
+                            "version": "4.9.49",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.9.49-googleplay",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0-googleplay",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Unlock All Bots",
+            "description": "Unlocks all premium and restricted bots in the Versus Bots feature.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.chess",
+                    "name": "Chess.com",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#81B64C",
+                    "signatures": [
+                        "aa8c9ff93efbdc4226a113e49fc9645b2c02092a314305da2d76be6cdf8abfc3"
+                    ],
+                    "targets": [
+                        {
+                            "version": "4.9.49",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.9.49-googleplay",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.10.0-googleplay",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

@@ -3,17 +3,39 @@
     "name": "Disable Shorts Repeat",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.google.android.youtube": [
-                    "21.26.360",
-                    "21.25.523",
-                    "21.24.360"
-                ]
-            },
+            "name": "Disable Shorts repeat",
+            "description": "Stops Shorts from automatically repeating. There is no setting for this; the patch itself is the switch.",
             "default": true,
             "dependencies": [],
-            "description": "Stops Shorts from automatically repeating. There is no setting for this; the patch itself is the switch.",
-            "name": "Disable Shorts repeat",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.youtube",
+                    "name": "YouTube",
+                    "apkFileType": "APK_REQUIRED",
+                    "appIconColor": "#FF0033",
+                    "signatures": [
+                        "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+                        "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+                    ],
+                    "targets": [
+                        {
+                            "version": "21.26.360",
+                            "isExperimental": true,
+                            "minSdk": 29
+                        },
+                        {
+                            "version": "21.25.523",
+                            "isExperimental": true,
+                            "minSdk": 29
+                        },
+                        {
+                            "version": "21.24.360",
+                            "isExperimental": true,
+                            "minSdk": 29
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

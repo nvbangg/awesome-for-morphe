@@ -3,15 +3,24 @@
     "name": "Abhis1n Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.Splitwise.SplitwiseMobile": [
-                    "26.5.5"
-                ]
-            },
+            "name": "Enable Features",
+            "description": "Enables features by skipping checks",
             "default": true,
             "dependencies": [],
-            "description": "Enables features by skipping checks",
-            "name": "Enable Features",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.Splitwise.SplitwiseMobile",
+                    "name": "Splitwise",
+                    "appIconColor": "#FF0045",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "26.5.5",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

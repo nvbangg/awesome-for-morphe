@@ -3,15 +3,25 @@
     "name": "byehi98 Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.generalcomp.truecloud": [
-                    "4.6.5.13"
-                ]
-            },
+            "name": "TrueCloud Ad Removal",
+            "description": "Consolidated patch to remove all ads, boot pages, cloud popups, and the help center robot.",
             "default": true,
             "dependencies": [],
-            "description": "Consolidated patch to remove all ads, boot pages, cloud popups, and the help center robot.",
-            "name": "TrueCloud Ad Removal",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.generalcomp.truecloud",
+                    "name": "TrueCloud",
+                    "apkFileType": "APK",
+                    "appIconColor": "#FF0045",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.6.5.13",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

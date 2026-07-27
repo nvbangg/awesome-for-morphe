@@ -5,9 +5,9 @@ object Logger {
     fun setContext(name: String?) {
         if (name == null) context.remove() else context.set(name)
     }
-    private fun prefix(msg: String): String {
-        val ctx = context.get()
-        return if (ctx != null) "[$ctx] $msg" else msg
+    private fun prefix(message: String): String {
+        val contextValue = context.get()
+        return if (contextValue != null) "[$contextValue] $message" else message
     }
     fun info(message: String) = println(message)
 

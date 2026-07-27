@@ -3,426 +3,837 @@
     "name": "Patcheddit",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "",
             "name": "Add archive links to context menu",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch",
-                "BytecodePatch"
-            ],
-            "description": "",
             "name": "Automatically undelete Imgur images",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
+            "description": "",
             "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Automatically undelete Reddit content",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
+            "name": "Disable ads",
+            "description": "",
             "default": true,
             "dependencies": [],
-            "description": "",
-            "name": "Disable ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "o.o.joey": []
-            },
+            "name": "Disable ads",
+            "description": "",
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "",
-            "name": "Disable ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "o.o.joey",
+                    "name": "Joey for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "io.syncapps.lemmy_sync": []
-            },
+            "name": "Disable ads",
+            "description": "",
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "",
-            "name": "Disable ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "io.syncapps.lemmy_sync",
+                    "name": "Sync for Lemmy",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ]
-            },
+            "name": "Disable ads",
+            "description": "",
             "default": true,
             "dependencies": [],
-            "description": "",
-            "name": "Disable ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ],
-                "com.laurencedawson.reddit_sync.dev": [],
-                "com.laurencedawson.reddit_sync.pro": []
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Disables the bottom sheet at the startup that asks you to signup to \"Sync for Lemmy\".",
             "name": "Disable Sync for Lemmy bottom sheet",
+            "description": "Disables the bottom sheet at the startup that asks you to signup to \"Sync for Lemmy\".",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.pro",
+                    "name": "Sync for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.dev",
+                    "name": "Sync for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Enables Android developer debugging capabilities. Including this patch can slow down the app.",
             "name": "Enable Android debugging",
+            "description": "Enables Android developer debugging capabilities. Including this patch can slow down the app.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.andrewshu.android.reddit": [
-                    "5.6.22"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Allows using pro features without ads.",
             "name": "Fake reddit premium",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch",
-                "BytecodePatch"
-            ],
-            "description": "",
-            "name": "Fix /r/all",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "",
-            "name": "Fix /s/ links",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "free.reddit.news": [
-                    "10.2.40"
-                ],
-                "reddit.news": [
-                    "10.2.40"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "",
-            "name": "Fix /s/ links",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ],
-                "com.laurencedawson.reddit_sync.dev": [],
-                "com.laurencedawson.reddit_sync.pro": []
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "",
-            "name": "Fix /s/ links",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch",
-                "BytecodePatch"
-            ],
-            "description": "Fixes audio missing in videos downloaded from v.redd.it.",
-            "name": "Fix missing audio in video downloads",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ],
-                "com.laurencedawson.reddit_sync.dev": [],
-                "com.laurencedawson.reddit_sync.pro": []
-            },
+            "description": "Allows using pro features without ads.",
             "default": true,
             "dependencies": [],
-            "description": "Fixes loading post thumbnails by correcting their URLs.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.andrewshu.android.reddit",
+                    "name": "rif is fun",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.6.22",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Fix /r/all",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Fix /s/ links",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Fix /s/ links",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "free.reddit.news",
+                    "name": "Relay for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "10.2.40",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "reddit.news",
+                    "name": "Relay for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "10.2.40",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Fix /s/ links",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.pro",
+                    "name": "Sync for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.dev",
+                    "name": "Sync for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Fix missing audio in video downloads",
+            "description": "Fixes audio missing in videos downloaded from v.redd.it.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Fix post thumbnails",
+            "description": "Fixes loading post thumbnails by correcting their URLs.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.pro",
+                    "name": "Sync for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.dev",
+                    "name": "Sync for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.onelouder.baconreader": [
-                    "6.1.4"
-                ],
-                "com.onelouder.baconreader.premium": [
-                    "6.1.4"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch",
-                "BytecodePatch"
-            ],
-            "description": "",
             "name": "Fix Redgifs API",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch",
-                "BytecodePatch",
-                "BytecodePatch"
-            ],
             "description": "",
-            "name": "Fix Redgifs API",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ],
-                "com.laurencedawson.reddit_sync.dev": [],
-                "com.laurencedawson.reddit_sync.pro": []
-            },
             "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "",
-            "name": "Fix Redgifs API",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.onelouder.baconreader",
+                    "name": "BaconReader",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.1.4",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.onelouder.baconreader.premium",
+                    "name": "BaconReader Premium",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.1.4",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ],
-                "com.laurencedawson.reddit_sync.dev": [],
-                "com.laurencedawson.reddit_sync.pro": []
-            },
+            "name": "Fix Redgifs API",
+            "description": "",
             "default": true,
             "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "Fixes a bug in Sync's MPD parser resulting in only the audio-track being saved.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Fix Redgifs API",
+            "description": "",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.pro",
+                    "name": "Sync for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.dev",
+                    "name": "Sync for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Fix video downloads",
+            "description": "Fixes a bug in Sync's MPD parser resulting in only the audio-track being saved.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.pro",
+                    "name": "Sync for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.dev",
+                    "name": "Sync for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
+            "name": "Hook exception handler",
+            "description": "Hook the exception handler in Boost. Don't enable except for development purposes",
             "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Hook the exception handler in Boost. Don't enable except for development purposes",
-            "name": "Hook exception handler",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.onelouder.baconreader": [
-                    "6.1.4"
-                ],
-                "com.onelouder.baconreader.premium": [
-                    "6.1.4"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "Modify the WebView used for logging into reddit to prevent login issues",
             "name": "Modify login WebView",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
             "description": "Modify the WebView used for logging into reddit to prevent login issues",
-            "name": "Modify login WebView",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "ml.docilealligator.infinityforreddit.patreon": [],
-                "ml.docilealligator.infinityforreddit.plus": []
-            },
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.onelouder.baconreader",
+                    "name": "BaconReader",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.1.4",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.onelouder.baconreader.premium",
+                    "name": "BaconReader Premium",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.1.4",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Modify login WebView",
             "description": "Modify the WebView used for logging into reddit to prevent login issues",
-            "name": "Modify login WebView",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "o.o.joey": [],
-                "o.o.joey.dev": [],
-                "o.o.joey.pro": []
-            },
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Modify login WebView",
             "description": "Modify the WebView used for logging into reddit to prevent login issues",
-            "name": "Modify login WebView",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.andrewshu.android.reddit": [
-                    "5.6.22"
-                ],
-                "com.andrewshu.android.redditdonation": [
-                    "5.6.22"
-                ]
-            },
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
+            "compatiblePackages": [
+                {
+                    "packageName": "ml.docilealligator.infinityforreddit.plus",
+                    "name": "Infinity for Reddit+",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "ml.docilealligator.infinityforreddit.patreon",
+                    "name": "Infinity for Reddit (Patreon)",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Modify login WebView",
             "description": "Modify the WebView used for logging into reddit to prevent login issues",
-            "name": "Modify login WebView",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "free.reddit.news": [
-                    "10.2.40"
-                ],
-                "reddit.news": [
-                    "10.2.40"
-                ]
-            },
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
+            "compatiblePackages": [
+                {
+                    "packageName": "o.o.joey",
+                    "name": "Joey for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "o.o.joey.pro",
+                    "name": "Joey for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "o.o.joey.dev",
+                    "name": "Joey for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Modify login WebView",
             "description": "Modify the WebView used for logging into reddit to prevent login issues",
-            "name": "Modify login WebView",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ],
-                "com.laurencedawson.reddit_sync.dev": [],
-                "com.laurencedawson.reddit_sync.pro": []
-            },
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.andrewshu.android.reddit",
+                    "name": "rif is fun",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.6.22",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.andrewshu.android.redditdonation",
+                    "name": "rif is fun golden platinum",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.6.22",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Modify login WebView",
             "description": "Modify the WebView used for logging into reddit to prevent login issues",
-            "name": "Modify login WebView",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.onelouder.baconreader": [
-                    "6.1.4"
-                ],
-                "com.onelouder.baconreader.premium": [
-                    "6.1.4"
-                ]
-            },
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Restores functionality of the app by using custom client ID.",
+            "compatiblePackages": [
+                {
+                    "packageName": "free.reddit.news",
+                    "name": "Relay for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "10.2.40",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "reddit.news",
+                    "name": "Relay for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "10.2.40",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Modify login WebView",
+            "description": "Modify the WebView used for logging into reddit to prevent login issues",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.pro",
+                    "name": "Sync for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.dev",
+                    "name": "Sync for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Spoof client",
+            "description": "Restores functionality of the app by using custom client ID.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.onelouder.baconreader",
+                    "name": "BaconReader",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.1.4",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.onelouder.baconreader.premium",
+                    "name": "BaconReader Premium",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.1.4",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": null,
@@ -454,15 +865,23 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.rubenmayayo.reddit": [
-                    "1.12.12"
-                ]
-            },
+            "name": "Spoof client",
+            "description": "Restores functionality of the app by using custom client ID.",
             "default": true,
             "dependencies": [],
-            "description": "Restores functionality of the app by using custom client ID.",
-            "name": "Spoof client",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rubenmayayo.reddit",
+                    "name": "Boost for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": null,
@@ -494,16 +913,25 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "org.cygnusx1.continuum": []
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch",
-                "ResourcePatch"
-            ],
+            "name": "Spoof client",
             "description": "Allows modifying Continuum's client ID, redirect URI and user agent in API Keys settings menu. Patch options will modify default values.",
-            "name": "Spoof client",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "org.cygnusx1.continuum",
+                    "name": "Continuum",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": null,
@@ -535,18 +963,36 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "ml.docilealligator.infinityforreddit.patreon": [],
-                "ml.docilealligator.infinityforreddit.plus": []
-            },
+            "name": "Spoof client",
+            "description": "Restores functionality of the app by using custom client ID.",
             "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
                 "ResourcePatch"
             ],
-            "description": "Restores functionality of the app by using custom client ID.",
-            "name": "Spoof client",
+            "compatiblePackages": [
+                {
+                    "packageName": "ml.docilealligator.infinityforreddit.plus",
+                    "name": "Infinity for Reddit+",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "ml.docilealligator.infinityforreddit.patreon",
+                    "name": "Infinity for Reddit (Patreon)",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": null,
@@ -578,143 +1024,211 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "o.o.joey": [],
-                "o.o.joey.dev": [],
-                "o.o.joey.pro": []
-            },
+            "name": "Spoof client",
+            "description": "Restores functionality of the app by using custom client ID.",
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Restores functionality of the app by using custom client ID.",
-            "name": "Spoof client",
-            "options": [
+            "compatiblePackages": [
                 {
-                    "default": null,
-                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
-                    "key": "client-id",
-                    "required": true,
-                    "title": "OAuth client ID",
-                    "type": "kotlin.String",
-                    "values": null
+                    "packageName": "o.o.joey",
+                    "name": "Joey for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
                 },
                 {
-                    "default": "redreader://rr_oauth_redir",
-                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
-                    "key": "redirect-uri",
-                    "required": true,
-                    "title": "Redirect URI",
-                    "type": "kotlin.String",
-                    "values": null
+                    "packageName": "o.o.joey.pro",
+                    "name": "Joey for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
                 },
                 {
-                    "default": "org.quantumbadger.redreader/1.25.1",
-                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
-                    "key": "user-agent",
-                    "required": true,
-                    "title": "User agent",
-                    "type": "kotlin.String",
-                    "values": null
+                    "packageName": "o.o.joey.dev",
+                    "name": "Joey for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
                 }
-            ]
-        },
-        {
-            "compatiblePackages": {
-                "com.andrewshu.android.reddit": [
-                    "5.6.22"
-                ],
-                "com.andrewshu.android.redditdonation": [
-                    "5.6.22"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Restores functionality of the app by using custom client ID.",
-            "name": "Spoof client",
-            "options": [
-                {
-                    "default": null,
-                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
-                    "key": "client-id",
-                    "required": true,
-                    "title": "OAuth client ID",
-                    "type": "kotlin.String",
-                    "values": null
-                },
-                {
-                    "default": "redreader://rr_oauth_redir",
-                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
-                    "key": "redirect-uri",
-                    "required": true,
-                    "title": "Redirect URI",
-                    "type": "kotlin.String",
-                    "values": null
-                },
-                {
-                    "default": "org.quantumbadger.redreader/1.25.1",
-                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
-                    "key": "user-agent",
-                    "required": true,
-                    "title": "User agent",
-                    "type": "kotlin.String",
-                    "values": null
-                }
-            ]
-        },
-        {
-            "compatiblePackages": {
-                "free.reddit.news": [
-                    "10.2.40"
-                ],
-                "reddit.news": [
-                    "10.2.40"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Restores functionality of the app by using custom client ID.",
-            "name": "Spoof client",
-            "options": [
-                {
-                    "default": null,
-                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
-                    "key": "client-id",
-                    "required": true,
-                    "title": "OAuth client ID",
-                    "type": "kotlin.String",
-                    "values": null
-                },
-                {
-                    "default": "redreader://rr_oauth_redir",
-                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
-                    "key": "redirect-uri",
-                    "required": true,
-                    "title": "Redirect URI",
-                    "type": "kotlin.String",
-                    "values": null
-                },
-                {
-                    "default": "org.quantumbadger.redreader/1.25.1",
-                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
-                    "key": "user-agent",
-                    "required": true,
-                    "title": "User agent",
-                    "type": "kotlin.String",
-                    "values": null
-                }
-            ]
-        },
-        {
-            "compatiblePackages": {
-                "me.edgan.redditslide": []
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
             ],
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "name": "Spoof client",
+            "description": "Restores functionality of the app by using custom client ID.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.andrewshu.android.reddit",
+                    "name": "rif is fun",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.6.22",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.andrewshu.android.redditdonation",
+                    "name": "rif is fun golden platinum",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.6.22",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "name": "Spoof client",
+            "description": "Restores functionality of the app by using custom client ID.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "free.reddit.news",
+                    "name": "Relay for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "10.2.40",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "reddit.news",
+                    "name": "Relay for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "10.2.40",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here.",
+                    "key": "client-id",
+                    "required": true,
+                    "title": "OAuth client ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "redreader://rr_oauth_redir",
+                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+                    "key": "redirect-uri",
+                    "required": true,
+                    "title": "Redirect URI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "org.quantumbadger.redreader/1.25.1",
+                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+                    "key": "user-agent",
+                    "required": true,
+                    "title": "User agent",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "name": "Spoof client",
             "description": "Allows modifying Slide's client ID, redirect URI and user agent in settings. Patch options will modify default values.",
-            "name": "Spoof client",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "me.edgan.redditslide",
+                    "name": "Slide (fork)",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": null,
@@ -746,20 +1260,46 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ],
-                "com.laurencedawson.reddit_sync.dev": [],
-                "com.laurencedawson.reddit_sync.pro": []
-            },
+            "name": "Spoof client",
+            "description": "Restores functionality of the app by using custom client ID.",
             "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "Restores functionality of the app by using custom client ID.",
-            "name": "Spoof client",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.pro",
+                    "name": "Sync for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.dev",
+                    "name": "Sync for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": null,
@@ -791,34 +1331,76 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ],
-                "com.laurencedawson.reddit_sync.dev": [],
-                "com.laurencedawson.reddit_sync.pro": []
-            },
+            "name": "Use /user/ endpoint",
+            "description": "Replaces the deprecated endpoint for viewing user profiles /u with /user, that used to fix a bug.",
             "default": true,
             "dependencies": [],
-            "description": "Replaces the deprecated endpoint for viewing user profiles /u with /user, that used to fix a bug.",
-            "name": "Use /user/ endpoint",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.pro",
+                    "name": "Sync for Reddit Pro",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.laurencedawson.reddit_sync.dev",
+                    "name": "Sync for Reddit Dev",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.andrewshu.android.reddit": [
-                    "5.6.22"
-                ],
-                "com.andrewshu.android.redditdonation": [
-                    "5.6.22"
-                ]
-            },
+            "name": "Use public imgur API",
+            "description": "Fix imgur albums not loading.",
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Fix imgur albums not loading.",
-            "name": "Use public imgur API",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.andrewshu.android.reddit",
+                    "name": "rif is fun",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.6.22",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.andrewshu.android.redditdonation",
+                    "name": "rif is fun golden platinum",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.6.22",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

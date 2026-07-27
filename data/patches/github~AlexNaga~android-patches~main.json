@@ -3,27 +3,45 @@
     "name": "Android Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "se.matlistan.free": [
-                    "3.10.0"
-                ]
-            },
+            "name": "Dark mode",
+            "description": "Applies a dark theme to all backgrounds, dialogs, and popups.",
             "default": true,
             "dependencies": [],
-            "description": "Applies a dark theme to all backgrounds, dialogs, and popups.",
-            "name": "Dark mode",
+            "compatiblePackages": [
+                {
+                    "packageName": "se.matlistan.free",
+                    "name": "Matlistan",
+                    "appIconColor": "#00C29B",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.10.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "se.matlistan.free": [
-                    "3.10.0"
-                ]
-            },
+            "name": "Enable Premium",
+            "description": "Removes item/list limits and unlocks premium features (copy to list, manual sort, etc.).",
             "default": true,
             "dependencies": [],
-            "description": "Removes item/list limits and unlocks premium features (copy to list, manual sort, etc.).",
-            "name": "Enable Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "se.matlistan.free",
+                    "name": "Matlistan",
+                    "appIconColor": "#00C29B",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.10.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

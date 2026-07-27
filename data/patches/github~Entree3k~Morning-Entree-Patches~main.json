@@ -3,41 +3,68 @@
     "name": "Morning Entree Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.sillens.shapeupclub": [
-                    "20.8.0"
-                ]
-            },
+            "name": "Enable Premium",
+            "description": "Unlock Lifesum Premium",
             "default": true,
             "dependencies": [],
-            "description": "Unlock Lifesum Premium",
-            "name": "Enable Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.sillens.shapeupclub",
+                    "name": "Lifesum",
+                    "appIconColor": "#41CD8C",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "20.8.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.simyasolutions.ling.universal": [
-                    "8.4.4"
-                ]
-            },
+            "name": "Enable Premium",
+            "description": "Unlocks Ling Pro",
             "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
-            "description": "Unlocks Ling Pro",
-            "name": "Enable Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.simyasolutions.ling.universal",
+                    "name": "Ling",
+                    "appIconColor": "#F8485E",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.4.4",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.prismtree.sponge": [
-                    "2.8.0"
-                ]
-            },
+            "name": "Enable Premium",
+            "description": "Unlock Sponge Premium",
             "default": true,
             "dependencies": [],
-            "description": "Unlock Sponge Premium",
-            "name": "Enable Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.prismtree.sponge",
+                    "name": "Sponge",
+                    "appIconColor": "#2AB7A9",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.8.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

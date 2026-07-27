@@ -1,50 +1,39 @@
 {
-    "version": "2.0.0",
+    "version": "2.1.0",
     "name": "Gboard Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "攔截 Gboard 的簽章白名單檢查並強制通過\nBypass Gboard signature whitelist checks and force them to pass.",
             "name": "Add Gboard Signature Bypass",
+            "description": "攔截 Gboard 的簽章白名單檢查並強制通過\nBypass Gboard signature whitelist checks and force them to pass.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "ResourcePatch",
-                "ResourcePatch",
-                "BytecodePatch",
-                "BytecodePatch",
-                "BytecodePatch",
-                "BytecodePatch",
-                "BytecodePatch"
-            ],
-            "description": "啟用 AI 撰寫工具，支援所有語言\nEnable AI writing tools with support for all languages.",
             "name": "AI Writing Tools",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "description": "啟用 AI 撰寫工具，支援所有語言\nEnable AI writing tools with support for all languages.",
             "default": true,
             "dependencies": [
-                "ResourcePatch",
                 "ResourcePatch",
                 "ResourcePatch",
                 "BytecodePatch",
@@ -53,233 +42,477 @@
                 "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "增強剪貼簿的保留時間、數量上限、預覽行數、倒數/建立時間、順序編號與欄數\nEnhance clipboard retention time, item count limit, preview lines, countdown/creation time labels, order index, and column count.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Clipboard Enhancements",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "description": "增強剪貼簿的保留時間、數量上限、預覽行數、倒數/建立時間、順序編號與欄數\nEnhance clipboard retention time, item count limit, preview lines, countdown/creation time labels, order index, and column count.",
             "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "ResourcePatch",
-                "BytecodePatch",
+                "ResourcePatch",
                 "BytecodePatch",
                 "BytecodePatch",
                 "BytecodePatch",
                 "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "新增獨立的特殊符號分頁，長按逗號->愛心\nAdd a dedicated custom symbols tab and replace the long-press comma entry with a heart shortcut.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Custom Symbols",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "description": "新增獨立的特殊符號分頁，長按逗號->愛心\nAdd a dedicated custom symbols tab and replace the long-press comma entry with a heart shortcut.",
             "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "ResourcePatch",
+                "BytecodePatch",
+                "BytecodePatch",
+                "BytecodePatch",
+                "BytecodePatch",
+                "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "自訂 Gboard「Emojis, stickers & GIFs」底部 tabs 的排序，支援拖曳調整\nCustomize the bottom tab order in Gboard's Emojis, stickers & GIFs panel with drag-and-drop reordering.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Developer options",
+            "description": "啟用 開發人員選項 與 Flag 編輯器，你可以自己修改Flag的值\nEnable Developer options and the Flag Editor, allowing you to modify flag values.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch",
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Emojis, stickers & GIFs Tab Order",
+            "description": "自訂 Gboard「Emojis, stickers & GIFs」底部 tabs 的排序，支援拖曳調整\nCustomize the bottom tab order in Gboard's Emojis, stickers & GIFs panel with drag-and-drop reordering.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch",
+                "ResourcePatch",
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch",
-                "BytecodePatch",
-                "ResourcePatch"
-            ],
-            "description": "啟用內嵌自動填入建議\nEnable Inline Autofill Suggestions",
             "name": "Enable Inline Autofill Suggestions",
+            "description": "啟用內嵌自動填入建議\nEnable Inline Autofill Suggestions",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch",
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "ResourcePatch",
-                "ResourcePatch",
-                "ResourcePatch",
-                "BytecodePatch",
-                "BytecodePatch"
-            ],
-            "description": "英文 QWERTY 鍵盤上滑大小寫\nFlick up on the English QWERTY keyboard to toggle uppercase and lowercase.",
             "name": "English QWERTY Up-Flick Uppercase",
+            "description": "英文 QWERTY 鍵盤上滑大小寫\nFlick up on the English QWERTY keyboard to toggle uppercase and lowercase.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch",
+                "ResourcePatch",
+                "ResourcePatch",
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch",
-                "BytecodePatch",
-                "ResourcePatch"
-            ],
-            "description": "啟用 修正和建議 > 文法檢查\nEnable Text correction > Grammar check.",
             "name": "Grammar Checker",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "description": "啟用 修正和建議 > 文法檢查\nEnable Text correction > Grammar check.",
             "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
                 "ResourcePatch"
             ],
-            "description": "啟用 修正和建議 > 智慧撰寫\nEnable Text correction > Smart Compose.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Inline Suggestions",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "description": "啟用 修正和建議 > 智慧撰寫\nEnable Text correction > Smart Compose.",
             "default": true,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch",
                 "ResourcePatch"
             ],
-            "description": "啟用圓角按鍵，主題詳情 > 按鍵形狀\nEnable Key shape in Theme details.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Key Shape Selection",
+            "description": "啟用圓角按鍵，主題詳情 > 按鍵形狀\nEnable Key shape in Theme details.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch",
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "name": "Latin Globe Key Ignore Interval",
+            "description": "新增英文鍵盤地球鍵忽略時間覆寫，可獨立控制輸入後切語言延遲\nAdd an independent English globe key ignore interval override for post-typing language-switch delay.",
             "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "ResourcePatch",
                 "BytecodePatch"
             ],
-            "description": "新增英文鍵盤地球鍵忽略時間覆寫，可獨立控制輸入後切語言延遲\nAdd an independent English globe key ignore interval override for post-typing language-switch delay.",
-            "name": "Latin Globe Key Ignore Interval",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "name": "Package Rename",
+            "description": "將套件名稱改成 dev.jason.com.google.android.inputmethod.latin 以便共存安裝\nRename the package to dev.jason.com.google.android.inputmethod.latin so it can be installed alongside the official Gboard.",
             "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
-            "description": "將套件名稱改成 dev.jason.com.google.android.inputmethod.latin 以便共存安裝\nRename the package to dev.jason.com.google.android.inputmethod.latin so it can be installed alongside the official Gboard.",
-            "name": "Package Rename",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "ResourcePatch",
-                "ResourcePatch",
-                "BytecodePatch"
-            ],
-            "description": "允許切換新版或舊版 Gboard 設定頁面\nAllow switching between the new and legacy Gboard settings pages.",
             "name": "Settings Homepage Override",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "description": "允許切換新版或舊版 Gboard 設定頁面\nAllow switching between the new and legacy Gboard settings pages.",
             "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "ResourcePatch",
-                "BytecodePatch",
-                "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "滑動鍵盤第一排，在原生列與可自訂文字/JavaScript 列之間切換\nSwipe the keyboard top row to switch between the stock row and a customizable text/JavaScript row.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Swipeable Custom Top Row",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "description": "滑動鍵盤第一排，在原生列與可自訂文字/JavaScript 列之間切換\nSwipe the keyboard top row to switch between the stock row and a customizable text/JavaScript row.",
             "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "ResourcePatch",
-                "ResourcePatch",
-                "ResourcePatch",
+                "BytecodePatch",
+                "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "新增手機自架的 Web Clipboard，支援瀏覽器同步、配對碼與快速設定開關\nAdd the phone-hosted Web Clipboard with browser sync, pairing, and a Quick Settings Tile.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Web Clipboard",
+            "description": "新增手機自架的 Web Clipboard，支援瀏覽器同步、配對碼與快速設定開關\nAdd the phone-hosted Web Clipboard with browser sync, pairing, and a Quick Settings Tile.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch",
+                "ResourcePatch",
+                "ResourcePatch",
+                "ResourcePatch",
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "name": "Zhuyin Bottom Row Key Sizes",
+            "description": "調整注音鍵盤底排按鍵大小\nAdjust Zhuyin keyboard bottom-row key sizes.",
             "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "ResourcePatch",
                 "BytecodePatch"
             ],
-            "description": "調整注音鍵盤底排按鍵大小\nAdjust Zhuyin keyboard bottom-row key sizes.",
-            "name": "Zhuyin Bottom Row Key Sizes",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "name": "Zhuyin Quick Traditional/Simplified Toggle",
+            "description": "注音 ㄥ 上滑快速切換繁簡\nSwipe up on Zhuyin ㄥ to quickly toggle Traditional and Simplified Chinese.",
             "default": true,
             "dependencies": [
                 "Zhuyin Slide Input",
@@ -287,16 +520,29 @@
                 "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "注音 ㄥ 上滑快速切換繁簡\nSwipe up on Zhuyin ㄥ to quickly toggle Traditional and Simplified Chinese.",
-            "name": "Zhuyin Quick Traditional/Simplified Toggle",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.inputmethod.latin": [
-                    "17.7.7.932364120-release-arm64-v8a"
-                ]
-            },
+            "name": "Zhuyin Slide Input",
+            "description": "注音鍵盤支持上下滑輸入\nEnable slide-up and slide-down input on the Zhuyin keyboard.",
             "default": true,
             "dependencies": [
                 "ResourcePatch",
@@ -304,8 +550,24 @@
                 "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "注音鍵盤支持上下滑輸入\nEnable slide-up and slide-down input on the Zhuyin keyboard.",
-            "name": "Zhuyin Slide Input",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "name": "Gboard",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1A73E8",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "version": "17.7.7.932364120-release-arm64-v8a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

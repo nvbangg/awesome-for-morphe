@@ -3,123 +3,223 @@
     "name": "AliExpress Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.alibaba.aliexpresshd": [
-                    "8.162.8"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Bypasses SecurityGuard integrity checks to restore login on patched APKs.",
             "name": "Bypass signature check",
+            "description": "Bypasses SecurityGuard integrity checks to restore login on patched APKs.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alibaba.aliexpresshd",
+                    "name": "AliExpress",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4747",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.162.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.alibaba.aliexpresshd": [
-                    "8.162.8"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Blocks analytics and tracking sent to AliExpress servers.",
             "name": "Disable analytics",
+            "description": "Blocks analytics and tracking sent to AliExpress servers.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alibaba.aliexpresshd",
+                    "name": "AliExpress",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4747",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.162.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.alibaba.aliexpresshd": [
-                    "8.162.8"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Disables the forced update popup that prevents using older versions of the app.",
             "name": "Disable forced updates",
+            "description": "Disables the forced update popup that prevents using older versions of the app.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alibaba.aliexpresshd",
+                    "name": "AliExpress",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4747",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.162.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.alibaba.aliexpresshd": [
-                    "8.162.8"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Disables promotional push notifications for deals and coupons.",
             "name": "Disable promotions notifications",
+            "description": "Disables promotional push notifications for deals and coupons.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alibaba.aliexpresshd",
+                    "name": "AliExpress",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4747",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.162.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.alibaba.aliexpresshd": [
-                    "8.162.8"
-                ]
-            },
-            "default": false,
-            "dependencies": [],
-            "description": "Skips the splash screen on app launch.",
             "name": "Disable splash screen",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.alibaba.aliexpresshd": [
-                    "8.162.8"
-                ]
-            },
+            "description": "Skips the splash screen on app launch.",
             "default": false,
             "dependencies": [],
-            "description": "Enables saving product images directly to the device gallery.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alibaba.aliexpresshd",
+                    "name": "AliExpress",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4747",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.162.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Enable image saving",
+            "description": "Enables saving product images directly to the device gallery.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alibaba.aliexpresshd",
+                    "name": "AliExpress",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4747",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.162.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.alibaba.aliexpresshd": [
-                    "8.162.8"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Removes sponsored products and advertisements from the AliExpress home feed and search results.",
             "name": "Remove ads",
+            "description": "Removes sponsored products and advertisements from the AliExpress home feed and search results.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alibaba.aliexpresshd",
+                    "name": "AliExpress",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4747",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.162.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.alibaba.aliexpresshd": [
-                    "8.162.8"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Removes affiliate tracking parameters from shared links.",
             "name": "Remove affiliate tracking",
+            "description": "Removes affiliate tracking parameters from shared links.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alibaba.aliexpresshd",
+                    "name": "AliExpress",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4747",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.162.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.alibaba.aliexpresshd": [
-                    "8.162.8"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Removes the coupon and promotion popup dialogs.",
             "name": "Remove coupons popup",
+            "description": "Removes the coupon and promotion popup dialogs.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alibaba.aliexpresshd",
+                    "name": "AliExpress",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4747",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.162.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.alibaba.aliexpresshd": [
-                    "8.162.8"
-                ]
-            },
+            "name": "Remove sponsored items from search",
+            "description": "Filters out sponsored and promoted products from search results.",
             "default": true,
             "dependencies": [],
-            "description": "Filters out sponsored and promoted products from search results.",
-            "name": "Remove sponsored items from search",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alibaba.aliexpresshd",
+                    "name": "AliExpress",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4747",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.162.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

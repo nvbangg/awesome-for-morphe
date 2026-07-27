@@ -3,158 +3,797 @@
     "name": "Pepper Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "name": "Always show event-theming icons",
+            "description": "Shows every event-themed app icon in the picker, even when its event is not currently active.",
             "default": true,
             "dependencies": [
                 "Unlock tier-locked icons"
             ],
-            "description": "Shows every event-themed app icon in the picker, even when its event is not currently active.",
-            "name": "Always show event-theming icons",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "name": "Block Pepper analytics-event-report tracker",
+            "description": "Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server.",
             "default": true,
             "dependencies": [],
-            "description": "Stops Pepper's own behavioural tracker (thread visits, shares, push clicks, search suggestions) from reaching the server.",
-            "name": "Block Pepper analytics-event-report tracker",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "name": "Compact deal cards",
+            "description": "Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits.",
             "default": false,
             "dependencies": [],
-            "description": "Shrinks Pepper deal-list cards and their loading skeletons with targeted XML resource edits.",
-            "name": "Compact deal cards",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "name": "Disable Adjust SDK",
+            "description": "Stops the Adjust SDK from initialising and tracking events.",
             "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost",
                 "Neuter tracker auto-init ContentProviders"
             ],
-            "description": "Stops the Adjust SDK from initialising and tracking events.",
-            "name": "Disable Adjust SDK",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "name": "Disable Google Mobile Ads ad-load entry points",
+            "description": "Blocks Google's Ad SDK from fetching native ads after init.",
             "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost",
                 "Neuter tracker auto-init ContentProviders",
                 "Disable Google Mobile Ads SDK init"
             ],
-            "description": "Blocks Google's Ad SDK from fetching native ads after init.",
-            "name": "Disable Google Mobile Ads ad-load entry points",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "name": "Disable Google Mobile Ads SDK init",
+            "description": "Stops the Google Mobile Ads SDK from initialising.",
             "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost",
                 "Neuter tracker auto-init ContentProviders"
             ],
-            "description": "Stops the Google Mobile Ads SDK from initialising.",
-            "name": "Disable Google Mobile Ads SDK init",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.pepperdeals": []
-            },
+            "name": "Disable PAIRIP license check",
+            "description": "Removes Google Play's install-source DRM check from the US Pepper.com build, allowing sideloaded APKs to open.",
             "default": true,
             "dependencies": [],
-            "description": "Removes Google Play's install-source DRM check from the US Pepper.com build, allowing sideloaded APKs to open.",
-            "name": "Disable PAIRIP license check",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "name": "Enable debug menu",
+            "description": "Re-enables the hidden debug menu in the main activity.",
             "default": false,
             "dependencies": [],
-            "description": "Re-enables the hidden debug menu in the main activity.",
-            "name": "Enable debug menu",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": "0x7f0f0006",
@@ -168,24 +807,114 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "name": "Fix spacing around hidden ad cells",
+            "description": "Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens.",
             "default": true,
             "dependencies": [
                 "Hide banner ads in feed"
             ],
-            "description": "Removes the empty space and shadow divider left behind by hidden banner-ad cells in deal-detail screens.",
-            "name": "Fix spacing around hidden ad cells",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": "0x7f0a009e",
@@ -217,162 +946,882 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Removes the banner ads in the deal feed.",
             "name": "Hide banner ads in feed",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "description": "Removes the banner ads in the deal feed.",
             "default": true,
             "dependencies": [],
-            "description": "Keeps the chosen event-themed app icon after the event ends.",
-            "name": "Keep event icon after restart",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "name": "Keep event icon after restart",
+            "description": "Keeps the chosen event-themed app icon after the event ends.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Kill Datatransport upload pipeline",
+            "description": "Blocks Crashlytics report and Firebase log uploads from leaving the device.",
             "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost",
                 "Neuter tracker auto-init ContentProviders"
             ],
-            "description": "Blocks Crashlytics report and Firebase log uploads from leaving the device.",
-            "name": "Kill Datatransport upload pipeline",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID.",
             "name": "Kill Pepper first-party pixel tracking",
+            "description": "Blocks Pepper's first-party pixel-tracking pings and replaces the device-fingerprint header with a per-install random UUID.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
-            "default": true,
-            "dependencies": [
-                "Redirect tracker URLs to localhost"
-            ],
-            "description": "Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start.",
             "name": "Neuter tracker auto-init ContentProviders",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network.",
-            "name": "Redirect tracker URLs to localhost",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "description": "Stops the Vungle, Adjust, and Facebook Audience Network SDKs from auto-initialising at app start.",
             "default": true,
             "dependencies": [
                 "Redirect tracker URLs to localhost"
             ],
-            "description": "Skips the Usercentrics consent screen and its loading wait on cold start.",
-            "name": "Skip Usercentrics consent screen",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.chollometro": [],
-                "com.dealabs.apps.android": [],
-                "com.pepperdeals": [],
-                "com.preisjaeger": [],
-                "com.tippingcanoe.hukd": [],
-                "com.tippingcanoe.mydealz": [],
-                "com.tippingcanoe.peppernl": [],
-                "com.tippingcanoe.pepperpl": [],
-                "com.tippingcanoe.promodescuentos": [],
-                "se.pepperdeals": []
-            },
+            "name": "Redirect tracker URLs to localhost",
+            "description": "Redirects every known tracker and analytics URL in the app to localhost so it cannot reach the network.",
             "default": true,
             "dependencies": [],
-            "description": "Unlocks all membership-tier app icons in the icon picker.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Skip Usercentrics consent screen",
+            "description": "Skips the Usercentrics consent screen and its loading wait on cold start.",
+            "default": true,
+            "dependencies": [
+                "Redirect tracker URLs to localhost"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Unlock tier-locked icons",
+            "description": "Unlocks all membership-tier app icons in the icon picker.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tippingcanoe.pepperpl",
+                    "name": "Pepper PL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.peppernl",
+                    "name": "Pepper NL",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.mydealz",
+                    "name": "Mydealz",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.hukd",
+                    "name": "HotUKDeals",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.tippingcanoe.promodescuentos",
+                    "name": "PromoDescuentos",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.chollometro",
+                    "name": "Chollometros",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.dealabs.apps.android",
+                    "name": "Dealabs",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.preisjaeger",
+                    "name": "Preisjäger",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.pepperdeals",
+                    "name": "Pepper.com",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "se.pepperdeals",
+                    "name": "Pepper SE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

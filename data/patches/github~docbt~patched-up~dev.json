@@ -3,11 +3,11 @@
     "name": "Patched-Up",
     "patches": [
         {
-            "compatiblePackages": null,
+            "name": "Change package name",
+            "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
             "default": false,
             "dependencies": [],
-            "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
-            "name": "Change package name",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": "Default",
@@ -41,77 +41,149 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.google.android.apps.magazines": [
-                    "5.163.0.947799485"
-                ]
-            },
+            "name": "Enable CustomTabs",
+            "description": "Enables CustomTabs to open articles in your default browser.",
             "default": true,
             "dependencies": [
                 "Change package name"
             ],
-            "description": "Enables CustomTabs to open articles in your default browser.",
-            "name": "Enable CustomTabs",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.apps.magazines",
+                    "name": "Google News",
+                    "appIconColor": "#4285F4",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.163.0.947799485",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.google.android.apps.magazines": [
-                    "5.163.0.947799485",
-                    "5.161.0.931240252",
-                    "5.158.0.908428942",
-                    "5.156.0.892791979"
-                ]
-            },
+            "name": "GmsCore support",
+            "description": "Allows Google News to sign in via MicroG (GmsCore) instead of Google Play Services when installed under a renamed package.",
             "default": true,
             "dependencies": [
                 "ResourcePatch",
                 "Change package name"
             ],
-            "description": "Allows Google News to sign in via MicroG (GmsCore) instead of Google Play Services when installed under a renamed package.",
-            "name": "GmsCore support",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.apps.magazines",
+                    "name": "Google News",
+                    "appIconColor": "#4285F4",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.163.0.947799485",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "5.161.0.931240252",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "5.158.0.908428942",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "5.156.0.892791979",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.ebay.kleinanzeigen": [
-                    "2026.16.1",
-                    "2026.14.2",
-                    "2026.14.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Hides sponsored ads and Google Ads. Also disables Microsoft Clarity analytics.",
             "name": "Hide ads",
+            "description": "Hides sponsored ads and Google Ads. Also disables Microsoft Clarity analytics.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.ebay.kleinanzeigen",
+                    "name": "Kleinanzeigen",
+                    "appIconColor": "#2EAD33",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2026.16.1",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "2026.14.2",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "2026.14.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.ebay.kleinanzeigen": [
-                    "2026.16.1",
-                    "2026.14.2",
-                    "2026.14.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Hides the Pur ad-free subscription option from the settings menu.",
             "name": "Hide Pur",
+            "description": "Hides the Pur ad-free subscription option from the settings menu.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.ebay.kleinanzeigen",
+                    "name": "Kleinanzeigen",
+                    "appIconColor": "#2EAD33",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2026.16.1",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "2026.14.2",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "2026.14.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.ebay.kleinanzeigen": [
-                    "2026.16.1",
-                    "2026.14.2",
-                    "2026.14.0"
-                ]
-            },
+            "name": "Remove tracking parameters from share URLs",
+            "description": "Strips UTM tracking parameters from URLs shared via the in-app share function.",
             "default": true,
             "dependencies": [],
-            "description": "Strips UTM tracking parameters from URLs shared via the in-app share function.",
-            "name": "Remove tracking parameters from share URLs",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.ebay.kleinanzeigen",
+                    "name": "Kleinanzeigen",
+                    "appIconColor": "#2EAD33",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2026.16.1",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "2026.14.2",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "2026.14.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

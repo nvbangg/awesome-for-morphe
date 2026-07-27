@@ -3,23 +3,49 @@
     "name": "Busuu Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.busuu.android.enc": []
-            },
+            "name": "Spoof premium plus status",
+            "description": "Spoofs premium plus status",
             "default": true,
             "dependencies": [],
-            "description": "Spoofs premium plus status",
-            "name": "Spoof premium plus status",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.busuu.android.enc",
+                    "name": "Busuu",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "32.41.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.busuu.android.enc": []
-            },
+            "name": "Spoof premium status",
+            "description": "Spoofs premium status",
             "default": true,
             "dependencies": [],
-            "description": "Spoofs premium status",
-            "name": "Spoof premium status",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.busuu.android.enc",
+                    "name": "Busuu",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "32.41.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

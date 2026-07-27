@@ -3,37 +3,37 @@
     "name": "Pairip Patches",
     "patches": [
         {
-            "compatiblePackages": null,
+            "name": "Inline pairip call wrappers",
+            "description": "Inlines pairip's static call-wrapper stubs ($<number>) back into their call sites and removes the stubs.",
             "default": false,
             "dependencies": [
                 "Restore extracted methods"
             ],
-            "description": "Inlines pairip's static call-wrapper stubs ($<number>) back into their call sites and removes the stubs.",
-            "name": "Inline pairip call wrappers",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Restores obfuscated strings and removes pairip bytecode protection.",
             "name": "Remove pairip protection",
+            "description": "Restores obfuscated strings and removes pairip bytecode protection.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Inlines methods hidden in $c<number> helper classes back into the host class, then removes those helper and reflection method-holder classes.",
             "name": "Restore extracted methods",
+            "description": "Inlines methods hidden in $c<number> helper classes back into the host class, then removes those helper and reflection method-holder classes.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Strip debug info",
+            "description": "Removes .line (line numbers) and .source (source file name) debug data from every class. Optional, disabled by default.",
             "default": false,
             "dependencies": [],
-            "description": "Removes .line (line numbers) and .source (source file name) debug data from every class. Optional, disabled by default.",
-            "name": "Strip debug info",
+            "compatiblePackages": null,
             "options": []
         }
     ]

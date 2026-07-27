@@ -3,18 +3,35 @@
     "name": "DBT Coach Morphe Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "co.swasth.dbtcoach": [
-                    "6.4.2",
-                    "6.4.1",
-                    "6.4.0",
-                    "6.1.3"
-                ]
-            },
+            "name": "Unlock premium",
+            "description": "Déverrouille toutes les fonctionnalités premium de DBT Coach en court-circuitant la vérification d'abonnement RevenueCat.",
             "default": true,
             "dependencies": [],
-            "description": "Déverrouille toutes les fonctionnalités premium de DBT Coach en court-circuitant la vérification d'abonnement RevenueCat.",
-            "name": "Unlock premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "co.swasth.dbtcoach",
+                    "name": "co.swasth.dbtcoach",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.4.2",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "6.4.1",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "6.4.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "6.1.3",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

@@ -3,31 +3,63 @@
     "name": "Bigyank Samsung Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.sec.android.app.shealth": [
-                    "7.00.0.107",
-                    "6.32.0.001",
-                    "6.31.3.013"
-                ]
-            },
+            "name": "Bypass Samsung Account provider checks",
+            "description": "Replaces com.osp.app.signin with com.notsamsung.dummy in dex and routes account lookups through Android AccountManager instead of Samsung Account's provider.",
             "default": true,
             "dependencies": [],
-            "description": "Replaces com.osp.app.signin with com.notsamsung.dummy in dex and routes account lookups through Android AccountManager instead of Samsung Account's provider.",
-            "name": "Bypass Samsung Account provider checks",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.sec.android.app.shealth",
+                    "name": "Samsung Health",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1DC9A0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "7.00.0.107",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "6.32.0.001",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "6.31.3.013",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.sec.android.app.shealth": [
-                    "7.00.0.107",
-                    "6.32.0.001",
-                    "6.31.3.013"
-                ]
-            },
+            "name": "Disable Knox integrity checks",
+            "description": "Bypass Knox, root, warranty bit, and SAK checks so Samsung Health runs on Knox-tripped devices (0x1) without root.",
             "default": true,
             "dependencies": [],
-            "description": "Bypass Knox, root, warranty bit, and SAK checks so Samsung Health runs on Knox-tripped devices (0x1) without root.",
-            "name": "Disable Knox integrity checks",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.sec.android.app.shealth",
+                    "name": "Samsung Health",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1DC9A0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "7.00.0.107",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "6.32.0.001",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "6.31.3.013",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

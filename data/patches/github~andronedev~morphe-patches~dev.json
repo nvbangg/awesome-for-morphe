@@ -3,13 +3,24 @@
     "name": "Morphe Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.thetransitapp.droid": []
-            },
+            "name": "Custom Maps API Key",
+            "description": "Replace Transit Google Maps key with your own Android Maps SDK key for re-signed APKs.",
             "default": true,
             "dependencies": [],
-            "description": "Replace Transit Google Maps key with your own Android Maps SDK key for re-signed APKs.",
-            "name": "Custom Maps API Key",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.thetransitapp.droid",
+                    "name": "Transit",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#30B464",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": "",
@@ -23,13 +34,24 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.thetransitapp.droid": []
-            },
+            "name": "Pro Features Unlock",
+            "description": "Unlock all pro features in Transit",
             "default": true,
             "dependencies": [],
-            "description": "Unlock all pro features in Transit",
-            "name": "Pro Features Unlock",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.thetransitapp.droid",
+                    "name": "Transit",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#30B464",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

@@ -3,27 +3,45 @@
     "name": "Mix Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.laurencedawson.reddit_sync": [
-                    "v23.06.30-13:39"
-                ]
-            },
+            "name": "Fix Other discussions",
+            "description": "Fixes the 'Other discussions' tab showing '403 error loading page' by updating the API endpoint.",
             "default": true,
             "dependencies": [],
-            "description": "Fixes the 'Other discussions' tab showing '403 error loading page' by updating the API endpoint.",
-            "name": "Fix Other discussions",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.laurencedawson.reddit_sync",
+                    "name": "Sync for Reddit",
+                    "apkFileType": "APK",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v23.06.30-13:39",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "tv.trakt.trakt": [
-                    "3.13.0"
-                ]
-            },
+            "name": "Unlock pro",
+            "description": "Remove ads, add VIP badge and allow to view 'Your Month in Review'.",
             "default": true,
             "dependencies": [],
-            "description": "Remove ads, add VIP badge and allow to view 'Your Month in Review'.",
-            "name": "Unlock pro",
+            "compatiblePackages": [
+                {
+                    "packageName": "tv.trakt.trakt",
+                    "name": "Trakt",
+                    "apkFileType": "APK",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.13.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

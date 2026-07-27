@@ -3,13 +3,24 @@
     "name": "Realme Link Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.realme.link": []
-            },
+            "name": "Bypass Session Expiry",
+            "description": "Kills session expiry dialogs",
             "default": true,
             "dependencies": [],
-            "description": "Kills session expiry dialogs",
-            "name": "Bypass Session Expiry",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.realme.link",
+                    "name": "Realme Link",
+                    "apkFileType": "APK",
+                    "appIconColor": "#927DFD",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

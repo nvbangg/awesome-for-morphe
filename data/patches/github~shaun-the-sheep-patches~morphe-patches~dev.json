@@ -3,51 +3,91 @@
     "name": "KineStop Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.delphicoder.flud": [
-                    "2.0.12"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlock ad-free experience (disable banners/interstitials), bypass storage permission setup block, and disable Google Play Integrity licensing check.",
             "name": "Flud Ad-Free & Bypasses",
+            "description": "Unlock ad-free experience (disable banners/interstitials), bypass storage permission setup block, and disable Google Play Integrity licensing check.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.delphicoder.flud",
+                    "name": "Flud",
+                    "apkFileType": "APK",
+                    "appIconColor": "#2196F3",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.0.12",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.vanniktech.rssreader": [
-                    "1.48.2"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlock premium features and remove ads in RSS Reader.",
             "name": "RSS Reader Premium",
+            "description": "Unlock premium features and remove ads in RSS Reader.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.vanniktech.rssreader",
+                    "name": "RSS Reader",
+                    "apkFileType": "APK",
+                    "appIconColor": "#FF4500",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.48.2",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.urbandroid.kinestop": [
-                    "5.1"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks all premium features by forcing KineService.Companion.isTrial() to return false (pro state).",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.urbandroid.kinestop",
+                    "name": "KineStop",
+                    "apkFileType": "APK",
+                    "appIconColor": "#FFC107",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "dev.sasikanth.pinnit": [
-                    "1.12.0"
-                ]
-            },
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium features of Pinnit by bypassing the RevenueCat entitlement and purchase checks.",
             "default": true,
             "dependencies": [],
-            "description": "Unlocks all premium features of Pinnit by bypassing the RevenueCat entitlement and purchase checks.",
-            "name": "Unlock Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "dev.sasikanth.pinnit",
+                    "name": "Pinnit",
+                    "apkFileType": "APK",
+                    "appIconColor": "#FFC107",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.12.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

@@ -3,165 +3,336 @@
     "name": "franticg33k's Morphe Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.byairapp.android": []
-            },
+            "name": "Enable Online Pro",
+            "description": "Experimental companion patch that keeps byAir's online Pro gates open without forcing the crash-prone global entitlement refresh path.",
             "default": false,
             "dependencies": [
                 "Enable Pro"
             ],
-            "description": "Experimental companion patch that keeps byAir's online Pro gates open without forcing the crash-prone global entitlement refresh path.",
-            "name": "Enable Online Pro",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.byairapp.android",
+                    "name": "byAir",
+                    "appIconColor": "#1F6FEB",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.byairapp.android": []
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Suppresses the main byAir paywall, unlock banners, and local user gating.",
             "name": "Enable Pro",
+            "description": "Suppresses the main byAir paywall, unlock banners, and local user gating.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.byairapp.android",
+                    "name": "byAir",
+                    "appIconColor": "#1F6FEB",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.hamropatro": []
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Remove Ads",
             "description": "Disables all ad serving in Hamro Patro by no-oping the native ad-placement resolver (HamroAdsPlacements). Every banner, native, interstitial, fullscreen and roadblock placement funnels through these leaf builders, so returning an empty list means no ad request is ever built for AdMob, Pangle, IronSource or Facebook Audience Network. Verified on v10.7.30.",
-            "name": "Remove Ads",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.hamropatro",
+                    "name": "Hamropatro",
+                    "appIconColor": "#E2231A",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "np.com.nepalipatro": []
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Remove Ads",
             "description": "Disables all ad serving from Facebook Audience Network (FAN) and Google Mobile Ads (AdMob). No-ops the plugin bridges so no ads are shown.",
-            "name": "Remove Ads",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "np.com.nepalipatro",
+                    "name": "Nepalipatro",
+                    "appIconColor": "#E53935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.providelite.epicplay": []
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Remove Ads",
             "description": "Blocks all ad display in Provide Lite by forcing the app's central ad gate (in libapp.so) to always take its 'skip' path. Two branch instructions are rewritten to unconditional skips: the global 'ad enabled' flag check (tbz -> b #skip) and the interstitial/rewarded cooldown gate (b.ge -> b #skip). Verified on v1.4.6 (Dart 3.7.0, arm64, obfuscated) — no ad-show invocation is reached.",
-            "name": "Remove Ads",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.providelite.epicplay",
+                    "name": "Provide Lite",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.ensembleai.scoutai": []
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Removes the PairIP LicenseActivity from AndroidManifest.xml.",
             "name": "Remove License Activity",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.jellywatch.app": []
-            },
-            "default": true,
-            "dependencies": [],
             "description": "Removes the PairIP LicenseActivity from AndroidManifest.xml.",
-            "name": "Remove License Activity",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.ensembleai.scoutai",
+                    "name": "Atlas Photo",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.harwin.prismatica": []
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Remove License Activity",
             "description": "Removes the PairIP LicenseActivity from AndroidManifest.xml.",
-            "name": "Remove License Activity",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.jellywatch.app",
+                    "name": "JellyWatch",
+                    "apkFileType": "APK",
+                    "appIconColor": "#008577",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.providelite.epicplay": []
-            },
+            "name": "Remove License Activity",
+            "description": "Removes the PairIP LicenseActivity from AndroidManifest.xml.",
             "default": true,
             "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.harwin.prismatica",
+                    "name": "Prismatica Pro",
+                    "apkFileType": "APK",
+                    "appIconColor": "#8B5CF6",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Remove License Activity",
             "description": "Removes the PairIP LicenseActivity and LicenseContentProvider from AndroidManifest.xml and the com.android.vending.CHECK_LICENSE permission, so the app runs without a valid Play Store license (required because the APK is re-signed during patching).",
-            "name": "Remove License Activity",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.providelite.epicplay",
+                    "name": "Provide Lite",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.ensembleai.scoutai": []
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Remove License Check",
             "description": "Bypasses the PairIP Google Play Licensing check so Atlas Photo runs without a valid Play Store license.",
-            "name": "Remove License Check",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.ensembleai.scoutai",
+                    "name": "Atlas Photo",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.harwin.prismatica": []
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Remove License Check",
             "description": "Bypasses the PairIP Google Play Licensing check so the app runs without a valid Play Store license.",
-            "name": "Remove License Check",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.harwin.prismatica",
+                    "name": "Prismatica Pro",
+                    "apkFileType": "APK",
+                    "appIconColor": "#8B5CF6",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.harwin.prismatica": []
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Patches the procedural GLSL shader in libharwin_native.so to disable the \"PRISMATICA\" watermark in the video player and exported videos.",
             "name": "Remove Watermark",
+            "description": "Patches the procedural GLSL shader in libharwin_native.so to disable the \"PRISMATICA\" watermark in the video player and exported videos.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.harwin.prismatica",
+                    "name": "Prismatica Pro",
+                    "apkFileType": "APK",
+                    "appIconColor": "#8B5CF6",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.jellywatch.app": []
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks all premium features and shop items in JellyWatch.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.jellywatch.app",
+                    "name": "JellyWatch",
+                    "apkFileType": "APK",
+                    "appIconColor": "#008577",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.bytecaretech.merokarobar": []
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Patches Dart AOT-compiled libapp.so to unlock all premium features. Forces hasPremiumAccess and isPaidUser to always return true by NOPing their ARM64 conditional branch instructions.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.bytecaretech.merokarobar",
+                    "name": "Mero Karobar",
+                    "appIconColor": "#1565C0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.providelite.epicplay": []
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Patches the Dart AOT-compiled libapp.so to unlock all premium / VIP features. Forces the VIP state to always be true by rewriting the constant-pool loads (add xN, x22, #0x30 -> add xN, x22, #0x20) inside the cacheIsVipKey readers (getter + 3 callers). Verified on v1.4.6 (Dart 3.7.0, arm64, obfuscated) — flutter.cacheIsVipKey=true on device.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.providelite.epicplay",
+                    "name": "Provide Lite",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.ensembleai.scoutai": []
-            },
+            "name": "Unlock Pro",
+            "description": "Forces Atlas Photo's Hermes (React Native) JS runtime to treat every session as a Pro subscriber by patching the setIsProMember reducer so its isPro field is always truthy. Unlocks all Pro features and removes the Pro paywall.",
             "default": true,
             "dependencies": [],
-            "description": "Forces Atlas Photo's Hermes (React Native) JS runtime to treat every session as a Pro subscriber by patching the setIsProMember reducer so its isPro field is always truthy. Unlocks all Pro features and removes the Pro paywall.",
-            "name": "Unlock Pro",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.ensembleai.scoutai",
+                    "name": "Atlas Photo",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

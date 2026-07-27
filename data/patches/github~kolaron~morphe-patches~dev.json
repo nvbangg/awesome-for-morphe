@@ -3,15 +3,25 @@
     "name": "Kolar Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "cz.mafra.jizdnirady": [
-                    "3.8.0"
-                ]
-            },
+            "name": "Disable ads",
+            "description": "Disables ads in Mafra AdView.",
             "default": true,
             "dependencies": [],
-            "description": "Disables ads in Mafra AdView.",
-            "name": "Disable ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "cz.mafra.jizdnirady",
+                    "name": "IDOS",
+                    "apkFileType": "APK",
+                    "appIconColor": "#9FC5E8",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.8.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

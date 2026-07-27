@@ -3,16 +3,29 @@
     "name": "Chmax Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "ru.oneme.app": [
-                    "26.10.1",
-                    "26.11.3"
-                ]
-            },
+            "name": "Bypass VPN Check",
+            "description": "Forces you to check the IP address only on Yandex",
             "default": true,
             "dependencies": [],
-            "description": "Forces you to check the IP address only on Yandex",
-            "name": "Bypass VPN Check",
+            "compatiblePackages": [
+                {
+                    "packageName": "ru.oneme.app",
+                    "name": "Chmax",
+                    "apkFileType": "APK",
+                    "appIconColor": "#FF0045",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "26.10.1",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "26.11.3",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

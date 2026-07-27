@@ -3,27 +3,53 @@
     "name": "Me Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.nfo.me.android": [
-                    "7.17.47"
-                ]
-            },
+            "name": "Disable interstitial ads",
+            "description": "Skips full-screen interstitial ads (including the one on launch). Calls the app's own \"no ad, continue\" callback so navigation is unaffected.",
             "default": true,
             "dependencies": [],
-            "description": "Skips full-screen interstitial ads (including the one on launch). Calls the app's own \"no ad, continue\" callback so navigation is unaffected.",
-            "name": "Disable interstitial ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.nfo.me.android",
+                    "name": "Me",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#00A9E0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "7.17.47",
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.nfo.me.android": [
-                    "7.17.47"
-                ]
-            },
+            "name": "Hide ads",
+            "description": "Removes all inline banner and native ads (call log, contacts, dialer, caller pop-up, profiles, menu, etc.) by neutering the ad host views.",
             "default": true,
             "dependencies": [],
-            "description": "Removes all inline banner and native ads (call log, contacts, dialer, caller pop-up, profiles, menu, etc.) by neutering the ad host views.",
-            "name": "Hide ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.nfo.me.android",
+                    "name": "Me",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#00A9E0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "7.17.47",
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

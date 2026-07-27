@@ -3,17 +3,33 @@
     "name": "HellveticaStandard Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.sankakucomplex.channel.black": [
-                    "4.23",
-                    "4.24",
-                    "4.25"
-                ]
-            },
+            "name": "Disable Infinite Upgrade Popup",
+            "description": "Disables the \"Want unlimited access? Get Sankaku Infinite!\" upsell popup that periodically appears while browsing the app.",
             "default": true,
             "dependencies": [],
-            "description": "Disables the \"Want unlimited access? Get Sankaku Infinite!\" upsell popup that periodically appears while browsing the app.",
-            "name": "Disable Infinite Upgrade Popup",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.sankakucomplex.channel.black",
+                    "name": "Sankaku App",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1B1B2F",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.23",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.24",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.25",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

@@ -3,15 +3,23 @@
     "name": "T2C App Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "fr.t2c.t2c": [
-                    "3.2.0"
-                ]
-            },
+            "name": "Change API endpoint",
+            "description": "Points the app to a custom backend server by modifying environment variables.",
             "default": true,
             "dependencies": [],
-            "description": "Points the app to a custom backend server by modifying environment variables.",
-            "name": "Change API endpoint",
+            "compatiblePackages": [
+                {
+                    "packageName": "fr.t2c.t2c",
+                    "name": "T2C",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.2.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": "https://api.t2c.fr",
@@ -25,15 +33,23 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "fr.t2c.t2c": [
-                    "3.2.0"
-                ]
-            },
+            "name": "Custom Umami endpoint",
+            "description": "Points the app to a custom Umami analytics server.",
             "default": true,
             "dependencies": [],
-            "description": "Points the app to a custom Umami analytics server.",
-            "name": "Custom Umami endpoint",
+            "compatiblePackages": [
+                {
+                    "packageName": "fr.t2c.t2c",
+                    "name": "T2C",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.2.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": "https://analytics.t2c.fr/api/send",
@@ -56,15 +72,23 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "fr.t2c.t2c": [
-                    "3.2.0"
-                ]
-            },
+            "name": "Force environment",
+            "description": "Replaces the production environment variables with the developer or local ones.",
             "default": true,
             "dependencies": [],
-            "description": "Replaces the production environment variables with the developer or local ones.",
-            "name": "Force environment",
+            "compatiblePackages": [
+                {
+                    "packageName": "fr.t2c.t2c",
+                    "name": "T2C",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.2.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": "dev",
@@ -81,39 +105,63 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "fr.t2c.t2c": [
-                    "3.2.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Removes Firebase App ID and Crashlytics API keys to disable Google tracking.",
             "name": "Remove Firebase tracking",
+            "description": "Removes Firebase App ID and Crashlytics API keys to disable Google tracking.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "fr.t2c.t2c",
+                    "name": "T2C",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.2.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "fr.t2c.t2c": [
-                    "3.2.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Removes the Google Maps API key from the manifest to stop Google tracking.",
             "name": "Remove Google Maps API key",
+            "description": "Removes the Google Maps API key from the manifest to stop Google tracking.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "fr.t2c.t2c",
+                    "name": "T2C",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.2.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "fr.t2c.t2c": [
-                    "3.2.0"
-                ]
-            },
+            "name": "Remove Umami tracking",
+            "description": "Disables Umami tracking safely by modifying existing environment values.",
             "default": true,
             "dependencies": [],
-            "description": "Disables Umami tracking safely by modifying existing environment values.",
-            "name": "Remove Umami tracking",
+            "compatiblePackages": [
+                {
+                    "packageName": "fr.t2c.t2c",
+                    "name": "T2C",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.2.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

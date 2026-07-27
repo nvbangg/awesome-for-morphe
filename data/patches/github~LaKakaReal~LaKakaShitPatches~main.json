@@ -3,35 +3,64 @@
     "name": "LaKaka's Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.soundbrenner.pulse": [
-                    "1.33.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks all Soundbrenner Plus features and Home Customization.",
             "name": "Unlock Plus",
+            "description": "Unlocks all Soundbrenner Plus features and Home Customization.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.soundbrenner.pulse",
+                    "name": "Soundbrenner",
+                    "appIconColor": "#000000",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.33.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.instapaper.android": []
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks all premium features (search, speed reading, unlimited highlights).",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.instapaper.android",
+                    "name": "Instapaper",
+                    "appIconColor": "#FFFFFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.jndapp.depth.live.wallpaper": []
-            },
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium wallpapers and removes license verification features.",
             "default": true,
             "dependencies": [],
-            "description": "Unlocks all premium wallpapers and removes license verification features.",
-            "name": "Unlock Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.jndapp.depth.live.wallpaper",
+                    "name": "Depth Wallpapers & Live Clock",
+                    "appIconColor": "#1A1A2E",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

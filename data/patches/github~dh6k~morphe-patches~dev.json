@@ -3,27 +3,59 @@
     "name": "Brave and universal patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.brave.browser": [
-                    "1.92.140"
-                ],
-                "com.brave.browser_beta": [],
-                "com.brave.browser_nightly": []
-            },
+            "name": "Brave Origin",
+            "description": "Unlocks Brave Origin and enables feature toggle controls.",
             "default": true,
             "dependencies": [
                 "Brave Origin Resource Defaults"
             ],
-            "description": "Unlocks Brave Origin and enables feature toggle controls.",
-            "name": "Brave Origin",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.brave.browser",
+                    "name": "Brave Browser",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4500",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.92.140",
+                            "isExperimental": false
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.brave.browser_beta",
+                    "name": "Brave Beta",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4500",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        }
+                    ]
+                },
+                {
+                    "packageName": "com.brave.browser_nightly",
+                    "name": "Brave Nightly",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#FF4500",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Change app icon",
+            "description": "Changes the Android launcher icon using a custom PNG image. Use a square image with transparent adaptive-icon padding.",
             "default": false,
             "dependencies": [],
-            "description": "Changes the Android launcher icon using a custom PNG image. Use a square image with transparent adaptive-icon padding.",
-            "name": "Change app icon",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": null,
@@ -37,11 +69,11 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Change app name",
+            "description": "Changes the app name shown by Android launchers. Set the desired name in the patch options.",
             "default": false,
             "dependencies": [],
-            "description": "Changes the app name shown by Android launchers. Set the desired name in the patch options.",
-            "name": "Change app name",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": "Patched",

@@ -3,39 +3,63 @@
     "name": "Edge Morphe Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.microsoft.emmx": [
-                    "150.0.4078.81"
-                ]
-            },
+            "name": "Copilot feature toggle",
+            "description": "Disables all Copilot and Bing Chat feature flags by forcing boolean feature evaluation methods to return false.",
             "default": true,
             "dependencies": [],
-            "description": "Disables all Copilot and Bing Chat feature flags by forcing boolean feature evaluation methods to return false.",
-            "name": "Copilot feature toggle",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.microsoft.emmx",
+                    "name": "Microsoft Edge",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "150.0.4078.81",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.microsoft.emmx": [
-                    "150.0.4078.81"
-                ]
-            },
+            "name": "Disable Play Store updates",
+            "description": "Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps.",
             "default": false,
             "dependencies": [],
-            "description": "Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps.",
-            "name": "Disable Play Store updates",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.microsoft.emmx",
+                    "name": "Microsoft Edge",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "150.0.4078.81",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.microsoft.emmx": [
-                    "150.0.4078.81"
-                ]
-            },
+            "name": "Telemetry elimination",
+            "description": "Eliminates Microsoft Edge telemetry by redirecting data collection endpoints to localhost and short-circuiting OneDS Logger event methods.",
             "default": true,
             "dependencies": [],
-            "description": "Eliminates Microsoft Edge telemetry by redirecting data collection endpoints to localhost and short-circuiting OneDS Logger event methods.",
-            "name": "Telemetry elimination",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.microsoft.emmx",
+                    "name": "Microsoft Edge",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "150.0.4078.81",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

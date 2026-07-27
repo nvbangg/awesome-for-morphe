@@ -3,37 +3,68 @@
     "name": "Polka Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.vladlee.easyblacklist": [
-                    "4.8.20"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Disables all ad purchase checks to hide ads globally.",
             "name": "Remove Ads",
+            "description": "Disables all ad purchase checks to hide ads globally.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.vladlee.easyblacklist",
+                    "name": "Call Blacklist",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E53935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.8.20",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.vladlee.easyblacklist": [
-                    "4.8.20"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks all premium features.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.vladlee.easyblacklist",
+                    "name": "Call Blacklist",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E53935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.8.20",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.ipoji.app": []
-            },
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium features by forcing all RevenueCat entitlements to active.",
             "default": true,
             "dependencies": [],
-            "description": "Unlocks all premium features by forcing all RevenueCat entitlements to active.",
-            "name": "Unlock Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.ipoji.app",
+                    "name": "iPoji",
+                    "apkFileType": "APK",
+                    "appIconColor": "#FF6B35",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

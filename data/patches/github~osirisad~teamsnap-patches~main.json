@@ -3,15 +3,23 @@
     "name": "TeamSnap Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.teamsnap.teamsnap": [
-                    "7.63.0"
-                ]
-            },
+            "name": "Disable ads",
+            "description": "Removes ads by forcing TeamSnap+ Tier 1 subscription status.",
             "default": true,
             "dependencies": [],
-            "description": "Removes ads by forcing TeamSnap+ Tier 1 subscription status.",
-            "name": "Disable ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.teamsnap.teamsnap",
+                    "name": "TeamSnap",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "7.63.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

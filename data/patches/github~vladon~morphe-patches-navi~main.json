@@ -3,39 +3,78 @@
     "name": "Yandex Navigator (navi) patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "ru.yandex.yandexnavi": [
-                    "28.6.5"
-                ]
-            },
-            "default": false,
-            "dependencies": [],
-            "description": "Strips the IllegalStateException + PassportRuntime handler block in c0.releaseRuntimeChecks (smali-aligned).",
             "name": "Bypass Passport signature mismatch crash",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "ru.yandex.yandexnavi": [
-                    "28.6.5"
-                ]
-            },
+            "description": "Strips the IllegalStateException + PassportRuntime handler block in c0.releaseRuntimeChecks (smali-aligned).",
             "default": false,
             "dependencies": [],
-            "description": "Sets android:debuggable=true on <application> (Passport allows non-Play signature on that path).",
-            "name": "Debuggable application manifest",
+            "compatiblePackages": [
+                {
+                    "packageName": "ru.yandex.yandexnavi",
+                    "name": "Yandex Navigator",
+                    "apkFileType": "APKS",
+                    "appIconColor": "#FFFC3F",
+                    "signatures": [
+                        "aca405ded8b25cb2e8c6da69425d2b4307d087c1276fc06ad5942731ccc51dba"
+                    ],
+                    "targets": [
+                        {
+                            "version": "28.6.5",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "ru.yandex.yandexnavi": [
-                    "28.6.5"
-                ]
-            },
+            "name": "Debuggable application manifest",
+            "description": "Sets android:debuggable=true on <application> (Passport allows non-Play signature on that path).",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "ru.yandex.yandexnavi",
+                    "name": "Yandex Navigator",
+                    "apkFileType": "APKS",
+                    "appIconColor": "#FFFC3F",
+                    "signatures": [
+                        "aca405ded8b25cb2e8c6da69425d2b4307d087c1276fc06ad5942731ccc51dba"
+                    ],
+                    "targets": [
+                        {
+                            "version": "28.6.5",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Enable debug panel",
+            "description": "Unlocks the internal Maps-shell debug panel gate (Yandexoid prefs + swipable experiment).",
             "default": true,
             "dependencies": [],
-            "description": "Unlocks the internal Maps-shell debug panel gate (Yandexoid prefs + swipable experiment).",
-            "name": "Enable debug panel",
+            "compatiblePackages": [
+                {
+                    "packageName": "ru.yandex.yandexnavi",
+                    "name": "Yandex Navigator",
+                    "apkFileType": "APKS",
+                    "appIconColor": "#FFFC3F",
+                    "signatures": [
+                        "aca405ded8b25cb2e8c6da69425d2b4307d087c1276fc06ad5942731ccc51dba"
+                    ],
+                    "targets": [
+                        {
+                            "version": "28.6.5",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

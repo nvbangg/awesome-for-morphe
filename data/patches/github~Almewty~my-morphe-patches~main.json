@@ -3,39 +3,63 @@
     "name": "Almewty's Patches for use with Morphe",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.application.pokecardex": [
-                    "8.7.2"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Disables the scan counter increment, preventing the scan count from increasing",
             "name": "Disable scan counter",
+            "description": "Disables the scan counter increment, preventing the scan count from increasing",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.application.pokecardex",
+                    "name": "com.application.pokecardex",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.7.2",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.example.app": [
-                    "1.0.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Example patch to start with.",
             "name": "Example Patch",
+            "description": "Example patch to start with.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.example.app",
+                    "name": "com.example.app",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.0.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.application.pokecardex": [
-                    "8.7.2"
-                ]
-            },
+            "name": "Increase scan limit",
+            "description": "Increases the free scan limit from 30 to 50 scans",
             "default": true,
             "dependencies": [],
-            "description": "Increases the free scan limit from 30 to 50 scans",
-            "name": "Increase scan limit",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.application.pokecardex",
+                    "name": "com.application.pokecardex",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.7.2",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

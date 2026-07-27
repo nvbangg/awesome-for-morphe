@@ -56,7 +56,7 @@ def load_json(path: Union[str, Path], default: Any = None) -> Any:
 def save_json(path: Union[str, Path], data: Any) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as file:
+    with open(path, "w", encoding="utf-8", newline="") as file:
         json.dump(data, file, indent=2, ensure_ascii=False)
         file.write("\n")
 
@@ -69,7 +69,12 @@ def parse_timestamp(timestamp: Any) -> int:
     if isinstance(timestamp, str) and timestamp.isdigit():
         return int(timestamp)
     try:
-        dt = datetime.fromisoformat(str(timestamp).replace("Z", "+00:00"))
-        return int(dt.timestamp() * 1000)
+        from datetime import timezone
+        timestamp_str = str(timestamp).replace("Z", "+00:00")
+        dt = datetime.fromisoformat(timestamp_str)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        utc_timestamp = dt.timestamp()
+        return int(utc_timestamp * 1000)
     except Exception:
         return 0

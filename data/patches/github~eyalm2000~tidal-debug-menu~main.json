@@ -3,23 +3,41 @@
     "name": "TIDAL Debug Menu Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.aspiro.tidal": []
-            },
+            "name": "Export Debug Activity",
+            "description": "Ensures the Tidal debug activity is exported in AndroidManifest.xml.",
             "default": true,
             "dependencies": [],
-            "description": "Ensures the Tidal debug activity is exported in AndroidManifest.xml.",
-            "name": "Export Debug Activity",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.aspiro.tidal",
+                    "name": "com.aspiro.tidal",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.aspiro.tidal": []
-            },
+            "name": "Unlock Debug Menu",
+            "description": "Enables the internal debug menu in Tidal settings.",
             "default": true,
             "dependencies": [],
-            "description": "Enables the internal debug menu in Tidal settings.",
-            "name": "Unlock Debug Menu",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.aspiro.tidal",
+                    "name": "com.aspiro.tidal",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

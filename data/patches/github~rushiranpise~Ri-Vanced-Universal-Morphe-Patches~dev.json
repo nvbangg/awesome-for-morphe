@@ -3,11 +3,11 @@
     "name": "RIVanced Universal Patches",
     "patches": [
         {
-            "compatiblePackages": null,
+            "name": "Change package name",
+            "description": "Appends \".rivanced\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
             "default": false,
             "dependencies": [],
-            "description": "Appends \".rivanced\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
-            "name": "Change package name",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": "Default",
@@ -41,11 +41,11 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Change version code",
+            "description": "Changes the version code of the app. This will turn off app store updates and allows downgrading an existing app install to an older app version.",
             "default": false,
             "dependencies": [],
-            "description": "Changes the version code of the app. This will turn off app store updates and allows downgrading an existing app install to an older app version.",
-            "name": "Change version code",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": 2147483647,
@@ -62,11 +62,11 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Custom network security",
+            "description": "Allows trusting custom certificate authorities for a specific domain.",
             "default": false,
             "dependencies": [],
-            "description": "Allows trusting custom certificate authorities for a specific domain.",
-            "name": "Custom network security",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": "[example.com]",
@@ -134,11 +134,11 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Disable PairIP license check",
+            "description": "Disable PairIP license and VM checks.",
             "default": false,
             "dependencies": [],
-            "description": "Disable PairIP license and VM checks.",
-            "name": "Disable PairIP license check",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": false,
@@ -152,37 +152,37 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Disable Play Integrity",
+            "description": "Prevents apps from using Play Integrity by pretending it is not available.",
             "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Prevents apps from using Play Integrity by pretending it is not available.",
-            "name": "Disable Play Integrity",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Disables Sentry telemetry. See https://sentry.io/for/android/ for more information.",
             "name": "Disable Sentry telemetry",
+            "description": "Disables Sentry telemetry. See https://sentry.io/for/android/ for more information.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Enables Android debugging capabilities. This can slow down the app.",
             "name": "Enable Android debugging",
+            "description": "Enables Android debugging capabilities. This can slow down the app.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Enable ROM signature spoofing",
+            "description": "Spoofs the signature via the manifest meta-data \"fake-signature\". This patch only works with ROMs that support signature spoofing.",
             "default": false,
             "dependencies": [],
-            "description": "Spoofs the signature via the manifest meta-data \"fake-signature\". This patch only works with ROMs that support signature spoofing.",
-            "name": "Enable ROM signature spoofing",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": null,
@@ -196,31 +196,31 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Export all activities",
+            "description": "Makes all app activities exportable.",
             "default": false,
             "dependencies": [],
-            "description": "Makes all app activities exportable.",
-            "name": "Export all activities",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Export internal data documents provider",
+            "description": "Exports a documents provider that grants access to the internal data directory of this app to file managers and other apps that support the Storage Access Framework.",
             "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Exports a documents provider that grants access to the internal data directory of this app to file managers and other apps that support the Storage Access Framework.",
-            "name": "Export internal data documents provider",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Hex",
+            "description": "Replaces a hexadecimal patterns of bytes of files in an APK.",
             "default": false,
             "dependencies": [
                 "RawResourcePatch"
             ],
-            "description": "Replaces a hexadecimal patterns of bytes of files in an APK.",
-            "name": "Hex",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": null,
@@ -234,107 +234,107 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Hide ADB status",
+            "description": "Hides enabled development settings and/or ADB.",
             "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Hides enabled development settings and/or ADB.",
-            "name": "Hide ADB status",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Hide app icon",
+            "description": "Hides the app icon from the Android launcher.",
             "default": false,
             "dependencies": [],
-            "description": "Hides the app icon from the Android launcher.",
-            "name": "Hide app icon",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Hide mock location",
+            "description": "Prevents the app from knowing the device location is being mocked by a third party app.",
             "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Prevents the app from knowing the device location is being mocked by a third party app.",
-            "name": "Hide mock location",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Override certificate pinning",
+            "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
             "default": false,
             "dependencies": [
                 "Enable Android debugging"
             ],
-            "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
-            "name": "Override certificate pinning",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Predictive back gesture",
+            "description": "Enables the predictive back gesture introduced on Android 13.",
             "default": false,
             "dependencies": [],
-            "description": "Enables the predictive back gesture introduced on Android 13.",
-            "name": "Predictive back gesture",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Prevent screenshot detection",
+            "description": "Removes the registration of all screen capture callbacks. This prevents the app from detecting screenshots.",
             "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Removes the registration of all screen capture callbacks. This prevents the app from detecting screenshots.",
-            "name": "Prevent screenshot detection",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Remove screen capture restriction",
+            "description": "Removes the restriction of capturing audio from apps that normally wouldn't allow it.",
             "default": false,
             "dependencies": [
                 "ResourcePatch",
                 "BytecodePatch"
             ],
-            "description": "Removes the restriction of capturing audio from apps that normally wouldn't allow it.",
-            "name": "Remove screen capture restriction",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Remove screenshot restriction",
+            "description": "Removes the restriction of taking screenshots in apps that normally wouldn't allow it.",
             "default": false,
             "dependencies": [
                 "BytecodePatch",
                 "BytecodePatch"
             ],
-            "description": "Removes the restriction of taking screenshots in apps that normally wouldn't allow it.",
-            "name": "Remove screenshot restriction",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
-            "default": false,
-            "dependencies": [],
-            "description": "Removes share targets like directly sharing to a frequent contact.",
             "name": "Remove share targets",
-            "options": []
-        },
-        {
-            "compatiblePackages": null,
+            "description": "Removes share targets like directly sharing to a frequent contact.",
             "default": false,
             "dependencies": [],
-            "description": "Changes the target SDK to version 34 (Android 14). For devices running Android 15+, this will disable edge-to-edge display.",
-            "name": "Set target SDK version 34",
+            "compatiblePackages": null,
             "options": []
         },
         {
+            "name": "Set target SDK version 34",
+            "description": "Changes the target SDK to version 34 (Android 14). For devices running Android 15+, this will disable edge-to-edge display.",
+            "default": false,
+            "dependencies": [],
             "compatiblePackages": null,
+            "options": []
+        },
+        {
+            "name": "Spoof build info",
+            "description": "Spoofs the information about the current build.",
             "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Spoofs the information about the current build.",
-            "name": "Spoof build info",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": null,
@@ -555,19 +555,19 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Spoof keystore security level",
+            "description": "Forces apps to see Keymaster and Attestation security levels as 'StrongBox' (Level 2).",
             "default": false,
             "dependencies": [],
-            "description": "Forces apps to see Keymaster and Attestation security levels as 'StrongBox' (Level 2).",
-            "name": "Spoof keystore security level",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Spoof Play Age Signals",
+            "description": "Spoofs Google Play data about the user's age and verification status.",
             "default": false,
             "dependencies": [],
-            "description": "Spoofs Google Play data about the user's age and verification status.",
-            "name": "Spoof Play Age Signals",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": 18,
@@ -606,21 +606,21 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Spoof root of trust",
+            "description": "Spoofs device integrity states (Locked Bootloader, Verified OS) for apps that perform local certificate attestation.",
             "default": false,
             "dependencies": [],
-            "description": "Spoofs device integrity states (Locked Bootloader, Verified OS) for apps that perform local certificate attestation.",
-            "name": "Spoof root of trust",
+            "compatiblePackages": null,
             "options": []
         },
         {
-            "compatiblePackages": null,
+            "name": "Spoof SIM provider",
+            "description": "Spoofs information about the SIM card provider.",
             "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Spoofs information about the SIM card provider.",
-            "name": "Spoof SIM provider",
+            "compatiblePackages": null,
             "options": [
                 {
                     "default": null,
@@ -1224,13 +1224,13 @@
             ]
         },
         {
-            "compatiblePackages": null,
+            "name": "Spoof Wi-Fi connection",
+            "description": "Spoofs an existing Wi-Fi connection.",
             "default": false,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Spoofs an existing Wi-Fi connection.",
-            "name": "Spoof Wi-Fi connection",
+            "compatiblePackages": null,
             "options": []
         }
     ]

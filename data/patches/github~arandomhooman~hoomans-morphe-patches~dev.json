@@ -3,678 +3,1170 @@
     "name": "Hooman's Morphe Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "tv.twitch.android.app": [
-                    "29.9.1"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Claims the channel points bonus chest for you automatically. Whenever Twitch makes a bonus available, the claim fires on its own so you don't have to tap the chest.",
             "name": "Auto claim channel points",
+            "description": "Claims the channel points bonus chest for you automatically. Whenever Twitch makes a bonus available, the claim fires on its own so you don't have to tap the chest.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "tv.twitch.android.app",
+                    "name": "Twitch",
+                    "appIconColor": "#9147FF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "29.9.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "tv.twitch.android.app": [
-                    "29.9.1"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Routes live streams through a free third-party proxy that strips the ads baked into the stream, so the proxy has to be up for playback to work; turn this patch off if it goes down. Mid-stream ads get dropped reliably, but a single preroll can still slip through when you first open a channel and Twitch has flagged the shared proxy. VOD ads aren't covered.",
             "name": "Block live ads",
+            "description": "Routes live streams through a free third-party proxy that strips the ads baked into the stream, so the proxy has to be up for playback to work; turn this patch off if it goes down. Mid-stream ads get dropped reliably, but a single preroll can still slip through when you first open a channel and Twitch has flagged the shared proxy. VOD ads aren't covered.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "tv.twitch.android.app",
+                    "name": "Twitch",
+                    "appIconColor": "#9147FF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "29.9.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.tumblr": [
-                    "45.0.0.109"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "Hides the banner with the frog that prompts you to buy Tumblr Ad-Free.",
             "name": "Disable ad-free banner",
+            "description": "Hides the banner with the frog that prompts you to buy Tumblr Ad-Free.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tumblr",
+                    "name": "Tumblr",
+                    "appIconColor": "#001935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "45.0.0.109",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.tumblr": [
-                    "45.0.0.109"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Stops the reminder asking you to enable notifications for blogs you visit.",
             "name": "Disable blog notification reminder",
+            "description": "Stops the reminder asking you to enable notifications for blogs you visit.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tumblr",
+                    "name": "Tumblr",
+                    "appIconColor": "#001935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "45.0.0.109",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.tumblr": [
-                    "45.0.0.109"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Stops the popup that suggests buying TumblrMart items for other people.",
             "name": "Disable gift message popup",
+            "description": "Stops the popup that suggests buying TumblrMart items for other people.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tumblr",
+                    "name": "Tumblr",
+                    "appIconColor": "#001935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "45.0.0.109",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.tumblr": [
-                    "45.0.0.109"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "Turns off the in-app update check and the update prompt.",
             "name": "Disable in-app update",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.tumblr": [
-                    "45.0.0.109"
-                ]
-            },
+            "description": "Turns off the in-app update check and the update prompt.",
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Removes the Tumblr TV tab from the bottom navigation bar.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tumblr",
+                    "name": "Tumblr",
+                    "appIconColor": "#001935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "45.0.0.109",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Disable Tumblr TV",
+            "description": "Removes the Tumblr TV tab from the bottom navigation bar.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tumblr",
+                    "name": "Tumblr",
+                    "appIconColor": "#001935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "45.0.0.109",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.blockerhero": [
-                    "1.5.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks BlockerHero's premium features without a subscription or Google sign-in, like uninstall protection, focus mode, custom blocklists, daily and weekly time limits, and more.",
             "name": "Enable Premium",
+            "description": "Unlocks BlockerHero's premium features without a subscription or Google sign-in, like uninstall protection, focus mode, custom blocklists, daily and weekly time limits, and more.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.blockerhero",
+                    "name": "BlockerHero",
+                    "appIconColor": "#2D6CDF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.5.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.tumblr": [
-                    "45.0.0.109"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Turns on the cosmetic Tumblr Premium look: the premium badge and the premium settings entry. This only changes how the app looks on your device. It does not buy or unlock anything on Tumblr's side, so ad-free, the badge on your blog, and anything the server checks still need a real subscription. Use \"Remove ads\" for an actually ad-free feed.",
             "name": "Enable premium UI",
+            "description": "Turns on the cosmetic Tumblr Premium look: the premium badge and the premium settings entry. This only changes how the app looks on your device. It does not buy or unlock anything on Tumblr's side, so ad-free, the badge on your blog, and anything the server checks still need a real subscription. Use \"Remove ads\" for an actually ad-free feed.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tumblr",
+                    "name": "Tumblr",
+                    "appIconColor": "#001935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "45.0.0.109",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "tv.twitch.android.app": [
-                    "29.9.1"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Hides the banner, overlay, and in-feed display ads Twitch shows around the app. This doesn't touch the video ads in the stream itself.",
             "name": "Hide display ads",
+            "description": "Hides the banner, overlay, and in-feed display ads Twitch shows around the app. This doesn't touch the video ads in the stream itself.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "tv.twitch.android.app",
+                    "name": "Twitch",
+                    "appIconColor": "#9147FF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "29.9.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.sofascore.results": [
-                    "26.06.23"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Stops the banner and interstitial ads SofaScore shows around scores and between screens. Every ad site reads one decision method off the cached account, and the app's own ad master switch caches that method's result, so forcing it to \"no ads\" turns them all off with no login needed. The result holds across a sync because the switch re-reads the same method. Ads that are served by the video/story SDK inside embedded content are not affected. The patch also keeps Firebase notification registration compatible with the re-signed build. Re-signing breaks SofaScore's login (it only offers Google and Facebook sign-in, both of which reject the new signature), but removing ads does not need an account so the patch still works.",
             "name": "Remove Ads",
+            "description": "Stops the banner and interstitial ads SofaScore shows around scores and between screens. Every ad site reads one decision method off the cached account, and the app's own ad master switch caches that method's result, so forcing it to \"no ads\" turns them all off with no login needed. The result holds across a sync because the switch re-reads the same method. Ads that are served by the video/story SDK inside embedded content are not affected. The patch also keeps Firebase notification registration compatible with the re-signed build. Re-signing breaks SofaScore's login (it only offers Google and Facebook sign-in, both of which reject the new signature), but removing ads does not need an account so the patch still works.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.sofascore.results",
+                    "name": "SofaScore",
+                    "appIconColor": "#374DF5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "26.06.23",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.dv.adm": [
-                    "14.0.39"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Remove ads",
             "description": "Removes the ads in Advanced Download Manager. ADM's paid state is the ad-free RevenueCat entitlement cached on the device, so the app also labels itself Pro.",
-            "name": "Remove ads",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.dv.adm",
+                    "name": "Advanced Download Manager",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.0.39",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.flightradar24free": [
-                    "11.6.1"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "Use your own Maps API key [REQUIRED]"
-            ],
+            "name": "Remove ads",
             "description": "Removes the ads in Flightradar24. The Gold map layers, flight history, and 3D view are produced on Flightradar24's servers and still need a subscription.",
-            "name": "Remove ads",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.tranzmate": [
-                    "5.194.0.1785"
-                ]
-            },
             "default": true,
             "dependencies": [
                 "Use your own Maps API key [REQUIRED]"
             ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.flightradar24free",
+                    "name": "Flightradar24",
+                    "appIconColor": "#327CB5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "11.6.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Remove ads",
             "description": "Removes the ads Moovit shows around the map and search and between screens.",
-            "name": "Remove ads",
+            "default": true,
+            "dependencies": [
+                "Use your own Maps API key [REQUIRED]"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tranzmate",
+                    "name": "Moovit",
+                    "appIconColor": "#FF6400",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.194.0.1785",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.tumblr": [
-                    "45.0.0.109"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Remove ads",
             "description": "Removes the ads in Tumblr: the dashboard ads from the ad networks and the Blaze posts (the paid-promoted posts other people pay to inject into the feed). It leaves your own following feed and reblogs untouched. Premium content like ad-free badges and TumblrMart items are sold by Tumblr's servers and still need a purchase.",
-            "name": "Remove ads",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tumblr",
+                    "name": "Tumblr",
+                    "appIconColor": "#001935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "45.0.0.109",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.naver.linewebtoon": [
-                    "3.9.5"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Remove ads",
             "description": "Removes the ads WEBTOON shows while reading and browsing: the in-viewer top and end ads, the home feed ads, and the title-page banner. Locked episodes (Fast Pass, Daily Pass, coin-unlocked) are served by WEBTOON's servers and still need coins or a wait, so this does not unlock them.",
-            "name": "Remove ads",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.naver.linewebtoon",
+                    "name": "WEBTOON",
+                    "appIconColor": "#00DC64",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.9.5",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "tv.twitch.android.app": [
-                    "29.9.1"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Keeps deleted or moderated chat messages readable instead of replacing them with \"<message deleted>\". The message turns into a tappable spoiler: tap it to reveal the original text. Normally only moderators can do this; the patch grants that access to everyone.",
             "name": "Show deleted messages",
+            "description": "Keeps deleted or moderated chat messages readable instead of replacing them with \"<message deleted>\". The message turns into a tappable spoiler: tap it to reveal the original text. Normally only moderators can do this; the patch grants that access to everyone.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "tv.twitch.android.app",
+                    "name": "Twitch",
+                    "appIconColor": "#9147FF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "29.9.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.flightradar24free": [
-                    "11.6.1"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "Use your own Maps API key [REQUIRED]"
-            ],
-            "description": "Shows the squawk code and vertical speed in the flight detail panel instead of the \"Unlock feature\" lock. Both values are already in the live feed the app receives, so this only stops hiding them. The Gold map layers, flight history, and 3D view come from Flightradar24's servers and still need a subscription.",
             "name": "Unlock aircraft data",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "ak.alizandro.smartaudiobookplayer": [
-                    "11.7.8"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks Smart AudioBook Player's full version by forcing the local license decision to Full.",
-            "name": "Unlock Full",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "altergames.carlauncher": [
-                    "5.0.5"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "Unlocks the paid full version of AGAMA Car Launcher, so the pro widgets, theme editor, and the other locked extras open up without buying it.",
-            "name": "Unlock Full Version",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.cronometer.android.gold": [
-                    "4.56.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks Cronometer Gold without a subscription, like custom charts, advanced reports, the fasting tracker, custom biometrics, an ad-free view, and more. Anything Cronometer works out on its own servers still needs Gold.",
-            "name": "Unlock Gold",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.bandlab.bandlab": [
-                    "11.25.3"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "Unlocks the BandLab Membership tools that run inside the app without a subscription, like the extra effects and instruments, more tracks, pitch tools, the voice changer, mastering, and more. Anything BandLab makes on its servers, like the stem Splitter, AI video, and distribution, still needs a real membership.",
-            "name": "Unlock Membership",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.tranzmate": [
-                    "5.194.0.1785"
-                ]
-            },
+            "description": "Shows the squawk code and vertical speed in the flight detail panel instead of the \"Unlock feature\" lock. Both values are already in the live feed the app receives, so this only stops hiding them. The Gold map layers, flight history, and 3D view come from Flightradar24's servers and still need a subscription.",
             "default": true,
             "dependencies": [
                 "Use your own Maps API key [REQUIRED]"
             ],
-            "description": "Unlocks the Moovit+ extras without paying, like the extra sort and time-of-travel options and compare-on-map, and stops the upgrade-to-Moovit+ popups that nag you on app open. Things Moovit runs on its servers, like transit ticketing, still need the real subscription. Pair this with Remove ads for the ad-free part of Moovit+.",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.flightradar24free",
+                    "name": "Flightradar24",
+                    "appIconColor": "#327CB5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "11.6.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Full",
+            "description": "Unlocks Smart AudioBook Player's full version by forcing the local license decision to Full.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "ak.alizandro.smartaudiobookplayer",
+                    "name": "Smart AudioBook Player",
+                    "appIconColor": "#EF5350",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "11.7.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Full Version",
+            "description": "Unlocks the paid full version of AGAMA Car Launcher, so the pro widgets, theme editor, and the other locked extras open up without buying it.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "altergames.carlauncher",
+                    "name": "AGAMA Car Launcher",
+                    "appIconColor": "#F88828",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.0.5",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Gold",
+            "description": "Unlocks Cronometer Gold without a subscription, like custom charts, advanced reports, the fasting tracker, custom biometrics, an ad-free view, and more. Anything Cronometer works out on its own servers still needs Gold.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.cronometer.android.gold",
+                    "name": "Cronometer",
+                    "appIconColor": "#F26B21",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.56.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Membership",
+            "description": "Unlocks the BandLab Membership tools that run inside the app without a subscription, like the extra effects and instruments, more tracks, pitch tools, the voice changer, mastering, and more. Anything BandLab makes on its servers, like the stem Splitter, AI video, and distribution, still needs a real membership.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.bandlab.bandlab",
+                    "name": "BandLab",
+                    "appIconColor": "#F02010",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "11.25.3",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Unlock Moovit+",
+            "description": "Unlocks the Moovit+ extras without paying, like the extra sort and time-of-travel options and compare-on-map, and stops the upgrade-to-Moovit+ popups that nag you on app open. Things Moovit runs on its servers, like transit ticketing, still need the real subscription. Pair this with Remove ads for the ad-free part of Moovit+.",
+            "default": true,
+            "dependencies": [
+                "Use your own Maps API key [REQUIRED]"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tranzmate",
+                    "name": "Moovit",
+                    "appIconColor": "#FF6400",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.194.0.1785",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.finch.finch": [
-                    "3.73.179"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Plus",
             "description": "Unlocks Finch Plus features without a subscription, including the Plus shop items, extra themes and customization, seasonal event tiers, the monthly recap, and Plus insights. It also clears the upgrade prompts. This is the arm64 build. Cloud backup and cross-device sync run on Finch's own servers and still need the real subscription. Re-signing breaks Google sign-in, so log in with email instead.",
-            "name": "Unlock Plus",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.finch.finch",
+                    "name": "Finch",
+                    "appIconColor": "#BFC2D0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.73.179",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.quizlet.quizletandroid": [
-                    "10.38.1"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Plus",
             "description": "Removes ads and unlocks the on-device Quizlet Plus features without a subscription, including unlimited Learn and Test rounds and textbook explanation views that free accounts meter. The AI tools, like Magic Notes and generation, run on Quizlet's servers and stay locked.",
-            "name": "Unlock Plus",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.quizlet.quizletandroid",
+                    "name": "Quizlet",
+                    "appIconColor": "#4255FF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "10.38.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.alphaprogression.alphaprogression": [
-                    "6.8.1",
-                    "7.1.1"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks Alpha Progression's premium training tools without a subscription, like the training-plan generator, charts, exercise evaluations, the warmup calculator, and more. They run on the workout data already on your device, so they keep working offline.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.alphaprogression.alphaprogression",
+                    "name": "Alpha Progression",
+                    "appIconColor": "#0091FF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.8.1",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "7.1.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.overdevs.at4k": [
-                    "0.99"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
+            "name": "Unlock Premium",
             "description": "Unlocks AT4K Launcher's premium features without paying, like more apps per row and the premium wallpaper options. It all runs on the device, so nothing stays locked.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.overdevs.at4k",
+                    "name": "AT4K Launcher",
+                    "appIconColor": "#000000",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "0.99",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "studio.muggle.chatboost": [
-                    "3.23.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Turns on ChatBoost premium so the app's paid features and UI open up. Premium is decided by a single internal flag holder whose two flags both ship hardcoded off, so forcing them on makes the entitlement flow report premium no matter what Google Play Billing says, and every gate reads that one flow. One thing to know: ChatBoost is bring your own key, so the AI runs on your own provider API keys and was never part of the subscription. This unlocks the client-side paid features and UX, not free AI usage. The AI already runs on your keys.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "studio.muggle.chatboost",
+                    "name": "ChatBoost",
+                    "appIconColor": "#B1A5E6",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.23.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.collectrinc.collectr": [
-                    "2.5.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks Collectr's premium features without a subscription, like unlimited collections, price alerts, and the advanced analytics. This is the arm64 build. Anything Collectr serves from its own servers still needs the real subscription.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.collectrinc.collectr",
+                    "name": "Collectr",
+                    "appIconColor": "#00204B",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.5.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "net.uniquegem.directchat": [
-                    "1.9.8"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks DirectChat's premium without the in-app purchase, so the chat-head styles and themes, extra bubble options and the other paid settings all open, and the ad inside the message bubble is hidden too. Premium is a local flag the app seeds from its own purchase, so the unlock holds across restarts on a free account.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "net.uniquegem.directchat",
+                    "name": "DirectChat",
+                    "appIconColor": "#2196F3",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.9.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "dk.tacit.android.foldersync.lite": [
-                    "4.9.3"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks FolderSync's premium without the in-app purchase and removes the ads, so you get unlimited sync pairs and the advanced options.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "dk.tacit.android.foldersync.lite",
+                    "name": "FolderSync",
+                    "appIconColor": "#406FB8",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.9.3",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.cfdrink": [
-                    "1.19.11"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Premium",
             "description": "Unlocks Mixel's Premium tier without a subscription: the Pro feature gates open and the premium recipe packs show as entitled. Both gates are read client-side from RevenueCat's entitlements, so this lifts them on-device. Anything Mixel actually checks server-side (if a later build moves a gate there) won't be covered.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.cfdrink",
+                    "name": "Mixel",
+                    "appIconColor": "#5065A1",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.19.11",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.realbyteapps.moneymanagerfree": [
-                    "4.11.1 GF"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
+            "name": "Unlock Premium",
             "description": "Unlocks Money Manager's premium and removes the ads: passcode lock, more accounts, custom categories and themes, repeat transactions, advanced stats, and local backup all open. PC/web sync and cloud backup stay tied to the server (it issues an expiry the app checks online), so those keep needing a real subscription.",
-            "name": "Unlock Premium",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.realbyteapps.moneymanagerfree",
+                    "name": "Money Manager",
+                    "appIconColor": "#EE3D1F",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.11.1 GF",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.maxmpz.audioplayer": [
-                    "build-1025-bundle-play",
-                    "build-1025-uni"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "RawResourcePatch"
-            ],
+            "name": "Unlock Premium",
             "description": "Unlocks Poweramp's full version state and Feature Package #1.",
-            "name": "Unlock Premium",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.spocky.projengmenu": [
-                    "4.68",
-                    "4.70"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks Projectivy Launcher's premium so the paywall stops sending you to the upgrade screen. Display profiles, custom wallpapers and backgrounds, parental controls, and the locked settings and customization options all open up. The gate is decided on the device, so there is no account to sign in to.",
-            "name": "Unlock Premium",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.hv.replaio": [
-                    "3.3.9"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks Replaio's premium and removes the ads, so the equalizer, sleep timer, alarm, recording, and favorites all open up. Data Replaio keeps on its servers (synced favorites past the free cap) still needs an account that paid.",
-            "name": "Unlock Premium",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.rumble.battles": [
-                    "3.14.5"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Turns on Rumble Premium without a subscription: removes the ad-supported playback, drops the premium upsell, and unlocks the premium-only videos. The premium flag is read from your account profile when you sign in, so it takes effect on a logged-in Rumble account.",
-            "name": "Unlock Premium",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "app.symfonik.music.player": [
-                    "14.1.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial, so this also prevents the expired-beta screen. The license is checked locally and the unlock does not require an account. Connecting Plex, Jellyfin and other media servers is untouched.",
-            "name": "Unlock Premium",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.atomengineapps.teachmeanatomy": [
-                    "5.115"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "Unlocks Teach Me Anatomy's premium features without a subscription, dropping the upgrade banners and ads and opening up the locked articles, quizzes, and flashcards. Content served from the server still needs a real account.",
-            "name": "Unlock Premium",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.paget96.batteryguru": [
-                    "2.4.8.1",
-                    "2.5.0.2-beta1"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks Battery Guru's PRO and removes the ads. PRO is decided on the device, so the deep sleep stats, charge history, themes, and the ad-free view all open up.",
-            "name": "Unlock PRO",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.adobe.reader": [
-                    "26.5.0.45958"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks the Acrobat Pro tools that work on your device, like editing text and images and rearranging pages, without paying. The parts Adobe runs on its servers, such as Export to Office, Create PDF, and cloud storage, still need a real subscription.",
-            "name": "Unlock Pro",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.budget.tracker_app": [
-                    "5.3.4"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks Cashew's Pro features without a purchase: unlimited budgets and goals, the full past-period budget history, the complete color picker, and no more upgrade popups. Everything here is computed on-device. Google Drive cloud sync is gated separately and won't unlock, and it relies on Google sign-in, which breaks once the app is re-signed.",
-            "name": "Unlock Pro",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.appfactory.essence": [
-                    "4.2.8"
-                ]
-            },
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "description": "Unlocks Essence's premium tools without a subscription, like the detailed statistics and insights, custom themes, app lock, data export, and more. They run on your device, so they work offline. The AI recovery coach and anything else Essence makes on its servers still needs the real subscription.",
-            "name": "Unlock Pro",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.hevy": [
-                    "3.1.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks Hevy's Pro features without a subscription, like unlimited routines and advanced workout analytics. They run on the workout data on your device. Anything Hevy serves only to subscribed accounts can still stay locked.",
-            "name": "Unlock Pro",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "com.camerasideas.instashot": [
-                    "2.214.1539"
-                ]
-            },
             "default": true,
             "dependencies": [
                 "RawResourcePatch"
             ],
-            "description": "Unlocks InShot's Pro features without a subscription: no export watermark, no ads, and the paid filters, effects, transitions, stickers and HD export open. The on-device AI tools (background remover, AI retouch, auto captions) verify the original signing key in native code, so those may not run on a re-signed build; the rest of Pro works offline.",
-            "name": "Unlock Pro",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.maxmpz.audioplayer",
+                    "name": "Poweramp",
+                    "appIconColor": "#FF6A00",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "build-1025-bundle-play",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "build-1025-uni",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.soepic.photogallery.release": [
-                    "2.0.14",
-                    "2.1.11"
-                ]
-            },
+            "name": "Unlock Premium",
+            "description": "Unlocks Projectivy Launcher's premium so the paywall stops sending you to the upgrade screen. Display profiles, custom wallpapers and backgrounds, parental controls, and the locked settings and customization options all open up. The gate is decided on the device, so there is no account to sign in to.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.spocky.projengmenu",
+                    "name": "Projectivy Launcher",
+                    "appIconColor": "#F08029",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.68",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "4.70",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Premium",
+            "description": "Unlocks Replaio's premium and removes the ads, so the equalizer, sleep timer, alarm, recording, and favorites all open up. Data Replaio keeps on its servers (synced favorites past the free cap) still needs an account that paid.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.hv.replaio",
+                    "name": "Replaio",
+                    "appIconColor": "#2196F3",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.3.9",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Premium",
+            "description": "Turns on Rumble Premium without a subscription: removes the ad-supported playback, drops the premium upsell, and unlocks the premium-only videos. The premium flag is read from your account profile when you sign in, so it takes effect on a logged-in Rumble account.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rumble.battles",
+                    "name": "Rumble",
+                    "appIconColor": "#85C742",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.14.5",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Premium",
+            "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial, so this also prevents the expired-beta screen. The license is checked locally and the unlock does not require an account. Connecting Plex, Jellyfin and other media servers is untouched.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "app.symfonik.music.player",
+                    "name": "Symfonium",
+                    "appIconColor": "#E53935",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.1.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Premium",
+            "description": "Unlocks Teach Me Anatomy's premium features without a subscription, dropping the upgrade banners and ads and opening up the locked articles, quizzes, and flashcards. Content served from the server still needs a real account.",
             "default": true,
             "dependencies": [
                 "BytecodePatch"
             ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.atomengineapps.teachmeanatomy",
+                    "name": "Teach Me Anatomy",
+                    "appIconColor": "#00A99D",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.115",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock PRO",
+            "description": "Unlocks Battery Guru's PRO and removes the ads. PRO is decided on the device, so the deep sleep stats, charge history, themes, and the ad-free view all open up.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.paget96.batteryguru",
+                    "name": "Battery Guru",
+                    "appIconColor": "#1B7080",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.4.8.1",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "2.5.0.2-beta1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Pro",
+            "description": "Unlocks the Acrobat Pro tools that work on your device, like editing text and images and rearranging pages, without paying. The parts Adobe runs on its servers, such as Export to Office, Create PDF, and cloud storage, still need a real subscription.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.adobe.reader",
+                    "name": "Adobe Acrobat",
+                    "appIconColor": "#B30B00",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "26.5.0.45958",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Pro",
+            "description": "Unlocks Cashew's Pro features without a purchase: unlimited budgets and goals, the full past-period budget history, the complete color picker, and no more upgrade popups. Everything here is computed on-device. Google Drive cloud sync is gated separately and won't unlock, and it relies on Google sign-in, which breaks once the app is re-signed.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.budget.tracker_app",
+                    "name": "Cashew",
+                    "appIconColor": "#F6B858",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.3.4",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Pro",
+            "description": "Unlocks Essence's premium tools without a subscription, like the detailed statistics and insights, custom themes, app lock, data export, and more. They run on your device, so they work offline. The AI recovery coach and anything else Essence makes on its servers still needs the real subscription.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.appfactory.essence",
+                    "name": "Essence",
+                    "appIconColor": "#005030",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.2.8",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Pro",
+            "description": "Unlocks Hevy's Pro features without a subscription, like unlimited routines and advanced workout analytics. They run on the workout data on your device. Anything Hevy serves only to subscribed accounts can still stay locked.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.hevy",
+                    "name": "Hevy",
+                    "appIconColor": "#101012",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.1.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Pro",
+            "description": "Unlocks InShot's Pro features without a subscription: no export watermark, no ads, and the paid filters, effects, transitions, stickers and HD export open. The on-device AI tools (background remover, AI retouch, auto captions) verify the original signing key in native code, so those may not run on a re-signed build; the rest of Pro works offline.",
+            "default": true,
+            "dependencies": [
+                "RawResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.camerasideas.instashot",
+                    "name": "InShot",
+                    "appIconColor": "#FF2558",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.214.1539",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Pro",
             "description": "Unlocks all of Liquid Gallery's Pro features without a purchase.",
-            "name": "Unlock Pro",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.soepic.photogallery.release",
+                    "name": "Liquid Gallery",
+                    "appIconColor": "#6750A4",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.0.14",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "2.1.11",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "io.stashteam.games.tracker.stashapp": [
-                    "2.48.2"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Pro",
             "description": "Turns on Stash Pro and removes the ads. Pro is a flag the server sends with your account, so the unlock takes effect on a signed-in account once it loads. With it on the ads go away and the Pro-gated UI opens up: the Become Pro upsell card, the home screen block layout, custom collection cover images, and the locked review detail fields. Anything the Stash server checks for a non-paying account is unaffected, so data kept behind a paid account does not sync. Re-signing breaks Google and Facebook login, so sign in with email.",
-            "name": "Unlock Pro",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "io.stashteam.games.tracker.stashapp",
+                    "name": "Stash",
+                    "appIconColor": "#F7BF00",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.48.2",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.todoist": [
-                    "v12190"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Pro",
             "description": "Turns on Todoist Pro on the signed-in account: the project, task, section, filter and label caps go to unlimited, reminders, comments, deadlines, durations, calendar layout, the activity log, file uploads and the paid templates all open, and the plan badge reads Pro. Pro on Todoist is a plan the server sends down and the app caches, so the unlock takes hold once a signed-in account loads and it holds across a sync. Anything the Todoist server runs itself is untouched: the AI assistant, real team/Business collaboration, and server-enforced storage still need a paid account. Re-signing breaks Google sign-in, so sign in with email and password.",
-            "name": "Unlock Pro",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.todoist",
+                    "name": "Todoist",
+                    "appIconColor": "#E44332",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "v12190",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.tracked.mobile": [
-                    "7.0.0"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
+            "name": "Unlock Pro",
             "description": "Unlocks Tracked's premium training tools without a subscription, like muscle analytics, training programs, dashboard customization, and session density/net progression. They run on the workout data already on your device, so they keep working offline. The separate human-coaching marketplace still needs its own subscription.",
-            "name": "Unlock Pro",
-            "options": []
-        },
-        {
-            "compatiblePackages": {
-                "app.remux.video.converter": [
-                    "3.2.2"
-                ]
-            },
             "default": true,
             "dependencies": [],
-            "description": "Unlocks Video Converter's Pro features without a subscription: 4K output, the full resolution and bitrate range, batch conversion, and watermark removal. Everything runs on the device's own FFmpeg encoder, so the unlocked settings produce real output. This is the arm64 build. The app has no ads, so there is nothing extra to remove.",
-            "name": "Unlock Pro",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tracked.mobile",
+                    "name": "Tracked",
+                    "appIconColor": "#3FD080",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "7.0.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.wanderlog.android": [
-                    "2.208"
-                ]
-            },
+            "name": "Unlock Pro",
+            "description": "Unlocks Video Converter's Pro features without a subscription: 4K output, the full resolution and bitrate range, batch conversion, and watermark removal. Everything runs on the device's own FFmpeg encoder, so the unlocked settings produce real output. This is the arm64 build. The app has no ads, so there is nothing extra to remove.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "app.remux.video.converter",
+                    "name": "Video Converter",
+                    "appIconColor": "#1D414B",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.2.2",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Pro",
+            "description": "Lifts Wanderlog's free-tier caps without a subscription: unlimited places per trip, the in-app feature gates unlocked, and no more upgrade nags. Your trips already sync on any tier, so this surfaces them rather than faking data. Features that run on Wanderlog's own servers still need the real subscription and may not work with this alone, including the AI Trip Assistant (the query cap is lifted on-device, but the assistant itself is server-run), offline guide downloads, and live flight-price tracking.",
             "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
-            "description": "Lifts Wanderlog's free-tier caps without a subscription: unlimited places per trip, the in-app feature gates unlocked, and no more upgrade nags. Your trips already sync on any tier, so this surfaces them rather than faking data. Features that run on Wanderlog's own servers still need the real subscription and may not work with this alone, including the AI Trip Assistant (the query cap is lifted on-device, but the assistant itself is server-run), offline guide downloads, and live flight-price tracking.",
-            "name": "Unlock Pro",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.wanderlog.android",
+                    "name": "Wanderlog",
+                    "appIconColor": "#F75940",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.208",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.thehungrywasp.iamsober": [
-                    "8.6.7"
-                ]
-            },
-            "default": true,
-            "dependencies": [],
-            "description": "Unlocks the client-side Sober Plus gates backed by the app's local RevenueCat state, including locked-access settings, extra reaction types, skins, workbook and urge logging entries, and the Sober Plus dashboard. Server-hosted services can still require a real account subscription.",
             "name": "Unlock Sober Plus",
+            "description": "Unlocks the client-side Sober Plus gates backed by the app's local RevenueCat state, including locked-access settings, extra reaction types, skins, workbook and urge logging entries, and the Sober Plus dashboard. Server-hosted services can still require a real account subscription.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.thehungrywasp.iamsober",
+                    "name": "I Am Sober",
+                    "appIconColor": "#6F63D9",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "8.6.7",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         },
         {
-            "compatiblePackages": {
-                "com.flightradar24free": [
-                    "11.6.1"
-                ]
-            },
+            "name": "Use your own Maps API key [REQUIRED]",
+            "description": "Required for the map to load. Patching breaks Flightradar24's built-in Google Maps key, so you have to supply your own from a free Google Cloud project. In this patch's option, create a project, enable Maps SDK for Android, turn on billing, make an API key, and paste it in (leaving it unrestricted is easiest). Remove ads and Unlock aircraft data both pull this in, so the map keeps working with either.",
             "default": true,
             "dependencies": [],
-            "description": "Required for the map to load. Patching breaks Flightradar24's built-in Google Maps key, so you have to supply your own from a free Google Cloud project. In this patch's option, create a project, enable Maps SDK for Android, turn on billing, make an API key, and paste it in (leaving it unrestricted is easiest). Remove ads and Unlock aircraft data both pull this in, so the map keeps working with either.",
-            "name": "Use your own Maps API key [REQUIRED]",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.flightradar24free",
+                    "name": "Flightradar24",
+                    "appIconColor": "#327CB5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "11.6.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": null,
@@ -688,15 +1180,24 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.tranzmate": [
-                    "5.194.0.1785"
-                ]
-            },
+            "name": "Use your own Maps API key [REQUIRED]",
+            "description": "Required for the map to load. Patching breaks Moovit's built-in Google Maps key, so you have to supply your own from a free Google Cloud project. In this patch's option, create a project, enable Maps SDK for Android, turn on billing, make an API key, and paste it in (leaving it unrestricted is easiest). Remove ads and Unlock Moovit+ both pull this in, so the map keeps working with either.",
             "default": true,
             "dependencies": [],
-            "description": "Required for the map to load. Patching breaks Moovit's built-in Google Maps key, so you have to supply your own from a free Google Cloud project. In this patch's option, create a project, enable Maps SDK for Android, turn on billing, make an API key, and paste it in (leaving it unrestricted is easiest). Remove ads and Unlock Moovit+ both pull this in, so the map keeps working with either.",
-            "name": "Use your own Maps API key [REQUIRED]",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.tranzmate",
+                    "name": "Moovit",
+                    "appIconColor": "#FF6400",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.194.0.1785",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": null,

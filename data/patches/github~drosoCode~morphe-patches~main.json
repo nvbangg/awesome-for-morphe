@@ -3,15 +3,25 @@
     "name": "drosocode's Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.imperihome.lite": [
-                    "3.0.11"
-                ]
-            },
+            "name": "Unlock Premium",
+            "description": "Unlock all premium features (no unlocker app required).",
             "default": true,
             "dependencies": [],
-            "description": "Unlock all premium features (no unlocker app required).",
-            "name": "Unlock Premium",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.imperihome.lite",
+                    "name": "ImperiHome",
+                    "apkFileType": "APK",
+                    "appIconColor": "#FF0045",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.0.11",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

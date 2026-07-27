@@ -26,6 +26,17 @@ def get_compat_key(compatibility_data: list) -> int:
     return index
 
 
+def parse_version_item(item: Any) -> Optional[Dict[str, Any]]:
+    if isinstance(item, str):
+        return {"version": item}
+    elif isinstance(item, dict) and "version" in item:
+        result: Dict[str, Any] = {"version": item["version"]}
+        if item.get("isExperimental"):
+            result["isExperimental"] = True
+        return result
+    return None
+
+
 def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Optional[Dict[str, Any]]:
     output: Dict[str, Any] = {}
     if "name" in patch:
@@ -65,11 +76,12 @@ def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Opti
             targets = []
             if versions:
                 for version_item in versions:
-                    if isinstance(version_item, str):
-                        targets.append({"version": version_item})
-                    elif isinstance(version_item, dict) and "version" in version_item:
-                        targets.append({"version": version_item["version"]})
-            compatibility_targets.append({"packageName": package_name, "targets": targets})
+                    if parsed_version := parse_version_item(version_item):
+                        targets.append(parsed_version)
+            package_out = {"packageName": package_name}
+            if targets:
+                package_out["targets"] = targets
+            compatibility_targets.append(package_out)
     elif isinstance(compatible_packages, list):
         for entry in compatible_packages:
             if not isinstance(entry, dict):
@@ -82,13 +94,8 @@ def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Opti
             has_real_app = True
             targets = []
             for target_item in entry.get("targets", []):
-                target_out = {}
-                if "version" in target_item:
-                    target_out["version"] = target_item["version"]
-                if target_item.get("isExperimental"):
-                    target_out["isExperimental"] = True
-                if target_out:
-                    targets.append(target_out)
+                if parsed_version := parse_version_item(target_item):
+                    targets.append(parsed_version)
             package_out = {"packageName": package_name}
             if targets:
                 package_out["targets"] = targets

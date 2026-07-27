@@ -3,15 +3,25 @@
     "name": "Movistar plus ads patch",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.movistarplus.androidtv": [
-                    "26.03.100"
-                ]
-            },
+            "name": "Block Ads",
+            "description": "Blocks advertisements and promo clips.",
             "default": true,
             "dependencies": [],
-            "description": "Blocks advertisements and promo clips.",
-            "name": "Block Ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.movistarplus.androidtv",
+                    "name": "Movistar Plus",
+                    "apkFileType": "APK",
+                    "appIconColor": "#00A9E0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "26.03.100",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

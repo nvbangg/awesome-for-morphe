@@ -3,17 +3,26 @@
     "name": "Gryphou's Morphe Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.crunchyroll.crunchyroid": [
-                    "3.112.2"
-                ]
-            },
+            "name": "Enable Picture-in-Picture",
+            "description": "Enables automatic Android Picture-in-Picture when leaving Crunchyroll playback.",
             "default": true,
             "dependencies": [
                 "ResourcePatch"
             ],
-            "description": "Enables automatic Android Picture-in-Picture when leaving Crunchyroll playback.",
-            "name": "Enable Picture-in-Picture",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.crunchyroll.crunchyroid",
+                    "name": "Crunchyroll",
+                    "appIconColor": "#FF5C00",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.112.2",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

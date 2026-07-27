@@ -3,15 +3,25 @@
     "name": "Google Feed Ads Patches",
     "patches": [
         {
-            "compatiblePackages": {
-                "com.google.android.googlequicksearchbox": [
-                    "17.34.30.ve.arm64"
-                ]
-            },
+            "name": "Install as standalone app",
+            "description": "Changes the Google app package identity so the patched APK can be installed beside the system Google app.",
             "default": true,
             "dependencies": [],
-            "description": "Changes the Google app package identity so the patched APK can be installed beside the system Google app.",
-            "name": "Install as standalone app",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.googlequicksearchbox",
+                    "name": "Google",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#4285F4",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "17.34.30.ve.arm64",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": [
                 {
                     "default": "app.ripthulhu.googlequicksearchbox",
@@ -38,15 +48,25 @@
             ]
         },
         {
-            "compatiblePackages": {
-                "com.google.android.googlequicksearchbox": [
-                    "17.34.30.ve.arm64"
-                ]
-            },
+            "name": "Remove Discover feed ads",
+            "description": "Filters likely ad nodes from the Google app Discover feed.",
             "default": true,
             "dependencies": [],
-            "description": "Filters likely ad nodes from the Google app Discover feed.",
-            "name": "Remove Discover feed ads",
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.googlequicksearchbox",
+                    "name": "Google",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#4285F4",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "17.34.30.ve.arm64",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
             "options": []
         }
     ]

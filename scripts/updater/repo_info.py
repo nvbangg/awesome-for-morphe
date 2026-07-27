@@ -6,6 +6,7 @@ import sys
 import time
 import urllib.error
 import urllib.parse
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -164,3 +165,46 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
         save_json(CUSTOM_JSON_PATH, custom_data)
         save_json(REPOS_JSON_PATH, repos_data)
         print("Updated custom.json and repos.json for renamed repositories.")
+
+    update_star_history(bundle_sources, list(tasks.keys()))
+
+
+def get_stars_on_or_before(star_record_map: Dict[str, int], target_date_string: str, fallback_stars: int) -> int:
+    if target_date_string in star_record_map:
+        return star_record_map[target_date_string]
+    valid_dates = [date_key for date_key in star_record_map if date_key <= target_date_string]
+    if valid_dates:
+        closest_date = max(valid_dates)
+        return star_record_map[closest_date]
+    if star_record_map:
+        oldest_date = min(star_record_map.keys())
+        return star_record_map[oldest_date]
+    return fallback_stars
+
+
+def update_star_history(bundle_sources: Dict[str, Any], updated_keys: List[str]) -> None:
+    star_history_path = DATA_DIR / "star-history.json"
+    star_history_data = load_json(star_history_path, {})
+    current_time = datetime.now(timezone.utc) - timedelta(hours=12)
+    current_date_string = current_time.strftime("%Y-%m-%d")
+    date_7d_string = (current_time - timedelta(days=7)).strftime("%Y-%m-%d")
+    date_40d_string = (current_time - timedelta(days=40)).strftime("%Y-%m-%d")
+
+    for base_key in updated_keys:
+        if base_key in bundle_sources:
+            stars_current = bundle_sources[base_key].get("stars", 0)
+            if base_key not in star_history_data:
+                star_history_data[base_key] = {}
+            star_history_data[base_key][current_date_string] = stars_current
+
+    for base_key, source_entry in bundle_sources.items():
+        stars_current = source_entry.get("stars", 0)
+        star_record_for_bundle = star_history_data.get(base_key, {})
+        stars_7d_ago = get_stars_on_or_before(star_record_for_bundle, date_7d_string, stars_current)
+        stars_40d_ago = get_stars_on_or_before(star_record_for_bundle, date_40d_string, stars_current)
+
+        source_entry["starsGained7d"] = max(0, stars_current - stars_7d_ago)
+        source_entry["starsGained40d"] = max(0, stars_current - stars_40d_ago)
+
+    if updated_keys:
+        save_json(star_history_path, star_history_data)

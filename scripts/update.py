@@ -35,7 +35,7 @@ def main() -> int:
         bundle_sources[key] = {"source": source, "repo": repo}
 
         if key in existing_bundles:
-            for attribute_name in ["stars", "avatarUrl", "repoDescription"]:
+            for attribute_name in ["stars", "avatarUrl", "repoDescription", "starsGained7d", "starsGained40d", "appFirstSeen"]:
                 if attribute_name in existing_bundles[key]:
                     bundle_sources[key][attribute_name] = existing_bundles[key][attribute_name]
     repo_info.process(bundle_sources, mode, existing_bundles)
@@ -56,8 +56,11 @@ def main() -> int:
             "repoDescription": bundle.get("repoDescription"),
             "avatarUrl": bundle.get("avatarUrl"),
             "stars": bundle.get("stars", 0),
+            "starsGained7d": bundle.get("starsGained7d", 0),
+            "starsGained40d": bundle.get("starsGained40d", 0),
             "updatedAt": bundle.get("updatedAt", 0),
             "firstSeen": parse_timestamp(existing_bundles.get(key, {}).get("firstSeen", now_ms)),
+            "appFirstSeen": bundle.get("appFirstSeen", {}),
             "patches": bundle.get("patches", []),
         }
         if bundle.get("isPreRelease"):

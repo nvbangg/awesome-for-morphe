@@ -3,6 +3,7 @@
 import json
 import re
 import sys
+import time
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -181,6 +182,23 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
                 del patch_dict["compatiblePackages"]
             valid_patches.append(patch_dict)
         source_entry["patches"] = valid_patches
+        current_timestamp_ms = int(time.time() * 1000)
+        app_first_seen_map = source_entry.get("appFirstSeen", {})
+        if not isinstance(app_first_seen_map, dict):
+            app_first_seen_map = {}
+        has_universal_patch = False
+        for patch_dict in valid_patches:
+            if "compatiblePackagesKey" in patch_dict:
+                compatibility_data = compatibilities_list[patch_dict["compatiblePackagesKey"]]
+                for compatibility_entry in compatibility_data:
+                    package_name = compatibility_entry.get("packageName")
+                    if package_name and package_name not in app_first_seen_map:
+                        app_first_seen_map[package_name] = current_timestamp_ms
+            else:
+                has_universal_patch = True
+        if has_universal_patch and "universal" not in app_first_seen_map:
+            app_first_seen_map["universal"] = current_timestamp_ms
+        source_entry["appFirstSeen"] = app_first_seen_map
     for base_key, source_entry in bundle_sources.items():
         if base_key in keys_to_remove:
             continue

@@ -91,10 +91,8 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
     tasks = {}
     for base_key, source_entry in bundle_sources.items():
         if mode == "default":
-            # In default mode, ONLY process new bundles (not present in existing_bundles)
             if base_key in existing_bundles:
                 continue
-
         source = source_entry.get("source")
         owner_repo = source_entry.get("repo")
         if not source or not owner_repo:

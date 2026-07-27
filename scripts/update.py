@@ -35,9 +35,9 @@ def main() -> int:
         bundle_sources[key] = {"source": source, "repo": repo}
 
         if key in existing_bundles:
-            for attr in ["stars", "avatarUrl", "repoDescription"]:
-                if attr in existing_bundles[key]:
-                    bundle_sources[key][attr] = existing_bundles[key][attr]
+            for attribute_name in ["stars", "avatarUrl", "repoDescription"]:
+                if attribute_name in existing_bundles[key]:
+                    bundle_sources[key][attribute_name] = existing_bundles[key][attribute_name]
     repo_info.process(bundle_sources, mode, existing_bundles)
     compatibilities_list = local_parse.process(bundle_sources, apps_dict, DATA_DIR)
 
@@ -64,14 +64,14 @@ def main() -> int:
             ordered_bundle["isPreRelease"] = True
         final_bundles.append(ordered_bundle)
     ordered_apps_dict = {}
-    for pkg_name, app_data in apps_dict.items():
+    for package_name, app_data in apps_dict.items():
         app_data.setdefault("firstSeen", now_ms)
         app_data.pop("updatedAt", None)
         ordered_app = {}
-        for key in ["name", "iconUrl", "description", "minInstalls", "score", "genre", "editorsChoice", "firstSeen"]:
+        for key in ["name", "iconUrl", "description", "minInstalls", "score", "genre", "altName", "firstSeen"]:
             if key in app_data:
                 ordered_app[key] = app_data[key]
-        ordered_apps_dict[pkg_name] = ordered_app
+        ordered_apps_dict[package_name] = ordered_app
 
     save_json(BUNDLES_JSON_PATH, {"bundles": final_bundles, "compatibilities": compatibilities_list})
     save_json(APPS_JSON_PATH, ordered_apps_dict)

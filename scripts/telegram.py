@@ -7,14 +7,29 @@ import urllib.parse
 from pathlib import Path
 import datetime
 import re
+import html
 
 WHATS_NEW_PATH = Path("whats-new.md")
 
 
-def encode_url_parens(match):
-    text = match.group(1)
-    url = match.group(2).replace("(", "%28").replace(")", "%29")
-    return f"[{text}]({url})"
+def convert_to_html(text: str) -> str:
+    escaped = html.escape(text)
+    escaped = re.sub(r"~~(.*?)~~", r"<s>\1</s>", escaped)
+    escaped = re.sub(r"\*\*(.*?)\*\*", r"<b>\1</b>", escaped)
+    escaped = re.sub(r"\*(.*?)\*", r"<b>\1</b>", escaped)
+    escaped = re.sub(r"`(.*?)`", r"<code>\1</code>", escaped)
+
+    def replace_link(match):
+        link_text = match.group(1)
+        url = html.unescape(match.group(2))
+        url_quoted = urllib.parse.quote(url, safe=":/%#?=&@+$,-_.!~*'()")
+        return f'<a href="{url_quoted}">{link_text}</a>'
+
+    return re.sub(
+        r"\[([^\]]+)\]\((https?://[^\s()]+(?:\([^\s()]+\)[^\s()]*)*)\)",
+        replace_link,
+        escaped,
+    )
 
 
 def main():
@@ -27,12 +42,8 @@ def main():
         return
 
     lines = [line.lstrip("# ") if line.startswith("#") else line for line in content.splitlines() if not line.startswith(("📢 *Telegram:*", "📢 _Telegram:"))]
-
-    content = re.sub(
-        r"\[([^\]]+)\]\((https?://[^\s()]+(?:\([^\s()]+\)[^\s()]*)*)\)",
-        encode_url_parens,
-        "\n".join(lines).strip(),
-    )
+    formatted_content = convert_to_html("\n".join(lines).strip())
+    formatted_title = f"<b>{html.escape(title)}</b>"
 
     token = os.environ.get("TG_TOKEN")
     chat_id = os.environ.get("TG_CHAT")
@@ -42,8 +53,8 @@ def main():
     data = urllib.parse.urlencode(
         {
             "chat_id": chat_id,
-            "text": f"*{title}*\n\n{content}",
-            "parse_mode": "Markdown",
+            "text": f"{formatted_title}\n\n{formatted_content}",
+            "parse_mode": "HTML",
             "disable_web_page_preview": "true",
         }
     ).encode("utf-8")

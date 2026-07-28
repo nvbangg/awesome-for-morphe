@@ -90,7 +90,7 @@ def fetch_app_details(package_name: str) -> Tuple[Optional[Dict[str, Any]], bool
             "description": description,
             "minInstalls": result.get("minInstalls") or 0,
             "score": score,
-            "genre": result.get("genre") or "Outside Google Play",
+            "genre": result.get("genre") or "",
         }
         return details, False
     except NotFoundError:
@@ -130,11 +130,9 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
                             if current_app.get(field) is None:
                                 current_app[field] = ""
                     elif is_404:
-                        for field in ("name", "iconUrl", "description"):
+                        for field in ("name", "iconUrl", "description", "genre"):
                             if current_app.get(field) is None:
                                 current_app[field] = ""
-                        if not current_app.get("genre"):
-                            current_app["genre"] = "Outside Google Play"
                         if not current_app.get("minInstalls"):
                             current_app["minInstalls"] = 0
                         if not current_app.get("score"):

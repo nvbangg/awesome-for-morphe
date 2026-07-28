@@ -1,11 +1,11 @@
-### [nvbangg/awesome-morphe](https://github.com/nvbangg/awesome-morphe)
+## [nvbangg/awesome-morphe](https://github.com/nvbangg/awesome-morphe)
 
-### 🔍 [awesome-morphe.vercel.app](https://awesome-morphe.vercel.app)
+### <img src="docs/assets/images/favicon.svg" width="20" height="20" alt="Favicon Website"> [awesome-morphe.vercel.app](https://awesome-morphe.vercel.app)
 
 > [!NOTE]
-> 🌐 A curated list of all [Morphe](https://morphe.software) resources and projects.  
-> 🔍 Explore [all supported apps and patches](https://awesome-morphe.vercel.app), automatically updated.  
-> 🔔 Get [daily notifications](https://github.com/nvbangg/awesome-morphe/releases) when there are new updates. [![Telegram Channel](https://img.shields.io/badge/Telegram_Channel-blue?style=social&logo=telegram)](https://t.me/awesome_morphe)  
+> 🌐 A curated list of [Morphe](https://morphe.software) resources and community projects.  
+> 🔍 Explore [all patch bundles](https://awesome-morphe.vercel.app) created by the community.  
+> 🔔 Get notified via the [Telegram channel](https://t.me/awesome_morphe) whenever there's a new update.  
 > 📂 For contribution guidelines and documentation, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### 🔗 Jump to:
@@ -54,7 +54,8 @@
 - [How To Patch More Apps With Morphe](https://www.reddit.com/r/MorpheApp/comments/1ta0bek/how_to_patch_more_apps_with_morphe/)
 - [(Guide) Fix video playback issue on YouTube and YT music](https://www.reddit.com/r/MorpheApp/comments/1uxcvgp/guide_fix_video_playback_issue_on_youtube_and_yt/)
 - [Morphe Desktop (Currently Morphe CLI)](https://www.reddit.com/r/MorpheApp/comments/1rtr3ee/morphe_desktop_currently_morphe_cli/)
-- [How to patch X with Piko patches](https://www.reddit.com/r/MorpheApp/comments/1r4xt24/x_twitter_can_now_be_patched_with_piko_patches/)
+- ~~[How to patch X with Piko patches](https://www.reddit.com/r/MorpheApp/comments/1r4xt24/x_twitter_can_now_be_patched_with_piko_patches/)~~
+  - [PSA: X / Twitter Piko no longer requires X Shim on the latest version!](https://www.reddit.com/r/MorpheApp/comments/1v5zf40/psa_x_twitter_piko_no_longer_requires_x_shim_on/)
 - [Likes count not showing](https://www.reddit.com/r/MorpheApp/comments/1u4kjms/likes_count_not_showing/)
 - [Regarding the Morphe DMCA](https://www.reddit.com/r/MorpheApp/comments/1s3w1er/regarding_the_morphe_dmca/)
 - [How to install and use Shizuku](https://github.com/thedjchi/Shizuku/wiki)

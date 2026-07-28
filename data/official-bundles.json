@@ -987,15 +987,15 @@
         "com.instagram.android": 1785110400000,
         "com.twitter.android": 1785024000000
       },
-      "stars": 4458,
+      "stars": 4459,
       "updatedAt": 1784851200000,
       "firstSeen": 1773154796000,
       "appFirstSeen": {
         "com.twitter.android": 1773154796000,
         "com.instagram.android": 1773154796000
       },
-      "starsGained7d": 85,
-      "starsGained40d": 86
+      "starsGained7d": 48,
+      "starsGained40d": 87
     },
     {
       "source": "github",
@@ -1704,7 +1704,7 @@
         "ginlemon.flowerfree": 1770076800000,
         "com.simyasolutions.ling.universal": 1784678400000
       },
-      "stars": 874,
+      "stars": 875,
       "updatedAt": 1784073600000,
       "firstSeen": 1768941201000,
       "appFirstSeen": {
@@ -1762,8 +1762,8 @@
         "cn.ommiao.iconpacker": 1768941201000,
         "com.simyasolutions.ling.universal": 1784769617321
       },
-      "starsGained7d": 29,
-      "starsGained40d": 32
+      "starsGained7d": 16,
+      "starsGained40d": 33
     },
     {
       "source": "github",
@@ -4609,7 +4609,7 @@
         "com.nytimes.crossword"
       ],
       "appUpdates": {},
-      "stars": 247,
+      "stars": 248,
       "updatedAt": 1784764800000,
       "firstSeen": 1780395687718,
       "appFirstSeen": {
@@ -4802,8 +4802,8 @@
         "com.urbandroid.kinestop": 1783291168540,
         "com.nytimes.crossword": 1783875617302
       },
-      "starsGained7d": 48,
-      "starsGained40d": 55
+      "starsGained7d": 22,
+      "starsGained40d": 56
     },
     {
       "source": "gitlab",
@@ -5247,7 +5247,7 @@
         "in.startv.hotstar": 1780012800000,
         "com.ticktick.task": 1780012800000
       },
-      "stars": 58,
+      "stars": 59,
       "updatedAt": 1783382400000,
       "firstSeen": 1778457600000,
       "appFirstSeen": {
@@ -5275,7 +5275,7 @@
         "com.frontrow.vlog": 1778457600000
       },
       "starsGained7d": 2,
-      "starsGained40d": 2
+      "starsGained40d": 3
     },
     {
       "source": "github",
@@ -5581,7 +5581,7 @@
         "fr.tramb.park4night": 1773147404000,
         "cz.seznam.mapy": 1773147404000
       },
-      "starsGained7d": 11,
+      "starsGained7d": 7,
       "starsGained40d": 12
     },
     {
@@ -6151,7 +6151,7 @@
         "org.cygnusx1.continuum": 1767402720000,
         "me.edgan.redditslide": 1767402720000
       },
-      "starsGained7d": 13,
+      "starsGained7d": 5,
       "starsGained40d": 15
     },
     {
@@ -6868,7 +6868,7 @@
         "com.ninegag.android.app": 1781427843830,
         "com.imdb.mobile": 1771585164000
       },
-      "starsGained7d": 11,
+      "starsGained7d": 2,
       "starsGained40d": 12
     },
     {
@@ -7745,7 +7745,7 @@
         "com.flexcil.flexcilnote": 1779062400000,
         "kr.co.nowcom.mobile.afreeca": 1781342043327
       },
-      "starsGained7d": 3,
+      "starsGained7d": 2,
       "starsGained40d": 3
     },
     {
@@ -7755,40 +7755,40 @@
       "author": "ajstrick81",
       "patches": [
         {
+          "name": "Bundle native ad-strip hook",
+          "description": "Packages libpvhook.so into the APK's native lib dir for the in-process PRS Remote-item strip (libignite memcpy/memmove GOT/PLT import hook).",
+          "use": true,
+          "options": [],
+          "compatiblePackagesKey": 281,
+          "compatibilityKey": 282
+        },
+        {
           "name": "Clone Peacock",
           "description": "Installs the patched Peacock as a separate app alongside the stock one, instead of replacing it. Enable this when Peacock is a preinstalled system app that can't be uninstalled — most commonly on Amazon Fire TV, and on some Android TV boxes and Onn devices. The clone gets its own package (suffix .mod), so it shows up as a second Peacock icon and keeps its own login. Leave OFF if you were able to uninstall the original Peacock first (a normal in-place install is cleaner). Opt-in.",
           "use": false,
           "options": [],
-          "compatiblePackagesKey": 281,
-          "compatibilityKey": 282
+          "compatiblePackagesKey": 283,
+          "compatibilityKey": 284
         },
         {
           "name": "Clone Pluto TV",
           "description": "Installs the patched Pluto TV as a separate app alongside the stock one, instead of replacing it. Enable this when Pluto TV is a preinstalled system app that can't be uninstalled — most commonly on Amazon Fire TV, and on some Android TV boxes and Onn devices. The clone gets its own package (suffix .mod), so it shows up as a second Pluto TV icon and keeps its own settings. Leave OFF if you were able to uninstall the original Pluto TV first (a normal in-place install is cleaner). Opt-in.",
           "use": false,
           "options": [],
-          "compatiblePackagesKey": 283,
-          "compatibilityKey": 284
+          "compatiblePackagesKey": 285,
+          "compatibilityKey": 286
         },
         {
           "name": "Clone Prime Video",
           "description": "Renames the package to <original>.mod (and its provider authorities / custom permissions) so the patched app installs side-by-side with a non-removable system Prime Video. Opt-in.",
           "use": false,
           "options": [],
-          "compatiblePackagesKey": 285,
-          "compatibilityKey": 286
-        },
-        {
-          "name": "Disable auto-updates",
-          "description": "Stops the Google Play Store from silently updating Peacock back to the official version and wiping out the patch (which would bring the ads back). Works by setting the patched build's version number far ahead of anything on the Store, so it's treated as already up to date. You can still update deliberately by re-patching a newer APK in Morphe. Recommended to leave ON. Does not apply to mount-installed apps.",
-          "use": true,
-          "options": [],
           "compatiblePackagesKey": 281,
           "compatibilityKey": 282
         },
         {
           "name": "Disable auto-updates",
-          "description": "Stops the Google Play Store from silently updating Pluto TV back to the official version and wiping out the patch (which would bring the ads back). Works by setting the patched build's version number far ahead of anything on the Store, so it's treated as already up to date. You can still update deliberately by re-patching a newer APK in Morphe. Recommended to leave ON. Does not apply to mount-installed apps.",
+          "description": "Stops the Google Play Store from silently updating Peacock back to the official version and wiping out the patch (which would bring the ads back). Works by setting the patched build's version number far ahead of anything on the Store, so it's treated as already up to date. You can still update deliberately by re-patching a newer APK in Morphe. Recommended to leave ON. Does not apply to mount-installed apps.",
           "use": true,
           "options": [],
           "compatiblePackagesKey": 283,
@@ -7796,11 +7796,19 @@
         },
         {
           "name": "Disable auto-updates",
-          "description": "Prevents Google Play Store from automatically replacing the patched APK with the official unpatched version.",
+          "description": "Stops the Google Play Store from silently updating Pluto TV back to the official version and wiping out the patch (which would bring the ads back). Works by setting the patched build's version number far ahead of anything on the Store, so it's treated as already up to date. You can still update deliberately by re-patching a newer APK in Morphe. Recommended to leave ON. Does not apply to mount-installed apps.",
           "use": true,
           "options": [],
           "compatiblePackagesKey": 285,
           "compatibilityKey": 286
+        },
+        {
+          "name": "Disable auto-updates",
+          "description": "Prevents Google Play Store from automatically replacing the patched APK with the official unpatched version.",
+          "use": true,
+          "options": [],
+          "compatiblePackagesKey": 281,
+          "compatibilityKey": 282
         },
         {
           "name": "Disney+ Android TV",
@@ -7819,6 +7827,14 @@
           "compatibilityKey": 290
         },
         {
+          "name": "Load native ad-strip hook",
+          "description": "Loads libpvhook.so at startup to blank Remote (ad) items from the PRS intraTitlePlaylist in-process (libignite memcpy/memmove GOT/PLT import hook).",
+          "use": true,
+          "options": [],
+          "compatiblePackagesKey": 281,
+          "compatibilityKey": 282
+        },
+        {
           "name": "MLB At Bat Android TV",
           "description": "Removes VOD ads and shows a commercial-break overlay over live gambling ads while preserving live game playback.",
           "use": true,
@@ -7831,16 +7847,16 @@
           "description": "Edits Pluto's network_security_config to trust user CAs (system + user, overridePins) on both a new base-config and every existing domain-config — including the pluto.tv entry that is otherwise system-only — so an HTTPS-filtering proxy can inspect the HLS manifest. Optional adjunct to the manifest-rewrite ad approach.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 283,
-          "compatibilityKey": 284
+          "compatiblePackagesKey": 285,
+          "compatibilityKey": 286
         },
         {
           "name": "Override certificate pinning",
           "description": "Adds a network_security_config trusting user CAs (no pin sets) so AdGuard Premium can inspect the app's platform-stack HTTPS. Optional adjunct: Prime Video's ad plane is largely native libcurl, so DNS blocking is the primary tool.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 285,
-          "compatibilityKey": 286
+          "compatiblePackagesKey": 281,
+          "compatibilityKey": 282
         },
         {
           "name": "Override certificate pinning",
@@ -7863,8 +7879,8 @@
           "description": "Integrates the Prime Video ATV extension for ad group skipping.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 285,
-          "compatibilityKey": 286
+          "compatiblePackagesKey": 281,
+          "compatibilityKey": 282
         },
         {
           "name": "Skip ads",
@@ -7879,24 +7895,24 @@
           "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 281,
-          "compatibilityKey": 282
+          "compatiblePackagesKey": 283,
+          "compatibilityKey": 284
         },
         {
           "name": "Skip ads",
           "description": "Suppresses Pluto TV's ads. Empties the client-side ad-break timeline (StitcherSession.adBreaks) — the same data AdGuard strips via jsonprune — which removes on-demand (VOD) ad breaks entirely: ad video, markers, overlays, and beacons. Also no-ops pause ads and clickable-ad overlays. LIVE TV ads are real broadcast time in the linear feed and are not removable. Validated on-device, 5.66.0-leanback.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 283,
-          "compatibilityKey": 284
+          "compatiblePackagesKey": 285,
+          "compatibilityKey": 286
         },
         {
           "name": "Skip ads",
           "description": "Multi-layer ad suppression targeting the SSAI schedule, impression reporting, and the Volley network chokepoint.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 285,
-          "compatibilityKey": 286
+          "compatiblePackagesKey": 281,
+          "compatibilityKey": 282
         },
         {
           "name": "Skip ads",
@@ -7915,17 +7931,17 @@
           "compatibilityKey": 294
         }
       ],
-      "changelog": "# [1.14.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.13.0...v1.14.0) (2026-07-22)\n\n\n### Features\n\n* **disney:** add 26.12.1+rc1 to compatible targets ([fb8f3f4](https://github.com/ajstrick81/morphe-androidtv-patches/commit/fb8f3f4162e6c31155ddb72dc0a87aaeb8f8f39d))\n\n# [1.13.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.12.3...v1.13.0) (2026-07-20)\n\n\n### Features\n\n* **tubi:** bump target to 10.28.5000 ([0050cc8](https://github.com/ajstrick81/morphe-androidtv-patches/commit/0050cc8f4ff2b27da668abb315ff0fe2e897cd75))\n\n## [1.12.3](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.12.2...v1.12.3) (2026-07-18)\n\n\n### Bug Fixes\n\n* **hbomax:** support 7.7.0.78 and derive Patch 2 register dynamically ([d35a8b0](https://github.com/ajstrick81/morphe-androidtv-patches/commit/d35a8b043e1a2dacd69b17de7640ebc9a339b694))\n\n## [1.12.2](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.12.1...v1.12.2) (2026-07-16)\n\n\n### Bug Fixes\n\n* **dns:** leave the zoar/hercule weblab blocks off pending proof ([21bb23c](https://github.com/ajstrick81/morphe-androidtv-patches/commit/21bb23c149968b2e6ba233a33fcabf2b178704fd)), closes [#58](https://github.com/ajstrick81/morphe-androidtv-patches/issues/58)\n* **dns:** stop blocking aiv-delivery.net — it breaks playback ([#58](https://github.com/ajstrick81/morphe-androidtv-patches/issues/58)) ([6a8217c](https://github.com/ajstrick81/morphe-androidtv-patches/commit/6a8217c1ba874393abfc71c80a80dd70a371d7bf))\n\n## [1.12.1](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.12.0...v1.12.1) (2026-07-15)\n\n\n### Bug Fixes\n\n* **dns:** correct malformed modifier separators and add a rule linter ([ad3c4fd](https://github.com/ajstrick81/morphe-androidtv-patches/commit/ad3c4fd9635ff3ab1e6618b6624ec35691b35ff7))\n\n# [1.12.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.11.0...v1.12.0) (2026-07-12)\n\n\n### Features\n\n* **disney:** cover new DMP SGAI/SSAI VOD ad insertion pipeline ([57d0b76](https://github.com/ajstrick81/morphe-androidtv-patches/commit/57d0b76f07c498087843a39247a758cc44cf532a))\n\n# [1.11.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.10.0...v1.11.0) (2026-07-12)\n\n\n### Features\n\n* **vix:** support 4.47.2_tv; re-anchor Innovid fingerprint on string ([#54](https://github.com/ajstrick81/morphe-androidtv-patches/issues/54)) ([37e3ec6](https://github.com/ajstrick81/morphe-androidtv-patches/commit/37e3ec6659a39befbd54cee9bf01bdb687f07c6c))\n\n# [1.10.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.9.0...v1.10.0) (2026-07-04)\n\n\n### Features\n\n* **peacock:** DAI-swap ad suppression + Clone and Disable auto-updates ([2969316](https://github.com/ajstrick81/morphe-androidtv-patches/commit/296931651c3d50c49e88190286d087a23e2a5f32))\n* **pluto:** add Clone and Disable auto-updates patches ([4358314](https://github.com/ajstrick81/morphe-androidtv-patches/commit/4358314cab49bd34a84fa17517f3394a49ea79d3))\n\n# [1.9.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.8.0...v1.9.0) (2026-07-03)\n\n\n### Features\n\n* **pluto:** add certificate-pinning override for HTTPS inspection ([723ceeb](https://github.com/ajstrick81/morphe-androidtv-patches/commit/723ceebb3ee0987efb0991478b902b467bcd2076))\n* **pluto:** strip ad-break timeline to remove VOD ads ([16cc76b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/16cc76b67468d692ef0c4c1f7b5789d8cc79883b))\n* **pluto:** verify ad hooks against dex, add clickable-ads suppression ([575612f](https://github.com/ajstrick81/morphe-androidtv-patches/commit/575612f34caf006a040df1e200b02f03f31184c3))\n\n# [1.8.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.7.0...v1.8.0) (2026-07-02)\n\n\n### Bug Fixes\n\n* **primevideo:** block additional Volley ad hosts ([b47e706](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b47e706d8597ba36ad66a2385a2e1ec07a123472))\n\n\n### Features\n\n* **primevideo:** add Clone Prime Video side-by-side install patch ([0ebea56](https://github.com/ajstrick81/morphe-androidtv-patches/commit/0ebea56de302d986a3e559a224c7e5e5affdab3b))\n\n# [1.7.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.6.0...v1.7.0) (2026-06-27)\n\n\n### Bug Fixes\n\n* **dns:** match akamaized.net safe-harbor host by concatenated prefix ([b883df7](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b883df7853da554f75e0a184bafdb08988ddf709))\n\n\n### Features\n\n* **primevideo:** remove GMB send diagnostic patch, add DNS rules from live testing ([48b744b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/48b744bb136a49ecdaa8c7d3a5ed11e618e73d60))\n\n# [1.6.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.7...v1.6.0) (2026-06-26)\n\n\n### Bug Fixes\n\n* **vix:** retarget Innovid hook to mount method, drop broken FreeWheel hook ([33cefba](https://github.com/ajstrick81/morphe-androidtv-patches/commit/33cefba404703be7f7da0cf02c25e8f3aab63206))\n\n\n### Features\n\n* add GMB send-direction diagnostic patch (debug-only) ([b0552cb](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b0552cb7f84a74b455bef5473b781328164c5fae))\n* **primevideo dns:** v4.2 — add hercule trigger after live-session validation ([82c94cd](https://github.com/ajstrick81/morphe-androidtv-patches/commit/82c94cd445750966a73aad2e8d3e2efe1a8898c1))\n* **primevideo dns:** v4.3 — optional general-tracker section (triaged) ([4182df0](https://github.com/ajstrick81/morphe-androidtv-patches/commit/4182df0c6594e966a596f49516b99a17c6b037e1))\n* **primevideo:** add evidence-graded DNS ad-suppression list (dual-layer) ([c55bb0e](https://github.com/ajstrick81/morphe-androidtv-patches/commit/c55bb0e1e10ee82529a5b5102987c24b02f0582d))\n* **primevideo:** block getVideoAds path on dual-use playback host ([940b91a](https://github.com/ajstrick81/morphe-androidtv-patches/commit/940b91aff4a56a347e44eaf498d7351dfb8f3cdd))\n* **primevideo:** expand Volley ad-host block list from v3.6 session diff ([6f05cb5](https://github.com/ajstrick81/morphe-androidtv-patches/commit/6f05cb5a9922a24f9f50759083287ee571895f9e))\n* **vix:** add \"Override certificate pinning\" companion patch ([1fcdccf](https://github.com/ajstrick81/morphe-androidtv-patches/commit/1fcdccf651d01cc1ee9e3ba2ddf45154b796fc1a))\n* **vix:** block LuraPlayer linear (client-side VAST) ad-break scheduler ([1360354](https://github.com/ajstrick81/morphe-androidtv-patches/commit/1360354a9275a2fbcd1d363114876c5e9bef6c04))\n\n## [1.5.7](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.6...v1.5.7) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** remove blocking Thread.sleep() from ad-block interceptors ([f0d441d](https://github.com/ajstrick81/morphe-androidtv-patches/commit/f0d441de63adb39c33afc78ab1e28a7cbca1b5de))\n* **peacock:** rewrite wrapClient() to use named class, not anonymous ([188b354](https://github.com/ajstrick81/morphe-androidtv-patches/commit/188b354c6551e5a3b958f526b84735ed5926001f))\n* **peacock:** roll back to stable Layers 1-8 + fixed Layer 7 baseline for main ([c54992e](https://github.com/ajstrick81/morphe-androidtv-patches/commit/c54992e342e8e2bf51f5cd95454cd7219e0aaa2c))\n\n## [1.5.6](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.5...v1.5.6) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** fix Layer 7 VerifyError launch crash + re-add Layers 9-11 ([#32](https://github.com/ajstrick81/morphe-androidtv-patches/issues/32)) ([c5257dd](https://github.com/ajstrick81/morphe-androidtv-patches/commit/c5257dde17b6ae5b9d5fa6e9025d14788abe5337))\n\n## [1.5.5](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.4...v1.5.5) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** roll back to known-good Layers 1-8; remove launch-breaking Layers 9-10 ([#31](https://github.com/ajstrick81/morphe-androidtv-patches/issues/31)) ([3641c54](https://github.com/ajstrick81/morphe-androidtv-patches/commit/3641c54c2387b143168e7a199ec1c81cb7a86d58))",
+      "changelog": "# [1.15.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.14.0...v1.15.0) (2026-07-27)\n\n\n### Bug Fixes\n\n* **primevideo-native:** skip decompression chunks to stop CURL 61 corruption ([9787c81](https://github.com/ajstrick81/morphe-androidtv-patches/commit/9787c8170e44eec3ce9d19e10b43351290139dbf))\n\n\n### Features\n\n* **primevideo-native:** working GOT/PLT import hook for in-process ad strip ([516017d](https://github.com/ajstrick81/morphe-androidtv-patches/commit/516017d20a21bd18c252d602cf783442003434d4))\n\n# [1.14.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.13.0...v1.14.0) (2026-07-22)\n\n\n### Features\n\n* **disney:** add 26.12.1+rc1 to compatible targets ([fb8f3f4](https://github.com/ajstrick81/morphe-androidtv-patches/commit/fb8f3f4162e6c31155ddb72dc0a87aaeb8f8f39d))\n\n# [1.13.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.12.3...v1.13.0) (2026-07-20)\n\n\n### Features\n\n* **tubi:** bump target to 10.28.5000 ([0050cc8](https://github.com/ajstrick81/morphe-androidtv-patches/commit/0050cc8f4ff2b27da668abb315ff0fe2e897cd75))\n\n## [1.12.3](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.12.2...v1.12.3) (2026-07-18)\n\n\n### Bug Fixes\n\n* **hbomax:** support 7.7.0.78 and derive Patch 2 register dynamically ([d35a8b0](https://github.com/ajstrick81/morphe-androidtv-patches/commit/d35a8b043e1a2dacd69b17de7640ebc9a339b694))\n\n## [1.12.2](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.12.1...v1.12.2) (2026-07-16)\n\n\n### Bug Fixes\n\n* **dns:** leave the zoar/hercule weblab blocks off pending proof ([21bb23c](https://github.com/ajstrick81/morphe-androidtv-patches/commit/21bb23c149968b2e6ba233a33fcabf2b178704fd)), closes [#58](https://github.com/ajstrick81/morphe-androidtv-patches/issues/58)\n* **dns:** stop blocking aiv-delivery.net — it breaks playback ([#58](https://github.com/ajstrick81/morphe-androidtv-patches/issues/58)) ([6a8217c](https://github.com/ajstrick81/morphe-androidtv-patches/commit/6a8217c1ba874393abfc71c80a80dd70a371d7bf))\n\n## [1.12.1](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.12.0...v1.12.1) (2026-07-15)\n\n\n### Bug Fixes\n\n* **dns:** correct malformed modifier separators and add a rule linter ([ad3c4fd](https://github.com/ajstrick81/morphe-androidtv-patches/commit/ad3c4fd9635ff3ab1e6618b6624ec35691b35ff7))\n\n# [1.12.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.11.0...v1.12.0) (2026-07-12)\n\n\n### Features\n\n* **disney:** cover new DMP SGAI/SSAI VOD ad insertion pipeline ([57d0b76](https://github.com/ajstrick81/morphe-androidtv-patches/commit/57d0b76f07c498087843a39247a758cc44cf532a))\n\n# [1.11.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.10.0...v1.11.0) (2026-07-12)\n\n\n### Features\n\n* **vix:** support 4.47.2_tv; re-anchor Innovid fingerprint on string ([#54](https://github.com/ajstrick81/morphe-androidtv-patches/issues/54)) ([37e3ec6](https://github.com/ajstrick81/morphe-androidtv-patches/commit/37e3ec6659a39befbd54cee9bf01bdb687f07c6c))\n\n# [1.10.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.9.0...v1.10.0) (2026-07-04)\n\n\n### Features\n\n* **peacock:** DAI-swap ad suppression + Clone and Disable auto-updates ([2969316](https://github.com/ajstrick81/morphe-androidtv-patches/commit/296931651c3d50c49e88190286d087a23e2a5f32))\n* **pluto:** add Clone and Disable auto-updates patches ([4358314](https://github.com/ajstrick81/morphe-androidtv-patches/commit/4358314cab49bd34a84fa17517f3394a49ea79d3))\n\n# [1.9.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.8.0...v1.9.0) (2026-07-03)\n\n\n### Features\n\n* **pluto:** add certificate-pinning override for HTTPS inspection ([723ceeb](https://github.com/ajstrick81/morphe-androidtv-patches/commit/723ceebb3ee0987efb0991478b902b467bcd2076))\n* **pluto:** strip ad-break timeline to remove VOD ads ([16cc76b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/16cc76b67468d692ef0c4c1f7b5789d8cc79883b))\n* **pluto:** verify ad hooks against dex, add clickable-ads suppression ([575612f](https://github.com/ajstrick81/morphe-androidtv-patches/commit/575612f34caf006a040df1e200b02f03f31184c3))\n\n# [1.8.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.7.0...v1.8.0) (2026-07-02)\n\n\n### Bug Fixes\n\n* **primevideo:** block additional Volley ad hosts ([b47e706](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b47e706d8597ba36ad66a2385a2e1ec07a123472))\n\n\n### Features\n\n* **primevideo:** add Clone Prime Video side-by-side install patch ([0ebea56](https://github.com/ajstrick81/morphe-androidtv-patches/commit/0ebea56de302d986a3e559a224c7e5e5affdab3b))\n\n# [1.7.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.6.0...v1.7.0) (2026-06-27)\n\n\n### Bug Fixes\n\n* **dns:** match akamaized.net safe-harbor host by concatenated prefix ([b883df7](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b883df7853da554f75e0a184bafdb08988ddf709))\n\n\n### Features\n\n* **primevideo:** remove GMB send diagnostic patch, add DNS rules from live testing ([48b744b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/48b744bb136a49ecdaa8c7d3a5ed11e618e73d60))\n\n# [1.6.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.7...v1.6.0) (2026-06-26)\n\n\n### Bug Fixes\n\n* **vix:** retarget Innovid hook to mount method, drop broken FreeWheel hook ([33cefba](https://github.com/ajstrick81/morphe-androidtv-patches/commit/33cefba404703be7f7da0cf02c25e8f3aab63206))\n\n\n### Features\n\n* add GMB send-direction diagnostic patch (debug-only) ([b0552cb](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b0552cb7f84a74b455bef5473b781328164c5fae))\n* **primevideo dns:** v4.2 — add hercule trigger after live-session validation ([82c94cd](https://github.com/ajstrick81/morphe-androidtv-patches/commit/82c94cd445750966a73aad2e8d3e2efe1a8898c1))\n* **primevideo dns:** v4.3 — optional general-tracker section (triaged) ([4182df0](https://github.com/ajstrick81/morphe-androidtv-patches/commit/4182df0c6594e966a596f49516b99a17c6b037e1))\n* **primevideo:** add evidence-graded DNS ad-suppression list (dual-layer) ([c55bb0e](https://github.com/ajstrick81/morphe-androidtv-patches/commit/c55bb0e1e10ee82529a5b5102987c24b02f0582d))\n* **primevideo:** block getVideoAds path on dual-use playback host ([940b91a](https://github.com/ajstrick81/morphe-androidtv-patches/commit/940b91aff4a56a347e44eaf498d7351dfb8f3cdd))\n* **primevideo:** expand Volley ad-host block list from v3.6 session diff ([6f05cb5](https://github.com/ajstrick81/morphe-androidtv-patches/commit/6f05cb5a9922a24f9f50759083287ee571895f9e))\n* **vix:** add \"Override certificate pinning\" companion patch ([1fcdccf](https://github.com/ajstrick81/morphe-androidtv-patches/commit/1fcdccf651d01cc1ee9e3ba2ddf45154b796fc1a))\n* **vix:** block LuraPlayer linear (client-side VAST) ad-break scheduler ([1360354](https://github.com/ajstrick81/morphe-androidtv-patches/commit/1360354a9275a2fbcd1d363114876c5e9bef6c04))\n\n## [1.5.7](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.6...v1.5.7) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** remove blocking Thread.sleep() from ad-block interceptors ([f0d441d](https://github.com/ajstrick81/morphe-androidtv-patches/commit/f0d441de63adb39c33afc78ab1e28a7cbca1b5de))\n* **peacock:** rewrite wrapClient() to use named class, not anonymous ([188b354](https://github.com/ajstrick81/morphe-androidtv-patches/commit/188b354c6551e5a3b958f526b84735ed5926001f))\n* **peacock:** roll back to stable Layers 1-8 + fixed Layer 7 baseline for main ([c54992e](https://github.com/ajstrick81/morphe-androidtv-patches/commit/c54992e342e8e2bf51f5cd95454cd7219e0aaa2c))\n\n## [1.5.6](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.5...v1.5.6) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** fix Layer 7 VerifyError launch crash + re-add Layers 9-11 ([#32](https://github.com/ajstrick81/morphe-androidtv-patches/issues/32)) ([c5257dd](https://github.com/ajstrick81/morphe-androidtv-patches/commit/c5257dde17b6ae5b9d5fa6e9025d14788abe5337))",
       "fullChangelogUrl": "https://github.com/ajstrick81/morphe-androidtv-patches/blob/main/CHANGELOG.md",
       "repoDescription": "Patches for Android TV apks",
       "avatarUrl": "https://avatars.githubusercontent.com/u/229211337?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=ajstrick81/morphe-androidtv-patches",
-      "patchCount": 20,
+      "patchCount": 22,
       "targetApps": [
+        "com.amazon.amazonvideo.livingroom",
         "com.peacocktv.peacockandroid",
         "tv.pluto.android",
-        "com.amazon.amazonvideo.livingroom",
         "com.disney.disneyplus",
         "com.wbd.hbomax",
         "com.bamnetworks.mobile.android.gameday.atbat",
@@ -7942,12 +7958,12 @@
         "tv.pluto.android": 1783123200000
       },
       "stars": 91,
-      "updatedAt": 1784678400000,
+      "updatedAt": 1785110400000,
       "firstSeen": 1779696344214,
       "appFirstSeen": {
+        "com.amazon.amazonvideo.livingroom": 1779836713643,
         "com.peacocktv.peacockandroid": 1780062995885,
         "tv.pluto.android": 1783087807450,
-        "com.amazon.amazonvideo.livingroom": 1779836713643,
         "com.disney.disneyplus": 1779696344214,
         "com.wbd.hbomax": 1779696344214,
         "com.bamnetworks.mobile.android.gameday.atbat": 1781583945043,
@@ -7956,7 +7972,7 @@
         "com.fox.foxone": 1780293505455,
         "com.tubitv": 1780009881312
       },
-      "starsGained7d": 6,
+      "starsGained7d": 3,
       "starsGained40d": 6
     },
     {
@@ -8162,7 +8178,7 @@
       "appFirstSeen": {
         "com.zhiliaoapp.musically": 1780156086693
       },
-      "starsGained7d": 30,
+      "starsGained7d": 20,
       "starsGained40d": 34
     },
     {
@@ -8674,7 +8690,7 @@
         "com.thehungrywasp.iamsober": 1782336283293,
         "net.uniquegem.directchat": 1783168495852
       },
-      "starsGained7d": 4,
+      "starsGained7d": 1,
       "starsGained40d": 6
     },
     {
@@ -9602,7 +9618,7 @@
         "com.google.android.apps.magazines": 1775088000000,
         "com.zhiliaoapp.musically": 1775088000000
       },
-      "stars": 1044,
+      "stars": 1045,
       "updatedAt": 1778630400000,
       "firstSeen": 1772385009000,
       "appFirstSeen": {
@@ -9640,8 +9656,8 @@
         "com.disney.disneyplus": 1773594609000,
         "ginlemon.iconpackstudio": 1773594609000
       },
-      "starsGained7d": 25,
-      "starsGained40d": 27
+      "starsGained7d": 11,
+      "starsGained40d": 28
     },
     {
       "source": "github",
@@ -10125,7 +10141,7 @@
         "com.mixapplications.ventoy_app": 1783953500646,
         "io.github.sds100.keymapper": 1784342313600
       },
-      "starsGained7d": 5,
+      "starsGained7d": 3,
       "starsGained40d": 7
     },
     {
@@ -10353,7 +10369,7 @@
         "com.ufovpn.connect.velnet": 1781596395094,
         "com.vpn.free.hotspot.secure.vpnify": 1781425538311
       },
-      "starsGained7d": 1,
+      "starsGained7d": 0,
       "starsGained40d": 1
     },
     {
@@ -10590,7 +10606,7 @@
         "com.quvideo.wisemeal": 1781428940889,
         "com.yazio.android": 1781351420963
       },
-      "starsGained7d": 1,
+      "starsGained7d": 0,
       "starsGained40d": 1
     },
     {
@@ -10732,7 +10748,7 @@
         "com.sysops.thenx": 1783598694226,
         "video.player.videoplayer": 1783542931373
       },
-      "starsGained7d": 2,
+      "starsGained7d": 1,
       "starsGained40d": 2
     },
     {
@@ -10885,7 +10901,7 @@
         "com.harwin.prismatica": 1783403226287,
         "com.bytecaretech.merokarobar": 1783403226287
       },
-      "starsGained7d": 2,
+      "starsGained7d": 1,
       "starsGained40d": 2
     },
     {
@@ -11007,7 +11023,7 @@
         "com.brave.browser": 1784332800000,
         "com.medium.reader": 1783209600000
       },
-      "stars": 77,
+      "stars": 78,
       "updatedAt": 1784332800000,
       "firstSeen": 1783348412813,
       "appFirstSeen": {
@@ -11019,8 +11035,8 @@
         "com.Splitwise.SplitwiseMobile": 1783348412813,
         "com.overdevs.at4k": 1783348412813
       },
-      "starsGained7d": 13,
-      "starsGained40d": 18
+      "starsGained7d": 11,
+      "starsGained40d": 19
     },
     {
       "source": "github",
@@ -11707,12 +11723,12 @@
       "patchCount": 4,
       "targetApps": [],
       "appUpdates": {},
-      "stars": 211,
+      "stars": 212,
       "updatedAt": 1784678400000,
       "firstSeen": 1783021319050,
       "appFirstSeen": {},
-      "starsGained7d": 23,
-      "starsGained40d": 26
+      "starsGained7d": 4,
+      "starsGained40d": 27
     },
     {
       "source": "github",
@@ -11834,7 +11850,7 @@
         "app.symfonik.music.player": 1776003728000,
         "org.withouthat.acalendar": 1776003728000
       },
-      "starsGained7d": 4,
+      "starsGained7d": 1,
       "starsGained40d": 4
     },
     {
@@ -12183,7 +12199,7 @@
         "jpark.AOS5": 1784128715801,
         "diozz.cubex": 1784128715801
       },
-      "starsGained7d": 4,
+      "starsGained7d": 1,
       "starsGained40d": 4
     },
     {
@@ -12506,7 +12522,7 @@
         "com.michaldrabik.showly2": 1784353679503,
         "ch.protonmail.android": 1784485537608
       },
-      "starsGained7d": 6,
+      "starsGained7d": 5,
       "starsGained40d": 6
     },
     {
@@ -12959,7 +12975,7 @@
       "appFirstSeen": {
         "com.google.android.inputmethod.latin": 1775543003000
       },
-      "starsGained7d": 16,
+      "starsGained7d": 10,
       "starsGained40d": 16
     },
     {
@@ -13086,7 +13102,7 @@
       "appFirstSeen": {
         "com.microsoft.emmx": 1780738576635
       },
-      "starsGained7d": 4,
+      "starsGained7d": 1,
       "starsGained40d": 4
     },
     {
@@ -13206,14 +13222,14 @@
         "com.pinterest"
       ],
       "appUpdates": {},
-      "stars": 13,
+      "stars": 14,
       "updatedAt": 1784073600000,
       "firstSeen": 1784136283489,
       "appFirstSeen": {
         "com.pinterest": 1784136283489
       },
       "starsGained7d": 2,
-      "starsGained40d": 4
+      "starsGained40d": 5
     },
     {
       "source": "github",
@@ -13400,7 +13416,7 @@
       "appFirstSeen": {
         "com.twitter.android": 1781596395094
       },
-      "starsGained7d": 1,
+      "starsGained7d": 0,
       "starsGained40d": 1
     },
     {
@@ -13653,7 +13669,7 @@
       "appFirstSeen": {
         "com.letterboxd.letterboxd": 1784100903208
       },
-      "starsGained7d": 3,
+      "starsGained7d": 1,
       "starsGained40d": 3
     },
     {
@@ -13946,7 +13962,7 @@
         "com.zong.customercare": 1784064356850,
         "cz.mroczis.netmonster": 1784064356850
       },
-      "starsGained7d": 2,
+      "starsGained7d": 0,
       "starsGained40d": 1
     },
     {
@@ -14422,7 +14438,7 @@
       "appFirstSeen": {
         "tv.trakt.trakt": 1774254496000
       },
-      "starsGained7d": 2,
+      "starsGained7d": 1,
       "starsGained40d": 2
     },
     {
@@ -14641,7 +14657,7 @@
         "ru.oneme.app"
       ],
       "appUpdates": {},
-      "stars": 24,
+      "stars": 23,
       "updatedAt": 1775433600000,
       "firstSeen": 1774798841000,
       "appFirstSeen": {
@@ -14800,7 +14816,7 @@
       "appFirstSeen": {
         "com.thetransitapp.droid": 1767603990000
       },
-      "starsGained7d": 2,
+      "starsGained7d": 1,
       "starsGained40d": 2
     },
     {
@@ -16093,7 +16109,7 @@
       "updatedAt": 1784246400000,
       "firstSeen": 1784191866679,
       "appFirstSeen": {},
-      "starsGained7d": 1,
+      "starsGained7d": 0,
       "starsGained40d": 2
     }
   ],
@@ -17773,6 +17789,12 @@
       "description": "Connect with your favorite streamer live!",
       "firstSeen": 1781342043327
     },
+    "com.amazon.amazonvideo.livingroom": {
+      "name": "Prime Video (Android TV)",
+      "iconUrl": "https://play-lh.googleusercontent.com/qyXqjzPggunbifX0ODhCehdy4ei0F90u0N3f4pPk8NhgCZD75dH8bdQYPROGRVlTVOs8B8JAT58X6ImMZv5ugHg",
+      "description": "Watch movies, TV shows, live programming and sports on Prime Video",
+      "firstSeen": 1779836713643
+    },
     "com.peacocktv.peacockandroid": {
       "name": "Peacock TV",
       "iconUrl": "https://play-lh.googleusercontent.com/FdlQY6tEE0p3FsJT9EbxB0BzKdXB1U84nNzAUl_YCC9HxRO1J82i8-XWuN_BD1zReblXht3-cvUreuogHrPk-A",
@@ -17784,12 +17806,6 @@
       "iconUrl": "https://play-lh.googleusercontent.com/O6MtMEvYNmr-I_cntqWT2Lq8L5Y5bG01V5udGLT8-8LcpNzeeOCDjgaX-mQEushfwrLjT74nVJMlmSgeIxtP",
       "description": "Watch free movies, shows &amp; sports on the best entertainment streaming app",
       "firstSeen": 1783087807450
-    },
-    "com.amazon.amazonvideo.livingroom": {
-      "name": "Prime Video (Android TV)",
-      "iconUrl": "https://play-lh.googleusercontent.com/qyXqjzPggunbifX0ODhCehdy4ei0F90u0N3f4pPk8NhgCZD75dH8bdQYPROGRVlTVOs8B8JAT58X6ImMZv5ugHg",
-      "description": "Watch movies, TV shows, live programming and sports on Prime Video",
-      "firstSeen": 1779836713643
     },
     "com.disney.disneyplus": {
       "name": "Disney+",
@@ -24340,6 +24356,25 @@
       }
     ],
     {
+      "com.amazon.amazonvideo.livingroom": [
+        "6.23.23+v15.5.0.70-armv7a"
+      ]
+    },
+    [
+      {
+        "name": "Prime Video Android TV",
+        "packageName": "com.amazon.amazonvideo.livingroom",
+        "description": null,
+        "appIconColor": 1539022,
+        "targets": [
+          {
+            "version": "6.23.23+v15.5.0.70-armv7a",
+            "experimental": false
+          }
+        ]
+      }
+    ],
+    {
       "com.peacocktv.peacockandroid": [
         "7.5.102",
         "7.6.100"
@@ -24377,25 +24412,6 @@
         "targets": [
           {
             "version": "5.66.0-leanback",
-            "experimental": false
-          }
-        ]
-      }
-    ],
-    {
-      "com.amazon.amazonvideo.livingroom": [
-        "6.23.23+v15.5.0.70-armv7a"
-      ]
-    },
-    [
-      {
-        "name": "Prime Video Android TV",
-        "packageName": "com.amazon.amazonvideo.livingroom",
-        "description": null,
-        "appIconColor": 1539022,
-        "targets": [
-          {
-            "version": "6.23.23+v15.5.0.70-armv7a",
             "experimental": false
           }
         ]

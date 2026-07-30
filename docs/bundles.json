@@ -13075,7 +13075,7 @@
       "stars": 207,
       "starsGained7d": 14,
       "starsGained40d": 23,
-      "updatedAt": 1785370014000,
+      "updatedAt": 1785377687000,
       "firstSeen": 1782996119000,
       "appFirstSeen": {
         "universal": 1785178161626
@@ -13088,6 +13088,67 @@
         {
           "name": "Disable Root Checks",
           "default": false
+        },
+        {
+          "name": "Disable Telemetry",
+          "default": false,
+          "options": [
+            {
+              "key": "blockFirebase",
+              "title": "Block Firebase Analytics",
+              "description": "Blocks Firebase Analytics and Crashlytics."
+            },
+            {
+              "key": "blockAppsFlyer",
+              "title": "Block AppsFlyer",
+              "description": "Blocks AppsFlyer SDK."
+            },
+            {
+              "key": "blockAdjust",
+              "title": "Block Adjust",
+              "description": "Blocks Adjust SDK."
+            },
+            {
+              "key": "blockAmplitude",
+              "title": "Block Amplitude",
+              "description": "Blocks Amplitude."
+            },
+            {
+              "key": "blockMixpanel",
+              "title": "Block Mixpanel",
+              "description": "Blocks Mixpanel."
+            },
+            {
+              "key": "blockCleverTap",
+              "title": "Block CleverTap",
+              "description": "Blocks CleverTap."
+            },
+            {
+              "key": "blockSegment",
+              "title": "Block Segment",
+              "description": "Blocks Segment."
+            },
+            {
+              "key": "blockFacebook",
+              "title": "Block Facebook Analytics",
+              "description": "Blocks Facebook Analytics."
+            },
+            {
+              "key": "blockBranch",
+              "title": "Block Branch.io",
+              "description": "Blocks Branch.io."
+            },
+            {
+              "key": "blockUnity",
+              "title": "Block Unity Analytics",
+              "description": "Blocks Unity Analytics."
+            },
+            {
+              "key": "blockFlurry",
+              "title": "Block Flurry",
+              "description": "Blocks Flurry."
+            }
+          ]
         },
         {
           "name": "Disable Update Checks",
@@ -13137,6 +13198,10 @@
         },
         {
           "name": "Spoof Play Store Install Source",
+          "default": false
+        },
+        {
+          "name": "Unlock RevenueCat Entitlements",
           "default": false
         }
       ]

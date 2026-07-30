@@ -987,15 +987,15 @@
         "com.instagram.android": 1785110400000,
         "com.twitter.android": 1785024000000
       },
-      "stars": 4484,
+      "stars": 4487,
       "updatedAt": 1784851200000,
       "firstSeen": 1773154796000,
       "appFirstSeen": {
         "com.twitter.android": 1773154796000,
         "com.instagram.android": 1773154796000
       },
-      "starsGained7d": 73,
-      "starsGained40d": 112
+      "starsGained7d": 76,
+      "starsGained40d": 115
     },
     {
       "source": "github",
@@ -1704,7 +1704,7 @@
         "ginlemon.flowerfree": 1770076800000,
         "com.simyasolutions.ling.universal": 1784678400000
       },
-      "stars": 884,
+      "stars": 883,
       "updatedAt": 1784073600000,
       "firstSeen": 1768941201000,
       "appFirstSeen": {
@@ -1762,8 +1762,8 @@
         "cn.ommiao.iconpacker": 1768941201000,
         "com.simyasolutions.ling.universal": 1784769617321
       },
-      "starsGained7d": 25,
-      "starsGained40d": 42
+      "starsGained7d": 24,
+      "starsGained40d": 41
     },
     {
       "source": "github",
@@ -4609,7 +4609,7 @@
         "com.nytimes.crossword"
       ],
       "appUpdates": {},
-      "stars": 258,
+      "stars": 259,
       "updatedAt": 1784764800000,
       "firstSeen": 1780395687718,
       "appFirstSeen": {
@@ -4802,8 +4802,8 @@
         "com.urbandroid.kinestop": 1783291168540,
         "com.nytimes.crossword": 1783875617302
       },
-      "starsGained7d": 32,
-      "starsGained40d": 66
+      "starsGained7d": 33,
+      "starsGained40d": 67
     },
     {
       "source": "gitlab",
@@ -6136,7 +6136,7 @@
         "me.edgan.redditslide"
       ],
       "appUpdates": {},
-      "stars": 735,
+      "stars": 734,
       "updatedAt": 1775520000000,
       "firstSeen": 1767402720000,
       "appFirstSeen": {
@@ -6151,8 +6151,8 @@
         "org.cygnusx1.continuum": 1767402720000,
         "me.edgan.redditslide": 1767402720000
       },
-      "starsGained7d": 10,
-      "starsGained40d": 20
+      "starsGained7d": 9,
+      "starsGained40d": 19
     },
     {
       "source": "github",
@@ -8172,14 +8172,14 @@
       "appUpdates": {
         "com.zhiliaoapp.musically": 1785196800000
       },
-      "stars": 177,
+      "stars": 178,
       "updatedAt": 1785196800000,
       "firstSeen": 1780156086693,
       "appFirstSeen": {
         "com.zhiliaoapp.musically": 1780156086693
       },
-      "starsGained7d": 28,
-      "starsGained40d": 42
+      "starsGained7d": 29,
+      "starsGained40d": 43
     },
     {
       "source": "github",
@@ -9618,7 +9618,7 @@
         "com.google.android.apps.magazines": 1775088000000,
         "com.zhiliaoapp.musically": 1775088000000
       },
-      "stars": 1048,
+      "stars": 1047,
       "updatedAt": 1778630400000,
       "firstSeen": 1772385009000,
       "appFirstSeen": {
@@ -9656,8 +9656,8 @@
         "com.disney.disneyplus": 1773594609000,
         "ginlemon.iconpackstudio": 1773594609000
       },
-      "starsGained7d": 14,
-      "starsGained40d": 31
+      "starsGained7d": 13,
+      "starsGained40d": 30
     },
     {
       "source": "github",
@@ -11646,20 +11646,6 @@
           "options": []
         },
         {
-          "name": "Disable Root Checks",
-          "description": null,
-          "default": false,
-          "compatiblePackages": null,
-          "options": []
-        },
-        {
-          "name": "Disable Update Checks",
-          "description": null,
-          "default": false,
-          "compatiblePackages": null,
-          "options": []
-        },
-        {
           "name": "No Ads",
           "description": null,
           "default": false,
@@ -11713,6 +11699,141 @@
           ]
         },
         {
+          "name": "Spoof Play Store Install Source",
+          "description": null,
+          "default": false,
+          "compatiblePackages": null,
+          "options": []
+        },
+        {
+          "name": "Unlock RevenueCat Entitlements",
+          "description": null,
+          "default": false,
+          "compatiblePackages": null,
+          "options": []
+        },
+        {
+          "name": "Disable Telemetry",
+          "description": null,
+          "default": false,
+          "compatiblePackages": null,
+          "options": [
+            {
+              "key": "blockFirebase",
+              "title": "Block Firebase Analytics",
+              "description": "Blocks Firebase Analytics and Crashlytics.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "blockAppsFlyer",
+              "title": "Block AppsFlyer",
+              "description": "Blocks AppsFlyer SDK.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "blockAdjust",
+              "title": "Block Adjust",
+              "description": "Blocks Adjust SDK.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "blockAmplitude",
+              "title": "Block Amplitude",
+              "description": "Blocks Amplitude.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "blockMixpanel",
+              "title": "Block Mixpanel",
+              "description": "Blocks Mixpanel.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "blockCleverTap",
+              "title": "Block CleverTap",
+              "description": "Blocks CleverTap.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "blockSegment",
+              "title": "Block Segment",
+              "description": "Blocks Segment.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "blockFacebook",
+              "title": "Block Facebook Analytics",
+              "description": "Blocks Facebook Analytics.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "blockBranch",
+              "title": "Block Branch.io",
+              "description": "Blocks Branch.io.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "blockUnity",
+              "title": "Block Unity Analytics",
+              "description": "Blocks Unity Analytics.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "blockFlurry",
+              "title": "Block Flurry",
+              "description": "Blocks Flurry.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            }
+          ]
+        },
+        {
+          "name": "Disable Root Checks",
+          "description": null,
+          "default": false,
+          "compatiblePackages": null,
+          "options": []
+        },
+        {
+          "name": "Disable Update Checks",
+          "description": null,
+          "default": false,
+          "compatiblePackages": null,
+          "options": []
+        },
+        {
           "name": "Pairip Application Redirect",
           "description": null,
           "default": false,
@@ -11728,22 +11849,15 @@
               "values": null
             }
           ]
-        },
-        {
-          "name": "Spoof Play Store Install Source",
-          "description": null,
-          "default": false,
-          "compatiblePackages": null,
-          "options": []
         }
       ],
-      "changelog": "## [1.14.0](https://github.com/Nai64/Nai64Patches/compare/1.13.1...1.14.0) (2026-07-30)\n\n### Bug Fixes\n\n* add missing import in DisableUpdateCheckPatch ([e54c186](https://github.com/Nai64/Nai64Patches/commit/e54c1864cbc88e63fdefe3ea68b6fadf714eb69a))\n\n### New Features\n\n* add Disable Update Checks patch ([0d3ffe6](https://github.com/Nai64/Nai64Patches/commit/0d3ffe661874f4350026d41474fb0d4263e02376))\n\n## [1.13.1](https://github.com/Nai64/Nai64Patches/compare/1.13.0...1.13.1) (2026-07-22)\n\n### Bug Fixes\n\n* remove patch descriptions ([275a761](https://github.com/Nai64/Nai64Patches/commit/275a7612cdd352eece2fe02a3a9401c570f738f0))\n\n## [1.13.0](https://github.com/Nai64/Nai64Patches/compare/1.12.2...1.13.0) (2026-07-05)\n\n### New Features\n\n* **NoAds:** add per-ad-type toggles (interstitial, banner, app open, MREC, rewarded) ([95264f7](https://github.com/Nai64/Nai64Patches/commit/95264f7bcedcb27833709df5984cd90487c759a6))\n\n## [1.12.2](https://github.com/Nai64/Nai64Patches/compare/1.12.1...1.12.2) (2026-07-05)\n\n### Bug Fixes\n\n* **PairipRedirect:** discover DEX from manifest parent dir instead of get() ([934d6c6](https://github.com/Nai64/Nai64Patches/commit/934d6c60ba56f015dd51e373b81698b227e1a413))\n\n## [1.12.1](https://github.com/Nai64/Nai64Patches/compare/1.12.0...1.12.1) (2026-07-05)\n\n### Bug Fixes\n\n* **PairipRedirect:** close Document with use block to prevent concurrent read crash ([d6e188b](https://github.com/Nai64/Nai64Patches/commit/d6e188bfd91750b7f746ba1595ab7a08c13be1ca))\n\n## [1.12.0](https://github.com/Nai64/Nai64Patches/compare/1.11.0...1.12.0) (2026-07-05)\n\n### Bug Fixes\n\n* **InstallSourceSpoof:** neuter Pairip Application entry point to prevent VM start ([639567d](https://github.com/Nai64/Nai64Patches/commit/639567de916c94635f44ba7821f95f9cc65ef6dd))\n\n### New Features\n\n* **InstallSourceSpoof:** add ResourcePatch to redirect Pairip Application in manifest ([baa171e](https://github.com/Nai64/Nai64Patches/commit/baa171ef6904bb6b41ef0a6de13f72bbf9988777))\n\n## [1.11.0](https://github.com/Nai64/Nai64Patches/compare/1.10.4...1.11.0) (2026-07-05)\n\n### Bug Fixes\n\n* **AdsFreeRewards:** clean up log messages ([70ba03b](https://github.com/Nai64/Nai64Patches/commit/70ba03b7dd4a7707b249c34d7f2b70026b1fa7ab))\n* **AdsFreeRewards:** clean up log messages ([938373e](https://github.com/Nai64/Nai64Patches/commit/938373edef33d5ab7588d9904aa864bab67570a5))\n\n### New Features\n\n* **AdsFreeRewards:** add detailed per-strategy SDK patching logs ([c90c57e](https://github.com/Nai64/Nai64Patches/commit/c90c57eb134ec11c8928938259c9f4a190e7016f))\n\n## [1.10.4](https://github.com/Nai64/Nai64Patches/compare/1.10.3...1.10.4) (2026-07-05)\n\n### Bug Fixes\n\n* **AdsFreeRewards:** let native MAX strategy fall through so LevelPlay/ironSource/Unity Ads patches also run ([b059e7e](https://github.com/Nai64/Nai64Patches/commit/b059e7e6a338e54cd6ace097b59f36fc68d45a32))\n\n## [1.10.3](https://github.com/Nai64/Nai64Patches/compare/1.10.2...1.10.3) (2026-07-05)\n\n### Bug Fixes\n\n* **AdsFreeRewards:** target final showAd overload instead of deprecated no-params ([23675d9](https://github.com/Nai64/Nai64Patches/commit/23675d95f98d5128441c0de3bf4f1576c2dfece9))\n\n## [1.10.2](https://github.com/Nai64/Nai64Patches/compare/1.10.1...1.10.2) (2026-07-04)\n\n### Bug Fixes\n\n* **SpoofPlayStore:** add LicenseActivity.showPaywallAndCloseApp suppress ([069db73](https://github.com/Nai64/Nai64Patches/commit/069db73842bb44e2f307931adf6680c9a6cf64c5))\n* **SpoofPlayStore:** add LicenseActivity.showPaywallAndCloseApp suppress ([c264373](https://github.com/Nai64/Nai64Patches/commit/c2643732249a644ad225d662477efc80debdcfd2))\n\n## [1.10.1](https://github.com/Nai64/Nai64Patches/compare/1.10.0...1.10.1) (2026-07-04)\n\n### Bug Fixes\n\n* **SpoofPlayStore:** also suppress Pairip LicenseClient paywall to block Play Store redirect ([956539e](https://github.com/Nai64/Nai64Patches/commit/956539e6143d39f142cae1c90311da56ab9ac839))\n\n## [1.10.0](https://github.com/Nai64/Nai64Patches/compare/1.9.3...1.10.0) (2026-07-04)\n\n### New Features\n\n* **SpoofPlayStore:** suppress Pairip LicenseClient error dialog redirect to Play Store ([39301ae](https://github.com/Nai64/Nai64Patches/commit/39301ae10e33895a22b9b488a050ec3fe5c5a5fe))\n\n## [1.9.3](https://github.com/Nai64/Nai64Patches/compare/1.9.2...1.9.3) (2026-07-04)\n\n### Bug Fixes\n\n* **SpoofPlayStore:** apply generic fallback strategies even when Pairip is found ([9ed4ca5](https://github.com/Nai64/Nai64Patches/commit/9ed4ca5d57d71b471d5e84637862b02cf4d4ca27))\n\n## [1.9.2](https://github.com/Nai64/Nai64Patches/compare/1.9.1...1.9.2) (2026-07-04)\n\n### Bug Fixes\n\n* **SpoofPlayStore:** remove StartupLauncher.launch bypass that breaks Pairip VM init ([61874ba](https://github.com/Nai64/Nai64Patches/commit/61874ba3747b4f137dbd0f200ab4c474b5a25506))\n\n## [1.9.1](https://github.com/Nai64/Nai64Patches/compare/1.9.0...1.9.1) (2026-07-04)\n\n### Bug Fixes\n\n* **SpoofPlayStore:** tighten fallback installer check fingerprints to require PRIVATE access ([5ef4d55](https://github.com/Nai64/Nai64Patches/commit/5ef4d554aac5c382cd74d2cbcd5d86acb05828d2))",
+      "changelog": "## [1.15.0](https://github.com/Nai64/Nai64Patches/compare/1.14.0...1.15.0) (2026-07-30)\n\n### Bug Fixes\n\n* custom patch order in Morphe ([c8a3054](https://github.com/Nai64/Nai64Patches/commit/c8a3054329ad85593247a40b5341ab09d2474a14))\n\n### New Features\n\n* add Disable Telemetry universal patch ([e09bcac](https://github.com/Nai64/Nai64Patches/commit/e09bcacf74a1dc8def693b5892c2797dd9a7ea1c))\n* add onAdHidden safety net to Ads Free Rewards ([5bdc9df](https://github.com/Nai64/Nai64Patches/commit/5bdc9df995c9b4ef2a71a215289925aee661b33a))\n* add Unlock RevenueCat Entitlements universal patch ([1d32ddb](https://github.com/Nai64/Nai64Patches/commit/1d32ddbd5ee271d04b5d47d69378b14360430d57))\n* register Disable Telemetry patch in order + README ([8480439](https://github.com/Nai64/Nai64Patches/commit/84804395aba1fdbe5294073cf68f03a8b850f3c9))\n\n## [1.14.0](https://github.com/Nai64/Nai64Patches/compare/1.13.1...1.14.0) (2026-07-30)\n\n### Bug Fixes\n\n* add missing import in DisableUpdateCheckPatch ([e54c186](https://github.com/Nai64/Nai64Patches/commit/e54c1864cbc88e63fdefe3ea68b6fadf714eb69a))\n\n### New Features\n\n* add Disable Update Checks patch ([0d3ffe6](https://github.com/Nai64/Nai64Patches/commit/0d3ffe661874f4350026d41474fb0d4263e02376))\n\n## [1.13.1](https://github.com/Nai64/Nai64Patches/compare/1.13.0...1.13.1) (2026-07-22)\n\n### Bug Fixes\n\n* remove patch descriptions ([275a761](https://github.com/Nai64/Nai64Patches/commit/275a7612cdd352eece2fe02a3a9401c570f738f0))\n\n## [1.13.0](https://github.com/Nai64/Nai64Patches/compare/1.12.2...1.13.0) (2026-07-05)\n\n### New Features\n\n* **NoAds:** add per-ad-type toggles (interstitial, banner, app open, MREC, rewarded) ([95264f7](https://github.com/Nai64/Nai64Patches/commit/95264f7bcedcb27833709df5984cd90487c759a6))\n\n## [1.12.2](https://github.com/Nai64/Nai64Patches/compare/1.12.1...1.12.2) (2026-07-05)\n\n### Bug Fixes\n\n* **PairipRedirect:** discover DEX from manifest parent dir instead of get() ([934d6c6](https://github.com/Nai64/Nai64Patches/commit/934d6c60ba56f015dd51e373b81698b227e1a413))\n\n## [1.12.1](https://github.com/Nai64/Nai64Patches/compare/1.12.0...1.12.1) (2026-07-05)\n\n### Bug Fixes\n\n* **PairipRedirect:** close Document with use block to prevent concurrent read crash ([d6e188b](https://github.com/Nai64/Nai64Patches/commit/d6e188bfd91750b7f746ba1595ab7a08c13be1ca))\n\n## [1.12.0](https://github.com/Nai64/Nai64Patches/compare/1.11.0...1.12.0) (2026-07-05)\n\n### Bug Fixes\n\n* **InstallSourceSpoof:** neuter Pairip Application entry point to prevent VM start ([639567d](https://github.com/Nai64/Nai64Patches/commit/639567de916c94635f44ba7821f95f9cc65ef6dd))\n\n### New Features\n\n* **InstallSourceSpoof:** add ResourcePatch to redirect Pairip Application in manifest ([baa171e](https://github.com/Nai64/Nai64Patches/commit/baa171ef6904bb6b41ef0a6de13f72bbf9988777))\n\n## [1.11.0](https://github.com/Nai64/Nai64Patches/compare/1.10.4...1.11.0) (2026-07-05)\n\n### Bug Fixes\n\n* **AdsFreeRewards:** clean up log messages ([70ba03b](https://github.com/Nai64/Nai64Patches/commit/70ba03b7dd4a7707b249c34d7f2b70026b1fa7ab))\n* **AdsFreeRewards:** clean up log messages ([938373e](https://github.com/Nai64/Nai64Patches/commit/938373edef33d5ab7588d9904aa864bab67570a5))\n\n### New Features\n\n* **AdsFreeRewards:** add detailed per-strategy SDK patching logs ([c90c57e](https://github.com/Nai64/Nai64Patches/commit/c90c57eb134ec11c8928938259c9f4a190e7016f))\n\n## [1.10.4](https://github.com/Nai64/Nai64Patches/compare/1.10.3...1.10.4) (2026-07-05)\n\n### Bug Fixes\n\n* **AdsFreeRewards:** let native MAX strategy fall through so LevelPlay/ironSource/Unity Ads patches also run ([b059e7e](https://github.com/Nai64/Nai64Patches/commit/b059e7e6a338e54cd6ace097b59f36fc68d45a32))\n\n## [1.10.3](https://github.com/Nai64/Nai64Patches/compare/1.10.2...1.10.3) (2026-07-05)\n\n### Bug Fixes\n\n* **AdsFreeRewards:** target final showAd overload instead of deprecated no-params ([23675d9](https://github.com/Nai64/Nai64Patches/commit/23675d95f98d5128441c0de3bf4f1576c2dfece9))\n\n## [1.10.2](https://github.com/Nai64/Nai64Patches/compare/1.10.1...1.10.2) (2026-07-04)\n\n### Bug Fixes\n\n* **SpoofPlayStore:** add LicenseActivity.showPaywallAndCloseApp suppress ([069db73](https://github.com/Nai64/Nai64Patches/commit/069db73842bb44e2f307931adf6680c9a6cf64c5))\n* **SpoofPlayStore:** add LicenseActivity.showPaywallAndCloseApp suppress ([c264373](https://github.com/Nai64/Nai64Patches/commit/c2643732249a644ad225d662477efc80debdcfd2))\n\n## [1.10.1](https://github.com/Nai64/Nai64Patches/compare/1.10.0...1.10.1) (2026-07-04)\n\n### Bug Fixes\n\n* **SpoofPlayStore:** also suppress Pairip LicenseClient paywall to block Play Store redirect ([956539e](https://github.com/Nai64/Nai64Patches/commit/956539e6143d39f142cae1c90311da56ab9ac839))\n\n## [1.10.0](https://github.com/Nai64/Nai64Patches/compare/1.9.3...1.10.0) (2026-07-04)\n\n### New Features\n\n* **SpoofPlayStore:** suppress Pairip LicenseClient error dialog redirect to Play Store ([39301ae](https://github.com/Nai64/Nai64Patches/commit/39301ae10e33895a22b9b488a050ec3fe5c5a5fe))\n\n## [1.9.3](https://github.com/Nai64/Nai64Patches/compare/1.9.2...1.9.3) (2026-07-04)\n\n### Bug Fixes\n\n* **SpoofPlayStore:** apply generic fallback strategies even when Pairip is found ([9ed4ca5](https://github.com/Nai64/Nai64Patches/commit/9ed4ca5d57d71b471d5e84637862b02cf4d4ca27))\n\n## [1.9.2](https://github.com/Nai64/Nai64Patches/compare/1.9.1...1.9.2) (2026-07-04)\n\n### Bug Fixes\n\n* **SpoofPlayStore:** remove StartupLauncher.launch bypass that breaks Pairip VM init ([61874ba](https://github.com/Nai64/Nai64Patches/commit/61874ba3747b4f137dbd0f200ab4c474b5a25506))",
       "fullChangelogUrl": "https://github.com/Nai64/Nai64Patches/blob/main/CHANGELOG.md",
       "repoDescription": "Morphe patches: Ads Free Rewards, No Ads, Remove telemetry and more.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/122532548?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=Nai64/Nai64Patches",
-      "patchCount": 6,
+      "patchCount": 8,
       "targetApps": [],
       "appUpdates": {},
       "stars": 207,
@@ -12100,7 +12214,7 @@
         },
         {
           "name": "Bypass PairIP integrity check",
-          "description": "Bypasses Google Play's PairIP (Play Automatic Integrity Protection) by replacing Application.attachBaseContext to skip the APK signature check (SignatureCheck.verifyIntegrity) and the Google Play licensing check (LicenseClient.checkLicense). Without this patch, the app crashes on launch with SignatureTamperedException because the Morphe-signed APK has a different signing certificate than the original. The PairIP VM itself (libpairipcore.so) is NOT disabled — it provides the real implementations of onCreate/onDestroy via reflection, so disabling it would crash the app. This patch is REQUIRED for all other Cube Solver patches to function.",
+          "description": "Bypasses Google Play's PairIP by disabling the APK signature check and the Google Play licensing check. Without this patch, the app crashes on launch (signature mismatch) or redirects to the Play Store (license check failure). The license check has TWO entry points that must both be blocked: checkLicense (from attachBaseContext) and initializeLicenseCheck (from ContentProvider, which runs before attachBaseContext). REQUIRED for all other patches.",
           "default": true,
           "options": [],
           "compatiblePackagesKey": 526
@@ -12211,7 +12325,7 @@
           "compatiblePackagesKey": 532
         }
       ],
-      "changelog": "## [1.13.2](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.1...v1.13.2) (2026-07-30)\n\n### 🐛 Bug Fixes\n\n* **cubesolver:** improve PairIP bypass with single attachBaseContext hook ([cc19bbd](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cc19bbdf08045a76d530ed66d33038b5bbdc2575))\n* **cubesolver:** improve PairIP bypass with single attachBaseContext hook ([5ff103a](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/5ff103a90d09f3d0bc542f811be6f32865d13566))\n\n## [1.13.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.0...v1.13.1) (2026-07-30)\n\n### 🐛 Bug Fixes\n\n* **cubesolver:** add PairIP bypass patch (fixes app crash on patched APK) ([e0ff35c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/e0ff35c32bb6c5e9e47ad16c24f1460e17b851d7))\n* **cubesolver:** add PairIP bypass patch (fixes app crash on patched APK) ([f4d0fa3](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f4d0fa3b445ccb2d920914ce626d5b60ccd5948c))\n* **cubesolver:** add PairIP bypass patch (fixes app crash on patched APK) ([ddf136e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/ddf136eb52be8377f326e812daa14e0c3b27cff0))\n* **cubesolver:** add PairIP bypass patch (fixes app crash on patched APK) ([d80d792](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d80d79200736a8878856d96d59ed58a451f49772))\n\n## [1.13.0](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.4...v1.13.0) (2026-07-29)\n\n### ✨ New Features\n\n* **cubesolver:** add remove ads and unlock all designs patches for v5.0.3 ([bf35143](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/bf35143010fb72a408b25d5d09f701a1133280d4))\n* **cubesolver:** add remove ads and unlock all designs patches for v5.0.3 ([0d9f9a8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0d9f9a830de99c100a442f37de973949d423f8b2))\n* **cubesolver:** add remove ads and unlock all designs patches for v5.0.3 ([fd235bf](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fd235bf36aaee062ef1df578cd2acd545b1920ed))\n* **cubesolver:** add remove ads and unlock all designs patches for v5.0.3 ([f88932e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f88932eb49b877328580dc9e749eb477a57a06a0))\n\n## [1.12.4](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.3...v1.12.4) (2026-07-27)\n\n### 🐛 Bug Fixes\n\n* delete DisableSighInPromptPatch.kt ([b46f407](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/b46f407aeb1a397bd76556cf6811077f5bca32d5))\n\n## [1.12.3](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.2...v1.12.3) (2026-07-27)\n\n### 🐛 Bug Fixes\n\n* remove Zombie cathers ([1bca721](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/1bca72153fbddbc63952fd81b57e019bb0aa90e5))\n\n## [1.12.2](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.1...v1.12.2) (2026-07-21)\n\n### 🐛 Bug Fixes\n\n* **oddmar:** add missing DisplayLoginDialogIfNecessaryFingerprint to Fingerprints.kt ([66087e8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/66087e8c608833b4b5925c3105443336906eafb8))\n* **oddmar:** suppress Google Play Games popup only when already signed in (fixes [#4](https://github.com/MiguelNinja19/miguel-morphe-patches/issues/4)) ([f5da909](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f5da9092e6f3a633be985ae09c8858b3d9e2430e))\n\n## [1.12.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.0...v1.12.1) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([6b5ca91](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6b5ca91b79a457542acd4c4b92e31326694e79e3))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([7ccbb03](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/7ccbb03b550c541aad8f6e38a7c7b5d61b69769e))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([3b5b264](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/3b5b2649bae2f62d72acab50ed9d42d55dd79091))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([cdf8cf4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cdf8cf4de5cd3428b795dac6ac4d08a3c8182008))\n\n## [1.12.0](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.13...v1.12.0) (2026-07-18)\n\n### ✨ New Features\n\n* **oddmar:** add Unlock full game patch ([4d6965c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/4d6965cbfdb4a41ebde7047942e34a158d4c818c))\n* **oddmar:** add Unlock full game patch ([4b63f67](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/4b63f67928efd8e81f55e44952f9aabf9733fb2a))\n* **oddmar:** add Unlock full game patch ([34c1eb3](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/34c1eb3c9304b4868e458c6be01122bc4f0287a5))\n\n## [1.11.13](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.12...v1.11.13) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** remove StartupLauncher.launch() from ComponentFactory ([0c569b8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0c569b8b959fd6a8824bfbf41b1cf4c814b80aff))\n* **zombie-catchers:** remove StartupLauncher.launch() from ComponentFactory ([6f6cb98](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6f6cb9815c1f764a2694bc365840703e2d4f7dd2))\n* **zombie-catchers:** split into resourcePatch + bytecodePatch ([a634e8b](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a634e8bb9f5705368ae8a66b60f6208cf2bb7a42))\n\n## [1.11.12](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.11...v1.11.12) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** match working mod approach exactly ([0ff9f5a](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0ff9f5a79dfd1422371e260376318ccf8a4cc7ab))\n\n## [1.11.11](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.10...v1.11.11) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** use single resourcePatch for manifest + hex patch ([8f96861](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8f96861c505c14ac88be7bd1282d28fec4d9c113))\n\n## [1.11.10](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.9...v1.11.10) (2026-07-17)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** remove PairIP from manifest + hex patch .so ([bccab6e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/bccab6e6346eb197f9da05647f2447bc5b64cc5c))\n\n## [1.11.9](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.8...v1.11.9) (2026-07-17)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** integrate Nai64's 10 PairIP bypass strategies ([798b539](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/798b53929ee6ca529a915fa8ea414b3a737d8f68))\n* **zombie-catchers:** integrate Nai64's 10 PairIP bypass strategies ([6ec3dac](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6ec3dacc311a886203a37e4f51e9a3861d8b2399))\n\n## [1.11.8](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.7...v1.11.8) (2026-07-17)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** remove trailing zeros from hex patterns ([0216500](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0216500415d66c355f6a5342713d51f7d79882e3))\n\n## [1.11.7](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.6...v1.11.7) (2026-07-16)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** native hex patch on libcocos2dcpp.so ([c095781](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/c09578184e2f3a3507f1488b41706078180c5324))\n* **zombie-catchers:** use hb() helper to avoid Int vs Byte errors ([641ba27](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/641ba277ddba2c04caaba75045507b639cbcbe01))",
+      "changelog": "## [1.13.3](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.2...v1.13.3) (2026-07-30)\n\n### 🐛 Bug Fixes\n\n* **cubesolver:** fix compile error and add initializeLicenseCheck hook ([ed1d17d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/ed1d17d7fcc13c931d9eae71f86ede723be50754))\n* **cubesolver:** fix compile error and add initializeLicenseCheck hook ([683b18c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/683b18c34a15c2da43e050399f1dd4a272ab5821))\n* **cubesolver:** improve PairIP bypass ([f2f16f7](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f2f16f70e9610078f09d495f97679aaff246230c))\n* **cubesolver:** improve PairIP bypass ([66ae6f4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/66ae6f4394e72798eb92d54ff65dd85da49e591c))\n\n## [1.13.2](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.1...v1.13.2) (2026-07-30)\n\n### 🐛 Bug Fixes\n\n* **cubesolver:** improve PairIP bypass with single attachBaseContext hook ([cc19bbd](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cc19bbdf08045a76d530ed66d33038b5bbdc2575))\n* **cubesolver:** improve PairIP bypass with single attachBaseContext hook ([5ff103a](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/5ff103a90d09f3d0bc542f811be6f32865d13566))\n\n## [1.13.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.0...v1.13.1) (2026-07-30)\n\n### 🐛 Bug Fixes\n\n* **cubesolver:** add PairIP bypass patch (fixes app crash on patched APK) ([e0ff35c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/e0ff35c32bb6c5e9e47ad16c24f1460e17b851d7))\n* **cubesolver:** add PairIP bypass patch (fixes app crash on patched APK) ([f4d0fa3](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f4d0fa3b445ccb2d920914ce626d5b60ccd5948c))\n* **cubesolver:** add PairIP bypass patch (fixes app crash on patched APK) ([ddf136e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/ddf136eb52be8377f326e812daa14e0c3b27cff0))\n* **cubesolver:** add PairIP bypass patch (fixes app crash on patched APK) ([d80d792](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d80d79200736a8878856d96d59ed58a451f49772))\n\n## [1.13.0](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.4...v1.13.0) (2026-07-29)\n\n### ✨ New Features\n\n* **cubesolver:** add remove ads and unlock all designs patches for v5.0.3 ([bf35143](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/bf35143010fb72a408b25d5d09f701a1133280d4))\n* **cubesolver:** add remove ads and unlock all designs patches for v5.0.3 ([0d9f9a8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0d9f9a830de99c100a442f37de973949d423f8b2))\n* **cubesolver:** add remove ads and unlock all designs patches for v5.0.3 ([fd235bf](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fd235bf36aaee062ef1df578cd2acd545b1920ed))\n* **cubesolver:** add remove ads and unlock all designs patches for v5.0.3 ([f88932e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f88932eb49b877328580dc9e749eb477a57a06a0))\n\n## [1.12.4](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.3...v1.12.4) (2026-07-27)\n\n### 🐛 Bug Fixes\n\n* delete DisableSighInPromptPatch.kt ([b46f407](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/b46f407aeb1a397bd76556cf6811077f5bca32d5))\n\n## [1.12.3](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.2...v1.12.3) (2026-07-27)\n\n### 🐛 Bug Fixes\n\n* remove Zombie cathers ([1bca721](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/1bca72153fbddbc63952fd81b57e019bb0aa90e5))\n\n## [1.12.2](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.1...v1.12.2) (2026-07-21)\n\n### 🐛 Bug Fixes\n\n* **oddmar:** add missing DisplayLoginDialogIfNecessaryFingerprint to Fingerprints.kt ([66087e8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/66087e8c608833b4b5925c3105443336906eafb8))\n* **oddmar:** suppress Google Play Games popup only when already signed in (fixes [#4](https://github.com/MiguelNinja19/miguel-morphe-patches/issues/4)) ([f5da909](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f5da9092e6f3a633be985ae09c8858b3d9e2430e))\n\n## [1.12.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.0...v1.12.1) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([6b5ca91](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6b5ca91b79a457542acd4c4b92e31326694e79e3))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([7ccbb03](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/7ccbb03b550c541aad8f6e38a7c7b5d61b69769e))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([3b5b264](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/3b5b2649bae2f62d72acab50ed9d42d55dd79091))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([cdf8cf4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cdf8cf4de5cd3428b795dac6ac4d08a3c8182008))\n\n## [1.12.0](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.13...v1.12.0) (2026-07-18)\n\n### ✨ New Features\n\n* **oddmar:** add Unlock full game patch ([4d6965c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/4d6965cbfdb4a41ebde7047942e34a158d4c818c))\n* **oddmar:** add Unlock full game patch ([4b63f67](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/4b63f67928efd8e81f55e44952f9aabf9733fb2a))\n* **oddmar:** add Unlock full game patch ([34c1eb3](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/34c1eb3c9304b4868e458c6be01122bc4f0287a5))\n\n## [1.11.13](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.12...v1.11.13) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** remove StartupLauncher.launch() from ComponentFactory ([0c569b8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0c569b8b959fd6a8824bfbf41b1cf4c814b80aff))\n* **zombie-catchers:** remove StartupLauncher.launch() from ComponentFactory ([6f6cb98](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6f6cb9815c1f764a2694bc365840703e2d4f7dd2))\n* **zombie-catchers:** split into resourcePatch + bytecodePatch ([a634e8b](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a634e8bb9f5705368ae8a66b60f6208cf2bb7a42))\n\n## [1.11.12](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.11...v1.11.12) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** match working mod approach exactly ([0ff9f5a](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0ff9f5a79dfd1422371e260376318ccf8a4cc7ab))\n\n## [1.11.11](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.10...v1.11.11) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** use single resourcePatch for manifest + hex patch ([8f96861](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8f96861c505c14ac88be7bd1282d28fec4d9c113))\n\n## [1.11.10](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.9...v1.11.10) (2026-07-17)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** remove PairIP from manifest + hex patch .so ([bccab6e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/bccab6e6346eb197f9da05647f2447bc5b64cc5c))\n\n## [1.11.9](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.8...v1.11.9) (2026-07-17)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** integrate Nai64's 10 PairIP bypass strategies ([798b539](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/798b53929ee6ca529a915fa8ea414b3a737d8f68))\n* **zombie-catchers:** integrate Nai64's 10 PairIP bypass strategies ([6ec3dac](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6ec3dacc311a886203a37e4f51e9a3861d8b2399))\n\n## [1.11.8](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.7...v1.11.8) (2026-07-17)\n\n### 🐛 Bug Fixes\n\n* **zombie-catchers:** remove trailing zeros from hex patterns ([0216500](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0216500415d66c355f6a5342713d51f7d79882e3))",
       "fullChangelogUrl": "https://github.com/MiguelNinja19/miguel-morphe-patches/blob/main/CHANGELOG.md",
       "repoDescription": "🧩Patches for Morphe, made with AI",
       "avatarUrl": "https://avatars.githubusercontent.com/u/212266985?v=4&size=168",

@@ -1,5 +1,5 @@
 {
-    "version": "1.4.98",
+    "version": "1.4.103",
     "name": "Breal Morphe Patches",
     "patches": [
         {
@@ -1464,7 +1464,9 @@
             "name": "Spoof client",
             "description": "Restores functionality of the app by using custom client ID.",
             "default": true,
-            "dependencies": [],
+            "dependencies": [
+                "BytecodePatch"
+            ],
             "compatiblePackages": [
                 {
                     "packageName": "com.rubenmayayo.reddit",

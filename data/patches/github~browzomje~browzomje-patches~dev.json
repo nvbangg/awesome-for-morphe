@@ -1,5 +1,5 @@
 {
-    "version": "1.3.2",
+    "version": "1.4.0",
     "name": "browzomje Patches",
     "patches": [
         {
@@ -20,8 +20,8 @@
                             "isExperimental": false
                         },
                         {
-                            "version": "14.24.0",
-                            "isExperimental": true
+                            "version": "14.28.0",
+                            "isExperimental": false
                         }
                     ]
                 }
@@ -46,8 +46,60 @@
                             "isExperimental": false
                         },
                         {
-                            "version": "14.24.0",
-                            "isExperimental": true
+                            "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Disable email confirmation dialog",
+            "description": "Immediately closes the \"confirm your email\" modal (and similar ones: connect Google, etc.) if enabled in Morphe settings.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Download board",
+            "description": "Adds an option to the board's \"…\" menu to bulk download images and videos from already loaded pins. Streaming-only videos are reported and skipped.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.28.0",
+                            "isExperimental": false
                         }
                     ]
                 }
@@ -72,8 +124,193 @@
                             "isExperimental": false
                         },
                         {
-                            "version": "14.24.0",
-                            "isExperimental": true
+                            "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Hide Create nav button",
+            "description": "Hooks the '+' (create Pin) navigation bar button: hidden if enabled in Morphe settings.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Hide Notifications nav button",
+            "description": "Hooks the notifications button: hidden if enabled in Morphe settings.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Hide search history",
+            "description": "Hides the \"Recent searches\" section both on the search screen and in the carousel below the search bar. It does not prevent Pinterest from logging searches (server-side), but stops them from being shown anywhere in the app.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Hide Search nav button",
+            "description": "Hooks the search button: hidden if enabled in Morphe settings.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Morphe settings entry",
+            "description": "Adds the \"Morphe\" item to the Account Settings list to open the toggle screen.",
+            "default": true,
+            "dependencies": [
+                "Morphe settings screen (manifest)",
+                "Morphe settings screen (label)"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Morphe settings screen (label)",
+            "description": "Renames the reused string resource for the \"Morphe\" entry in Settings, across all languages.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Morphe settings screen (manifest)",
+            "description": "Registers the Morphe settings Activity in the manifest, with an intent-filter for the morphe:// scheme.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.pinterest",
+                    "name": "Pinterest",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E60023",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "14.23.0",
+                            "isExperimental": false
+                        },
+                        {
+                            "version": "14.28.0",
+                            "isExperimental": false
                         }
                     ]
                 }
@@ -98,8 +335,8 @@
                             "isExperimental": false
                         },
                         {
-                            "version": "14.24.0",
-                            "isExperimental": true
+                            "version": "14.28.0",
+                            "isExperimental": false
                         }
                     ]
                 }
@@ -126,8 +363,8 @@
                             "isExperimental": false
                         },
                         {
-                            "version": "14.24.0",
-                            "isExperimental": true
+                            "version": "14.28.0",
+                            "isExperimental": false
                         }
                     ]
                 }

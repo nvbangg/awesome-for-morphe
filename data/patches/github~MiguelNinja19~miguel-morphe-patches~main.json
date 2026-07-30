@@ -1,5 +1,5 @@
 {
-    "version": "1.13.2",
+    "version": "1.13.3",
     "name": "Miguel's Patches",
     "patches": [
         {
@@ -39,7 +39,7 @@
         },
         {
             "name": "Bypass PairIP integrity check",
-            "description": "Bypasses Google Play's PairIP (Play Automatic Integrity Protection) by replacing Application.attachBaseContext to skip the APK signature check (SignatureCheck.verifyIntegrity) and the Google Play licensing check (LicenseClient.checkLicense). Without this patch, the app crashes on launch with SignatureTamperedException because the Morphe-signed APK has a different signing certificate than the original. The PairIP VM itself (libpairipcore.so) is NOT disabled — it provides the real implementations of onCreate/onDestroy via reflection, so disabling it would crash the app. This patch is REQUIRED for all other Cube Solver patches to function.",
+            "description": "Bypasses Google Play's PairIP by disabling the APK signature check and the Google Play licensing check. Without this patch, the app crashes on launch (signature mismatch) or redirects to the Play Store (license check failure). The license check has TWO entry points that must both be blocked: checkLicense (from attachBaseContext) and initializeLicenseCheck (from ContentProvider, which runs before attachBaseContext). REQUIRED for all other patches.",
             "default": true,
             "dependencies": [],
             "compatiblePackages": [

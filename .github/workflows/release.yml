@@ -31,7 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/discover.py
-          python scripts/fetch.py
+          python scripts/fetch.py --image
           python scripts/parse.py
 
           pip install google-play-scraper

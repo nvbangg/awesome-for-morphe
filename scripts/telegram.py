@@ -1,40 +1,41 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-import sys
-import os
-import urllib.request
-import urllib.parse
-from pathlib import Path
 import datetime
-import re
 import html
+import os
+import re
+import sys
+import urllib.parse
+import urllib.request
+from pathlib import Path
 
 WHATS_NEW_PATH = Path("whats-new.md")
 
 
 def convert_to_html(text: str) -> str:
-    escaped = html.escape(text)
-    escaped = re.sub(r"~~(.*?)~~", r"<s>\1</s>", escaped)
-    escaped = re.sub(r"\*\*(.*?)\*\*", r"<b>\1</b>", escaped)
-    escaped = re.sub(r"\*(.*?)\*", r"<b>\1</b>", escaped)
-    escaped = re.sub(r"`(.*?)`", r"<code>\1</code>", escaped)
+    escaped_text = html.escape(text)
+    escaped_text = re.sub(r"~~(.*?)~~", r"<s>\1</s>", escaped_text)
+    escaped_text = re.sub(r"\*\*(.*?)\*\*", r"<b>\1</b>", escaped_text)
+    escaped_text = re.sub(r"\*(.*?)\*", r"<b>\1</b>", escaped_text)
+    escaped_text = re.sub(r"`(.*?)`", r"<code>\1</code>", escaped_text)
 
-    def replace_link(match):
-        link_text = match.group(1)
-        url = html.unescape(match.group(2))
-        url_quoted = urllib.parse.quote(url, safe=":/%#?=&@+$,-_.!~*'()")
-        return f'<a href="{url_quoted}">{link_text}</a>'
+    def replace_link(link_match: re.Match) -> str:
+        link_text = link_match.group(1)
+        url_string = html.unescape(link_match.group(2))
+        quoted_url = urllib.parse.quote(url_string, safe=":/%#?=&@+$,-_.!~*'()")
+        return f'<a href="{quoted_url}">{link_text}</a>'
 
     return re.sub(
         r"\[([^\]]+)\]\((https?://[^\s()]+(?:\([^\s()]+\)[^\s()]*)*)\)",
         replace_link,
-        escaped,
+        escaped_text,
     )
 
 
-def main():
-    now = datetime.datetime.now(datetime.timezone.utc)
-    title = sys.argv[1] if len(sys.argv) >= 2 else f"🔔 What's New ({now.strftime('%B')} {now.day})"
+def main() -> None:
+    current_time = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=12)
+    formatted_date = f"{current_time.strftime('%B')} {current_time.day}"
+    title = sys.argv[1] if len(sys.argv) >= 2 else f"🔔 What's New ({formatted_date})"
     filepath = Path(sys.argv[2]) if len(sys.argv) >= 3 else WHATS_NEW_PATH
 
     if not filepath.exists() or not (content := filepath.read_text(encoding="utf-8").strip()):
@@ -50,7 +51,7 @@ def main():
     if not token or not chat_id:
         raise SystemExit("Error: TG_TOKEN or TG_CHAT environment variables are not set.")
 
-    data = urllib.parse.urlencode(
+    request_data = urllib.parse.urlencode(
         {
             "chat_id": chat_id,
             "text": f"{formatted_title}\n\n{formatted_content}",
@@ -59,12 +60,12 @@ def main():
         }
     ).encode("utf-8")
 
-    req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
+    api_request = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=request_data, method="POST")
     try:
-        with urllib.request.urlopen(req):
+        with urllib.request.urlopen(api_request):
             print("Telegram notification sent successfully.")
-    except Exception as e:
-        raise SystemExit(f"Failed to send Telegram notification: {e}")
+    except Exception as error:
+        raise SystemExit(f"Failed to send Telegram notification: {error}")
 
 
 if __name__ == "__main__":

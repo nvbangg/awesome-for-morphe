@@ -1,7 +1,28 @@
 {
-    "version": "1.14.0",
+    "version": "1.15.0",
     "name": "ajstrick81 Patches",
     "patches": [
+        {
+            "name": "Bundle native ad-strip hook",
+            "description": "Packages libpvhook.so into the APK's native lib dir for the in-process PRS Remote-item strip (libignite memcpy/memmove GOT/PLT import hook).",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.amazon.amazonvideo.livingroom",
+                    "name": "Prime Video Android TV",
+                    "appIconColor": "#177BCE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.23.23+v15.5.0.70-armv7a",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
         {
             "name": "Clone Peacock",
             "description": "Installs the patched Peacock as a separate app alongside the stock one, instead of replacing it. Enable this when Peacock is a preinstalled system app that can't be uninstalled — most commonly on Amazon Fire TV, and on some Android TV boxes and Onn devices. The clone gets its own package (suffix .mod), so it shows up as a second Peacock icon and keeps its own login. Leave OFF if you were able to uninstall the original Peacock first (a normal in-place install is cleaner). Opt-in.",
@@ -191,6 +212,30 @@
                         },
                         {
                             "version": "7.2.0.41",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Load native ad-strip hook",
+            "description": "Loads libpvhook.so at startup to blank Remote (ad) items from the PRS intraTitlePlaylist in-process (libignite memcpy/memmove GOT/PLT import hook).",
+            "default": true,
+            "dependencies": [
+                "Bundle native ad-strip hook",
+                "Prime Video extension"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.amazon.amazonvideo.livingroom",
+                    "name": "Prime Video Android TV",
+                    "appIconColor": "#177BCE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "6.23.23+v15.5.0.70-armv7a",
                             "isExperimental": false
                         }
                     ]

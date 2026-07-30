@@ -82,14 +82,11 @@ def fetch_app_details(package_name: str) -> Tuple[Optional[Dict[str, Any]], bool
         description = result.get("summary")
         if description is None:
             description = ""
-        score_raw = result.get("score")
-        score = round(score_raw, 1) if score_raw else 0.0
         details = {
             "name": result.get("title"),
             "iconUrl": icon_url,
             "description": description,
             "minInstalls": result.get("minInstalls") or 0,
-            "score": score,
             "genre": result.get("genre") or "",
         }
         return details, False
@@ -111,7 +108,7 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
         apps_to_scrape = list(apps_dict.keys())
     else:
         apps_to_scrape = [
-            package_name for package_name, app_data in apps_dict.items() if any(app_data.get(field) is None for field in ("name", "iconUrl", "description", "minInstalls", "score", "genre"))
+            package_name for package_name, app_data in apps_dict.items() if any(app_data.get(field) is None for field in ("name", "iconUrl", "description", "minInstalls", "genre"))
         ]
     if apps_to_scrape:
         print(f"\nScraping Google Play for {len(apps_to_scrape)} apps (mode: {mode})...")
@@ -135,8 +132,6 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
                                 current_app[field] = ""
                         if not current_app.get("minInstalls"):
                             current_app["minInstalls"] = 0
-                        if not current_app.get("score"):
-                            current_app["score"] = 0.0
                 except Exception as error:
                     print(f"[-] Error processing {package_name}: {error}")
     print(f"\nSyncing with official store data ({len(official_store)} apps in store)...")

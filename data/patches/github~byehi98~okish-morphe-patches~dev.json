@@ -1,7 +1,51 @@
 {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "name": "byehi98 Patches",
     "patches": [
+        {
+            "name": "FreeJobAlert Ad Removal",
+            "description": "Removes all Google AdMob ads (banner, interstitial, rewarded, app open, native).",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.freejobalert",
+                    "name": "FreeJobAlert",
+                    "apkFileType": "XAPK",
+                    "appIconColor": "#1565C0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.0.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "FreeJobAlert License Bypass",
+            "description": "Bypasses the Pairip Play Store installation check so the app launches normally.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.freejobalert",
+                    "name": "FreeJobAlert",
+                    "apkFileType": "XAPK",
+                    "appIconColor": "#1565C0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.0.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
         {
             "name": "TrueCloud Ad Removal",
             "description": "Consolidated patch to remove all ads, boot pages, cloud popups, and the help center robot.",

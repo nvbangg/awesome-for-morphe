@@ -1,0 +1,166 @@
+{
+    "version": "1.4.0-dev.2",
+    "name": "Hiosdra Patches",
+    "patches": [
+        {
+            "name": "Compile-only example",
+            "description": "Provides a no-op patch for validating the project build.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
+            "options": []
+        },
+        {
+            "name": "F1 TV - Background playback",
+            "description": "Keeps the F1 TV player alive when the activity goes to the background or the screen turns off.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.formulaone.production",
+                    "name": "F1 TV",
+                    "description": "F1 TV mobile APK",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E10600",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.0.48.1-SP157.6.0-release-R52-mobile",
+                            "isExperimental": false,
+                            "minSdk": 29
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "F1 TV - Foreground playback service",
+            "description": "Keeps background F1 TV playback alive with an Android media playback notification and playback/PiP controls.",
+            "default": true,
+            "dependencies": [
+                "F1 TV - Background playback",
+                "F1 TV - Foreground service manifest"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.formulaone.production",
+                    "name": "F1 TV",
+                    "description": "F1 TV mobile APK",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E10600",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.0.48.1-SP157.6.0-release-R52-mobile",
+                            "isExperimental": false,
+                            "minSdk": 29
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "F1 TV - Picture-in-Picture",
+            "description": "Keeps F1 TV playback alive while entering Android Picture-in-Picture mode.",
+            "default": true,
+            "dependencies": [
+                "F1 TV - Picture-in-Picture manifest"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.formulaone.production",
+                    "name": "F1 TV",
+                    "description": "F1 TV mobile APK",
+                    "apkFileType": "APK",
+                    "appIconColor": "#E10600",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.0.48.1-SP157.6.0-release-R52-mobile",
+                            "isExperimental": false,
+                            "minSdk": 29
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Movie Paradise - Force RevenueCat entitlement (experimental)",
+            "description": "Forces RevenueCat entitlements active. Experimental: premium is server-authoritative, so this likely unlocks nothing.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.techkitlabs.movieparadise",
+                    "name": "Movie Paradise",
+                    "description": "Movie Paradise (Flutter) — distributed as split APK (XAPK)",
+                    "apkFileType": "XAPK",
+                    "appIconColor": "#111827",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.2.0",
+                            "isExperimental": false,
+                            "minSdk": 24
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Movie Paradise - GmsCore support (microG login)",
+            "description": "Routes Google Play Services through microG (MicroG-RE) so Google sign-in works without stock Play Services.",
+            "default": false,
+            "dependencies": [
+                "Movie Paradise - PairIP license bypass",
+                "Movie Paradise - GmsCore manifest"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.techkitlabs.movieparadise",
+                    "name": "Movie Paradise",
+                    "description": "Movie Paradise (Flutter) — distributed as split APK (XAPK)",
+                    "apkFileType": "XAPK",
+                    "appIconColor": "#111827",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.2.0",
+                            "isExperimental": false,
+                            "minSdk": 24
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Movie Paradise - PairIP license bypass",
+            "description": "Neutralises Google Play integrity/license checks (PairIP) so a repackaged build launches.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.techkitlabs.movieparadise",
+                    "name": "Movie Paradise",
+                    "description": "Movie Paradise (Flutter) — distributed as split APK (XAPK)",
+                    "apkFileType": "XAPK",
+                    "appIconColor": "#111827",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.2.0",
+                            "isExperimental": false,
+                            "minSdk": 24
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        }
+    ]
+}

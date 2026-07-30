@@ -36,7 +36,7 @@ jobs:
 
           pip install google-play-scraper
           DAY_OF_MONTH=$(date +%d)
-          if [ "$DAY_OF_MONTH" -eq 1 ] || [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+          if [ "$DAY_OF_MONTH" -eq 1 ]; then
             python scripts/update.py --month
           else
             python scripts/update.py --daily

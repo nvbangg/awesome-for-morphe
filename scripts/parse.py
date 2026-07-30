@@ -1,26 +1,31 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-import sys
+import os
+import stat
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 BUNDLE_PARSER_DIR = ROOT_DIR / "scripts" / "bundle-parser"
-UPDATED_FILES_TXT = BUNDLE_PARSER_DIR / "updated_files.txt"
+UPDATED_FILES_PATH = BUNDLE_PARSER_DIR / "updated_files.txt"
+GRADLE_EXECUTABLE_NAME = "gradlew.bat" if sys.platform == "win32" else "gradlew"
+GRADLE_EXECUTABLE_PATH = BUNDLE_PARSER_DIR / GRADLE_EXECUTABLE_NAME
 
 
 def run_bundle_parser() -> None:
-    if not UPDATED_FILES_TXT.exists() or not UPDATED_FILES_TXT.read_text(encoding="utf-8").strip():
+    if not UPDATED_FILES_PATH.exists() or not UPDATED_FILES_PATH.read_text(encoding="utf-8").strip():
         print("[-] No updated_files.txt found or empty. Nothing to parse.")
         return
     print("\nRunning bundle-parser to extract patches-list from .mpp files...")
-    gradle_cmd = "gradlew.bat" if sys.platform == "win32" else "./gradlew"
+    if sys.platform != "win32" and GRADLE_EXECUTABLE_PATH.exists():
+        os.chmod(GRADLE_EXECUTABLE_PATH, os.stat(GRADLE_EXECUTABLE_PATH).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
 
-    args = [str(BUNDLE_PARSER_DIR / gradle_cmd), "run", "--args=@updated_files.txt"]
+    command_arguments = [str(GRADLE_EXECUTABLE_PATH), "run", "--args=@updated_files.txt"]
     try:
-        result = subprocess.run(args, cwd=str(BUNDLE_PARSER_DIR), capture_output=False, text=True)
-        if result.returncode != 0:
-            print(f"[-] [bundle-parser] Failed with exit code {result.returncode}")
+        execution_result = subprocess.run(command_arguments, cwd=str(BUNDLE_PARSER_DIR), capture_output=False, text=True)
+        if execution_result.returncode != 0:
+            print(f"[-] [bundle-parser] Failed with exit code {execution_result.returncode}")
         else:
             print("bundle-parser completed successfully.")
     except Exception as error:

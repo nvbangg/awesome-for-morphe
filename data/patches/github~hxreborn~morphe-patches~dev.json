@@ -1,7 +1,33 @@
 {
-    "version": "1.1.0-dev.1",
+    "version": "1.1.0",
     "name": "hxreborn Patches",
     "patches": [
+        {
+            "name": "AMOLED dark theme",
+            "description": "Replaces the dark theme background with pure black.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "ch.protonmail.android",
+                    "name": "Proton Mail",
+                    "apkFileType": "APK",
+                    "appIconColor": "#6D4AFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "7.10.4",
+                            "versionCodes": "{ARM64_V8A=17667, ARMEABI_V7A=17667, X86_64=17667, X86=17667}",
+                            "isExperimental": false,
+                            "minSdk": 29
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
         {
             "name": "Disable tracking",
             "description": "Disables analytics and crash reporting.",
@@ -24,10 +50,12 @@
             "options": []
         },
         {
-            "name": "Hide sidebar upselling",
-            "description": "Hides the 'Upgrade to Mail Plus' entry from the sidebar.",
+            "name": "Hide upgrade upselling",
+            "description": "Hides the top-bar upgrade button and promotional sidebar rows.",
             "default": true,
-            "dependencies": [],
+            "dependencies": [
+                "ResourcePatch"
+            ],
             "compatiblePackages": [
                 {
                     "packageName": "ch.protonmail.android",
@@ -37,10 +65,10 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "4.15.0",
-                            "versionCodes": "{ARM64_V8A=11782, ARMEABI_V7A=11782, X86_64=11782, X86=11782}",
+                            "version": "7.10.4",
+                            "versionCodes": "{ARM64_V8A=17667, ARMEABI_V7A=17667, X86_64=17667, X86=17667}",
                             "isExperimental": false,
-                            "minSdk": 28
+                            "minSdk": 29
                         }
                     ]
                 }
@@ -49,7 +77,7 @@
         },
         {
             "name": "Remove 'Sent from' signature",
-            "description": "Removes the 'Sent from Proton Mail mobile' signature from emails.",
+            "description": "Removes the 'Sent from Proton Mail' signature from emails.",
             "default": true,
             "dependencies": [],
             "compatiblePackages": [
@@ -61,10 +89,10 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "4.15.0",
-                            "versionCodes": "{ARM64_V8A=11782, ARMEABI_V7A=11782, X86_64=11782, X86=11782}",
+                            "version": "7.10.4",
+                            "versionCodes": "{ARM64_V8A=17667, ARMEABI_V7A=17667, X86_64=17667, X86=17667}",
                             "isExperimental": false,
-                            "minSdk": 28
+                            "minSdk": 29
                         }
                     ]
                 }
@@ -85,10 +113,10 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "4.15.0",
-                            "versionCodes": "{ARM64_V8A=11782, ARMEABI_V7A=11782, X86_64=11782, X86=11782}",
+                            "version": "7.10.4",
+                            "versionCodes": "{ARM64_V8A=17667, ARMEABI_V7A=17667, X86_64=17667, X86=17667}",
                             "isExperimental": false,
-                            "minSdk": 28
+                            "minSdk": 29
                         }
                     ]
                 }

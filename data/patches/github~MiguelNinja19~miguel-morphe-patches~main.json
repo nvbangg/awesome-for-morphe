@@ -1,5 +1,5 @@
 {
-    "version": "1.13.3",
+    "version": "1.13.4",
     "name": "Miguel's Patches",
     "patches": [
         {
@@ -39,7 +39,7 @@
         },
         {
             "name": "Bypass PairIP integrity check",
-            "description": "Bypasses Google Play's PairIP by disabling the APK signature check and the Google Play licensing check. Without this patch, the app crashes on launch (signature mismatch) or redirects to the Play Store (license check failure). The license check has TWO entry points that must both be blocked: checkLicense (from attachBaseContext) and initializeLicenseCheck (from ContentProvider, which runs before attachBaseContext). REQUIRED for all other patches.",
+            "description": "Bypasses Google Play's PairIP by changing the application class in AndroidManifest.xml from com.pairip.application.Application to com.jeffprod.cubesolver.App. This completely skips the PairIP attachBaseContext which runs the APK signature check (crashes on patched APK) and the Google Play licensing check (redirects to Play Store). Also removes LicenseActivity and CHECK_LICENSE permission from the manifest. The PairIP VM is NOT disabled — it provides real onCreate implementations via reflection. REQUIRED for all other patches.",
             "default": true,
             "dependencies": [],
             "compatiblePackages": [

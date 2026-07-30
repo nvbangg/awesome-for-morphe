@@ -1,5 +1,5 @@
 {
-    "version": "1.4.0",
+    "version": "1.5.0",
     "name": "Morning Entree Patches",
     "patches": [
         {
@@ -125,8 +125,92 @@
             ]
         },
         {
+            "name": "Disable Analytics & AD Tracking",
+            "description": "Turns off analytics, collection and removes the advertising-ID / ad-services permissions. Pair with \"Block Internet Patch\" to fully block trackers.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.teslacoilsw.launcher",
+                    "name": "Nova Launcher",
+                    "appIconColor": "#DA4624",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "88600 (8.8.6)",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Disable Signature Verification",
+            "description": "Disable Signature Verification So The App Doesn't Crash When The APK Signature Changes After Patching",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.fossor.panels",
+                    "name": "Panels",
+                    "appIconColor": "#2196F3",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.596",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Enable Premium",
-            "description": "Unlocks Gradient Weather Premium (forces the paid Lifetime tier).",
+            "description": "Unlocks AutoLocation's full version",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.joaomgcd.autolocation",
+                    "name": "AutoLocation",
+                    "appIconColor": "#4CAF50",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.2.6",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Enable Premium",
+            "description": "Unlocks AutoTools",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.joaomgcd.autotools",
+                    "name": "AutoTools",
+                    "appIconColor": "#FF9800",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "2.3.19",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Enable Premium",
+            "description": "Unlocks Gradient Weather Premium. Use With Spoof Install Source",
             "default": true,
             "dependencies": [],
             "compatiblePackages": [
@@ -191,6 +275,50 @@
         },
         {
             "name": "Enable Premium",
+            "description": "Unlocks Premium. Use With Spoof Install Source.",
+            "default": true,
+            "dependencies": [
+                "Disable Signature Verification"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.fossor.panels",
+                    "name": "Panels",
+                    "appIconColor": "#2196F3",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.596",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Enable Premium",
+            "description": "Unlocks Pinnit Pro. Just Tap Restore Purchase When Prompted. Must be installed with either ADB/InstallerX Revived/Inure so it is not in Restricted Mode",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "dev.sasikanth.pinnit2",
+                    "name": "Pinnit",
+                    "appIconColor": "#E0563F",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.13.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Enable Premium",
             "description": "Unlock Sponge Premium",
             "default": true,
             "dependencies": [],
@@ -203,6 +331,27 @@
                     "targets": [
                         {
                             "version": "2.8.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Enable Premium",
+            "description": "Unlocks UbikiTouch Premium. Must be installed with either ADB/InstallerX Revived/Inure so it is not in Restricted Mode",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "eu.toneiv.ubktouch",
+                    "name": "UbikiTouch",
+                    "appIconColor": "#2196F3",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.17.6",
                             "isExperimental": false
                         }
                     ]
@@ -229,6 +378,35 @@
                     ]
                 }
             ],
+            "options": []
+        },
+        {
+            "name": "Enable Prime",
+            "description": "Unlocks Nova Launcher Prime",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.teslacoilsw.launcher",
+                    "name": "Nova Launcher",
+                    "appIconColor": "#DA4624",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "88600 (8.8.6)",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Remove internet permission",
+            "description": "Removes the INTERNET permission so the app cannot access the network at all. Blocks all trackers, analytics and ads from phoning home, but also disables any legitimate online features. Only enable for apps you want fully offline.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": null,
             "options": []
         },
         {

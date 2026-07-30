@@ -76,12 +76,6 @@ jobs:
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Create release
-        if: steps.commit.outputs.changed == 'true' && hashFiles('whats-new.md') != ''
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "${{ env.TAG }}" --target "$(git rev-parse HEAD)" --title "🔔 What's New (${{ env.DAY }})" --notes-file whats-new.md --latest=false
-
       - name: Send Telegram release notification
         if: steps.commit.outputs.changed == 'true' && hashFiles('whats-new.md') != ''
         env:

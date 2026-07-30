@@ -9,7 +9,7 @@
       "stars": 3044,
       "starsGained7d": 44,
       "starsGained40d": 44,
-      "updatedAt": 1785418892000,
+      "updatedAt": 1785435988000,
       "firstSeen": 1767200400000,
       "appFirstSeen": {
         "com.reddit.frontpage": 1767200400000,
@@ -1222,7 +1222,7 @@
       "stars": 884,
       "starsGained7d": 28,
       "starsGained40d": 43,
-      "updatedAt": 1785358106000,
+      "updatedAt": 1785438667000,
       "firstSeen": 1768916001000,
       "appFirstSeen": {
         "kr.co.yjteam.dailypay": 1768941201000,
@@ -13075,7 +13075,7 @@
       "stars": 207,
       "starsGained7d": 11,
       "starsGained40d": 23,
-      "updatedAt": 1785426313000,
+      "updatedAt": 1785437683000,
       "firstSeen": 1782996119000,
       "appFirstSeen": {
         "universal": 1785178161626
@@ -13084,6 +13084,24 @@
         {
           "name": "Ads Free Rewards",
           "default": false
+        },
+        {
+          "name": "Custom App Resolution (Experimental)",
+          "default": false,
+          "options": [
+            {
+              "key": "enableCustomResolution",
+              "title": "Enable Custom Resolution"
+            },
+            {
+              "key": "width",
+              "title": "Resolution width (px)"
+            },
+            {
+              "key": "height",
+              "title": "Resolution height (px)"
+            }
+          ]
         },
         {
           "name": "Disable Root Checks",
@@ -22161,15 +22179,15 @@
         "packageName": "com.google.android.apps.youtube.music",
         "targets": [
           {
+            "version": "9.30.52",
+            "isExperimental": true
+          },
+          {
             "version": "9.29.54",
             "isExperimental": true
           },
           {
             "version": "9.28.51",
-            "isExperimental": true
-          },
-          {
-            "version": "9.26.51",
             "isExperimental": true
           },
           {

@@ -70,7 +70,6 @@ def main() -> int:
     for package_name, app_data in apps_dict.items():
         app_data.setdefault("firstSeen", now_ms)
         app_data.pop("updatedAt", None)
-        app_data.pop("score", None)
         ordered_app = {}
         for key in ["name", "iconUrl", "description", "minInstalls", "genre", "altName", "firstSeen"]:
             if key in app_data:

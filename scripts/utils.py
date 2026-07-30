@@ -70,6 +70,7 @@ def parse_timestamp(timestamp: Any) -> int:
         return int(timestamp)
     try:
         from datetime import timezone
+
         timestamp_str = str(timestamp).replace("Z", "+00:00")
         dt = datetime.fromisoformat(timestamp_str)
         if dt.tzinfo is None:

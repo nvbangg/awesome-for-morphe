@@ -107,9 +107,7 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
     if mode == "month":
         apps_to_scrape = list(apps_dict.keys())
     else:
-        apps_to_scrape = [
-            package_name for package_name, app_data in apps_dict.items() if any(app_data.get(field) is None for field in ("name", "iconUrl", "description", "minInstalls", "genre"))
-        ]
+        apps_to_scrape = [package_name for package_name, app_data in apps_dict.items() if any(app_data.get(field) is None for field in ("name", "iconUrl", "description", "minInstalls", "genre"))]
     if apps_to_scrape:
         print(f"\nScraping Google Play for {len(apps_to_scrape)} apps (mode: {mode})...")
         with concurrent.futures.ThreadPoolExecutor(max_workers=GPLAY_CONCURRENCY) as executor:

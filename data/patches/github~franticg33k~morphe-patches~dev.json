@@ -1,5 +1,5 @@
 {
-    "version": "1.3.6-dev.1",
+    "version": "1.3.6",
     "name": "franticg33k's Morphe Patches",
     "patches": [
         {
@@ -283,6 +283,27 @@
                     "packageName": "com.bytecaretech.merokarobar",
                     "name": "Mero Karobar",
                     "appIconColor": "#1565C0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Premium",
+            "description": "Forces the premium entitlement in Native Camera. Premium status is a local 'is_premium' SharedPreferences flag read on startup behind PairIP's Play Store licensing, so this unlocks RAW DNG, 10-bit video, HLG/UHDR and the boosted-ISO seekbar.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rawcam.app",
+                    "name": "Native Camera",
+                    "apkFileType": "APK",
+                    "appIconColor": "#D0BCFF",
                     "signatures": [],
                     "targets": [
                         {

@@ -1,0 +1,27 @@
+{
+    "version": "1.1.0",
+    "name": "d0nj Patches",
+    "patches": [
+        {
+            "name": "Unlock premium",
+            "description": "Makes isPremium() always return true in AI Audio Novel Reader. Unlocks all premium features and disables the 10-hour trial countdown.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.thien.novelreader",
+                    "name": "AI Audio Novel Reader",
+                    "appIconColor": "#6200EE",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.3.23",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        }
+    ]
+}

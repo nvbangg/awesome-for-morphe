@@ -1,0 +1,35 @@
+{
+    "version": "1.6.0",
+    "name": "chukfinley TIDAL Patches",
+    "patches": [
+        {
+            "name": "Swipe to add to queue",
+            "description": "Adds a Spotify style swipe right gesture that adds the swiped item to the play queue, on every screen that lists tracks, albums, playlists or mixes.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.aspiro.tidal",
+                    "name": "TIDAL",
+                    "apkFileType": "APKM",
+                    "appIconColor": "#000000",
+                    "signatures": [
+                        "2e8a4794a95418367e36c84303feb43774919d6a351129d23d0fcf1b0b729454"
+                    ],
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "minSdk": 29
+                        },
+                        {
+                            "version": "2.202.0",
+                            "isExperimental": false,
+                            "minSdk": 29
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        }
+    ]
+}

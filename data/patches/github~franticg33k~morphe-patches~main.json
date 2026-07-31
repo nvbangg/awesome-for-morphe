@@ -1,5 +1,5 @@
 {
-    "version": "1.3.5",
+    "version": "1.3.6",
     "name": "franticg33k's Morphe Patches",
     "patches": [
         {
@@ -34,27 +34,6 @@
                     "packageName": "com.byairapp.android",
                     "name": "byAir",
                     "appIconColor": "#1F6FEB",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Pro",
-            "description": "Unlocks all pro/premium features by bypassing purchase validation and SharedPreferences checks.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.accordion.analogcam",
-                    "name": "OldRoll",
-                    "apkFileType": "APK",
-                    "appIconColor": "#FF6B35",
                     "signatures": [],
                     "targets": [
                         {
@@ -304,6 +283,27 @@
                     "packageName": "com.bytecaretech.merokarobar",
                     "name": "Mero Karobar",
                     "appIconColor": "#1565C0",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock Premium",
+            "description": "Forces the premium entitlement in Native Camera. Premium status is a local 'is_premium' SharedPreferences flag read on startup behind PairIP's Play Store licensing, so this unlocks RAW DNG, 10-bit video, HLG/UHDR and the boosted-ISO seekbar.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.rawcam.app",
+                    "name": "Native Camera",
+                    "apkFileType": "APK",
+                    "appIconColor": "#D0BCFF",
                     "signatures": [],
                     "targets": [
                         {

@@ -1,5 +1,5 @@
 {
-    "version": "1.13.4",
+    "version": "1.13.5",
     "name": "Miguel's Patches",
     "patches": [
         {
@@ -39,7 +39,34 @@
         },
         {
             "name": "Bypass PairIP integrity check",
-            "description": "Bypasses Google Play's PairIP by changing the application class in AndroidManifest.xml from com.pairip.application.Application to com.jeffprod.cubesolver.App. This completely skips the PairIP attachBaseContext which runs the APK signature check (crashes on patched APK) and the Google Play licensing check (redirects to Play Store). Also removes LicenseActivity and CHECK_LICENSE permission from the manifest. The PairIP VM is NOT disabled — it provides real onCreate implementations via reflection. REQUIRED for all other patches.",
+            "description": "Completely bypasses Google Play's PairIP by (1) disabling the PairIP VM (prevents native integrity checks and Play Store redirects from libpairipcore.so), (2) replacing MainActivity.onCreate with direct WebView setup (no VM needed), and (3) no-oping openPlayStore. The native library libpairipcore.so is never loaded, so it can't do JNI-based redirects. Also applies the manifest modifications from the companion 'Bypass PairIP manifest' patch. REQUIRED for all other patches.",
+            "default": true,
+            "dependencies": [
+                "Bypass PairIP manifest"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.jeffprod.cubesolver",
+                    "name": "Cube Solver",
+                    "apkFileType": "APKS",
+                    "appIconColor": "#F57C00",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.0.3",
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": true
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Bypass PairIP manifest",
+            "description": "Modifies AndroidManifest.xml to skip the PairIP Application class, remove LicenseActivity, and remove CHECK_LICENSE permission. Part of the PairIP bypass.",
             "default": true,
             "dependencies": [],
             "compatiblePackages": [

@@ -1,5 +1,5 @@
 {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "name": "Morning Entree Patches",
     "patches": [
         {
@@ -289,6 +289,29 @@
                     "targets": [
                         {
                             "version": "1.596",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Enable Premium",
+            "description": "Unlocks Phi Launcher Pro",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.launcher.hype",
+                    "name": "Phi Launcher",
+                    "appIconColor": "#6C63FF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "3.5.1",
                             "isExperimental": false
                         }
                     ]

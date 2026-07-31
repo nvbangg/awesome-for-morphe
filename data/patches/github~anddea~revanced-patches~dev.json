@@ -1,5 +1,5 @@
 {
-    "version": "4.2.0-dev.8",
+    "version": "4.2.0-dev.9",
     "name": "RVX Patches",
     "patches": [
         {
@@ -1616,12 +1616,18 @@
                     "values": {
                         "Amoled Black": "@android:color/black",
                         "Catppuccin (Mocha)": "#FF181825",
+                        "Classic (Old YouTube)": "#FF212121",
                         "Dark Blue": "#FF001029",
                         "Dark Green": "#FF002905",
                         "Dark Orange": "#FF291800",
                         "Dark Pink": "#FF290025",
                         "Dark Red": "#FF290000",
-                        "Dark Yellow": "#FF282900"
+                        "Dark Yellow": "#FF282900",
+                        "Material You (Neutral)": "@android:color/system_neutral1_900",
+                        "Material You - Primary": "@android:color/system_accent1_800",
+                        "Material You - Secondary": "@android:color/system_accent2_800",
+                        "Material You - Tertiary": "@android:color/system_accent3_800",
+                        "Modern YouTube": "#FF0F0F0F"
                     }
                 },
                 {
@@ -5995,7 +6001,9 @@
                 "ResourcePatch",
                 "Settings for YouTube",
                 "BytecodePatch",
-                "ResourcePatch"
+                "ResourcePatch",
+                "ResourcePatch",
+                "BytecodePatch"
             ],
             "compatiblePackages": [
                 {
@@ -6576,12 +6584,18 @@
                     "values": {
                         "Amoled Black": "@android:color/black",
                         "Catppuccin (Mocha)": "#FF181825",
+                        "Classic (Old YouTube)": "#FF212121",
                         "Dark Blue": "#FF001029",
                         "Dark Green": "#FF002905",
                         "Dark Orange": "#FF291800",
                         "Dark Pink": "#FF290025",
                         "Dark Red": "#FF290000",
                         "Dark Yellow": "#FF282900",
+                        "Material You (Neutral)": "@android:color/system_neutral1_900",
+                        "Material You - Primary": "@android:color/system_accent1_800",
+                        "Material You - Secondary": "@android:color/system_accent2_800",
+                        "Material You - Tertiary": "@android:color/system_accent3_800",
+                        "Modern YouTube": "#FF0F0F0F",
                         "YouTube Dark": "@color/yt_black3"
                     }
                 },
@@ -6600,6 +6614,10 @@
                         "Light Pink": "#FFFCCFF3",
                         "Light Red": "#FFFFD6D6",
                         "Light Yellow": "#FFFDFFCC",
+                        "Material You (Neutral)": "@android:color/system_neutral1_100",
+                        "Material You - Primary": "@android:color/system_accent1_200",
+                        "Material You - Secondary": "@android:color/system_accent2_200",
+                        "Material You - Tertiary": "@android:color/system_accent3_200",
                         "White": "@android:color/white",
                         "YouTube Light": "@color/yt_white3"
                     }
@@ -7252,7 +7270,12 @@
                         "Dark Orange": "#FF291800",
                         "Dark Pink": "#FF290025",
                         "Dark Red": "#FF290000",
-                        "Dark Yellow": "#FF282900"
+                        "Dark Yellow": "#FF282900",
+                        "Material You (Neutral)": "@android:color/system_neutral1_900",
+                        "Material You - Primary": "@android:color/system_accent1_800",
+                        "Material You - Secondary": "@android:color/system_accent2_800",
+                        "Material You - Tertiary": "@android:color/system_accent3_800",
+                        "Modern YouTube": "#FF0F0F0F"
                     }
                 },
                 {
@@ -7270,6 +7293,10 @@
                         "Light Pink": "#FFFCCFF3",
                         "Light Red": "#FFFFD6D6",
                         "Light Yellow": "#FFFDFFCC",
+                        "Material You (Neutral)": "@android:color/system_neutral1_100",
+                        "Material You - Primary": "@android:color/system_accent1_200",
+                        "Material You - Secondary": "@android:color/system_accent2_200",
+                        "Material You - Tertiary": "@android:color/system_accent3_200",
                         "Pale Blue": "#FFD4FFF8",
                         "Pale Green": "#FFD1FFCC",
                         "Pale Yellow": "#FFFFE9AA",
@@ -7690,7 +7717,8 @@
                 "BytecodePatch",
                 "BytecodePatch",
                 "BytecodePatch",
-                "ResourcePatch"
+                "ResourcePatch",
+                "BytecodePatch"
             ],
             "compatiblePackages": [
                 {
@@ -8049,6 +8077,69 @@
                             "version": "9.15.51",
                             "isExperimental": false,
                             "minSdk": 26
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Wide search bar",
+            "description": "Adds a wide search bar to the top of the home and subscription feed.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "ResourcePatch",
+                "ResourcePatch",
+                "Settings for YouTube",
+                "ResourcePatch",
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.google.android.youtube",
+                    "name": "YouTube",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "19.43.41",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "19.44.39",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "19.47.53",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "20.05.46",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "20.21.37",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        },
+                        {
+                            "version": "20.31.42",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "20.47.62",
+                            "isExperimental": false,
+                            "minSdk": 28
+                        },
+                        {
+                            "version": "20.51.39",
+                            "isExperimental": false,
+                            "minSdk": 28
                         }
                     ]
                 }

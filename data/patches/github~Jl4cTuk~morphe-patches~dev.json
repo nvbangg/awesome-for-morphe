@@ -1,5 +1,5 @@
 {
-    "version": "1.2.0",
+    "version": "1.3.0-dev.1",
     "name": "Jl4cTuk Patches",
     "patches": [
         {
@@ -169,6 +169,30 @@
             "options": []
         },
         {
+            "name": "Disable Ozon Bank VPN warning",
+            "description": "Removes the warning shown when Ozon Bank detects an active VPN connection.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "ru.ozon.fintech.finance",
+                    "name": "Ozon Bank",
+                    "apkFileType": "APK",
+                    "appIconColor": "#005BFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "19.27.0",
+                            "versionCodes": "{ARM64_V8A=16030328, ARMEABI_V7A=16030328, X86_64=16030328, X86=16030328}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Disable telemetry",
             "description": "Disables Ozon analytics, attribution, crash reporting, and telemetry uploads.",
             "default": true,
@@ -280,6 +304,91 @@
                         {
                             "version": "19.28.0",
                             "versionCodes": "{ARM64_V8A=2698, ARMEABI_V7A=2698, X86_64=2698, X86=2698}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Hide Ozon Bank benefit sections",
+            "description": "Adds options to hide selected non-advertising sections from the Benefit page.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "ru.ozon.fintech.finance",
+                    "name": "Ozon Bank",
+                    "apkFileType": "APK",
+                    "appIconColor": "#005BFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "19.27.0",
+                            "versionCodes": "{ARM64_V8A=16030328, ARMEABI_V7A=16030328, X86_64=16030328, X86=16030328}",
+                            "isExperimental": false,
+                            "minSdk": 26
+                        }
+                    ]
+                }
+            ],
+            "options": [
+                {
+                    "default": false,
+                    "description": "Hides the Buy for 1 ruble product carousel.",
+                    "key": "hideBuyForOneRuble",
+                    "required": false,
+                    "title": "Hide Buy for 1 ruble",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": false,
+                    "description": "Hides the Partner benefits section.",
+                    "key": "hidePartnerBenefits",
+                    "required": false,
+                    "title": "Hide Partner benefits",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": false,
+                    "description": "Hides the For shopping on Ozon section.",
+                    "key": "hideOzonShoppingBenefits",
+                    "required": false,
+                    "title": "Hide For shopping on Ozon",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": false,
+                    "description": "Hides the Ozon Premium benefits section.",
+                    "key": "hideOzonPremium",
+                    "required": false,
+                    "title": "Hide Ozon Premium",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "name": "Hide Ozon Bank promotions",
+            "description": "Uses the classic home design and removes promotional cards, sections, shortcuts, and the startup installment offer from Ozon Bank pages.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "ru.ozon.fintech.finance",
+                    "name": "Ozon Bank",
+                    "apkFileType": "APK",
+                    "appIconColor": "#005BFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "19.27.0",
+                            "versionCodes": "{ARM64_V8A=16030328, ARMEABI_V7A=16030328, X86_64=16030328, X86=16030328}",
                             "isExperimental": false,
                             "minSdk": 26
                         }

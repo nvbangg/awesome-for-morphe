@@ -20,13 +20,7 @@ jobs:
         with:
           ref: main
 
-      - name: Setup Java
-        uses: actions/setup-java@v5
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Download and update bundles
+      - name: Fetch new bundles
         id: update
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -34,13 +28,25 @@ jobs:
           python scripts/discover.py
           python scripts/fetch.py
           if [ -n "$(git status --porcelain)" ]; then
-            python scripts/parse.py
-            pip install google-play-scraper
-            python scripts/update.py
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Setup Java environment
+        if: steps.update.outputs.changed == 'true'
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Parse bundles and update data
+        if: steps.update.outputs.changed == 'true'
+        run: |
+          python scripts/parse.py
+          pip install google-play-scraper
+          python scripts/update.py
 
       - name: Setup Node.js environment
         if: steps.update.outputs.changed == 'true'

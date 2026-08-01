@@ -242,15 +242,22 @@ export function getAppItems(appItems: AppItem[], searchQuery = "", sortOrder = "
     return appItemA.appName.localeCompare(appItemB.appName);
   };
 
-  if (sortOrder === "new") {
-    appList.sort((appItemA, appItemB) => appItemB.firstSeen - appItemA.firstSeen || compareAppFallback(appItemA, appItemB));
-  } else if (sortOrder === "patches") {
-    appList.sort((appItemA, appItemB) => appItemB.patchCount - appItemA.patchCount || compareAppFallback(appItemA, appItemB));
-  } else if (sortOrder === "alphabetical" || sortOrder === "alpha" || sortOrder === "abc") {
-    appList.sort((appItemA, appItemB) => appItemA.appName.localeCompare(appItemB.appName) || compareAppFallback(appItemA, appItemB));
-  } else {
-    appList.sort((appItemA, appItemB) => appItemB.minInstalls - appItemA.minInstalls || compareAppFallback(appItemA, appItemB));
-  }
+  appList.sort((appItemA, appItemB) => {
+    if ((appItemA.packageName === "universal") !== (appItemB.packageName === "universal")) {
+      return appItemA.packageName === "universal" ? 1 : -1;
+    }
+
+    if (sortOrder === "new") {
+      return appItemB.firstSeen - appItemA.firstSeen || compareAppFallback(appItemA, appItemB);
+    }
+    if (sortOrder === "patches") {
+      return appItemB.patchCount - appItemA.patchCount || compareAppFallback(appItemA, appItemB);
+    }
+    if (sortOrder === "alphabetical" || sortOrder === "alpha" || sortOrder === "abc") {
+      return appItemA.appName.localeCompare(appItemB.appName) || compareAppFallback(appItemA, appItemB);
+    }
+    return appItemB.minInstalls - appItemA.minInstalls || compareAppFallback(appItemA, appItemB);
+  });
 
   return appList;
 }

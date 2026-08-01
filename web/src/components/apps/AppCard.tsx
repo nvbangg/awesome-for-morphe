@@ -67,7 +67,7 @@ export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps)
       </div>
 
       <div className="flex-1">
-        <p className="text-sm text-foreground-600 dark:text-foreground-500 leading-relaxed line-clamp-2">{appItem.description || "No description available."}</p>
+        <p className="text-sm text-foreground-600 dark:text-foreground-500 leading-relaxed line-clamp-2">{appItem.description}</p>
       </div>
 
       <div className="flex items-center justify-between gap-2 mt-auto w-full">
@@ -80,7 +80,7 @@ export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps)
 
         {showGooglePlay && (
           <a
-            className="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] whitespace-nowrap shrink-0 ml-auto select-none"
+            className="inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] whitespace-nowrap shrink-0 ml-auto select-none"
             href={`https://play.google.com/store/apps/details?id=${appItem.packageName}`}
             target="_blank"
             rel="noopener noreferrer"

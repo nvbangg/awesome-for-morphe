@@ -157,7 +157,7 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
       <ModalBody>
         <div className="flex items-center gap-3">
           <SearchInput id="patch-search" placeholder="Search bundles or patches…" value={searchQuery} onChange={onSearchChange} className="flex-1" />
-          <span className="inline-flex items-center justify-center bg-accent/20 text-accent-600 rounded-md font-semibold text-xs px-3 py-2 shrink-0 border border-accent/30">
+          <span className="inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-3 py-1 shrink-0 whitespace-nowrap">
             {bundleGroups.length} {bundleGroups.length === 1 ? "bundle" : "bundles"}
           </span>
         </div>
@@ -173,7 +173,7 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                 <div key={group.bundleKey} className="border border-divider rounded-xl bg-background flex flex-col">
                   <div
                     onClick={() => toggleBundleGroup(group.bundleKey)}
-                    className="sticky -top-4 z-20 flex items-center justify-between gap-3 px-4 py-2.5 bg-background border-b border-divider/60 cursor-pointer hover:bg-default-100/60 transition-colors rounded-t-xl shadow-sm"
+                    className={`sticky -top-4 z-20 flex items-center justify-between gap-3 px-4 py-2.5 bg-background cursor-pointer hover:bg-default-100/60 transition-colors rounded-t-xl shadow-sm ${group.bundleMeta.deepLink ? "sm:border-b border-divider/60" : "border-b border-divider/60"}`}
                   >
                     <Avatar className="w-10 h-10 rounded-xl shrink-0 border border-border bg-zinc-100 dark:bg-zinc-800">
                       <Avatar.Image src={group.bundleMeta.avatarUrl} alt={group.bundleMeta.name} />
@@ -195,7 +195,7 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                           href={group.bundleMeta.repoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs text-primary hover:underline font-medium dark:text-[#3fe9e8] flex items-center gap-1.5 mt-0.5 shrink-0 w-fit max-w-full"
+                          className="text-xs text-primary hover:underline font-medium dark:text-[#3fe9e8] inline-flex items-center gap-1.5 mt-0.5 w-fit max-w-full flex-wrap break-all"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {group.bundleMeta.source === "gitlab" ? (
@@ -207,13 +207,13 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                             </svg>
                           )}
-                          <span className="truncate">{group.bundleMeta.repo}</span>
+                          <span className="break-all whitespace-normal">{group.bundleMeta.repo}</span>
                         </a>
                       )}
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="hidden sm:inline-flex items-center justify-center bg-default-100 text-default-700 rounded-full text-xs font-semibold px-2 py-1">
+                      <span className="hidden sm:inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0">
                         {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
                       </span>
                       {group.bundleMeta.deepLink && (
@@ -221,7 +221,7 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                           href={`morphe://patch?pkg=${displayPackage}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] whitespace-nowrap shrink-0"
+                          className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] whitespace-nowrap shrink-0"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <Plus className="w-3.5 h-3.5" /> Add to Morphe
@@ -234,19 +234,19 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                   {group.bundleMeta.deepLink && (
                     <div
                       onClick={() => toggleBundleGroup(group.bundleKey)}
-                      className="sm:hidden px-4 pb-3 pt-0 border-b border-divider/60 flex items-center justify-between gap-2 cursor-pointer hover:bg-default-100/60 transition-colors"
+                      className={`sm:hidden px-4 pb-3 pt-0 flex items-center justify-between gap-2 cursor-pointer hover:bg-default-100/60 transition-colors ${isExpanded ? "border-b border-divider/60" : ""}`}
                     >
-                      <span className="inline-flex items-center justify-center bg-default-100 text-default-700 rounded-full text-xs font-semibold px-2 py-1 shrink-0">
+                      <span className="inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0">
                         {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
                       </span>
                       <a
                         href={`morphe://patch?pkg=${displayPackage}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-(image:--primary-gradient) text-white text-sm font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 active:scale-[0.98] shadow-sm shrink-0"
+                        className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 active:scale-[0.98] shadow-sm shrink-0"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Plus className="w-4 h-4" /> Add to Morphe
+                        <Plus className="w-3.5 h-3.5" /> Add to Morphe
                       </a>
                     </div>
                   )}

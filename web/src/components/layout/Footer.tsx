@@ -15,7 +15,7 @@ export function Footer() {
 
   return (
     <>
-      <footer className="mt-6 border-t border-divider bg-background pt-5 pb-6">
+      <footer className="mt-4 border-t border-divider bg-background pt-4 pb-20 sm:pb-6">
         <div className="container mx-auto px-6 max-w-300 flex flex-col gap-3">
           <a href="https://awesome-morphe.vercel.app/" className="flex items-center gap-3 no-underline group w-fit">
             <img alt="Awesome Morphe" className="h-8 w-auto" src="assets/favicon.svg" />

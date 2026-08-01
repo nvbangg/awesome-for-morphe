@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import { RowItem } from "@/data";
-import { FlaskConical, ChevronDown, ChevronUp, Check, Copy } from "lucide-react";
+import { FlaskConical, ChevronDown, ChevronUp } from "lucide-react";
 import { Badge } from "@/components/common/Badge";
 
 interface PatchItemRowProps {
@@ -35,8 +35,8 @@ export const PatchItemRow = memo(function PatchItemRow({ patchItem, copiedText, 
 
           {isDefaultOff && (
             <span
-              className="inline-flex items-center justify-center bg-zinc-200/80 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded-md px-1.5 py-0.5 text-xs font-bold uppercase tracking-wider border border-zinc-300 dark:border-zinc-700 cursor-help shrink-0"
-              title="Disabled by default in Morphe"
+              className="inline-flex items-center justify-center bg-amber-500/20 text-amber-700 dark:text-amber-400 rounded-md px-1 py-0 text-xs font-bold uppercase tracking-wider border border-amber-500/30 cursor-help shrink-0"
+              title="Disabled by default"
             >
               off
             </span>
@@ -44,7 +44,7 @@ export const PatchItemRow = memo(function PatchItemRow({ patchItem, copiedText, 
 
           {hasOptions && (
             <span
-              className="inline-flex items-center justify-center p-1 text-primary bg-primary/10 rounded-md border border-primary/20 hover:bg-primary/20 transition-colors shrink-0"
+              className="inline-flex items-center justify-center p-0.5 text-primary bg-primary/10 rounded-md border border-primary/20 hover:bg-primary/20 transition-colors shrink-0"
               title={showOptions ? "Hide patch options" : "Show patch options"}
             >
               {showOptions ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -54,7 +54,7 @@ export const PatchItemRow = memo(function PatchItemRow({ patchItem, copiedText, 
 
         <div className="flex items-center gap-1.5 flex-wrap shrink min-w-0 justify-end">
           {versions.length === 0 ? (
-            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-foreground-500 border border-zinc-200 dark:border-zinc-700">
+            <span className="inline-flex items-center px-1 py-0 rounded-full text-xs font-normal bg-zinc-200/60 dark:bg-zinc-700/60 text-foreground-600 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 shrink-0">
               Any version
             </span>
           ) : !showAllVersions ? (
@@ -72,12 +72,18 @@ export const PatchItemRow = memo(function PatchItemRow({ patchItem, copiedText, 
                       e.stopPropagation();
                       copyToClipboard(ver.version, key);
                     }}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all cursor-pointer select-text"
-                    title={ver.isExperimental ? "Experimental version (Click to copy)" : "Supported version (Click to copy)"}
+                    className={`inline-grid grid-cols-1 items-center justify-center px-1 py-0 rounded-full text-xs font-normal transition-all cursor-pointer border ${
+                      isCopied
+                        ? "bg-success/20 text-success-600 dark:text-success-400 border-success/40"
+                        : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/20"
+                    }`}
+                    title={isCopied ? "Copied!" : ver.isExperimental ? "Experimental version (Click to copy)" : "Supported version (Click to copy)"}
                   >
-                    {ver.isExperimental && <FlaskConical className="w-2.5 h-2.5 text-warning shrink-0" />}
-                    <span>{ver.version}</span>
-                    {isCopied ? <Check className="w-3 h-3 text-success shrink-0" /> : <Copy className="w-2.5 h-2.5 opacity-60 shrink-0" />}
+                    <span className={`col-start-1 row-start-1 inline-flex items-center justify-center gap-0.5 ${isCopied ? "invisible" : "visible"}`}>
+                      {ver.isExperimental && <FlaskConical className="w-2.5 h-2.5 text-warning shrink-0" />}
+                      <span>{ver.version}</span>
+                    </span>
+                    <span className={`col-start-1 row-start-1 inline-flex items-center justify-center ${isCopied ? "visible" : "invisible"}`}>Copied!</span>
                   </button>
                 );
               })()}
@@ -89,7 +95,7 @@ export const PatchItemRow = memo(function PatchItemRow({ patchItem, copiedText, 
                     e.stopPropagation();
                     setShowAllVersions(true);
                   }}
-                  className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 transition-all cursor-pointer shrink-0"
+                  className="inline-flex items-center px-1.5 py-0 rounded-full text-xs font-normal bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 transition-all cursor-pointer shrink-0"
                   title="Show all supported versions"
                 >
                   +{versions.length - 1}
@@ -110,12 +116,18 @@ export const PatchItemRow = memo(function PatchItemRow({ patchItem, copiedText, 
                       e.stopPropagation();
                       copyToClipboard(ver.version, key);
                     }}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all cursor-pointer select-text"
-                    title={ver.isExperimental ? "Experimental version (Click to copy)" : "Supported version (Click to copy)"}
+                    className={`inline-grid grid-cols-1 items-center justify-center px-1 py-0 rounded-full text-xs font-normal transition-all cursor-pointer border ${
+                      isCopied
+                        ? "bg-success/20 text-success-600 dark:text-success-400 border-success/40"
+                        : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/20"
+                    }`}
+                    title={isCopied ? "Copied!" : ver.isExperimental ? "Experimental version (Click to copy)" : "Supported version (Click to copy)"}
                   >
-                    {ver.isExperimental && <FlaskConical className="w-2.5 h-2.5 text-warning shrink-0" />}
-                    <span>{ver.version}</span>
-                    {isCopied ? <Check className="w-3 h-3 text-success shrink-0" /> : <Copy className="w-2.5 h-2.5 opacity-60 shrink-0" />}
+                    <span className={`col-start-1 row-start-1 inline-flex items-center justify-center gap-0.5 ${isCopied ? "invisible" : "visible"}`}>
+                      {ver.isExperimental && <FlaskConical className="w-2.5 h-2.5 text-warning shrink-0" />}
+                      <span>{ver.version}</span>
+                    </span>
+                    <span className={`col-start-1 row-start-1 inline-flex items-center justify-center ${isCopied ? "visible" : "invisible"}`}>Copied!</span>
                   </button>
                 );
               })}
@@ -125,7 +137,7 @@ export const PatchItemRow = memo(function PatchItemRow({ patchItem, copiedText, 
                   e.stopPropagation();
                   setShowAllVersions(false);
                 }}
-                className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold bg-primary text-white hover:opacity-90 transition-all cursor-pointer shrink-0 shadow-xs"
+                className="inline-flex items-center px-1.5 py-0 rounded-full text-xs font-normal bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 transition-all cursor-pointer shrink-0"
                 title="Collapse version list"
               >
                 Less
@@ -135,14 +147,14 @@ export const PatchItemRow = memo(function PatchItemRow({ patchItem, copiedText, 
         </div>
       </div>
 
-      {patchItem.patchDescription && <p className="text-xs text-foreground-500 leading-relaxed select-text">{patchItem.patchDescription}</p>}
+      {patchItem.patchDescription && <p className="text-xs text-foreground-600 dark:text-foreground-400 leading-relaxed select-text">{patchItem.patchDescription}</p>}
 
       {hasOptions && showOptions && (
         <div onClick={(e) => e.stopPropagation()} className="mt-1 p-2.5 bg-zinc-100 dark:bg-zinc-800/80 border border-border rounded-lg flex flex-col gap-2 select-text">
           {patchItem.options!.map((opt, idx) => (
             <div key={opt.key || idx} className="flex flex-col gap-0.5">
-              <span className="text-xs font-bold text-foreground font-mono">{opt.title || opt.key}</span>
-              {opt.description && <p className="text-xs text-foreground-500 leading-normal">{opt.description}</p>}
+              <span className="text-xs font-semibold text-foreground">{opt.title || opt.key}</span>
+              {opt.description && <p className="text-xs text-foreground-600 dark:text-foreground-400 leading-normal">{opt.description}</p>}
             </div>
           ))}
         </div>

@@ -97,9 +97,10 @@ export function WhatsNewList({ history, isLoading, activeData, onBundleClick, on
                                     key={patchIndex}
                                     type="button"
                                     onClick={() => onPatchClick(packageName, patchName)}
-                                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-foreground-700 dark:text-zinc-300 transition-colors text-xs font-semibold cursor-pointer outline-none shrink-0 border-none"
+                                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-foreground-700 dark:text-zinc-300 transition-colors text-xs font-semibold cursor-pointer outline-none shrink-0 border-none max-w-full truncate"
+                                    title={patchName}
                                   >
-                                    {patchName}
+                                    <span className="truncate">{patchName}</span>
                                   </button>
                                 ))}
                               </div>

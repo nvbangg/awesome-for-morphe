@@ -80,7 +80,7 @@ export const BundleCard = memo(function BundleCard({ bundleItem, onClick }: Bund
       </div>
 
       <div className="flex-1">
-        <p className="text-sm text-foreground-600 dark:text-foreground-500 leading-relaxed line-clamp-2">{bundleItem.repoDescription || "No description available."}</p>
+        <p className="text-sm text-foreground-600 dark:text-foreground-500 leading-relaxed line-clamp-2">{bundleItem.repoDescription}</p>
       </div>
 
       <div className="flex items-center justify-between gap-2 mt-auto w-full">
@@ -100,7 +100,7 @@ export const BundleCard = memo(function BundleCard({ bundleItem, onClick }: Bund
           )}
         </div>
         <a
-          className="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] whitespace-nowrap shrink-0 ml-auto select-none"
+          className="inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] whitespace-nowrap shrink-0 ml-auto select-none"
           href={deepLink}
           target="_blank"
           rel="noopener noreferrer"

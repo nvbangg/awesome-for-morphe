@@ -45,7 +45,7 @@ export default function App() {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <Header />
 
-      <section className="pt-4 pb-8" id="bundles">
+      <section className="pt-1 pb-4" id="bundles">
         <div id="apps" />
         <div className="container mx-auto px-6 max-w-300">
           {errorMessage ? (

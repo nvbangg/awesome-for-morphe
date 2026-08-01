@@ -1,10 +1,10 @@
 ## [nvbangg/awesome-morphe](https://github.com/nvbangg/awesome-morphe)
 
-### <img src="docs/assets/images/favicon.svg" width="20" height="20" alt="Favicon Website"> [awesome-morphe.vercel.app](https://awesome-morphe.vercel.app)
+### <img src="docs/assets/favicon.svg" width="20" height="20" alt="Favicon Website"> [awesome-morphe.vercel.app](https://awesome-morphe.vercel.app)
 
 > [!NOTE]
 > 🌐 A curated list of [Morphe](https://morphe.software) resources and community projects.  
-> 🔍 Explore [all patch bundles](https://awesome-morphe.vercel.app) created by the community.  
+> 🔍 Explore [all patch bundles](https://awesome-morphe.vercel.app) created by the Morphe community.  
 > 🔔 Get notified via the [Telegram channel](https://t.me/awesome_morphe) whenever there's a new update.  
 > 📂 For contribution guidelines and documentation, see [CONTRIBUTING.md](CONTRIBUTING.md).
 

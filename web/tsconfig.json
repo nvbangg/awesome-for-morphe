@@ -4,13 +4,16 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": true,
-    "jsx": "preserve",
-    "importHelpers": true,
-    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts", "vite.config.ts"]
 }

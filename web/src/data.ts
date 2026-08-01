@@ -1,45 +1,46 @@
-// Copyright (c) 2026 nvbangg (github.com/nvbangg)
-
-export interface Bundle {
-  key: string;
-  name?: string;
-  source?: string;
-  repo?: string;
-  isPreRelease?: boolean;
-  avatarUrl?: string;
-  repoUrl?: string;
-  changelogUrl?: string;
-  updatedAt?: number;
-  createdTimestamp?: number;
-  patches?: PatchItem[];
-  version?: string;
-  appCount?: number;
-  stars?: number;
-  firstSeen?: string | Date;
-  deepLink?: string;
-}
-
 export interface PatchOption {
-  title?: string;
   key?: string;
+  title?: string;
   description?: string;
 }
 
 export interface CompatibilityItem {
   packageName?: string;
   isPreRelease?: boolean;
-  targets?: Array<string | { version?: string; isExperimental?: boolean }>;
+  targets?: Array<{ version?: string; isExperimental?: boolean }>;
 }
 
 export interface PatchItem {
   name?: string;
   description?: string;
-  options?: PatchOption[];
-  use?: boolean;
   default?: boolean;
+  options?: PatchOption[];
   isPreRelease?: boolean;
   compatiblePackagesKey?: number;
-  compatiblePackages?: CompatibilityItem[];
+}
+
+export interface Bundle {
+  source: string;
+  repo: string;
+  name: string;
+  repoDescription: string;
+  avatarUrl: string;
+  stars: number;
+  starsGained7d: number;
+  starsGained40d: number;
+  updatedAt: number;
+  firstSeen: number;
+  appFirstSeen: Record<string, number>;
+  patches: PatchItem[];
+  isPreRelease: boolean;
+
+  key: string;
+  patchCount: number;
+  appCount: number;
+  repoUrl: string;
+  deepLink: string;
+  changelogUrl: string;
+  searchableText: string;
 }
 
 export interface VersionItem {
@@ -55,347 +56,552 @@ export interface PackageTarget {
 
 export interface RowItem {
   id: string;
-  patchId: string;
   bundleKey: string;
-  repo: string;
-  bundleVersion: string;
-  bundleCreatedAt: number;
   patchName: string;
-  description: string;
+  patchDescription: string;
   packageName: string;
-  appName: string;
-  appIcon: string;
-  isBundlePreRelease: boolean;
   isAppPreRelease: boolean;
   isPatchPreRelease: boolean;
   versions: VersionItem[];
-  enabled: boolean;
-  options: PatchOption[];
   searchPatchesText: string;
+  options?: PatchOption[];
+  default?: boolean;
 }
 
 export interface AppNameMeta {
   name?: string;
   iconUrl?: string;
+  description?: string;
+  minInstalls?: number;
+  genre?: string;
+  firstSeen?: number;
+}
+
+export interface AppItem {
+  packageName: string;
+  appName: string;
+  appIcon: string;
+  description: string;
+  minInstalls: number;
+  genre: string;
+  firstSeen: number;
+  patchCount: number;
+  categorySlug: string;
+  searchableText: string;
+}
+
+export interface WhatsNewAppChange {
+  patches: string[];
+  isNew?: boolean;
+  appName?: string;
+}
+
+export interface WhatsNewBundleChange {
+  source: string;
+  repo: string;
+  apps: Record<string, WhatsNewAppChange>;
+  isNew?: boolean;
+}
+
+export interface WhatsNewHistoryItem {
+  date: string;
+  bundles: Record<string, WhatsNewBundleChange>;
+}
+
+export interface ActiveStats {
+  bundlesCount: number;
+  patchesCount: number;
+  appsCount: number;
 }
 
 export interface ActiveData {
   bundles: Bundle[];
   rows: RowItem[];
+  appItems: AppItem[];
   bundleMap: Record<string, Bundle>;
-  namesMap: Record<string, AppNameMeta | string>;
+  namesMap: Record<string, AppNameMeta>;
+  appPatchesMap: Record<string, RowItem[]>;
+  bundlePatchesMap: Record<string, RowItem[]>;
+  whatsNewHistory: WhatsNewHistoryItem[];
+  stats: ActiveStats;
 }
 
 const jsonCache = new Map<string, Promise<unknown>>();
-const dataCache = new Map<string, Promise<ActiveData>>();
+let activeDataPromise: Promise<ActiveData> | null = null;
+const universalDefaultTarget: PackageTarget[] = [{ packageName: "universal", versions: [], isPreRelease: false }];
 
-const simplifyString = (inputString: string | undefined): string =>
-  (inputString || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, "");
+function simplifyString(inputString: string | null | undefined): string {
+  return inputString
+    ? inputString
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "")
+    : "";
+}
 
-export async function fetchJson<T = unknown>(url: string | URL, data?: T): Promise<T> {
-  const key = url.toString();
-  if (!jsonCache.has(key)) {
-    const fetchPromise = fetch(url, { cache: "no-cache" })
-      .then((response) => {
-        if (!response.ok) throw new Error(`Failed to load ${new URL(url).pathname}: ${response.status}`);
-        return response.json();
-      })
-      .catch(() => {
-        jsonCache.delete(key);
-        return data as T;
-      });
-    jsonCache.set(key, fetchPromise);
+function decodeHtmlEntities(str: string | null | undefined): string {
+  return str
+    ? str
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&apos;/g, "'")
+    : "";
+}
+
+export function slugifyGenre(genre: string): string {
+  return genre
+    ? genre
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "")
+    : "not-on-google-play";
+}
+
+function extractVersions(rawVersionsValue: unknown): VersionItem[] {
+  if (!Array.isArray(rawVersionsValue)) return [];
+  return (rawVersionsValue as Array<{ version?: string; isExperimental?: boolean }>)
+    .flatMap((item) => (item?.version ? [{ version: String(item.version), isExperimental: !!item.isExperimental }] : []))
+    .sort((versionA, versionB) => versionB.version.localeCompare(versionA.version, undefined, { numeric: true, sensitivity: "base" }));
+}
+
+export function fetchJson<T = unknown>(url: string | URL, defaultFallbackData?: T): Promise<T> {
+  const cacheKey = url.toString();
+  if (!jsonCache.has(cacheKey)) {
+    const fetchPromise = (async () => {
+      try {
+        const response = await fetch(url, { cache: "no-cache" });
+        if (!response.ok) throw new Error(`Failed to load ${url}: ${response.status}`);
+        return (await response.json()) as T;
+      } catch (error) {
+        jsonCache.delete(cacheKey);
+        if (defaultFallbackData !== undefined) return defaultFallbackData;
+        throw error;
+      }
+    })();
+    jsonCache.set(cacheKey, fetchPromise);
   }
-  return jsonCache.get(key) as Promise<T>;
+  return jsonCache.get(cacheKey) as Promise<T>;
 }
 
 export function buildBundleUrls(source: string | undefined, repo: string | undefined, isPreRelease: boolean | undefined): { repoUrl: string; deepLink: string; changelogUrl: string } {
   if (!repo) return { repoUrl: "", deepLink: "", changelogUrl: "" };
 
-  const repoUrl = `https://${source}.com/${repo}`;
-  let deepLinkRepo = repo;
-  if (isPreRelease) {
-    deepLinkRepo = source === "gitlab" ? `${repo}/-/tree/dev` : `${repo}/tree/dev`;
-  }
+  const repositorySource = source || "github";
+  const repoUrl = `https://${repositorySource}.com/${repo}`;
+  const deepLinkRepo = isPreRelease ? (repositorySource === "gitlab" ? `${repo}/-/tree/dev` : `${repo}/tree/dev`) : repo;
   return {
     repoUrl,
-    deepLink: `https://morphe.software/add-source?${source}=${deepLinkRepo}`,
-    changelogUrl: source === "gitlab" ? `${repoUrl}/-/releases` : `${repoUrl}/releases`,
+    deepLink: `https://morphe.software/add-source?${repositorySource}=${deepLinkRepo}`,
+    changelogUrl: repositorySource === "gitlab" ? `${repoUrl}/-/releases` : `${repoUrl}/releases`,
   };
 }
 
-export function appName(packageName: string | undefined, metadata: Record<string, AppNameMeta | string>): string {
-  const key = packageName || "universal";
-  const meta = metadata[key] || {};
-
-  if (typeof meta === "object" && meta !== null && (meta as AppNameMeta).name) return (meta as AppNameMeta).name!;
-  if (typeof meta === "string") return meta;
-  if (!packageName) return key;
-
-  const last = packageName.split(".").at(-1) || packageName;
-  return last.replace(/[-_]/g, " ").replace(/\b[a-z]/g, (char) => char.toUpperCase());
-}
-
-function extractVersions(value: unknown): VersionItem[] {
-  if (!Array.isArray(value)) return [];
-
-  return value
-    .flatMap((item) => {
-      if (typeof item === "string") return [{ version: item, isExperimental: false }];
-      if (item?.version)
-        return [
-          {
-            version: String(item.version),
-            isExperimental: !!item.isExperimental,
-          },
-        ];
-      return [];
-    })
-    .sort((a, b) =>
-      b.version.localeCompare(a.version, undefined, {
-        numeric: true,
-        sensitivity: "base",
-      }),
-    );
-}
-
-export const loadAppsJson = () => fetchJson<Record<string, AppNameMeta>>("apps.json", {} as Record<string, AppNameMeta>);
-
-export async function loadInitialData(): Promise<ActiveData> {
-  if (dataCache.has("latest")) {
-    const cachedData = await dataCache.get("latest");
-    return cachedData as ActiveData;
-  }
-
-  let resolveCache!: (value: ActiveData) => void;
-  const cachePromise = new Promise<ActiveData>((resolve) => {
-    resolveCache = resolve;
-  });
-  dataCache.set("latest", cachePromise);
-
-  const [namesMap, sourcesData] = await Promise.all([
-    loadAppsJson(),
-    fetchJson<{ bundles: Bundle[]; compatibilities: CompatibilityItem[][] }>("bundles.json", { bundles: [], compatibilities: [] }).catch(() => ({ bundles: [], compatibilities: [] })),
-  ]);
-  const bundlesListRaw = sourcesData.bundles || [];
-  const compatibilities = sourcesData.compatibilities || [];
-
-  const bundleList: Bundle[] = [];
-  const rows: RowItem[] = [];
-
-  for (const bundleObj of bundlesListRaw) {
-    const key = `${bundleObj.source}:${bundleObj.repo}`;
-    if (!bundleObj.patches) continue;
-
-    bundleObj.key = key;
-    bundleObj.createdTimestamp = bundleObj.updatedAt || 0;
-    const uniqueApps = new Set<string>();
-    const urls = buildBundleUrls(bundleObj.source, bundleObj.repo, bundleObj.isPreRelease);
-    bundleObj.repoUrl = urls.repoUrl;
-    bundleObj.deepLink = urls.deepLink;
-    bundleObj.changelogUrl = urls.changelogUrl;
-
-    bundleList.push(bundleObj);
-
-    const repo = bundleObj.repo || "";
-    const bundleVersion = bundleObj.version || "";
-    const bundleCreatedAt = bundleObj.updatedAt || 0;
-
-    const patchRows = bundleObj.patches.flatMap((patch: PatchItem, patchIndex: number) => {
-      const patchId = `${key}:${patchIndex}`;
-
-      const compatiblePackages = patch.compatiblePackagesKey !== undefined ? compatibilities[patch.compatiblePackagesKey] : patch.compatiblePackages;
-
-      const universalResult: PackageTarget[] = [{ packageName: "universal", versions: [], isPreRelease: false }];
-      let packageRows: PackageTarget[] = universalResult;
-
-      if (Array.isArray(compatiblePackages)) {
-        const mapped = compatiblePackages.flatMap((item: CompatibilityItem) =>
-          item?.packageName
-            ? [
-                {
-                  packageName: item.packageName,
-                  isPreRelease: !!item.isPreRelease,
-                  versions: extractVersions(item.targets || []),
-                },
-              ]
-            : [],
-        );
-        if (mapped.length) packageRows = mapped;
-      }
-
-      return packageRows.map((target, targetIndex) => {
-        const packageName = target.packageName || "universal";
-        uniqueApps.add(packageName);
-        const name = appName(packageName, namesMap);
-        const options = Array.isArray(patch.options) ? patch.options : [];
-
-        const searchPatchesTextParts = [patch.name, patch.description];
-        options.forEach((option: PatchOption) => searchPatchesTextParts.push(option.title, option.key, option.description));
-        const searchPatchesText = simplifyString(searchPatchesTextParts.filter(Boolean).join(" "));
-
-        return {
-          id: `${patchId}:${targetIndex}`,
-          patchId,
-          bundleKey: key,
-          repo,
-          bundleVersion,
-          bundleCreatedAt,
-          patchName: patch.name || "Unnamed patch",
-          description: patch.description || "",
-          packageName,
-          appName: name,
-          appIcon: (namesMap[packageName] as AppNameMeta)?.iconUrl || "",
-          isBundlePreRelease: !!bundleObj.isPreRelease,
-          isAppPreRelease: !!target.isPreRelease,
-          isPatchPreRelease: !!patch.isPreRelease,
-          versions: target.versions,
-          enabled: patch.use ?? patch.default ?? true,
-          options,
-          searchPatchesText,
-        };
-      });
-    });
-
-    bundleObj.appCount = uniqueApps.size;
-    rows.push(...patchRows);
-  }
-
-  const bundleMap: Record<string, Bundle> = {};
-  for (const bundle of bundleList) bundleMap[bundle.key.toLowerCase()] = bundle;
-
-  const activeData: ActiveData = {
-    bundles: bundleList,
-    rows,
-    bundleMap,
-    namesMap,
-  };
-
-  resolveCache(activeData);
-
-  return activeData;
-}
-
-export interface FilterOptions {
-  query?: string;
-  showOptions?: string[];
-}
-
-export function filterRows(data: ActiveData, filters: FilterOptions): RowItem[] {
-  const searchQueryWords = (filters.query || "").split(/\s+/).map(simplifyString).filter(Boolean);
-
-  let parsedShowOptions = null;
-  if (filters.showOptions && filters.showOptions.length > 0) {
-    parsedShowOptions = filters.showOptions.map((showOption: string) => {
-      if (showOption.startsWith(":")) {
-        const parts = showOption.slice(1).split(":");
-        return {
-          bundle: "",
-          app: parts[0] || "",
-          patch: parts.length > 1 ? parts.slice(1).join(":") : "",
-        };
-      }
-      const parts = showOption.split(":");
-      const bundle = parts.length >= 2 ? `${parts[0]}:${parts[1]}` : parts[0];
-      return {
-        bundle: bundle,
-        app: parts.length >= 3 ? parts[2] : "",
-        patch: parts.length > 3 ? parts.slice(3).join(":") : "",
-      };
-    });
-  }
-
-  return data.rows.filter((row) => {
-    if (parsedShowOptions) {
-      const matched = parsedShowOptions.some((showFilter: { bundle: string; app: string; patch: string }) => {
-        if (showFilter.bundle && row.bundleKey.toLowerCase() !== showFilter.bundle.toLowerCase()) return false;
-
-        if (showFilter.app && row.packageName.toLowerCase() !== showFilter.app.toLowerCase()) return false;
-
-        if (showFilter.patch && row.patchName.toLowerCase() !== showFilter.patch.toLowerCase()) return false;
-
-        return true;
-      });
-      if (!matched) return false;
-    }
-
-    if (searchQueryWords.length > 0) {
-      if (!searchQueryWords.every((searchWord: string) => row.searchPatchesText.includes(searchWord))) return false;
-    }
-
-    return true;
-  });
-}
-
-export interface DropdownOption {
-  value: string;
-  label: string;
-  icon?: string;
-  repo?: string;
-}
-
-function buildFilterOptions(
-  appMap: Map<string, { label: string; icon: string }>,
-  bundleSet: Set<string>,
-  namesMap: Record<string, AppNameMeta | string>,
-  hasUniversal: boolean,
-): { bundleOptions: DropdownOption[]; appOptions: DropdownOption[] } {
-  const appOptions: DropdownOption[] = Array.from(appMap.entries())
-    .map(([value, { label, icon }]) => ({ value, label, icon }))
-    .sort((appA, appB) => appA.label.localeCompare(appB.label) || appA.value.localeCompare(appB.value));
-
-  if (hasUniversal) {
-    const meta = namesMap["universal"];
-    appOptions.unshift({
-      value: "universal",
-      label: appName("universal", namesMap),
-      icon: (typeof meta === "object" && meta !== null ? (meta as AppNameMeta).iconUrl : "") || "",
-    });
-  }
-
-  return {
-    bundleOptions: Array.from(bundleSet)
-      .sort((firstItem: string, secondItem: string) => firstItem.localeCompare(secondItem))
-      .map((value: string) => ({ value, label: value })),
-    appOptions,
-  };
-}
-
-export function getFilterOptions(rows: RowItem[], namesMap: Record<string, AppNameMeta | string> = {}): { bundleOptions: DropdownOption[]; appOptions: DropdownOption[] } {
-  const appMap = new Map<string, { label: string; icon: string }>();
-  const bundleSet = new Set<string>();
-  let hasUniversal = false;
-
-  for (const row of rows) {
-    bundleSet.add(row.bundleKey);
-    if (row.packageName && row.packageName !== "universal") {
-      if (!appMap.has(row.packageName)) {
-        appMap.set(row.packageName, { label: row.appName, icon: row.appIcon });
-      }
-    } else {
-      hasUniversal = true;
-    }
-  }
-
-  return buildFilterOptions(appMap, bundleSet, namesMap, hasUniversal);
-}
-
-export function summarizeRows(rows: RowItem[]): {
-  bundles: number;
-  patches: number;
-  apps: number;
+export function getAppMeta(
+  packageName: string,
+  namesMap: Record<string, AppNameMeta>,
+): {
+  appName: string;
+  appIcon: string;
+  description: string;
+  minInstalls: number;
+  genre: string;
+  firstSeen: number;
 } {
-  const bundles = new Set();
-  const patches = new Set();
-  const apps = new Set();
-  for (const row of rows) {
-    bundles.add(row.bundleKey);
-    patches.add(row.patchId);
-    apps.add(row.packageName);
+  const appMeta = namesMap[packageName];
+  return {
+    appName: appMeta?.name || packageName,
+    appIcon: appMeta?.iconUrl || "",
+    description: decodeHtmlEntities(appMeta?.description || ""),
+    minInstalls: appMeta?.minInstalls || 0,
+    genre: appMeta?.genre || "",
+    firstSeen: appMeta?.firstSeen || 0,
+  };
+}
+
+export function getAppItems(appItems: AppItem[], searchQuery = "", sortOrder = "default", categoryFilter = "all"): AppItem[] {
+  let appList = appItems;
+
+  if (categoryFilter && categoryFilter !== "all") {
+    appList = appList.filter((appItem) => appItem.categorySlug === categoryFilter);
   }
-  return { bundles: bundles.size, patches: patches.size, apps: apps.size };
+
+  const queryWords = searchQuery.trim().split(/\s+/).map(simplifyString).filter(Boolean);
+  if (queryWords.length > 0) {
+    appList = appList.filter((appItem) => queryWords.every((word) => appItem.searchableText.includes(word)));
+  }
+
+  appList = [...appList];
+
+  const compareAppFallback = (appItemA: AppItem, appItemB: AppItem): number => {
+    const firstSeenDiff = appItemA.firstSeen - appItemB.firstSeen;
+    if (firstSeenDiff !== 0) return firstSeenDiff;
+    return appItemA.appName.localeCompare(appItemB.appName);
+  };
+
+  if (sortOrder === "new") {
+    appList.sort((appItemA, appItemB) => appItemB.firstSeen - appItemA.firstSeen || compareAppFallback(appItemA, appItemB));
+  } else if (sortOrder === "patches") {
+    appList.sort((appItemA, appItemB) => appItemB.patchCount - appItemA.patchCount || compareAppFallback(appItemA, appItemB));
+  } else if (sortOrder === "alphabetical" || sortOrder === "alpha" || sortOrder === "abc") {
+    appList.sort((appItemA, appItemB) => appItemA.appName.localeCompare(appItemB.appName) || compareAppFallback(appItemA, appItemB));
+  } else {
+    appList.sort((appItemA, appItemB) => appItemB.minInstalls - appItemA.minInstalls || compareAppFallback(appItemA, appItemB));
+  }
+
+  return appList;
+}
+
+export function getAvailableCategories(rowItems: RowItem[], namesMap: Record<string, AppNameMeta>): { key: string; label: string }[] {
+  const genresSet = new Set<string>();
+  let hasNotOnGooglePlay = false;
+
+  const seenPackages = new Set<string>();
+  for (const rowItem of rowItems) {
+    const packageName = rowItem.packageName;
+    if (seenPackages.has(packageName)) continue;
+    seenPackages.add(packageName);
+
+    const genre = namesMap[packageName]?.genre || "";
+    if (genre) {
+      genresSet.add(genre);
+    } else {
+      hasNotOnGooglePlay = true;
+    }
+  }
+
+  const categories: { key: string; label: string }[] = [{ key: "all", label: "All genres" }];
+
+  if (hasNotOnGooglePlay) {
+    categories.push({ key: "not-on-google-play", label: "Not on Google Play" });
+  }
+
+  const sortedGenres = Array.from(genresSet).sort((a, b) => a.localeCompare(b));
+  for (const genre of sortedGenres) {
+    categories.push({
+      key: slugifyGenre(genre),
+      label: genre,
+    });
+  }
+
+  return categories;
+}
+
+export function getFilteredBundles(bundles: Bundle[], searchQuery = "", sortOrder = "default"): Bundle[] {
+  let bundleList = bundles;
+
+  const queryWords = searchQuery.trim().split(/\s+/).map(simplifyString).filter(Boolean);
+  if (queryWords.length > 0) {
+    bundleList = bundleList.filter((bundleItem) => queryWords.every((word) => bundleItem.searchableText.includes(word)));
+  }
+
+  bundleList = [...bundleList];
+
+  const compareBundleFallback = (bundleItemA: Bundle, bundleItemB: Bundle): number => {
+    const firstSeenDiff = bundleItemA.firstSeen - bundleItemB.firstSeen;
+    if (firstSeenDiff !== 0) return firstSeenDiff;
+    return bundleItemA.name.localeCompare(bundleItemB.name);
+  };
+
+  const compareHotBundle = (bundleItemA: Bundle, bundleItemB: Bundle): number => {
+    const stars7dDiff = bundleItemB.starsGained7d - bundleItemA.starsGained7d;
+    if (stars7dDiff !== 0) return stars7dDiff;
+
+    const stars40dDiff = bundleItemB.starsGained40d - bundleItemA.starsGained40d;
+    if (stars40dDiff !== 0) return stars40dDiff;
+
+    const starsDiff = bundleItemB.stars - bundleItemA.stars;
+    if (starsDiff !== 0) return starsDiff;
+
+    return compareBundleFallback(bundleItemA, bundleItemB);
+  };
+
+  if (sortOrder === "new") {
+    bundleList.sort((bundleItemA, bundleItemB) => bundleItemB.firstSeen - bundleItemA.firstSeen || compareBundleFallback(bundleItemA, bundleItemB));
+  } else if (sortOrder === "updated") {
+    bundleList.sort((bundleItemA, bundleItemB) => bundleItemB.updatedAt - bundleItemA.updatedAt || compareBundleFallback(bundleItemA, bundleItemB));
+  } else if (sortOrder === "stars") {
+    bundleList.sort((bundleItemA, bundleItemB) => bundleItemB.stars - bundleItemA.stars || compareBundleFallback(bundleItemA, bundleItemB));
+  } else if (sortOrder === "apps") {
+    bundleList.sort((bundleItemA, bundleItemB) => bundleItemB.appCount - bundleItemA.appCount || compareBundleFallback(bundleItemA, bundleItemB));
+  } else if (sortOrder === "patches") {
+    bundleList.sort((bundleItemA, bundleItemB) => bundleItemB.patchCount - bundleItemA.patchCount || compareBundleFallback(bundleItemA, bundleItemB));
+  } else if (sortOrder === "alphabetical" || sortOrder === "abc") {
+    bundleList.sort((bundleItemA, bundleItemB) => bundleItemA.name.localeCompare(bundleItemB.name) || compareBundleFallback(bundleItemA, bundleItemB));
+  } else {
+    bundleList.sort(compareHotBundle);
+  }
+
+  return bundleList;
+}
+
+export function loadInitialData(): Promise<ActiveData> {
+  if (activeDataPromise) {
+    return activeDataPromise;
+  }
+
+  activeDataPromise = (async () => {
+    const [namesMap, sourcesData, whatsNewHistory] = await Promise.all([
+      fetchJson<Record<string, AppNameMeta>>("apps.json", {}),
+      fetchJson<{ bundles: Bundle[]; compatibilities: CompatibilityItem[][] }>("bundles.json", { bundles: [], compatibilities: [] }),
+      fetchJson<WhatsNewHistoryItem[]>("whats-new.json", []),
+    ]);
+    const jsonBundles = sourcesData.bundles ?? [];
+    const compatibilitiesList = sourcesData.compatibilities ?? [];
+
+    const bundleList: Bundle[] = [];
+    const rows: RowItem[] = [];
+
+    for (const jsonBundle of jsonBundles) {
+      if (!jsonBundle.patches) continue;
+
+      const bundleKey = `${jsonBundle.source}:${jsonBundle.repo}`;
+      const calculatedUrls = buildBundleUrls(jsonBundle.source, jsonBundle.repo, jsonBundle.isPreRelease);
+      const updatedAt = jsonBundle.updatedAt || 0;
+      const appFirstSeen = jsonBundle.appFirstSeen || {};
+      const patches = jsonBundle.patches || [];
+
+      const bundleObj: Bundle = {
+        source: jsonBundle.source || "",
+        repo: jsonBundle.repo || "",
+        name: jsonBundle.name || jsonBundle.repo || "",
+        repoDescription: decodeHtmlEntities(jsonBundle.repoDescription || ""),
+        avatarUrl: jsonBundle.avatarUrl || "",
+        stars: jsonBundle.stars || 0,
+        starsGained7d: jsonBundle.starsGained7d || 0,
+        starsGained40d: jsonBundle.starsGained40d || 0,
+        updatedAt,
+        firstSeen: jsonBundle.firstSeen || updatedAt,
+        appFirstSeen,
+        patches,
+        isPreRelease: !!jsonBundle.isPreRelease,
+
+        key: bundleKey,
+        patchCount: patches.length,
+        appCount: Object.keys(appFirstSeen).length,
+        repoUrl: calculatedUrls.repoUrl,
+        deepLink: calculatedUrls.deepLink,
+        changelogUrl: calculatedUrls.changelogUrl,
+        searchableText: simplifyString(`${jsonBundle.name || jsonBundle.repo || ""} ${jsonBundle.repo || ""}`),
+      };
+
+      bundleList.push(bundleObj);
+
+      const patchRows = bundleObj.patches.flatMap((patchItem: PatchItem, patchIndex: number) => {
+        const patchId = `${bundleKey}:${patchIndex}`;
+        const compatiblePackages = patchItem.compatiblePackagesKey !== undefined ? compatibilitiesList[patchItem.compatiblePackagesKey] : undefined;
+
+        let packageTargetRows: PackageTarget[] = universalDefaultTarget;
+        if (Array.isArray(compatiblePackages)) {
+          const mappedTargetRows = compatiblePackages.flatMap((compatibilityItem: CompatibilityItem) =>
+            compatibilityItem?.packageName
+              ? [
+                  {
+                    packageName: compatibilityItem.packageName,
+                    isPreRelease: !!compatibilityItem.isPreRelease,
+                    versions: extractVersions(compatibilityItem.targets),
+                  },
+                ]
+              : [],
+          );
+          if (mappedTargetRows.length > 0) packageTargetRows = mappedTargetRows;
+        }
+
+        const searchParts = [patchItem.name, patchItem.description];
+        if (Array.isArray(patchItem.options)) {
+          patchItem.options.forEach((patchOption) => searchParts.push(patchOption.title, patchOption.key, patchOption.description));
+        }
+        const searchPatchesText = simplifyString(searchParts.filter(Boolean).join(" "));
+
+        return packageTargetRows.map((targetPackage, targetIndex) => {
+          const packageName = targetPackage.packageName ?? "universal";
+
+          return {
+            id: `${patchId}:${targetIndex}`,
+            bundleKey,
+            patchName: patchItem.name ?? "",
+            patchDescription: patchItem.description ?? "",
+            packageName,
+            isAppPreRelease: !!targetPackage.isPreRelease,
+            isPatchPreRelease: !!patchItem.isPreRelease,
+            versions: targetPackage.versions,
+            searchPatchesText,
+            options: patchItem.options,
+            default: patchItem.default,
+          };
+        });
+      });
+
+      rows.push(...patchRows);
+    }
+
+    const appPatchesMap: Record<string, RowItem[]> = {};
+    const bundlePatchesMap: Record<string, RowItem[]> = {};
+
+    for (const rowItem of rows) {
+      const packageName = rowItem.packageName;
+      if (!appPatchesMap[packageName]) appPatchesMap[packageName] = [];
+      appPatchesMap[packageName].push(rowItem);
+
+      const bundleKeyLower = rowItem.bundleKey.toLowerCase();
+      if (!bundlePatchesMap[bundleKeyLower]) bundlePatchesMap[bundleKeyLower] = [];
+      bundlePatchesMap[bundleKeyLower].push(rowItem);
+    }
+
+    const bundleMap: Record<string, Bundle> = {};
+    for (const bundle of bundleList) {
+      bundleMap[bundle.key.toLowerCase()] = bundle;
+    }
+
+    const appMap = new Map<string, AppItem>();
+    for (const rowItem of rows) {
+      const packageName = rowItem.packageName;
+      const existingApp = appMap.get(packageName);
+      if (!existingApp) {
+        const appMeta = getAppMeta(packageName, namesMap);
+        const categorySlug = slugifyGenre(appMeta.genre);
+        const searchableText = simplifyString(`${appMeta.appName} ${packageName} ${appMeta.description}`);
+        appMap.set(packageName, {
+          packageName,
+          appName: appMeta.appName,
+          appIcon: appMeta.appIcon,
+          description: appMeta.description,
+          minInstalls: appMeta.minInstalls,
+          genre: appMeta.genre,
+          firstSeen: appMeta.firstSeen,
+          patchCount: 1,
+          categorySlug,
+          searchableText,
+        });
+      } else {
+        existingApp.patchCount += 1;
+      }
+    }
+    const appItems = Array.from(appMap.values());
+
+    const stats: ActiveStats = {
+      bundlesCount: bundleList.length,
+      patchesCount: rows.length,
+      appsCount: appItems.filter((appItem) => appItem.packageName !== "universal").length,
+    };
+
+    return {
+      bundles: bundleList,
+      rows,
+      appItems,
+      bundleMap,
+      namesMap,
+      appPatchesMap,
+      bundlePatchesMap,
+      whatsNewHistory,
+      stats,
+    };
+  })();
+
+  return activeDataPromise;
+}
+
+export interface BundleGroupData {
+  bundleKey: string;
+  bundleMeta: Bundle;
+  patches: RowItem[];
+}
+
+export function getAppBundleGroups(activeData: ActiveData, packageName: string, searchQuery: string): BundleGroupData[] {
+  const rawPatches = activeData.appPatchesMap[packageName] || [];
+  if (rawPatches.length === 0) return [];
+
+  const queryWords = searchQuery.trim().split(/\s+/).map(simplifyString).filter(Boolean);
+  const filteredPatches =
+    queryWords.length > 0
+      ? rawPatches.filter((patchItem: RowItem) => {
+          const bundleKeyLower = patchItem.bundleKey.toLowerCase();
+          const bundleMetadata = activeData.bundleMap[bundleKeyLower];
+          const bundleNameClean = simplifyString(bundleMetadata?.name);
+          const bundleRepoClean = simplifyString(bundleMetadata?.repo);
+
+          return queryWords.every((word) => patchItem.searchPatchesText.includes(word) || bundleNameClean.includes(word) || bundleRepoClean.includes(word));
+        })
+      : rawPatches;
+
+  const groupedPatchesMap = new Map<string, RowItem[]>();
+  for (const patchItem of filteredPatches) {
+    const bundleKey = patchItem.bundleKey.toLowerCase();
+    const patches = groupedPatchesMap.get(bundleKey) ?? [];
+    patches.push(patchItem);
+    groupedPatchesMap.set(bundleKey, patches);
+  }
+
+  const bundleGroupList: BundleGroupData[] = [];
+  for (const [bundleKey, patches] of groupedPatchesMap.entries()) {
+    const bundleMetadata = activeData.bundleMap[bundleKey];
+    if (bundleMetadata) {
+      bundleGroupList.push({ bundleKey, bundleMeta: bundleMetadata, patches });
+    }
+  }
+
+  bundleGroupList.sort((groupA, groupB) => {
+    const starsDiff = groupB.bundleMeta.stars - groupA.bundleMeta.stars;
+    if (starsDiff !== 0) return starsDiff;
+    return groupA.bundleMeta.name.localeCompare(groupB.bundleMeta.name, undefined, { sensitivity: "base" });
+  });
+
+  return bundleGroupList;
+}
+
+export interface AppGroupData {
+  packageName: string;
+  appMeta: {
+    appName: string;
+    appIcon: string;
+    description: string;
+    minInstalls: number;
+    genre: string;
+    firstSeen: number;
+  };
+  patches: RowItem[];
+}
+
+export function getBundleAppGroups(activeData: ActiveData, bundleKey: string, searchQuery: string): AppGroupData[] {
+  const bundleKeyLower = bundleKey.toLowerCase();
+  const filteredPatches = activeData.bundlePatchesMap[bundleKeyLower] || [];
+  if (filteredPatches.length === 0) return [];
+
+  const queryWords = searchQuery.trim().split(/\s+/).map(simplifyString).filter(Boolean);
+  const searchedPatches =
+    queryWords.length > 0
+      ? filteredPatches.filter((patchItem: RowItem) => {
+          const appMeta = getAppMeta(patchItem.packageName, activeData.namesMap);
+          const appNameClean = simplifyString(appMeta.appName);
+          const packageNameClean = simplifyString(patchItem.packageName);
+
+          return queryWords.every((word) => patchItem.searchPatchesText.includes(word) || packageNameClean.includes(word) || appNameClean.includes(word));
+        })
+      : filteredPatches;
+
+  const groupedPatchesMap = new Map<string, RowItem[]>();
+  for (const patchItem of searchedPatches) {
+    const packageName = patchItem.packageName;
+    const patches = groupedPatchesMap.get(packageName) ?? [];
+    patches.push(patchItem);
+    groupedPatchesMap.set(packageName, patches);
+  }
+
+  const appGroupList: AppGroupData[] = [];
+  for (const [packageName, patches] of groupedPatchesMap.entries()) {
+    const appMeta = getAppMeta(packageName, activeData.namesMap);
+    appGroupList.push({ packageName, appMeta, patches });
+  }
+
+  appGroupList.sort((groupA, groupB) => {
+    if ((groupA.packageName === "universal") !== (groupB.packageName === "universal")) {
+      return groupA.packageName === "universal" ? 1 : -1;
+    }
+    return groupA.appMeta.appName.localeCompare(groupB.appMeta.appName, undefined, { sensitivity: "base" });
+  });
+
+  return appGroupList;
 }

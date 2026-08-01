@@ -115,4 +115,4 @@ Maintained with ❤️ by **[@nvbangg](https://github.com/nvbangg)**
 #### 🙏 Credits
 
 - Patch data is automatically aggregated from: [My custom sources](data/repos/custom.json), [Morphe Community Patches](https://morphe-patches.software), [ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) and [Morphe Archive](https://github.com/rushiforai/morphe-archive).
-- This project is inspired by [Awesome ReVanced](https://github.com/Jman-Github/Awesome-ReVanced), [ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) and [Patch Explorer](https://github.com/Paresh-Maheshwari/patch-explorer).
+- This project's design is inspired by [Awesome ReVanced](https://github.com/Jman-Github/Awesome-ReVanced), [Morphe Community Patches](https://morphe-patches.software), [ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) and [Patch Explorer](https://github.com/Paresh-Maheshwari/patch-explorer).

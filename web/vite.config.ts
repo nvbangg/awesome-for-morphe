@@ -1,23 +1,24 @@
+import path from "path";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
 
-const cacheBustPlugin = () => {
-  return {
-    name: "cache-bust",
-    enforce: "post",
-    transformIndexHtml(html) {
-      let cleanHtml = html.replace(/\r\n/g, "\n").replace(/(\n[ \t]*){2,}\n/g, "\n\n").trim() + "\n";
-      return cleanHtml.replace(
-        /(assets\/index\.(?:js|css))/g,
-        `$1?v=${Date.now()}`
-      );
-    }
-  };
-};
+const cacheBustPlugin = () => ({
+  name: "cache-bust",
+  enforce: "post" as const,
+  transformIndexHtml(html: string) {
+    const cleanHtml =
+      html
+        .replace(/\r\n/g, "\n")
+        .replace(/(\n[ \t]*){2,}\n/g, "\n\n")
+        .trim() + "\n";
+    return cleanHtml.replace(/(assets\/index\.(?:js|css))/g, `$1?v=${Date.now()}`);
+  },
+});
 
 export default defineConfig(({ command }) => {
   return {
-    plugins: [tailwindcss(), cacheBustPlugin()],
+    plugins: [react(), tailwindcss(), cacheBustPlugin()],
     publicDir: command === "serve" ? "../docs" : false,
     base: "./",
     build: {
@@ -33,7 +34,7 @@ export default defineConfig(({ command }) => {
     },
     resolve: {
       alias: {
-        vue: "vue/dist/vue.esm-bundler.js",
+        "@": path.resolve(__dirname, "./src"),
       },
     },
   };

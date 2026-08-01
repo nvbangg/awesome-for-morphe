@@ -61,55 +61,24 @@ def format_app_name(package_name, app_metadata):
     return package_name
 
 
-def format_patch(patch_name):
-    if any(char in patch_name for char in [":", ",", "(", ")"]):
-        return f'"{patch_name}"'
-    return patch_name
-
-
-def stringify_trie(bundles_dict):
-    bundle_strs = []
-    for bundle, apps in bundles_dict.items():
-        if not apps:
-            bundle_strs.append(bundle)
-        else:
-            app_strs = []
-            for app, patches in apps.items():
-                if not patches:
-                    app_strs.append(app)
-                elif len(patches) == 1:
-                    app_strs.append(f"{app}:{format_patch(patches[0])}")
-                else:
-                    patch_strs = [format_patch(patch_name) for patch_name in patches]
-                    app_strs.append(f"{app}:({','.join(patch_strs)})")
-
-            if len(app_strs) == 1:
-                bundle_strs.append(f"{bundle}:{app_strs[0]}")
-            else:
-                bundle_strs.append(f"{bundle}:({','.join(app_strs)})")
-    return ",".join(bundle_strs)
-
-
-def make_url(bundle, app=None, patches=None):
+def make_url(bundle=None, app=None, patch=None):
     url = "https://awesome-morphe.vercel.app/"
-    query = []
+    query = {}
 
-    if ":" not in bundle:
-        return url + "#whats-new"
-
-    source, rest = bundle.split(":", 1)
-    if patches:
-        trie_dict = {rest: {app: list(patches)}}
-        trie_str = stringify_trie(trie_dict)
-        encoded_trie = urllib.parse.quote(trie_str, safe=':,"()/')
-        query.append(f"{source}={encoded_trie}")
+    if patch and app:
+        query["app"] = app
+        query["patch"] = patch
     elif app:
-        query.append(f"{source}={rest}:{app}")
-    else:
-        query.append(f"{source}={rest}")
+        query["app"] = app
+    elif bundle and ":" in bundle:
+        source, repo = bundle.split(":", 1)
+        query[source] = repo
 
     if query:
-        url += "?" + "&".join(query)
+        query_string = urllib.parse.urlencode(query, quote_via=urllib.parse.quote_plus)
+        query_string = query_string.replace("%2F", "/")
+        url += "?" + query_string
+
     url += "#whats-new"
     return url
 
@@ -204,45 +173,30 @@ def generate_markdown(json_diff, app_metadata):
                     all_changes[bundle_key][package_name].extend(apps_data[package_name].get("patches", []))
 
         if is_new_bundle:
-            url = make_url(bundle_key)
-            link = f"[{display_name}]({url})"
-            bundle_md = [f"+ 📦 (✨New) {link}"]
+            bundle_url = make_url(bundle=bundle_key)
+            bundle_md = [f"+ 📦 (✨New) [{display_name}]({bundle_url})"]
 
             for package_name in apps_data.keys():
                 app_name = format_app_name(package_name, app_metadata)
-                bundle_md.append(f"    - 📱 {app_name}")
+                app_url = make_url(app=package_name)
+                bundle_md.append(f"    - 📱 [{app_name}]({app_url})")
 
             markdown_lines.append("\n".join(bundle_md))
         else:
-            bundle_changes = {}
-            for package_name, data in apps_data.items():
-                if data.get("isNew", False):
-                    bundle_changes[package_name] = []
-                else:
-                    bundle_changes[package_name] = sorted(data.get("patches", []))
-
-            if ":" not in bundle_key:
-                continue
-
-            source, rest = bundle_key.split(":", 1)
-            trie_dict = {rest: bundle_changes}
-            trie_str = stringify_trie(trie_dict)
-            encoded_trie = urllib.parse.quote(trie_str, safe=':,"/')
-            url = f"https://awesome-morphe.vercel.app/?{source}={encoded_trie}#whats-new"
-
-            link = f"[{display_name}]({url})"
-            bundle_md = [f"- 📦 {link}"]
+            bundle_md = [f"- 📦 {display_name}"]
 
             for package_name in apps_data.keys():
                 app_data = apps_data[package_name]
                 app_name = format_app_name(package_name, app_metadata)
 
                 if app_data.get("isNew", False):
-                    bundle_md.append(f"    + 📱 (✨New) {app_name}")
+                    app_url = make_url(app=package_name)
+                    bundle_md.append(f"    + 📱 (✨New) [{app_name}]({app_url})")
                 else:
                     bundle_md.append(f"    - 📱 {app_name}")
                     for patch_name in sorted(app_data.get("patches", [])):
-                        bundle_md.append(f"        + 🧩 (✨New) `{patch_name}`")
+                        patch_url = make_url(app=package_name, patch=patch_name)
+                        bundle_md.append(f"        + 🧩 [{patch_name}]({patch_url})")
 
             markdown_lines.append("\n".join(bundle_md))
 

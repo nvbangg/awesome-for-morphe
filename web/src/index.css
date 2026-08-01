@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "@heroui/styles";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Inter", sans-serif;
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-divider: var(--divider);
+  --color-border: var(--divider);
+  --color-foreground: var(--foreground);
+  --color-foreground-600: var(--foreground-600);
+  --color-foreground-500: var(--foreground-500);
+  --color-foreground-400: var(--foreground-400);
+}
+
+:root {
+  --background: #ffffff;
+  --card: #fafafa;
+  --primary: #1e5aa8;
+  --secondary: #00afae;
+  --foreground: #18181b;
+  --foreground-600: #52525b;
+  --foreground-500: #a1a1aa;
+  --foreground-400: #a1a1aa;
+  --divider: #e4e4e7;
+  --primary-light: rgba(30, 90, 168, 0.06);
+  --primary-gradient: linear-gradient(135deg, #1e5aa8 0%, #00afae 100%);
+  --shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  --background: #18181b;
+  --card: #27272a;
+  --primary: #4a7fc8;
+  --secondary: #20cfce;
+  --foreground: #fafafa;
+  --foreground-600: #d4d4d8;
+  --foreground-500: #a1a1aa;
+  --foreground-400: #a1a1aa;
+  --divider: #3f3f46;
+  --primary-light: rgba(74, 127, 200, 0.08);
+  --primary-gradient: linear-gradient(135deg, #4a7fc8 0%, #20cfce 100%);
+  --shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  color: var(--foreground);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}

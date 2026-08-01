@@ -33,6 +33,7 @@ export interface Bundle {
   appFirstSeen: Record<string, number>;
   patches: PatchItem[];
   isPreRelease: boolean;
+  isTest?: boolean;
 
   key: string;
   patchCount: number;
@@ -130,7 +131,7 @@ const jsonCache = new Map<string, Promise<unknown>>();
 let activeDataPromise: Promise<ActiveData> | null = null;
 const universalDefaultTarget: PackageTarget[] = [{ packageName: "universal", versions: [], isPreRelease: false }];
 
-function simplifyString(inputString: string | null | undefined): string {
+export function simplifyString(inputString: string | null | undefined): string {
   return inputString
     ? inputString
         .normalize("NFD")
@@ -213,7 +214,7 @@ export function getAppMeta(
 } {
   const appMeta = namesMap[packageName];
   return {
-    appName: appMeta?.name || packageName,
+    appName: packageName === "universal" ? "Any app" : appMeta?.name || packageName,
     appIcon: appMeta?.iconUrl || "",
     description: decodeHtmlEntities(appMeta?.description || ""),
     minInstalls: appMeta?.minInstalls || 0,

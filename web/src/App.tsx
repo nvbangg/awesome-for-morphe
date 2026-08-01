@@ -13,7 +13,10 @@ import { useUrlSync, NavigationTabType } from "@/hooks/useUrlSync";
 import { usePatchData } from "@/hooks/usePatchData";
 import { getAvailableCategories } from "@/data";
 import { Alert, AlertTitle, AlertDescription } from "@heroui/react";
-import { useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
+import { TestBundleInputModal } from "@/components/bundles/TestBundleInputModal";
+import { TestBundleViewModal } from "@/components/bundles/TestBundleViewModal";
+import { fetchTestBundle, TestBundleData } from "@/utils/testBundleFetcher";
 
 export default function App() {
   const { activeTab, selectedCategory, sortOrder, selectedAppPackageName, popupBundleKey, popupSearchQuery, updateUrl } = useUrlSync();
@@ -40,6 +43,80 @@ export default function App() {
   const handleCloseAppModal = useCallback(() => updateUrl({ app: null, search: "" }), [updateUrl]);
   const handleCloseBundleModal = useCallback(() => updateUrl({ bundle: null, search: "" }), [updateUrl]);
   const handleSearchChange = useCallback((search: string) => updateUrl({ search }), [updateUrl]);
+
+  const [isTestBundleInputOpen, setIsTestBundleInputOpen] = useState(false);
+  const [isTestBundleViewOpen, setIsTestBundleViewOpen] = useState(false);
+  const [testBundleData, setTestBundleData] = useState<TestBundleData | null>(null);
+  const [testBundleLoading, setTestBundleLoading] = useState(false);
+  const [testBundleError, setTestBundleError] = useState("");
+
+  const loadTestBundleFromUrl = useCallback(
+    async (link: string) => {
+      if (!activeData) return;
+      setTestBundleLoading(true);
+      setTestBundleError("");
+      try {
+        const data = await fetchTestBundle(link);
+        setTestBundleData(data);
+        setIsTestBundleInputOpen(false);
+        setIsTestBundleViewOpen(true);
+      } catch (error: any) {
+        setTestBundleError(error.message || "Failed to load bundle data. Please check the URL and try again.");
+        setIsTestBundleInputOpen(true);
+      } finally {
+        setTestBundleLoading(false);
+      }
+    },
+    [activeData],
+  );
+
+  const handleTestBundleSubmit = async (link: string) => {
+    if (!activeData) return;
+    setTestBundleLoading(true);
+    setTestBundleError("");
+    try {
+      const data = await fetchTestBundle(link);
+      setTestBundleData(data);
+      setIsTestBundleInputOpen(false);
+      setIsTestBundleViewOpen(true);
+
+      const repoInfo = data.repoName;
+      const platformParam = data.platform === "gitlab" ? "gitlab" : "github";
+      window.history.replaceState(null, "", `${window.location.pathname}?${platformParam}=${repoInfo}&test-bundle#bundles`);
+    } catch (error: any) {
+      setTestBundleError(error.message || "Failed to load bundle data. Please check the URL and try again.");
+    } finally {
+      setTestBundleLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!activeData) return;
+    const handleUrlState = () => {
+      const searchParams = new URLSearchParams(window.location.search);
+      const isTestBundle = searchParams.has("test-bundle") || window.location.hash.includes("test-bundle");
+
+      if (isTestBundle) {
+        const githubRepo = searchParams.get("github");
+        const gitlabRepo = searchParams.get("gitlab");
+
+        if (githubRepo) {
+          loadTestBundleFromUrl(`https://github.com/${githubRepo}`);
+        } else if (gitlabRepo) {
+          loadTestBundleFromUrl(`https://gitlab.com/${gitlabRepo}`);
+        } else {
+          setIsTestBundleInputOpen(true);
+        }
+      }
+    };
+    handleUrlState();
+    window.addEventListener("popstate", handleUrlState);
+    window.addEventListener("hashchange", handleUrlState);
+    return () => {
+      window.removeEventListener("popstate", handleUrlState);
+      window.removeEventListener("hashchange", handleUrlState);
+    };
+  }, [activeData, loadTestBundleFromUrl]);
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
@@ -74,7 +151,33 @@ export default function App() {
                 <>
                   {activeTab === "apps" && <AppGrid activeData={activeData} sortOrder={sortOrder} selectedCategory={selectedCategory} globalSearch={globalSearch} onAppClick={handleAppClick} />}
 
-                  {activeTab === "bundles" && <BundleGrid activeData={activeData} sortOrder={sortOrder} globalSearch={globalSearch} onBundleClick={handleBundleClick} />}
+                  {activeTab === "bundles" && (
+                    <>
+                      <div className="text-xs sm:text-sm text-foreground-700 dark:text-foreground-400 mb-4 px-1 text-right">
+                        Bundle not found?{" "}
+                        <button
+                          onClick={() => {
+                            setTestBundleError("");
+                            setIsTestBundleInputOpen(true);
+                            window.history.replaceState(null, "", `${window.location.pathname}?test-bundle#bundles`);
+                          }}
+                          className="font-semibold text-primary hover:underline hover:text-primary/80 transition-colors"
+                        >
+                          Test bundle
+                        </button>
+                        {" | "}
+                        <a
+                          href="https://github.com/nvbangg/awesome-morphe/issues/new?template=bundle-request.yml"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-semibold text-primary hover:underline hover:text-primary/80 transition-colors"
+                        >
+                          Submit Bundle
+                        </a>
+                      </div>
+                      <BundleGrid activeData={activeData} sortOrder={sortOrder} globalSearch={globalSearch} onBundleClick={handleBundleClick} />
+                    </>
+                  )}
 
                   {activeTab === "whats-new" && (
                     <div className="my-3">
@@ -97,6 +200,30 @@ export default function App() {
       </section>
 
       <Footer />
+
+      <TestBundleInputModal
+        isOpen={isTestBundleInputOpen}
+        onClose={() => {
+          setTestBundleError("");
+          setIsTestBundleInputOpen(false);
+          if (window.location.search.includes("test-bundle")) {
+            window.history.replaceState(null, "", `${window.location.pathname}#bundles`);
+          }
+        }}
+        onSubmit={handleTestBundleSubmit}
+        isLoading={testBundleLoading}
+        error={testBundleError}
+      />
+
+      <TestBundleViewModal
+        isOpen={isTestBundleViewOpen}
+        onClose={() => {
+          setIsTestBundleViewOpen(false);
+          window.history.replaceState(null, "", `${window.location.pathname}#bundles`);
+        }}
+        data={testBundleData}
+        activeData={activeData}
+      />
 
       <AppModal
         isOpen={!!selectedAppPackageName}

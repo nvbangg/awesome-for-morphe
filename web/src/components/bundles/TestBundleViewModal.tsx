@@ -1,76 +1,98 @@
 import { useMemo, useState, useEffect } from "react";
-import { ActiveData, getBundleAppGroups } from "@/data";
+import { ActiveData, getAppMeta, RowItem, simplifyString } from "@/data";
 import { SearchInput } from "@/components/common/SearchInput";
 import { useCopy } from "@/hooks/useCopy";
-import { isNew } from "@/utils/formatters";
 import { Avatar } from "@heroui/react";
-import { Package, Check, Copy, Plus, Smartphone, Play, Calendar, ChevronDown } from "lucide-react";
+import { Smartphone, ChevronDown, Plus, Play, Check, Copy } from "lucide-react";
 import { PatchItemRow } from "@/components/common/PatchItemRow";
-import { Badge } from "@/components/common/Badge";
 import { CustomModal, ModalHeader, ModalBody, CloseButton } from "@/components/common/CustomModal";
+import { TestBundleData } from "@/utils/testBundleFetcher";
 
-interface BundleModalProps {
+interface TestBundleViewModalProps {
   isOpen: boolean;
   onClose: () => void;
-  bundleKey: string | null;
+  data: TestBundleData | null;
   activeData: ActiveData | null;
-  searchQuery: string;
-  onSearchChange: (searchValue: string) => void;
 }
 
-export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuery, onSearchChange }: BundleModalProps) {
+export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestBundleViewModalProps) {
   const { copiedText, copyToClipboard } = useCopy();
+  const [currentBranch, setCurrentBranch] = useState<string>("main");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [expandedAppKeys, setExpandedAppKeys] = useState<Set<string>>(new Set());
 
-  const [activeBundle, setActiveBundle] = useState<string | null>(null);
+  const branches = ["main", "dev"];
+
   useEffect(() => {
-    if (bundleKey) setActiveBundle(bundleKey);
-  }, [bundleKey]);
+    if (data && data.availableBranches.length > 0) {
+      if (data.availableBranches.includes("main")) {
+        setCurrentBranch("main");
+      } else {
+        setCurrentBranch(data.availableBranches[0]);
+      }
+    }
+  }, [data]);
 
-  const displayBundle = bundleKey || activeBundle;
+  useEffect(() => {
+    if (!isOpen) {
+      setSearchQuery("");
+    }
+  }, [isOpen]);
 
-  const bundleMeta = useMemo(() => {
-    if (!displayBundle || !activeData) return null;
+  const currentRows: RowItem[] = useMemo(() => {
+    if (!data || !currentBranch || !data.branches[currentBranch]) return [];
+    return data.branches[currentBranch];
+  }, [data, currentBranch]);
 
-    const lowerKey = displayBundle.toLowerCase();
-    const bundle = activeData.bundleMap[lowerKey];
-    if (!bundle) return null;
-
-    return {
-      name: bundle.name || bundle.repo,
-      repo: bundle.repo,
-      repoUrl: bundle.repoUrl,
-      avatarUrl: bundle.avatarUrl,
-      deepLink: bundle.deepLink,
-      rawKey: bundle.key,
-      repoDescription: bundle.repoDescription,
-      firstSeen: bundle.firstSeen,
-      isPreRelease: bundle.isPreRelease,
-      stars: bundle.stars,
-      updatedAt: bundle.updatedAt,
-      changelogUrl: bundle.changelogUrl,
-      source: bundle.source,
-    };
-  }, [displayBundle, activeData]);
-
-  const formattedDate = bundleMeta?.updatedAt
-    ? new Date(bundleMeta.updatedAt).toLocaleDateString(undefined, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      })
-    : "";
+  const deepLink = useMemo(() => {
+    if (!data) return "";
+    const repo = data.repoName;
+    const platform = data.platform || "github";
+    const branchPart = currentBranch === "dev" ? (platform === "gitlab" ? `${repo}/-/tree/dev` : `${repo}/tree/dev`) : repo;
+    return `https://morphe.software/add-source?${platform}=${branchPart}`;
+  }, [data, currentBranch]);
 
   const appGroups = useMemo(() => {
-    if (!displayBundle || !activeData) return [];
-    return getBundleAppGroups(activeData, displayBundle, searchQuery);
-  }, [displayBundle, activeData, searchQuery]);
+    if (!currentRows || !activeData) return [];
 
-  const [expandedAppKeys, setExpandedAppKeys] = useState<Set<string>>(new Set());
+    const queryWords = searchQuery.trim().split(/\s+/).map(simplifyString).filter(Boolean);
+    const filteredRows =
+      queryWords.length > 0
+        ? currentRows.filter((patchItem) => {
+            const appMeta = getAppMeta(patchItem.packageName, activeData.namesMap);
+            const appNameClean = simplifyString(appMeta.appName);
+            const packageNameClean = simplifyString(patchItem.packageName);
+            return queryWords.every((word) => patchItem.searchPatchesText.includes(word) || packageNameClean.includes(word) || appNameClean.includes(word));
+          })
+        : currentRows;
+
+    const map = new Map<string, RowItem[]>();
+    for (const row of filteredRows) {
+      const packageName = row.packageName || "universal";
+      const list = map.get(packageName) || [];
+      list.push(row);
+      map.set(packageName, list);
+    }
+
+    const groups = Array.from(map.entries()).map(([packageName, patches]) => {
+      const appMeta = getAppMeta(packageName, activeData.namesMap);
+      return { packageName, appMeta, patches };
+    });
+
+    groups.sort((groupA, groupB) => {
+      if ((groupA.packageName === "universal") !== (groupB.packageName === "universal")) {
+        return groupA.packageName === "universal" ? 1 : -1;
+      }
+      return groupA.appMeta.appName.localeCompare(groupB.appMeta.appName, undefined, { sensitivity: "base" });
+    });
+
+    return groups;
+  }, [currentRows, searchQuery, activeData]);
 
   useEffect(() => {
     if (!isOpen) return;
     if (appGroups.length === 1 || searchQuery.trim().length > 0) {
-      setExpandedAppKeys(new Set(appGroups.map((g) => g.packageName)));
+      setExpandedAppKeys(new Set(appGroups.map((appGroup) => appGroup.packageName)));
     } else {
       setExpandedAppKeys(new Set());
     }
@@ -88,63 +110,46 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
     });
   };
 
-  if (!bundleMeta) return null;
+  if (!data) return null;
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose}>
       <ModalHeader onClose={onClose}>
-        <div className="flex flex-row items-start justify-between gap-4 w-full">
-          <div className="flex flex-row items-center gap-4 flex-1 min-w-0">
-            <Avatar className="w-14 h-14 rounded-2xl shrink-0 border border-border">
-              <Avatar.Image src={bundleMeta.avatarUrl} alt={bundleMeta.name} />
-              <Avatar.Fallback className="bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
-                <Package className="size-8 text-foreground-400" />
-              </Avatar.Fallback>
-            </Avatar>
-            <div className="flex flex-col min-w-0 justify-center">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="text-xl font-bold tracking-tight text-foreground truncate">{bundleMeta.name}</h2>
-                {isNew(bundleMeta.firstSeen) && <Badge variant="new" />}
-                {bundleMeta.isPreRelease && <Badge variant="prerelease" />}
-                {bundleMeta.stars > 0 && <Badge variant="stars" value={bundleMeta.stars} />}
-              </div>
-              <a
-                href={bundleMeta.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-primary hover:underline font-medium dark:text-[#3fe9e8] inline-flex items-center gap-1.5 mt-0.5 w-fit max-w-full flex-wrap break-all"
-              >
-                {bundleMeta.source === "gitlab" ? (
-                  <svg className="w-3.5 h-3.5 fill-current text-orange-500 shrink-0" viewBox="0 0 24 24">
-                    <path d="m23.905 11.966-.02-.054L20.25 1.156a.458.458 0 0 0-.435-.312.463.463 0 0 0-.44.32l-2.078 6.4h-10.6l-2.07-6.4a.46.46 0 0 0-.441-.32c-.198 0-.374.126-.435.312L.116 11.912a.916.916 0 0 0 .332 1.025l11.235 8.163.023.016.03.018a.555.555 0 0 0 .528 0l.03-.018.022-.016 11.258-8.163a.916.916 0 0 0 .331-1.027Z" />
-                  </svg>
-                ) : (
-                  <svg className="w-3.5 h-3.5 fill-current text-foreground shrink-0" viewBox="0 0 24 24">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                  </svg>
-                )}
-                <span className="break-all whitespace-normal">{bundleMeta.repo}</span>
-              </a>
-            </div>
+        <div className="flex flex-col gap-3 w-full">
+          <div className="flex items-center justify-between gap-4 w-full">
+            <a href={data.repoUrl} target="_blank" rel="noopener noreferrer" className="text-lg font-bold text-primary hover:underline dark:text-[#3fe9e8] break-all whitespace-normal">
+              {data.repoUrl}
+            </a>
+            <CloseButton onClose={onClose} />
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 shrink-0">
-            {bundleMeta.updatedAt > 0 && (
+          <div className="flex items-center justify-between gap-3 flex-wrap">
+            <div className="flex items-center gap-1 bg-background-100 dark:bg-background-800 p-1 rounded-xl border border-divider">
+              {branches.map((branch) => {
+                const isAvailable = data.availableBranches.includes(branch);
+                return (
+                  <button
+                    key={branch}
+                    type="button"
+                    disabled={!isAvailable}
+                    onClick={() => isAvailable && setCurrentBranch(branch)}
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+                      currentBranch === branch
+                        ? "bg-primary text-white shadow-xs"
+                        : isAvailable
+                          ? "text-foreground-600 hover:text-foreground hover:bg-background-200 dark:hover:bg-background-700 cursor-pointer"
+                          : "text-foreground-300 dark:text-foreground-600 opacity-50 cursor-not-allowed"
+                    }`}
+                  >
+                    {branch}
+                  </button>
+                );
+              })}
+            </div>
+
+            {deepLink && (
               <a
-                href={bundleMeta.changelogUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-divider hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-primary dark:hover:text-[#3fe9e8] transition-colors text-xs font-semibold text-foreground-600 dark:text-zinc-300 no-underline shrink-0"
-                title="View Release Changelog"
-              >
-                <Calendar className="w-3.5 h-3.5" />
-                {formattedDate}
-              </a>
-            )}
-            {bundleMeta.deepLink && (
-              <a
-                href={bundleMeta.deepLink}
+                href={deepLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-(image:--primary-gradient) text-white text-sm font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] shadow-sm select-none"
@@ -153,55 +158,23 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
                 <Plus className="w-4 h-4" /> Add to Morphe
               </a>
             )}
-            <CloseButton onClose={onClose} />
           </div>
-
-          <div className="sm:hidden shrink-0">
-            <CloseButton onClose={onClose} />
-          </div>
-        </div>
-
-        {bundleMeta.repoDescription && <p className="text-sm text-foreground-600 dark:text-foreground-500 leading-relaxed wrap-break-word">{bundleMeta.repoDescription}</p>}
-
-        <div className="flex sm:hidden items-center justify-between gap-3 mt-1 w-full">
-          {bundleMeta.updatedAt > 0 && (
-            <a
-              href={bundleMeta.changelogUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg border border-divider hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-primary transition-colors text-xs font-semibold text-foreground-600 no-underline shrink-0"
-              title="View Release Changelog"
-            >
-              <Calendar className="w-3.5 h-3.5" />
-              {formattedDate}
-            </a>
-          )}
-          {bundleMeta.deepLink && (
-            <a
-              href={bundleMeta.deepLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-(image:--primary-gradient) text-white text-sm font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 active:scale-[0.98] shadow-sm select-none shrink-0"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Plus className="w-4 h-4" /> Add to Morphe
-            </a>
-          )}
         </div>
       </ModalHeader>
 
       <ModalBody>
         <div className="flex items-center gap-3">
-          <SearchInput id="patch-search" placeholder="Search patches…" value={searchQuery} onChange={onSearchChange} className="flex-1" />
+          <SearchInput id="test-patch-search" placeholder="Search patches…" value={searchQuery} onChange={setSearchQuery} className="flex-1" />
           <span className="inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-3 py-1 shrink-0 whitespace-nowrap">
             {appGroups.length} {appGroups.length === 1 ? "app" : "apps"}
           </span>
         </div>
 
-        <div className="flex flex-col gap-3 pr-1">
+        <div className="flex flex-col gap-3 pr-1 mt-2">
           {appGroups.length === 0 ? (
-            <div className="py-12 text-center text-foreground-400 text-sm font-medium">No apps found</div>
+            <div className="py-12 text-center text-foreground-400 text-sm font-medium">
+              {data.availableBranches.includes(currentBranch) ? "No apps found" : `No patches-list.json found on '${currentBranch}' branch`}
+            </div>
           ) : (
             appGroups.map((group) => {
               const isUniversal = group.packageName === "universal";
@@ -226,10 +199,8 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
                       <div className="flex-1 min-w-0 flex flex-col justify-center">
                         <div className="flex items-center gap-2 flex-wrap min-w-0">
                           <div className="font-bold text-foreground text-sm truncate">{group.appMeta.appName}</div>
-                          {isNew(group.appMeta.firstSeen) && <Badge variant="new" />}
-                          {group.patches.some((p) => p.isAppPreRelease) && <Badge variant="prerelease" />}
                         </div>
-                        {group.packageName !== "universal" && (
+                        {!isUniversal && (
                           <div
                             onClick={(e) => {
                               e.stopPropagation();

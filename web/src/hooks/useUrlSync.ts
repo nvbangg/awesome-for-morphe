@@ -109,10 +109,16 @@ export function useUrlSync() {
 
     const githubRepository = searchParameters.get("github");
     const gitlabRepository = searchParameters.get("gitlab");
-    if (githubRepository) {
-      setPopupBundleKey(`github:${githubRepository}`);
-    } else if (gitlabRepository) {
-      setPopupBundleKey(`gitlab:${gitlabRepository}`);
+    const isTestBundleUrl = searchParameters.has("test-bundle") || window.location.hash.includes("test-bundle");
+
+    if (!isTestBundleUrl) {
+      if (githubRepository) {
+        setPopupBundleKey(`github:${githubRepository}`);
+      } else if (gitlabRepository) {
+        setPopupBundleKey(`gitlab:${gitlabRepository}`);
+      } else {
+        setPopupBundleKey(null);
+      }
     } else {
       setPopupBundleKey(null);
     }

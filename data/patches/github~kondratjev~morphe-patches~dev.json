@@ -1,5 +1,5 @@
 {
-    "version": "1.18.0-dev.1",
+    "version": "1.18.0-dev.3",
     "name": "Kondratjev Patches",
     "patches": [
         {
@@ -116,7 +116,7 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "2026.06.25-release",
+                            "version": "2026.07.23-release",
                             "isExperimental": false
                         }
                     ]
@@ -181,7 +181,7 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "2026.06.25-release",
+                            "version": "2026.07.23-release",
                             "isExperimental": false
                         }
                     ]
@@ -261,8 +261,8 @@
             "options": []
         },
         {
-            "name": "Enable SoundCloud Go+",
-            "description": "Enables all premium features, hides upsell UI and ads.",
+            "name": "Enable SoundCloud Go",
+            "description": "Enables SoundCloud Go premium features.",
             "default": true,
             "dependencies": [],
             "compatiblePackages": [
@@ -273,7 +273,30 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "2026.06.25-release",
+                            "version": "2026.07.23-release",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Pillo GmsCore support",
+            "description": "Routes Pillo Google services and legacy Google Sign-In through MicroG-RE.",
+            "default": true,
+            "dependencies": [
+                "Pillo GmsCore support"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "xyz.rtrvr.pillo",
+                    "name": "Pillo",
+                    "appIconColor": "#7C4DFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "0.6.16",
                             "isExperimental": false
                         }
                     ]

@@ -153,7 +153,7 @@ export default function App() {
 
                   {activeTab === "bundles" && (
                     <>
-                      <div className="text-xs sm:text-sm text-foreground-700 dark:text-foreground-400 mb-4 px-1 text-right">
+                      <div className="text-sm sm:text-base text-foreground-700 dark:text-foreground-400 mb-4 px-1 text-right">
                         Bundle not found?{" "}
                         <button
                           onClick={() => {

@@ -1,5 +1,5 @@
 {
-    "version": "1.4.1",
+    "version": "1.5.0",
     "name": "browzomje Patches",
     "patches": [
         {
@@ -21,6 +21,28 @@
                         },
                         {
                             "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Disable ad SDK",
+            "description": "Stops the AppLovin MAX mediation stack — and with it Pangle, Amazon APS, Chartboost, InMobi, Mintegral, Fyber, Bigo and the rest — from ever initialising. The game starts faster and makes no ad-network requests at all. Requires \"Remove ads\": on its own it would only make the app fail to find ads, not stop asking for them.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "easy.sudoku.puzzle.solver.free",
+                    "name": "Easy Sudoku",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.70.0",
                             "isExperimental": false
                         }
                     ]
@@ -73,6 +95,28 @@
                         },
                         {
                             "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Disable tracking",
+            "description": "Hands out an empty Google Advertising ID with \"limit ad tracking\" turned on, and stops AppsFlyer from sending install attribution and events. The game keeps working normally: nothing in it waits for attribution data.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "easy.sudoku.puzzle.solver.free",
+                    "name": "Easy Sudoku",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.70.0",
                             "isExperimental": false
                         }
                     ]
@@ -237,6 +281,28 @@
             "options": []
         },
         {
+            "name": "Instant rewards",
+            "description": "Grants the reward of every \"watch an ad\" button — hints, streak repairs, extra puzzles — immediately, without playing a video. This is what keeps those buttons working once \"Remove ads\" is enabled: without it the game believes no video is available and hands out nothing.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "easy.sudoku.puzzle.solver.free",
+                    "name": "Easy Sudoku",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.70.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Morphe settings entry",
             "description": "Adds the \"Morphe\" item to the Account Settings list to open the toggle screen.",
             "default": true,
@@ -336,6 +402,50 @@
                         },
                         {
                             "version": "14.28.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Reclaim ad banner space",
+            "description": "Collapses the empty strip the banner used to occupy at the bottom of the board, so the puzzle gets the space back instead of staring at a blank rectangle. Only useful together with \"Remove ads\".",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "easy.sudoku.puzzle.solver.free",
+                    "name": "Easy Sudoku",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.70.0",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Remove ads",
+            "description": "Turns off every ad Easy Sudoku shows: the home banner, the interstitials between puzzles, the app-open ad and all the background preloading. It works by telling the game its own \"ads removed\" purchase is already active, which also unlocks the Fun, Ice and Killer Sudoku modes that are otherwise gated behind watching ads. Keep \"Instant rewards\" enabled too, or the \"watch an ad for a hint\" buttons stop giving anything.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "easy.sudoku.puzzle.solver.free",
+                    "name": "Easy Sudoku",
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "5.70.0",
                             "isExperimental": false
                         }
                     ]

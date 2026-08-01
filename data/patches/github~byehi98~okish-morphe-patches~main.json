@@ -1,5 +1,5 @@
 {
-    "version": "1.2.0",
+    "version": "1.4.0",
     "name": "byehi98 Patches",
     "patches": [
         {
@@ -47,6 +47,28 @@
             "options": []
         },
         {
+            "name": "Jetpack Joyride Billing Bypass",
+            "description": "Intercepts all in-app purchases and reports instant success to the game engine.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.halfbrick.jetpackjoyride",
+                    "name": "Jetpack Joyride",
+                    "apkFileType": "XAPK",
+                    "appIconColor": "#F57F17",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.104.1",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Smash Hit Premium Unlock",
             "description": "Unlocks premium and all game modes without purchase.",
             "default": true,
@@ -61,6 +83,28 @@
                     "targets": [
                         {
                             "version": "1.5.14",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Swordigo Premium Unlock",
+            "description": "Enables ad-free, guiding compass, and coin doubler without purchase.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.touchfoo.swordigo",
+                    "name": "Swordigo",
+                    "apkFileType": "APK",
+                    "appIconColor": "#D32F2F",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "1.4.12",
                             "isExperimental": false
                         }
                     ]

@@ -1,7 +1,33 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "patches": [
+    {
+      "name": "Doodle Jump Billing Bypass",
+      "description": "Unlocks the full game by bypassing Google Play billing.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.lima.doodlejump",
+          "name": "Doodle Jump",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#66BB6A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.11.38",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "FreeJobAlert Ad Removal",
       "description": "Removes all Google AdMob ads (banner, interstitial, rewarded, app open, native).",

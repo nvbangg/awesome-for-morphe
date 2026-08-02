@@ -1235,7 +1235,7 @@
       "avatarUrl": "https://avatars.githubusercontent.com/u/207470673?v=4&size=128",
       "stars": 889,
       "starsGained7d": 25,
-      "starsGained40d": 48,
+      "starsGained40d": 47,
       "updatedAt": 1785438667000,
       "firstSeen": 1768916001000,
       "appFirstSeen": {
@@ -1291,7 +1291,8 @@
         "com.sbs.diet": 1768941201000,
         "com.rp.hypertrophy": 1781336650508,
         "app.ttmikstories.android": 1768941201000,
-        "universal": 1785178161573
+        "universal": 1785178161573,
+        "com.adobe.lrmobile": 1785638301293
       },
       "patches": [
         {
@@ -1309,6 +1310,13 @@
           "name": "Block Permissions Request",
           "description": "Blocks the request of notification permissions on load of app.",
           "compatiblePackagesKey": 215
+        },
+        {
+          "name": "Bypass login",
+          "description": "Allows app use without login. BUT breaks many features. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 216
         },
         {
           "name": "Change package name",
@@ -1335,28 +1343,28 @@
         {
           "name": "Disable ads",
           "description": "Disables all ads contained within the UI.",
-          "compatiblePackagesKey": 216
-        },
-        {
-          "name": "Disable ads",
-          "description": "Disables ads during audio streaming.",
           "compatiblePackagesKey": 217
         },
         {
           "name": "Disable ads",
-          "description": "Disables all ads contained within the UI.",
+          "description": "Disables ads during audio streaming.",
           "compatiblePackagesKey": 218
+        },
+        {
+          "name": "Disable ads",
+          "description": "Disables all ads contained within the UI.",
+          "compatiblePackagesKey": 219
         },
         {
           "name": "Disable anti-tamper",
           "description": "Disables various anti-tamper checks that causes the app to force-close.",
-          "compatiblePackagesKey": 219
+          "compatiblePackagesKey": 220
         },
         {
           "name": "Disable dynamic app icon",
           "description": "Prevents Duolingo from changing the app icon. Only the default icon will be available.",
           "default": false,
-          "compatiblePackagesKey": 220
+          "compatiblePackagesKey": 221
         },
         {
           "name": "Disable Pairip license check",
@@ -1366,17 +1374,17 @@
         {
           "name": "Disable signature check",
           "description": "Removes the anti-tamper protection, which verifies apk signature, causing the app to force close.",
-          "compatiblePackagesKey": 221
-        },
-        {
-          "name": "Disable telemetry",
-          "description": "Disables CamScanner's custom telemetry system.",
           "compatiblePackagesKey": 222
         },
         {
           "name": "Disable telemetry",
-          "description": "Disables event logging sent to the app's custom endpoint.",
+          "description": "Disables CamScanner's custom telemetry system.",
           "compatiblePackagesKey": 223
+        },
+        {
+          "name": "Disable telemetry",
+          "description": "Disables event logging sent to the app's custom endpoint.",
+          "compatiblePackagesKey": 224
         },
         {
           "name": "Disable telemetry",
@@ -1386,12 +1394,12 @@
         {
           "name": "Disable telemetry",
           "description": "Blocks SuperChinese's custom telemetry reporting.",
-          "compatiblePackagesKey": 224
+          "compatiblePackagesKey": 225
         },
         {
           "name": "Enable custom tabs",
           "description": "Open articles using your default browser.",
-          "compatiblePackagesKey": 225
+          "compatiblePackagesKey": 226
         },
         {
           "name": "Enable debug",
@@ -1402,31 +1410,26 @@
           "name": "Enable debug mode",
           "description": "Enables hidden debug menu in settings.",
           "default": false,
-          "compatiblePackagesKey": 220
+          "compatiblePackagesKey": 221
         },
         {
           "name": "Enable FotMob+",
           "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 226
+          "compatiblePackagesKey": 227
         },
         {
           "name": "Enable Niagara Pro",
           "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 227
+          "compatiblePackagesKey": 228
         },
         {
           "name": "Enable Peak membership",
           "description": "Enables some app features locked behind the subscription paywall. Not all premium functionality is available.",
-          "compatiblePackagesKey": 228
+          "compatiblePackagesKey": 229
         },
         {
           "name": "Enable Plus",
           "description": "Enable Plus membership (not all features are available). There is a strict version requirement for this patch.",
-          "compatiblePackagesKey": 229
-        },
-        {
-          "name": "Enable Premium",
-          "description": "Enables app features locked behind the subscription paywall.",
           "compatiblePackagesKey": 230
         },
         {
@@ -1441,13 +1444,18 @@
         },
         {
           "name": "Enable Premium",
+          "description": "Enables app features locked behind the subscription paywall.",
+          "compatiblePackagesKey": 233
+        },
+        {
+          "name": "Enable Premium",
           "description": "Enables some app features locked behind the subscription paywall. Certain server-side functionality may be unavailable.",
-          "compatiblePackagesKey": 222
+          "compatiblePackagesKey": 223
         },
         {
           "name": "Enable Premium",
           "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 233
+          "compatiblePackagesKey": 234
         },
         {
           "name": "Enable Premium",
@@ -1459,12 +1467,7 @@
               "description": "Choose which type of premium Duolingo subscription to enable."
             }
           ],
-          "compatiblePackagesKey": 220
-        },
-        {
-          "name": "Enable Premium",
-          "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 234
+          "compatiblePackagesKey": 221
         },
         {
           "name": "Enable Premium",
@@ -1483,22 +1486,22 @@
         },
         {
           "name": "Enable Premium",
+          "description": "Enables app features locked behind the subscription paywall.",
+          "compatiblePackagesKey": 238
+        },
+        {
+          "name": "Enable Premium",
           "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
           "compatiblePackagesKey": 215
         },
         {
           "name": "Enable Premium",
           "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 238
-        },
-        {
-          "name": "Enable Premium",
-          "description": "REQUIRES ROOT MOUNT INSTALL! Enables app features locked behind the subscription paywall.",
           "compatiblePackagesKey": 239
         },
         {
           "name": "Enable Premium",
-          "description": "Enables app features locked behind the subscription paywall.",
+          "description": "REQUIRES ROOT MOUNT INSTALL! Enables app features locked behind the subscription paywall.",
           "compatiblePackagesKey": 240
         },
         {
@@ -1523,12 +1526,12 @@
         },
         {
           "name": "Enable Premium",
-          "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch.",
+          "description": "Enables app features locked behind the subscription paywall.",
           "compatiblePackagesKey": 245
         },
         {
           "name": "Enable Premium",
-          "description": "Enables app features locked behind the subscription paywall.",
+          "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch.",
           "compatiblePackagesKey": 246
         },
         {
@@ -1543,18 +1546,23 @@
         },
         {
           "name": "Enable Premium",
-          "description": "Enables some app features locked behind the subscription paywall. Not all premium functionality is available.",
+          "description": "Enables app features locked behind the subscription paywall.",
           "compatiblePackagesKey": 249
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Enables some app features locked behind the subscription paywall. Not all premium functionality is available.",
+          "compatiblePackagesKey": 250
         },
         {
           "name": "Enable Premium+",
           "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 250
+          "compatiblePackagesKey": 251
         },
         {
           "name": "Enable Prime",
           "description": "Enable Nova Launcher Prime and app locked behind the subscription paywall.",
-          "compatiblePackagesKey": 251
+          "compatiblePackagesKey": 184
         },
         {
           "name": "Enable Prime membership",
@@ -1589,7 +1597,7 @@
         {
           "name": "Enable Pro",
           "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 221
+          "compatiblePackagesKey": 222
         },
         {
           "name": "Enable Pro",
@@ -1599,7 +1607,7 @@
         {
           "name": "Enable Pro",
           "description": "Enables app features locked behind the subscription paywall. Login is required and AI functionality is unavailable.",
-          "compatiblePackagesKey": 219
+          "compatiblePackagesKey": 220
         },
         {
           "name": "Enable Pro",
@@ -1623,7 +1631,7 @@
         {
           "name": "Force Native Keyboard",
           "description": "When typing in normal lessons, Eggbun forces you to use their own on-screen keyboard. This patches forces the use of the default OS keyboard.",
-          "compatiblePackagesKey": 234
+          "compatiblePackagesKey": 235
         },
         {
           "name": "Hide app icon",
@@ -1633,17 +1641,17 @@
         {
           "name": "MicroG integration",
           "description": "Allows the app to work without root by using MicroG instead of Google Play Services.",
-          "compatiblePackagesKey": 233
+          "compatiblePackagesKey": 234
         },
         {
           "name": "MicroG integration",
           "description": "Allows the app to work without root by using MicroG instead of Google Play Services.",
-          "compatiblePackagesKey": 225
+          "compatiblePackagesKey": 226
         },
         {
           "name": "MicroG integration",
           "description": "Allows the app to work without root by using MicroG instead of Google Play Services.",
-          "compatiblePackagesKey": 240
+          "compatiblePackagesKey": 241
         },
         {
           "name": "MicroG integration",
@@ -1658,7 +1666,7 @@
         {
           "name": "Remove trial limit",
           "description": "Removes the imposed 6-hour trial usage limit.",
-          "compatiblePackagesKey": 223
+          "compatiblePackagesKey": 224
         },
         {
           "name": "Rename shared permissions",
@@ -1673,12 +1681,12 @@
         {
           "name": "Unlimited skips",
           "description": "Disables the limit for skipping songs during playback.",
-          "compatiblePackagesKey": 217
+          "compatiblePackagesKey": 218
         },
         {
           "name": "Unlock all lessons",
           "description": "Only unlocks lessons on the client UI! This is useful for pre-downloading content during free trial periods.",
-          "compatiblePackagesKey": 224
+          "compatiblePackagesKey": 225
         },
         {
           "name": "Unlock custom DNS",
@@ -1694,6 +1702,11 @@
           "name": "Unlock premium features",
           "description": "Enables app features locked behind the subscription paywall. Some UI elements may not show an active membership, but this does not effect functionality.",
           "compatiblePackagesKey": 262
+        },
+        {
+          "name": "Unlock premium features",
+          "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
+          "compatiblePackagesKey": 216
         },
         {
           "name": "Unlock split tunneling",
@@ -9676,7 +9689,7 @@
         {
           "name": "Unlock Premium",
           "description": "Unlocks Windy Pro features.",
-          "compatiblePackagesKey": 249
+          "compatiblePackagesKey": 250
         },
         {
           "name": "Unlock premium",
@@ -13198,7 +13211,7 @@
       "avatarUrl": "https://avatars.githubusercontent.com/u/122532548?v=4&size=128",
       "stars": 210,
       "starsGained7d": 7,
-      "starsGained40d": 26,
+      "starsGained40d": 25,
       "updatedAt": 1785437683000,
       "firstSeen": 1782996119000,
       "appFirstSeen": {
@@ -21083,6 +21096,16 @@
     ],
     [
       {
+        "packageName": "com.adobe.lrmobile",
+        "targets": [
+          {
+            "version": "11.4.5"
+          }
+        ]
+      }
+    ],
+    [
+      {
         "packageName": "com.goodreads",
         "targets": [
           {
@@ -21131,7 +21154,7 @@
         "packageName": "ginlemon.flowerfree",
         "targets": [
           {
-            "version": "6.6 build 002"
+            "version": "6.6 build 014"
           }
         ]
       }
@@ -21227,7 +21250,7 @@
         "packageName": "com.adguard.android",
         "targets": [
           {
-            "version": "4.12.81"
+            "version": "4.13.0"
           }
         ]
       }
@@ -21437,16 +21460,6 @@
     ],
     [
       {
-        "packageName": "com.teslacoilsw.launcher",
-        "targets": [
-          {
-            "version": "81042 (8.5.1)"
-          }
-        ]
-      }
-    ],
-    [
-      {
         "packageName": "jp.ne.ibis.ibispaintx.app",
         "targets": [
           {
@@ -21500,7 +21513,7 @@
         "packageName": "pl.solidexplorer2",
         "targets": [
           {
-            "version": "3.4.1"
+            "version": "3.5.16"
           }
         ]
       }
@@ -21510,7 +21523,7 @@
         "packageName": "com.xodo.pdf.reader",
         "targets": [
           {
-            "version": "10.15.0"
+            "version": "10.17.1"
           }
         ]
       }

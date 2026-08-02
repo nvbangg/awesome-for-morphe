@@ -1,66 +1,29 @@
 {
-    "version": "1.0.0-dev.1",
-    "name": "Almewty's Patches for use with Morphe",
-    "patches": [
-        {
-            "name": "Disable scan counter",
-            "description": "Disables the scan counter increment, preventing the scan count from increasing",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.application.pokecardex",
-                    "name": "com.application.pokecardex",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "8.7.2",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Example Patch",
-            "description": "Example patch to start with.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.example.app",
-                    "name": "com.example.app",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.0.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Increase scan limit",
-            "description": "Increases the free scan limit from 30 to 50 scans",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.application.pokecardex",
-                    "name": "com.application.pokecardex",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "8.7.2",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        }
-    ]
+  "version": "1.0.0-dev.1",
+  "patches": [
+    {
+      "name": "Disable scan counter",
+      "description": "Disables the scan counter increment, preventing the scan count from increasing",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.application.pokecardex": [
+          "8.7.2"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Increase scan limit",
+      "description": "Increases the free scan limit from 30 to 50 scans",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.application.pokecardex": [
+          "8.7.2"
+        ]
+      },
+      "options": []
+    }
+  ]
 }

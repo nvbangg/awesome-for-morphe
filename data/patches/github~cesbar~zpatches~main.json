@@ -1,279 +1,116 @@
 {
-    "version": "1.8.0",
-    "name": "zPatches",
-    "patches": [
+  "version": "1.8.0",
+  "patches": [
+    {
+      "name": "Bypass PairIp",
+      "description": "Bypass the PairIp license check preventing app modification",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "ee.dustland.android.dustlandsudoku": null
+      },
+      "options": []
+    },
+    {
+      "name": "Disable Internet and Telemetry",
+      "description": "Disable Internet and Telemetry by removing all non-necessary permissions from the manifest",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "ee.dustland.android.dustlandsudoku": null,
+        "ee.dustland.android.minesweeper": null,
+        "ee.dustland.android.solitaire": null
+      },
+      "options": []
+    },
+    {
+      "name": "Disable map animations",
+      "description": "Disable the map zoom-in animation",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Enable Club",
+      "description": "Enable Citymapper Club subscription",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.citymapper.app.release": null
+      },
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlock all purchasables options",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "ee.dustland.android.dustlandsudoku": null,
+        "ee.dustland.android.minesweeper": null,
+        "ee.dustland.android.solitaire": null
+      },
+      "options": []
+    },
+    {
+      "name": "Export all activities",
+      "description": "Makes all activities launchable externally by setting android:exported=\"true\" in the manifest",
+      "use": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Google Maps API key",
+      "description": "Use a different Google Maps API key to fix modified apps",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.citymapper.app.release": null,
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": [
         {
-            "name": "Bypass PairIp",
-            "description": "Bypass the PairIp license check preventing app modification",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "ee.dustland.android.dustlandsudoku",
-                    "name": "Sudoku The Clean One",
-                    "appIconColor": "#3C3C3C",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "2.18.3",
-                            "isExperimental": false
-                        },
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable Internet and Telemetry",
-            "description": "Disable Internet and Telemetry by removing all non-necessary permissions from the manifest",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "ee.dustland.android.dustlandsudoku",
-                    "name": "Sudoku The Clean One",
-                    "appIconColor": "#3C3C3C",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "2.18.3",
-                            "isExperimental": false
-                        },
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "ee.dustland.android.minesweeper",
-                    "name": "Minesweeper The Clean One",
-                    "appIconColor": "#3C3C3C",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.21.3",
-                            "isExperimental": false
-                        },
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "ee.dustland.android.solitaire",
-                    "name": "Solitaire The Clean One",
-                    "appIconColor": "#3C3C3C",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.20.3",
-                            "isExperimental": false
-                        },
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable map animations",
-            "description": "Disable the map zoom-in animation",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.jcdecaux.vls.lyon",
-                    "name": "Vélo'v",
-                    "appIconColor": "#F42F34",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.1.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Club",
-            "description": "Enable Citymapper Club subscription",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.citymapper.app.release",
-                    "name": "Citymapper",
-                    "appIconColor": "#37AA2F",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "11.55.2",
-                            "isExperimental": false
-                        },
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Unlock all purchasables options",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "ee.dustland.android.dustlandsudoku",
-                    "name": "Sudoku The Clean One",
-                    "appIconColor": "#3C3C3C",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "2.18.3",
-                            "isExperimental": false
-                        },
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "ee.dustland.android.minesweeper",
-                    "name": "Minesweeper The Clean One",
-                    "appIconColor": "#3C3C3C",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.21.3",
-                            "isExperimental": false
-                        },
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "ee.dustland.android.solitaire",
-                    "name": "Solitaire The Clean One",
-                    "appIconColor": "#3C3C3C",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.20.3",
-                            "isExperimental": false
-                        },
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Export all activities",
-            "description": "Makes all activities launchable externally by setting android:exported=\"true\" in the manifest",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Google Maps API key",
-            "description": "Use a different Google Maps API key to fix modified apps",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.citymapper.app.release",
-                    "name": "Citymapper",
-                    "appIconColor": "#37AA2F",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "11.55.2",
-                            "isExperimental": false
-                        },
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.jcdecaux.vls.lyon",
-                    "name": "Vélo'v",
-                    "appIconColor": "#F42F34",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.1.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": [
-                {
-                    "default": "",
-                    "description": "Google Maps API key",
-                    "key": "mapApiKey",
-                    "required": true,
-                    "title": "Google Maps API key",
-                    "type": "kotlin.String",
-                    "values": null
-                }
-            ]
-        },
-        {
-            "name": "No geolocalisation check",
-            "description": "Allows you to unlock a bike even if you're not near the station.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.jcdecaux.vls.lyon",
-                    "name": "Vélo'v",
-                    "appIconColor": "#F42F34",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.1.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Spoof package signature",
-            "description": "Spoofs the package signature required for Firebase, fixes notifications",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.jcdecaux.vls.lyon",
-                    "name": "Vélo'v",
-                    "appIconColor": "#F42F34",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.1.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "key": "mapApiKey",
+          "title": "Google Maps API key",
+          "description": "Google Maps API key",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
         }
-    ]
+      ]
+    },
+    {
+      "name": "No geolocalisation check",
+      "description": "Allows you to unlock a bike even if you're not near the station.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Spoof package signature",
+      "description": "Spoofs the package signature required for Firebase, fixes notifications",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": []
+    }
+  ]
 }

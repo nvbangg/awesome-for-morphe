@@ -1,138 +1,162 @@
 {
-    "version": "1.4.0",
-    "name": "byehi98 Patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.4.0",
+  "patches": [
+    {
+      "name": "FreeJobAlert Ad Removal",
+      "description": "Removes all Google AdMob ads (banner, interstitial, rewarded, app open, native).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
         {
-            "name": "FreeJobAlert Ad Removal",
-            "description": "Removes all Google AdMob ads (banner, interstitial, rewarded, app open, native).",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.freejobalert",
-                    "name": "FreeJobAlert",
-                    "apkFileType": "XAPK",
-                    "appIconColor": "#1565C0",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.0.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "FreeJobAlert License Bypass",
-            "description": "Bypasses the Pairip Play Store installation check so the app launches normally.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.freejobalert",
-                    "name": "FreeJobAlert",
-                    "apkFileType": "XAPK",
-                    "appIconColor": "#1565C0",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.0.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Jetpack Joyride Billing Bypass",
-            "description": "Intercepts all in-app purchases and reports instant success to the game engine.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.halfbrick.jetpackjoyride",
-                    "name": "Jetpack Joyride",
-                    "apkFileType": "XAPK",
-                    "appIconColor": "#F57F17",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.104.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Smash Hit Premium Unlock",
-            "description": "Unlocks premium and all game modes without purchase.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.mediocre.smashhit",
-                    "name": "Smash Hit",
-                    "apkFileType": "APK",
-                    "appIconColor": "#1E88E5",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.5.14",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Swordigo Premium Unlock",
-            "description": "Enables ad-free, guiding compass, and coin doubler without purchase.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.touchfoo.swordigo",
-                    "name": "Swordigo",
-                    "apkFileType": "APK",
-                    "appIconColor": "#D32F2F",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.4.12",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "TrueCloud Ad Removal",
-            "description": "Consolidated patch to remove all ads, boot pages, cloud popups, and the help center robot.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.generalcomp.truecloud",
-                    "name": "TrueCloud",
-                    "apkFileType": "APK",
-                    "appIconColor": "#FF0045",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "4.6.5.13",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.freejobalert",
+          "name": "FreeJobAlert",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#1565C0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.0.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    },
+    {
+      "name": "FreeJobAlert License Bypass",
+      "description": "Bypasses the Pairip Play Store installation check so the app launches normally.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.freejobalert",
+          "name": "FreeJobAlert",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#1565C0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.0.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Jetpack Joyride Billing Bypass",
+      "description": "Intercepts all in-app purchases and reports instant success to the game engine.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.halfbrick.jetpackjoyride",
+          "name": "Jetpack Joyride",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#F57F17",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.104.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Smash Hit Premium Unlock",
+      "description": "Unlocks premium and all game modes without purchase.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mediocre.smashhit",
+          "name": "Smash Hit",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1E88E5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.14",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Swordigo Premium Unlock",
+      "description": "Enables ad-free, guiding compass, and coin doubler without purchase.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.touchfoo.swordigo",
+          "name": "Swordigo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#D32F2F",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.12",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "TrueCloud Ad Removal",
+      "description": "Consolidated patch to remove all ads, boot pages, cloud popups, and the help center robot.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.generalcomp.truecloud",
+          "name": "TrueCloud",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0045",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.6.5.13",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }

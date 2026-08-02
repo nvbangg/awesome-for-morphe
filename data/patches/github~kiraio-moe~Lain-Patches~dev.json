@@ -1,1042 +1,1286 @@
 {
-    "version": "1.4.0-dev.2",
-    "name": "Lain Patches",
-    "patches": [
+  "version": "1.4.0-dev.2",
+  "patches": [
+    {
+      "name": "Bypass Reading Limitation",
+      "description": "Bypass 'First Time Free' read limitation for all languages. Only affect 'Standard/Deluxe' plan titles, exclusive 'Deluxe' plan titles are server-driven.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
         {
-            "name": "Bypass Reading Limitation",
-            "description": "Bypass 'First Time Free' read limitation for all languages. Only affect 'Standard/Deluxe' plan titles, exclusive 'Deluxe' plan titles are server-driven.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "jp.co.shueisha.mangaplus",
-                    "name": "Manga Plus",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "2.4.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Change package name",
-            "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": [
-                {
-                    "default": "Default",
-                    "description": "The name of the package to rename the app to.",
-                    "key": "packageName",
-                    "required": true,
-                    "title": "Package name",
-                    "type": "kotlin.String",
-                    "values": {
-                        "Default": "Default"
-                    }
-                },
-                {
-                    "default": false,
-                    "description": "Update compatibility receiver permissions. Enabling this can fix installation errors, but this can also break features in certain apps.",
-                    "key": "updatePermissions",
-                    "required": false,
-                    "title": "Update permissions",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": false,
-                    "description": "Update provider names declared by the app. Enabling this can fix installation errors, but this can also break features in certain apps.",
-                    "key": "updateProviders",
-                    "required": false,
-                    "title": "Update providers",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                }
-            ]
-        },
-        {
-            "name": "Course Maps Fix",
-            "description": "Fix course maps not rendered by using your own Google Maps API key.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.regasoftware.udisc",
-                    "name": "UDisc",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "24.1.2",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": [
-                {
-                    "default": null,
-                    "description": "The API key you created in Google Cloud Console. The Free key should be enough for normal daily use. DON'T SHARE YOUR OWN KEY!\nIn the Google Cloud Console: Create a project -> Enable Maps SDK for Android -> A billing account is required, you will be prompted to create one if none exists (You will not get charged as long the monthly $200 limit not passed, use wisely) -> Under Credentials, create an API key. The easiest way is to leave it unrestricted. If you do, fill in the patched app package name and SHA-1 signature. -> If the maps still blank, either the app signature is invalid; the project missing Maps SDK for Android or billing account.",
-                    "key": "apiKey",
-                    "required": true,
-                    "title": "Google Maps API Key",
-                    "type": "kotlin.String",
-                    "values": null
-                }
-            ]
-        },
-        {
-            "name": "Disable Ads",
-            "description": "Disable banner, splash, and rewarded ads.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "cn.adonet.proxyevery",
-                    "name": "Android Proxy Server",
-                    "appIconColor": "#01AA68",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "9.9",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable Ads",
-            "description": "Disable banner & splash ads.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.kcstream.cing",
-                    "name": "Nekopoi",
-                    "appIconColor": "#FBC5D1",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "2.5.3-build01",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable Ads",
-            "description": "Disable banner ads.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.jeyluta.timestampcamerafreeent",
-                    "name": "Timestamp Camera Enterprise Free",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "1.237",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.jeyluta.timestampcamerafree",
-                    "name": "Timestamp Camera Free",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "1.252",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable Analytics",
-            "description": "Disables app tracker, Google & Firebase Analytics",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.medibang.android.paint.tablet",
-                    "name": "MediBang Paint",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "28.24",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable Anti-Tamper Detection",
-            "description": "Disable Anti-Tamper detection that force quit the app.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.kcstream.cing",
-                    "name": "Nekopoi",
-                    "appIconColor": "#FBC5D1",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "2.5.3-build01",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable Pairip license check",
-            "description": "Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Disable Region Lock",
-            "description": "Bypass restricted region contents; access it anywhere, anytime.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.getepic.Epic",
-                    "name": "Epic!",
-                    "appIconColor": "#0B96E7",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "3.141.43",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Certificate Pinning",
-            "description": "Allow app network traffic to be inspected.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.kcstream.cing",
-                    "name": "Nekopoi",
-                    "appIconColor": "#FBC5D1",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "2.5.3-build01",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Deluxe Plan",
-            "description": "Enable Deluxe plan badge on settings. Bypass the 'First Time Free' read limitation only for English language on 'Standard/Deluxe' plan titles. Other languages aren't affected.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "jp.co.shueisha.mangaplus",
-                    "name": "Manga Plus",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "2.4.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Epic Family",
-            "description": "Unlock access to all books, videos and audiobooks for lifetime.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.getepic.Epic",
-                    "name": "Epic!",
-                    "appIconColor": "#0B96E7",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "3.141.43",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Kapi Pro",
-            "description": "Unlock all features of Kapi Pro lifetime membership.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.sensemobile.action",
-                    "name": "Kapi Cam",
-                    "appIconColor": "#C9B44D",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "4.32.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Unlock all premium benefits.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "studio.muggle.chatboost",
-                    "name": "ChatBoost",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "3.24.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Unlock premium features such as Unlimited access to PDF tools, Enable Cloud Storage; Split, Merge, Compress documents, and more. Google login or Google Drive storage is broken, need MicroG integration patch.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.ilovepdf.www",
-                    "name": "iLovePDF",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "4.0.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Unlock all features in Pro.",
-            "default": true,
-            "dependencies": [
-                "RawResourcePatch",
-                "Disable Pairip license check"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "net.nemostudio.keymate",
-                    "name": "Keymate",
-                    "appIconColor": "#5281B3",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.2.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Disable trial time counter.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.medibang.android.medibangpro",
-                    "name": "Paletta",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "4.11",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Unlock unlimited use of ISO Burner, disable ads and disable coins system.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.mixapplications.rufus",
-                    "name": "DROFUS",
-                    "appIconColor": "#F8F8F8",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "10.2.3",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Unlock unlimited use of all tools, disable ads and disable coins system.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.mixapplications.ultimateusb",
-                    "name": "Ultimate USB",
-                    "appIconColor": "#F8F8F8",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "10.2.4",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Unlock unlimited use of Disk Management & Gaming Tools, disable ads and disable coins system.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.mixapplications.usbtools",
-                    "name": "USB TOOLS",
-                    "appIconColor": "#F8F8F8",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "10.2.4",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Unlock unlimited use of Bootable USB drive creator, disable ads and disable coins system.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.mixapplications.ventoy_app",
-                    "name": "Ventoy",
-                    "appIconColor": "#F8F8F8",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "10.2.3 (1.1.16)",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Unlock premium features such as Advanced Color Tools, Clipping Masks & Alpha Masks, Manage layers with Groups, Import & customize brushes, and more...",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.adsk.sketchbook",
-                    "name": "Sketchbook",
-                    "appIconColor": "#E45A36",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "6.2.6",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Pro",
-            "description": "Unlock all pro features.",
-            "default": true,
-            "dependencies": [
-                "RawResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.PixelStudio",
-                    "name": "Pixel Studio",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "5.51",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable PRO+",
-            "description": "Unlock all PRO+ features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.jlindemann.science",
-                    "name": "Atomic",
-                    "appIconColor": "#3561A8",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "4.7.0m",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Raw Capture",
-            "description": "Force enable DNG raw capture option.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.flavionet.android.camera.lite",
-                    "name": "Camera FV-5 Lite",
-                    "appIconColor": "#F9A128",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "5.4.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Fix Camera Mode Intent",
-            "description": "Fix opening Camera FV-5 Lite when entering camera mode.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.flavionet.android.cinema.lite",
-                    "name": "Cinema FV-5 Lite",
-                    "appIconColor": "#F01010",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "2.2.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Fix Video Recording Intent",
-            "description": "Fix opening Cinema FV-5 Lite from video recording menu.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.flavionet.android.camera.lite",
-                    "name": "Camera FV-5 Lite",
-                    "appIconColor": "#F9A128",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "5.4.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Hide app icon",
-            "description": "Hides the app icon from the Android launcher.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Higher Image Resolution",
-            "description": "Unlock higher image resolutions that the device support.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.flavionet.android.camera.lite",
-                    "name": "Camera FV-5 Lite",
-                    "appIconColor": "#F9A128",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "5.4.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Higher Video Resolution",
-            "description": "Unlock higher resolutions that limited by the app.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.flavionet.android.cinema.lite",
-                    "name": "Cinema FV-5 Lite",
-                    "appIconColor": "#F01010",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "2.2.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Login Fix",
-            "description": "Fix login issue by spoofing the installation source to Play Store.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.regasoftware.udisc",
-                    "name": "UDisc",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "24.1.2",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Override certificate pinning",
-            "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Spoof Install Source",
-            "description": "Spoofs package installer checks to report the configured package name as the installation source. Default is Play Store.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": [
-                {
-                    "default": "com.android.vending",
-                    "description": "The package name of the installation source.",
-                    "key": "packageName",
-                    "required": false,
-                    "title": "Installer Package Name",
-                    "type": "kotlin.String",
-                    "values": {
-                        "com.android.vending": "com.android.vending"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Unlock Plus",
-            "description": "Unlock plus features such as Exclusive Themes, Custom Layout & Home Screen, Enhanced Bulk Downloader.",
-            "default": true,
-            "dependencies": [
-                "RawResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.degenk.boorusama",
-                    "name": "Boorusama (Play Store)",
-                    "appIconColor": "#E8BF55",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "4.5.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlock premium features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.azefsw.audioconnect",
-                    "name": "AudioRelay",
-                    "appIconColor": "#2196F2",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "0.26.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlock premium features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.hopefactory2021.fakegpslocation",
-                    "name": "Fake GPS Location",
-                    "appIconColor": "#5F7C8A",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "113.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Enable premium features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.chimbori.hermitcrab",
-                    "name": "Hermit",
-                    "appIconColor": "#E35252",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "31.6.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlock premium features such as Disable Ads and access AI Assistant.",
-            "default": true,
-            "dependencies": [
-                "RawResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.ceyhan.sets",
-                    "name": "Hidden Settings",
-                    "appIconColor": "#2C303B",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "7.34",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Enable Floating Buttons and Assistant Trigger features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "io.github.sds100.keymapper",
-                    "name": "Key Mapper",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "4.2.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlock premium features such as No Ads, Premium Brushes, Filters & Fonts; Simultaneous Layer Operation. Server-side features is NOT included!",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.medibang.android.paint.tablet",
-                    "name": "MediBang Paint",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "28.24",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlock 'Remove Ads' premium feature.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.imaginstudio.imagetools.pixellab",
-                    "name": "PixelLab",
-                    "appIconColor": "#3FA2E4",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "2.1.9",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Enable premium features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.regasoftware.udisc",
-                    "name": "UDisc",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "24.1.2",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Pro",
-            "description": "Enable pro features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.surmin.photofancie.lite",
-                    "name": "Collage Maker - PhotoFancie",
-                    "appIconColor": "#FFFFFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "5.8.3",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Pro",
-            "description": "Unlock pro features such as Unlimited proxy usage, Allow/disallow specific apps, Block apps in firewall and many more...",
-            "default": true,
-            "dependencies": [
-                "RawResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.scheler.superproxy",
-                    "name": "Super Proxy",
-                    "appIconColor": "#0078B7",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.2.2",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "jp.co.shueisha.mangaplus",
+          "name": "Manga Plus",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "2.4.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    },
+    {
+      "name": "Change package name",
+      "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "packageName",
+          "title": "Package name",
+          "description": "The name of the package to rename the app to.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Default",
+          "values": {
+            "Default": "Default"
+          }
+        },
+        {
+          "key": "updatePermissions",
+          "title": "Update permissions",
+          "description": "Update compatibility receiver permissions. Enabling this can fix installation errors, but this can also break features in certain apps.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        },
+        {
+          "key": "updateProviders",
+          "title": "Update providers",
+          "description": "Update provider names declared by the app. Enabling this can fix installation errors, but this can also break features in certain apps.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Course Maps Fix",
+      "description": "Fix course maps not rendered by using your own Google Maps API key.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.regasoftware.udisc",
+          "name": "UDisc",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "24.1.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "apiKey",
+          "title": "Google Maps API Key",
+          "description": "The API key you created in Google Cloud Console. The Free key should be enough for normal daily use. DON'T SHARE YOUR OWN KEY!\nIn the Google Cloud Console: Create a project -> Enable Maps SDK for Android -> A billing account is required, you will be prompted to create one if none exists (You will not get charged as long the monthly $200 limit not passed, use wisely) -> Under Credentials, create an API key. The easiest way is to leave it unrestricted. If you do, fill in the patched app package name and SHA-1 signature. -> If the maps still blank, either the app signature is invalid; the project missing Maps SDK for Android or billing account.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Disable Ads",
+      "description": "Disable banner, splash, and rewarded ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "cn.adonet.proxyevery",
+          "name": "Android Proxy Server",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#01AA68",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "9.9",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Ads",
+      "description": "Disable banner & splash ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kcstream.cing",
+          "name": "Nekopoi",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FBC5D1",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "2.5.3-build01",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Ads",
+      "description": "Disable banner ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.jeyluta.timestampcamerafreeent",
+          "name": "Timestamp Camera Enterprise Free",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.237",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.jeyluta.timestampcamerafree",
+          "name": "Timestamp Camera Free",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.252",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Analytics",
+      "description": "Disables app tracker, Google & Firebase Analytics",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.medibang.android.paint.tablet",
+          "name": "MediBang Paint",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "28.24",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Anti-Tamper Detection",
+      "description": "Disable Anti-Tamper detection that force quit the app.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kcstream.cing",
+          "name": "Nekopoi",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FBC5D1",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "2.5.3-build01",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Pairip license check",
+      "description": "Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Region Lock",
+      "description": "Bypass restricted region contents; access it anywhere, anytime.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.getepic.Epic",
+          "name": "Epic!",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0B96E7",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "3.141.43",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Certificate Pinning",
+      "description": "Allow app network traffic to be inspected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kcstream.cing",
+          "name": "Nekopoi",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FBC5D1",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "2.5.3-build01",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Deluxe Plan",
+      "description": "Enable Deluxe plan badge on settings. Bypass the 'First Time Free' read limitation only for English language on 'Standard/Deluxe' plan titles. Other languages aren't affected.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "jp.co.shueisha.mangaplus",
+          "name": "Manga Plus",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "2.4.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Epic Family",
+      "description": "Unlock access to all books, videos and audiobooks for lifetime.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.getepic.Epic",
+          "name": "Epic!",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0B96E7",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "3.141.43",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Kapi Pro",
+      "description": "Unlock all features of Kapi Pro lifetime membership.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sensemobile.action",
+          "name": "Kapi Cam",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#C9B44D",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "4.32.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable PRO+",
+      "description": "Unlock all PRO+ features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.jlindemann.science",
+          "name": "Atomic",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#3561A8",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "4.7.0m",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlock all premium benefits.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "studio.muggle.chatboost",
+          "name": "ChatBoost",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "3.24.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlock premium features such as Unlimited access to PDF tools, Enable Cloud Storage; Split, Merge, Compress documents, and more. Google login or Google Drive storage is broken, need MicroG integration patch.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ilovepdf.www",
+          "name": "iLovePDF",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "4.0.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlock all features in Pro.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "net.nemostudio.keymate",
+          "name": "Keymate",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#5281B3",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.2.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Disable trial time counter.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.medibang.android.medibangpro",
+          "name": "Paletta",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "4.11",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlock unlimited use of ISO Burner, disable ads and disable coins system.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mixapplications.rufus",
+          "name": "DROFUS",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F8F8F8",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "10.2.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlock unlimited use of all tools, disable ads and disable coins system.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mixapplications.ultimateusb",
+          "name": "Ultimate USB",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F8F8F8",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "10.2.4",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlock unlimited use of Disk Management & Gaming Tools, disable ads and disable coins system.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mixapplications.usbtools",
+          "name": "USB TOOLS",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F8F8F8",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "10.2.4",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlock unlimited use of Bootable USB drive creator, disable ads and disable coins system.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mixapplications.ventoy_app",
+          "name": "Ventoy",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F8F8F8",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "10.2.3 (1.1.16)",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlock premium features such as Advanced Color Tools, Clipping Masks & Alpha Masks, Manage layers with Groups, Import & customize brushes, and more...",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.adsk.sketchbook",
+          "name": "Sketchbook",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#E45A36",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "6.2.6",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Pro",
+      "description": "Unlock all pro features.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.PixelStudio",
+          "name": "Pixel Studio",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.51",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Raw Capture",
+      "description": "Force enable DNG raw capture option.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.flavionet.android.camera.lite",
+          "name": "Camera FV-5 Lite",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F9A128",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.4.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix Camera Mode Intent",
+      "description": "Fix opening Camera FV-5 Lite when entering camera mode.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.flavionet.android.cinema.lite",
+          "name": "Cinema FV-5 Lite",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F01010",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.2.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix Video Recording Intent",
+      "description": "Fix opening Cinema FV-5 Lite from video recording menu.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.flavionet.android.camera.lite",
+          "name": "Camera FV-5 Lite",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F9A128",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.4.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide app icon",
+      "description": "Hides the app icon from the Android launcher.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Higher Image Resolution",
+      "description": "Unlock higher image resolutions that the device support.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.flavionet.android.camera.lite",
+          "name": "Camera FV-5 Lite",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F9A128",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.4.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Higher Video Resolution",
+      "description": "Unlock higher resolutions that limited by the app.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.flavionet.android.cinema.lite",
+          "name": "Cinema FV-5 Lite",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F01010",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.2.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Login Fix",
+      "description": "Fix login issue by spoofing the installation source to Play Store.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.regasoftware.udisc",
+          "name": "UDisc",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "24.1.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Override certificate pinning",
+      "description": "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Spoof Install Source",
+      "description": "Spoofs package installer checks to report the configured package name as the installation source. Default is Play Store.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "packageName",
+          "title": "Installer Package Name",
+          "description": "The package name of the installation source.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "com.android.vending",
+          "values": {
+            "com.android.vending": "com.android.vending"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Unlock Plus",
+      "description": "Unlock plus features such as Exclusive Themes, Custom Layout & Home Screen, Enhanced Bulk Downloader.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.degenk.boorusama",
+          "name": "Boorusama (Play Store)",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#E8BF55",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.5.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlock premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.azefsw.audioconnect",
+          "name": "AudioRelay",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#2196F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "0.26.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlock premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.hopefactory2021.fakegpslocation",
+          "name": "Fake GPS Location",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#5F7C8A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "113.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Enable premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.chimbori.hermitcrab",
+          "name": "Hermit",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#E35252",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "31.6.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlock premium features such as Disable Ads and access AI Assistant.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ceyhan.sets",
+          "name": "Hidden Settings",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#2C303B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.34",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Enable Floating Buttons and Assistant Trigger features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "io.github.sds100.keymapper",
+          "name": "Key Mapper",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "4.2.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlock premium features such as No Ads, Premium Brushes, Filters & Fonts; Simultaneous Layer Operation. Server-side features is NOT included!",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.medibang.android.paint.tablet",
+          "name": "MediBang Paint",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "28.24",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlock 'Remove Ads' premium feature.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.imaginstudio.imagetools.pixellab",
+          "name": "PixelLab",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#3FA2E4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "2.1.9",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Enable premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.regasoftware.udisc",
+          "name": "UDisc",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "24.1.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Pro",
+      "description": "Enable pro features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.surmin.photofancie.lite",
+          "name": "Collage Maker - PhotoFancie",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FFFFFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "5.8.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Pro",
+      "description": "Unlock pro features such as Unlimited proxy usage, Allow/disallow specific apps, Block apps in firewall and many more...",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.scheler.superproxy",
+          "name": "Super Proxy",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0078B7",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.2.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }

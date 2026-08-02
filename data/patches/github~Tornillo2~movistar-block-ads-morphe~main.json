@@ -1,28 +1,32 @@
 {
-    "version": "1.0.9",
-    "name": "Movistar plus ads patch",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.9",
+  "patches": [
+    {
+      "name": "Block Ads",
+      "description": "Blocks advertisements and promo clips.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
         {
-            "name": "Block Ads",
-            "description": "Blocks advertisements and promo clips.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.movistarplus.androidtv",
-                    "name": "Movistar Plus",
-                    "apkFileType": "APK",
-                    "appIconColor": "#00A9E0",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "26.03.100",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.movistarplus.androidtv",
+          "name": "Movistar Plus",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00A9E0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.03.100",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    }
+  ]
 }

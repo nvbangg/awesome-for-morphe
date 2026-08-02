@@ -20,19 +20,29 @@ jobs:
         with:
           ref: main
 
-      - name: Setup Java
+      - name: Fetch new bundles
+        id: fetch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/discover.py
+          python scripts/fetch.py --image
+          if [ -s scripts/bundle-parser/updated_files.txt ]; then
+            echo "need_java=true" >> $GITHUB_OUTPUT
+          else
+            echo "need_java=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Java environment
+        if: steps.fetch.outputs.need_java == 'true'
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
           cache: 'gradle'
 
-      - name: Download and process data
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Parse bundles and update data
         run: |
-          python scripts/discover.py
-          python scripts/fetch.py --image
           python scripts/parse.py
 
           pip install google-play-scraper

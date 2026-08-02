@@ -6,6 +6,7 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+import zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Optional, Tuple
@@ -20,8 +21,21 @@ REPOS_JSON_PATH = DATA_DIR / "repos.json"
 BUNDLES_DIR = DATA_DIR / "bundles"
 PATCHES_DIR = DATA_DIR / "patches"
 BUNDLE_PARSER_DIR = ROOT_DIR / "scripts" / "bundle-parser"
+MPP_DIR = BUNDLE_PARSER_DIR / "mpp"
 BRANCHES = ["main", "dev"]
 CONCURRENCY = 8
+
+
+def extract_mpp_name(mpp_file: Path) -> Optional[str]:
+    try:
+        with zipfile.ZipFile(mpp_file, "r") as z:
+            manifest_text = z.read("META-INF/MANIFEST.MF").decode("utf-8")
+            for line in manifest_text.splitlines():
+                if line.startswith("Name:"):
+                    return line.split(":", 1)[1].strip()
+    except Exception:
+        pass
+    return None
 
 
 def get_remote_file_hash(url: str, source: str, fallback: Optional[str] = None) -> Optional[str]:
@@ -52,6 +66,15 @@ def get_file_sha(source: str, owner_repo: str, branch: str, custom_url: Optional
     return get_remote_file_hash(url, source, fallback=None)
 
 
+def get_patches_list_url(source: str, owner_repo: str, branch: str) -> Optional[str]:
+    if source == "github":
+        return f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-list.json"
+    elif source == "gitlab":
+        encoded_repo = urllib.parse.quote(owner_repo, safe="")
+        return f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-list.json/raw?ref={branch}"
+    return None
+
+
 def get_image_sha(source: str, owner_repo: str) -> Optional[str]:
     if source == "github":
         url = f"https://raw.githubusercontent.com/{owner_repo}/main/patches-bundle.png"
@@ -63,21 +86,21 @@ def get_image_sha(source: str, owner_repo: str) -> Optional[str]:
     return get_remote_file_hash(url, source, fallback="exists")
 
 
-def process_repo_branch(source: str, owner_repo: str, branch: str, current_sha: Optional[str], custom_url: Optional[str] = None) -> Tuple[str, str, str, Optional[str], Optional[str], bool, bool]:
-    key = f"{source}:{owner_repo}:{branch}"
+def process_repo_branch(
+    source: str, owner_repo: str, branch: str, current_sha: Optional[str], custom_url: Optional[str] = None
+) -> Tuple[str, str, str, Optional[str], Optional[str], bool, bool, bool, Optional[str]]:
     try:
         remote_sha = get_file_sha(source, owner_repo, branch, custom_url)
     except Exception as error:
-        if isinstance(error, urllib.error.HTTPError) and error.code == 404:
-            return source, owner_repo, branch, None, None, current_sha is not None, True
-        print(f"[-] [{key}] Error fetching sha: {error}")
-        return source, owner_repo, branch, current_sha, None, False, False
+        print(f"[-] [{owner_repo}:{branch}] Network error: {error}")
+        return source, owner_repo, branch, current_sha, None, False, False, False, None
 
     if remote_sha == current_sha:
-        return source, owner_repo, branch, remote_sha, None, False, remote_sha is None
+        return source, owner_repo, branch, remote_sha, None, False, False, False, None
 
     if remote_sha is None:
-        return source, owner_repo, branch, None, None, True, True
+        print(f"[-] [{owner_repo}:{branch}] patches-bundle.json not found")
+        return source, owner_repo, branch, None, None, False, True, True, None
 
     if source == "github":
         raw_bundle_url = custom_url or f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
@@ -85,19 +108,44 @@ def process_repo_branch(source: str, owner_repo: str, branch: str, current_sha: 
         encoded_repo = urllib.parse.quote(owner_repo, safe="")
         raw_bundle_url = custom_url or f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
 
-    bundle_text = None
+    owner, repo = owner_repo.split("/", 1)
+    file_prefix = f"{source}~{owner}~{repo}~{branch}"
+
     try:
         bundle_text = fetch(raw_bundle_url)
     except Exception as error:
         if isinstance(error, urllib.error.HTTPError) and error.code == 404:
-            return source, owner_repo, branch, None, None, True, True
-        print(f"[-] [{key}] Failed to download patches-bundle.json: {error}")
-        return source, owner_repo, branch, current_sha, None, False, False
-    return source, owner_repo, branch, remote_sha, bundle_text, True, False
+            print(f"[-] [{owner_repo}:{branch}] patches-bundle.json not found")
+            return source, owner_repo, branch, remote_sha, None, False, True, True, None
+        print(f"[-] [{owner_repo}:{branch}] Network error: {error}")
+        return source, owner_repo, branch, current_sha, None, False, False, False, None
+
+    has_mpp = False
+    bundle_name = None
+    try:
+        bundle_data = json.loads(bundle_text)
+        mpp_url = bundle_data.get("download_url")
+        if mpp_url and mpp_url.endswith(".mpp"):
+            mpp_file_path = MPP_DIR / f"{file_prefix}.mpp"
+            try:
+                mpp_bytes = fetch(mpp_url, binary=True)
+                MPP_DIR.mkdir(parents=True, exist_ok=True)
+                mpp_file_path.write_bytes(mpp_bytes)
+                has_mpp = True
+                bundle_name = extract_mpp_name(mpp_file_path)
+            except Exception as error:
+                if isinstance(error, urllib.error.HTTPError) and error.code == 404:
+                    print(f"[-] [{owner_repo}:{branch}] .mpp file not found")
+                    return source, owner_repo, branch, remote_sha, bundle_text, False, True, True, None
+                print(f"[-] [{owner_repo}:{branch}] Network error: {error}")
+                return source, owner_repo, branch, current_sha, None, False, False, False, None
+    except Exception:
+        pass
+
+    return source, owner_repo, branch, remote_sha, bundle_text, has_mpp, True, False, bundle_name
 
 
 def process_image(source: str, owner_repo: str, current_image: Optional[str]) -> Tuple[str, str, Optional[str], bool, bool]:
-    key = f"{source}:{owner_repo}:image"
     try:
         remote_sha = get_image_sha(source, owner_repo)
     except Exception as error:
@@ -118,7 +166,6 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
     for base_key, discover_meta in discover_data.items():
         if ":" not in base_key:
             continue
-
         repo_data = {"main": old_repos_data.get(base_key, {}).get("main"), "dev": old_repos_data.get(base_key, {}).get("dev")}
         if "image" in old_repos_data.get(base_key, {}):
             repo_data["image"] = old_repos_data[base_key]["image"]
@@ -126,6 +173,7 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
 
     BUNDLES_DIR.mkdir(parents=True, exist_ok=True)
     PATCHES_DIR.mkdir(parents=True, exist_ok=True)
+    MPP_DIR.mkdir(parents=True, exist_ok=True)
 
     tasks = []
     image_tasks = []
@@ -148,7 +196,7 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
         futures = [executor.submit(process_repo_branch, source, owner_repo, branch, current_sha, custom_url) for source, owner_repo, branch, current_sha, custom_url in tasks]
 
         for future in as_completed(futures):
-            source, owner_repo, branch, new_sha, bundle_text, status_changed, is_404 = future.result()
+            source, owner_repo, branch, new_sha, bundle_text, has_mpp, status_changed, is_404, bundle_name = future.result()
             base_key = f"{source}:{owner_repo}"
 
             if not status_changed:
@@ -156,13 +204,28 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
 
             updated_count += 1
             pending_repository_data.setdefault(base_key, {})[branch] = new_sha
+            if bundle_name:
+                pending_repository_data.setdefault(base_key, {})["name"] = bundle_name
 
             if not is_404 and new_sha is not None:
                 owner, repo = owner_repo.split("/", 1)
-                file_prefix = f"{source}~{owner}~{repo}~{branch}.json"
+                file_prefix = f"{source}~{owner}~{repo}~{branch}"
                 if bundle_text:
-                    (BUNDLES_DIR / file_prefix).write_text(bundle_text, encoding="utf-8")
-                    updated_files.append(file_prefix)
+                    (BUNDLES_DIR / f"{file_prefix}.json").write_text(bundle_text, encoding="utf-8")
+
+                repo_patch_list = None
+                patches_list_url = get_patches_list_url(source, owner_repo, branch)
+                if patches_list_url:
+                    try:
+                        content = fetch(patches_list_url)
+                        json.loads(content)
+                        (PATCHES_DIR / f"{file_prefix}.json").write_text(content, encoding="utf-8")
+                        repo_patch_list = content
+                    except Exception:
+                        repo_patch_list = None
+
+                if not repo_patch_list and has_mpp:
+                    updated_files.append(f"mpp/{file_prefix}.mpp")
 
     if fetch_images:
         print(f"Processing {len(image_tasks)} image targets...")
@@ -175,16 +238,16 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
                     base_key = f"{source}:{owner_repo}"
                     pending_repository_data.setdefault(base_key, {})["image"] = new_image_sha
 
-    null_repos = [key for key, repo in new_repos_data.items() if repo.get("main") is None and repo.get("dev") is None]
     print(f"Fetch completed. Updated {updated_count} targets.")
-    if null_repos:
-        print(f"::warning title=Fetch:: [-] Note: {len(null_repos)}/{len(new_repos_data)} repos have both branches as null: {', '.join(null_repos)}")
 
     list_file = BUNDLE_PARSER_DIR / "updated_files.txt"
-    list_file.write_text("\n".join(updated_files), encoding="utf-8")
-    save_json(pending_repositories_file_path, pending_repository_data)
     if updated_files:
+        list_file.write_text("\n".join(updated_files), encoding="utf-8")
         print(f"Saved {len(updated_files)} updated targets to updated_files.txt and pending_repos.json")
+    elif list_file.exists():
+        list_file.unlink()
+
+    save_json(pending_repositories_file_path, pending_repository_data)
 
 
 def main() -> None:

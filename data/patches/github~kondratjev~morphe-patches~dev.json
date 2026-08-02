@@ -1,549 +1,664 @@
 {
-    "version": "1.18.0-dev.3",
-    "name": "Kondratjev Patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.18.0-dev.3",
+  "patches": [
+    {
+      "name": "Change version code",
+      "description": "Changes the app version code, allowing installation over existing versions.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
         {
-            "name": "Change version code",
-            "description": "Changes the app version code, allowing installation over existing versions.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": [
-                {
-                    "default": "2147483647",
-                    "description": "The version code to use. (1 ~ 2147483647)",
-                    "key": "versionCode",
-                    "required": true,
-                    "title": "Version code",
-                    "type": "kotlin.String",
-                    "values": {
-                        "Highest": "2147483647",
-                        "Lowest": "1"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Disable ads",
-            "description": "Removes all advertisements from the app.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "ru.vk.store",
-                    "name": "RuStore",
-                    "appIconColor": "#0077FF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.106.0.3",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable analytics",
-            "description": "Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore.",
-            "default": false,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Disable analytics",
-            "description": "Disables PulseSDK analytics.",
-            "default": true,
-            "dependencies": [
-                "Disable analytics"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "xyz.rtrvr.pillo",
-                    "name": "Pillo",
-                    "appIconColor": "#7C4DFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "0.6.16",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable analytics",
-            "description": "Disables VK-specific analytics.",
-            "default": true,
-            "dependencies": [
-                "ResourcePatch",
-                "Disable analytics"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "ru.vk.store",
-                    "name": "RuStore",
-                    "appIconColor": "#0077FF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.106.0.3",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable analytics",
-            "description": "Disables SoundCloud's analytics.",
-            "default": true,
-            "dependencies": [
-                "Disable analytics"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.soundcloud.android",
-                    "name": "SoundCloud",
-                    "appIconColor": "#FF5500",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "2026.07.23-release",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable background scan",
-            "description": "Disables the periodic Kaspersky background device scan.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "ru.vk.store",
-                    "name": "RuStore",
-                    "appIconColor": "#0077FF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.106.0.3",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable community tab",
-            "description": "Hides the News/Community tab from the bottom navigation.",
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.fatsecret.android",
-                    "name": "FatSecret",
-                    "appIconColor": "#00897B",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "11.6.0.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable consent popup",
-            "description": "Disables the OneTrust consent/cookies popup on first launch.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.soundcloud.android",
-                    "name": "SoundCloud",
-                    "appIconColor": "#FF5500",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "2026.07.23-release",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable force update dialog",
-            "description": "Makes the 'App must update' dialog skippable.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.fatsecret.android",
-                    "name": "FatSecret",
-                    "appIconColor": "#00897B",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "11.6.0.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable gaming profile",
-            "description": "Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "ru.vk.store",
-                    "name": "RuStore",
-                    "appIconColor": "#0077FF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.106.0.3",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable Mine redesign",
-            "description": "Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "ru.vk.store",
-                    "name": "RuStore",
-                    "appIconColor": "#0077FF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.106.0.3",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable Pairip license check",
-            "description": "Disables the Pairip license verification check.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Enable SoundCloud Go",
-            "description": "Enables SoundCloud Go premium features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.soundcloud.android",
-                    "name": "SoundCloud",
-                    "appIconColor": "#FF5500",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "2026.07.23-release",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Pillo GmsCore support",
-            "description": "Routes Pillo Google services and legacy Google Sign-In through MicroG-RE.",
-            "default": true,
-            "dependencies": [
-                "Pillo GmsCore support"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "xyz.rtrvr.pillo",
-                    "name": "Pillo",
-                    "appIconColor": "#7C4DFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "0.6.16",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Skip update auth",
-            "description": "Removes the login requirement when updating apps.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "ru.vk.store",
-                    "name": "RuStore",
-                    "appIconColor": "#0077FF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.106.0.3",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlocks all FatSecret Gold features and hides the Premium tab.",
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.fatsecret.android",
-                    "name": "FatSecret",
-                    "appIconColor": "#00897B",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "11.6.0.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlocks all premium features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.sillens.shapeupclub",
-                    "name": "Lifesum",
-                    "appIconColor": "#00C853",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "20.6.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlocks all premium features.",
-            "default": true,
-            "dependencies": [
-                "Disable Pairip license check"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.lyfta",
-                    "name": "Lyfta",
-                    "appIconColor": "#000000",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.578",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlocks all premium features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.medisafe.android.client",
-                    "name": "Medisafe",
-                    "appIconColor": "#00A99D",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "9.51.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlocks all Muscle Motion Strength Training Pro/Individual/Business features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "air.com.musclemotion.strength.mobile",
-                    "name": "Muscle Motion Strength Training",
-                    "appIconColor": "#000000",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.5.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlocks part of Ornament Pro features.",
-            "default": true,
-            "dependencies": [
-                "RawResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.ornament.monitor",
-                    "name": "Ornament",
-                    "appIconColor": "#6750A4",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "4.15.1",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlocks premium features.",
-            "default": true,
-            "dependencies": [
-                "RawResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.brightstripe.parcels",
-                    "name": "Parcels",
-                    "appIconColor": "#6B4EFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.0.11",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlocks premium features and removes ads.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "xyz.rtrvr.pillo",
-                    "name": "Pillo",
-                    "appIconColor": "#7C4DFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "0.6.16",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "ROOT ONLY. Unlocks all premium features.",
-            "default": true,
-            "dependencies": [
-                "Disable Pairip license check"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.quvideo.wisemeal",
-                    "name": "WiseMeal",
-                    "appIconColor": "#00C853",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.3.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock Premium",
-            "description": "Unlocks all Yazio Pro features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.yazio.android",
-                    "name": "Yazio",
-                    "appIconColor": "#00C853",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "12.87.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "key": "versionCode",
+          "title": "Version code",
+          "description": "The version code to use. (1 ~ 2147483647)",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "2147483647",
+          "values": {
+            "Lowest": "1",
+            "Highest": "2147483647"
+          }
         }
-    ]
+      ]
+    },
+    {
+      "name": "Disable Mine redesign",
+      "description": "Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.106.0.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Pairip license check",
+      "description": "Disables the Pairip license verification check.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable ads",
+      "description": "Removes all advertisements from the app.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.106.0.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables PulseSDK analytics.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "xyz.rtrvr.pillo",
+          "name": "Pillo",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#7C4DFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.6.16",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables VK-specific analytics.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.106.0.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables SoundCloud's analytics.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.soundcloud.android",
+          "name": "SoundCloud",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FF5500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2026.07.23-release",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable background scan",
+      "description": "Disables the periodic Kaspersky background device scan.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.106.0.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable community tab",
+      "description": "Hides the News/Community tab from the bottom navigation.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fatsecret.android",
+          "name": "FatSecret",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.6.0.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable consent popup",
+      "description": "Disables the OneTrust consent/cookies popup on first launch.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.soundcloud.android",
+          "name": "SoundCloud",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FF5500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2026.07.23-release",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable force update dialog",
+      "description": "Makes the 'App must update' dialog skippable.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fatsecret.android",
+          "name": "FatSecret",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.6.0.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable gaming profile",
+      "description": "Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.106.0.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable SoundCloud Go",
+      "description": "Enables SoundCloud Go premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.soundcloud.android",
+          "name": "SoundCloud",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FF5500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2026.07.23-release",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Pillo GmsCore support",
+      "description": "Routes Pillo Google services and legacy Google Sign-In through MicroG-RE.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "xyz.rtrvr.pillo",
+          "name": "Pillo",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#7C4DFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.6.16",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip update auth",
+      "description": "Removes the login requirement when updating apps.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.106.0.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all FatSecret Gold features and hides the Premium tab.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fatsecret.android",
+          "name": "FatSecret",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.6.0.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sillens.shapeupclub",
+          "name": "Lifesum",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00C853",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.6.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all premium features.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.lyfta",
+          "name": "Lyfta",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.578",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.medisafe.android.client",
+          "name": "Medisafe",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00A99D",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "9.51.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all Muscle Motion Strength Training Pro/Individual/Business features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "air.com.musclemotion.strength.mobile",
+          "name": "Muscle Motion Strength Training",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.5.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks part of Ornament Pro features.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ornament.monitor",
+          "name": "Ornament",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#6750A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.15.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks premium features.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.brightstripe.parcels",
+          "name": "Parcels",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#6B4EFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.0.11",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks premium features and removes ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "xyz.rtrvr.pillo",
+          "name": "Pillo",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#7C4DFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.6.16",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "ROOT ONLY. Unlocks all premium features.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.quvideo.wisemeal",
+          "name": "WiseMeal",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00C853",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.3.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all Yazio Pro features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.yazio.android",
+          "name": "Yazio",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00C853",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "12.87.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }

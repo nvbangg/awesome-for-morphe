@@ -32,9 +32,14 @@ jobs:
           else
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
+          if [ -s scripts/bundle-parser/updated_files.txt ]; then
+            echo "need_java=true" >> $GITHUB_OUTPUT
+          else
+            echo "need_java=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Setup Java environment
-        if: steps.update.outputs.changed == 'true'
+        if: steps.update.outputs.changed == 'true' && steps.update.outputs.need_java == 'true'
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'

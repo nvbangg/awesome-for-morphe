@@ -44,10 +44,15 @@ def commit_pending_repos() -> None:
             continue
         owner, repo = owner_repo.split("/", 1)
 
-        for branch, new_sha in repo_updates.items():
+        for branch, new_val in repo_updates.items():
+            if branch == "name":
+                if new_val:
+                    repos_data.setdefault(base_key, {})["name"] = new_val
+                continue
             file_prefix = f"{source}~{owner}~{repo}~{branch}.json"
-            if branch == "image" or file_prefix in successful_parsed_files:
-                repos_data.setdefault(base_key, {})[branch] = new_sha
+            patch_exists = (DATA_DIR / "patches" / file_prefix).exists()
+            if branch == "image" or file_prefix in successful_parsed_files or patch_exists or new_val is not None:
+                repos_data.setdefault(base_key, {})[branch] = new_val
                 committed_target_count += 1
 
     if committed_target_count > 0:
@@ -55,7 +60,12 @@ def commit_pending_repos() -> None:
         for key in sorted(repos_data.keys(), key=lambda k: k.lower()):
             raw_branches = repos_data[key]
             if isinstance(raw_branches, dict):
-                formatted_branches = {branch: raw_branches[branch] for branch in ["main", "dev", "image"] if raw_branches.get(branch) is not None}
+                formatted_branches = {}
+                if "name" in raw_branches and raw_branches["name"]:
+                    formatted_branches["name"] = raw_branches["name"]
+                for branch in ["main", "dev", "image"]:
+                    if raw_branches.get(branch) is not None:
+                        formatted_branches[branch] = raw_branches[branch]
                 if formatted_branches:
                     formatted_repos_data[key] = formatted_branches
         save_json(REPOS_JSON_PATH, formatted_repos_data)

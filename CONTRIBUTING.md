@@ -47,13 +47,12 @@ flowchart LR
     B --> C["Check updates (fetch.py)"]
     C --> D{Changes?}
 
-    D -->|Yes| E["Parse bundles (parse.py)"]
+    D -->|Yes| E["Parse bundles (parse.py) + Compile data (update.py)"]
     D -->|No| F[Skip]
 
-    E --> G["Compile data (update.py)"]
-    G --> H[Commit & push]
-    H --> I[Complete]
-    F --> I
+    E --> G[Commit & push]
+    G --> H[Complete]
+    F --> H
 ```
 
 ### 2. Release Workflow (`release.yml` - Daily at 23:00 UTC)
@@ -61,13 +60,16 @@ flowchart LR
 ```mermaid
 flowchart LR
     J["Release Workflow (release.yml)"] --> K["Discover bundles (discover.py)"]
-    K --> L["Check updates (fetch.py)"]
+    K --> L["Check updates + images (fetch.py --image)"]
     L --> M["Parse bundles (parse.py)"]
-    M --> N["Compile data (update.py)"]
+    M --> N["Compile data (update.py --daily/--month)"]
     N --> O["Generate changelog (whats_new.py)"]
-    O --> P[GitHub Release]
-    P --> Q["Send notifications (telegram.py)"]
-    Q --> R[Complete]
+    O --> P[Commit & push]
+    P --> Q{Changes?}
+
+    Q -->|Yes| R["Send notifications (telegram.py)"]
+    Q -->|No| S[Complete]
+    R --> S
 ```
 
 ## 🛠️ Usage / Scripts
@@ -101,11 +103,11 @@ Manually add or remove target repositories in [`data/discover/custom.json`](data
 ### `fetch.py`
 
 Downloads raw patch lists and bundle metadata from remote sources based on `data/discover/discover.json`.
-It checks for new SHAs, downloads updated bundle files to `data/bundles/`, updates `data/repos.json` with the latest commit SHAs, and outputs the list of updated bundle targets to `scripts/bundle-parser/updated_files.txt`.
+It checks for new SHAs, downloads `patches-bundle.json` into `data/bundles/`, the corresponding `.mpp` file into `scripts/bundle-parser/mpp/` to extract the bundle name, and `patches-list.json` (if available) into `data/patches/`. Pending SHA and name updates are written to `scripts/bundle-parser/pending_repos.json`. Updated `.mpp` target paths are written to `scripts/bundle-parser/updated_files.txt` (only generated when there are bundles without a `patches-list.json`). With the `--image` flag, it also fetches the bundle avatar image SHA for each repo.
 
 ### `parse.py`
 
-Executes the Kotlin-based `bundle-parser` (taken from [Jman's ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) and modified to fit this project and Morphe) to parse updated bundle files listed in `scripts/bundle-parser/updated_files.txt` and extract structured patch lists into `data/patches/`.
+Executes the Kotlin-based `bundle-parser` (taken from [Jman's ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) and modified to fit this project and Morphe) to parse `.mpp` files listed in `scripts/bundle-parser/updated_files.txt` and extract structured patch lists into `data/patches/`. Upon successful parsing, it commits pending commit SHAs and bundle names from `scripts/bundle-parser/pending_repos.json` into `data/repos.json`.
 
 ### `update.py`
 

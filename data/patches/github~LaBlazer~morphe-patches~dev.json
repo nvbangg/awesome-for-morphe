@@ -1,28 +1,32 @@
 {
-    "version": "1.0.0",
-    "name": "LaBlazer's Patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Enable premium features",
+      "description": "Bypasses the premium/licence gate so premium content and unlimited tests become available.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
         {
-            "name": "Enable premium features",
-            "description": "Bypasses the premium/licence gate so premium content and unlimited tests become available.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "cz.etesty.autoskola",
-                    "name": "eTesty Autoškola",
-                    "apkFileType": "APK",
-                    "appIconColor": "#FF6B35",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "2025.01",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "cz.etesty.autoskola",
+          "name": "eTesty Autoškola",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF6B35",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2025.01",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    }
+  ]
 }

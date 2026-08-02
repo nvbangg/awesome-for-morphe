@@ -1,256 +1,256 @@
 {
-    "version": "1.17.0",
-    "name": "Nai's Patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.17.0",
+  "patches": [
+    {
+      "name": "Ads Free Rewards",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "No Ads",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
         {
-            "name": "Ads Free Rewards",
-            "description": "",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
+          "key": "blockInterstitials",
+          "title": "Block Interstitials",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
         },
         {
-            "name": "Custom App Resolution (Experimental)",
-            "description": "",
-            "default": false,
-            "dependencies": [
-                "Custom App Resolution Manifest (internal)"
-            ],
-            "compatiblePackages": null,
-            "options": [
-                {
-                    "default": false,
-                    "description": "",
-                    "key": "enableCustomResolution",
-                    "required": false,
-                    "title": "Enable Custom Resolution",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": 1920,
-                    "description": "",
-                    "key": "width",
-                    "required": false,
-                    "title": "Resolution width (px)",
-                    "type": "kotlin.Int",
-                    "values": null
-                },
-                {
-                    "default": 1080,
-                    "description": "",
-                    "key": "height",
-                    "required": false,
-                    "title": "Resolution height (px)",
-                    "type": "kotlin.Int",
-                    "values": null
-                }
-            ]
+          "key": "blockBanners",
+          "title": "Block Banners",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
         },
         {
-            "name": "Disable Root Checks",
-            "description": "",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
+          "key": "blockAppOpen",
+          "title": "Block App Open",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
         },
         {
-            "name": "Disable Telemetry",
-            "description": "",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": [
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockFirebase",
-                    "required": false,
-                    "title": "Block Firebase Analytics",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockAppsFlyer",
-                    "required": false,
-                    "title": "Block AppsFlyer",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockAdjust",
-                    "required": false,
-                    "title": "Block Adjust",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockAmplitude",
-                    "required": false,
-                    "title": "Block Amplitude",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockMixpanel",
-                    "required": false,
-                    "title": "Block Mixpanel",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockCleverTap",
-                    "required": false,
-                    "title": "Block CleverTap",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockSegment",
-                    "required": false,
-                    "title": "Block Segment",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockFacebook",
-                    "required": false,
-                    "title": "Block Facebook Analytics",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockBranch",
-                    "required": false,
-                    "title": "Block Branch.io",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockUnity",
-                    "required": false,
-                    "title": "Block Unity Analytics",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockFlurry",
-                    "required": false,
-                    "title": "Block Flurry",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                }
-            ]
+          "key": "blockMRec",
+          "title": "Block MREC",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
         },
         {
-            "name": "Disable Update Checks",
-            "description": "",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "No Ads",
-            "description": "",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": [
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockInterstitials",
-                    "required": false,
-                    "title": "Block Interstitials",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockBanners",
-                    "required": false,
-                    "title": "Block Banners",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockAppOpen",
-                    "required": false,
-                    "title": "Block App Open",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockMRec",
-                    "required": false,
-                    "title": "Block MREC",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                },
-                {
-                    "default": true,
-                    "description": "",
-                    "key": "blockRewarded",
-                    "required": false,
-                    "title": "Block Rewarded",
-                    "type": "kotlin.Boolean",
-                    "values": null
-                }
-            ]
-        },
-        {
-            "name": "Pairip Bypass (Experimental)",
-            "description": "",
-            "default": false,
-            "dependencies": [
-                "Pairip Application Redirect (internal)"
-            ],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Spoof Play Store Install Source",
-            "description": "",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Unlock RevenueCat Entitlements",
-            "description": "",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
+          "key": "blockRewarded",
+          "title": "Block Rewarded",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
         }
-    ]
+      ]
+    },
+    {
+      "name": "Spoof Play Store Install Source",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Pairip Bypass (Experimental)",
+      "description": null,
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Unlock RevenueCat Entitlements",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Custom App Resolution (Experimental)",
+      "description": null,
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "enableCustomResolution",
+          "title": "Enable Custom Resolution",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        },
+        {
+          "key": "width",
+          "title": "Resolution width (px)",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Int",
+          "default": 1920,
+          "values": null
+        },
+        {
+          "key": "height",
+          "title": "Resolution height (px)",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Int",
+          "default": 1080,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Disable Root Checks",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Update Checks",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Telemetry",
+      "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "blockFirebase",
+          "title": "Block Firebase Analytics",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockAppsFlyer",
+          "title": "Block AppsFlyer",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockAdjust",
+          "title": "Block Adjust",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockAmplitude",
+          "title": "Block Amplitude",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockMixpanel",
+          "title": "Block Mixpanel",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockCleverTap",
+          "title": "Block CleverTap",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockSegment",
+          "title": "Block Segment",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockFacebook",
+          "title": "Block Facebook Analytics",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockBranch",
+          "title": "Block Branch.io",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockUnity",
+          "title": "Block Unity Analytics",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockFlurry",
+          "title": "Block Flurry",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        }
+      ]
+    }
+  ]
 }

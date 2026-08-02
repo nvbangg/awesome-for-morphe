@@ -12,6 +12,7 @@ def fetch(
     headers: Optional[Dict[str, str]] = None,
     timeout: int = 15,
     as_json: bool = False,
+    binary: bool = False,
 ) -> Any:
     if headers is None:
         headers = {}
@@ -21,8 +22,11 @@ def fetch(
         try:
             request = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(request, timeout=timeout) as response:
-                content = response.read().decode("utf-8")
-            return json.loads(content) if as_json else content
+                content = response.read()
+                if binary:
+                    return content
+                decoded = content.decode("utf-8")
+                return json.loads(decoded) if as_json else decoded
 
         except urllib.error.HTTPError as error:
             if error.code in (401, 403, 429) and attempt < 2:

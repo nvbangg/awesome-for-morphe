@@ -1,425 +1,560 @@
 {
-    "version": "1.6.0",
-    "name": "HK Morphe Patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.6.0",
+  "patches": [
+    {
+      "name": "Fix \"Other Discussions\"",
+      "description": "Fixes the \"Other Discussions\" feature.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
         {
-            "name": "Fix \"Other Discussions\"",
-            "description": "Fixes the \"Other Discussions\" feature.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.laurencedawson.reddit_sync",
-                    "name": "Sync for Reddit",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.pro",
-                    "name": "Sync for Reddit Pro",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.dev",
-                    "name": "Sync for Reddit Dev",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.laurencedawson.reddit_sync",
+          "name": "Sync for Reddit",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         },
         {
-            "name": "Fix \"Restore Comment\"",
-            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also includes UI changes to make this feature more accessible.",
-            "default": true,
-            "dependencies": [
-                "Unlock Sync Ultra",
-                "BytecodePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.laurencedawson.reddit_sync",
-                    "name": "Sync for Reddit",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.pro",
-                    "name": "Sync for Reddit Pro",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.dev",
-                    "name": "Sync for Reddit Dev",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.laurencedawson.reddit_sync.pro",
+          "name": "Sync for Reddit Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         },
         {
-            "name": "Fix Image Post Selftext",
-            "description": "Fixes selftext in image posts to properly render Markdown.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.laurencedawson.reddit_sync",
-                    "name": "Sync for Reddit",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.pro",
-                    "name": "Sync for Reddit Pro",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.dev",
-                    "name": "Sync for Reddit Dev",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Fix imgur links",
-            "description": "Fixes imgur.com/a/ links to properly display in the image viewer.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.laurencedawson.reddit_sync",
-                    "name": "Sync for Reddit",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.pro",
-                    "name": "Sync for Reddit Pro",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.dev",
-                    "name": "Sync for Reddit Dev",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Fix r/random",
-            "description": "Restores random subreddit functionality by fetching from an alternative API.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.laurencedawson.reddit_sync",
-                    "name": "Sync for Reddit",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.pro",
-                    "name": "Sync for Reddit Pro",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.dev",
-                    "name": "Sync for Reddit Dev",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Fix Reddit Video Links",
-            "description": "Fixes reddit video links (reddit.com/link/.../video) so they open in the native video player.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.laurencedawson.reddit_sync",
-                    "name": "Sync for Reddit",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.pro",
-                    "name": "Sync for Reddit Pro",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.dev",
-                    "name": "Sync for Reddit Dev",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Predictive back gesture",
-            "description": "Enables the predictive back gesture introduced in Android 13.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Predictive back gesture (Reddit Sync)",
-            "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.laurencedawson.reddit_sync",
-                    "name": "Sync for Reddit",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.pro",
-                    "name": "Sync for Reddit Pro",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.dev",
-                    "name": "Sync for Reddit Dev",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Spoof client",
-            "description": "Restores functionality of the app by using custom client ID (default included).",
-            "default": true,
-            "dependencies": [
-                "BytecodePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.laurencedawson.reddit_sync",
-                    "name": "Sync for Reddit",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.pro",
-                    "name": "Sync for Reddit Pro",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.dev",
-                    "name": "Sync for Reddit Dev",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": [
-                {
-                    "default": "yH0aTnJEt6qUgGn835B4vg",
-                    "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's client ID.",
-                    "key": "client-id",
-                    "required": true,
-                    "title": "OAuth client ID",
-                    "type": "kotlin.String",
-                    "values": null
-                },
-                {
-                    "default": "redreader://rr_oauth_redir",
-                    "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
-                    "key": "redirect-uri",
-                    "required": true,
-                    "title": "Redirect URI",
-                    "type": "kotlin.String",
-                    "values": null
-                },
-                {
-                    "default": "org.quantumbadger.redreader/1.25.1",
-                    "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
-                    "key": "user-agent",
-                    "required": true,
-                    "title": "User agent",
-                    "type": "kotlin.String",
-                    "values": null
-                }
-            ]
-        },
-        {
-            "name": "Unlock Sync Ultra",
-            "description": "Unlocks Sync Ultra Lifetime.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.laurencedawson.reddit_sync",
-                    "name": "Sync for Reddit",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.pro",
-                    "name": "Sync for Reddit Pro",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.laurencedawson.reddit_sync.dev",
-                    "name": "Sync for Reddit Dev",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "v23.06.30-13:39",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.laurencedawson.reddit_sync.dev",
+          "name": "Sync for Reddit Dev",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix \"Restore Comment\"",
+      "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also includes UI changes to make this feature more accessible.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.laurencedawson.reddit_sync",
+          "name": "Sync for Reddit",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.pro",
+          "name": "Sync for Reddit Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.dev",
+          "name": "Sync for Reddit Dev",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix Image Post Selftext",
+      "description": "Fixes selftext in image posts to properly render Markdown.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.laurencedawson.reddit_sync",
+          "name": "Sync for Reddit",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.pro",
+          "name": "Sync for Reddit Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.dev",
+          "name": "Sync for Reddit Dev",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix Reddit Video Links",
+      "description": "Fixes reddit video links (reddit.com/link/.../video) so they open in the native video player.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.laurencedawson.reddit_sync",
+          "name": "Sync for Reddit",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.pro",
+          "name": "Sync for Reddit Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.dev",
+          "name": "Sync for Reddit Dev",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix imgur links",
+      "description": "Fixes imgur.com/a/ links to properly display in the image viewer.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.laurencedawson.reddit_sync",
+          "name": "Sync for Reddit",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.pro",
+          "name": "Sync for Reddit Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.dev",
+          "name": "Sync for Reddit Dev",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix r/random",
+      "description": "Restores random subreddit functionality by fetching from an alternative API.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.laurencedawson.reddit_sync",
+          "name": "Sync for Reddit",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.pro",
+          "name": "Sync for Reddit Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.dev",
+          "name": "Sync for Reddit Dev",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Predictive back gesture",
+      "description": "Enables the predictive back gesture introduced in Android 13.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Predictive back gesture (Reddit Sync)",
+      "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.laurencedawson.reddit_sync",
+          "name": "Sync for Reddit",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.pro",
+          "name": "Sync for Reddit Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.dev",
+          "name": "Sync for Reddit Dev",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Spoof client",
+      "description": "Restores functionality of the app by using custom client ID (default included).",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.laurencedawson.reddit_sync",
+          "name": "Sync for Reddit",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.pro",
+          "name": "Sync for Reddit Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.dev",
+          "name": "Sync for Reddit Dev",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "client-id",
+          "title": "OAuth client ID",
+          "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's client ID.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "yH0aTnJEt6qUgGn835B4vg",
+          "values": null
+        },
+        {
+          "key": "redirect-uri",
+          "title": "Redirect URI",
+          "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "redreader://rr_oauth_redir",
+          "values": null
+        },
+        {
+          "key": "user-agent",
+          "title": "User agent",
+          "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "org.quantumbadger.redreader/1.25.1",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Unlock Sync Ultra",
+      "description": "Unlocks Sync Ultra Lifetime.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.laurencedawson.reddit_sync",
+          "name": "Sync for Reddit",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.pro",
+          "name": "Sync for Reddit Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.laurencedawson.reddit_sync.dev",
+          "name": "Sync for Reddit Dev",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "v23.06.30-13:39",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }

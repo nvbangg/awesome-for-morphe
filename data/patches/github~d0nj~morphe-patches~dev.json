@@ -1,27 +1,32 @@
 {
-    "version": "1.1.0-dev.1",
-    "name": "d0nj Patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.1.0-dev.1",
+  "patches": [
+    {
+      "name": "Unlock premium",
+      "description": "Makes isPremium() always return true in AI Audio Novel Reader. Unlocks all premium features and disables the 10-hour trial countdown.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
         {
-            "name": "Unlock premium",
-            "description": "Makes isPremium() always return true in AI Audio Novel Reader. Unlocks all premium features and disables the 10-hour trial countdown.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.thien.novelreader",
-                    "name": "AI Audio Novel Reader",
-                    "appIconColor": "#6200EE",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.3.23",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.thien.novelreader",
+          "name": "AI Audio Novel Reader",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#6200EE",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.3.23",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    }
+  ]
 }

@@ -1,27 +1,18 @@
 {
-    "version": "1.4.0",
-    "name": "Trakt Patches",
-    "patches": [
-        {
-            "name": "Hide VIP banner",
-            "description": "Removes the Upgrade to VIP upsell banner from the home screen.",
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "tv.trakt.trakt",
-                    "name": "tv.trakt.trakt",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        }
-    ]
+  "version": "1.4.0",
+  "patches": [
+    {
+      "name": "Hide VIP banner",
+      "description": "Removes the Upgrade to VIP upsell banner from the home screen.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "tv.trakt.trakt": []
+      },
+      "options": []
+    }
+  ]
 }

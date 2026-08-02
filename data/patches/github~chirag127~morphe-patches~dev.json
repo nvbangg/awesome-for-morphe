@@ -1,522 +1,690 @@
 {
-    "version": "1.4.0",
-    "name": "chirag127 Morphe patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.4.0",
+  "patches": [
+    {
+      "name": "Force hasSystemFeature true (narrow)",
+      "description": "Return true from public static boolean methods calling PackageManager.hasSystemFeature with a String arg. Narrow-scoped to avoid lifecycle callbacks.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Pixel Recorder unlock (Poco F7)",
+      "description": "Bypass in-APK Pixel-only gates on Pixel Recorder for non-Pixel devices. Server-side Gemini transcription NOT covered.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
         {
-            "name": "Force hasSystemFeature true (narrow)",
-            "description": "Return true from public static boolean methods calling PackageManager.hasSystemFeature with a String arg. Narrow-scoped to avoid lifecycle callbacks.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Pixel Recorder unlock (Poco F7)",
-            "description": "Bypass in-APK Pixel-only gates on Pixel Recorder for non-Pixel devices. Server-side Gemini transcription NOT covered.",
-            "default": false,
-            "dependencies": [
-                "Force hasSystemFeature true (narrow)",
-                "Spoof Pixel model check (narrow)",
-                "Strip root detection (narrow)"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.google.android.apps.recorder",
-                    "name": "com.google.android.apps.recorder",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Pixel Screenshots unlock (Poco F7) — EXPERIMENTAL",
-            "description": "Bypass in-APK Pixel-only gates on Pixel Screenshots. AI indexing (on-device Gemini Nano) requires Tensor G3+ and will not work on Snapdragon.",
-            "default": false,
-            "dependencies": [
-                "Force hasSystemFeature true (narrow)",
-                "Spoof Pixel model check (narrow)",
-                "Strip root detection (narrow)"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.google.android.apps.pixel.agent",
-                    "name": "com.google.android.apps.pixel.agent",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Pixel Studio unlock (Poco F7)",
-            "description": "Bypass in-APK Pixel-only gates on Poco F7. Uses narrowed fingerprints to avoid lifecycle-callback match. Server-side Play Integrity NOT bypassed.",
-            "default": true,
-            "dependencies": [
-                "Force hasSystemFeature true (narrow)",
-                "Spoof Pixel model check (narrow)",
-                "Strip root detection (narrow)"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.google.android.apps.pixel.creativeassistant",
-                    "name": "com.google.android.apps.pixel.creativeassistant",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Pixel Weather unlock (Poco F7)",
-            "description": "Bypass in-APK Pixel-only gates on Pixel Weather for non-Pixel devices.",
-            "default": false,
-            "dependencies": [
-                "Force hasSystemFeature true (narrow)",
-                "Spoof Pixel model check (narrow)",
-                "Strip root detection (narrow)"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.google.android.apps.weather",
-                    "name": "com.google.android.apps.weather",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Spoof Pixel model check (narrow)",
-            "description": "In-APK utility methods checking Pixel model return true. Narrow-scoped to avoid lifecycle callbacks.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Strip root detection (narrow)",
-            "description": "Force public static boolean methods referencing \"Magisk\" to return false. Narrow-scoped.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": []
-        },
-        {
-            "name": "Truecaller — all patches",
-            "description": "Enables every atomic Truecaller patch above. Toggle individual patches to opt out.",
-            "default": true,
-            "dependencies": [
-                "Truecaller — hide Assistant tab",
-                "Truecaller — hide Family Protection button",
-                "Truecaller — hide Premium from settings",
-                "Truecaller — hide Premium tab",
-                "Truecaller — hide Scams tab",
-                "Truecaller — disable telemetry",
-                "Truecaller — disable update check",
-                "Truecaller — GMS sign-in bypass",
-                "Truecaller — strip third-party analytics + ad SDKs",
-                "Truecaller — Premium unlock",
-                "Truecaller — remove ads",
-                "Truecaller — hide Get Premium banners",
-                "Truecaller — hide Premium upgrade UI",
-                "Truecaller — mock Premium badge only",
-                "Truecaller — remove Premium UI (nav drawer + tab)",
-                "Truecaller — disable contact upload (STUB)",
-                "Truecaller — Google Drive sync fix (STUB)",
-                "Truecaller — strip outbound SMS watermark (STUB)",
-                "Truecaller — region unlock (STUB)"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — disable contact upload (STUB)",
-            "description": "STUB: prevent local contact book from being uploaded to Truecaller servers. Fingerprints not yet discovered.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — disable telemetry",
-            "description": "Disables AppStartTracker and other telemetry points.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — disable update check",
-            "description": "Disables the in-app update check / update nag.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — GMS sign-in bypass",
-            "description": "Forces SMS-based OTP verification instead of GMS SmsRetriever, fixing sign-in on re-signed APKs.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — Google Drive sync fix (STUB)",
-            "description": "STUB (requires MicroG-RE): restore Google Drive backup / sync on re-signed APKs. Fingerprints not yet discovered.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — hide Assistant tab",
-            "description": "Hides the Assistant tab from the bottom navigation bar.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — hide Family Protection button",
-            "description": "Hides the Family Protection button from the bottom navigation bar.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — hide Get Premium banners",
-            "description": "Immediately finishes the full-screen paywall activity so promotional banners never render.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — hide Premium from settings",
-            "description": "Hides the Premium options from the settings and user details pages.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — hide Premium tab",
-            "description": "Hides the Premium tab from the bottom navigation bar.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — hide Premium upgrade UI",
-            "description": "Kills paywall activity onCreate as a safety-net when Premium unlock is enabled.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — hide Scams tab",
-            "description": "Hides the Scams tab from the bottom navigation bar.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — mock Premium badge only",
-            "description": "Paints the Premium badge in UI without unlocking features (cosmetic-only variant of Premium unlock).",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — Premium unlock",
-            "description": "Unlocks premium features (GOLD tier + all features + block server revocation + block expired-notification worker).",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — region unlock (STUB)",
-            "description": "STUB: unlock region-locked features. Fingerprints not yet discovered.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — remove ads",
-            "description": "No-ops after-call ad update sites (Lcom/truecaller/acs/ui/baz;->Rh and Ltw1/f;->Th).",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — remove Premium UI (nav drawer + tab)",
-            "description": "Hides bottom-nav Premium tab + PremiumNavDrawerItemView (sets GONE in onAttachedToWindow).",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — strip outbound SMS watermark (STUB)",
-            "description": "STUB: remove the \"Sent via Truecaller\" trailer from outbound SMS. Fingerprints not yet discovered.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Truecaller — strip third-party analytics + ad SDKs",
-            "description": "No-ops third-party telemetry, ad-network, and tracking SDK init calls (Clarity, CleverTap, AppsFlyer, Moloco, HMS, Freshchat, InMobi, Appnext, Vungle, Fyber, Mintegral, IronSource, HyBid, MLKit, Presence stream).",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.truecaller",
-                    "name": "com.truecaller",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.google.android.apps.recorder",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    },
+    {
+      "name": "Pixel Screenshots unlock (Poco F7) — EXPERIMENTAL",
+      "description": "Bypass in-APK Pixel-only gates on Pixel Screenshots. AI indexing (on-device Gemini Nano) requires Tensor G3+ and will not work on Snapdragon.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.pixel.agent",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Pixel Studio unlock (Poco F7)",
+      "description": "Bypass in-APK Pixel-only gates on Poco F7. Uses narrowed fingerprints to avoid lifecycle-callback match. Server-side Play Integrity NOT bypassed.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.pixel.creativeassistant",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Pixel Weather unlock (Poco F7)",
+      "description": "Bypass in-APK Pixel-only gates on Pixel Weather for non-Pixel devices.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.weather",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Spoof Pixel model check (narrow)",
+      "description": "In-APK utility methods checking Pixel model return true. Narrow-scoped to avoid lifecycle callbacks.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Strip root detection (narrow)",
+      "description": "Force public static boolean methods referencing \"Magisk\" to return false. Narrow-scoped.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Truecaller — GMS sign-in bypass",
+      "description": "Forces SMS-based OTP verification instead of GMS SmsRetriever, fixing sign-in on re-signed APKs.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — Google Drive sync fix (STUB)",
+      "description": "STUB (requires MicroG-RE): restore Google Drive backup / sync on re-signed APKs. Fingerprints not yet discovered.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — Premium unlock",
+      "description": "Unlocks premium features (GOLD tier + all features + block server revocation + block expired-notification worker).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — all patches",
+      "description": "Enables every atomic Truecaller patch above. Toggle individual patches to opt out.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — disable contact upload (STUB)",
+      "description": "STUB: prevent local contact book from being uploaded to Truecaller servers. Fingerprints not yet discovered.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — disable telemetry",
+      "description": "Disables AppStartTracker and other telemetry points.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — disable update check",
+      "description": "Disables the in-app update check / update nag.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — hide Assistant tab",
+      "description": "Hides the Assistant tab from the bottom navigation bar.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — hide Family Protection button",
+      "description": "Hides the Family Protection button from the bottom navigation bar.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — hide Get Premium banners",
+      "description": "Immediately finishes the full-screen paywall activity so promotional banners never render.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — hide Premium from settings",
+      "description": "Hides the Premium options from the settings and user details pages.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — hide Premium tab",
+      "description": "Hides the Premium tab from the bottom navigation bar.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — hide Premium upgrade UI",
+      "description": "Kills paywall activity onCreate as a safety-net when Premium unlock is enabled.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — hide Scams tab",
+      "description": "Hides the Scams tab from the bottom navigation bar.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — mock Premium badge only",
+      "description": "Paints the Premium badge in UI without unlocking features (cosmetic-only variant of Premium unlock).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — region unlock (STUB)",
+      "description": "STUB: unlock region-locked features. Fingerprints not yet discovered.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — remove Premium UI (nav drawer + tab)",
+      "description": "Hides bottom-nav Premium tab + PremiumNavDrawerItemView (sets GONE in onAttachedToWindow).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — remove ads",
+      "description": "No-ops after-call ad update sites (Lcom/truecaller/acs/ui/baz;->Rh and Ltw1/f;->Th).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — strip outbound SMS watermark (STUB)",
+      "description": "STUB: remove the \"Sent via Truecaller\" trailer from outbound SMS. Fingerprints not yet discovered.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Truecaller — strip third-party analytics + ad SDKs",
+      "description": "No-ops third-party telemetry, ad-network, and tracking SDK init calls (Clarity, CleverTap, AppsFlyer, Moloco, HMS, Freshchat, InMobi, Appnext, Vungle, Fyber, Mintegral, IronSource, HyBid, MLKit, Presence stream).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.truecaller",
+          "name": null,
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }

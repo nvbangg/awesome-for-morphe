@@ -1,6 +1,7 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 import argparse
+import json
 import re
 import sys
 import time
@@ -35,7 +36,7 @@ def main() -> int:
         bundle_sources[key] = {"source": source, "repo": repo}
 
         if key in existing_bundles:
-            for attribute_name in ["stars", "avatarUrl", "repoDescription", "starsGained7d", "starsGained40d", "appFirstSeen", "name"]:
+            for attribute_name in ["stars", "avatarUrl", "repoDescription", "starsGained7d", "starsGained40d", "appFirstSeen"]:
                 if attribute_name in existing_bundles[key]:
                     bundle_sources[key][attribute_name] = existing_bundles[key][attribute_name]
     repo_info.process(bundle_sources, mode, existing_bundles)
@@ -81,7 +82,23 @@ def main() -> int:
             ordered_app["altName"] = app_data["altName"]
         ordered_apps_dict[package_name] = ordered_app
 
-    save_json(BUNDLES_JSON_PATH, {"bundles": final_bundles, "compatibilities": compatibilities_list})
+    reindexed_compatibilities = []
+    compat_map = {}
+    for bundle in final_bundles:
+        for patch in bundle.get("patches", []):
+            if "compatiblePackagesKey" in patch:
+                old_key = patch["compatiblePackagesKey"]
+                compat_data = compatibilities_list[old_key]
+                compat_json = json.dumps(compat_data, sort_keys=True)
+                if compat_json in compat_map:
+                    patch["compatiblePackagesKey"] = compat_map[compat_json]
+                else:
+                    new_key = len(reindexed_compatibilities)
+                    reindexed_compatibilities.append(compat_data)
+                    compat_map[compat_json] = new_key
+                    patch["compatiblePackagesKey"] = new_key
+
+    save_json(BUNDLES_JSON_PATH, {"bundles": final_bundles, "compatibilities": reindexed_compatibilities})
     save_json(APPS_JSON_PATH, ordered_apps_dict)
     print(f"Update completed. Saved {len(final_bundles)} bundles and {len(apps_dict)} apps.")
 

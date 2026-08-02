@@ -1,31 +1,34 @@
 {
-    "version": "1.2.0",
-    "name": "Stylus",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.2.0",
+  "patches": [
+    {
+      "name": "Force system font (Bitwarden)",
+      "description": "Renders the app using the device's system font instead of DM Sans / Roboto.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
         {
-            "name": "Force system font (Bitwarden)",
-            "description": "Renders the app using the device's system font instead of DM Sans / Roboto.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.x8bit.bitwarden",
-                    "name": "Bitwarden",
-                    "apkFileType": "APK_REQUIRED",
-                    "appIconColor": "#175DDC",
-                    "signatures": [
-                        "24e06c04c208048f19f1c993b4dda4430ea8b06db8375ea0e37b834696b9ac3a"
-                    ],
-                    "targets": [
-                        {
-                            "version": "2026.6.1",
-                            "isExperimental": false,
-                            "minSdk": 29
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.x8bit.bitwarden",
+          "name": "Bitwarden",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#175DDC",
+          "signatures": [
+            "24e06c04c208048f19f1c993b4dda4430ea8b06db8375ea0e37b834696b9ac3a"
+          ],
+          "targets": [
+            {
+              "version": "2026.6.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    }
+  ]
 }

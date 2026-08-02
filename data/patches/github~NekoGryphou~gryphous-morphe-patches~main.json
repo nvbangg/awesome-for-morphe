@@ -1,29 +1,34 @@
 {
-    "version": "1.0.1",
-    "name": "Gryphou's Morphe Patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.1",
+  "patches": [
+    {
+      "name": "Enable Picture-in-Picture",
+      "description": "Enables automatic Android Picture-in-Picture when leaving Crunchyroll playback.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
         {
-            "name": "Enable Picture-in-Picture",
-            "description": "Enables automatic Android Picture-in-Picture when leaving Crunchyroll playback.",
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.crunchyroll.crunchyroid",
-                    "name": "Crunchyroll",
-                    "appIconColor": "#FF5C00",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.112.2",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.crunchyroll.crunchyroid",
+          "name": "Crunchyroll",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FF5C00",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.112.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    }
+  ]
 }

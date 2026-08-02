@@ -1,192 +1,240 @@
 {
-    "version": "1.1.1",
-    "name": "hxreborn Patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.1.1",
+  "patches": [
+    {
+      "name": "AMOLED dark theme",
+      "description": "Replaces the dark theme background with pure black.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
         {
-            "name": "AMOLED dark theme",
-            "description": "Replaces the dark theme background with pure black.",
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "ch.protonmail.android",
-                    "name": "Proton Mail",
-                    "apkFileType": "APK",
-                    "appIconColor": "#6D4AFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "7.10.4",
-                            "versionCodes": "{ARM64_V8A=17667, ARMEABI_V7A=17667, X86_64=17667, X86=17667}",
-                            "isExperimental": false,
-                            "minSdk": 29
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable tracking",
-            "description": "Disables analytics and crash reporting.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.spocky.projengmenu",
-                    "name": "Projectivy Launcher",
-                    "apkFileType": "APK",
-                    "appIconColor": "#F08029",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Hide upgrade upselling",
-            "description": "Hides the top-bar upgrade button and promotional sidebar rows.",
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "ch.protonmail.android",
-                    "name": "Proton Mail",
-                    "apkFileType": "APK",
-                    "appIconColor": "#6D4AFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "7.10.4",
-                            "versionCodes": "{ARM64_V8A=17667, ARMEABI_V7A=17667, X86_64=17667, X86=17667}",
-                            "isExperimental": false,
-                            "minSdk": 29
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Remove 'Sent from' signature",
-            "description": "Removes the 'Sent from Proton Mail' signature from emails.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "ch.protonmail.android",
-                    "name": "Proton Mail",
-                    "apkFileType": "APK",
-                    "appIconColor": "#6D4AFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "7.10.4",
-                            "versionCodes": "{ARM64_V8A=17667, ARMEABI_V7A=17667, X86_64=17667, X86=17667}",
-                            "isExperimental": false,
-                            "minSdk": 29
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Remove free accounts limit",
-            "description": "Removes the limit for maximum free accounts logged in.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "ch.protonmail.android",
-                    "name": "Proton Mail",
-                    "apkFileType": "APK",
-                    "appIconColor": "#6D4AFF",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "7.10.4",
-                            "versionCodes": "{ARM64_V8A=17667, ARMEABI_V7A=17667, X86_64=17667, X86=17667}",
-                            "isExperimental": false,
-                            "minSdk": 29
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock premium",
-            "description": "Unlocks all premium features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.myvitale.forus",
-                    "name": "ForusApp",
-                    "apkFileType": "APK",
-                    "appIconColor": "#0772BA",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock premium",
-            "description": "Unlocks all premium features.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.spocky.projengmenu",
-                    "name": "Projectivy Launcher",
-                    "apkFileType": "APK",
-                    "appIconColor": "#F08029",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Unlock premium",
-            "description": "Unlocks ad removal, light theme, custom images, list view types, quick ratings, and transparent widgets.",
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.michaldrabik.showly2",
-                    "name": "Showly",
-                    "apkFileType": "APK",
-                    "appIconColor": "#F44336",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "ch.protonmail.android",
+          "name": "Proton Mail",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6D4AFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.10.4",
+              "versionCodes": {
+                "ARM64_V8A": 17667,
+                "ARMEABI_V7A": 17667,
+                "X86_64": 17667,
+                "X86": 17667
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable tracking",
+      "description": "Disables analytics and crash reporting.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.spocky.projengmenu",
+          "name": "Projectivy Launcher",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#F08029",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide upgrade upselling",
+      "description": "Hides the top-bar upgrade button and promotional sidebar rows.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ch.protonmail.android",
+          "name": "Proton Mail",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6D4AFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.10.4",
+              "versionCodes": {
+                "ARM64_V8A": 17667,
+                "ARMEABI_V7A": 17667,
+                "X86_64": 17667,
+                "X86": 17667
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove 'Sent from' signature",
+      "description": "Removes the 'Sent from Proton Mail' signature from emails.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ch.protonmail.android",
+          "name": "Proton Mail",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6D4AFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.10.4",
+              "versionCodes": {
+                "ARM64_V8A": 17667,
+                "ARMEABI_V7A": 17667,
+                "X86_64": 17667,
+                "X86": 17667
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove free accounts limit",
+      "description": "Removes the limit for maximum free accounts logged in.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ch.protonmail.android",
+          "name": "Proton Mail",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6D4AFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.10.4",
+              "versionCodes": {
+                "ARM64_V8A": 17667,
+                "ARMEABI_V7A": 17667,
+                "X86_64": 17667,
+                "X86": 17667
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks all premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.myvitale.forus",
+          "name": "ForusApp",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0772BA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks all premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.spocky.projengmenu",
+          "name": "Projectivy Launcher",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#F08029",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks ad removal, light theme, custom images, list view types, quick ratings, and transparent widgets.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.michaldrabik.showly2",
+          "name": "Showly",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#F44336",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }

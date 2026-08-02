@@ -419,11 +419,27 @@ private fun sanitizeCompatiblePackages(patches: JsonArray): JsonArray {
 
 private fun generateModernPatchList(downloadUri: URI, expectedVersion: String? = null): PatchListResult? {
     val result = if (isMorphePatchBundle(downloadUri)) {
-        generateMorphePatchList(downloadUri, expectedVersion)
+        generateMorphePatchListFromUri(downloadUri)
     } else {
         generateRevancedPatchList(downloadUri)
     } ?: return null
     return PatchListResult(canonicalizePatchArray(result.patches), result.name)
+}
+
+private fun generateMorphePatchListFromUri(downloadUri: URI): PatchListResult? {
+    val tempFile = File.createTempFile("morphe-patches", ".mpp")
+    return try {
+        downloadToFile(downloadUri.toURL(), tempFile)
+        generateMorphePatchList(tempFile)
+    } catch (_: FileNotFoundException) {
+        Logger.warning("The patch bundle file was not found.")
+        null
+    } catch (e: Exception) {
+        Logger.warning("Failed to download patch bundle. ${e.message}")
+        null
+    } finally {
+        tempFile.delete()
+    }
 }
 
 private fun isMorphePatchBundle(downloadUri: URI): Boolean {
@@ -593,19 +609,18 @@ private fun processBundle(bundleFolder: File) {
 }
 
 fun main(args: Array<String>) {
-    val bundleRoot = File("../../data", "bundles")
     val patchesOutDir = File("../../data", "patches")
     patchesOutDir.mkdirs()
 
     val filesToProcess = if (args.isNotEmpty()) {
         val filenames = if (args.size == 1 && args[0].startsWith("@")) {
-            File(args[0].substring(1)).readLines().filter { it.isNotBlank() }
+            File(args[0].substring(1)).readLines().map { it.trim() }.filter { it.isNotBlank() }
         } else {
             args.toList()
         }
-        filenames.map { File(bundleRoot, it) }.filter { it.exists() && it.isFile }
+        filenames.map(::File).filter { it.isFile }
     } else {
-        bundleRoot.listFiles()?.filter { it.isFile && it.name.endsWith(".json") } ?: emptyList()
+        emptyList()
     }
 
     val successCount = java.util.concurrent.atomic.AtomicInteger(0)
@@ -614,19 +629,20 @@ fun main(args: Array<String>) {
     filesToProcess
         .parallelStream()
         .forEach { file ->
-            Logger.setContext(file.name)
+            val targetName = if (file.extension.equals("mpp", ignoreCase = true)) file.nameWithoutExtension + ".json" else file.name
+            Logger.setContext(targetName)
             Logger.info("Processing bundle ${file.name}")
             var failed = true
             try {
-                if (processSingleBundleFile(file, patchesOutDir)) {
+                if (processTargetFile(file, patchesOutDir)) {
                     successCount.incrementAndGet()
-                    successfulFiles.add(file.name)
+                    successfulFiles.add(targetName)
                     failed = false
                 }
             } catch (e: Exception) {
                 Logger.error("Something went wrong while processing ${file.name}. ${e.formatForLog()}")
             } finally {
-                if (failed) failedFiles.add(file.name)
+                if (failed) failedFiles.add(targetName)
                 Logger.setContext(null)
             }
         }
@@ -638,6 +654,17 @@ fun main(args: Array<String>) {
     }
     File("parsed_files.txt").writeText(successfulFiles.joinToString("\n"))
     println("\nParsed ${successCount.get()}/$totalCount bundles successfully.")
+}
+
+private fun processTargetFile(file: File, outDir: File): Boolean {
+    if (file.extension.equals("mpp", ignoreCase = true)) {
+        val outFileName = file.nameWithoutExtension + ".json"
+        val outputFile = File(outDir, outFileName)
+        val generated = generateMorphePatchList(file) ?: return false
+        writePatchList(outputFile, "", generated)
+        return true
+    }
+    return processSingleBundleFile(file, outDir)
 }
 
 private fun processSingleBundleFile(bundleFile: File, outDir: File): Boolean {

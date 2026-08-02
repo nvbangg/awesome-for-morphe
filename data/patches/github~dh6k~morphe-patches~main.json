@@ -1,90 +1,104 @@
 {
-    "version": "1.1.0",
-    "name": "Brave and universal patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.1.0",
+  "patches": [
+    {
+      "name": "Brave Origin",
+      "description": "Unlocks Brave Origin and enables feature toggle controls.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
         {
-            "name": "Brave Origin",
-            "description": "Unlocks Brave Origin and enables feature toggle controls.",
-            "default": true,
-            "dependencies": [
-                "Brave Origin Resource Defaults"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.brave.browser",
-                    "name": "Brave Browser",
-                    "apkFileType": "APKM",
-                    "appIconColor": "#FF4500",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "1.92.140",
-                            "isExperimental": false
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.brave.browser_beta",
-                    "name": "Brave Beta",
-                    "apkFileType": "APKM",
-                    "appIconColor": "#FF4500",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": true
-                        }
-                    ]
-                },
-                {
-                    "packageName": "com.brave.browser_nightly",
-                    "name": "Brave Nightly",
-                    "apkFileType": "APKM",
-                    "appIconColor": "#FF4500",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "isExperimental": true
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.brave.browser",
+          "name": "Brave Browser",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.92.140",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         },
         {
-            "name": "Change app icon",
-            "description": "Changes the Android launcher icon using a custom PNG image. Use a square image with transparent adaptive-icon padding.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": [
-                {
-                    "default": null,
-                    "description": "Square PNG, 48-4096 px, maximum 256 KiB. Recommended: 432x432 px with transparent padding.",
-                    "key": "customIcon",
-                    "required": true,
-                    "title": "Custom app icon",
-                    "type": "kotlin.String",
-                    "values": null
-                }
-            ]
+          "packageName": "com.brave.browser_beta",
+          "name": "Brave Beta",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         },
         {
-            "name": "Change app name",
-            "description": "Changes the app name shown by Android launchers. Set the desired name in the patch options.",
-            "default": false,
-            "dependencies": [],
-            "compatiblePackages": null,
-            "options": [
-                {
-                    "default": "Patched",
-                    "description": "The name shown under the app icon.",
-                    "key": "appName",
-                    "required": true,
-                    "title": "App name",
-                    "type": "kotlin.String",
-                    "values": null
-                }
-            ]
+          "packageName": "com.brave.browser_nightly",
+          "name": "Brave Nightly",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    },
+    {
+      "name": "Change app icon",
+      "description": "Changes the Android launcher icon using a custom PNG image. Use a square image with transparent adaptive-icon padding.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "customIcon",
+          "title": "Custom app icon",
+          "description": "Square PNG, 48-4096 px, maximum 256 KiB. Recommended: 432x432 px with transparent padding.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change app name",
+      "description": "Changes the app name shown by Android launchers. Set the desired name in the patch options.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name shown under the app icon.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Patched",
+          "values": null
+        }
+      ]
+    }
+  ]
 }

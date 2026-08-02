@@ -1,485 +1,570 @@
 {
-    "version": "1.5.0",
-    "name": "browzomje Patches",
-    "patches": [
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.5.0",
+  "patches": [
+    {
+      "name": "Copy direct link",
+      "description": "Adds a 'Copy direct link' option to the pin menu to copy a link under the direct CDN media format instead of the standard Pinterest web link.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
         {
-            "name": "Copy direct link",
-            "description": "Adds a 'Copy direct link' option to the pin menu to copy a link under the direct CDN media format instead of the standard Pinterest web link.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable ad SDK",
-            "description": "Stops the AppLovin MAX mediation stack — and with it Pangle, Amazon APS, Chartboost, InMobi, Mintegral, Fyber, Bigo and the rest — from ever initialising. The game starts faster and makes no ad-network requests at all. Requires \"Remove ads\": on its own it would only make the app fail to find ads, not stop asking for them.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "easy.sudoku.puzzle.solver.free",
-                    "name": "Easy Sudoku",
-                    "apkFileType": "APK",
-                    "appIconColor": "#1E88E5",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "5.70.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable ads",
-            "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds. Also carries the optional \"Hide product pins\" filter, which is off by default and is turned on from the Morphe settings screen.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable email confirmation dialog",
-            "description": "Immediately closes the \"confirm your email\" modal (and similar ones: connect Google, etc.) if enabled in Morphe settings.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Disable tracking",
-            "description": "Hands out an empty Google Advertising ID with \"limit ad tracking\" turned on, and stops AppsFlyer from sending install attribution and events. The game keeps working normally: nothing in it waits for attribution data.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "easy.sudoku.puzzle.solver.free",
-                    "name": "Easy Sudoku",
-                    "apkFileType": "APK",
-                    "appIconColor": "#1E88E5",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "5.70.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Download board",
-            "description": "Adds an option to the board's \"…\" menu to bulk download images and videos from already loaded pins. Streaming-only videos are reported and skipped.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Download video",
-            "description": "Adds a 'Download video' option to the pin menu for video pins, saving the clip to the Downloads folder.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Hide Create nav button",
-            "description": "Hooks the '+' (create Pin) navigation bar button: hidden if enabled in Morphe settings.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Hide Notifications nav button",
-            "description": "Hooks the notifications button: hidden if enabled in Morphe settings.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Hide search history",
-            "description": "Hides the \"Recent searches\" section both on the search screen and in the carousel below the search bar. It does not prevent Pinterest from logging searches (server-side), but stops them from being shown anywhere in the app.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Hide Search nav button",
-            "description": "Hooks the search button: hidden if enabled in Morphe settings.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Instant rewards",
-            "description": "Grants the reward of every \"watch an ad\" button — hints, streak repairs, extra puzzles — immediately, without playing a video. This is what keeps those buttons working once \"Remove ads\" is enabled: without it the game believes no video is available and hands out nothing.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "easy.sudoku.puzzle.solver.free",
-                    "name": "Easy Sudoku",
-                    "apkFileType": "APK",
-                    "appIconColor": "#1E88E5",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "5.70.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Morphe settings entry",
-            "description": "Adds the \"Morphe\" item to the Account Settings list to open the toggle screen.",
-            "default": true,
-            "dependencies": [
-                "Morphe settings screen (manifest)",
-                "Morphe settings screen (label)"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Morphe settings screen (label)",
-            "description": "Renames the reused string resource for the \"Morphe\" entry in Settings, across all languages.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Morphe settings screen (manifest)",
-            "description": "Registers the Morphe settings Activity in the manifest, with an intent-filter for the morphe:// scheme.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Neutralize advertising ID",
-            "description": "Returns an empty Google Advertising ID and forces ‘limit ad tracking’, disabling ad tracking without causing the app to crash.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Reclaim ad banner space",
-            "description": "Collapses the empty strip the banner used to occupy at the bottom of the board, so the puzzle gets the space back instead of staring at a blank rectangle. Only useful together with \"Remove ads\".",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "easy.sudoku.puzzle.solver.free",
-                    "name": "Easy Sudoku",
-                    "apkFileType": "APK",
-                    "appIconColor": "#1E88E5",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "5.70.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Remove ads",
-            "description": "Turns off every ad Easy Sudoku shows: the home banner, the interstitials between puzzles, the app-open ad and all the background preloading. It works by telling the game its own \"ads removed\" purchase is already active, which also unlocks the Fun, Ice and Killer Sudoku modes that are otherwise gated behind watching ads. Keep \"Instant rewards\" enabled too, or the \"watch an ad for a hint\" buttons stop giving anything.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "easy.sudoku.puzzle.solver.free",
-                    "name": "Easy Sudoku",
-                    "apkFileType": "APK",
-                    "appIconColor": "#1E88E5",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "5.70.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Set pin as wallpaper",
-            "description": "It adds the ‘Set as wallpaper’ option to the pin menu, which downloads uses the image and sets it as the device’s wallpaper.",
-            "default": true,
-            "dependencies": [
-                "ResourcePatch"
-            ],
-            "compatiblePackages": [
-                {
-                    "packageName": "com.pinterest",
-                    "name": "Pinterest",
-                    "apkFileType": "APK",
-                    "appIconColor": "#E60023",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "14.23.0",
-                            "isExperimental": false
-                        },
-                        {
-                            "version": "14.28.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
-    ]
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable ad SDK",
+      "description": "Stops the AppLovin MAX mediation stack — and with it Pangle, Amazon APS, Chartboost, InMobi, Mintegral, Fyber, Bigo and the rest — from ever initialising. The game starts faster and makes no ad-network requests at all. Requires \"Remove ads\": on its own it would only make the app fail to find ads, not stop asking for them.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "easy.sudoku.puzzle.solver.free",
+          "name": "Easy Sudoku",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1E88E5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.70.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable ads",
+      "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds. Also carries the optional \"Hide product pins\" filter, which is off by default and is turned on from the Morphe settings screen.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable email confirmation dialog",
+      "description": "Immediately closes the \"confirm your email\" modal (and similar ones: connect Google, etc.) if enabled in Morphe settings.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable tracking",
+      "description": "Hands out an empty Google Advertising ID with \"limit ad tracking\" turned on, and stops AppsFlyer from sending install attribution and events. The game keeps working normally: nothing in it waits for attribution data.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "easy.sudoku.puzzle.solver.free",
+          "name": "Easy Sudoku",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1E88E5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.70.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Download board",
+      "description": "Adds an option to the board's \"…\" menu to bulk download images and videos from already loaded pins. Streaming-only videos are reported and skipped.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Download video",
+      "description": "Adds a 'Download video' option to the pin menu for video pins, saving the clip to the Downloads folder.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide Create nav button",
+      "description": "Hooks the '+' (create Pin) navigation bar button: hidden if enabled in Morphe settings.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide Notifications nav button",
+      "description": "Hooks the notifications button: hidden if enabled in Morphe settings.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide Search nav button",
+      "description": "Hooks the search button: hidden if enabled in Morphe settings.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide search history",
+      "description": "Hides the \"Recent searches\" section both on the search screen and in the carousel below the search bar. It does not prevent Pinterest from logging searches (server-side), but stops them from being shown anywhere in the app.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Instant rewards",
+      "description": "Grants the reward of every \"watch an ad\" button — hints, streak repairs, extra puzzles — immediately, without playing a video. This is what keeps those buttons working once \"Remove ads\" is enabled: without it the game believes no video is available and hands out nothing.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "easy.sudoku.puzzle.solver.free",
+          "name": "Easy Sudoku",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1E88E5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.70.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Morphe settings entry",
+      "description": "Adds the \"Morphe\" item to the Account Settings list to open the toggle screen.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Morphe settings screen (label)",
+      "description": "Renames the reused string resource for the \"Morphe\" entry in Settings, across all languages.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Morphe settings screen (manifest)",
+      "description": "Registers the Morphe settings Activity in the manifest, with an intent-filter for the morphe:// scheme.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Neutralize advertising ID",
+      "description": "Returns an empty Google Advertising ID and forces ‘limit ad tracking’, disabling ad tracking without causing the app to crash.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Reclaim ad banner space",
+      "description": "Collapses the empty strip the banner used to occupy at the bottom of the board, so the puzzle gets the space back instead of staring at a blank rectangle. Only useful together with \"Remove ads\".",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "easy.sudoku.puzzle.solver.free",
+          "name": "Easy Sudoku",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1E88E5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.70.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Turns off every ad Easy Sudoku shows: the home banner, the interstitials between puzzles, the app-open ad and all the background preloading. It works by telling the game its own \"ads removed\" purchase is already active, which also unlocks the Fun, Ice and Killer Sudoku modes that are otherwise gated behind watching ads. Keep \"Instant rewards\" enabled too, or the \"watch an ad for a hint\" buttons stop giving anything.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "easy.sudoku.puzzle.solver.free",
+          "name": "Easy Sudoku",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1E88E5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.70.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Set pin as wallpaper",
+      "description": "It adds the ‘Set as wallpaper’ option to the pin menu, which downloads uses the image and sets it as the device’s wallpaper.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }

@@ -1,48 +1,29 @@
 {
-    "version": "1.30.0",
-    "name": "Android Patches",
-    "patches": [
-        {
-            "name": "Dark mode",
-            "description": "Applies a dark theme to all backgrounds, dialogs, and popups.",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "se.matlistan.free",
-                    "name": "Matlistan",
-                    "appIconColor": "#00C29B",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.10.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "Enable Premium",
-            "description": "Removes item/list limits and unlocks premium features (copy to list, manual sort, etc.).",
-            "default": true,
-            "dependencies": [],
-            "compatiblePackages": [
-                {
-                    "packageName": "se.matlistan.free",
-                    "name": "Matlistan",
-                    "appIconColor": "#00C29B",
-                    "signatures": [],
-                    "targets": [
-                        {
-                            "version": "3.10.0",
-                            "isExperimental": false
-                        }
-                    ]
-                }
-            ],
-            "options": []
-        }
-    ]
+  "version": "1.30.0",
+  "patches": [
+    {
+      "name": "Dark mode",
+      "description": "Applies a dark theme to all backgrounds, dialogs, and popups.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "se.matlistan.free": [
+          "3.10.0"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Removes item/list limits and unlocks premium features (copy to list, manual sort, etc.).",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "se.matlistan.free": [
+          "3.10.0"
+        ]
+      },
+      "options": []
+    }
+  ]
 }

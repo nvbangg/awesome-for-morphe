@@ -139,6 +139,8 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
             image_tasks.append((source, owner_repo, repo_meta.get("image")))
 
     print(f"Processing {len(tasks)} branch targets...")
+    pending_repositories_file_path = BUNDLE_PARSER_DIR / "pending_repos.json"
+    pending_repository_data = {}
     updated_count = 0
     updated_files = []
 
@@ -153,7 +155,7 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
                 continue
 
             updated_count += 1
-            new_repos_data[base_key][branch] = new_sha
+            pending_repository_data.setdefault(base_key, {})[branch] = new_sha
 
             if not is_404 and new_sha is not None:
                 owner, repo = owner_repo.split("/", 1)
@@ -171,23 +173,18 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
                 if status_changed:
                     updated_count += 1
                     base_key = f"{source}:{owner_repo}"
-                    new_repos_data[base_key]["image"] = new_image_sha
-
-    save_json(REPOS_JSON_PATH, new_repos_data)
+                    pending_repository_data.setdefault(base_key, {})["image"] = new_image_sha
 
     null_repos = [key for key, repo in new_repos_data.items() if repo.get("main") is None and repo.get("dev") is None]
     print(f"Fetch completed. Updated {updated_count} targets.")
     if null_repos:
         print(f"::warning title=Fetch:: [-] Note: {len(null_repos)}/{len(new_repos_data)} repos have both branches as null: {', '.join(null_repos)}")
 
+    list_file = BUNDLE_PARSER_DIR / "updated_files.txt"
+    list_file.write_text("\n".join(updated_files), encoding="utf-8")
+    save_json(pending_repositories_file_path, pending_repository_data)
     if updated_files:
-        list_file = BUNDLE_PARSER_DIR / "updated_files.txt"
-        list_file.write_text("\n".join(updated_files), encoding="utf-8")
-        print(f"Saved {len(updated_files)} updated targets to updated_files.txt")
-    else:
-        list_file = BUNDLE_PARSER_DIR / "updated_files.txt"
-        if list_file.exists():
-            list_file.write_text("", encoding="utf-8")
+        print(f"Saved {len(updated_files)} updated targets to updated_files.txt and pending_repos.json")
 
 
 def main() -> None:

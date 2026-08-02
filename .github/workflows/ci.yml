@@ -74,9 +74,3 @@ jobs:
             git commit -m "Sync bundles"
             git push origin HEAD:main
           fi
-
-      - name: Cleanup old workflow runs
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh run list -L 200 --json databaseId -q '.[].databaseId' | tail -n +91 | xargs -IID gh api "repos/$GITHUB_REPOSITORY/actions/runs/ID" -X DELETE || :

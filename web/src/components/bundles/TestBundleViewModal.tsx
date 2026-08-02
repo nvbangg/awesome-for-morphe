@@ -216,7 +216,7 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
                       </div>
 
                       <div className="flex items-center gap-2 shrink-0">
-                        <span className="hidden sm:inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0">
+                        <span className={`${showGooglePlay ? "hidden sm:inline-flex" : "inline-flex"} items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0`}>
                           {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
                         </span>
                         {showGooglePlay && (

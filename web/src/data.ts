@@ -218,7 +218,7 @@ export function getAppMeta(
     appIcon: appMeta?.iconUrl || "",
     description: decodeHtmlEntities(appMeta?.description || ""),
     minInstalls: appMeta?.minInstalls || 0,
-    genre: appMeta?.genre || "",
+    genre: appMeta?.genre || (packageName === "universal" ? "" : "Not on Google Play"),
     firstSeen: appMeta?.firstSeen || 0,
   };
 }

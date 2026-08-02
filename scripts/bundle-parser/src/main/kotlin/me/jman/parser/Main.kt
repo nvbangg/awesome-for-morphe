@@ -610,6 +610,7 @@ fun main(args: Array<String>) {
 
     val successCount = java.util.concurrent.atomic.AtomicInteger(0)
     val failedFiles = java.util.concurrent.ConcurrentLinkedQueue<String>()
+    val successfulFiles = java.util.concurrent.ConcurrentLinkedQueue<String>()
     filesToProcess
         .parallelStream()
         .forEach { file ->
@@ -619,6 +620,7 @@ fun main(args: Array<String>) {
             try {
                 if (processSingleBundleFile(file, patchesOutDir)) {
                     successCount.incrementAndGet()
+                    successfulFiles.add(file.name)
                     failed = false
                 }
             } catch (e: Exception) {
@@ -634,6 +636,7 @@ fun main(args: Array<String>) {
         val failedListStr = failedFiles.joinToString(", ") { it.replace(".json", "") }
         println("\n::warning title=Parse:: Failed to parse $failedCount/$totalCount bundles: $failedListStr")
     }
+    File("parsed_files.txt").writeText(successfulFiles.joinToString("\n"))
     println("\nParsed ${successCount.get()}/$totalCount bundles successfully.")
 }
 

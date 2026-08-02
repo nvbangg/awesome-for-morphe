@@ -63,7 +63,7 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
 
   if (!applicationMeta) return null;
 
-  const showGooglePlay = packageName !== "universal" && !!applicationMeta.genre;
+  const showGooglePlay = packageName !== "universal" && !!applicationMeta.genre && applicationMeta.genre !== "Not on Google Play";
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose}>
@@ -214,7 +214,7 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                       </div>
 
                       <div className="flex items-center gap-2 shrink-0">
-                        <span className="hidden sm:inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0">
+                        <span className={`${group.bundleMeta.deepLink ? "hidden sm:inline-flex" : "inline-flex"} items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0`}>
                           {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
                         </span>
                         {group.bundleMeta.deepLink && (

@@ -1,5 +1,5 @@
 {
-    "version": "1.40.0-dev.4",
+    "version": "1.40.0-dev.7",
     "name": "Hoodles Morphe Patches",
     "patches": [
         {
@@ -64,6 +64,29 @@
                     "targets": [
                         {
                             "version": "1.2.75",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Bypass login",
+            "description": "Allows app use without login. BUT breaks many features. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
+            "default": false,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.adobe.lrmobile",
+                    "name": "Lightroom Mobile",
+                    "appIconColor": "#001D35",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "11.4.5",
                             "isExperimental": false
                         }
                     ]
@@ -238,7 +261,7 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "6.6 build 002",
+                            "version": "6.6 build 014",
                             "isExperimental": false
                         }
                     ]
@@ -501,7 +524,7 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "4.12.81",
+                            "version": "4.13.0",
                             "isExperimental": false
                         }
                     ]
@@ -1054,7 +1077,7 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "81042 (8.5.1)",
+                            "version": "88600 (8.8.6)",
                             "isExperimental": false
                         }
                     ]
@@ -1209,7 +1232,7 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "6.6 build 002",
+                            "version": "6.6 build 014",
                             "isExperimental": false
                         }
                     ]
@@ -1230,7 +1253,7 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "3.4.1",
+                            "version": "3.5.16",
                             "isExperimental": false
                         }
                     ]
@@ -1276,7 +1299,7 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "10.15.0",
+                            "version": "10.17.1",
                             "isExperimental": false
                         }
                     ]
@@ -1473,7 +1496,7 @@
                     "signatures": [],
                     "targets": [
                         {
-                            "version": "3.4.1",
+                            "version": "3.5.16",
                             "isExperimental": false
                         }
                     ]
@@ -1674,6 +1697,29 @@
                     "targets": [
                         {
                             "version": "1.21.0-release",
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Unlock premium features",
+            "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.adobe.lrmobile",
+                    "name": "Lightroom Mobile",
+                    "appIconColor": "#001D35",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "11.4.5",
                             "isExperimental": false
                         }
                     ]

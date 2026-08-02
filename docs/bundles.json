@@ -18268,7 +18268,7 @@
       "stars": 2,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1785677034000,
+      "updatedAt": 1785692205000,
       "firstSeen": 1785657236789,
       "appFirstSeen": {
         "com.google.android.youtube": 1785657233349
@@ -18278,6 +18278,34 @@
           "name": "Voice Over Translation (Yandex)",
           "description": "Adds an option to enable Yandex voice-over translation of video audio tracks. Requires a Morphe Patches version with add-on support.",
           "compatiblePackagesKey": 579
+        }
+      ],
+      "isPreRelease": false
+    },
+    {
+      "source": "github",
+      "repo": "eZ4RK0/morphe-patches",
+      "name": "Zarko",
+      "repoDescription": null,
+      "avatarUrl": "https://avatars.githubusercontent.com/u/151390572?v=4&size=128",
+      "stars": 1,
+      "starsGained7d": 0,
+      "starsGained40d": 0,
+      "updatedAt": 1785690921000,
+      "firstSeen": 1785698140442,
+      "appFirstSeen": {
+        "com.laironcorp.sunrisealarm": 1785698139982
+      },
+      "patches": [
+        {
+          "name": "Disable license check",
+          "description": "Removes the PairIP LicenseClient.checkLicense() call, which otherwise force-closes a re-signed/sideloaded patched APK a short while after launch.",
+          "compatiblePackagesKey": 658
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Always report the 'remove_ads' and 'pro' in-app products as purchased, regardless of the real Play Billing purchase state.",
+          "compatiblePackagesKey": 658
         }
       ],
       "isPreRelease": false
@@ -26090,6 +26118,16 @@
         "targets": [
           {
             "version": "6.4.0"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.laironcorp.sunrisealarm",
+        "targets": [
+          {
+            "version": "1.3.8"
           }
         ]
       }

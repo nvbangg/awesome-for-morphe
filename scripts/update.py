@@ -35,7 +35,7 @@ def main() -> int:
         bundle_sources[key] = {"source": source, "repo": repo}
 
         if key in existing_bundles:
-            for attribute_name in ["stars", "avatarUrl", "repoDescription", "starsGained7d", "starsGained40d", "appFirstSeen"]:
+            for attribute_name in ["stars", "avatarUrl", "repoDescription", "starsGained7d", "starsGained40d", "appFirstSeen", "name"]:
                 if attribute_name in existing_bundles[key]:
                     bundle_sources[key][attribute_name] = existing_bundles[key][attribute_name]
     repo_info.process(bundle_sources, mode, existing_bundles)

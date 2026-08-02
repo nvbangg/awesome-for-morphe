@@ -417,9 +417,9 @@ private fun sanitizeCompatiblePackages(patches: JsonArray): JsonArray {
     )
 }
 
-private fun generateModernPatchList(downloadUri: URI): PatchListResult? {
+private fun generateModernPatchList(downloadUri: URI, expectedVersion: String? = null): PatchListResult? {
     val result = if (isMorphePatchBundle(downloadUri)) {
-        generateMorphePatchList(downloadUri)
+        generateMorphePatchList(downloadUri, expectedVersion)
     } else {
         generateRevancedPatchList(downloadUri)
     } ?: return null
@@ -520,7 +520,7 @@ private fun generatePatchListFromReleaseAsset(downloadUri: URI, expectedVersion:
     return PatchListResult(canonicalizePatchArray(parsed))
 }
 
-private fun generateMorphePatchListFromSource(downloadUri: URI, expectedVersion: String): PatchListResult? {
+internal fun generateMorphePatchListFromSource(downloadUri: URI, expectedVersion: String): PatchListResult? {
     parseReleaseLocation(downloadUri)?.let { location ->
         return generatePatchListFromRepositoryFile(location, expectedVersion, logMissing = false)
     }
@@ -650,7 +650,7 @@ private fun processSingleBundleFile(bundleFile: File, outDir: File): Boolean {
         Logger.warning("Download URL is invalid.")
         return false
     }
-    val generated = generateModernPatchList(downloadUri) ?: generateLegacyPatchList(downloadUri) ?: return false
+    val generated = generateModernPatchList(downloadUri, parsedBundle.version) ?: generateLegacyPatchList(downloadUri) ?: return false
     writePatchList(outputPatchesFile, parsedBundle.version, generated)
     return true
 }

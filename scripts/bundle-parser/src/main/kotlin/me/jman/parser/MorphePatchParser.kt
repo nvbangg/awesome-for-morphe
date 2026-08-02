@@ -16,26 +16,38 @@ import java.util.jar.JarFile
 
 private const val MORPHE_PATCHER_CLASSPATH_PROPERTY = "morphe.patcher.classpath"
 
-internal fun generateMorphePatchList(downloadUri: URI): PatchListResult? {
+internal fun generateMorphePatchList(downloadUri: URI, expectedVersion: String? = null): PatchListResult? {
     val patchesFile = File.createTempFile("morphe-patches", ".mpp")
     return try {
-        val classpathFiles = morpheClasspathFiles()
         downloadToFile(downloadUri.toURL(), patchesFile)
-        val bundleName = JarFile(patchesFile).use { it.manifest?.mainAttributes?.getValue("Name") }
-        val classLoader = Thread.currentThread().contextClassLoader
-        val patches = loadMorphePatchesFromJar(patchesFile, classLoader)
-        val jsonPatches = patches.map(::convertMorphePatch)
-        if (jsonPatches.isEmpty()) {
-            Logger.warning("No patches were found in the Morphe patch bundle.")
-            null
-        } else {
-            PatchListResult(JsonArray(jsonPatches), bundleName)
+        try {
+            val bundleName = JarFile(patchesFile).use { it.manifest?.mainAttributes?.getValue("Name") }
+            val classLoader = Thread.currentThread().contextClassLoader
+            val patches = loadMorphePatchesFromJar(patchesFile, classLoader)
+            val jsonPatches = patches.map(::convertMorphePatch)
+            if (jsonPatches.isEmpty()) {
+                Logger.warning("No patches were found in the Morphe patch bundle.")
+                if (expectedVersion != null) {
+                    Logger.info("Attempting fallback to repository patches-list.json...")
+                    generateMorphePatchListFromSource(downloadUri, expectedVersion)
+                } else null
+            } else {
+                PatchListResult(JsonArray(jsonPatches), bundleName)
+            }
+        } catch (e: Exception) {
+            Logger.warning("Failed to parse Morphe patch bundle. ${e.describeForLog()}")
+            if (expectedVersion != null) {
+                Logger.info("Attempting fallback to repository patches-list.json for $downloadUri...")
+                generateMorphePatchListFromSource(downloadUri, expectedVersion)
+            } else {
+                null
+            }
         }
     } catch (_: FileNotFoundException) {
         Logger.warning("The patch bundle file was not found.")
         null
     } catch (e: Exception) {
-        Logger.warning("Failed to parse Morphe patch bundle. ${e.describeForLog()}")
+        Logger.warning("Failed to download patch bundle. ${e.message}")
         null
     } finally {
         patchesFile.delete()

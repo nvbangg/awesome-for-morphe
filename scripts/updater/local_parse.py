@@ -143,6 +143,7 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
         patches_list_json = load_json(list_path, [])
         if isinstance(patches_list_json, list):
             patches_list_json = {"patches": patches_list_json}
+        existing_name = source_entry.get("name")
         bundle_name = patches_list_json.get("name")
         cleaned_name = bundle_name if bundle_name else ""
         if cleaned_name:
@@ -151,7 +152,7 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
             else:
                 pattern = re.compile(r"(?i)(?: for use with morphe| for morphe|['']s morphe patches|['']s patches| morphe| patches| patch)+$")
                 cleaned_name = pattern.sub("", cleaned_name).strip("- ")
-        source_entry["name"] = cleaned_name if cleaned_name else owner
+        source_entry["name"] = cleaned_name if cleaned_name else (existing_name if existing_name else owner)
         patches = patches_list_json.get("patches", [])
         valid_patches = []
         discovered_names = {}

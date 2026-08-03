@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "patches": [
     {
       "name": "AMOLED dark theme",
@@ -28,6 +28,32 @@
               },
               "isExperimental": false,
               "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "AMOLED dark theme",
+      "description": "Replaces the dark theme background with pure black.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.michaldrabik.showly2",
+          "name": "Showly",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#F44336",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
               "description": null
             }
           ]
@@ -225,10 +251,15 @@
           "signatures": null,
           "targets": [
             {
-              "version": null,
-              "versionCodes": null,
+              "version": "3.70.0",
+              "versionCodes": {
+                "ARM64_V8A": 840,
+                "ARMEABI_V7A": 840,
+                "X86_64": 840,
+                "X86": 840
+              },
               "isExperimental": false,
-              "minSdk": null,
+              "minSdk": 23,
               "description": null
             }
           ]

@@ -71,11 +71,7 @@ def _build_output(merged):
     for canonical_key, entry in sorted(merged.items()):
         if entry.get("enabled") is False:
             continue
-        repo_data = {}
-        for bundle_url_key in ["bundleUrl:main", "bundleUrl:dev"]:
-            if entry.get(bundle_url_key):
-                repo_data[bundle_url_key] = entry[bundle_url_key]
-        repos_output[canonical_key] = repo_data
+        repos_output[canonical_key] = {}
     return repos_output
 
 

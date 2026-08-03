@@ -13,6 +13,7 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
 DOCS_DIR = ROOT_DIR / "docs"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
+DISCOVER_JSON_PATH = DATA_DIR / "discover" / "discover.json"
 BUNDLES_JSON_PATH = DOCS_DIR / "bundles.json"
 APPS_JSON_PATH = DOCS_DIR / "apps.json"
 
@@ -25,6 +26,13 @@ def main() -> int:
     mode = "month" if args.month else "daily" if args.daily else "default"
 
     repos_data = load_json(REPOS_JSON_PATH, {})
+    discover_data = load_json(DISCOVER_JSON_PATH, {})
+    keys_to_remove = [base_key for base_key in repos_data if base_key not in discover_data]
+    if keys_to_remove:
+        for base_key in keys_to_remove:
+            del repos_data[base_key]
+        save_json(REPOS_JSON_PATH, repos_data)
+        print(f"Removed {len(keys_to_remove)} disabled repos from repos.json")
     existing_bundles_data = load_json(BUNDLES_JSON_PATH, [])
     existing_bundles_list = existing_bundles_data.get("bundles", []) if isinstance(existing_bundles_data, dict) else existing_bundles_data
     existing_bundles = {f"{bundle.get('source')}:{bundle.get('repo')}": bundle for bundle in existing_bundles_list}

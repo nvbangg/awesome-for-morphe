@@ -44,7 +44,13 @@ def fetch_repo_details(repo_url: str) -> dict:
                     avatar = response.get("owner", {}).get("avatar_url")
                     if avatar and isinstance(avatar, str):
                         avatar = f"{avatar}&size=128" if "?" in avatar else f"{avatar}?size=128"
-                    return {"stars": response.get("stargazers_count", 0), "description": response.get("description"), "avatar_url": avatar, "full_name": response.get("full_name")}
+                    return {
+                        "stars": response.get("stargazers_count", 0),
+                        "description": response.get("description"),
+                        "avatar_url": avatar,
+                        "full_name": response.get("full_name"),
+                        "is_archived": bool(response.get("archived")),
+                    }
 
                 try:
                     time.sleep(0.2)
@@ -82,7 +88,13 @@ def fetch_repo_details(repo_url: str) -> dict:
                     avatar = response.get("avatar_url")
                     if avatar and isinstance(avatar, str):
                         avatar = avatar.replace("s=80", "s=128")
-                    return {"stars": response.get("star_count", 0), "description": response.get("description"), "avatar_url": avatar, "full_name": response.get("path_with_namespace")}
+                    return {
+                        "stars": response.get("star_count", 0),
+                        "description": response.get("description"),
+                        "avatar_url": avatar,
+                        "full_name": response.get("path_with_namespace"),
+                        "is_archived": bool(response.get("archived")),
+                    }
             except Exception as error:
                 print(f"[-] Error fetching GitLab details for {repo_url}: {error}")
                 return {}
@@ -112,7 +124,7 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
 
     custom_data = load_json(CUSTOM_JSON_PATH, {})
     repos_data = load_json(REPOS_JSON_PATH, {})
-    has_renames = False
+    has_changes = False
     with concurrent.futures.ThreadPoolExecutor(max_workers=GITHUB_CONCURRENCY) as executor:
         future_to_base_key = {executor.submit(fetch_repo_details, url): base_key for base_key, url in tasks.items()}
         for future in concurrent.futures.as_completed(future_to_base_key):
@@ -124,7 +136,13 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
                 if details.get("is_404"):
                     print(f"[-] Disabling {base_key} due to 404 Not Found")
                     custom_data[base_key] = {"enabled": False, "note": "Automatically disabled by GitHub Actions (404 Not Found)"}
-                    has_renames = True
+                    has_changes = True
+                    continue
+
+                if details.get("is_archived"):
+                    print(f"[-] Disabling {base_key} due to Repository Archived")
+                    custom_data[base_key] = {"enabled": False, "note": "Automatically disabled by GitHub Actions (Repository Archived)"}
+                    has_changes = True
                     continue
 
                 source_entry = bundle_sources[base_key]
@@ -153,7 +171,7 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
                 if full_name and old_repo and full_name.lower() != old_repo.lower():
                     source = source_entry.get("source")
                     print(f"[RENAME DETECTED] {source}:{old_repo} -> {source}:{full_name}")
-                    has_renames = True
+                    has_changes = True
 
                     old_key = f"{source}:{old_repo}"
                     new_key = f"{source}:{full_name}"
@@ -162,10 +180,10 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
             except Exception as error:
                 print(f"[-] Failed to fetch details for {base_key}: {error}")
 
-    if has_renames:
+    if has_changes:
         save_json(CUSTOM_JSON_PATH, custom_data)
         save_json(REPOS_JSON_PATH, repos_data)
-        print("Updated custom.json and repos.json for renamed repositories.")
+        print("Updated custom.json and repos.json for repository status changes.")
 
     update_star_history(bundle_sources, list(tasks.keys()))
 

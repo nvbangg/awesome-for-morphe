@@ -48,9 +48,11 @@ jobs:
 
       - name: Parse bundles and update data
         if: steps.update.outputs.changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/parse.py
-          pip install google-play-scraper
+          pip install --user google-play-scraper
           python scripts/update.py
 
       - name: Setup Node.js environment

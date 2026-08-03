@@ -186,7 +186,7 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                       <div className="flex-1 min-w-0 flex flex-col justify-center">
                         <div className="flex items-center gap-2 flex-wrap min-w-0">
                           <div className="font-bold text-foreground text-sm truncate">{group.bundleMeta.name}</div>
-                          {isNew(group.bundleMeta.firstSeen) && <Badge variant="new" />}
+                          {displayPackage && isNew(group.bundleMeta.appFirstSeen?.[displayPackage]) && <Badge variant="new" />}
                           {group.bundleMeta.isPreRelease && <Badge variant="prerelease" />}
                           {group.bundleMeta.stars > 0 && <Badge variant="stars" value={group.bundleMeta.stars} />}
                         </div>

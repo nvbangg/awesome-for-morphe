@@ -42,10 +42,12 @@ jobs:
           cache: 'gradle'
 
       - name: Parse bundles and update data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/parse.py
 
-          pip install google-play-scraper
+          pip install --user google-play-scraper
           DAY_OF_MONTH=$(date +%d)
           if [ "$DAY_OF_MONTH" -eq 1 ]; then
             python scripts/update.py --month

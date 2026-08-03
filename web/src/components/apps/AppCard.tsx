@@ -2,6 +2,7 @@ import { AppItem } from "@/data";
 import { Smartphone, Copy, Check, Play } from "lucide-react";
 import { useCopy } from "@/hooks/useCopy";
 import { memo } from "react";
+import { isNew } from "@/utils/formatters";
 import { Badge } from "@/components/common/Badge";
 
 interface AppCardProps {
@@ -51,6 +52,7 @@ export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps)
         <div className="flex-1 min-w-0 flex flex-col justify-center">
           <div className="text-base font-bold text-foreground mb-0.5 whitespace-normal break-all flex flex-wrap items-center gap-1.5">
             {appItem.appName}
+            {isNew(appItem.firstSeen) && <Badge variant="new" />}
             {appItem.minInstalls > 0 && appItem.packageName !== "universal" && appItem.categorySlug !== "not-on-google-play" && <Badge variant="downloads" value={appItem.minInstalls} />}
           </div>
           {appItem.packageName !== "universal" && (

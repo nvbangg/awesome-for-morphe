@@ -44,6 +44,7 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
       rawKey: bundle.key,
       repoDescription: bundle.repoDescription,
       firstSeen: bundle.firstSeen,
+      appFirstSeen: bundle.appFirstSeen,
       isPreRelease: bundle.isPreRelease,
       stars: bundle.stars,
       updatedAt: bundle.updatedAt,
@@ -226,7 +227,7 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
                       <div className="flex-1 min-w-0 flex flex-col justify-center">
                         <div className="flex items-center gap-2 flex-wrap min-w-0">
                           <div className="font-bold text-foreground text-sm truncate">{group.appMeta.appName}</div>
-                          {isNew(group.appMeta.firstSeen) && <Badge variant="new" />}
+                          {isNew(bundleMeta.appFirstSeen?.[group.packageName]) && <Badge variant="new" />}
                           {group.patches.some((p) => p.isAppPreRelease) && <Badge variant="prerelease" />}
                         </div>
                         {group.packageName !== "universal" && (

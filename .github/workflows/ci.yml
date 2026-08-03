@@ -76,7 +76,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add data/ docs/
+          git add data/ web/public/
           if ! git diff --staged --quiet; then
             git commit -m "Sync bundles"
             git push origin HEAD:main

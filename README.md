@@ -1,6 +1,6 @@
 ## [nvbangg/awesome-morphe](https://github.com/nvbangg/awesome-morphe)
 
-### <img src="docs/assets/favicon.svg" width="20" height="20" alt="Favicon Website"> [awesome-morphe.vercel.app](https://awesome-morphe.vercel.app)
+### <img src="web/public/assets/favicon.svg" width="20" height="20" alt="Favicon Website"> [awesome-morphe.vercel.app](https://awesome-morphe.vercel.app)
 
 > [!NOTE]
 > 🌐 A curated list of [Morphe](https://morphe.software) resources and community projects.  

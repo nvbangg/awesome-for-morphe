@@ -73,7 +73,7 @@ jobs:
       - name: Commit and push changes
         id: commit
         run: |
-          git add data/ docs/
+          git add data/ web/public/
           if ! git diff --staged --quiet; then
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"

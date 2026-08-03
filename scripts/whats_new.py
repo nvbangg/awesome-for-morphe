@@ -8,12 +8,13 @@ from utils import load_json, save_json
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
+PUBLIC_DIR = ROOT / "web" / "public"
 PATCHES_DIR = DATA_DIR / "patches"
 HISTORY_PATH = DATA_DIR / "history.json"
-BUNDLES_JSON_PATH = ROOT / "docs" / "bundles.json"
-APPS_JSON_PATH = ROOT / "docs" / "apps.json"
+BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
+APPS_JSON_PATH = PUBLIC_DIR / "apps.json"
 WHATS_NEW_PATH = ROOT / "whats-new.md"
-WHATS_NEW_JSON_PATH = ROOT / "docs" / "whats-new.json"
+WHATS_NEW_JSON_PATH = PUBLIC_DIR / "whats-new.json"
 
 
 def get_bundle_names():
@@ -244,7 +245,7 @@ def main():
     # Insert today's JSON entry
     whats_new_data.insert(0, {"date": today_str, "bundles": json_diff})
 
-    whats_new_data = whats_new_data[:30]
+    whats_new_data = whats_new_data[:21]
     save_json(WHATS_NEW_JSON_PATH, whats_new_data)
     print("Updated whats-new.json.")
 

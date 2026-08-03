@@ -11,11 +11,11 @@ from utils import load_json, parse_timestamp, save_json
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
-DOCS_DIR = ROOT_DIR / "docs"
+PUBLIC_DIR = ROOT_DIR / "web" / "public"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
 DISCOVER_JSON_PATH = DATA_DIR / "discover" / "discover.json"
-BUNDLES_JSON_PATH = DOCS_DIR / "bundles.json"
-APPS_JSON_PATH = DOCS_DIR / "apps.json"
+BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
+APPS_JSON_PATH = PUBLIC_DIR / "apps.json"
 
 
 def main() -> int:

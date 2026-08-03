@@ -13,13 +13,7 @@
 ```text
 awesome-morphe/
 ├── .github/                            # CI/CD workflows and GitHub configurations
-├── data/                               # Raw and processed data
-├── docs/                               # Website deployment folder
-│   ├── assets/
-│   ├── apps.json                       # Metadata of all apps
-│   ├── bundles.json                    # Metadata of all active bundles
-│   ├── whats-new.json                  # Rolling changelog (last 30 releases)
-│   └── index.html
+├── data/                               # Raw data storage
 ├── scripts/                            # Data pipeline and automation scripts
 │   ├── providers/
 │   ├── updater/
@@ -31,7 +25,12 @@ awesome-morphe/
 │   ├── telegram.py                     # Telegram notification service
 │   ├── utils.py                        # Shared utility functions
 │   └── whats_new.py                    # Generates release changelog
-├── web/                                # Website source code and Vite configuration
+├── web/                                # Website source code
+│   ├── public/                         
+│   │   ├── apps.json                   # Metadata of all apps
+│   │   ├── bundles.json                # Metadata of all active bundles
+│   │   └── whats-new.json              # Rolling changelog (last 21 releases)
+│   └── ...                             # Source code and other configuration files
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── README.md
@@ -42,7 +41,7 @@ awesome-morphe/
 ### 1. Sync Workflow (`ci.yml` - Every 2 hours)
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["Sync Workflow (ci.yml)"] --> B["Discover bundles (discover.py)"]
     B --> C["Check updates (fetch.py)"]
     C --> D{Changes?}
@@ -58,7 +57,7 @@ flowchart LR
 ### 2. Release Workflow (`release.yml` - Daily at 23:00 UTC)
 
 ```mermaid
-flowchart LR
+flowchart TD
     J["Release Workflow (release.yml)"] --> K["Discover bundles (discover.py)"]
     K --> L["Check updates + images (fetch.py --image)"]
     L --> M["Parse bundles (parse.py)"]
@@ -111,7 +110,7 @@ Executes the Kotlin-based `bundle-parser` (taken from [Jman's ReVanced Patch Bun
 
 ### `update.py`
 
-Compiles and syncs data from raw JSON files (`data/repos.json`, `data/bundles/`, and `data/patches/`) into the main database files (`docs/bundles.json` and `docs/apps.json`). Missing metadata is scraped from Google Play (with a fallback to official Morphe data) or fetched via GitHub/GitLab APIs. It automatically cleans up orphaned bundle and patch files from local storage if they no longer exist in `data/repos.json`.
+Compiles and syncs data from raw JSON files (`data/repos.json`, `data/bundles/`, and `data/patches/`) into the main public database files (`web/public/bundles.json` and `web/public/apps.json`). Missing metadata is scraped from Google Play (with a fallback to official Morphe data) or fetched via GitHub/GitLab APIs. It automatically cleans up orphaned bundle and patch files from local storage if they no longer exist in `data/repos.json`.
 
 Supported execution modes:
 
@@ -121,7 +120,7 @@ Supported execution modes:
 
 ### `whats_new.py`
 
-Generates `docs/whats-new.json` (rolling changelog for the website) and `whats-new.md` (used for GitHub release notes and Telegram notifications) by comparing current patch data against the previous release state in `data/history.json`.
+Generates `web/public/whats-new.json` (rolling changelog for the website) and `whats-new.md` (used for GitHub release notes and Telegram notifications) by comparing current patch data against the previous release state in `data/history.json`.
 
 ### `telegram.py`
 

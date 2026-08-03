@@ -33,7 +33,6 @@ def commit_pending_repos() -> None:
         successful_parsed_files = {line.strip() for line in PARSED_FILES_PATH.read_text(encoding="utf-8").splitlines() if line.strip()}
 
     repos_data = load_json(REPOS_JSON_PATH, {})
-    remaining_pending = {}
     committed_target_count = 0
 
     for base_key, repo_updates in pending_repos.items():

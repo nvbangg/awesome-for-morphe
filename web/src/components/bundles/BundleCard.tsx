@@ -1,6 +1,6 @@
 import { Bundle } from "@/data";
 import { Plus, Package, Calendar } from "lucide-react";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { isNew } from "@/utils/formatters";
 import { Badge } from "@/components/common/Badge";
 
@@ -10,6 +10,7 @@ interface BundleCardProps {
 }
 
 export const BundleCard = memo(function BundleCard({ bundleItem, onClick }: BundleCardProps) {
+  const [imgError, setImgError] = useState(false);
   const { repoUrl, deepLink } = bundleItem;
   const isGitLab = bundleItem.source === "gitlab";
   const formattedDate = bundleItem.updatedAt
@@ -26,7 +27,7 @@ export const BundleCard = memo(function BundleCard({ bundleItem, onClick }: Bund
       onClick={() => onClick(bundleItem.key)}
     >
       <div className="flex items-center gap-3.5">
-        {bundleItem.avatarUrl ? (
+        {bundleItem.avatarUrl && !imgError ? (
           <img
             className="w-14 h-14 rounded-xl object-cover shrink-0 border border-border bg-zinc-100 dark:bg-zinc-800"
             src={bundleItem.avatarUrl}
@@ -34,14 +35,7 @@ export const BundleCard = memo(function BundleCard({ bundleItem, onClick }: Bund
             width={56}
             height={56}
             loading="lazy"
-            onError={(e) => {
-              (e.target as HTMLElement).style.display = "none";
-              const nextSibling = (e.target as HTMLElement).nextElementSibling;
-              if (nextSibling) {
-                nextSibling.classList.remove("hidden");
-                nextSibling.classList.add("flex");
-              }
-            }}
+            onError={() => setImgError(true)}
           />
         ) : (
           <div className="w-14 h-14 rounded-xl shrink-0 border border-border bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">

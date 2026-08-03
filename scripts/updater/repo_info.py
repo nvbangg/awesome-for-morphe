@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from utils import fetch, load_json, save_json
+from utils import fetch, load_json, normalize_image_url, save_json
 
 GITHUB_CONCURRENCY = 8
 DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
@@ -41,9 +41,7 @@ def fetch_repo_details(repo_url: str) -> dict:
                     response = fetch(api_url, headers=headers, timeout=10, as_json=True)
                     if not response:
                         return {}
-                    avatar = response.get("owner", {}).get("avatar_url")
-                    if avatar and isinstance(avatar, str):
-                        avatar = f"{avatar}&size=128" if "?" in avatar else f"{avatar}?size=128"
+                    avatar = normalize_image_url(response.get("owner", {}).get("avatar_url"))
                     return {
                         "stars": response.get("stargazers_count", 0),
                         "description": response.get("description"),
@@ -85,9 +83,7 @@ def fetch_repo_details(repo_url: str) -> dict:
                 time.sleep(0.2)
                 response = fetch(api_url, timeout=10, as_json=True)
                 if response:
-                    avatar = response.get("avatar_url")
-                    if avatar and isinstance(avatar, str):
-                        avatar = avatar.replace("s=80", "s=128")
+                    avatar = normalize_image_url(response.get("avatar_url"))
                     return {
                         "stars": response.get("star_count", 0),
                         "description": response.get("description"),
@@ -162,7 +158,7 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
                         encoded_repo = urllib.parse.quote(owner_repo, safe="")
                         source_entry["avatarUrl"] = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.png/raw?ref=main"
                 elif details.get("avatar_url"):
-                    source_entry["avatarUrl"] = details["avatar_url"]
+                    source_entry["avatarUrl"] = normalize_image_url(details["avatar_url"])
 
                 full_name = details.get("full_name")
                 old_repo = source_entry.get("repo")

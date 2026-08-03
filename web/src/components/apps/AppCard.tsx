@@ -1,7 +1,7 @@
 import { AppItem } from "@/data";
 import { Smartphone, Copy, Check, Play } from "lucide-react";
 import { useCopy } from "@/hooks/useCopy";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { isNew } from "@/utils/formatters";
 import { Badge } from "@/components/common/Badge";
 
@@ -11,6 +11,7 @@ interface AppCardProps {
 }
 
 export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps) {
+  const [imgError, setImgError] = useState(false);
   const { copiedText, copyToClipboard } = useCopy();
 
   const handleCopy = (event: React.MouseEvent) => {
@@ -26,7 +27,7 @@ export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps)
       onClick={() => onClick(appItem.packageName)}
     >
       <div className="flex items-center gap-3.5">
-        {appItem.appIcon ? (
+        {appItem.appIcon && !imgError ? (
           <img
             className="w-14 h-14 rounded-xl object-cover shrink-0 border border-border bg-zinc-100 dark:bg-zinc-800"
             src={appItem.appIcon}
@@ -34,14 +35,7 @@ export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps)
             width={56}
             height={56}
             loading="lazy"
-            onError={(e) => {
-              (e.target as HTMLElement).style.display = "none";
-              const nextSibling = (e.target as HTMLElement).nextElementSibling;
-              if (nextSibling) {
-                nextSibling.classList.remove("hidden");
-                nextSibling.classList.add("flex");
-              }
-            }}
+            onError={() => setImgError(true)}
           />
         ) : (
           <div className="w-14 h-14 rounded-xl shrink-0 border border-border bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">

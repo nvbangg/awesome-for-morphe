@@ -1,8 +1,9 @@
 import json
+import re
 import time
-import urllib.request
 import urllib.error
-from datetime import datetime
+import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Optional, Union
 
@@ -30,8 +31,7 @@ def fetch(
 
         except urllib.error.HTTPError as error:
             if error.code in (401, 403, 429) and attempt < 2:
-                wait = 2**attempt
-                time.sleep(wait)
+                time.sleep(2**attempt)
             else:
                 raise
         except (urllib.error.URLError, TimeoutError):
@@ -50,10 +50,7 @@ def load_json(path: Union[str, Path], default: Any = None) -> Any:
     try:
         with open(path, "r", encoding="utf-8") as file:
             return json.load(file)
-    except json.JSONDecodeError:
-        print(f"[-] Corrupted JSON file: {path}")
-        return default if default is not None else {}
-    except IOError:
+    except (json.JSONDecodeError, IOError):
         return default if default is not None else {}
 
 
@@ -73,13 +70,28 @@ def parse_timestamp(timestamp: Any) -> int:
     if isinstance(timestamp, str) and timestamp.isdigit():
         return int(timestamp)
     try:
-        from datetime import timezone
-
         timestamp_str = str(timestamp).replace("Z", "+00:00")
         dt = datetime.fromisoformat(timestamp_str)
         if dt.tzinfo is None:
             dt = dt.replace(tzinfo=timezone.utc)
-        utc_timestamp = dt.timestamp()
-        return int(utc_timestamp * 1000)
+        return int(dt.timestamp() * 1000)
     except Exception:
         return 0
+
+
+def _set_query_param(url: str, pattern: str, param: str) -> str:
+    if re.search(pattern, url):
+        return re.sub(pattern, rf"\1{param}", url)
+    return f"{url}&{param}" if "?" in url else f"{url}?{param}"
+
+
+def normalize_image_url(url: str) -> str:
+    if not url or not isinstance(url, str):
+        return ""
+    if "googleusercontent.com" in url or "ggpht.com" in url:
+        return re.sub(r"=(?:s|w)\d+.*$", "", url) + "=s64-rw"
+    if "avatars.githubusercontent.com" in url or "gravatar.com" in url:
+        return _set_query_param(url, r"([?&])(?:size|s)=\d+", "s=64")
+    if "gitlab.com" in url:
+        return _set_query_param(url, r"([?&])width=\d+", "width=64")
+    return url

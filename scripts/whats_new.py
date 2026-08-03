@@ -1,7 +1,6 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 import datetime
-import re
 import urllib.parse
 from pathlib import Path
 from utils import load_json, save_json

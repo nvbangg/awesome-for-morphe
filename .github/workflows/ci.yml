@@ -55,21 +55,6 @@ jobs:
           pip install --user google-play-scraper
           python scripts/update.py
 
-      - name: Setup Node.js environment
-        if: steps.update.outputs.changed == 'true'
-        uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: 'npm'
-          cache-dependency-path: web/package-lock.json
-
-      - name: Install dependencies and build
-        if: steps.update.outputs.changed == 'true'
-        run: |
-          cd web
-          npm ci
-          npm run build
-
       - name: Commit and push changes
         if: steps.update.outputs.changed == 'true'
         run: |

@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from utils import load_json
+from utils import load_json, normalize_image_url
 
 try:
     from google_play_scraper import app as gplay_app
@@ -76,9 +76,7 @@ def fetch_app_details(package_name: str) -> Tuple[Optional[Dict[str, Any]], bool
         result = gplay_app(package_name, lang="en", country="us")
         if not result:
             return None, False
-        icon_url = result.get("icon")
-        if icon_url:
-            icon_url += "=s64"
+        icon_url = normalize_image_url(result.get("icon"))
         description = result.get("summary")
         if description is None:
             description = ""

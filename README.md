@@ -76,9 +76,9 @@
 - [Community Patch Space Explorer](https://dmh84.github.io/morphe-space-explorer/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/dmh84/morphe-space-explorer)
 - [Morphe Patch Tracker](https://morphe-patches-drnx64.vercel.app/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/drnx64/morphe-track-patches)
 - [Patch Atlas](https://patch-atlas.vercel.app/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/shakir2117/Patch-Atlas)
+- [Morphe Archive](https://rushiforai.github.io/morphe-archive/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/rushiforai/morphe-archive)
 - [Patch Index sticky post](https://www.reddit.com/r/MorpheApp/comments/1ta0bek/how_to_patch_more_apps_with_morphe/)
 - [ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles)
-- [rushiforai/morphe-archive](https://github.com/rushiforai/morphe-archive)
 
 ## <a id="projects"></a> 🛠️ Other Projects
 

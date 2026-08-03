@@ -1,0 +1,979 @@
+{
+  "version": "1.3.1",
+  "appNames": {
+    "com.zhiliaoapp.musically": "TikTok",
+    "com.zhiliaoapp.musically.go": "TikTok Lite"
+  },
+  "patches": [
+    {
+      "name": "Always show publish date",
+      "description": "Always shows the publish date in video author information. Thanks to lyyako for the original implementation.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Copy comments without username",
+      "description": "Copies only the comment text without including the creator's username.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Custom offline videos limit",
+      "description": "Adds a custom entry to TikTok's offline videos menu with a configurable limit of up to 500 videos.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable login requirement",
+      "description": "Removes TikTok's mandatory login gate from supported flows.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable login requirement",
+      "description": "Removes TikTok's mandatory login gate from supported flows.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable screen capture detection",
+      "description": "Prevents TikTok from detecting screenshots and screen recordings.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable screen capture detection",
+      "description": "Prevents TikTok from detecting screenshots and screen recordings.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Downloads",
+      "description": "Adds watermark-free video and photo downloads, comment sticker saving, and configurable download-folder controls.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Downloads",
+      "description": "Adds watermark-free video downloads and configurable download-folder controls.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Open Debug",
+      "description": "Uses TikTok's hidden Open Debug settings cell as the entry point for Morphe settings. Required for the Morphe settings menu to appear. Supports TikTok 43.8.3.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Feature Gate Lab",
+      "description": "Adds a menu for viewing and overriding supported TikTok feature flags and configuration values.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Feature Gate Lab",
+      "description": "Adds a menu for viewing and overriding supported TikTok feature flags and configuration values.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Feed filter",
+      "description": "Hides feed ads, TikTok Shop items, livestreams, stories, photo posts, and videos outside configured view or like ranges.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Feed tab navigation",
+      "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, and can hide the Tako AI bubble.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix Google login",
+      "description": "Restores Google account sign-in after patching.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix Google login",
+      "description": "Restores Google account sign-in after patching.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide CAPTCHA popups",
+      "description": "Prevents client-side verification puzzle dialogs from opening, including those shown while browsing LIVE. This does not bypass server-side checks.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide CAPTCHA popups",
+      "description": "Prevents client-side verification puzzle dialogs from opening. This does not bypass server-side checks.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide floating promotions",
+      "description": "Removes floating promotional badges, coin icons, and timer banners from the Home feed.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide floating promotions",
+      "description": "Removes floating promotional badges, coin icons, and timer banners from the Home feed.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hold-and-slide 2x lock",
+      "description": "Enables TikTok's native hold, slide down, and release gesture to lock 2x speed.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Open external links directly",
+      "description": "Opens profile and story website links in the system browser instead of TikTok's in-app browser. Thanks to lyyako for the original implementation.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Open external links directly",
+      "description": "Opens profile and story website links in the system browser instead of TikTok's in-app browser. Thanks to lyyako for the original implementation.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Playback speed",
+      "description": "Enables playback-speed controls for all videos and remembers the selected speed between videos.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Playback speed",
+      "description": "Enables playback-speed controls for all videos and remembers the selected speed between videos.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Region bypass",
+      "description": "Spoofs the store country reported to TikTok across every region signal (cookie, store region, sys_region, carrier region, TTP JSON) and suppresses the TTP region alert, so the app is not detected as being used in an unsupported region.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remember clear display",
+      "description": "Remembers TikTok's clear-display state between videos.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "SIM spoof",
+      "description": "Spoofs SIM country and operator information retrieved by TikTok, with country presets for easier setup.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "SIM spoof",
+      "description": "Spoofs SIM country and operator information retrieved by TikTok, with country presets for easier setup.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Sanitize share URLs",
+      "description": "Removes tracking (campaign) parameters from shared links.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Sanitize sharing links",
+      "description": "Removes tracking parameters from TikTok links before they are shared.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Settings",
+      "description": "Adds the Morphe settings screen inside TikTok.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Settings",
+      "description": "Adds a native 'Premium features' row to the stock 'Settings and privacy' popup, opening the Morphe settings screen.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically.go": [
+          "44.9.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok Lite",
+          "packageName": "com.zhiliaoapp.musically.go",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "44.9.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Show seekbar",
+      "description": "Shows TikTok's native video seekbar where it would normally be hidden.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Translate comments",
+      "description": "Adds comment translation controls using TikTok's translation system, with selectable language exclusions.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "43.8.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "43.8.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

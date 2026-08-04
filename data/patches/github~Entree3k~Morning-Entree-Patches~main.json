@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "patches": [
     {
       "name": "Always incognito mode",
@@ -354,6 +354,32 @@
     },
     {
       "name": "Enable Premium",
+      "description": "Unlocks Listy Premium",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "pro.listy",
+          "name": "Listy",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#007AFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
       "description": "Unlocks Premium. Use With Spoof Install Source.",
       "default": true,
       "dependencies": [
@@ -462,6 +488,32 @@
     },
     {
       "name": "Enable Premium",
+      "description": "Unlocks Super Status Bar Premium. Use with Spoof Install Source",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.tombayley.statusbar",
+          "name": "Super Status Bar",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#20C26B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.13.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
       "description": "Unlocks Todo Mate Premium. Use With Spoof Install Source",
       "default": true,
       "dependencies": [],
@@ -528,6 +580,32 @@
           "targets": [
             {
               "version": "5.5.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlocks Volume Styles Premium. Use with Spoof Install Source",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.tombayley.volumepanel",
+          "name": "Volume Styles",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#2D7AED",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.2.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

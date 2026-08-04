@@ -133,12 +133,14 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
                     print(f"[-] Disabling {base_key} due to 404 Not Found")
                     custom_data[base_key] = {"enabled": False, "note": "Automatically disabled by GitHub Actions (404 Not Found)"}
                     has_changes = True
+                    bundle_sources.pop(base_key, None)
                     continue
 
                 if details.get("is_archived"):
                     print(f"[-] Disabling {base_key} due to Repository Archived")
                     custom_data[base_key] = {"enabled": False, "note": "Automatically disabled by GitHub Actions (Repository Archived)"}
                     has_changes = True
+                    bundle_sources.pop(base_key, None)
                     continue
 
                 source_entry = bundle_sources[base_key]
@@ -173,6 +175,13 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
                     new_key = f"{source}:{full_name}"
                     custom_data[old_key] = {"enabled": False, "note": f"Automatically disabled by GitHub Actions (Redirected/Renamed to {full_name})"}
                     custom_data[new_key] = {"note": f"Automatically added by GitHub Actions (Redirected/Renamed from {old_repo})"}
+
+                    source_entry["repo"] = full_name
+                    bundle_sources[new_key] = source_entry
+                    if old_key in bundle_sources:
+                        bundle_sources.pop(old_key, None)
+                    if old_key in repos_data:
+                        repos_data[new_key] = repos_data.pop(old_key)
             except Exception as error:
                 print(f"[-] Failed to fetch details for {base_key}: {error}")
 

@@ -28,7 +28,7 @@ export const PatchItemRow = memo(function PatchItemRow({ patchItem, copiedText, 
       className={`py-2.5 px-4 bg-card hover:bg-default-50 border-b last:border-b-0 border-divider/60 flex flex-col gap-1.5 transition-colors text-foreground ${hasOptions ? "cursor-pointer" : ""}`}
     >
       <div className="flex flex-wrap items-start justify-between gap-x-2 gap-y-1.5 w-full">
-        <div className="flex items-center gap-2 flex-wrap min-w-0 flex-1">
+        <div className="flex items-center gap-2 flex-wrap max-w-full">
           <span className="font-semibold text-sm text-foreground wrap-break-word select-text">{patchItem.patchName}</span>
 
           {patchItem.isPatchPreRelease && <Badge variant="prerelease" />}
@@ -52,7 +52,7 @@ export const PatchItemRow = memo(function PatchItemRow({ patchItem, copiedText, 
           )}
         </div>
 
-        <div className="flex items-center gap-1.5 flex-wrap shrink min-w-0 justify-end">
+        <div className="flex items-center gap-1.5 flex-wrap shrink min-w-0 justify-end ml-auto">
           {versions.length === 0 ? (
             <span className="inline-flex items-center px-1 py-0 rounded-full text-xs font-normal bg-zinc-200/60 dark:bg-zinc-700/60 text-foreground-600 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 shrink-0">
               Any version

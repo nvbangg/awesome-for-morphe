@@ -54,6 +54,7 @@ export function WhatsNewList({ history, isLoading, activeData, onBundleClick, on
                       type="button"
                       onClick={() => onBundleClick(fullBundleKey)}
                       className="flex items-center gap-2 text-base font-semibold text-foreground hover:text-primary transition-colors text-left outline-none min-w-0"
+                      title="Open bundle details"
                     >
                       <Package className="size-4 text-primary shrink-0" />
                       <span className="truncate">{bundleMeta?.name || bundleKey}</span>
@@ -75,6 +76,7 @@ export function WhatsNewList({ history, isLoading, activeData, onBundleClick, on
                               type="button"
                               onClick={() => onAppClick(packageName)}
                               className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors text-left outline-none min-w-0"
+                              title="Open app details"
                             >
                               <Avatar className="w-6 h-6 rounded-md shrink-0">
                                 {icon ? <Avatar.Image src={icon} alt={appName} /> : null}
@@ -94,7 +96,6 @@ export function WhatsNewList({ history, isLoading, activeData, onBundleClick, on
                                     type="button"
                                     onClick={() => onPatchClick(packageName, patchName)}
                                     className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-foreground-700 dark:text-zinc-300 transition-colors text-xs font-semibold cursor-pointer outline-none shrink-0 border-none max-w-full truncate"
-                                    title={patchName}
                                   >
                                     <span className="truncate">{patchName}</span>
                                   </button>

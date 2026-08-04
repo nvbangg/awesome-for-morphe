@@ -44,10 +44,6 @@ export function WhatsNewList({ history, isLoading, activeData, onBundleClick, on
           <div className="flex flex-col gap-3">
             {Object.entries(dayItem.bundles || {}).map(([bundleKey, bundleData]: [string, WhatsNewBundleChange]) => {
               const fullBundleKey = `${bundleData.source}:${bundleData.repo}`;
-              const isMorningEntree = bundleKey.toLowerCase().includes("morning") || fullBundleKey.toLowerCase().includes("morning");
-
-              if (isMorningEntree) return null;
-
               const bundleMeta = activeData?.bundleMap[fullBundleKey.toLowerCase()];
               const isBundleNew = !!bundleData.isNew || isNew(bundleMeta?.firstSeen);
 
@@ -66,7 +62,7 @@ export function WhatsNewList({ history, isLoading, activeData, onBundleClick, on
                   </div>
 
                   {bundleData.apps && Object.keys(bundleData.apps).length > 0 && (
-                    <div className="p-3 flex flex-col gap-3">
+                    <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                       {Object.entries(bundleData.apps).map(([packageName, appData]: [string, WhatsNewAppChange]) => {
                         const meta = activeData ? getAppMeta(packageName, activeData.namesMap) : null;
                         const icon = meta?.appIcon || null;

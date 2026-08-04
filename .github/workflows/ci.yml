@@ -43,7 +43,7 @@ jobs:
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
           cache: 'gradle'
 
       - name: Parse bundles and update data
@@ -52,7 +52,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/parse.py
-          pip install --user google-play-scraper
+          pip install -r scripts/requirements.txt
           python scripts/update.py
 
       - name: Commit and push changes

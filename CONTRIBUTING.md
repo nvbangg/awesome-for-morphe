@@ -12,25 +12,22 @@
 
 ```text
 awesome-morphe/
-├── .github/                            # CI/CD workflows and GitHub configurations
+├── .github/                            # CI/CD workflows & configurations
 ├── data/                               # Raw data storage
-├── scripts/                            # Data pipeline and automation scripts
-│   ├── providers/
-│   ├── updater/
-│   ├── bundle-parser/
+├── scripts/                            # Automated scripts for data processing
 │   ├── discover.py                     # Discovers all bundles from providers
-│   ├── fetch.py                        # Checks for updates and downloads bundle files
+│   ├── fetch.py                        # Checks for updates
 │   ├── parse.py                        # Extracts patch metadata via bundle-parser
 │   ├── update.py                       # Compiles raw data into production JSONs
 │   ├── telegram.py                     # Telegram notification service
-│   ├── utils.py                        # Shared utility functions
-│   └── whats_new.py                    # Generates release changelog
+│   ├── whats_new.py                    # Generates release changelog
+│   └── ...                             # Other supporting files
 ├── web/                                # Website source code
 │   ├── public/                         
 │   │   ├── apps.json                   # Metadata of all apps
 │   │   ├── bundles.json                # Metadata of all active bundles
 │   │   └── whats-new.json              # Rolling changelog (last 21 releases)
-│   └── ...                             # Source code and other configuration files
+│   └── ...                             # Other supporting files
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── README.md

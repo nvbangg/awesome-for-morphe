@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
           cache: 'gradle'
 
       - name: Parse bundles and update data
@@ -47,7 +47,7 @@ jobs:
         run: |
           python scripts/parse.py
 
-          pip install --user google-play-scraper
+          pip install -r scripts/requirements.txt
           DAY_OF_MONTH=$(date +%d)
           if [ "$DAY_OF_MONTH" -eq 1 ]; then
             python scripts/update.py --month

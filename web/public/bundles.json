@@ -16446,7 +16446,7 @@
       "stars": 1,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1785905181000,
+      "updatedAt": 1785924650000,
       "firstSeen": 1785884829984,
       "appFirstSeen": {
         "com.opera.gx": 1785884829665,
@@ -16455,7 +16455,7 @@
       "patches": [
         {
           "name": "MonkeyScript userscript manager",
-          "description": "Adds a monkey-style userscript/userstyle manager plus configurable Chrome app and package renaming for side-by-side installation.",
+          "description": "Adds a process-aware Chrome Material You userscript manager using a Violentmonkey-derived parser and installer, safe Chrome app-menu integration, a guaranteed app shortcut, Greasy Fork/Sleazy Fork support, and configurable app/package cloning.",
           "compatiblePackagesKey": 670
         },
         {
@@ -16475,12 +16475,19 @@
       "stars": 1,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1785899097000,
+      "updatedAt": 1785921804000,
       "firstSeen": 1785884829984,
       "appFirstSeen": {
         "com.nuvio.tv": 1785884829695
       },
       "patches": [
+        {
+          "name": "Rating Visibility",
+          "description": "Adds Settings > Morphe > Ratings with independent overall and episode rating controls.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 672
+        },
         {
           "name": "Remove SDH Annotations",
           "description": "Adds Settings → Morphe → Subtitles and removes SDH annotations from Media3 subtitles when enabled.",
@@ -16576,18 +16583,48 @@
       "stars": 1,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1785899097000,
+      "updatedAt": 1785921804000,
       "firstSeen": 1785911533420,
       "appFirstSeen": {
         "com.nuvio.tv": 1785911533207
       },
       "patches": [
         {
+          "name": "Rating Visibility",
+          "description": "Adds Settings > Morphe > Ratings with independent overall and episode rating controls.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 672
+        },
+        {
           "name": "Remove SDH Annotations",
           "description": "Adds Settings → Morphe → Subtitles and removes SDH annotations from Media3 subtitles when enabled.",
           "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 672
+        }
+      ],
+      "isPreRelease": false
+    },
+    {
+      "source": "github",
+      "repo": "logm1lo/logm1lo-patches",
+      "name": "Logm1lo",
+      "repoDescription": "Morphe patches I actually use. Please report bugs and request more apps or patches via GitHub.",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/55241926?v=4&s=64",
+      "stars": 1,
+      "starsGained7d": 0,
+      "starsGained40d": 0,
+      "updatedAt": 1785920056000,
+      "firstSeen": 1785926406013,
+      "appFirstSeen": {
+        "com.calistree.calistree": 1785926405780
+      },
+      "patches": [
+        {
+          "name": "Premium Unlock",
+          "description": "Unlocks all Calistree PRO features.",
+          "compatiblePackagesKey": 675
         }
       ],
       "isPreRelease": false
@@ -24476,7 +24513,7 @@
         "packageName": "com.nuvio.tv",
         "targets": [
           {
-            "version": "0.8.1-beta"
+            "version": "0.8.2-beta"
           }
         ]
       }
@@ -24500,6 +24537,16 @@
           },
           {
             "version": "1.0.2"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.calistree.calistree",
+        "targets": [
+          {
+            "version": "5.8.5"
           }
         ]
       }

@@ -69,9 +69,9 @@ export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps)
       <div className="flex items-center justify-between gap-2 mt-auto w-full">
         <span
           className="font-semibold rounded-full text-xs px-2 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 whitespace-nowrap truncate shrink-0 max-w-[60%]"
-          title="Genre"
+          title="Category"
         >
-          {appItem.categorySlug === "not-on-google-play" ? "Not on Google Play" : appItem.genre}
+          {appItem.categorySlug === "not-on-google-play" ? "Not on Google Play" : appItem.category}
         </span>
 
         {showGooglePlay && (

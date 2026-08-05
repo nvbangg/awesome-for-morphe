@@ -82,7 +82,7 @@ def main() -> int:
             "iconUrl": app_data.get("iconUrl"),
             "description": app_data.get("description"),
             "minInstalls": app_data.get("minInstalls"),
-            "genre": app_data.get("genre"),
+            "category": app_data.get("category"),
             "firstSeen": app_data.get("firstSeen"),
         }
         if "altName" in app_data:

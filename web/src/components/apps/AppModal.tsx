@@ -63,7 +63,7 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
 
   if (!applicationMeta) return null;
 
-  const showGooglePlay = packageName !== "universal" && !!applicationMeta.genre && applicationMeta.genre !== "Not on Google Play";
+  const showGooglePlay = packageName !== "universal" && !!applicationMeta.category && applicationMeta.category !== "Not on Google Play";
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose}>
@@ -82,7 +82,7 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
             <div className="flex flex-col min-w-0 justify-center">
               <div className="flex items-center gap-2 flex-wrap">
                 <h2 className="text-xl font-bold tracking-tight text-foreground truncate">{applicationMeta.appName}</h2>
-                {applicationMeta.minInstalls !== undefined && applicationMeta.minInstalls > 0 && packageName !== "universal" && !!applicationMeta.genre && (
+                {applicationMeta.minInstalls !== undefined && applicationMeta.minInstalls > 0 && packageName !== "universal" && !!applicationMeta.category && (
                   <Badge variant="downloads" value={applicationMeta.minInstalls} />
                 )}
               </div>
@@ -103,12 +103,12 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
           </div>
 
           <div className="hidden sm:flex items-center gap-2 shrink-0">
-            {applicationMeta.genre && (
+            {applicationMeta.category && (
               <span
                 className="font-semibold rounded-full text-xs px-2 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 whitespace-nowrap shrink-0 hidden sm:inline-flex"
-                title="Genre"
+                title="Category"
               >
-                {applicationMeta.genre}
+                {applicationMeta.category}
               </span>
             )}
             {showGooglePlay && (
@@ -134,9 +134,9 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
         {applicationMeta.description && <p className="text-sm text-foreground-600 dark:text-foreground-500 leading-relaxed wrap-break-word">{applicationMeta.description}</p>}
 
         <div className="flex sm:hidden items-center justify-between gap-3 mt-1 w-full">
-          {applicationMeta.genre && (
-            <span className="font-semibold rounded-full text-xs px-2 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 whitespace-nowrap shrink-0" title="Genre">
-              {applicationMeta.genre}
+          {applicationMeta.category && (
+            <span className="font-semibold rounded-full text-xs px-2 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 whitespace-nowrap shrink-0" title="Category">
+              {applicationMeta.category}
             </span>
           )}
           {showGooglePlay && (

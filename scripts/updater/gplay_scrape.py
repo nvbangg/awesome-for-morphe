@@ -77,7 +77,7 @@ def fetch_app_details(package_name: str) -> Tuple[Optional[Dict[str, Any]], bool
             "iconUrl": icon_url,
             "description": description,
             "minInstalls": result.get("minInstalls") or 0,
-            "genre": result.get("genre") or "",
+            "category": result.get("genre") or "",
         }
         return details, False
     except NotFoundError:
@@ -94,7 +94,7 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
     if mode == "month":
         apps_to_scrape = list(apps_dict.keys())
     else:
-        apps_to_scrape = [package_name for package_name, app_data in apps_dict.items() if any(app_data.get(field) is None for field in ("name", "iconUrl", "description", "minInstalls", "genre"))]
+        apps_to_scrape = [package_name for package_name, app_data in apps_dict.items() if any(app_data.get(field) is None for field in ("name", "iconUrl", "description", "minInstalls", "category"))]
     if apps_to_scrape:
         print(f"\nScraping Google Play for {len(apps_to_scrape)} apps (mode: {mode})...")
         with concurrent.futures.ThreadPoolExecutor(max_workers=GPLAY_CONCURRENCY) as executor:
@@ -112,7 +112,7 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
                             if current_app.get(field) is None:
                                 current_app[field] = ""
                     elif is_404:
-                        for field in ("name", "iconUrl", "description", "genre"):
+                        for field in ("name", "iconUrl", "description", "category"):
                             if current_app.get(field) is None:
                                 current_app[field] = ""
                         if not current_app.get("minInstalls"):
@@ -123,7 +123,7 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
     for package_name, app_data in apps_dict.items():
         official_app = official_store.get(package_name)
         if official_app:
-            for field_name in ("name", "iconUrl", "description"):
+            for field_name in ("name", "iconUrl", "description", "category"):
                 field_value = official_app.get(field_name)
                 if field_value:
                     app_data[field_name] = field_value

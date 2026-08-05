@@ -43,7 +43,7 @@ export function CustomSelect({ value, onChange, options, icon: Icon, ariaLabel, 
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 top-full mt-1.5 w-full max-h-60 overflow-y-auto bg-white dark:bg-zinc-900 border border-divider rounded-xl shadow-xl z-50 p-1 flex flex-col divide-y divide-divider/40">
+        <div className="absolute left-0 top-full mt-1.5 w-full max-h-[75vh] overflow-y-auto bg-white dark:bg-zinc-900 border border-divider rounded-xl shadow-xl z-50 p-1 flex flex-col divide-y divide-divider/40">
           {options.map((option) => {
             const isSelected = option.key === value;
             return (

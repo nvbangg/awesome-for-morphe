@@ -1,4 +1,4 @@
-import { Grid, Layers, Sparkles, Filter, ArrowDownWideNarrow } from "lucide-react";
+import { Grid, Layers, Sparkles, Shapes, ArrowDownWideNarrow } from "lucide-react";
 import { NavigationTabType as TabType } from "@/hooks/useUrlSync";
 import { ActiveStats } from "@/data";
 import { SearchInput } from "@/components/common/SearchInput";
@@ -91,12 +91,6 @@ export function ControlBar({
 
       {activeTab !== "whats-new" && (
         <>
-          {activeTab === "apps" && categories.length > 0 && (
-            <div className="w-full sm:w-56 shrink-0">
-              <CustomSelect value={selectedCategory || "all"} onChange={(category) => onCategoryChange?.(category)} options={categories} icon={Filter} ariaLabel="Category filter" className="w-full" />
-            </div>
-          )}
-
           <div className="w-full sm:w-52 shrink-0">
             <CustomSelect
               key={`sort-${activeTab}`}
@@ -109,7 +103,13 @@ export function ControlBar({
             />
           </div>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto flex-1 min-w-0">
+          {activeTab === "apps" && categories.length > 0 && (
+            <div className="w-full sm:w-56 shrink-0">
+              <CustomSelect value={selectedCategory || "all"} onChange={(category) => onCategoryChange?.(category)} options={categories} icon={Shapes} ariaLabel="Category filter" className="w-full" />
+            </div>
+          )}
+
+          <div className="flex items-center gap-3 w-full sm:w-auto flex-1 min-w-70">
             <SearchInput
               id="search-input"
               value={globalSearchQuery}

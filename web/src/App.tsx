@@ -30,7 +30,7 @@ export default function App() {
   const handleTabChange = useCallback(
     (tab: NavigationTabType) => {
       setGlobalSearch("");
-      updateUrl({ tab, category: "all" });
+      updateUrl({ tab });
     },
     [setGlobalSearch, updateUrl],
   );

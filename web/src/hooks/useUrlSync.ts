@@ -97,7 +97,9 @@ export function useUrlSync() {
     const parsedHash = parseHash(window.location.hash);
 
     setActiveTab(parsedHash.tab);
-    setSelectedCategory(parsedHash.category);
+    if (parsedHash.tab === "apps") {
+      setSelectedCategory(parsedHash.category);
+    }
 
     if (parsedHash.tab === "apps") {
       setAppsSort(parsedHash.sort);
@@ -173,7 +175,7 @@ export function useUrlSync() {
       }
 
       const nextTab = urlUpdates.tab !== undefined ? urlUpdates.tab : activeTab;
-      const nextCategory = urlUpdates.category !== undefined ? urlUpdates.category : urlUpdates.tab !== undefined ? "all" : selectedCategory;
+      const nextCategory = urlUpdates.category !== undefined ? urlUpdates.category : selectedCategory;
 
       let nextSort = activeTab === "bundles" ? bundlesSort : appsSort;
 

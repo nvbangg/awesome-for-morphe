@@ -74,7 +74,7 @@ export interface AppNameMeta {
   iconUrl?: string;
   description?: string;
   minInstalls?: number;
-  genre?: string;
+  category?: string;
   firstSeen?: number;
 }
 
@@ -84,7 +84,7 @@ export interface AppItem {
   appIcon: string;
   description: string;
   minInstalls: number;
-  genre: string;
+  category: string;
   firstSeen: number;
   patchCount: number;
   categorySlug: string;
@@ -153,9 +153,9 @@ function decodeHtmlEntities(str: string | null | undefined): string {
     : "";
 }
 
-export function slugifyGenre(genre: string): string {
-  return genre
-    ? genre
+export function slugifyCategory(category: string): string {
+  return category
+    ? category
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-|-$/g, "")
@@ -209,7 +209,7 @@ export function getAppMeta(
   appIcon: string;
   description: string;
   minInstalls: number;
-  genre: string;
+  category: string;
   firstSeen: number;
 } {
   const appMeta = namesMap[packageName];
@@ -218,7 +218,7 @@ export function getAppMeta(
     appIcon: appMeta?.iconUrl || "",
     description: decodeHtmlEntities(appMeta?.description || ""),
     minInstalls: appMeta?.minInstalls || 0,
-    genre: appMeta?.genre || (packageName === "universal" ? "" : "Not on Google Play"),
+    category: appMeta?.category || (packageName === "universal" ? "" : "Not on Google Play"),
     firstSeen: appMeta?.firstSeen || 0,
   };
 }
@@ -264,7 +264,7 @@ export function getAppItems(appItems: AppItem[], searchQuery = "", sortOrder = "
 }
 
 export function getAvailableCategories(rowItems: RowItem[], namesMap: Record<string, AppNameMeta>): { key: string; label: string }[] {
-  const genresSet = new Set<string>();
+  const categoriesSet = new Set<string>();
   let hasNotOnGooglePlay = false;
 
   const seenPackages = new Set<string>();
@@ -273,25 +273,25 @@ export function getAvailableCategories(rowItems: RowItem[], namesMap: Record<str
     if (seenPackages.has(packageName)) continue;
     seenPackages.add(packageName);
 
-    const genre = namesMap[packageName]?.genre || "";
-    if (genre) {
-      genresSet.add(genre);
+    const category = namesMap[packageName]?.category || "";
+    if (category) {
+      categoriesSet.add(category);
     } else {
       hasNotOnGooglePlay = true;
     }
   }
 
-  const categories: { key: string; label: string }[] = [{ key: "all", label: "All genres" }];
+  const categories: { key: string; label: string }[] = [{ key: "all", label: "All categories" }];
 
   if (hasNotOnGooglePlay) {
     categories.push({ key: "not-on-google-play", label: "Not on Google Play" });
   }
 
-  const sortedGenres = Array.from(genresSet).sort((a, b) => a.localeCompare(b));
-  for (const genre of sortedGenres) {
+  const sortedCategories = Array.from(categoriesSet).sort((a, b) => a.localeCompare(b));
+  for (const category of sortedCategories) {
     categories.push({
-      key: slugifyGenre(genre),
-      label: genre,
+      key: slugifyCategory(category),
+      label: category,
     });
   }
 
@@ -470,7 +470,7 @@ export function loadInitialData(): Promise<ActiveData> {
       const existingApp = appMap.get(packageName);
       if (!existingApp) {
         const appMeta = getAppMeta(packageName, namesMap);
-        const categorySlug = slugifyGenre(appMeta.genre);
+        const categorySlug = slugifyCategory(appMeta.category);
         const searchableText = simplifyString(`${appMeta.appName} ${packageName} ${appMeta.description}`);
         appMap.set(packageName, {
           packageName,
@@ -478,7 +478,7 @@ export function loadInitialData(): Promise<ActiveData> {
           appIcon: appMeta.appIcon,
           description: appMeta.description,
           minInstalls: appMeta.minInstalls,
-          genre: appMeta.genre,
+          category: appMeta.category,
           firstSeen: appMeta.firstSeen,
           patchCount: 1,
           categorySlug,
@@ -567,7 +567,7 @@ export interface AppGroupData {
     appIcon: string;
     description: string;
     minInstalls: number;
-    genre: string;
+    category: string;
     firstSeen: number;
   };
   patches: RowItem[];

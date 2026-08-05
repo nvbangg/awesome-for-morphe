@@ -49,18 +49,18 @@ export function WhatsNewList({ history, isLoading, activeData, onBundleClick, on
 
               return (
                 <div key={bundleKey} className="border border-divider bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl overflow-hidden shadow-2xs">
-                  <div className="flex items-center justify-between gap-3 p-3 bg-zinc-100/80 dark:bg-zinc-800/50 border-b border-divider">
-                    <button
-                      type="button"
-                      onClick={() => onBundleClick(fullBundleKey)}
-                      className="flex items-center gap-2 text-base font-semibold text-foreground hover:text-primary transition-colors text-left outline-none min-w-0"
-                      title="Open bundle details"
-                    >
+                  <button
+                    type="button"
+                    onClick={() => onBundleClick(fullBundleKey)}
+                    className="w-full flex items-center justify-between gap-3 p-3 bg-primary/5 hover:bg-primary/10 dark:bg-primary/10 dark:hover:bg-primary/20 border-b border-primary/10 dark:border-primary/20 text-left outline-none transition-colors group cursor-pointer"
+                    title="Open bundle details"
+                  >
+                    <div className="flex items-center gap-2 text-base font-semibold text-foreground group-hover:text-primary transition-colors min-w-0">
                       <Package className="size-4 text-primary shrink-0" />
                       <span className="truncate">{bundleMeta?.name || bundleKey}</span>
                       {isBundleNew && <Badge variant="new" />}
-                    </button>
-                  </div>
+                    </div>
+                  </button>
 
                   {bundleData.apps && Object.keys(bundleData.apps).length > 0 && (
                     <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -95,7 +95,7 @@ export function WhatsNewList({ history, isLoading, activeData, onBundleClick, on
                                     key={patchIndex}
                                     type="button"
                                     onClick={() => onPatchClick(packageName, patchName)}
-                                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-foreground-700 dark:text-zinc-300 transition-colors text-xs font-semibold cursor-pointer outline-none shrink-0 border-none max-w-full truncate"
+                                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-foreground-600 dark:text-foreground-500 transition-colors text-xs font-semibold cursor-pointer outline-none shrink-0 border-none max-w-full truncate"
                                   >
                                     <span className="truncate">{patchName}</span>
                                   </button>

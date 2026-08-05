@@ -89,7 +89,15 @@ export function ControlBar({
         </Tabs>
       </div>
 
-      {activeTab !== "whats-new" && (
+      {activeTab === "whats-new" ? (
+        <div className="w-full md:w-auto flex items-center justify-center md:justify-start gap-2.5 text-sm text-foreground font-semibold md:ml-2 py-1 select-text">
+          <span className="relative flex size-2 shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary/75 opacity-75"></span>
+            <span className="relative inline-flex rounded-full size-2 bg-secondary"></span>
+          </span>
+          <span>Recently added bundles, apps & patches</span>
+        </div>
+      ) : (
         <>
           <div className="w-full sm:w-52 shrink-0">
             <CustomSelect

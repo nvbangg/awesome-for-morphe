@@ -812,7 +812,7 @@
       "avatarUrl": "https://avatars.githubusercontent.com/u/3746651?v=4&s=64",
       "stars": 746,
       "starsGained7d": 14,
-      "starsGained40d": 31,
+      "starsGained40d": 30,
       "updatedAt": 1775717959000,
       "firstSeen": 1767377520000,
       "appFirstSeen": {
@@ -2180,7 +2180,7 @@
       "avatarUrl": "https://avatars.githubusercontent.com/u/128968367?v=4&s=64",
       "stars": 1070,
       "starsGained7d": 23,
-      "starsGained40d": 54,
+      "starsGained40d": 53,
       "updatedAt": 1778678822000,
       "firstSeen": 1772359809000,
       "appFirstSeen": {
@@ -8065,7 +8065,7 @@
       "avatarUrl": "https://raw.githubusercontent.com/kiraio-moe/Lain-Patches/main/patches-bundle.png",
       "stars": 34,
       "starsGained7d": 5,
-      "starsGained40d": 12,
+      "starsGained40d": 11,
       "updatedAt": 1784339357000,
       "firstSeen": 1780624125000,
       "appFirstSeen": {
@@ -9075,7 +9075,7 @@
       "avatarUrl": "https://avatars.githubusercontent.com/u/64605756?v=4&s=64",
       "stars": 114,
       "starsGained7d": 9,
-      "starsGained40d": 18,
+      "starsGained40d": 17,
       "updatedAt": 1784757531000,
       "firstSeen": 1781506735000,
       "appFirstSeen": {
@@ -10688,7 +10688,7 @@
       "avatarUrl": "https://avatars.githubusercontent.com/u/295420649?v=4&s=64",
       "stars": 31,
       "starsGained7d": 7,
-      "starsGained40d": 10,
+      "starsGained40d": 9,
       "updatedAt": 1785860759000,
       "firstSeen": 1782181225000,
       "appFirstSeen": {
@@ -13394,7 +13394,7 @@
       "avatarUrl": "https://avatars.githubusercontent.com/u/110749727?v=4&s=64",
       "stars": 18,
       "starsGained7d": 4,
-      "starsGained40d": 9,
+      "starsGained40d": 8,
       "updatedAt": 1784262190000,
       "firstSeen": 1784111083000,
       "appFirstSeen": {
@@ -16439,6 +16439,82 @@
     },
     {
       "source": "github",
+      "repo": "hu-liberator/patches",
+      "name": "hu-liberator",
+      "repoDescription": null,
+      "avatarUrl": "https://avatars.githubusercontent.com/u/313133940?v=4&s=64",
+      "stars": 1,
+      "starsGained7d": 0,
+      "starsGained40d": 0,
+      "updatedAt": 1785875770000,
+      "firstSeen": 1785898008247,
+      "appFirstSeen": {
+        "hu.mav.emmapp": 1785898007742,
+        "hu.idokep.idokep": 1785898007742
+      },
+      "patches": [
+        {
+          "name": "Disable Firebase Crashlytics",
+          "description": "Adds the official firebase_crashlytics_collection_enabled=false manifest flag, disabling all crash/log reporting to Firebase Crashlytics at SDK init.",
+          "compatiblePackagesKey": 670
+        },
+        {
+          "name": "Disable Pairip license check",
+          "description": "Prevents the Pairip-injected Application class from binding to the Play Store licensing service, which would otherwise redirect to / force-close for a side-loaded APK.",
+          "compatiblePackagesKey": 670
+        },
+        {
+          "name": "Disable Play Integrity failure crash",
+          "description": "Prevents SecurityException when the Play Integrity API call itself fails (APP_NOT_INSTALLED / APP_UID_MISMATCH), as happens for side-loaded APKs.",
+          "compatiblePackagesKey": 670
+        },
+        {
+          "name": "Disable Play Integrity gating flag wait",
+          "description": "Stops the startup coroutine from waiting forever on a Remote-Config-backed flag to decide whether to run the Play Integrity flow, by always treating it as disabled.",
+          "compatiblePackagesKey": 670
+        },
+        {
+          "name": "Disable Play Integrity token request",
+          "description": "Makes the Play Integrity token request always fail immediately with an unclassified exception, so the app treats it as gracefully unavailable and continues initialization instead of getting stuck on a Play-Store-required gate.",
+          "compatiblePackagesKey": 670
+        },
+        {
+          "name": "Disable Play Integrity verdict validation",
+          "description": "Removes client-side SecurityException throws that reject unlicensed/unattested/unrecognized Play Integrity verdicts, without touching unrelated code sharing the same method.",
+          "compatiblePackagesKey": 670
+        },
+        {
+          "name": "Disable StoreLogs telemetry",
+          "description": "Prevents the app from uploading queued client-side log entries to its own backend telemetry endpoint (.../Log/StoreLogs).",
+          "compatiblePackagesKey": 670
+        },
+        {
+          "name": "Disable broadcast receiver security check",
+          "description": "Removes SecurityException throws gating a BroadcastReceiver's onReceive, which fail when the broadcast sender isn't verified as the real Play Store.",
+          "compatiblePackagesKey": 670
+        },
+        {
+          "name": "Disable certificate pinning",
+          "description": "Prevents the app's OkHttp CertificatePinner from ever being installed, allowing HTTPS traffic to be intercepted (e.g. by a proxy) for analysis.",
+          "default": false,
+          "compatiblePackagesKey": 670
+        },
+        {
+          "name": "Remove idokep ads",
+          "description": "Removes ads from the idokep app.",
+          "compatiblePackagesKey": 671
+        },
+        {
+          "name": "Trust user-installed certificates",
+          "description": "Adds a user certificate trust anchor to the network security config, so a MITM proxy's installed CA is accepted (this is separate from and in addition to disabling OkHttp's code-level certificate pinning).",
+          "default": false,
+          "compatiblePackagesKey": 670
+        }
+      ],
+      "isPreRelease": false
+    },
+    {
+      "source": "github",
       "repo": "Alastor-Kaneki/Morphe-Patches",
       "name": "Alastor Kaneki",
       "repoDescription": null,
@@ -16455,7 +16531,7 @@
         {
           "name": "Download GX mods as files",
           "description": "Adds a visible Download Mod button in Opera GX, with URL auto-detection and a Share fallback.",
-          "compatiblePackagesKey": 670
+          "compatiblePackagesKey": 672
         }
       ],
       "isPreRelease": false
@@ -16469,7 +16545,7 @@
       "stars": 1,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1785887392000,
+      "updatedAt": 1785895372000,
       "firstSeen": 1785884829984,
       "appFirstSeen": {
         "com.nuvio.tv": 1785884829695
@@ -16480,7 +16556,7 @@
           "description": "Adds Settings → Morphe → Subtitles and removes SDH annotations from Media3 subtitles when enabled.",
           "isPreRelease": true,
           "default": false,
-          "compatiblePackagesKey": 671
+          "compatiblePackagesKey": 673
         }
       ],
       "isPreRelease": false
@@ -24338,6 +24414,29 @@
           },
           {
             "version": "2026.3.0"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "hu.mav.emmapp",
+        "targets": [
+          {
+            "version": "2.4.19-prod"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "hu.idokep.idokep",
+        "targets": [
+          {
+            "version": "4.3.7"
+          },
+          {
+            "version": "1.0.2"
           }
         ]
       }

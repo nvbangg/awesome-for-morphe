@@ -1,0 +1,299 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Disable Firebase Crashlytics",
+      "description": "Adds the official firebase_crashlytics_collection_enabled=false manifest flag, disabling all crash/log reporting to Firebase Crashlytics at SDK init.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.mav.emmapp",
+          "name": "MÁVPlusz",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00695C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.19-prod",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Pairip license check",
+      "description": "Prevents the Pairip-injected Application class from binding to the Play Store licensing service, which would otherwise redirect to / force-close for a side-loaded APK.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.mav.emmapp",
+          "name": "MÁVPlusz",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00695C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.19-prod",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Play Integrity failure crash",
+      "description": "Prevents SecurityException when the Play Integrity API call itself fails (APP_NOT_INSTALLED / APP_UID_MISMATCH), as happens for side-loaded APKs.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.mav.emmapp",
+          "name": "MÁVPlusz",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00695C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.19-prod",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Play Integrity gating flag wait",
+      "description": "Stops the startup coroutine from waiting forever on a Remote-Config-backed flag to decide whether to run the Play Integrity flow, by always treating it as disabled.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.mav.emmapp",
+          "name": "MÁVPlusz",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00695C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.19-prod",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Play Integrity token request",
+      "description": "Makes the Play Integrity token request always fail immediately with an unclassified exception, so the app treats it as gracefully unavailable and continues initialization instead of getting stuck on a Play-Store-required gate.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.mav.emmapp",
+          "name": "MÁVPlusz",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00695C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.19-prod",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Play Integrity verdict validation",
+      "description": "Removes client-side SecurityException throws that reject unlicensed/unattested/unrecognized Play Integrity verdicts, without touching unrelated code sharing the same method.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.mav.emmapp",
+          "name": "MÁVPlusz",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00695C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.19-prod",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable StoreLogs telemetry",
+      "description": "Prevents the app from uploading queued client-side log entries to its own backend telemetry endpoint (.../Log/StoreLogs).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.mav.emmapp",
+          "name": "MÁVPlusz",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00695C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.19-prod",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable broadcast receiver security check",
+      "description": "Removes SecurityException throws gating a BroadcastReceiver's onReceive, which fail when the broadcast sender isn't verified as the real Play Store.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.mav.emmapp",
+          "name": "MÁVPlusz",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00695C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.19-prod",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable certificate pinning",
+      "description": "Prevents the app's OkHttp CertificatePinner from ever being installed, allowing HTTPS traffic to be intercepted (e.g. by a proxy) for analysis.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.mav.emmapp",
+          "name": "MÁVPlusz",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00695C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.19-prod",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove idokep ads",
+      "description": "Removes ads from the idokep app.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.idokep.idokep",
+          "name": "Időkép",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0045",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.3.7",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.0.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Trust user-installed certificates",
+      "description": "Adds a user certificate trust anchor to the network security config, so a MITM proxy's installed CA is accepted (this is separate from and in addition to disabling OkHttp's code-level certificate pinning).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "hu.mav.emmapp",
+          "name": "MÁVPlusz",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00695C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.19-prod",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

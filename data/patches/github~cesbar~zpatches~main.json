@@ -1,5 +1,5 @@
 {
-  "version": "1.8.1",
+  "version": "1.9.0",
   "patches": [
     {
       "name": "Bypass PairIp",
@@ -26,6 +26,18 @@
     {
       "name": "Disable map animations",
       "description": "Disable the map zoom-in animation",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Easy deeplinks configuration",
+      "description": "Allows easy configuration of deeplinks (velov.cyclocity.fr, velov.grandlyon.com) required by the app to sign-in",
       "use": true,
       "dependencies": [],
       "compatiblePackages": {

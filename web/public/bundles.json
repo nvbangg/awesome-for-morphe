@@ -9,7 +9,7 @@
       "stars": 3108,
       "starsGained7d": 64,
       "starsGained40d": 108,
-      "updatedAt": 1785849472000,
+      "updatedAt": 1785944629000,
       "firstSeen": 1767200400000,
       "appFirstSeen": {
         "com.reddit.frontpage": 1767200400000,
@@ -284,7 +284,7 @@
         },
         {
           "name": "Disable sign in to TV popup",
-          "description": "Adds an option to disable the popup asking to sign into a TV on the same local network.",
+          "description": "Adds options to disable the popups asking to sign into or connect to a TV on the same local network.",
           "compatiblePackagesKey": 0
         },
         {
@@ -1735,7 +1735,7 @@
       "stars": 212,
       "starsGained7d": 6,
       "starsGained40d": 20,
-      "updatedAt": 1785684351000,
+      "updatedAt": 1785950860000,
       "firstSeen": 1771559964000,
       "appFirstSeen": {
         "com.google.android.inputmethod.latin": 1771585164000,
@@ -2175,13 +2175,13 @@
     {
       "source": "github",
       "repo": "RookieEnough/De-Vanced",
-      "name": "De-ReVanced",
+      "name": "De-Vanced",
       "repoDescription": "De-Vanced exists because the old way started getting frustrating, so I migrated everything to Morphe and turned it into a better, cleaner place to keep the experience alive.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/128968367?v=4&s=64",
       "stars": 1070,
       "starsGained7d": 22,
       "starsGained40d": 53,
-      "updatedAt": 1778678822000,
+      "updatedAt": 1785948045000,
       "firstSeen": 1772359809000,
       "appFirstSeen": {
         "com.disney.disneyplus": 1773594609000,
@@ -2420,8 +2420,8 @@
           "compatiblePackagesKey": 88
         },
         {
-          "name": "Hide Facebook button",
-          "description": "Hides the Facebook button in the top toolbar.",
+          "name": "Hide Facebook buttons",
+          "description": "Hides buttons and shortcuts that open Facebook.",
           "compatiblePackagesKey": 82
         },
         {
@@ -2526,6 +2526,11 @@
           "compatiblePackagesKey": 82
         },
         {
+          "name": "Hide inbox stories and notes tray",
+          "description": "Hides the stories and notes horizontal tray at the top of the inbox.",
+          "compatiblePackagesKey": 82
+        },
+        {
           "name": "Hide inbox subtabs",
           "description": "Hides Home and Channels tabs between active now tray and chats.",
           "compatiblePackagesKey": 82
@@ -2563,6 +2568,11 @@
           "name": "Hide update popup",
           "description": "Prevents the update popup from showing up.",
           "compatiblePackagesKey": 101
+        },
+        {
+          "name": "Open links externally",
+          "description": "Always opens links in your default browser instead of the in-app browser, regardless of the in-app setting.",
+          "compatiblePackagesKey": 82
         },
         {
           "name": "Override certificate pinning",
@@ -2635,6 +2645,11 @@
           "compatiblePackagesKey": 106
         },
         {
+          "name": "Rename shared permissions",
+          "description": "Rename certain permissions shared across Amazon apps. Applying this patch can fix installation errors, but can also break features in certain apps.",
+          "compatiblePackagesKey": 102
+        },
+        {
           "name": "Sanitize sharing links",
           "description": "Removes tracking parameters from shared links. (Supports TikTok 43.6.2 + 43.8.3.)",
           "compatiblePackagesKey": 80
@@ -2695,6 +2710,18 @@
             }
           ],
           "compatiblePackagesKey": 84
+        },
+        {
+          "name": "Spoof package version",
+          "description": "Sets a very high version code so the Play Store treats the app as already up to date and never offers an update.",
+          "options": [
+            {
+              "key": "versionCode",
+              "title": "Version code",
+              "description": "The version code to set. Must be higher than the Play Store version to suppress updates. Defaults to the maximum value."
+            }
+          ],
+          "compatiblePackagesKey": 82
         },
         {
           "name": "Unlimited track skipping",
@@ -10441,7 +10468,7 @@
       "stars": 11,
       "starsGained7d": 1,
       "starsGained40d": 2,
-      "updatedAt": 1785765438000,
+      "updatedAt": 1785946574000,
       "firstSeen": 1781661282000,
       "appFirstSeen": {
         "com.citymapper.app.release": 1785083063805,
@@ -10465,6 +10492,11 @@
         {
           "name": "Disable map animations",
           "description": "Disable the map zoom-in animation",
+          "compatiblePackagesKey": 505
+        },
+        {
+          "name": "Easy deeplinks configuration",
+          "description": "Allows easy configuration of deeplinks (velov.cyclocity.fr, velov.grandlyon.com) required by the app to sign-in",
           "compatiblePackagesKey": 505
         },
         {
@@ -14662,15 +14694,53 @@
       "stars": 6,
       "starsGained7d": 1,
       "starsGained40d": 2,
-      "updatedAt": 1784809589000,
+      "updatedAt": 1785951106000,
       "firstSeen": 1784290021000,
       "appFirstSeen": {
-        "com.x8bit.bitwarden": 1785156172223
+        "com.x8bit.bitwarden": 1785156172223,
+        "com.github.android": 1785951773538
       },
       "patches": [
         {
+          "name": "Custom font (GitHub)",
+          "description": "Replaces GitHub's bundled Inter and Mona Sans UI fonts with a custom font file.",
+          "default": false,
+          "options": [
+            {
+              "key": "customFontFile",
+              "title": "Custom font",
+              "description": "The file path to your font file. Tap the file picker and select it. The font file must be in TTF or OTF format. A variable font is recommended so heading and body text keep their different weights."
+            }
+          ],
+          "compatiblePackagesKey": 619
+        },
+        {
+          "name": "Custom monospace font (GitHub)",
+          "description": "Replaces GitHub's bundled Roboto Mono code font with a custom monospace font file.",
+          "default": false,
+          "options": [
+            {
+              "key": "customMonospaceFontFile",
+              "title": "Custom monospace font",
+              "description": "The file path to your monospace font file. Tap the file picker and select it. The font file must be in TTF or OTF format."
+            }
+          ],
+          "compatiblePackagesKey": 619
+        },
+        {
           "name": "Force system font (Bitwarden)",
           "description": "Renders the app using the device's system font instead of DM Sans / Roboto.",
+          "compatiblePackagesKey": 620
+        },
+        {
+          "name": "Force system font (GitHub)",
+          "description": "Renders GitHub UI text using the device system font by overriding bundled font resources at runtime.",
+          "compatiblePackagesKey": 619
+        },
+        {
+          "name": "Force system font (including monospace) (GitHub)",
+          "description": "Renders GitHub UI and monospace text using the device system UI font.",
+          "default": false,
           "compatiblePackagesKey": 619
         }
       ],
@@ -14697,42 +14767,42 @@
         {
           "name": "AMOLED dark theme",
           "description": "Replaces the dark theme background with pure black.",
-          "compatiblePackagesKey": 620
+          "compatiblePackagesKey": 621
         },
         {
           "name": "AMOLED dark theme",
           "description": "Replaces the dark theme background with pure black.",
-          "compatiblePackagesKey": 621
+          "compatiblePackagesKey": 622
         },
         {
           "name": "Disable tracking",
           "description": "Disables analytics and crash reporting.",
-          "compatiblePackagesKey": 622
+          "compatiblePackagesKey": 623
         },
         {
           "name": "Hide upgrade upselling",
           "description": "Hides the top-bar upgrade button and promotional sidebar rows.",
-          "compatiblePackagesKey": 620
+          "compatiblePackagesKey": 621
         },
         {
           "name": "Remove 'Sent from' signature",
           "description": "Removes the 'Sent from Proton Mail' signature from emails.",
-          "compatiblePackagesKey": 620
+          "compatiblePackagesKey": 621
         },
         {
           "name": "Remove free accounts limit",
           "description": "Removes the limit for maximum free accounts logged in.",
-          "compatiblePackagesKey": 620
+          "compatiblePackagesKey": 621
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks all premium features.",
+          "compatiblePackagesKey": 624
         },
         {
           "name": "Unlock premium",
           "description": "Unlocks all premium features.",
           "compatiblePackagesKey": 623
-        },
-        {
-          "name": "Unlock premium",
-          "description": "Unlocks all premium features.",
-          "compatiblePackagesKey": 622
         },
         {
           "name": "Unlock premium",
@@ -14760,7 +14830,7 @@
         {
           "name": "Unlock Premium",
           "description": "Unlock all premium features (no unlocker app required).",
-          "compatiblePackagesKey": 624
+          "compatiblePackagesKey": 625
         }
       ],
       "isPreRelease": false
@@ -14784,12 +14854,12 @@
         {
           "name": "Unlock premium",
           "description": "Spoofs the premium subscription check.",
-          "compatiblePackagesKey": 625
+          "compatiblePackagesKey": 626
         },
         {
           "name": "Unlock premium",
           "description": "Spoofs the premium ad-free check",
-          "compatiblePackagesKey": 626
+          "compatiblePackagesKey": 627
         }
       ],
       "isPreRelease": false
@@ -14825,35 +14895,35 @@
               "description": "Path to a square PNG. Leave empty to preserve the original icon."
             }
           ],
-          "compatiblePackagesKey": 627
+          "compatiblePackagesKey": 628
         },
         {
           "name": "English UI",
           "description": "Adds complete English static, hardcoded, and server-provided UI localization.",
-          "compatiblePackagesKey": 627
+          "compatiblePackagesKey": 628
         },
         {
           "name": "Korean UI",
           "description": "Adds complete Korean static, hardcoded, and server-provided UI localization.",
-          "compatiblePackagesKey": 627
+          "compatiblePackagesKey": 628
         },
         {
           "name": "VocaColle Morphe settings",
           "description": "Adds display-language, cache, diagnostic, and patch-version controls to native Morphe settings.",
-          "compatiblePackagesKey": 627
+          "compatiblePackagesKey": 628
         },
         {
           "name": "VocaColle ad control",
           "description": "Adds opt-in controls for VocaColle advertising surfaces.",
           "isPreRelease": true,
           "default": false,
-          "compatiblePackagesKey": 627
+          "compatiblePackagesKey": 628
         },
         {
           "name": "VocaColle compatibility probe",
           "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
           "default": false,
-          "compatiblePackagesKey": 627
+          "compatiblePackagesKey": 628
         }
       ],
       "isPreRelease": false
@@ -14876,7 +14946,7 @@
         {
           "name": "Devices Tycoon Premium",
           "description": "Instantly completes all IAP purchases (remove ads, research coins, budget) on tap and disables all ads in Devices Tycoon.",
-          "compatiblePackagesKey": 628
+          "compatiblePackagesKey": 629
         }
       ],
       "isPreRelease": false
@@ -14899,7 +14969,7 @@
         {
           "name": "Unlock premium",
           "description": "Déverrouille toutes les fonctionnalités premium de DBT Coach en court-circuitant la vérification d'abonnement RevenueCat.",
-          "compatiblePackagesKey": 629
+          "compatiblePackagesKey": 630
         }
       ],
       "isPreRelease": false
@@ -14922,7 +14992,7 @@
         {
           "name": "Disable Shorts repeat",
           "description": "Stops Shorts from automatically repeating. There is no setting for this; the patch itself is the switch.",
-          "compatiblePackagesKey": 630
+          "compatiblePackagesKey": 631
         }
       ],
       "isPreRelease": false
@@ -14946,13 +15016,13 @@
           "name": "Remove ads",
           "description": "Bypasses ad-removal premium checks by forcing PremiumState.isRemoveAdPremium() to always return true.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 631
+          "compatiblePackagesKey": 632
         },
         {
           "name": "Unlock Pro subscription",
           "description": "Bypasses premium checks by forcing PremiumState.isPremium() to always return true.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 631
+          "compatiblePackagesKey": 632
         }
       ],
       "isPreRelease": false
@@ -15046,7 +15116,7 @@
         {
           "name": "Disable Sync for Lemmy bottom sheet",
           "description": "Disables the bottom sheet at the startup that asks you to signup to \"Sync for Lemmy\".",
-          "compatiblePackagesKey": 632
+          "compatiblePackagesKey": 633
         },
         {
           "name": "Disable ads",
@@ -15054,11 +15124,11 @@
         },
         {
           "name": "Disable ads",
-          "compatiblePackagesKey": 633
+          "compatiblePackagesKey": 634
         },
         {
           "name": "Disable ads",
-          "compatiblePackagesKey": 634
+          "compatiblePackagesKey": 635
         },
         {
           "name": "Disable ads",
@@ -15088,7 +15158,7 @@
         },
         {
           "name": "Fix /s/ links",
-          "compatiblePackagesKey": 632
+          "compatiblePackagesKey": 633
         },
         {
           "name": "Fix Boost FAB nested scroll",
@@ -15152,7 +15222,7 @@
         },
         {
           "name": "Fix Redgifs API",
-          "compatiblePackagesKey": 632
+          "compatiblePackagesKey": 633
         },
         {
           "name": "Fix download completed notification visibility",
@@ -15167,7 +15237,7 @@
         {
           "name": "Fix post thumbnails",
           "description": "Fixes loading post thumbnails by correcting their URLs.",
-          "compatiblePackagesKey": 632
+          "compatiblePackagesKey": 633
         },
         {
           "name": "Fix slow Giphy loading",
@@ -15177,7 +15247,7 @@
         {
           "name": "Fix video downloads",
           "description": "Fixes a bug in Sync's MPD parser resulting in only the audio-track being saved.",
-          "compatiblePackagesKey": 632
+          "compatiblePackagesKey": 633
         },
         {
           "name": "Hook exception handler",
@@ -15198,12 +15268,12 @@
         {
           "name": "Modify login WebView",
           "description": "Modify the WebView used for logging into reddit to prevent login issues",
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 636
         },
         {
           "name": "Modify login WebView",
           "description": "Modify the WebView used for logging into reddit to prevent login issues",
-          "compatiblePackagesKey": 636
+          "compatiblePackagesKey": 637
         },
         {
           "name": "Modify login WebView",
@@ -15218,7 +15288,7 @@
         {
           "name": "Modify login WebView",
           "description": "Modify the WebView used for logging into reddit to prevent login issues",
-          "compatiblePackagesKey": 632
+          "compatiblePackagesKey": 633
         },
         {
           "name": "Prefer high refresh rate",
@@ -15263,12 +15333,12 @@
               "description": "raw_media shares the direct media/download URL. item_permalink shares the Imgur gallery URL with the selected media fragment."
             }
           ],
-          "compatiblePackagesKey": 637
+          "compatiblePackagesKey": 638
         },
         {
           "name": "Share selected media file",
           "description": "Makes Imgur post-detail media long-press share the selected media file. Also replaces Imgur's Download share action with direct file sharing. The selected media is cached privately, shared with Android's share sheet, and is not saved permanently to /sdcard/Download/Imgur.",
-          "compatiblePackagesKey": 637
+          "compatiblePackagesKey": 638
         },
         {
           "name": "Show inline Giphy previews in comments",
@@ -15339,29 +15409,7 @@
               "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent."
             }
           ],
-          "compatiblePackagesKey": 638
-        },
-        {
-          "name": "Spoof client",
-          "description": "Restores functionality of the app by using custom client ID.",
-          "options": [
-            {
-              "key": "client-id",
-              "title": "OAuth client ID",
-              "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here."
-            },
-            {
-              "key": "redirect-uri",
-              "title": "Redirect URI",
-              "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI."
-            },
-            {
-              "key": "user-agent",
-              "title": "User agent",
-              "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent."
-            }
-          ],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 639
         },
         {
           "name": "Spoof client",
@@ -15384,6 +15432,28 @@
             }
           ],
           "compatiblePackagesKey": 636
+        },
+        {
+          "name": "Spoof client",
+          "description": "Restores functionality of the app by using custom client ID.",
+          "options": [
+            {
+              "key": "client-id",
+              "title": "OAuth client ID",
+              "description": "The Reddit OAuth client ID. Refer to Patcheddit documentation for more information on what to put here."
+            },
+            {
+              "key": "redirect-uri",
+              "title": "Redirect URI",
+              "description": "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's redirect URI."
+            },
+            {
+              "key": "user-agent",
+              "title": "User agent",
+              "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent."
+            }
+          ],
+          "compatiblePackagesKey": 637
         },
         {
           "name": "Spoof client",
@@ -15449,7 +15519,7 @@
               "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent."
             }
           ],
-          "compatiblePackagesKey": 639
+          "compatiblePackagesKey": 640
         },
         {
           "name": "Spoof client",
@@ -15471,7 +15541,7 @@
               "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent."
             }
           ],
-          "compatiblePackagesKey": 632
+          "compatiblePackagesKey": 633
         },
         {
           "name": "Stabilize Boost subreddit bottom navigation surface",
@@ -15517,7 +15587,7 @@
         {
           "name": "Use /user/ endpoint",
           "description": "Replaces the deprecated endpoint for viewing user profiles /u with /user, that used to fix a bug.",
-          "compatiblePackagesKey": 632
+          "compatiblePackagesKey": 633
         },
         {
           "name": "Use public imgur API",
@@ -15545,97 +15615,97 @@
         {
           "name": "Disable LINE Premium",
           "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsells, badges, the Premium settings page, and subscribe/manage flows. Doesn't unlock anything (premium is server-enforced).",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Disable VOOM",
           "description": "Neutralizes VOOM entry points — deep links, shares, and notifications do nothing and the standalone VOOM feed closes on open. Messaging and other tabs are unaffected.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Fix push notifications",
           "description": "Restores push notifications on re-signed builds when LINE is fully closed. Root Mount install does not need this patch.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide Events button",
           "description": "Removes the \"Events\" row from a chat room's slide-out menu. (Events is a separate feature from LINE Calendar — it opens a server-hosted page.)",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide Home modules",
           "description": "Hides Home-tab clutter modules: the recommended stickers/content section, the real-time hot-topics (即時夯話題) block, and Home feed ads.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide LINE GIFT button",
           "description": "Removes the LINE GIFT tile from a chat room's + attach menu.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide LINE TODAY tab",
           "description": "Removes the LINE TODAY (News) tab from the main bottom navigation, in both the news-tab and news-row layouts.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide Transfer button",
           "description": "Removes the Transfer (LINE Pay) tile from a chat room's + attach menu.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide VOOM tab",
           "description": "Removes the VOOM (formerly Timeline) tab from the main bottom navigation.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide Wallet tab",
           "description": "Removes the Wallet (LINE Pay) tab from the main bottom navigation, in both the normal and mini-tab layouts.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide ad views",
           "description": "Hides LINE display ad views — the LINE Ads SDK containers across the app, the chat-list Smart Channel banner, and Google AdManager ads.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide attach menu extra tools",
           "description": "Removes all the server-provided extra tools from a chat room's + attach menu (Poll, Reservation, Schedule, Ladder shuffle, and any others). The built-in tiles (camera, gallery, files, contact, etc.) are unaffected.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide calendar buttons",
           "description": "Removes every LINE Calendar button inside the messenger: the one in the Chats-tab header, and the four inside a chat room — the top toolbar, the + attach menu, the slide-out chat menu, and the message long-press menu.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide community button",
           "description": "Removes the community (OpenChat) button from the top of the Chats tab header.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Hide premium unsend upsells",
           "description": "Removes the LYP premium-unsend upsells that survive \"Disable LINE Premium\": the \"Unsend discreetly\" button, the post-unsend promo link, and the expired-window unsend upsell. Ordinary unsend still works.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Keep chats unread",
           "description": "Opening a 1:1 or group chat no longer marks it read — it stays unread and no read receipt is sent. Manually using \"Mark as read\" / \"Mark all as read\" still marks the chat read and sends the receipt as normal.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Open links in external browser",
           "description": "Opens tapped web links (http/https) in your default browser instead of LINE's in-app browser. LIFF mini-apps and LINE deep links are unaffected.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Redirect LINE Pay",
           "description": "Forwards LINE Pay flows to the standalone LINE Pay app instead of running them in-app, so the device-integrity check that fails on a re-signed build never runs. Messaging is unaffected.",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         },
         {
           "name": "Remove banner ads",
           "description": "Stops LINE from loading Smart Channel banner ads (neutralizes the getBanners and getPrefetchableBanners responses).",
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 641
         }
       ],
       "isPreRelease": false
@@ -15684,7 +15754,7 @@
         {
           "name": "Brave Origin",
           "description": "Unlocks Brave Origin and enables feature toggle controls.",
-          "compatiblePackagesKey": 641
+          "compatiblePackagesKey": 642
         },
         {
           "name": "Change app icon",
@@ -15851,32 +15921,32 @@
         {
           "name": "Disable Signature Verification",
           "description": "Disable Signature Verification So The App Doesn't Crash When The APK Signature Changes After Patching",
-          "compatiblePackagesKey": 642
-        },
-        {
-          "name": "Enable Premium",
-          "description": "Unlocks AutoLocation's full version",
           "compatiblePackagesKey": 643
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks AutoTools",
+          "description": "Unlocks AutoLocation's full version",
           "compatiblePackagesKey": 644
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks Boosted Premium",
+          "description": "Unlocks AutoTools",
           "compatiblePackagesKey": 645
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks Gradient Weather Premium. Use With Spoof Install Source",
+          "description": "Unlocks Boosted Premium",
           "compatiblePackagesKey": 646
         },
         {
           "name": "Enable Premium",
-          "description": "Unlock Lifesum Premium",
+          "description": "Unlocks Gradient Weather Premium. Use With Spoof Install Source",
           "compatiblePackagesKey": 647
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Unlock Lifesum Premium",
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Enable Premium",
@@ -15886,52 +15956,52 @@
         {
           "name": "Enable Premium",
           "description": "Unlocks Listy Premium",
-          "compatiblePackagesKey": 648
-        },
-        {
-          "name": "Enable Premium",
-          "description": "Unlocks Premium. Use With Spoof Install Source.",
-          "compatiblePackagesKey": 642
-        },
-        {
-          "name": "Enable Premium",
-          "description": "Unlocks Phi Launcher Pro",
           "compatiblePackagesKey": 649
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks Pinnit Pro. Just Tap Restore Purchase When Prompted. Must be installed with either ADB/InstallerX Revived/Inure so it is not in Restricted Mode",
+          "description": "Unlocks Premium. Use With Spoof Install Source.",
+          "compatiblePackagesKey": 643
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Unlocks Phi Launcher Pro",
           "compatiblePackagesKey": 650
         },
         {
           "name": "Enable Premium",
-          "description": "Unlock Sponge Premium",
+          "description": "Unlocks Pinnit Pro. Just Tap Restore Purchase When Prompted. Must be installed with either ADB/InstallerX Revived/Inure so it is not in Restricted Mode",
           "compatiblePackagesKey": 651
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks Super Status Bar Premium. Use with Spoof Install Source",
+          "description": "Unlock Sponge Premium",
           "compatiblePackagesKey": 652
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks Todo Mate Premium. Use With Spoof Install Source",
+          "description": "Unlocks Super Status Bar Premium. Use with Spoof Install Source",
           "compatiblePackagesKey": 653
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks UbikiTouch Premium. Must be installed with either ADB/InstallerX Revived/Inure so it is not in Restricted Mode",
+          "description": "Unlocks Todo Mate Premium. Use With Spoof Install Source",
           "compatiblePackagesKey": 654
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks Vocabulary Premium",
+          "description": "Unlocks UbikiTouch Premium. Must be installed with either ADB/InstallerX Revived/Inure so it is not in Restricted Mode",
           "compatiblePackagesKey": 655
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks Volume Styles Premium. Use with Spoof Install Source",
+          "description": "Unlocks Vocabulary Premium",
           "compatiblePackagesKey": 656
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Unlocks Volume Styles Premium. Use with Spoof Install Source",
+          "compatiblePackagesKey": 657
         },
         {
           "name": "Enable Prime",
@@ -15958,7 +16028,7 @@
         {
           "name": "Unlock all questions",
           "description": "Unlocks all exam questions",
-          "compatiblePackagesKey": 657
+          "compatiblePackagesKey": 658
         }
       ],
       "isPreRelease": false
@@ -15981,22 +16051,22 @@
         {
           "name": "Bypass Google Sign-In",
           "description": "Bypasses SHA-1 check by using embedded WebView OAuth for Google Sign-In.",
-          "compatiblePackagesKey": 658
+          "compatiblePackagesKey": 659
         },
         {
           "name": "Bypass license check",
           "description": "Bypasses PairIP license verification.",
-          "compatiblePackagesKey": 658
+          "compatiblePackagesKey": 659
         },
         {
           "name": "Disable telemetry",
           "description": "Disables Firebase Crashlytics, Sessions, and Analytics.",
-          "compatiblePackagesKey": 658
+          "compatiblePackagesKey": 659
         },
         {
           "name": "Unlock premium features",
           "description": "Unlocks all premium capabilities.",
-          "compatiblePackagesKey": 658
+          "compatiblePackagesKey": 659
         }
       ],
       "isPreRelease": false
@@ -16026,37 +16096,37 @@
         {
           "name": "F1 TV - Background playback",
           "description": "Keeps the F1 TV player alive when the activity goes to the background or the screen turns off.",
-          "compatiblePackagesKey": 659
+          "compatiblePackagesKey": 660
         },
         {
           "name": "F1 TV - Foreground playback service",
           "description": "Keeps background F1 TV playback alive with an Android media playback notification and playback/PiP controls.",
-          "compatiblePackagesKey": 659
+          "compatiblePackagesKey": 660
         },
         {
           "name": "F1 TV - Picture-in-Picture",
           "description": "Keeps F1 TV playback alive while entering Android Picture-in-Picture mode.",
-          "compatiblePackagesKey": 659
+          "compatiblePackagesKey": 660
         },
         {
           "name": "Movie Paradise - Force RevenueCat entitlement (experimental)",
           "description": "Forces RevenueCat entitlements active. Experimental: premium is server-authoritative, so this likely unlocks nothing.",
           "isPreRelease": true,
           "default": false,
-          "compatiblePackagesKey": 660
+          "compatiblePackagesKey": 661
         },
         {
           "name": "Movie Paradise - GmsCore support (microG login)",
           "description": "Routes Google Play Services through microG (MicroG-RE) so Google sign-in works without stock Play Services.",
           "isPreRelease": true,
           "default": false,
-          "compatiblePackagesKey": 660
+          "compatiblePackagesKey": 661
         },
         {
           "name": "Movie Paradise - PairIP license bypass",
           "description": "Neutralises Google Play integrity/license checks (PairIP) so a repackaged build launches.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 660
+          "compatiblePackagesKey": 661
         }
       ],
       "isPreRelease": false
@@ -16087,7 +16157,7 @@
           "name": "Disable Ozon Bank VPN warning",
           "description": "Removes the warning shown when Ozon Bank detects an active VPN connection.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 661
+          "compatiblePackagesKey": 662
         },
         {
           "name": "Disable ads",
@@ -16129,17 +16199,17 @@
         {
           "name": "Disable checkout tips",
           "description": "Removes courier tips UI and prevents tip IDs or tip API calls from being submitted.",
-          "compatiblePackagesKey": 662
+          "compatiblePackagesKey": 663
         },
         {
           "name": "Disable lottery and in-app pushes",
           "description": "Disables lottery onboarding and the in-app push SDK used for reward popups.",
-          "compatiblePackagesKey": 662
+          "compatiblePackagesKey": 663
         },
         {
           "name": "Disable telemetry",
           "description": "Disables Ozon analytics, attribution, crash reporting, and telemetry uploads.",
-          "compatiblePackagesKey": 662
+          "compatiblePackagesKey": 663
         },
         {
           "name": "Exclude Google Play apps from updates",
@@ -16150,7 +16220,7 @@
         {
           "name": "Hide Ozon Bank ad banner",
           "description": "Removes the advertising banner carousel from the Ozon Bank screen.",
-          "compatiblePackagesKey": 662
+          "compatiblePackagesKey": 663
         },
         {
           "name": "Hide Ozon Bank benefit sections",
@@ -16179,23 +16249,23 @@
               "description": "Hides the Ozon Premium benefits section."
             }
           ],
-          "compatiblePackagesKey": 661
+          "compatiblePackagesKey": 662
         },
         {
           "name": "Hide Ozon Bank promotions",
           "description": "Uses the classic home design and removes promotional cards, sections, shortcuts, and the startup installment offer from Ozon Bank pages.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 661
+          "compatiblePackagesKey": 662
         },
         {
           "name": "Hide account lottery and review feed",
           "description": "Removes the lottery entry banner and review feed shortcut from the account screen.",
-          "compatiblePackagesKey": 662
+          "compatiblePackagesKey": 663
         },
         {
           "name": "Hide seller rating prompt",
           "description": "Removes the post-purchase seller rating prompt.",
-          "compatiblePackagesKey": 662
+          "compatiblePackagesKey": 663
         },
         {
           "name": "Remove Ozon ads",
@@ -16207,12 +16277,12 @@
               "description": "Removes recommendation grids from product, cart, profile, and favorites screens."
             }
           ],
-          "compatiblePackagesKey": 662
+          "compatiblePackagesKey": 663
         },
         {
           "name": "Show final prices only",
           "description": "Hides crossed-out prices, discount percentages, and redundant price rows in the cart total.",
-          "compatiblePackagesKey": 662
+          "compatiblePackagesKey": 663
         }
       ],
       "isPreRelease": false
@@ -16235,7 +16305,7 @@
         {
           "name": "Swipe to add to queue",
           "description": "Adds a Spotify style swipe right gesture that adds the swiped item to the play queue, on every screen that lists tracks, albums, playlists or mixes.",
-          "compatiblePackagesKey": 663
+          "compatiblePackagesKey": 664
         }
       ],
       "isPreRelease": false
@@ -16258,7 +16328,7 @@
         {
           "name": "Unlock premium",
           "description": "Makes isPremium() always return true in AI Audio Novel Reader. Unlocks all premium features and disables the 10-hour trial countdown.",
-          "compatiblePackagesKey": 664
+          "compatiblePackagesKey": 665
         }
       ],
       "isPreRelease": false
@@ -16281,7 +16351,7 @@
         {
           "name": "Enable premium features",
           "description": "Bypasses the premium/licence gate so premium content and unlimited tests become available.",
-          "compatiblePackagesKey": 665
+          "compatiblePackagesKey": 666
         }
       ],
       "isPreRelease": false
@@ -16305,37 +16375,37 @@
           "name": "Bypass anti-debug",
           "description": "Disables debugger detection and process tracer exit checks.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 666
+          "compatiblePackagesKey": 667
         },
         {
           "name": "Bypass local account login requirement",
           "description": "Forces Accounts.isLogin() to return true, enabling account-gated cards and feature tiles without signing in.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 666
+          "compatiblePackagesKey": 667
         },
         {
           "name": "MicroG / GmsCore support for Google login",
           "description": "Redirects Google Play Services authorization calls to MicroG (app.revanced.android.gms) to fix Google login failure.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 666
+          "compatiblePackagesKey": 667
         },
         {
           "name": "Premium bypass",
           "description": "Unlocks Google Maps, Mapbox, Spotify, and Twin Space features.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 666
+          "compatiblePackagesKey": 667
         },
         {
           "name": "Unlock Web Browser & Screen Mirroring",
           "description": "Enables Web Browser tile, bypasses driving video motion masks, and forces screen mirroring support.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 666
+          "compatiblePackagesKey": 667
         },
         {
           "name": "Unlock feature gates",
           "description": "Enables Twin Space, Mapbox visibility, Mapbox demo validity, dashboard VIP tile badges, and Member Center card.",
           "isPreRelease": true,
-          "compatiblePackagesKey": 666
+          "compatiblePackagesKey": 667
         }
       ],
       "isPreRelease": false
@@ -16381,12 +16451,12 @@
         {
           "name": "Disable license check",
           "description": "Removes the PairIP LicenseClient.checkLicense() call, which otherwise force-closes a re-signed/sideloaded patched APK a short while after launch.",
-          "compatiblePackagesKey": 667
+          "compatiblePackagesKey": 668
         },
         {
           "name": "Unlock premium",
           "description": "Always report the 'remove_ads' and 'pro' in-app products as purchased, regardless of the real Play Billing purchase state.",
-          "compatiblePackagesKey": 667
+          "compatiblePackagesKey": 668
         }
       ],
       "isPreRelease": false
@@ -16409,7 +16479,7 @@
         {
           "name": "Unlock Pro",
           "description": "Unlocks all Strong Pro features.",
-          "compatiblePackagesKey": 668
+          "compatiblePackagesKey": 669
         }
       ],
       "isPreRelease": false
@@ -16432,7 +16502,7 @@
         {
           "name": "Unlock Premium",
           "description": "Unlocks all premium features.",
-          "compatiblePackagesKey": 669
+          "compatiblePackagesKey": 670
         }
       ],
       "isPreRelease": false
@@ -16456,12 +16526,12 @@
         {
           "name": "MonkeyScript userscript manager",
           "description": "Adds a process-aware Chrome Material You userscript manager using a Violentmonkey-derived parser and installer, safe Chrome app-menu integration, a guaranteed app shortcut, Greasy Fork/Sleazy Fork support, and configurable app/package cloning.",
-          "compatiblePackagesKey": 670
+          "compatiblePackagesKey": 671
         },
         {
           "name": "Download GX mods as files",
           "description": "Adds a visible Download Mod button in Opera GX, with URL auto-detection and a Share fallback.",
-          "compatiblePackagesKey": 671
+          "compatiblePackagesKey": 672
         }
       ],
       "isPreRelease": false
@@ -16486,14 +16556,14 @@
           "description": "Adds Settings > Morphe > Ratings with independent overall and episode rating controls.",
           "isPreRelease": true,
           "default": false,
-          "compatiblePackagesKey": 672
+          "compatiblePackagesKey": 673
         },
         {
           "name": "Remove SDH Annotations",
           "description": "Adds Settings → Morphe → Subtitles and removes SDH annotations from Media3 subtitles when enabled.",
           "isPreRelease": true,
           "default": false,
-          "compatiblePackagesKey": 672
+          "compatiblePackagesKey": 673
         }
       ],
       "isPreRelease": false
@@ -16517,59 +16587,59 @@
         {
           "name": "Disable Firebase Crashlytics",
           "description": "Adds the official firebase_crashlytics_collection_enabled=false manifest flag, disabling all crash/log reporting to Firebase Crashlytics at SDK init.",
-          "compatiblePackagesKey": 673
+          "compatiblePackagesKey": 674
         },
         {
           "name": "Disable Pairip license check",
           "description": "Prevents the Pairip-injected Application class from binding to the Play Store licensing service, which would otherwise redirect to / force-close for a side-loaded APK.",
-          "compatiblePackagesKey": 673
+          "compatiblePackagesKey": 674
         },
         {
           "name": "Disable Play Integrity failure crash",
           "description": "Prevents SecurityException when the Play Integrity API call itself fails (APP_NOT_INSTALLED / APP_UID_MISMATCH), as happens for side-loaded APKs.",
-          "compatiblePackagesKey": 673
+          "compatiblePackagesKey": 674
         },
         {
           "name": "Disable Play Integrity gating flag wait",
           "description": "Stops the startup coroutine from waiting forever on a Remote-Config-backed flag to decide whether to run the Play Integrity flow, by always treating it as disabled.",
-          "compatiblePackagesKey": 673
+          "compatiblePackagesKey": 674
         },
         {
           "name": "Disable Play Integrity token request",
           "description": "Makes the Play Integrity token request always fail immediately with an unclassified exception, so the app treats it as gracefully unavailable and continues initialization instead of getting stuck on a Play-Store-required gate.",
-          "compatiblePackagesKey": 673
+          "compatiblePackagesKey": 674
         },
         {
           "name": "Disable Play Integrity verdict validation",
           "description": "Removes client-side SecurityException throws that reject unlicensed/unattested/unrecognized Play Integrity verdicts, without touching unrelated code sharing the same method.",
-          "compatiblePackagesKey": 673
+          "compatiblePackagesKey": 674
         },
         {
           "name": "Disable StoreLogs telemetry",
           "description": "Prevents the app from uploading queued client-side log entries to its own backend telemetry endpoint (.../Log/StoreLogs).",
-          "compatiblePackagesKey": 673
+          "compatiblePackagesKey": 674
         },
         {
           "name": "Disable broadcast receiver security check",
           "description": "Removes SecurityException throws gating a BroadcastReceiver's onReceive, which fail when the broadcast sender isn't verified as the real Play Store.",
-          "compatiblePackagesKey": 673
+          "compatiblePackagesKey": 674
         },
         {
           "name": "Disable certificate pinning",
           "description": "Prevents the app's OkHttp CertificatePinner from ever being installed, allowing HTTPS traffic to be intercepted (e.g. by a proxy) for analysis.",
           "default": false,
-          "compatiblePackagesKey": 673
+          "compatiblePackagesKey": 674
         },
         {
           "name": "Remove idokep ads",
           "description": "Removes ads from the idokep app.",
-          "compatiblePackagesKey": 674
+          "compatiblePackagesKey": 675
         },
         {
           "name": "Trust user-installed certificates",
           "description": "Adds a user certificate trust anchor to the network security config, so a MITM proxy's installed CA is accepted (this is separate from and in addition to disabling OkHttp's code-level certificate pinning).",
           "default": false,
-          "compatiblePackagesKey": 673
+          "compatiblePackagesKey": 674
         }
       ],
       "isPreRelease": false
@@ -16594,14 +16664,14 @@
           "description": "Adds Settings > Morphe > Ratings with independent overall and episode rating controls.",
           "isPreRelease": true,
           "default": false,
-          "compatiblePackagesKey": 672
+          "compatiblePackagesKey": 673
         },
         {
           "name": "Remove SDH Annotations",
           "description": "Adds Settings → Morphe → Subtitles and removes SDH annotations from Media3 subtitles when enabled.",
           "isPreRelease": true,
           "default": false,
-          "compatiblePackagesKey": 672
+          "compatiblePackagesKey": 673
         }
       ],
       "isPreRelease": false
@@ -16615,7 +16685,7 @@
       "stars": 1,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1785938371000,
+      "updatedAt": 1785940441000,
       "firstSeen": 1785926406013,
       "appFirstSeen": {
         "com.calistree.calistree": 1785926405780
@@ -16624,7 +16694,7 @@
         {
           "name": "Premium Unlock",
           "description": "Unlocks all Calistree PRO features.",
-          "compatiblePackagesKey": 675
+          "compatiblePackagesKey": 676
         }
       ],
       "isPreRelease": false
@@ -23504,8 +23574,21 @@
     ],
     [
       {
+        "packageName": "com.github.android",
+        "targets": [
+          {
+            "version": "1.270.0"
+          }
+        ]
+      }
+    ],
+    [
+      {
         "packageName": "com.x8bit.bitwarden",
         "targets": [
+          {
+            "version": "2026.7.0"
+          },
           {
             "version": "2026.6.1"
           }

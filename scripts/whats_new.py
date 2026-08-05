@@ -5,24 +5,23 @@ import urllib.parse
 from pathlib import Path
 from utils import load_json, save_json
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA_DIR = ROOT / "data"
-PUBLIC_DIR = ROOT / "web" / "public"
+ROOT_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = ROOT_DIR / "data"
+PUBLIC_DIR = ROOT_DIR / "web" / "public"
 PATCHES_DIR = DATA_DIR / "patches"
 HISTORY_PATH = DATA_DIR / "history.json"
 BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
 APPS_JSON_PATH = PUBLIC_DIR / "apps.json"
-WHATS_NEW_PATH = ROOT / "whats-new.md"
+WHATS_NEW_PATH = ROOT_DIR / "whats-new.md"
 WHATS_NEW_JSON_PATH = PUBLIC_DIR / "whats-new.json"
+WHATS_NEW_MAX_ENTRIES = 21
 
 
-def get_bundle_names():
-    bundles_json = load_json(BUNDLES_JSON_PATH, {})
+def get_bundle_names(bundles_json):
     return {f"{bundle['source']}:{bundle['repo']}": bundle.get("name", bundle["repo"].split("/")[-1]) for bundle in bundles_json.get("bundles", [])}
 
 
-def build_new_bundles():
-    bundles_json = load_json(BUNDLES_JSON_PATH, {})
+def build_new_bundles(bundles_json):
     bundles_list = bundles_json.get("bundles", [])
     compatibilities = bundles_json.get("compatibilities", [])
 
@@ -220,20 +219,20 @@ def main():
     app_metadata = load_json(APPS_JSON_PATH, {})
 
     whats_new_data = load_json(WHATS_NEW_JSON_PATH, []) or []
-    bundle_names = get_bundle_names()
+    bundles_json = load_json(BUNDLES_JSON_PATH, {})
+    bundle_names = get_bundle_names(bundles_json)
 
     # Shift time back by 12 hours to handle GitHub Actions delays
     now = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=12)
     today_str = now.strftime(f"%B {now.day}, %Y")
 
-    new_bundles = build_new_bundles()
+    new_bundles = build_new_bundles(bundles_json)
     json_diff = build_json_diff(old_history, new_bundles, app_metadata, bundle_names)
 
     if not json_diff:
         print("No changes found.")
         return
 
-    # Create markdown
     markdown_str = generate_markdown(json_diff, app_metadata)
     if markdown_str:
         WHATS_NEW_PATH.write_text(markdown_str + "\n", encoding="utf8")
@@ -241,10 +240,9 @@ def main():
     else:
         print("No changes to write to MD.")
 
-    # Insert today's JSON entry
     whats_new_data.insert(0, {"date": today_str, "bundles": json_diff})
 
-    whats_new_data = whats_new_data[:21]
+    whats_new_data = whats_new_data[:WHATS_NEW_MAX_ENTRIES]
     save_json(WHATS_NEW_JSON_PATH, whats_new_data)
     print("Updated whats-new.json.")
 

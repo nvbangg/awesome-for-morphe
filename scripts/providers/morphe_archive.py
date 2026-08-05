@@ -5,10 +5,13 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from utils import fetch, save_json
+from utils import fetch, load_json, save_json
 
+ROOT_DIR = Path(__file__).resolve().parents[2]
+DATA_DIR = ROOT_DIR / "data"
+DISCOVER_DIR = DATA_DIR / "discover"
 README_URL = "https://raw.githubusercontent.com/rushiforai/morphe-archive/main/README.md"
-OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "morphe-archive.json"
+OUTPUT_PATH = DISCOVER_DIR / "morphe-archive.json"
 _REPO_RE = re.compile(r"morphe\.software/add-source\?(github|gitlab)=([^)\s]+)")
 
 

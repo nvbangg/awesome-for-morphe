@@ -10,22 +10,12 @@ from typing import Any, Dict, Optional
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from utils import load_json, parse_timestamp, save_json
 
-DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
+ROOT_DIR = Path(__file__).resolve().parents[2]
+DATA_DIR = ROOT_DIR / "data"
+BUNDLES_DIR = DATA_DIR / "bundles"
+PATCHES_DIR = DATA_DIR / "patches"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
 STAR_HISTORY_JSON_PATH = DATA_DIR / "star-history.json"
-
-compatibilities_list = []
-compatibilities_map = {}
-
-
-def get_compat_key(compatibility_data: list) -> int:
-    compatibility_json = json.dumps(compatibility_data, sort_keys=True)
-    if compatibility_json in compatibilities_map:
-        return compatibilities_map[compatibility_json]
-    index = len(compatibilities_list)
-    compatibilities_list.append(compatibility_data)
-    compatibilities_map[compatibility_json] = index
-    return index
 
 
 def parse_version_item(item: Any) -> Optional[Dict[str, Any]]:
@@ -101,9 +91,20 @@ def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Opti
     return output
 
 
-def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir: Path) -> list:
-    bundles_dir = data_dir / "bundles"
-    patches_dir = data_dir / "patches"
+def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any]) -> list:
+    compatibilities_list = []
+    compatibilities_map = {}
+
+    def get_compat_key(compatibility_data: list) -> int:
+        compatibility_json = json.dumps(compatibility_data, sort_keys=True)
+        if compatibility_json in compatibilities_map:
+            return compatibilities_map[compatibility_json]
+        index = len(compatibilities_list)
+        compatibilities_list.append(compatibility_data)
+        compatibilities_map[compatibility_json] = index
+        return index
+
+    repos_data = load_json(REPOS_JSON_PATH, {})
     keys_to_remove = []
     valid_apps_from_bundles = set()
 
@@ -118,10 +119,10 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
         except ValueError:
             continue
         file_prefix = f"{source}~{owner}~{repo_name}"
-        main_bundle_path = bundles_dir / f"{file_prefix}~main.json"
-        main_list_path = patches_dir / f"{file_prefix}~main.json"
-        dev_bundle_path = bundles_dir / f"{file_prefix}~dev.json"
-        dev_list_path = patches_dir / f"{file_prefix}~dev.json"
+        main_bundle_path = BUNDLES_DIR / f"{file_prefix}~main.json"
+        main_list_path = PATCHES_DIR / f"{file_prefix}~main.json"
+        dev_bundle_path = BUNDLES_DIR / f"{file_prefix}~dev.json"
+        dev_list_path = PATCHES_DIR / f"{file_prefix}~dev.json"
         main_json = load_json(main_bundle_path) if main_bundle_path.exists() and main_list_path.exists() else None
         dev_json = load_json(dev_bundle_path) if dev_bundle_path.exists() and dev_list_path.exists() else None
         if not main_json and not dev_json:
@@ -143,7 +144,6 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
         patches_list_json = load_json(list_path, [])
         if isinstance(patches_list_json, list):
             patches_list_json = {"patches": patches_list_json}
-        repos_data = load_json(data_dir / "repos.json", {})
         existing_name = source_entry.get("name")
         repo_name_from_json = repos_data.get(base_key, {}).get("name") if isinstance(repos_data.get(base_key), dict) else None
         bundle_name = repo_name_from_json or existing_name
@@ -227,7 +227,6 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
         del apps_dict[package_name]
         print(f"[INFO] Removed app '{package_name}' (no longer supported by any bundle)")
     valid_prefixes = set()
-    repos_data = load_json(REPOS_JSON_PATH, {})
     for base_key in repos_data:
         if ":" in base_key:
             source, owner_repo = base_key.split(":", 1)
@@ -236,7 +235,7 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any], data_dir:
                 valid_prefixes.add(f"{source}~{owner}~{repo_name}")
             except ValueError:
                 pass
-    for directory in [bundles_dir, patches_dir]:
+    for directory in [BUNDLES_DIR, PATCHES_DIR]:
         if directory.exists():
             for filepath in directory.glob("*.json"):
                 prefix = filepath.name.removesuffix("~main.json").removesuffix("~dev.json")

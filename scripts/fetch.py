@@ -22,6 +22,8 @@ BUNDLES_DIR = DATA_DIR / "bundles"
 PATCHES_DIR = DATA_DIR / "patches"
 BUNDLE_PARSER_DIR = ROOT_DIR / "scripts" / "bundle-parser"
 MPP_DIR = BUNDLE_PARSER_DIR / "mpp"
+PENDING_REPOS_PATH = BUNDLE_PARSER_DIR / "pending_repos.json"
+UPDATED_FILES_PATH = BUNDLE_PARSER_DIR / "updated_files.txt"
 BRANCHES = ["main", "dev"]
 CONCURRENCY = 8
 
@@ -55,12 +57,12 @@ def get_remote_file_hash(url: str, source: str, fallback: Optional[str] = None) 
     return None
 
 
-def get_file_sha(source: str, owner_repo: str, branch: str, custom_url: Optional[str] = None) -> Optional[str]:
+def get_file_sha(source: str, owner_repo: str, branch: str) -> Optional[str]:
     if source == "github":
-        url = custom_url or f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
+        url = f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
     elif source == "gitlab":
         encoded_repo = urllib.parse.quote(owner_repo, safe="")
-        url = custom_url or f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
+        url = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
     else:
         return None
     return get_remote_file_hash(url, source, fallback=None)
@@ -86,11 +88,9 @@ def get_image_sha(source: str, owner_repo: str) -> Optional[str]:
     return get_remote_file_hash(url, source, fallback="exists")
 
 
-def process_repo_branch(
-    source: str, owner_repo: str, branch: str, current_sha: Optional[str], custom_url: Optional[str] = None
-) -> Tuple[str, str, str, Optional[str], Optional[str], bool, bool, bool, Optional[str]]:
+def process_repo_branch(source: str, owner_repo: str, branch: str, current_sha: Optional[str]) -> Tuple[str, str, str, Optional[str], Optional[str], bool, bool, bool, Optional[str]]:
     try:
-        remote_sha = get_file_sha(source, owner_repo, branch, custom_url)
+        remote_sha = get_file_sha(source, owner_repo, branch)
     except Exception as error:
         print(f"[-] [{owner_repo}:{branch}] Network error: {error}")
         return source, owner_repo, branch, current_sha, None, False, False, False, None
@@ -103,10 +103,10 @@ def process_repo_branch(
         return source, owner_repo, branch, None, None, False, True, True, None
 
     if source == "github":
-        raw_bundle_url = custom_url or f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
+        raw_bundle_url = f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
     else:
         encoded_repo = urllib.parse.quote(owner_repo, safe="")
-        raw_bundle_url = custom_url or f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
+        raw_bundle_url = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
 
     owner, repo = owner_repo.split("/", 1)
     file_prefix = f"{source}~{owner}~{repo}~{branch}"
@@ -181,19 +181,17 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
         source, owner_repo = base_key.split(":", 1)
         for branch in BRANCHES:
             current_sha = repo_meta.get(branch)
-            custom_url = discover_data.get(base_key, {}).get(f"bundleUrl:{branch}")
-            tasks.append((source, owner_repo, branch, current_sha, custom_url))
+            tasks.append((source, owner_repo, branch, current_sha))
         if fetch_images:
             image_tasks.append((source, owner_repo, repo_meta.get("image")))
 
     print(f"Processing {len(tasks)} branch targets...")
-    pending_repositories_file_path = BUNDLE_PARSER_DIR / "pending_repos.json"
     pending_repository_data = {}
     updated_count = 0
     updated_files = []
 
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
-        futures = [executor.submit(process_repo_branch, source, owner_repo, branch, current_sha, custom_url) for source, owner_repo, branch, current_sha, custom_url in tasks]
+        futures = [executor.submit(process_repo_branch, source, owner_repo, branch, current_sha) for source, owner_repo, branch, current_sha in tasks]
 
         for future in as_completed(futures):
             source, owner_repo, branch, new_sha, bundle_text, has_mpp, status_changed, is_404, bundle_name = future.result()
@@ -240,14 +238,13 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
 
     print(f"Fetch completed. Updated {updated_count} targets.")
 
-    list_file = BUNDLE_PARSER_DIR / "updated_files.txt"
     if updated_files:
-        list_file.write_text("\n".join(updated_files), encoding="utf-8")
+        UPDATED_FILES_PATH.write_text("\n".join(updated_files), encoding="utf-8")
         print(f"Saved {len(updated_files)} updated targets to updated_files.txt and pending_repos.json")
-    elif list_file.exists():
-        list_file.unlink()
+    elif UPDATED_FILES_PATH.exists():
+        UPDATED_FILES_PATH.unlink()
 
-    save_json(pending_repositories_file_path, pending_repository_data)
+    save_json(PENDING_REPOS_PATH, pending_repository_data)
 
 
 def main() -> None:

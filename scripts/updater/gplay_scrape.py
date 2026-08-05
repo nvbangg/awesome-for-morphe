@@ -4,19 +4,15 @@ import concurrent.futures
 import sys
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
+from google_play_scraper import app as gplay_app
+from google_play_scraper.exceptions import NotFoundError
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from utils import load_json, normalize_image_url
 
-try:
-    from google_play_scraper import app as gplay_app
-    from google_play_scraper.exceptions import NotFoundError
-except ImportError:
-    gplay_app = None
-    NotFoundError = Exception
-
 GPLAY_CONCURRENCY = 8
-DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
+ROOT_DIR = Path(__file__).resolve().parents[2]
+DATA_DIR = ROOT_DIR / "data"
 OFFICIAL_BUNDLES_PATH = DATA_DIR / "official-bundles.json"
 
 SKIP_WORDS = {
@@ -70,16 +66,12 @@ SKIP_WORDS = {
 
 
 def fetch_app_details(package_name: str) -> Tuple[Optional[Dict[str, Any]], bool]:
-    if not gplay_app:
-        return None, False
     try:
         result = gplay_app(package_name, lang="en", country="us")
         if not result:
             return None, False
         icon_url = normalize_image_url(result.get("icon"))
-        description = result.get("summary")
-        if description is None:
-            description = ""
+        description = result.get("summary") or ""
         details = {
             "name": result.get("title"),
             "iconUrl": icon_url,
@@ -96,9 +88,6 @@ def fetch_app_details(package_name: str) -> Tuple[Optional[Dict[str, Any]], bool
 
 
 def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any]) -> None:
-    if not gplay_app:
-        print("[-] google-play-scraper is not installed. Run: pip install google-play-scraper")
-        return
     official_data = load_json(OFFICIAL_BUNDLES_PATH, {})
     official_store = official_data.get("store", {}) if isinstance(official_data, dict) else {}
 
@@ -135,10 +124,9 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
         official_app = official_store.get(package_name)
         if official_app:
             for field_name in ("name", "iconUrl", "description"):
-                if official_app.get(field_name):
-                    app_data[field_name] = official_app[field_name]
-                    if field_name == "iconUrl" and "googleusercontent.com" in app_data[field_name] and "=s" not in app_data[field_name]:
-                        app_data[field_name] += "=s64"
+                field_value = official_app.get(field_name)
+                if field_value:
+                    app_data[field_name] = field_value
 
     def derive_name(package_name: str) -> str:
         parts = [part for part in package_name.split(".") if part not in SKIP_WORDS and len(part) > 1]
@@ -150,3 +138,5 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
             app_data["altName"] = derive_name(package_name)
         else:
             app_data.pop("altName", None)
+        if app_data.get("iconUrl"):
+            app_data["iconUrl"] = normalize_image_url(app_data["iconUrl"])

@@ -47,7 +47,7 @@ def main() -> int:
                 if attribute_name in existing_bundles[key]:
                     bundle_sources[key][attribute_name] = existing_bundles[key][attribute_name]
     repo_info.process(bundle_sources, mode, existing_bundles)
-    compatibilities_list = local_parse.process(bundle_sources, apps_dict, DATA_DIR)
+    compatibilities_list = local_parse.process(bundle_sources, apps_dict)
 
     gplay_scrape.process(apps_dict, mode, existing_apps)
     now_ms = int(time.time() * 1000)

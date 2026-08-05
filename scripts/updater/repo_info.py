@@ -14,12 +14,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from utils import fetch, load_json, normalize_image_url, save_json
 
 GITHUB_CONCURRENCY = 8
-DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
+ROOT_DIR = Path(__file__).resolve().parents[2]
+DATA_DIR = ROOT_DIR / "data"
 CUSTOM_JSON_PATH = DATA_DIR / "discover" / "custom.json"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
 STAR_HISTORY_JSON_PATH = DATA_DIR / "star-history.json"
-BUNDLES_DIR = DATA_DIR / "bundles"
-PATCHES_DIR = DATA_DIR / "patches"
 
 
 def fetch_repo_details(repo_url: str) -> dict:
@@ -41,7 +40,7 @@ def fetch_repo_details(repo_url: str) -> dict:
                     response = fetch(api_url, headers=headers, timeout=10, as_json=True)
                     if not response:
                         return {}
-                    avatar = normalize_image_url(response.get("owner", {}).get("avatar_url"))
+                    avatar = response.get("owner", {}).get("avatar_url")
                     return {
                         "stars": response.get("stargazers_count", 0),
                         "description": response.get("description"),
@@ -83,7 +82,7 @@ def fetch_repo_details(repo_url: str) -> dict:
                 time.sleep(0.2)
                 response = fetch(api_url, timeout=10, as_json=True)
                 if response:
-                    avatar = normalize_image_url(response.get("avatar_url"))
+                    avatar = response.get("avatar_url")
                     return {
                         "stars": response.get("star_count", 0),
                         "description": response.get("description"),

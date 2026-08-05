@@ -8,6 +8,7 @@ from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
+PATCHES_DIR = DATA_DIR / "patches"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
 BUNDLE_PARSER_DIR = ROOT_DIR / "scripts" / "bundle-parser"
 UPDATED_FILES_PATH = BUNDLE_PARSER_DIR / "updated_files.txt"
@@ -49,8 +50,8 @@ def commit_pending_repos() -> None:
                     repos_data.setdefault(base_key, {})["name"] = new_val
                 continue
             file_prefix = f"{source}~{owner}~{repo}~{branch}.json"
-            patch_exists = (DATA_DIR / "patches" / file_prefix).exists()
-            if branch == "image" or file_prefix in successful_parsed_files or patch_exists or new_val is not None:
+            patch_exists = (PATCHES_DIR / file_prefix).exists()
+            if branch == "image" or file_prefix in successful_parsed_files or patch_exists or new_val is None:
                 repos_data.setdefault(base_key, {})[branch] = new_val
                 committed_target_count += 1
 

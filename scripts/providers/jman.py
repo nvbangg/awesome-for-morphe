@@ -1,8 +1,8 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
+import json
 import os
 import re
-import json
 import sys
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -10,10 +10,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from utils import fetch, load_json, save_json
 
+ROOT_DIR = Path(__file__).resolve().parents[2]
+DATA_DIR = ROOT_DIR / "data"
+DISCOVER_DIR = DATA_DIR / "discover"
 TREE_API_URL = "https://api.github.com/repos/Jman-Github/ReVanced-Patch-Bundles/git/trees/bundles?recursive=1"
 RAW_BASE = "https://raw.githubusercontent.com/Jman-Github/ReVanced-Patch-Bundles/bundles"
-OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "jman.json"
-SNAPSHOT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "snapshot.json"
+OUTPUT_PATH = DISCOVER_DIR / "jman.json"
+SNAPSHOT_PATH = DISCOVER_DIR / "snapshot.json"
 _REPO_RE = re.compile(r"(github|gitlab)\.com/([^/]+)/([^/\s\"']+)")
 
 

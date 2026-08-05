@@ -6,9 +6,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from utils import fetch, load_json, save_json
 
+ROOT_DIR = Path(__file__).resolve().parents[2]
+DATA_DIR = ROOT_DIR / "data"
+DISCOVER_DIR = DATA_DIR / "discover"
 BUNDLES_URL = "https://morphe-patches.software/data/bundles.json"
-OUTPUT_PATH = Path(__file__).resolve().parents[2] / "data" / "discover" / "official.json"
-SNAPSHOT_PATH = Path(__file__).resolve().parents[2] / "data" / "official-bundles.json"
+OUTPUT_PATH = DISCOVER_DIR / "official.json"
+SNAPSHOT_PATH = DATA_DIR / "official-bundles.json"
 HEADERS = {
     "Referer": "https://morphe-patches.software/",
     "User-Agent": "AwesomeMorphe/1.0 (+https://github.com/nvbangg/awesome-morphe)",

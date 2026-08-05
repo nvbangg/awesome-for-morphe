@@ -2,6 +2,34 @@
     "version": "",
     "patches": [
         {
+            "name": "MonkeyScript userscript manager",
+            "description": "Adds a monkey-style userscript/userstyle manager plus configurable Chrome app and package renaming for side-by-side installation.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.android.chrome",
+                    "name": "Google Chrome",
+                    "description": null,
+                    "apkFileType": "APK",
+                    "appIconColor": "#4285F4",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": true,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
             "name": "Download GX mods as files",
             "description": "Adds a visible Download Mod button in Opera GX, with URL auto-detection and a Share fallback.",
             "default": true,

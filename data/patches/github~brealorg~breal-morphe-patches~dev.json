@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.104",
+  "version": "1.4.105",
   "patches": [
     {
       "name": "Add Boost Search bottom navigation",
@@ -768,7 +768,7 @@
     },
     {
       "name": "Fix Boost native image upload",
-      "description": "Forces Boost's single-image submit flow to use Reddit's native image submission kind instead of creating external uploaded-media link posts.",
+      "description": "Routes Boost editor images, image posts, and galleries through Reddit's bundled native uploader instead of Imgur while retaining the original gallery submission-kind safeguard. GIF and video upload behavior is unchanged.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [

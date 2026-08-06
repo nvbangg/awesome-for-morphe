@@ -145,8 +145,7 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
                 source_entry = bundle_sources[base_key]
                 source_entry["stars"] = details.get("stars", 0) - custom_data.get(base_key, {}).get("revancedStars", 0)
 
-                if details.get("description"):
-                    source_entry["repoDescription"] = details["description"]
+                source_entry["repoDescription"] = details.get("description") or ""
 
                 source = source_entry.get("source")
                 owner_repo = source_entry.get("repo")
@@ -160,6 +159,8 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
                         source_entry["avatarUrl"] = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.png/raw?ref=main"
                 elif details.get("avatar_url"):
                     source_entry["avatarUrl"] = normalize_image_url(details["avatar_url"])
+                else:
+                    source_entry["avatarUrl"] = ""
 
                 full_name = details.get("full_name")
                 old_repo = source_entry.get("repo")

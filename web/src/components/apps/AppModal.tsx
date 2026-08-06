@@ -221,7 +221,6 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                           <a
                             href={group.bundleMeta.deepLink}
                             target="_blank"
-                            rel="noopener noreferrer"
                             className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] whitespace-nowrap shrink-0"
                             onClick={(e) => e.stopPropagation()}
                           >
@@ -240,7 +239,6 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                         <a
                           href={group.bundleMeta.deepLink}
                           target="_blank"
-                          rel="noopener noreferrer"
                           className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 active:scale-[0.98] shadow-sm shrink-0"
                           onClick={(e) => e.stopPropagation()}
                         >

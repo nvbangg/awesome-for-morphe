@@ -147,7 +147,6 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
               <a
                 href={bundleMeta.deepLink}
                 target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-(image:--primary-gradient) text-white text-sm font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] shadow-sm select-none"
                 onClick={(e) => e.stopPropagation()}
               >
@@ -182,7 +181,6 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
             <a
               href={bundleMeta.deepLink}
               target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-(image:--primary-gradient) text-white text-sm font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 active:scale-[0.98] shadow-sm select-none shrink-0"
               onClick={(e) => e.stopPropagation()}
             >

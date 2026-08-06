@@ -151,7 +151,6 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
               <a
                 href={deepLink}
                 target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-(image:--primary-gradient) text-white text-sm font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] shadow-sm select-none"
                 onClick={(e) => e.stopPropagation()}
               >

@@ -97,7 +97,6 @@ export const BundleCard = memo(function BundleCard({ bundleItem, onClick }: Bund
           className="inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] whitespace-nowrap shrink-0 ml-auto select-none"
           href={deepLink}
           target="_blank"
-          rel="noopener noreferrer"
           onClick={(event) => event.stopPropagation()}
         >
           <Plus className="w-4 h-4" />

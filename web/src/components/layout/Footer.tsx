@@ -28,7 +28,7 @@ export function Footer() {
                 This project
               </a>{" "}
               is not affiliated with{" "}
-              <a href="https://morphe.software/" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary no-underline hover:opacity-80 transition-opacity">
+              <a href="https://morphe.software/" target="_blank" className="font-semibold text-primary no-underline hover:opacity-80 transition-opacity">
                 Morphe
               </a>{" "}
               or any authors mentioned here.

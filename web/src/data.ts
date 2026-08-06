@@ -309,8 +309,8 @@ export function getFilteredBundles(bundles: Bundle[], searchQuery = "", sortOrde
   bundleList = [...bundleList];
 
   const compareBundleFallback = (bundleItemA: Bundle, bundleItemB: Bundle): number => {
-    const firstSeenDiff = bundleItemA.firstSeen - bundleItemB.firstSeen;
-    if (firstSeenDiff !== 0) return firstSeenDiff;
+    const updatedAtDiff = bundleItemB.updatedAt - bundleItemA.updatedAt;
+    if (updatedAtDiff !== 0) return updatedAtDiff;
     return bundleItemA.name.localeCompare(bundleItemB.name);
   };
 

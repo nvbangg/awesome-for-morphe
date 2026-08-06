@@ -58,18 +58,18 @@ def main() -> int:
     for key in sorted_keys:
         bundle = bundle_sources[key]
         ordered_bundle = {
-            "source": bundle.get("source"),
-            "repo": bundle.get("repo"),
-            "name": bundle.get("name"),
-            "repoDescription": bundle.get("repoDescription"),
-            "avatarUrl": bundle.get("avatarUrl"),
-            "stars": bundle.get("stars"),
-            "starsGained7d": bundle.get("starsGained7d"),
-            "starsGained40d": bundle.get("starsGained40d"),
-            "updatedAt": bundle.get("updatedAt"),
+            "source": bundle.get("source") or "",
+            "repo": bundle.get("repo") or "",
+            "name": bundle.get("name") or "",
+            "repoDescription": bundle.get("repoDescription") or "",
+            "avatarUrl": bundle.get("avatarUrl") or "",
+            "stars": bundle.get("stars") or 0,
+            "starsGained7d": bundle.get("starsGained7d") or 0,
+            "starsGained40d": bundle.get("starsGained40d") or 0,
+            "updatedAt": bundle.get("updatedAt") or 0,
             "firstSeen": parse_timestamp(existing_bundles.get(key, {}).get("firstSeen", now_ms)),
-            "appFirstSeen": bundle.get("appFirstSeen"),
-            "patches": bundle.get("patches", []),
+            "appFirstSeen": bundle.get("appFirstSeen") or {},
+            "patches": bundle.get("patches") or [],
             "isPreRelease": bool(bundle.get("isPreRelease")),
         }
         final_bundles.append(ordered_bundle)

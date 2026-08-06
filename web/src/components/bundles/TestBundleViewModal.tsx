@@ -164,7 +164,7 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
       <ModalBody>
         <div className="flex items-center gap-3">
           <SearchInput id="test-patch-search" placeholder="Search patches…" value={searchQuery} onChange={setSearchQuery} className="flex-1" />
-          <span className="inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-3 py-1 shrink-0 whitespace-nowrap">
+          <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-3 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0 whitespace-nowrap">
             {appGroups.length} {appGroups.length === 1 ? "app" : "apps"}
           </span>
         </div>
@@ -215,7 +215,9 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
                       </div>
 
                       <div className="flex items-center gap-2 shrink-0">
-                        <span className={`${showGooglePlay ? "hidden sm:inline-flex" : "inline-flex"} items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0`}>
+                        <span
+                          className={`${showGooglePlay ? "hidden sm:inline-flex" : "inline-flex"} items-center justify-center font-semibold rounded-full text-xs px-2.5 py-0.5 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0`}
+                        >
                           {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
                         </span>
                         {showGooglePlay && (
@@ -237,7 +239,7 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
 
                     {showGooglePlay && (
                       <div className="sm:hidden flex items-center justify-between gap-2 pt-1">
-                        <span className="inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0">
+                        <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-2.5 py-0.5 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0">
                           {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
                         </span>
                         <a

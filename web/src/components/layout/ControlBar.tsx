@@ -126,7 +126,7 @@ export function ControlBar({
               className="flex-1 min-w-0"
             />
             <div className="shrink-0 sm:ml-auto">
-              <span className="inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-3 py-1 shrink-0 whitespace-nowrap">
+              <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-3 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0 whitespace-nowrap">
                 {activeTab === "apps" ? `${statistics.appsCount.toLocaleString()} Apps` : `${statistics.bundlesCount.toLocaleString()} Bundles`}
               </span>
             </div>

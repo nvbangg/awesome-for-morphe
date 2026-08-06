@@ -2,9 +2,9 @@ import { useMemo, useState, useEffect } from "react";
 import { ActiveData, getAppMeta, getAppBundleGroups } from "@/data";
 import { SearchInput } from "@/components/common/SearchInput";
 import { Avatar } from "@heroui/react";
-import { Smartphone, Check, Copy, Package, Plus, Play, ChevronDown } from "lucide-react";
+import { Smartphone, Check, Copy, Package, Plus, Play, ChevronDown, Calendar } from "lucide-react";
 import { useCopy } from "@/hooks/useCopy";
-import { isNew } from "@/utils/formatters";
+import { isNew, formatDate } from "@/utils/formatters";
 import { PatchItemRow } from "@/components/common/PatchItemRow";
 import { Badge } from "@/components/common/Badge";
 import { CustomModal, ModalHeader, ModalBody, CloseButton } from "@/components/common/CustomModal";
@@ -157,7 +157,7 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
       <ModalBody>
         <div className="flex items-center gap-3">
           <SearchInput id="patch-search" placeholder="Search patches…" value={searchQuery} onChange={onSearchChange} className="flex-1" />
-          <span className="inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-3 py-1 shrink-0 whitespace-nowrap">
+          <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-3 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0 whitespace-nowrap">
             {bundleGroups.length} {bundleGroups.length === 1 ? "bundle" : "bundles"}
           </span>
         </div>
@@ -168,6 +168,24 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
           ) : (
             bundleGroups.map((group) => {
               const isExpanded = expandedBundleKeys.has(group.bundleKey);
+              const patchBadge = (
+                <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-2.5 py-0.5 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0">
+                  {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
+                </span>
+              );
+
+              const dateBadge = group.bundleMeta.updatedAt > 0 && (
+                <a
+                  href={group.bundleMeta.changelogUrl}
+                  target="_blank"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 hover:underline transition-all text-xs font-semibold shrink-0"
+                  title="View Release Changelog"
+                >
+                  <Calendar className="w-3 h-3" />
+                  {formatDate(group.bundleMeta.updatedAt)}
+                </a>
+              );
 
               return (
                 <div key={group.bundleKey} className="border border-divider rounded-xl bg-background flex flex-col">
@@ -195,7 +213,6 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                           <a
                             href={group.bundleMeta.repoUrl}
                             target="_blank"
-                            rel="noopener noreferrer"
                             className="text-xs text-primary hover:underline font-medium dark:text-[#3fe9e8] inline-flex items-center gap-1.5 mt-0.5 w-fit max-w-full flex-wrap break-all"
                             onClick={(e) => e.stopPropagation()}
                           >
@@ -214,9 +231,17 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
                       </div>
 
                       <div className="flex items-center gap-2 shrink-0">
-                        <span className={`${group.bundleMeta.deepLink ? "hidden sm:inline-flex" : "inline-flex"} items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0`}>
-                          {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
-                        </span>
+                        {group.bundleMeta.deepLink ? (
+                          <div className="hidden sm:flex items-center gap-2">
+                            {patchBadge}
+                            {dateBadge}
+                          </div>
+                        ) : (
+                          <>
+                            {patchBadge}
+                            {dateBadge}
+                          </>
+                        )}
                         {group.bundleMeta.deepLink && (
                           <a
                             href={group.bundleMeta.deepLink}
@@ -233,9 +258,10 @@ export function AppModal({ isOpen, onClose, packageName, activeData, searchQuery
 
                     {group.bundleMeta.deepLink && (
                       <div className="sm:hidden flex items-center justify-between gap-2 pt-1">
-                        <span className="inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0">
-                          {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
-                        </span>
+                        <div className="flex items-center gap-1.5 flex-wrap min-w-0">
+                          {patchBadge}
+                          {dateBadge}
+                        </div>
                         <a
                           href={group.bundleMeta.deepLink}
                           target="_blank"

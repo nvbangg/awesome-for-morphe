@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import { ActiveData, getBundleAppGroups } from "@/data";
 import { SearchInput } from "@/components/common/SearchInput";
 import { useCopy } from "@/hooks/useCopy";
-import { isNew } from "@/utils/formatters";
+import { isNew, formatDate } from "@/utils/formatters";
 import { Avatar } from "@heroui/react";
 import { Package, Check, Copy, Plus, Smartphone, Play, Calendar, ChevronDown } from "lucide-react";
 import { PatchItemRow } from "@/components/common/PatchItemRow";
@@ -136,7 +136,7 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-divider hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-primary dark:hover:text-[#3fe9e8] transition-colors text-xs font-semibold text-foreground-600 dark:text-zinc-300 no-underline shrink-0"
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 hover:underline transition-all text-xs font-semibold shrink-0"
                 title="View Release Changelog"
               >
                 <Calendar className="w-3.5 h-3.5" />
@@ -170,7 +170,7 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg border border-divider hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-primary transition-colors text-xs font-semibold text-foreground-600 no-underline shrink-0"
+              className="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 hover:underline transition-all text-xs font-semibold shrink-0"
               title="View Release Changelog"
             >
               <Calendar className="w-3.5 h-3.5" />
@@ -193,7 +193,7 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
       <ModalBody>
         <div className="flex items-center gap-3">
           <SearchInput id="patch-search" placeholder="Search patches…" value={searchQuery} onChange={onSearchChange} className="flex-1" />
-          <span className="inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-3 py-1 shrink-0 whitespace-nowrap">
+          <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-3 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0 whitespace-nowrap">
             {appGroups.length} {appGroups.length === 1 ? "app" : "apps"}
           </span>
         </div>
@@ -244,7 +244,9 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
                       </div>
 
                       <div className="flex items-center gap-2 shrink-0">
-                        <span className={`${showGooglePlay ? "hidden sm:inline-flex" : "inline-flex"} items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0`}>
+                        <span
+                          className={`${showGooglePlay ? "hidden sm:inline-flex" : "inline-flex"} items-center justify-center font-semibold rounded-full text-xs px-2.5 py-0.5 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0`}
+                        >
                           {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
                         </span>
                         {showGooglePlay && (
@@ -266,7 +268,7 @@ export function BundleModal({ isOpen, onClose, bundleKey, activeData, searchQuer
 
                     {showGooglePlay && (
                       <div className="sm:hidden flex items-center justify-between gap-2 pt-1">
-                        <span className="inline-flex items-center justify-center bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold px-2.5 py-0.5 shrink-0">
+                        <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-2.5 py-0.5 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0">
                           {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
                         </span>
                         <a

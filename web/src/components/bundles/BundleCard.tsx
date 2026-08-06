@@ -1,7 +1,7 @@
 import { Bundle } from "@/data";
 import { Plus, Package, Calendar } from "lucide-react";
 import { memo, useState } from "react";
-import { isNew } from "@/utils/formatters";
+import { isNew, formatDate } from "@/utils/formatters";
 import { Badge } from "@/components/common/Badge";
 
 interface BundleCardProps {
@@ -13,13 +13,7 @@ export const BundleCard = memo(function BundleCard({ bundleItem, onClick }: Bund
   const [imgError, setImgError] = useState(false);
   const { repoUrl, deepLink } = bundleItem;
   const isGitLab = bundleItem.source === "gitlab";
-  const formattedDate = bundleItem.updatedAt
-    ? new Date(bundleItem.updatedAt).toLocaleDateString(undefined, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      })
-    : "";
+  const formattedDate = formatDate(bundleItem.updatedAt);
 
   return (
     <div
@@ -85,7 +79,7 @@ export const BundleCard = memo(function BundleCard({ bundleItem, onClick }: Bund
               target="_blank"
               rel="noopener noreferrer"
               onClick={(event) => event.stopPropagation()}
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-divider hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-primary dark:hover:text-[#3fe9e8] transition-colors text-xs font-semibold text-foreground-600 dark:text-zinc-300 no-underline shrink-0"
+              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 hover:underline transition-all text-xs font-semibold shrink-0"
               title="View Release Changelog"
             >
               <Calendar className="w-3.5 h-3.5" />

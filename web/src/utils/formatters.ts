@@ -17,3 +17,12 @@ export function isNew(firstSeen: number | undefined | null, daysThreshold: numbe
   const diffInDays = (now - firstSeen) / (1000 * 60 * 60 * 24);
   return diffInDays <= daysThreshold;
 }
+
+export function formatDate(timestamp: number | undefined | null): string {
+  if (!timestamp || timestamp <= 0) return "";
+  return new Date(timestamp).toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}

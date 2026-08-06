@@ -3,7 +3,7 @@
     "patches": [
         {
             "name": "MonkeyScript userscript manager",
-            "description": "Adds an exact Chrome 150 Material You userscript manager using a Violentmonkey-derived parser and installer, app_menu_list integration, Greasy Fork/Sleazy Fork support, publishing, and configurable app/package cloning.",
+            "description": "Adds a Chrome 150 Material You userscript manager using a Violentmonkey-derived parser, native app-menu integration, guaranteed Fork-page installation, Greasy Fork/Sleazy Fork support, publishing, and configurable app/package cloning.",
             "default": true,
             "dependencies": [
                 "ResourcePatch"
@@ -33,6 +33,34 @@
             "name": "Download GX mods as files",
             "description": "Adds a visible Download Mod button in Opera GX, with URL auto-detection and a Share fallback.",
             "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.opera.gx",
+                    "name": "Opera GX",
+                    "description": null,
+                    "apkFileType": "APK",
+                    "appIconColor": "#A31AFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": true,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "GX icon pack",
+            "description": "Adds a separate native selector for all 56 Opera GX launcher icons. Open it from the GX Icon Pack long-press shortcut.",
+            "default": false,
             "dependencies": [
                 "ResourcePatch"
             ],

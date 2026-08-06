@@ -1,7 +1,36 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0-dev.13",
+  "version": "1.0.0-dev.14",
   "patches": [
+    {
+      "name": "Mark SDH Subtitles",
+      "description": "Marks detected English SDH tracks in embedded and addon subtitle lists.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nuvio.tv",
+          "name": "NuvioTV",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#111827",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.2-beta",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Rating Visibility",
       "description": "Adds Settings > Morphe > Ratings with independent overall and episode rating controls.",

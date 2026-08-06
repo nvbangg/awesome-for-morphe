@@ -1,0 +1,138 @@
+{
+    "version": "",
+    "patches": [
+        {
+            "name": "Android Auto Manifest",
+            "description": "Adds the Android Auto CarAppService declaration, meta-data, and permissions to AndroidManifest.xml.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.huawei.maps.app",
+                    "name": null,
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.7.0.322(001)",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Android Auto",
+            "description": "Injects full Android Auto support into Petal Maps, including CarAppService, manifest declarations, and required resources. Also apply 'Anti-Repack Bypass' and 'Manufacturer Check Bypass' for full functionality on non-Huawei devices.",
+            "default": true,
+            "dependencies": [
+                "Android Auto Manifest",
+                "Android Auto Resources"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.huawei.maps.app",
+                    "name": null,
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.7.0.322(001)",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Android Auto Resources",
+            "description": "Adds the automotive_app_desc.xml resource required by Android Auto.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.huawei.maps.app",
+                    "name": null,
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.7.0.322(001)",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Anti-Repack Bypass",
+            "description": "Neutralizes the native integrity check (SecurityDetect.irpj) that kills the process upon detecting APK re-signing.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.huawei.maps.app",
+                    "name": null,
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.7.0.322(001)",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Manufacturer Check Bypass",
+            "description": "Forces the Huawei manufacturer check to always return true, allowing non-Huawei devices to use the app.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.huawei.maps.app",
+                    "name": null,
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.7.0.322(001)",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        }
+    ]
+}

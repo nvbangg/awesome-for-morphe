@@ -143,7 +143,7 @@ def process(bundle_sources: Dict[str, Any], mode: str, existing_bundles: Dict[st
                     continue
 
                 source_entry = bundle_sources[base_key]
-                source_entry["stars"] = details.get("stars", 0)
+                source_entry["stars"] = details.get("stars", 0) - custom_data.get(base_key, {}).get("revancedStars", 0)
 
                 if details.get("description"):
                     source_entry["repoDescription"] = details["description"]

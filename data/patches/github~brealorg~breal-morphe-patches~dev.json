@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.105",
+  "version": "1.4.107",
   "patches": [
     {
       "name": "Add Boost Search bottom navigation",
@@ -768,9 +768,12 @@
     },
     {
       "name": "Fix Boost native image upload",
-      "description": "Routes Boost editor images, image posts, and galleries through Reddit's bundled native uploader instead of Imgur while retaining the original gallery submission-kind safeguard. GIF and video upload behavior is unchanged.",
+      "description": "Keeps Boost image posts and galleries on Reddit's native uploader and routes images inserted into comments or text posts through Imgur by default, with ImgBB as a manually selected alternative. GIF and video upload behavior is unchanged.",
       "default": false,
-      "dependencies": [],
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.rubenmayayo.reddit",

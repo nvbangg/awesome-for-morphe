@@ -84,6 +84,34 @@
                 }
             ],
             "options": []
+        },
+        {
+            "name": "Download timestamped lyrics",
+            "description": "Adds an in-app Lyrics button and share target that exports Suno timing data as LRC, enhanced LRC, SRT, WebVTT, or JSON.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.suno.android",
+                    "name": "Suno",
+                    "description": null,
+                    "apkFileType": "APK",
+                    "appIconColor": "#8B5CF6",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": true,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
         }
     ]
 }

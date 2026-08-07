@@ -1,5 +1,5 @@
 {
-  "version": "1.18.0",
+  "version": "1.19.0",
   "appNames": {
     "com.fox.foxone": "Fox One Android TV",
     "com.peacocktv.peacockandroid": "Peacock TV Android TV",
@@ -423,11 +423,12 @@
     },
     {
       "name": "Paramount+ Android TV",
-      "description": "Removes VOD ads and pause ads while preserving live TV.",
+      "description": "Removes VOD pre-roll ads and pause ads while preserving live TV.",
       "use": true,
       "dependencies": [],
       "compatiblePackages": {
         "com.cbs.ott": [
+          "16.17.0",
           "16.12.0",
           "16.8.0"
         ]
@@ -439,6 +440,10 @@
           "description": null,
           "appIconColor": 25855,
           "targets": [
+            {
+              "version": "16.17.0",
+              "experimental": false
+            },
             {
               "version": "16.12.0",
               "experimental": false

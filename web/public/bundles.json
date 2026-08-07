@@ -3708,7 +3708,7 @@
       "stars": 119,
       "starsGained7d": 1,
       "starsGained40d": 6,
-      "updatedAt": 1786003507000,
+      "updatedAt": 1786091644000,
       "firstSeen": 1774731407000,
       "appFirstSeen": {
         "com.dcinside.app.android": 1774756607000,
@@ -4032,6 +4032,12 @@
           "compatiblePackagesKey": 122
         },
         {
+          "name": "Disable abuse detection report",
+          "description": "Stops the abuse detection report that attests the app to the server on startup and during login, which cannot be spoofed locally because it carries a Google-signed Play Integrity token that exposes the re-signed certificate.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 122
+        },
+        {
           "name": "Disable ad controller",
           "description": "Disables the ad controller that manages ads in the app.",
           "compatiblePackagesKey": 123
@@ -4081,6 +4087,12 @@
           "name": "Enable send big text",
           "description": "Allows sending big text messages in KakaoTalk.",
           "compatiblePackagesKey": 122
+        },
+        {
+          "name": "Filter recently viewed posts by gallery",
+          "description": "Adds a gallery filter below the recently viewed posts filters, which narrows the list down to the posts of a single gallery.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 123
         },
         {
           "name": "Force enable debug mode",
@@ -4957,7 +4969,7 @@
       "stars": 31,
       "starsGained7d": 4,
       "starsGained40d": 8,
-      "updatedAt": 1786086544000,
+      "updatedAt": 1786088890000,
       "firstSeen": 1778211405000,
       "appFirstSeen": {
         "com.wildberries.ru": 1778236605000,
@@ -15798,7 +15810,7 @@
       "stars": 12,
       "starsGained7d": 6,
       "starsGained40d": 7,
-      "updatedAt": 1786085203000,
+      "updatedAt": 1786091076000,
       "firstSeen": 1785036993248,
       "appFirstSeen": {
         "com.brave.browser_nightly": 1785036993248,
@@ -15839,7 +15851,7 @@
         },
         {
           "name": "Keep Helium Child Processes Alive",
-          "description": "Experimental: applies to all Helium child processes; forces strongest binding. May increase RAM, battery, and process pressure; only reduces LMK probability. Does not detect, reload, or back off crashed extensions.",
+          "description": "Experimental: applies to all Helium child processes; forces STRONG binding at launch and IMPORTANT/STRONG on priority updates. May increase RAM, battery, and process pressure; only reduces LMK probability. Does not detect, reload, or back off crashed extensions.",
           "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 647
@@ -16580,7 +16592,7 @@
       "stars": 2,
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "updatedAt": 1786000186000,
+      "updatedAt": 1786091084000,
       "firstSeen": 1785884829984,
       "appFirstSeen": {
         "com.opera.gx": 1785884829665,
@@ -16607,6 +16619,29 @@
         {
           "name": "Download timestamped lyrics",
           "description": "Adds an in-app Lyrics button and share target that exports Suno timing data as LRC, enhanced LRC, SRT, WebVTT, or JSON.",
+          "compatiblePackagesKey": 678
+        },
+        {
+          "name": "Customize Suno branding",
+          "description": "Clones Suno to a different package name, with optional app-name and launcher-icon customization. Accepts Morphe's adaptive custom-icon folder layout or a simple icon.png folder.",
+          "default": false,
+          "options": [
+            {
+              "key": "customName",
+              "title": "App name",
+              "description": "Optional replacement name shown by Android for the patched Suno app."
+            },
+            {
+              "key": "customPackageName",
+              "title": "Package name",
+              "description": "Android package ID for the patched Suno clone. It must differ from com.suno.android."
+            },
+            {
+              "key": "customIcon",
+              "title": "Custom icon",
+              "description": "Optional folder containing the launcher icon.\n\nEasy layout:\n- icon.png\n\nMorphe adaptive layout:\n- mipmap-mdpi/morphe_adaptive_background_custom.png\n- mipmap-mdpi/morphe_adaptive_foreground_custom.png\n- mipmap-hdpi/morphe_adaptive_background_custom.png\n- mipmap-hdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xhdpi/morphe_adaptive_background_custom.png\n- mipmap-xhdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xxhdpi/morphe_adaptive_background_custom.png\n- mipmap-xxhdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xxxhdpi/morphe_adaptive_background_custom.png\n- mipmap-xxxhdpi/morphe_adaptive_foreground_custom.png\n\nYou may provide only the density folders you need, but each provided density\nmust contain both the background and foreground image."
+            }
+          ],
           "compatiblePackagesKey": 678
         }
       ],
@@ -16697,12 +16732,19 @@
       "stars": 3,
       "starsGained7d": 2,
       "starsGained40d": 2,
-      "updatedAt": 1786079876000,
+      "updatedAt": 1786091942000,
       "firstSeen": 1785911533420,
       "appFirstSeen": {
         "com.nuvio.tv": 1785884829695
       },
       "patches": [
+        {
+          "name": "Allow Importing Subs from Local Storage",
+          "description": "Adds Local Storage to Nuvio's ExoPlayer subtitle menu and imports subtitle files from the device.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 681
+        },
         {
           "name": "Binge Group Manual Fallback",
           "description": "Adds Morphe > Playback control to open the source picker when no preferred binge-group stream is found.",
@@ -16712,7 +16754,7 @@
         },
         {
           "name": "Mark SDH Subtitles",
-          "description": "Marks detected English SDH tracks in embedded and addon subtitle lists.",
+          "description": "Marks explicitly labelled SDH tracks and detected English SDH subtitle files.",
           "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 681
@@ -16949,6 +16991,170 @@
           "name": "Manufacturer Check Bypass",
           "description": "Forces the Huawei manufacturer check to always return true, allowing non-Huawei devices to use the app.",
           "compatiblePackagesKey": 686
+        }
+      ],
+      "isPreRelease": false
+    },
+    {
+      "source": "github",
+      "repo": "AngelDark92/steamlink-patches",
+      "name": "Steam Link GalaxyXR",
+      "repoDescription": "Repo template for creating and releasing custom Morphe patches for steamlink",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/53372897?v=4&s=64",
+      "stars": 1,
+      "starsGained7d": 0,
+      "starsGained40d": 0,
+      "updatedAt": 1786055937000,
+      "firstSeen": 1786094027314,
+      "appFirstSeen": {
+        "com.valvesoftware.steamlinkvr": 1786094026972,
+        "universal": 1786094026972
+      },
+      "patches": [
+        {
+          "name": "Appear on top",
+          "description": "Recommended. Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
+          "compatiblePackagesKey": 687
+        },
+        {
+          "name": "Change package name",
+          "description": "Renames the app package so it can be installed alongside the original Steam Link. Default appends '.gxr'. Changing the package name may break features that rely on the original identity.",
+          "default": false,
+          "options": [
+            {
+              "key": "packageName",
+              "title": "Package name",
+              "description": "AndroidManifest.xml manifest@package; also updates permission/uses-permission@android:name (custom perms only) and provider@android:authorities. Leave 'Default' to append '.gxr'."
+            }
+          ]
+        },
+        {
+          "name": "Controller velocity fix",
+          "description": "Experimental: derives current controller linear and angular velocity from grip/aim pose history, avoiding delayed runtime velocity during throws.",
+          "default": false,
+          "options": [
+            {
+              "key": "maxDeltaMs",
+              "title": "Maximum sample gap (ms)",
+              "description": "libgxr_controller_velocity.so config+32 (int64 ns = value×1e6). Falls back to runtime velocity when pose samples are farther apart. Allowed range: 5 to 100 ms."
+            },
+            {
+              "key": "smoothing",
+              "title": "Derived velocity smoothing",
+              "description": "libgxr_controller_velocity.so config+48 (float32 EMA weight). 0 = no smoothing, minimum lag; higher values reduce jitter. Allowed range: 0.0 to 0.9."
+            },
+            {
+              "key": "maxLinearSpeed",
+              "title": "Maximum linear speed (m/s)",
+              "description": "libgxr_controller_velocity.so config+40 (float32 m/s). Falls back to runtime velocity above this derived linear speed. Allowed range: 1 to 50 m/s."
+            },
+            {
+              "key": "maxAngularSpeed",
+              "title": "Maximum angular speed (rad/s)",
+              "description": "libgxr_controller_velocity.so config+44 (float32 rad/s). Falls back to runtime velocity above this derived angular speed. Allowed range: 1 to 100 rad/s."
+            }
+          ],
+          "compatiblePackagesKey": 688
+        },
+        {
+          "name": "Device identity",
+          "description": "Overrides the HMD manufacturer/model identity reported to SteamVR (hmd_config.json only; controller identity is unaffected). 'samsung-default' leaves the file untouched.",
+          "options": [
+            {
+              "key": "profile",
+              "title": "HMD identity",
+              "description": "assets/config/hmd_config.json: overwrites sSerialNumber, sManufacturerName, sModelNumber, sControllerType, sDeviceType, sInputProfilePath, requestedExtensions."
+            }
+          ],
+          "compatiblePackagesKey": 687
+        },
+        {
+          "name": "GXR face bridge",
+          "description": "Installs libgxr_face_bridge.so (XR_FB_face_tracking2 → XR_ANDROID_face_tracking API layer) and adds android.permission.FACE_TRACKING to the manifest.",
+          "compatiblePackagesKey": 687
+        },
+        {
+          "name": "HMD-only pose fix",
+          "description": "Adds a configurable offset to the HMD OpenXR pose-query time and zeroes all six exported HMD velocity fields. Does not affect controller paths.",
+          "options": [
+            {
+              "key": "offsetMs",
+              "title": "Pose offset (ms)",
+              "description": "libvrlink_scene.so: AArch64 MOVZ/MOVK at PLT cave adds value×1e6 ns to X2 in QSVLDeviceHmd::GetPose. Tested default: 78 ms. Allowed range: 0 to 4000 ms."
+            }
+          ],
+          "compatiblePackagesKey": 689
+        },
+        {
+          "name": "OLED color calibration",
+          "description": "Replaces VRLink's embedded GLSL fragment shader with configurable Galaxy XR OLED gamma and saturation correction.",
+          "options": [
+            {
+              "key": "profile",
+              "title": "Calibration profile",
+              "description": "libvrlink_scene.so GLSL fragment shader (1087-byte block, GL_OES_EGL_image_external_essl3 anchor). Initial: pow vec3(1.06)/mix 1.12; Final balanced: 1.20/1.45; Custom: use fields below."
+            },
+            {
+              "key": "gamma",
+              "title": "Gamma",
+              "description": "libvrlink_scene.so GLSL: pow(clamp(c,0,1), vec3(GAMMA)). Used by Custom profile. Tested: 1.06 (Initial), 1.20 (Final balanced). Allowed range: 0.50 to 2.50."
+            },
+            {
+              "key": "saturation",
+              "title": "Saturation",
+              "description": "libvrlink_scene.so GLSL: mix(vec3(luma), c, SATURATION). Used by Custom profile. Tested: 1.12 (Initial), 1.45 (Final balanced). Allowed range: 0.00 to 3.00."
+            }
+          ],
+          "compatiblePackagesKey": 687
+        },
+        {
+          "name": "TEST EXPERIMENTAL - Baseline Overlay Flow",
+          "description": "A/B test baseline. Keeps launcher bootstrap plus overlay permission flow (Appear on top behavior). Enable this OR the No-Overlay test patch, not both.",
+          "default": false,
+          "compatiblePackagesKey": 690
+        },
+        {
+          "name": "TEST EXPERIMENTAL - No Overlay / No Permission",
+          "description": "A/B test variant. Replaces GalaxyXRPermissionActivity and GxrOverlayBridge with no-overlay/no-permission-request smali for crash reproduction and comparison.",
+          "default": false,
+          "compatiblePackagesKey": 690
+        },
+        {
+          "name": "Video dither",
+          "description": "Enables (or disables) the dormant GLSL dither term in VRLink's video fragment shader. Reduces 8-bit contouring on OLED displays.",
+          "options": [
+            {
+              "key": "enable",
+              "title": "Enable dither",
+              "description": "libvrlink_scene.so GLSL: stock shader toggles '//' on color.rgb+=fract(...)*.00292; calibrated (post-oledCalibration) shader toggles *.00292 vs *.00000."
+            }
+          ],
+          "compatiblePackagesKey": 687
+        },
+        {
+          "name": "XR Core Runtime",
+          "description": "Installs the Galaxy XR runtime bridge resources and extension DEX foundation used by other XR patches.",
+          "compatiblePackagesKey": 687
+        },
+        {
+          "name": "XR Device Config Baseline",
+          "description": "Installs baseline Galaxy XR HMD/controller/default config payloads and dashboard bootstrap assets.",
+          "compatiblePackagesKey": 687
+        },
+        {
+          "name": "XR Input Routing Config",
+          "description": "Installs ui_config.json mappings for XR pointer/button routing in launcher UI flows.",
+          "compatiblePackagesKey": 687
+        },
+        {
+          "name": "XR Launcher Bootstrap (Home Space)",
+          "description": "Installs GalaxyXRPermissionActivity as launcher and configures Steam Link/VRLink activity XR startup wiring.",
+          "compatiblePackagesKey": 687
+        },
+        {
+          "name": "XR Manifest Capability Pack",
+          "description": "Adds Android XR/OpenXR permissions, features, runtime queries, and app-level XR properties.",
+          "compatiblePackagesKey": 687
         }
       ],
       "isPreRelease": false
@@ -24130,7 +24336,7 @@
         "packageName": "io.github.jqssun.helium",
         "targets": [
           {
-            "version": "151.0.7922.71",
+            "version": null,
             "isExperimental": true
           }
         ]
@@ -24929,6 +25135,72 @@
         "targets": [
           {
             "version": "4.7.0.322(001)"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22"
+          }
+        ]
+      },
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22",
+            "isExperimental": true
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22"
+          }
+        ]
+      },
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22"
+          }
+        ]
+      },
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22",
+            "isExperimental": true
           }
         ]
       }

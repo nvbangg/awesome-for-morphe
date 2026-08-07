@@ -112,6 +112,60 @@
                 }
             ],
             "options": []
+        },
+        {
+            "name": "Customize Suno branding",
+            "description": "Clones Suno to a different package name, with optional app-name and launcher-icon customization. Accepts Morphe's adaptive custom-icon folder layout or a simple icon.png folder.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.suno.android",
+                    "name": "Suno",
+                    "description": null,
+                    "apkFileType": "APK",
+                    "appIconColor": "#8B5CF6",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": true,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": [
+                {
+                    "key": "customName",
+                    "title": "App name",
+                    "description": "Optional replacement name shown by Android for the patched Suno app.",
+                    "required": false,
+                    "type": "kotlin.String",
+                    "default": null,
+                    "values": null
+                },
+                {
+                    "key": "customPackageName",
+                    "title": "Package name",
+                    "description": "Android package ID for the patched Suno clone. It must differ from com.suno.android.",
+                    "required": true,
+                    "type": "kotlin.String",
+                    "default": "com.suno.android.morphe",
+                    "values": null
+                },
+                {
+                    "key": "customIcon",
+                    "title": "Custom icon",
+                    "description": "Optional folder containing the launcher icon.\n\nEasy layout:\n- icon.png\n\nMorphe adaptive layout:\n- mipmap-mdpi/morphe_adaptive_background_custom.png\n- mipmap-mdpi/morphe_adaptive_foreground_custom.png\n- mipmap-hdpi/morphe_adaptive_background_custom.png\n- mipmap-hdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xhdpi/morphe_adaptive_background_custom.png\n- mipmap-xhdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xxhdpi/morphe_adaptive_background_custom.png\n- mipmap-xxhdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xxxhdpi/morphe_adaptive_background_custom.png\n- mipmap-xxxhdpi/morphe_adaptive_foreground_custom.png\n\nYou may provide only the density folders you need, but each provided density\nmust contain both the background and foreground image.",
+                    "required": false,
+                    "type": "kotlin.String",
+                    "default": null,
+                    "values": null
+                }
+            ]
         }
     ]
 }

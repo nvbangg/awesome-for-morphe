@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.0-dev.1",
+  "version": "1.2.0-dev.2",
   "patches": [
     {
       "name": "Brave Origin",
@@ -102,7 +102,7 @@
     },
     {
       "name": "Keep Helium Child Processes Alive",
-      "description": "Experimental: applies to all Helium child processes; forces strongest binding. May increase RAM, battery, and process pressure; only reduces LMK probability. Does not detect, reload, or back off crashed extensions.",
+      "description": "Experimental: applies to all Helium child processes; forces STRONG binding at launch and IMPORTANT/STRONG on priority updates. May increase RAM, battery, and process pressure; only reduces LMK probability. Does not detect, reload, or back off crashed extensions.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -115,7 +115,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "151.0.7922.71",
+              "version": null,
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": null,

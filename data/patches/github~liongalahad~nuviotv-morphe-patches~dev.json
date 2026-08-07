@@ -1,7 +1,36 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0-dev.15",
+  "version": "1.0.0-dev.16",
   "patches": [
+    {
+      "name": "Allow Importing Subs from Local Storage",
+      "description": "Adds Local Storage to Nuvio's ExoPlayer subtitle menu and imports subtitle files from the device.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nuvio.tv",
+          "name": "NuvioTV",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#111827",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.2-beta",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Binge Group Manual Fallback",
       "description": "Adds Morphe > Playback control to open the source picker when no preferred binge-group stream is found.",
@@ -33,7 +62,7 @@
     },
     {
       "name": "Mark SDH Subtitles",
-      "description": "Marks detected English SDH tracks in embedded and addon subtitle lists.",
+      "description": "Marks explicitly labelled SDH tracks and detected English SDH subtitle files.",
       "default": false,
       "dependencies": [
         "BytecodePatch",

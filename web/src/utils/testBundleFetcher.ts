@@ -1,4 +1,5 @@
-import { PatchOption, RowItem, VersionItem } from "../data";
+import { RowItem, VersionItem } from "@/types/data";
+import { PatchOption } from "@/types/data";
 
 export interface TestBundleData {
   repoName: string;
@@ -8,10 +9,6 @@ export interface TestBundleData {
   availableBranches: string[];
 }
 
-const GITHUB_RAW_BASE = "https://raw.githubusercontent.com";
-const GITLAB_RAW_BASE = "https://gitlab.com";
-
-const FILES_TO_TRY = ["patches-list.json"];
 const BRANCHES_TO_TRY = ["main", "dev"];
 
 function parseRepoInput(
@@ -44,16 +41,18 @@ function getRawUrls(
   branch: string,
 ): string[] {
   const urls: string[] = [];
-  for (const file of FILES_TO_TRY) {
+  for (const file of ["patches-list.json"]) {
     if (platform === "gitlab") {
       const encodedProject = encodeURIComponent(`${owner}/${repo}`);
       const encodedFile = encodeURIComponent(file);
       urls.push(
         `https://gitlab.com/api/v4/projects/${encodedProject}/repository/files/${encodedFile}/raw?ref=${branch}`,
       );
-      urls.push(`${GITLAB_RAW_BASE}/${owner}/${repo}/-/raw/${branch}/${file}`);
+      urls.push(`https://gitlab.com/${owner}/${repo}/-/raw/${branch}/${file}`);
     } else {
-      urls.push(`${GITHUB_RAW_BASE}/${owner}/${repo}/${branch}/${file}`);
+      urls.push(
+        `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${file}`,
+      );
     }
   }
   return urls;

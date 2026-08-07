@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react";
-import { ActiveData, getBundleAppGroups } from "@/data";
+import { ActiveData } from "@/types/data";
+import { getBundleAppGroups } from "@/services";
 import { SearchInput } from "@/components/common/SearchInput";
 import { useCopy } from "@/hooks/useCopy";
 import { isNew } from "@/utils/formatters";
 import { Avatar } from "@heroui/react";
+import { PACKAGE_UNIVERSAL } from "@/constants";
 import {
   Package,
   Check,
@@ -264,7 +266,7 @@ export function BundleModal({
             </div>
           ) : (
             appGroups.map((group) => {
-              const isUniversal = group.packageName === "universal";
+              const isUniversal = group.packageName === PACKAGE_UNIVERSAL;
               const isNotOnPlayStore =
                 group.packageName === "not-on-google-play";
               const showGooglePlay = !isUniversal && !isNotOnPlayStore;
@@ -304,7 +306,7 @@ export function BundleModal({
                             <Badge variant="prerelease" />
                           )}
                         </div>
-                        {group.packageName !== "universal" && (
+                        {group.packageName !== PACKAGE_UNIVERSAL && (
                           <div
                             onClick={(e) => {
                               e.stopPropagation();

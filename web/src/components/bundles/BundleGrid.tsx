@@ -1,6 +1,7 @@
 import { useMemo, useDeferredValue, memo } from "react";
 import { BundleCard } from "./BundleCard";
-import { ActiveData, getFilteredBundles } from "@/data";
+import { ActiveData } from "@/types/data";
+import { getFilteredBundles } from "@/services";
 import { EmptyState } from "@/components/common/EmptyState";
 
 interface BundleGridProps {

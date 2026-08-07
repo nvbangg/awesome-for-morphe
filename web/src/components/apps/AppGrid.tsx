@@ -1,6 +1,7 @@
 import { useMemo, useDeferredValue, memo } from "react";
 import { AppCard } from "./AppCard";
-import { ActiveData, getAppItems } from "@/data";
+import { ActiveData } from "@/types/data";
+import { getAppItems } from "@/services";
 import { EmptyState } from "@/components/common/EmptyState";
 
 interface AppGridProps {

@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { loadInitialData, ActiveData } from "@/data";
+import { ActiveData } from "@/types/data";
+import { loadInitialData } from "@/services";
 
 export function usePatchData() {
   const [activeData, setActiveData] = useState<ActiveData | null>(null);

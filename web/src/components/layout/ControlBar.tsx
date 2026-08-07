@@ -6,7 +6,7 @@ import {
   ArrowDownWideNarrow,
 } from "lucide-react";
 import { NavigationTabType as TabType } from "@/hooks/useUrlSync";
-import { ActiveStats } from "@/data";
+import { ActiveStats } from "@/types/data";
 import { SearchInput } from "@/components/common/SearchInput";
 import { CustomSelect } from "@/components/common/CustomSelect";
 import { Tabs, TabListContainer, TabList, Tab } from "@heroui/react";

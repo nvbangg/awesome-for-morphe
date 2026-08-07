@@ -3,8 +3,8 @@ import {
   WhatsNewHistoryItem,
   WhatsNewBundleChange,
   WhatsNewAppChange,
-  getAppMeta,
-} from "@/data";
+} from "@/types/data";
+import { getAppMeta } from "@/utils";
 import { Spinner, Avatar } from "@heroui/react";
 import { Sparkles, Package, Smartphone, Calendar } from "lucide-react";
 import { isNew } from "@/utils/formatters";

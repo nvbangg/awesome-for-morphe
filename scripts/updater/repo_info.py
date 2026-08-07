@@ -88,7 +88,9 @@ def fetch_repo_details(repo_url: str) -> dict:
                 time.sleep(0.2)
                 response = fetch(api_url, timeout=10, as_json=True)
                 if response:
-                    avatar = response.get("avatar_url")
+                    avatar = response.get("avatar_url") or response.get(
+                        "namespace", {}
+                    ).get("avatar_url")
                     return {
                         "stars": response.get("star_count", 0),
                         "description": response.get("description"),

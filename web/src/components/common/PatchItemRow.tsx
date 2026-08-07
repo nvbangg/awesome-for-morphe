@@ -1,5 +1,5 @@
 import { memo, useState } from "react";
-import { RowItem } from "@/data";
+import { RowItem } from "@/types/data";
 import { FlaskConical, ChevronDown, ChevronUp } from "lucide-react";
 import { Badge } from "@/components/common/Badge";
 

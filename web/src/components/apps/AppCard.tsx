@@ -1,9 +1,14 @@
-import { AppItem } from "@/data";
+import { AppItem } from "@/types/data";
 import { Smartphone, Copy, Check, Play } from "lucide-react";
 import { useCopy } from "@/hooks/useCopy";
 import { memo, useState } from "react";
 import { isNew } from "@/utils/formatters";
 import { Badge } from "@/components/common/Badge";
+import {
+  PACKAGE_UNIVERSAL,
+  CATEGORY_UNIVERSAL,
+  CATEGORY_LABEL_UNIVERSAL,
+} from "@/constants";
 
 interface AppCardProps {
   appItem: AppItem;
@@ -23,8 +28,8 @@ export const AppCard = memo(function AppCard({
   };
 
   const showGooglePlay =
-    appItem.packageName !== "universal" &&
-    appItem.categorySlug !== "not-on-google-play";
+    appItem.packageName !== PACKAGE_UNIVERSAL &&
+    appItem.categorySlug !== CATEGORY_UNIVERSAL;
 
   return (
     <div
@@ -53,12 +58,12 @@ export const AppCard = memo(function AppCard({
             {appItem.appName}
             {isNew(appItem.firstSeen) && <Badge variant="new" />}
             {appItem.minInstalls > 0 &&
-              appItem.packageName !== "universal" &&
-              appItem.categorySlug !== "not-on-google-play" && (
+              appItem.packageName !== PACKAGE_UNIVERSAL &&
+              appItem.categorySlug !== CATEGORY_UNIVERSAL && (
                 <Badge variant="downloads" value={appItem.minInstalls} />
               )}
           </div>
-          {appItem.packageName !== "universal" && (
+          {appItem.packageName !== PACKAGE_UNIVERSAL && (
             <div
               onClick={handleCopy}
               className="flex items-start gap-1.5 text-xs cursor-pointer w-fit text-foreground-500 hover:text-primary transition-colors"
@@ -88,8 +93,8 @@ export const AppCard = memo(function AppCard({
           className="font-semibold rounded-full text-xs px-2 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 whitespace-nowrap truncate shrink-0 max-w-[60%]"
           title="Category"
         >
-          {appItem.categorySlug === "not-on-google-play"
-            ? "Not on Google Play"
+          {appItem.categorySlug === CATEGORY_UNIVERSAL
+            ? CATEGORY_LABEL_UNIVERSAL
             : appItem.category}
         </span>
 

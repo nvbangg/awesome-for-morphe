@@ -1,5 +1,8 @@
 import { useMemo, useState } from "react";
-import { ActiveData, getAppMeta, getAppBundleGroups } from "@/data";
+import { ActiveData } from "@/types/data";
+import { getAppMeta } from "@/utils/domainUtils";
+import { PACKAGE_UNIVERSAL, CATEGORY_LABEL_UNIVERSAL } from "@/constants";
+import { getAppBundleGroups } from "@/services";
 import { SearchInput } from "@/components/common/SearchInput";
 import { Avatar } from "@heroui/react";
 import {
@@ -101,9 +104,8 @@ export function AppModal({
   if (!applicationMeta) return null;
 
   const showGooglePlay =
-    packageName !== "universal" &&
-    !!applicationMeta.category &&
-    applicationMeta.category !== "Not on Google Play";
+    packageName !== PACKAGE_UNIVERSAL &&
+    applicationMeta.category !== CATEGORY_LABEL_UNIVERSAL;
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose}>
@@ -129,15 +131,15 @@ export function AppModal({
                 </h2>
                 {applicationMeta.minInstalls !== undefined &&
                   applicationMeta.minInstalls > 0 &&
-                  packageName !== "universal" &&
-                  !!applicationMeta.category && (
+                  packageName !== PACKAGE_UNIVERSAL &&
+                  applicationMeta.category !== CATEGORY_LABEL_UNIVERSAL && (
                     <Badge
                       variant="downloads"
                       value={applicationMeta.minInstalls}
                     />
                   )}
               </div>
-              {packageName !== "universal" && (
+              {packageName !== PACKAGE_UNIVERSAL && (
                 <div
                   onClick={(e) => {
                     e.stopPropagation();

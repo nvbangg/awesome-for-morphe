@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { ActiveData, getAppMeta, RowItem, simplifyString } from "@/data";
+import { ActiveData, RowItem } from "@/types/data";
+import { getAppMeta, simplifyString } from "@/utils";
 import { SearchInput } from "@/components/common/SearchInput";
 import { useCopy } from "@/hooks/useCopy";
 import { Avatar } from "@heroui/react";
@@ -11,6 +12,7 @@ import {
   ModalBody,
   CloseButton,
 } from "@/components/common/CustomModal";
+import { PACKAGE_UNIVERSAL } from "@/constants";
 import { TestBundleData } from "@/utils/testBundleFetcher";
 
 interface TestBundleViewModalProps {
@@ -100,7 +102,7 @@ export function TestBundleViewModal({
 
     const map = new Map<string, RowItem[]>();
     for (const row of filteredRows) {
-      const packageName = row.packageName || "universal";
+      const packageName = row.packageName || PACKAGE_UNIVERSAL;
       const list = map.get(packageName) || [];
       list.push(row);
       map.set(packageName, list);
@@ -113,10 +115,10 @@ export function TestBundleViewModal({
 
     groups.sort((groupA, groupB) => {
       if (
-        (groupA.packageName === "universal") !==
-        (groupB.packageName === "universal")
+        (groupA.packageName === PACKAGE_UNIVERSAL) !==
+        (groupB.packageName === PACKAGE_UNIVERSAL)
       ) {
-        return groupA.packageName === "universal" ? 1 : -1;
+        return groupA.packageName === PACKAGE_UNIVERSAL ? 1 : -1;
       }
       return groupA.appMeta.appName.localeCompare(
         groupB.appMeta.appName,
@@ -245,7 +247,7 @@ export function TestBundleViewModal({
             </div>
           ) : (
             appGroups.map((group) => {
-              const isUniversal = group.packageName === "universal";
+              const isUniversal = group.packageName === PACKAGE_UNIVERSAL;
               const isNotOnPlayStore =
                 group.packageName === "not-on-google-play";
               const showGooglePlay = !isUniversal && !isNotOnPlayStore;

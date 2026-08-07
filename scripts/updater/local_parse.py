@@ -2,12 +2,10 @@
 
 import json
 import re
-import sys
 import time
 from pathlib import Path
 from typing import Any
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from utils import load_json, parse_timestamp, save_json
 
 ROOT_DIR = Path(__file__).resolve().parents[2]

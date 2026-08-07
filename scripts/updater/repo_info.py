@@ -2,7 +2,6 @@
 
 import concurrent.futures
 import os
-import sys
 import time
 import urllib.error
 import urllib.parse
@@ -10,8 +9,8 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from utils import fetch, load_json, normalize_image_url, save_json
+from updater import normalize_image_url
+from utils import build_raw_url, fetch, load_json, save_json
 
 GITHUB_CONCURRENCY = 8
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -173,15 +172,11 @@ def process(
                 image_sha = repos_data.get(base_key, {}).get("image")
 
                 if image_sha and source and owner_repo:
-                    if source == "github":
-                        source_entry["avatarUrl"] = (
-                            f"https://raw.githubusercontent.com/{owner_repo}/main/patches-bundle.png"
-                        )
-                    elif source == "gitlab":
-                        encoded_repo = urllib.parse.quote(owner_repo, safe="")
-                        source_entry["avatarUrl"] = (
-                            f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.png/raw?ref=main"
-                        )
+                    avatar_url = build_raw_url(
+                        source, owner_repo, "main", "patches-bundle.png"
+                    )
+                    if avatar_url:
+                        source_entry["avatarUrl"] = avatar_url
                 elif details.get("avatar_url"):
                     source_entry["avatarUrl"] = normalize_image_url(
                         details["avatar_url"]

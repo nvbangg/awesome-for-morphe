@@ -1,15 +1,14 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 import concurrent.futures
-import sys
 from pathlib import Path
 from typing import Any
 
 from google_play_scraper import app as gplay_app
 from google_play_scraper.exceptions import NotFoundError
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from utils import load_json, normalize_image_url
+from updater import normalize_image_url
+from utils import load_json
 
 GPLAY_CONCURRENCY = 8
 ROOT_DIR = Path(__file__).resolve().parents[2]

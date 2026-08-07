@@ -2,7 +2,6 @@
 
 import argparse
 import json
-import sys
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -10,8 +9,7 @@ import zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from utils import fetch, load_json, save_json
+from utils import build_raw_url, fetch, load_json, save_json
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
@@ -59,34 +57,19 @@ def get_remote_file_hash(
 
 
 def get_file_sha(source: str, owner_repo: str, branch: str) -> str | None:
-    if source == "github":
-        url = f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
-    elif source == "gitlab":
-        encoded_repo = urllib.parse.quote(owner_repo, safe="")
-        url = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
-    else:
+    url = build_raw_url(source, owner_repo, branch, "patches-bundle.json")
+    if not url:
         return None
     return get_remote_file_hash(url, source, fallback=None)
 
 
 def get_patches_list_url(source: str, owner_repo: str, branch: str) -> str | None:
-    if source == "github":
-        return (
-            f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-list.json"
-        )
-    if source == "gitlab":
-        encoded_repo = urllib.parse.quote(owner_repo, safe="")
-        return f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-list.json/raw?ref={branch}"
-    return None
+    return build_raw_url(source, owner_repo, branch, "patches-list.json")
 
 
 def get_image_sha(source: str, owner_repo: str) -> str | None:
-    if source == "github":
-        url = f"https://raw.githubusercontent.com/{owner_repo}/main/patches-bundle.png"
-    elif source == "gitlab":
-        encoded_repo = urllib.parse.quote(owner_repo, safe="")
-        url = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.png/raw?ref=main"
-    else:
+    url = build_raw_url(source, owner_repo, "main", "patches-bundle.png")
+    if not url:
         return None
     return get_remote_file_hash(url, source, fallback="exists")
 
@@ -107,11 +90,9 @@ def process_repo_branch(
         print(f"[-] [{owner_repo}:{branch}] patches-bundle.json not found")
         return source, owner_repo, branch, None, None, False, True, True, None
 
-    if source == "github":
-        raw_bundle_url = f"https://raw.githubusercontent.com/{owner_repo}/{branch}/patches-bundle.json"
-    else:
-        encoded_repo = urllib.parse.quote(owner_repo, safe="")
-        raw_bundle_url = f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/patches-bundle.json/raw?ref={branch}"
+    raw_bundle_url = build_raw_url(source, owner_repo, branch, "patches-bundle.json")
+    if not raw_bundle_url:
+        return source, owner_repo, branch, current_sha, None, False, False, False, None
 
     owner, repo = owner_repo.split("/", 1)
     file_prefix = f"{source}~{owner}~{repo}~{branch}"

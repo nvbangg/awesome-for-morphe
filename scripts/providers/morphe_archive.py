@@ -1,11 +1,10 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 import re
-import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from utils import fetch, load_json, save_json
+from providers import export_provider
+from utils import fetch, load_json
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
@@ -35,17 +34,7 @@ def discover():
             owner, repo = parts[0].strip(), parts[1].strip()
             discovered[f"{platform}:{owner}/{repo}"] = {}
 
-    if not discovered:
-        existing_data = load_json(OUTPUT_PATH)
-        print(
-            f"::warning title=Discover:: [-] [morphe-archive] Empty result. Kept {len(existing_data)} sources in morphe-archive.json"
-        )
-        return existing_data
-    save_json(
-        OUTPUT_PATH, dict(sorted(discovered.items(), key=lambda item: item[0].lower()))
-    )
-    print(f"[morphe-archive] Exported {len(discovered)} sources to morphe-archive.json")
-    return discovered
+    return export_provider("morphe-archive", discovered, OUTPUT_PATH)
 
 
 if __name__ == "__main__":

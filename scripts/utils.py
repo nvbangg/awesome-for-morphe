@@ -1,7 +1,7 @@
 import json
-import re
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import UTC, datetime
 from pathlib import Path
@@ -79,19 +79,13 @@ def parse_timestamp(timestamp: Any) -> int:
         return 0
 
 
-def _set_query_param(url: str, pattern: str, param: str) -> str:
-    if re.search(pattern, url):
-        return re.sub(pattern, rf"\1{param}", url)
-    return f"{url}&{param}" if "?" in url else f"{url}?{param}"
-
-
-def normalize_image_url(url: str) -> str:
-    if not url or not isinstance(url, str):
-        return ""
-    if "googleusercontent.com" in url or "ggpht.com" in url:
-        return re.sub(r"=(?:s|w)\d+.*$", "", url) + "=s64-rw"
-    if "avatars.githubusercontent.com" in url or "gravatar.com" in url:
-        return _set_query_param(url, r"([?&])(?:size|s)=\d+", "s=64")
-    if "gitlab.com" in url:
-        return _set_query_param(url, r"([?&])width=\d+", "width=64")
-    return url
+def build_raw_url(
+    source: str, owner_repo: str, branch: str, file_path: str
+) -> str | None:
+    if source == "github":
+        return f"https://raw.githubusercontent.com/{owner_repo}/{branch}/{file_path}"
+    if source == "gitlab":
+        encoded_repo = urllib.parse.quote(owner_repo, safe="")
+        encoded_file = urllib.parse.quote(file_path, safe="")
+        return f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/{encoded_file}/raw?ref={branch}"
+    return None

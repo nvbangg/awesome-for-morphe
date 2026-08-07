@@ -3,11 +3,10 @@
 import json
 import os
 import re
-import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from providers import export_provider
 from utils import fetch, load_json, save_json
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -126,17 +125,7 @@ def discover():
     )
     save_json(SNAPSHOT_PATH, snapshot)
 
-    if not discovered:
-        existing_data = load_json(OUTPUT_PATH)
-        print(
-            f"::warning title=Discover:: [-] [jman] Empty result. Kept {len(existing_data)} sources in jman.json"
-        )
-        return existing_data
-    save_json(
-        OUTPUT_PATH, dict(sorted(discovered.items(), key=lambda item: item[0].lower()))
-    )
-    print(f"[jman] Exported {len(discovered)} sources to jman.json")
-    return discovered
+    return export_provider("jman", discovered, OUTPUT_PATH)
 
 
 if __name__ == "__main__":

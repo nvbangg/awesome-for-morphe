@@ -4,7 +4,6 @@ import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
 from providers import jman, morphe_archive, official
 from utils import load_json, save_json
 

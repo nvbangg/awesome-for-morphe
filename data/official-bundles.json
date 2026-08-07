@@ -364,7 +364,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "hotRank": 33
+      "hotRank": 31
     },
     {
       "source": "github",
@@ -1380,7 +1380,7 @@
         },
         {
           "name": "Disable abuse detection report",
-          "description": "Stops the abuse detection report that attests the app to the server on startup and during login, which cannot be spoofed locally because it carries a Google-signed Play Integrity token that exposes the re-signed certificate.",
+          "description": "Answers the startup and login integrity challenge with an empty token and a benign Play Integrity failure code instead of a Google-signed token that would expose the re-signed certificate. The report itself is still sent, so the client does not go conspicuously silent on the server's nonce the way suppressing it entirely would.",
           "default": true,
           "options": [],
           "preRelease": true,
@@ -1395,6 +1395,14 @@
           "compatiblePackagesKey": 35
         },
         {
+          "name": "Spoof attestation package name",
+          "description": "Reports the original package name in the attestation report, which otherwise reveals a renamed install. Only the report is affected, so the app keeps using its real package name everywhere else.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 34
+        },
+        {
           "name": "Strip image metadata",
           "description": "Removes EXIF metadata, including the GPS capture location, from images sent in original quality, while keeping the picture and its orientation intact.",
           "default": true,
@@ -1403,13 +1411,13 @@
           "compatiblePackagesKey": 34
         }
       ],
-      "changelog": "# [1.3.0-dev.9](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.8...v1.3.0-dev.9) (2026-08-07)\n\n\n### Bug Fixes\n\n* **kakaotalk:** align Build.ID, DISPLAY, TYPE and TAGS with the fingerprint in Change model ([97a9e49](https://github.com/AmpleReVanced/revanced-patches/commit/97a9e493809cfc3ff7cb3b970f2560a9ca1a5f7b))\n* **kakaotalk:** fail loudly when the kick button membership check is missing ([a3a03b1](https://github.com/AmpleReVanced/revanced-patches/commit/a3a03b1d5dc594af8a0ab85556413f1b06859a07))\n* **kakaotalk:** restore INVOKE_VIRTUAL constraint on Show deleted lookups ([cf65006](https://github.com/AmpleReVanced/revanced-patches/commit/cf65006811a1655ee96897820a5e81a5fe501bd0))\n\n\n### Features\n\n* **kakaotalk:** add a setting to toggle Allow reply to feed ([990f6ee](https://github.com/AmpleReVanced/revanced-patches/commit/990f6ee45877328179a0cfeba0a2f4d4f32f422b))\n* **kakaotalk:** add Block reactions on deleted or hidden messages patch ([511e1a8](https://github.com/AmpleReVanced/revanced-patches/commit/511e1a89b45a5287331eed1617ab523fe2f7f6f9))\n* **kakaotalk:** block replies and comments on deleted or hidden messages ([753c605](https://github.com/AmpleReVanced/revanced-patches/commit/753c605469b845be73d175c5fc1f9daa81972ca8))\n\n# [1.3.0-dev.8](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.7...v1.3.0-dev.8) (2026-08-07)\n\n\n### Bug Fixes\n\n* **kakaotalk:** spoof board and hardware in Change model ([af43935](https://github.com/AmpleReVanced/revanced-patches/commit/af4393517342bcbcc0b39961596e81c188037a7b))\n\n\n### Features\n\n* **dcinside:** filter recently viewed posts by gallery ([2cac65b](https://github.com/AmpleReVanced/revanced-patches/commit/2cac65b9d0b8c6033045c069626a74b212164bef))\n* **kakaotalk:** add Disable abuse detection report patch ([06e04b2](https://github.com/AmpleReVanced/revanced-patches/commit/06e04b24b40891393ef9abde68b5b3cbf57bb768))\n\n# [1.3.0-dev.7](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.6...v1.3.0-dev.7) (2026-08-06)\n\n\n### Features\n\n* **flexcil:** add support flexcil patches for version `1.4.4.12` ([7b854a3](https://github.com/AmpleReVanced/revanced-patches/commit/7b854a346dd6e0a9d0a04d573c46366586bc3ab9))\n\n# [1.3.0-dev.6](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.5...v1.3.0-dev.6) (2026-08-06)\n\n\n### Bug Fixes\n\n* **soop:** remove the main board banner ad shown on the Live tab ([030a3f3](https://github.com/AmpleReVanced/revanced-patches/commit/030a3f3e90c20b66cd2185f0ade7d0b20fc27df6))\n* **soop:** stop the Live tab erroring when list banner ads are removed ([b8fe59b](https://github.com/AmpleReVanced/revanced-patches/commit/b8fe59ba781afcf027d55b709f10998897f91852))\n\n# [1.3.0-dev.5](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.4...v1.3.0-dev.5) (2026-08-04)\n\n\n### Features\n\n* **kakaotalk:** replace framework ExifInterface with AndroidX ([727b8c5](https://github.com/AmpleReVanced/revanced-patches/commit/727b8c5de240a477021266408ea1aa0953dd67ae))\n\n# [1.3.0-dev.4](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.3...v1.3.0-dev.4) (2026-08-04)\n\n\n### Features\n\n* **kakaotalk:** add Strip image metadata patch ([64293b4](https://github.com/AmpleReVanced/revanced-patches/commit/64293b42c3017570ec52cfc3a721aa07d9cc0fc3))\n\n# [1.3.0-dev.3](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.2...v1.3.0-dev.3) (2026-08-04)\n\n\n### Features\n\n* **kakaotalk:** add Allow open chat media bundle patch ([d234282](https://github.com/AmpleReVanced/revanced-patches/commit/d234282f9ac5aedebbc90cd4b105aa378e3485e4))\n\n# [1.3.0-dev.2](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-08-01)\n\n\n### Bug Fixes\n\n* **kakaotalk:** allow swiping feed messages while comments are enabled ([8ec8bd0](https://github.com/AmpleReVanced/revanced-patches/commit/8ec8bd052d4f498b8bbd155d5d723670ff795ed7))\n\n\n### Features\n\n* **dcinside:** show author identifier in comments ([4bee018](https://github.com/AmpleReVanced/revanced-patches/commit/4bee018f51ee2843593967192683f7aedacdb0c0))\n\n# [1.3.0-dev.1](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-08-01)\n\n\n### Bug Fixes\n\n* **kakaotalk:** allocate registers for Allow invisible characters ([ec4bcad](https://github.com/AmpleReVanced/revanced-patches/commit/ec4bcadfb0b2e06aa79fe347864a2f508fa163b4))\n* **settings:** adopt piko switch checkmark and stroke blending ([4204a1c](https://github.com/AmpleReVanced/revanced-patches/commit/4204a1cc37d0978a793be7e0daa880a827a88883))\n* **settings:** align preference styling with piko and fix nested screen toolbar ([b7edcf3](https://github.com/AmpleReVanced/revanced-patches/commit/b7edcf3f6907775c1c7598f9fc301bb6c0c4f581))\n\n\n### Features\n\n* **chzzk:** add support chzzk patches for version `3.10.0` ([4d6972e](https://github.com/AmpleReVanced/revanced-patches/commit/4d6972e778f846cb18ee8d4cc9be56bbd5b8e6a6))\n* **dcinside:** update dcinside patches for version `5.3.2` ([7c58146](https://github.com/AmpleReVanced/revanced-patches/commit/7c5814633dd8a67050c42f8bfd1013ef310e7ce5))\n* **flexcil:** add support flexcil patches for version `1.4.4.10` ([ba011f0](https://github.com/AmpleReVanced/revanced-patches/commit/ba011f0b9d21cc0e12f0cd45160489797b900d0d))\n* **kakaotalk:** add Allow invisible characters patch ([8ad87d0](https://github.com/AmpleReVanced/revanced-patches/commit/8ad87d084742dc04a764fae3e1f0c85d9c41fcbc))\n* **kakaotalk:** add Allow profile media download patch ([b6d3822](https://github.com/AmpleReVanced/revanced-patches/commit/b6d382288009ec337841aac5cdcf639bda91578c))\n* **kakaotalk:** update kakaotalk patches for version `26.6.2` ([52fcbb6](https://github.com/AmpleReVanced/revanced-patches/commit/52fcbb6ea2f56accb05b9913d4662a6c197b79a7))\n* **kakaotalk:** update kakaotalk patches for version `26.6.3` ([1982c1f](https://github.com/AmpleReVanced/revanced-patches/commit/1982c1fa97d01d01c1c8070d47b49f5a4b3da673))\n* **settings:** back up and restore settings to a file ([05d7236](https://github.com/AmpleReVanced/revanced-patches/commit/05d7236b7d3e4e03edf161dec341fa3748bb2d95))\n* **soop:** update soop patches for version `8.28.5` ([bd831f9](https://github.com/AmpleReVanced/revanced-patches/commit/bd831f94e9fcbad442bf4cd41280ff10f88b6fe5))\n\n# [1.2.0](https://github.com/AmpleReVanced/revanced-patches/compare/v1.1.0...v1.2.0) (2026-07-25)\n\n\n### Bug Fixes\n\n* **flexcil:** bind premium gate polarity to the returned value ([dab48b3](https://github.com/AmpleReVanced/revanced-patches/commit/dab48b325efecc34b13e06e62cccb1204531628d))\n* **flexcil:** unlock all premium gates in Unlock Premium features ([e5e83b5](https://github.com/AmpleReVanced/revanced-patches/commit/e5e83b51e28fe585a8cb673f6057529fc623e233))\n* **kakaotalk:** avoid hardcoded settings model registers ([4b637ec](https://github.com/AmpleReVanced/revanced-patches/commit/4b637ec41d32ec603fae68e207caf5c15d3d56e6))\n* **kakaotalk:** bound the packet server line decoder buffer ([c0a439c](https://github.com/AmpleReVanced/revanced-patches/commit/c0a439c1fed0d05f128aba605d33b2fac3a03542))\n* **kakaotalk:** derive settings tab injection from bytecode ([60d33a4](https://github.com/AmpleReVanced/revanced-patches/commit/60d33a43ebc971927ba32c7a5c7989e6bda5fd16))\n* **kakaotalk:** drop stale feed profile spans on recycled text views ([2174227](https://github.com/AmpleReVanced/revanced-patches/commit/2174227b82faf36d6ef4fed1108e95f8802e94c6))\n* **kakaotalk:** hide More tab service groups reliably ([1785b79](https://github.com/AmpleReVanced/revanced-patches/commit/1785b799cd64dfba13c8590921fc055c9ef29180))\n* **kakaotalk:** install pine native library to correct path ([4a0fd25](https://github.com/AmpleReVanced/revanced-patches/commit/4a0fd2550e6cf8ce78046068cd39d0c1ab2bc336))\n* **kakaotalk:** make feature flag map reads thread-safe ([687fc9e](https://github.com/AmpleReVanced/revanced-patches/commit/687fc9e34473e168806f5353c6f858a920090265))\n* **kakaotalk:** reduce markdown hook register pressure ([8507317](https://github.com/AmpleReVanced/revanced-patches/commit/85073179028ea8b762934081e0a75d262efaaf38))\n* **kakaotalk:** remove Brand tab from Now tab ([0d3218c](https://github.com/AmpleReVanced/revanced-patches/commit/0d3218cc06930769ea9a79f005eb112b63ea7f98))\n* **kakaotalk:** reserve <clinit> registers for the settings tab enum ([a7694a1](https://github.com/AmpleReVanced/revanced-patches/commit/a7694a13a01be3dd519c7856dbde79682958cf23))\n* **kakaotalk:** resolve edited history sender profile from chat model ([bb71cf5](https://github.com/AmpleReVanced/revanced-patches/commit/bb71cf50dbe6440b90867362ffecf753c1ee8b39))\n* **kakaotalk:** respect chat theme in edit history screen ([4ca46f5](https://github.com/AmpleReVanced/revanced-patches/commit/4ca46f535db6e8a842de4ac00c07176217d27cbb))\n* **kakaotalk:** separate reflection-contract failures from connection state ([9ded0bf](https://github.com/AmpleReVanced/revanced-patches/commit/9ded0bf25a8997bcce1b0edbcd3d3526a2ab28fc))\n* **kakaotalk:** update reaction mention flag patch for 26.5.2 ([c81772f](https://github.com/AmpleReVanced/revanced-patches/commit/c81772ffeab6a1585fd4cc742e660725d90ccf37))\n* **settings:** respect host app theme in Morphe settings ([cc72810](https://github.com/AmpleReVanced/revanced-patches/commit/cc72810445f29129580e04988b7cb021c2c06a09))\n* **settings:** resync system bars for preference dialogs ([7de7693](https://github.com/AmpleReVanced/revanced-patches/commit/7de7693a36686b2610d0ca5936b70743ef24d041))\n* **settings:** suppress custom preference lint warnings ([31a80fe](https://github.com/AmpleReVanced/revanced-patches/commit/31a80fe5229d6e8cc586f325c08b2506431b643c))\n* **soop:** bind P2P config getter to the setter's value register ([cddb3a9](https://github.com/AmpleReVanced/revanced-patches/commit/cddb3a919edd24bb92afd06c2d603ecc32304bba))\n* use app-specific locales for string checks ([e0343f4](https://github.com/AmpleReVanced/revanced-patches/commit/e0343f4786509b5ce9750084e52cf5625202532f))\n\n\n### Features\n\n* add project support section ([34482f3](https://github.com/AmpleReVanced/revanced-patches/commit/34482f3381bae8411ec737a5e9ed20065bf42449))\n* **chzzk:** add ad, cheat key, and banner patches ([470a759](https://github.com/AmpleReVanced/revanced-patches/commit/470a759f01ddb3cabbee12b95f10eeae312b8484))\n* **chzzk:** update chzzk patches for version 3.6.2 ([6594f23](https://github.com/AmpleReVanced/revanced-patches/commit/6594f232243c793cd53549fe6a450e402f1b61a6))\n* **chzzk:** update chzzk patches for version 3.9.0 ([85a5bc1](https://github.com/AmpleReVanced/revanced-patches/commit/85a5bc1b5a68c6f109192469868cb2cab73316da))\n* **dcinside:** hide mini gallery cover image ([449431d](https://github.com/AmpleReVanced/revanced-patches/commit/449431de7c806be7c418d74ac0fb57e3dd73cd4a))\n* **dcinside:** restore legacy post icons ([6af9e1e](https://github.com/AmpleReVanced/revanced-patches/commit/6af9e1ef1d9c6cea2ff79cc1707135b158b70349))\n* **dcinside:** show author identifier in posts and post lists ([2f38791](https://github.com/AmpleReVanced/revanced-patches/commit/2f38791fa4d2287f98408de1f61182c2f952b7c0))\n* **dcinside:** show author identifier in recently viewed posts ([5caa2e1](https://github.com/AmpleReVanced/revanced-patches/commit/5caa2e1fcb4770417999a14be3b3a25efe7873b4))\n* **dcinside:** update dcinside patches for version 5.2.15 ([a160f17](https://github.com/AmpleReVanced/revanced-patches/commit/a160f1759a8dd69a3dd6d4861b541faf40ceb725))\n* **dcinside:** update dcinside patches for version 5.2.17 ([425a1fe](https://github.com/AmpleReVanced/revanced-patches/commit/425a1fe612d61229fad0b555d4f7531c56103e51))\n* **dcinside:** update dcinside patches for version 5.3.0 ([c56c131](https://github.com/AmpleReVanced/revanced-patches/commit/c56c13194cb09571b6efbe92c0c758be1817bb0d))\n* **flexcil:** add Bypass login patch ([698ac57](https://github.com/AmpleReVanced/revanced-patches/commit/698ac57ba1e6f918fb4050da213a8c2bf845089c))\n* **flexcil:** update flexcil patches for version 1.4.4.9 ([86b96a1](https://github.com/AmpleReVanced/revanced-patches/commit/86b96a14ca87b40fe47e5aaa67936964dc3f13e4))\n* **kakaotalk:** add edited message history ([6f877d4](https://github.com/AmpleReVanced/revanced-patches/commit/6f877d4bad430b8148b3390f1dbf4dc42f85c36c))\n* **kakaotalk:** add edited message history ([#139](https://github.com/AmpleReVanced/revanced-patches/issues/139)) ([322386f](https://github.com/AmpleReVanced/revanced-patches/commit/322386f0733336c8c4a5d4f757ab1339d4a1c478))\n* **kakaotalk:** add More tab component hide options ([6130847](https://github.com/AmpleReVanced/revanced-patches/commit/613084752ad1a10ab09e448d4a9b4bb7e21ca004))\n* **kakaotalk:** hide game tab in more tab ([65c1190](https://github.com/AmpleReVanced/revanced-patches/commit/65c1190a53a489ea8e5838dfffb585a00de95cb1))\n* **kakaotalk:** implement HookInitializer and integrate with Kakao application lifecycle ([5ca31dd](https://github.com/AmpleReVanced/revanced-patches/commit/5ca31dda712b37b82667a6720f402e4c26c4a1ee))\n* **kakaotalk:** open profiles from open chat feed names ([8451262](https://github.com/AmpleReVanced/revanced-patches/commit/8451262806d0de3be4c8360358ae6728d9b14003))\n* **kakaotalk:** restore packet handler for latest version ([5deac6b](https://github.com/AmpleReVanced/revanced-patches/commit/5deac6b4bde7d9d7979576d7f7f3ba5bae9ece7c))\n* **kakaotalk:** show message read receipts ([57ba8ff](https://github.com/AmpleReVanced/revanced-patches/commit/57ba8ffb9ac9d2f4d403a831f40214b40c3915df))\n* **kakaotalk:** show sender profile in edit history ([0165a16](https://github.com/AmpleReVanced/revanced-patches/commit/0165a16895ba755d87954231f06f279bd44b1724))\n* **kakaotalk:** update kakaotalk patches for version 26.5.0 ([4130447](https://github.com/AmpleReVanced/revanced-patches/commit/4130447c7bece35606abaeb056ca3608e11a1958))\n* **kakaotalk:** update kakaotalk patches for version 26.5.2 ([52edd4e](https://github.com/AmpleReVanced/revanced-patches/commit/52edd4ef8f7b70c36e5bb754f64500d0f801de73))\n* **kakaotalk:** update kakaotalk patches for version 26.5.3 ([66574b1](https://github.com/AmpleReVanced/revanced-patches/commit/66574b1cc638b72420419ee4bf91ef49010136bb))\n* **kakaotalk:** update kakaotalk patches for version 26.6.0 ([62e7798](https://github.com/AmpleReVanced/revanced-patches/commit/62e779833c2c10cc82a41a63f33195fab5d0011e))\n* **kakaotalk:** update kakaotalk patches for version 26.6.1 ([3607e94](https://github.com/AmpleReVanced/revanced-patches/commit/3607e94970acc53486072ad1321dbae5503ea87d))\n* **settings:** port Piko-derived preference UI ([17c1ac0](https://github.com/AmpleReVanced/revanced-patches/commit/17c1ac0440eca58db1c9cdb2470320caf4eac29f))\n* **soop:** add ad-removal patches ([9983819](https://github.com/AmpleReVanced/revanced-patches/commit/99838193a544573cff447e88df2025532e1707cf))\n* **soop:** add DisableP2P Patch to disable griding ([95b3a1d](https://github.com/AmpleReVanced/revanced-patches/commit/95b3a1d2514ec9450cdec204902fc9195824951e))\n* **soop:** make native P2P disable resilient across app versions ([91306fe](https://github.com/AmpleReVanced/revanced-patches/commit/91306fe2bd60bcc44ccc279bf0dcd5390e59becd))\n* **soop:** remove Catch feed ads ([de90288](https://github.com/AmpleReVanced/revanced-patches/commit/de902880d4f9562c57ed1df337c9327868b517fc))\n* **soop:** remove exit dialog ad ([b6fdac3](https://github.com/AmpleReVanced/revanced-patches/commit/b6fdac3a5f421cedab2e5c78d269357af279c661))\n* **soop:** update soop patches for version 8.28.3 ([a7dbfeb](https://github.com/AmpleReVanced/revanced-patches/commit/a7dbfeb0890e97f3d562c93a4e23743909855c88))\n\n\n### Performance Improvements\n\n* **kakaotalk:** speed up chat side title copy setup ([094e18a](https://github.com/AmpleReVanced/revanced-patches/commit/094e18a77e4189fd0c767c0e9fef8a72a6c1775c))\n\n# [1.2.0-dev.20](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.19...v1.2.0-dev.20) (2026-07-24)\n\n\n### Features\n\n* **dcinside:** show author identifier in posts and post lists ([2f38791](https://github.com/AmpleReVanced/revanced-patches/commit/2f38791fa4d2287f98408de1f61182c2f952b7c0))\n* **dcinside:** show author identifier in recently viewed posts ([5caa2e1](https://github.com/AmpleReVanced/revanced-patches/commit/5caa2e1fcb4770417999a14be3b3a25efe7873b4))\n\n# [1.2.0-dev.19](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.18...v1.2.0-dev.19) (2026-07-24)\n\n\n### Features\n\n* **chzzk:** add ad, cheat key, and banner patches ([470a759](https://github.com/AmpleReVanced/revanced-patches/commit/470a759f01ddb3cabbee12b95f10eeae312b8484))\n* **soop:** remove Catch feed ads ([de90288](https://github.com/AmpleReVanced/revanced-patches/commit/de902880d4f9562c57ed1df337c9327868b517fc))\n* **soop:** remove exit dialog ad ([b6fdac3](https://github.com/AmpleReVanced/revanced-patches/commit/b6fdac3a5f421cedab2e5c78d269357af279c661))\n\n# [1.2.0-dev.18](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.17...v1.2.0-dev.18) (2026-07-24)\n\n\n### Features\n\n* **soop:** add ad-removal patches ([9983819](https://github.com/AmpleReVanced/revanced-patches/commit/99838193a544573cff447e88df2025532e1707cf))\n\n# [1.2.0-dev.17](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.16...v1.2.0-dev.17) (2026-07-23)\n\n\n### Features\n\n* **dcinside:** update dcinside patches for version 5.3.0 ([c56c131](https://github.com/AmpleReVanced/revanced-patches/commit/c56c13194cb09571b6efbe92c0c758be1817bb0d))\n\n# [1.2.0-dev.16](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.15...v1.2.0-dev.16) (2026-07-22)\n\n\n### Performance Improvements\n\n* **kakaotalk:** speed up chat side title copy setup ([094e18a](https://github.com/AmpleReVanced/revanced-patches/commit/094e18a77e4189fd0c767c0e9fef8a72a6c1775c))",
+      "changelog": "# [1.3.0-dev.10](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.9...v1.3.0-dev.10) (2026-08-07)\n\n\n### Bug Fixes\n\n* **kakaotalk:** answer the abuse-detection nonce with a failure token instead of silence ([5d8e03b](https://github.com/AmpleReVanced/revanced-patches/commit/5d8e03b8213a3f702fd66b8b0e3769689e972fc9))\n\n\n### Features\n\n* **kakaotalk:** add Spoof attestation package name patch ([0fda71d](https://github.com/AmpleReVanced/revanced-patches/commit/0fda71deb3d4d41a0e6a392891c2b78a8c821649))\n* **kakaotalk:** bypass the native Moat scan at its dispatcher ([d836233](https://github.com/AmpleReVanced/revanced-patches/commit/d8362334f0fa9e5e0ec9484b58fe0ba1bb072b72))\n\n# [1.3.0-dev.9](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.8...v1.3.0-dev.9) (2026-08-07)\n\n\n### Bug Fixes\n\n* **kakaotalk:** align Build.ID, DISPLAY, TYPE and TAGS with the fingerprint in Change model ([97a9e49](https://github.com/AmpleReVanced/revanced-patches/commit/97a9e493809cfc3ff7cb3b970f2560a9ca1a5f7b))\n* **kakaotalk:** fail loudly when the kick button membership check is missing ([a3a03b1](https://github.com/AmpleReVanced/revanced-patches/commit/a3a03b1d5dc594af8a0ab85556413f1b06859a07))\n* **kakaotalk:** restore INVOKE_VIRTUAL constraint on Show deleted lookups ([cf65006](https://github.com/AmpleReVanced/revanced-patches/commit/cf65006811a1655ee96897820a5e81a5fe501bd0))\n\n\n### Features\n\n* **kakaotalk:** add a setting to toggle Allow reply to feed ([990f6ee](https://github.com/AmpleReVanced/revanced-patches/commit/990f6ee45877328179a0cfeba0a2f4d4f32f422b))\n* **kakaotalk:** add Block reactions on deleted or hidden messages patch ([511e1a8](https://github.com/AmpleReVanced/revanced-patches/commit/511e1a89b45a5287331eed1617ab523fe2f7f6f9))\n* **kakaotalk:** block replies and comments on deleted or hidden messages ([753c605](https://github.com/AmpleReVanced/revanced-patches/commit/753c605469b845be73d175c5fc1f9daa81972ca8))\n\n# [1.3.0-dev.8](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.7...v1.3.0-dev.8) (2026-08-07)\n\n\n### Bug Fixes\n\n* **kakaotalk:** spoof board and hardware in Change model ([af43935](https://github.com/AmpleReVanced/revanced-patches/commit/af4393517342bcbcc0b39961596e81c188037a7b))\n\n\n### Features\n\n* **dcinside:** filter recently viewed posts by gallery ([2cac65b](https://github.com/AmpleReVanced/revanced-patches/commit/2cac65b9d0b8c6033045c069626a74b212164bef))\n* **kakaotalk:** add Disable abuse detection report patch ([06e04b2](https://github.com/AmpleReVanced/revanced-patches/commit/06e04b24b40891393ef9abde68b5b3cbf57bb768))\n\n# [1.3.0-dev.7](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.6...v1.3.0-dev.7) (2026-08-06)\n\n\n### Features\n\n* **flexcil:** add support flexcil patches for version `1.4.4.12` ([7b854a3](https://github.com/AmpleReVanced/revanced-patches/commit/7b854a346dd6e0a9d0a04d573c46366586bc3ab9))\n\n# [1.3.0-dev.6](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.5...v1.3.0-dev.6) (2026-08-06)\n\n\n### Bug Fixes\n\n* **soop:** remove the main board banner ad shown on the Live tab ([030a3f3](https://github.com/AmpleReVanced/revanced-patches/commit/030a3f3e90c20b66cd2185f0ade7d0b20fc27df6))\n* **soop:** stop the Live tab erroring when list banner ads are removed ([b8fe59b](https://github.com/AmpleReVanced/revanced-patches/commit/b8fe59ba781afcf027d55b709f10998897f91852))\n\n# [1.3.0-dev.5](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.4...v1.3.0-dev.5) (2026-08-04)\n\n\n### Features\n\n* **kakaotalk:** replace framework ExifInterface with AndroidX ([727b8c5](https://github.com/AmpleReVanced/revanced-patches/commit/727b8c5de240a477021266408ea1aa0953dd67ae))\n\n# [1.3.0-dev.4](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.3...v1.3.0-dev.4) (2026-08-04)\n\n\n### Features\n\n* **kakaotalk:** add Strip image metadata patch ([64293b4](https://github.com/AmpleReVanced/revanced-patches/commit/64293b42c3017570ec52cfc3a721aa07d9cc0fc3))\n\n# [1.3.0-dev.3](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.2...v1.3.0-dev.3) (2026-08-04)\n\n\n### Features\n\n* **kakaotalk:** add Allow open chat media bundle patch ([d234282](https://github.com/AmpleReVanced/revanced-patches/commit/d234282f9ac5aedebbc90cd4b105aa378e3485e4))\n\n# [1.3.0-dev.2](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-08-01)\n\n\n### Bug Fixes\n\n* **kakaotalk:** allow swiping feed messages while comments are enabled ([8ec8bd0](https://github.com/AmpleReVanced/revanced-patches/commit/8ec8bd052d4f498b8bbd155d5d723670ff795ed7))\n\n\n### Features\n\n* **dcinside:** show author identifier in comments ([4bee018](https://github.com/AmpleReVanced/revanced-patches/commit/4bee018f51ee2843593967192683f7aedacdb0c0))\n\n# [1.3.0-dev.1](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-08-01)\n\n\n### Bug Fixes\n\n* **kakaotalk:** allocate registers for Allow invisible characters ([ec4bcad](https://github.com/AmpleReVanced/revanced-patches/commit/ec4bcadfb0b2e06aa79fe347864a2f508fa163b4))\n* **settings:** adopt piko switch checkmark and stroke blending ([4204a1c](https://github.com/AmpleReVanced/revanced-patches/commit/4204a1cc37d0978a793be7e0daa880a827a88883))\n* **settings:** align preference styling with piko and fix nested screen toolbar ([b7edcf3](https://github.com/AmpleReVanced/revanced-patches/commit/b7edcf3f6907775c1c7598f9fc301bb6c0c4f581))\n\n\n### Features\n\n* **chzzk:** add support chzzk patches for version `3.10.0` ([4d6972e](https://github.com/AmpleReVanced/revanced-patches/commit/4d6972e778f846cb18ee8d4cc9be56bbd5b8e6a6))\n* **dcinside:** update dcinside patches for version `5.3.2` ([7c58146](https://github.com/AmpleReVanced/revanced-patches/commit/7c5814633dd8a67050c42f8bfd1013ef310e7ce5))\n* **flexcil:** add support flexcil patches for version `1.4.4.10` ([ba011f0](https://github.com/AmpleReVanced/revanced-patches/commit/ba011f0b9d21cc0e12f0cd45160489797b900d0d))\n* **kakaotalk:** add Allow invisible characters patch ([8ad87d0](https://github.com/AmpleReVanced/revanced-patches/commit/8ad87d084742dc04a764fae3e1f0c85d9c41fcbc))\n* **kakaotalk:** add Allow profile media download patch ([b6d3822](https://github.com/AmpleReVanced/revanced-patches/commit/b6d382288009ec337841aac5cdcf639bda91578c))\n* **kakaotalk:** update kakaotalk patches for version `26.6.2` ([52fcbb6](https://github.com/AmpleReVanced/revanced-patches/commit/52fcbb6ea2f56accb05b9913d4662a6c197b79a7))\n* **kakaotalk:** update kakaotalk patches for version `26.6.3` ([1982c1f](https://github.com/AmpleReVanced/revanced-patches/commit/1982c1fa97d01d01c1c8070d47b49f5a4b3da673))\n* **settings:** back up and restore settings to a file ([05d7236](https://github.com/AmpleReVanced/revanced-patches/commit/05d7236b7d3e4e03edf161dec341fa3748bb2d95))\n* **soop:** update soop patches for version `8.28.5` ([bd831f9](https://github.com/AmpleReVanced/revanced-patches/commit/bd831f94e9fcbad442bf4cd41280ff10f88b6fe5))\n\n# [1.2.0](https://github.com/AmpleReVanced/revanced-patches/compare/v1.1.0...v1.2.0) (2026-07-25)\n\n\n### Bug Fixes\n\n* **flexcil:** bind premium gate polarity to the returned value ([dab48b3](https://github.com/AmpleReVanced/revanced-patches/commit/dab48b325efecc34b13e06e62cccb1204531628d))\n* **flexcil:** unlock all premium gates in Unlock Premium features ([e5e83b5](https://github.com/AmpleReVanced/revanced-patches/commit/e5e83b51e28fe585a8cb673f6057529fc623e233))\n* **kakaotalk:** avoid hardcoded settings model registers ([4b637ec](https://github.com/AmpleReVanced/revanced-patches/commit/4b637ec41d32ec603fae68e207caf5c15d3d56e6))\n* **kakaotalk:** bound the packet server line decoder buffer ([c0a439c](https://github.com/AmpleReVanced/revanced-patches/commit/c0a439c1fed0d05f128aba605d33b2fac3a03542))\n* **kakaotalk:** derive settings tab injection from bytecode ([60d33a4](https://github.com/AmpleReVanced/revanced-patches/commit/60d33a43ebc971927ba32c7a5c7989e6bda5fd16))\n* **kakaotalk:** drop stale feed profile spans on recycled text views ([2174227](https://github.com/AmpleReVanced/revanced-patches/commit/2174227b82faf36d6ef4fed1108e95f8802e94c6))\n* **kakaotalk:** hide More tab service groups reliably ([1785b79](https://github.com/AmpleReVanced/revanced-patches/commit/1785b799cd64dfba13c8590921fc055c9ef29180))\n* **kakaotalk:** install pine native library to correct path ([4a0fd25](https://github.com/AmpleReVanced/revanced-patches/commit/4a0fd2550e6cf8ce78046068cd39d0c1ab2bc336))\n* **kakaotalk:** make feature flag map reads thread-safe ([687fc9e](https://github.com/AmpleReVanced/revanced-patches/commit/687fc9e34473e168806f5353c6f858a920090265))\n* **kakaotalk:** reduce markdown hook register pressure ([8507317](https://github.com/AmpleReVanced/revanced-patches/commit/85073179028ea8b762934081e0a75d262efaaf38))\n* **kakaotalk:** remove Brand tab from Now tab ([0d3218c](https://github.com/AmpleReVanced/revanced-patches/commit/0d3218cc06930769ea9a79f005eb112b63ea7f98))\n* **kakaotalk:** reserve <clinit> registers for the settings tab enum ([a7694a1](https://github.com/AmpleReVanced/revanced-patches/commit/a7694a13a01be3dd519c7856dbde79682958cf23))\n* **kakaotalk:** resolve edited history sender profile from chat model ([bb71cf5](https://github.com/AmpleReVanced/revanced-patches/commit/bb71cf50dbe6440b90867362ffecf753c1ee8b39))\n* **kakaotalk:** respect chat theme in edit history screen ([4ca46f5](https://github.com/AmpleReVanced/revanced-patches/commit/4ca46f535db6e8a842de4ac00c07176217d27cbb))\n* **kakaotalk:** separate reflection-contract failures from connection state ([9ded0bf](https://github.com/AmpleReVanced/revanced-patches/commit/9ded0bf25a8997bcce1b0edbcd3d3526a2ab28fc))\n* **kakaotalk:** update reaction mention flag patch for 26.5.2 ([c81772f](https://github.com/AmpleReVanced/revanced-patches/commit/c81772ffeab6a1585fd4cc742e660725d90ccf37))\n* **settings:** respect host app theme in Morphe settings ([cc72810](https://github.com/AmpleReVanced/revanced-patches/commit/cc72810445f29129580e04988b7cb021c2c06a09))\n* **settings:** resync system bars for preference dialogs ([7de7693](https://github.com/AmpleReVanced/revanced-patches/commit/7de7693a36686b2610d0ca5936b70743ef24d041))\n* **settings:** suppress custom preference lint warnings ([31a80fe](https://github.com/AmpleReVanced/revanced-patches/commit/31a80fe5229d6e8cc586f325c08b2506431b643c))\n* **soop:** bind P2P config getter to the setter's value register ([cddb3a9](https://github.com/AmpleReVanced/revanced-patches/commit/cddb3a919edd24bb92afd06c2d603ecc32304bba))\n* use app-specific locales for string checks ([e0343f4](https://github.com/AmpleReVanced/revanced-patches/commit/e0343f4786509b5ce9750084e52cf5625202532f))\n\n\n### Features\n\n* add project support section ([34482f3](https://github.com/AmpleReVanced/revanced-patches/commit/34482f3381bae8411ec737a5e9ed20065bf42449))\n* **chzzk:** add ad, cheat key, and banner patches ([470a759](https://github.com/AmpleReVanced/revanced-patches/commit/470a759f01ddb3cabbee12b95f10eeae312b8484))\n* **chzzk:** update chzzk patches for version 3.6.2 ([6594f23](https://github.com/AmpleReVanced/revanced-patches/commit/6594f232243c793cd53549fe6a450e402f1b61a6))\n* **chzzk:** update chzzk patches for version 3.9.0 ([85a5bc1](https://github.com/AmpleReVanced/revanced-patches/commit/85a5bc1b5a68c6f109192469868cb2cab73316da))\n* **dcinside:** hide mini gallery cover image ([449431d](https://github.com/AmpleReVanced/revanced-patches/commit/449431de7c806be7c418d74ac0fb57e3dd73cd4a))\n* **dcinside:** restore legacy post icons ([6af9e1e](https://github.com/AmpleReVanced/revanced-patches/commit/6af9e1ef1d9c6cea2ff79cc1707135b158b70349))\n* **dcinside:** show author identifier in posts and post lists ([2f38791](https://github.com/AmpleReVanced/revanced-patches/commit/2f38791fa4d2287f98408de1f61182c2f952b7c0))\n* **dcinside:** show author identifier in recently viewed posts ([5caa2e1](https://github.com/AmpleReVanced/revanced-patches/commit/5caa2e1fcb4770417999a14be3b3a25efe7873b4))\n* **dcinside:** update dcinside patches for version 5.2.15 ([a160f17](https://github.com/AmpleReVanced/revanced-patches/commit/a160f1759a8dd69a3dd6d4861b541faf40ceb725))\n* **dcinside:** update dcinside patches for version 5.2.17 ([425a1fe](https://github.com/AmpleReVanced/revanced-patches/commit/425a1fe612d61229fad0b555d4f7531c56103e51))\n* **dcinside:** update dcinside patches for version 5.3.0 ([c56c131](https://github.com/AmpleReVanced/revanced-patches/commit/c56c13194cb09571b6efbe92c0c758be1817bb0d))\n* **flexcil:** add Bypass login patch ([698ac57](https://github.com/AmpleReVanced/revanced-patches/commit/698ac57ba1e6f918fb4050da213a8c2bf845089c))\n* **flexcil:** update flexcil patches for version 1.4.4.9 ([86b96a1](https://github.com/AmpleReVanced/revanced-patches/commit/86b96a14ca87b40fe47e5aaa67936964dc3f13e4))\n* **kakaotalk:** add edited message history ([6f877d4](https://github.com/AmpleReVanced/revanced-patches/commit/6f877d4bad430b8148b3390f1dbf4dc42f85c36c))\n* **kakaotalk:** add edited message history ([#139](https://github.com/AmpleReVanced/revanced-patches/issues/139)) ([322386f](https://github.com/AmpleReVanced/revanced-patches/commit/322386f0733336c8c4a5d4f757ab1339d4a1c478))\n* **kakaotalk:** add More tab component hide options ([6130847](https://github.com/AmpleReVanced/revanced-patches/commit/613084752ad1a10ab09e448d4a9b4bb7e21ca004))\n* **kakaotalk:** hide game tab in more tab ([65c1190](https://github.com/AmpleReVanced/revanced-patches/commit/65c1190a53a489ea8e5838dfffb585a00de95cb1))\n* **kakaotalk:** implement HookInitializer and integrate with Kakao application lifecycle ([5ca31dd](https://github.com/AmpleReVanced/revanced-patches/commit/5ca31dda712b37b82667a6720f402e4c26c4a1ee))\n* **kakaotalk:** open profiles from open chat feed names ([8451262](https://github.com/AmpleReVanced/revanced-patches/commit/8451262806d0de3be4c8360358ae6728d9b14003))\n* **kakaotalk:** restore packet handler for latest version ([5deac6b](https://github.com/AmpleReVanced/revanced-patches/commit/5deac6b4bde7d9d7979576d7f7f3ba5bae9ece7c))\n* **kakaotalk:** show message read receipts ([57ba8ff](https://github.com/AmpleReVanced/revanced-patches/commit/57ba8ffb9ac9d2f4d403a831f40214b40c3915df))\n* **kakaotalk:** show sender profile in edit history ([0165a16](https://github.com/AmpleReVanced/revanced-patches/commit/0165a16895ba755d87954231f06f279bd44b1724))\n* **kakaotalk:** update kakaotalk patches for version 26.5.0 ([4130447](https://github.com/AmpleReVanced/revanced-patches/commit/4130447c7bece35606abaeb056ca3608e11a1958))\n* **kakaotalk:** update kakaotalk patches for version 26.5.2 ([52edd4e](https://github.com/AmpleReVanced/revanced-patches/commit/52edd4ef8f7b70c36e5bb754f64500d0f801de73))\n* **kakaotalk:** update kakaotalk patches for version 26.5.3 ([66574b1](https://github.com/AmpleReVanced/revanced-patches/commit/66574b1cc638b72420419ee4bf91ef49010136bb))\n* **kakaotalk:** update kakaotalk patches for version 26.6.0 ([62e7798](https://github.com/AmpleReVanced/revanced-patches/commit/62e779833c2c10cc82a41a63f33195fab5d0011e))\n* **kakaotalk:** update kakaotalk patches for version 26.6.1 ([3607e94](https://github.com/AmpleReVanced/revanced-patches/commit/3607e94970acc53486072ad1321dbae5503ea87d))\n* **settings:** port Piko-derived preference UI ([17c1ac0](https://github.com/AmpleReVanced/revanced-patches/commit/17c1ac0440eca58db1c9cdb2470320caf4eac29f))\n* **soop:** add ad-removal patches ([9983819](https://github.com/AmpleReVanced/revanced-patches/commit/99838193a544573cff447e88df2025532e1707cf))\n* **soop:** add DisableP2P Patch to disable griding ([95b3a1d](https://github.com/AmpleReVanced/revanced-patches/commit/95b3a1d2514ec9450cdec204902fc9195824951e))\n* **soop:** make native P2P disable resilient across app versions ([91306fe](https://github.com/AmpleReVanced/revanced-patches/commit/91306fe2bd60bcc44ccc279bf0dcd5390e59becd))\n* **soop:** remove Catch feed ads ([de90288](https://github.com/AmpleReVanced/revanced-patches/commit/de902880d4f9562c57ed1df337c9327868b517fc))\n* **soop:** remove exit dialog ad ([b6fdac3](https://github.com/AmpleReVanced/revanced-patches/commit/b6fdac3a5f421cedab2e5c78d269357af279c661))\n* **soop:** update soop patches for version 8.28.3 ([a7dbfeb](https://github.com/AmpleReVanced/revanced-patches/commit/a7dbfeb0890e97f3d562c93a4e23743909855c88))\n\n\n### Performance Improvements\n\n* **kakaotalk:** speed up chat side title copy setup ([094e18a](https://github.com/AmpleReVanced/revanced-patches/commit/094e18a77e4189fd0c767c0e9fef8a72a6c1775c))\n\n# [1.2.0-dev.20](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.19...v1.2.0-dev.20) (2026-07-24)\n\n\n### Features\n\n* **dcinside:** show author identifier in posts and post lists ([2f38791](https://github.com/AmpleReVanced/revanced-patches/commit/2f38791fa4d2287f98408de1f61182c2f952b7c0))\n* **dcinside:** show author identifier in recently viewed posts ([5caa2e1](https://github.com/AmpleReVanced/revanced-patches/commit/5caa2e1fcb4770417999a14be3b3a25efe7873b4))\n\n# [1.2.0-dev.19](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.18...v1.2.0-dev.19) (2026-07-24)\n\n\n### Features\n\n* **chzzk:** add ad, cheat key, and banner patches ([470a759](https://github.com/AmpleReVanced/revanced-patches/commit/470a759f01ddb3cabbee12b95f10eeae312b8484))\n* **soop:** remove Catch feed ads ([de90288](https://github.com/AmpleReVanced/revanced-patches/commit/de902880d4f9562c57ed1df337c9327868b517fc))\n* **soop:** remove exit dialog ad ([b6fdac3](https://github.com/AmpleReVanced/revanced-patches/commit/b6fdac3a5f421cedab2e5c78d269357af279c661))\n\n# [1.2.0-dev.18](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.17...v1.2.0-dev.18) (2026-07-24)\n\n\n### Features\n\n* **soop:** add ad-removal patches ([9983819](https://github.com/AmpleReVanced/revanced-patches/commit/99838193a544573cff447e88df2025532e1707cf))\n\n# [1.2.0-dev.17](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.16...v1.2.0-dev.17) (2026-07-23)\n\n\n### Features\n\n* **dcinside:** update dcinside patches for version 5.3.0 ([c56c131](https://github.com/AmpleReVanced/revanced-patches/commit/c56c13194cb09571b6efbe92c0c758be1817bb0d))",
       "fullChangelogUrl": "https://github.com/AmpleReVanced/revanced-patches/blob/dev/CHANGELOG.md",
       "repoDescription": "morphe patches for kakaotalk/dcinside",
       "avatarUrl": "https://avatars.githubusercontent.com/u/240258030?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=AmpleReVanced/revanced-patches",
-      "patchCount": 107,
+      "patchCount": 108,
       "targetApps": [
         "com.kakao.talk",
         "com.dcinside.app.android",
@@ -1435,7 +1443,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 7,
-      "hotRank": 20
+      "hotRank": 19
     },
     {
       "source": "github",
@@ -1549,7 +1557,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "hotRank": 34
+      "hotRank": 33
     },
     {
       "source": "github",
@@ -1773,6 +1781,13 @@
       "author": "AngelDark92",
       "patches": [
         {
+          "name": "Android XR native permission names",
+          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by the legacy Galaxy XR build.",
+          "default": true,
+          "options": [],
+          "compatiblePackagesKey": 39
+        },
+        {
           "name": "Appear on top",
           "description": "Recommended. Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
           "default": true,
@@ -1799,6 +1814,50 @@
           "compatiblePackagesKey": 39
         },
         {
+          "name": "Controller velocity fix",
+          "description": "Derives current controller linear and angular velocity from grip/aim pose history, avoiding delayed runtime velocity during throws.",
+          "default": false,
+          "options": [
+            {
+              "key": "maxDeltaMs",
+              "title": "Maximum sample gap (ms)",
+              "description": "libgxr_controller_velocity.so config+32 (int64 ns = value×1e6). Falls back to runtime velocity when pose samples are farther apart. Allowed range: 5 to 100 ms.",
+              "required": true,
+              "type": "kotlin.Int",
+              "default": 50,
+              "values": null
+            },
+            {
+              "key": "smoothing",
+              "title": "Derived velocity smoothing",
+              "description": "libgxr_controller_velocity.so config+48 (float32 EMA weight). 0 = no smoothing, minimum lag; higher values reduce jitter. Allowed range: 0.0 to 0.9.",
+              "required": true,
+              "type": "kotlin.Float",
+              "default": 0,
+              "values": null
+            },
+            {
+              "key": "maxLinearSpeed",
+              "title": "Maximum linear speed (m/s)",
+              "description": "libgxr_controller_velocity.so config+40 (float32 m/s). Falls back to runtime velocity above this derived linear speed. Allowed range: 1 to 50 m/s.",
+              "required": true,
+              "type": "kotlin.Float",
+              "default": 20,
+              "values": null
+            },
+            {
+              "key": "maxAngularSpeed",
+              "title": "Maximum angular speed (rad/s)",
+              "description": "libgxr_controller_velocity.so config+44 (float32 rad/s). Falls back to runtime velocity above this derived angular speed. Allowed range: 1 to 100 rad/s.",
+              "required": true,
+              "type": "kotlin.Float",
+              "default": 50,
+              "values": null
+            }
+          ],
+          "compatiblePackagesKey": 39
+        },
+        {
           "name": "Device identity",
           "description": "Overrides the HMD manufacturer/model identity reported to SteamVR (hmd_config.json only; controller identity is unaffected). 'samsung-default' leaves the file untouched.",
           "default": true,
@@ -1817,6 +1876,27 @@
               }
             }
           ],
+          "compatiblePackagesKey": 39
+        },
+        {
+          "name": "Force HMD initialization gates",
+          "description": "Bypasses the two legacy-tested capability gates in QSVLDeviceHmd::Init for Steam Link build 5002244.",
+          "default": true,
+          "options": [],
+          "compatiblePackagesKey": 39
+        },
+        {
+          "name": "Force lobby permission-state gate",
+          "description": "Bypasses the legacy-tested permission-state gate in XrSceneLobby for Steam Link build 5002244.",
+          "default": true,
+          "options": [],
+          "compatiblePackagesKey": 39
+        },
+        {
+          "name": "Force stream XR gates",
+          "description": "Bypasses the three legacy-tested XR feature/permission gates in XrSceneStream::Init for Steam Link build 5002244.",
+          "default": true,
+          "options": [],
           "compatiblePackagesKey": 39
         },
         {
@@ -1941,13 +2021,13 @@
           "compatiblePackagesKey": 39
         }
       ],
-      "changelog": "## [1.9.0-dev.9](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.8...v1.9.0-dev.9) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add patches for XR compatibility and legacy support ([c4dcaea](https://github.com/AngelDark92/steamlink-patches/commit/c4dcaea4382f0ad023e0defbc99e5e71f947bc7f))\n\n## [1.9.0-dev.8](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.7...v1.9.0-dev.8) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* refactoring patches for Steam Link integration and remove experimental variants ([4b095ec](https://github.com/AngelDark92/steamlink-patches/commit/4b095ec1cc5217e1deec9e8f827561812e8a3749))\n\n## [1.9.0-dev.7](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.6...v1.9.0-dev.7) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add new experimental patches and update APK resource handling ([1072212](https://github.com/AngelDark92/steamlink-patches/commit/1072212985a6926125ee35ad13351d03f1a0d104))\n\n## [1.9.0-dev.6](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.5...v1.9.0-dev.6) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add experimental patches for Legacy Two-Layer Renderer and overlay behavior ([3ab1758](https://github.com/AngelDark92/steamlink-patches/commit/3ab1758692881e5288b62d51a84edbc1917a3109))\n\n## [1.9.0-dev.5](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.4...v1.9.0-dev.5) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Implement Legacy Two-Layer Renderer Probe patch and update related experimental patches ([c5e6131](https://github.com/AngelDark92/steamlink-patches/commit/c5e6131477ebc62f3f149d95522134235b4c16a5))\n\n## [1.9.0-dev.4](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.3...v1.9.0-dev.4) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Remove old scene renderer probe patch and related code ([d0067c9](https://github.com/AngelDark92/steamlink-patches/commit/d0067c9c82d9da842a2145b0d5e2dccc376fa741))\n\n## [1.9.0-dev.3](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* trigger release ([c15e65b](https://github.com/AngelDark92/steamlink-patches/commit/c15e65bc1286ed6d8bb0928c1362d41c19f05e1b))\n\n## [1.9.0-dev.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Remove EXP6 version metadata patch and update patch catalog ([d2daa6b](https://github.com/AngelDark92/steamlink-patches/commit/d2daa6b0bd6f0da9c1859778a30b338002aac183))\n\n## [1.9.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.2...v1.9.0-dev.1) (2026-08-07)\n\n### ✨ New Features\n\n* Add EXP6 version metadata patch and update XR launcher bootstrap settings ([4211c55](https://github.com/AngelDark92/steamlink-patches/commit/4211c55dd82841c32f00e5e00476679754e09fe5))\n\n## [1.8.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.1...v1.8.2) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* merge pull request [#33](https://github.com/AngelDark92/steamlink-patches/issues/33) from AngelDark92/dev ([aa1c950](https://github.com/AngelDark92/steamlink-patches/commit/aa1c95058aa7788af98bab3e11db2dc984b94ad4))\n* Update compatible packages and remove deprecated options in patch files ([cf443c5](https://github.com/AngelDark92/steamlink-patches/commit/cf443c5da27bf26ed6730eacdec28fe8294797f2))\n\n## [1.8.2-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.1...v1.8.2-dev.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Update compatible packages and remove deprecated options in patch files ([cf443c5](https://github.com/AngelDark92/steamlink-patches/commit/cf443c5da27bf26ed6730eacdec28fe8294797f2))\n\n## [1.8.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.0...v1.8.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add support for 'all' release channel and update patch generation logic ([788e96d](https://github.com/AngelDark92/steamlink-patches/commit/788e96d96fffd4228ee2bfd7b25f298e1863eddc))\n* Merge pull request [#32](https://github.com/AngelDark92/steamlink-patches/issues/32) from AngelDark92/dev ([0ff41e7](https://github.com/AngelDark92/steamlink-patches/commit/0ff41e7858dcfcc82d14cfc9051abf1597014111))\n\n## [1.8.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.0...v1.8.1-dev.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add support for 'all' release channel and update patch generation logic ([788e96d](https://github.com/AngelDark92/steamlink-patches/commit/788e96d96fffd4228ee2bfd7b25f298e1863eddc))\n\n## [1.8.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.7.0...v1.8.0) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Enhance package name patch to support custom suffixes and update app labels ([c2b9ec4](https://github.com/AngelDark92/steamlink-patches/commit/c2b9ec4603bad5fb45c06831eaac1a76481e9bb2))\n* Merge pull request [#31](https://github.com/AngelDark92/steamlink-patches/issues/31) from AngelDark92/dev ([df29b6f](https://github.com/AngelDark92/steamlink-patches/commit/df29b6f063053f87335cc3b679f256f425a4a63c))\n\n### ✨ New Features\n\n* Implement support for multiple release channels and update patch generation logic ([a4cba70](https://github.com/AngelDark92/steamlink-patches/commit/a4cba70bffab5f14debbe46d13f138a5cc60bb91))\n\n## [1.8.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.7.1-dev.1...v1.8.0-dev.1) (2026-08-07)\n\n### ✨ New Features\n\n* Implement support for multiple release channels and update patch generation logic ([a4cba70](https://github.com/AngelDark92/steamlink-patches/commit/a4cba70bffab5f14debbe46d13f138a5cc60bb91))",
+      "changelog": "## [1.9.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.2...v1.9.0) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add Android XR compatibility patches for Steam Link ([5980143](https://github.com/AngelDark92/steamlink-patches/commit/5980143f748d7a50d9e106c956028d4144672c3a))\n* Add experimental patches for Legacy Two-Layer Renderer and overlay behavior ([3ab1758](https://github.com/AngelDark92/steamlink-patches/commit/3ab1758692881e5288b62d51a84edbc1917a3109))\n* Add new experimental patches and update APK resource handling ([1072212](https://github.com/AngelDark92/steamlink-patches/commit/1072212985a6926125ee35ad13351d03f1a0d104))\n* Implement Legacy Two-Layer Renderer Probe patch and update related experimental patches ([c5e6131](https://github.com/AngelDark92/steamlink-patches/commit/c5e6131477ebc62f3f149d95522134235b4c16a5))\n* refactoring patches for Steam Link integration and remove experimental variants ([4b095ec](https://github.com/AngelDark92/steamlink-patches/commit/4b095ec1cc5217e1deec9e8f827561812e8a3749))\n* Remove EXP6 version metadata patch and update patch catalog ([d2daa6b](https://github.com/AngelDark92/steamlink-patches/commit/d2daa6b0bd6f0da9c1859778a30b338002aac183))\n* Remove old scene renderer probe patch and related code ([d0067c9](https://github.com/AngelDark92/steamlink-patches/commit/d0067c9c82d9da842a2145b0d5e2dccc376fa741))\n* trigger release ([c15e65b](https://github.com/AngelDark92/steamlink-patches/commit/c15e65bc1286ed6d8bb0928c1362d41c19f05e1b))\n\n### ✨ New Features\n\n* Add EXP6 version metadata patch and update XR launcher bootstrap settings ([4211c55](https://github.com/AngelDark92/steamlink-patches/commit/4211c55dd82841c32f00e5e00476679754e09fe5))\n* finally restored all functionalities with the possibility of customizing values at heart's content ([2d997a4](https://github.com/AngelDark92/steamlink-patches/commit/2d997a45b57f6eac10bf542d624590b911cd7131))\n* Merge pull request [#34](https://github.com/AngelDark92/steamlink-patches/issues/34) from AngelDark92/dev ([0e75b8f](https://github.com/AngelDark92/steamlink-patches/commit/0e75b8f3c127f054f3ff57193ef6dca1a618cc4d))\n\n## [1.9.0-dev.10](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.9...v1.9.0-dev.10) (2026-08-07)\n\n### ✨ New Features\n\n* finally restored all functionalities with the possibility of customizing values at heart's content ([2d997a4](https://github.com/AngelDark92/steamlink-patches/commit/2d997a45b57f6eac10bf542d624590b911cd7131))\n\n## [1.9.0-dev.9](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.8...v1.9.0-dev.9) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add Android XR compatibility patches for Steam Link ([5980143](https://github.com/AngelDark92/steamlink-patches/commit/5980143f748d7a50d9e106c956028d4144672c3a))\n\n## [1.9.0-dev.8](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.7...v1.9.0-dev.8) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* refactoring patches for Steam Link integration and remove experimental variants ([4b095ec](https://github.com/AngelDark92/steamlink-patches/commit/4b095ec1cc5217e1deec9e8f827561812e8a3749))\n\n## [1.9.0-dev.7](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.6...v1.9.0-dev.7) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add new experimental patches and update APK resource handling ([1072212](https://github.com/AngelDark92/steamlink-patches/commit/1072212985a6926125ee35ad13351d03f1a0d104))\n\n## [1.9.0-dev.6](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.5...v1.9.0-dev.6) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add experimental patches for Legacy Two-Layer Renderer and overlay behavior ([3ab1758](https://github.com/AngelDark92/steamlink-patches/commit/3ab1758692881e5288b62d51a84edbc1917a3109))\n\n## [1.9.0-dev.5](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.4...v1.9.0-dev.5) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Implement Legacy Two-Layer Renderer Probe patch and update related experimental patches ([c5e6131](https://github.com/AngelDark92/steamlink-patches/commit/c5e6131477ebc62f3f149d95522134235b4c16a5))\n\n## [1.9.0-dev.4](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.3...v1.9.0-dev.4) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Remove old scene renderer probe patch and related code ([d0067c9](https://github.com/AngelDark92/steamlink-patches/commit/d0067c9c82d9da842a2145b0d5e2dccc376fa741))\n\n## [1.9.0-dev.3](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* trigger release ([c15e65b](https://github.com/AngelDark92/steamlink-patches/commit/c15e65bc1286ed6d8bb0928c1362d41c19f05e1b))\n\n## [1.9.0-dev.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Remove EXP6 version metadata patch and update patch catalog ([d2daa6b](https://github.com/AngelDark92/steamlink-patches/commit/d2daa6b0bd6f0da9c1859778a30b338002aac183))\n\n## [1.9.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.2...v1.9.0-dev.1) (2026-08-07)\n\n### ✨ New Features\n\n* Add EXP6 version metadata patch and update XR launcher bootstrap settings ([4211c55](https://github.com/AngelDark92/steamlink-patches/commit/4211c55dd82841c32f00e5e00476679754e09fe5))\n\n## [1.8.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.1...v1.8.2) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* merge pull request [#33](https://github.com/AngelDark92/steamlink-patches/issues/33) from AngelDark92/dev ([aa1c950](https://github.com/AngelDark92/steamlink-patches/commit/aa1c95058aa7788af98bab3e11db2dc984b94ad4))\n* Update compatible packages and remove deprecated options in patch files ([cf443c5](https://github.com/AngelDark92/steamlink-patches/commit/cf443c5da27bf26ed6730eacdec28fe8294797f2))\n\n## [1.8.2-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.1...v1.8.2-dev.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Update compatible packages and remove deprecated options in patch files ([cf443c5](https://github.com/AngelDark92/steamlink-patches/commit/cf443c5da27bf26ed6730eacdec28fe8294797f2))\n\n## [1.8.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.0...v1.8.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add support for 'all' release channel and update patch generation logic ([788e96d](https://github.com/AngelDark92/steamlink-patches/commit/788e96d96fffd4228ee2bfd7b25f298e1863eddc))\n* Merge pull request [#32](https://github.com/AngelDark92/steamlink-patches/issues/32) from AngelDark92/dev ([0ff41e7](https://github.com/AngelDark92/steamlink-patches/commit/0ff41e7858dcfcc82d14cfc9051abf1597014111))\n\n## [1.8.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.0...v1.8.1-dev.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add support for 'all' release channel and update patch generation logic ([788e96d](https://github.com/AngelDark92/steamlink-patches/commit/788e96d96fffd4228ee2bfd7b25f298e1863eddc))",
       "fullChangelogUrl": "https://github.com/AngelDark92/steamlink-patches/blob/dev/CHANGELOG.md",
       "repoDescription": "Repo template for creating and releasing custom Morphe patches for steamlink",
       "avatarUrl": "https://avatars.githubusercontent.com/u/53372897?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=AngelDark92/steamlink-patches",
-      "patchCount": 12,
+      "patchCount": 17,
       "targetApps": [
         "com.valvesoftware.steamlinkvr"
       ],
@@ -1960,7 +2040,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "hotRank": 31
+      "hotRank": 34
     },
     {
       "source": "github",
@@ -3415,7 +3495,7 @@
       },
       "starsGained7d": 6,
       "starsGained40d": 12,
-      "hotRank": 8
+      "hotRank": 9
     },
     {
       "source": "github",
@@ -6561,7 +6641,7 @@
       },
       "starsGained7d": 3,
       "starsGained40d": 5,
-      "hotRank": 9
+      "hotRank": 10
     },
     {
       "source": "github",
@@ -6596,7 +6676,7 @@
       },
       "starsGained7d": 2,
       "starsGained40d": 2,
-      "hotRank": 63
+      "hotRank": 64
     },
     {
       "source": "github",
@@ -7587,7 +7667,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "hotRank": 38
+      "hotRank": 41
     },
     {
       "source": "github",
@@ -7717,7 +7797,7 @@
       ],
       "changelog": "## [1.1.1](https://github.com/hxreborn/morphe-patches/compare/v1.1.0...v1.1.1) (2026-08-01)\n\n### Bug Fixes\n\n* **Proton Mail - Remove free accounts limit:** bypass the native post-login check ([e5e91d2](https://github.com/hxreborn/morphe-patches/commit/e5e91d2e84a5e698e8788db3b7198d7ad45caccc))\n\n## [1.1.0](https://github.com/hxreborn/morphe-patches/compare/v1.0.1...v1.1.0) (2026-07-30)\n\n### Bug Fixes\n\n* **Proton Mail - Remove 'Sent from' signature:** support 7.10.4 ([e5249a0](https://github.com/hxreborn/morphe-patches/commit/e5249a097a74b11dc2490dcc4f03956614a011d3))\n\n### New Features\n\n* **Proton Mail - AMOLED dark theme:** add patch ([57c71b8](https://github.com/hxreborn/morphe-patches/commit/57c71b88367df3397899125d937545f035aa6a8b))\n* **Proton Mail - Hide sidebar upselling:** add patch ([799b985](https://github.com/hxreborn/morphe-patches/commit/799b985465528fae922be42f8e39dec99f716497))\n* **Proton Mail - Hide upgrade upselling:** hide top-bar button and promotional sidebar rows ([4b15bc9](https://github.com/hxreborn/morphe-patches/commit/4b15bc92367f7de7c4082a1558981dd3bb4aefc8))\n* **Proton Mail - Remove 'Sent from' signature:** port patch ([56009c8](https://github.com/hxreborn/morphe-patches/commit/56009c8d280333a31bc363b063fc2b74da524495))\n* **Proton Mail - Remove free accounts limit:** port patch ([fe78a8f](https://github.com/hxreborn/morphe-patches/commit/fe78a8fd4e9ae59b0a2b05bd9b99b87bcca53da1))\n* **Proton Mail:** support 7.10.4 ([bae3087](https://github.com/hxreborn/morphe-patches/commit/bae3087079651d221625823cfe883c08cf08d91a))\n\n## [1.1.0-dev.1](https://github.com/hxreborn/morphe-patches/compare/v1.0.1...v1.1.0-dev.1) (2026-07-19)\n\n### New Features\n\n* **Proton Mail - Hide sidebar upselling:** add patch ([799b985](https://github.com/hxreborn/morphe-patches/commit/799b985465528fae922be42f8e39dec99f716497))\n* **Proton Mail - Remove 'Sent from' signature:** port patch ([56009c8](https://github.com/hxreborn/morphe-patches/commit/56009c8d280333a31bc363b063fc2b74da524495))\n* **Proton Mail - Remove free accounts limit:** port patch ([fe78a8f](https://github.com/hxreborn/morphe-patches/commit/fe78a8fd4e9ae59b0a2b05bd9b99b87bcca53da1))\n\n## [1.0.1](https://github.com/hxreborn/morphe-patches/compare/v1.0.0...v1.0.1) (2026-07-17)\n\n### Bug Fixes\n\n* **compat:** add app metadata, drop template patches ([faf5a83](https://github.com/hxreborn/morphe-patches/commit/faf5a83a0e7295feaaa5254ded0ff0a9493fcebc))\n\n## [1.0.1-dev.1](https://github.com/hxreborn/morphe-patches/compare/v1.0.0...v1.0.1-dev.1) (2026-07-17)\n\n### Bug Fixes\n\n* **compat:** add app metadata, drop template patches ([faf5a83](https://github.com/hxreborn/morphe-patches/commit/faf5a83a0e7295feaaa5254ded0ff0a9493fcebc))\n\n## 1.0.0 (2026-07-17)\n\n### Bug Fixes\n\n* **Forus - Unlock premium:** target module access getter ([cc1e9e3](https://github.com/hxreborn/morphe-patches/commit/cc1e9e3f9e3e44cd979cd21d40dad4a0b4fab6db))\n\n### New Features\n\n* **Forus - Unlock premium:** add unlock premium patch ([2a80e5a](https://github.com/hxreborn/morphe-patches/commit/2a80e5a8d0f9a40f5d2756e689948b9940120aa2))\n* **Projectivy - Disable tracking:** add disable tracking patch ([7a24927](https://github.com/hxreborn/morphe-patches/commit/7a24927e9da4975ba371b450a941048a111d50c9))\n* **Projectivy - Unlock premium:** add unlock premium patch ([30a6a78](https://github.com/hxreborn/morphe-patches/commit/30a6a78c929f7eb6ab979848745cf6d2d7c822b6))\n* **Showly - Unlock premium:** add unlock premium patch ([d4fe919](https://github.com/hxreborn/morphe-patches/commit/d4fe9196bb7afb6b740c36843d9628e83a5af537))\n\n## [1.0.0-dev.4](https://github.com/hxreborn/morphe-patches/compare/v1.0.0-dev.3...v1.0.0-dev.4) (2026-07-17)\n\n### New Features\n\n* **Projectivy - Disable tracking:** add disable tracking patch ([7a24927](https://github.com/hxreborn/morphe-patches/commit/7a24927e9da4975ba371b450a941048a111d50c9))\n* **Projectivy - Unlock premium:** add unlock premium patch ([30a6a78](https://github.com/hxreborn/morphe-patches/commit/30a6a78c929f7eb6ab979848745cf6d2d7c822b6))\n\n## [1.0.0-dev.3](https://github.com/hxreborn/morphe-patches/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2026-07-17)\n\n### Bug Fixes\n\n* **Forus - Unlock premium:** target module access getter ([cc1e9e3](https://github.com/hxreborn/morphe-patches/commit/cc1e9e3f9e3e44cd979cd21d40dad4a0b4fab6db))\n\n## [1.0.0-dev.2](https://github.com/hxreborn/morphe-patches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-07-17)\n\n### New Features\n\n* **Showly - Unlock premium:** add unlock premium patch ([d4fe919](https://github.com/hxreborn/morphe-patches/commit/d4fe9196bb7afb6b740c36843d9628e83a5af537))\n\n## 1.0.0-dev.1 (2026-07-17)\n\n### New Features\n\n* **Forus - Unlock premium:** add unlock premium patch ([2a80e5a](https://github.com/hxreborn/morphe-patches/commit/2a80e5a8d0f9a40f5d2756e689948b9940120aa2))",
       "fullChangelogUrl": null,
-      "repoDescription": "Personal Morphe patch bundle for Projectivy Launcher, ForusApp, and Showly",
+      "repoDescription": "Personal Morphe patch bundle for Projectivy Launcher, ForusApp, Showly and Proton Mail",
       "avatarUrl": "https://avatars.githubusercontent.com/u/32096750?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=hxreborn/morphe-patches",
@@ -8033,15 +8113,15 @@
         "jp.nicovideo.nicobox"
       ],
       "appUpdates": {},
-      "stars": 5,
+      "stars": 6,
       "updatedAt": 1785283200000,
       "firstSeen": 1784887231838,
       "appFirstSeen": {
         "jp.nicovideo.nicobox": 1784887231838
       },
-      "starsGained7d": 2,
-      "starsGained40d": 5,
-      "hotRank": 40
+      "starsGained7d": 3,
+      "starsGained40d": 6,
+      "hotRank": 35
     },
     {
       "source": "github",
@@ -8087,7 +8167,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 2,
-      "hotRank": 41
+      "hotRank": 42
     },
     {
       "source": "gitlab",
@@ -8348,14 +8428,14 @@
       "appUpdates": {
         "com.google.android.inputmethod.latin": 1785974400000
       },
-      "stars": 191,
+      "stars": 192,
       "updatedAt": 1785974400000,
       "firstSeen": 1775543003000,
       "appFirstSeen": {
         "com.google.android.inputmethod.latin": 1775543003000
       },
-      "starsGained7d": 28,
-      "starsGained40d": 55,
+      "starsGained7d": 29,
+      "starsGained40d": 56,
       "hotRank": 3
     },
     {
@@ -9172,7 +9252,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "hotRank": 36
+      "hotRank": 40
     },
     {
       "source": "github",
@@ -9706,7 +9786,7 @@
       },
       "starsGained7d": 4,
       "starsGained40d": 15,
-      "hotRank": 19
+      "hotRank": 20
     },
     {
       "source": "github",
@@ -9981,7 +10061,7 @@
       },
       "starsGained7d": 6,
       "starsGained40d": 7,
-      "hotRank": 10
+      "hotRank": 8
     },
     {
       "source": "github",
@@ -10073,7 +10153,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "hotRank": 64
+      "hotRank": 63
     },
     {
       "source": "github",
@@ -11485,15 +11565,15 @@
         "com.microsoft.emmx"
       ],
       "appUpdates": {},
-      "stars": 42,
+      "stars": 43,
       "updatedAt": 1784419200000,
       "firstSeen": 1780738576635,
       "appFirstSeen": {
         "com.microsoft.emmx": 1780738576635
       },
-      "starsGained7d": 2,
-      "starsGained40d": 8,
-      "hotRank": 42
+      "starsGained7d": 3,
+      "starsGained40d": 9,
+      "hotRank": 36
     },
     {
       "source": "github",
@@ -11778,7 +11858,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "hotRank": 52
+      "hotRank": 53
     },
     {
       "source": "github",
@@ -15659,15 +15739,199 @@
           "default": true,
           "options": [],
           "compatiblePackagesKey": 453
+        },
+        {
+          "name": "Adobe Acrobat Premium",
+          "description": "Unlocks on-device Acrobat Pro tools (edit, organise, crop) without a subscription.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 632
+        },
+        {
+          "name": "Adobe Scan Premium",
+          "description": "Unlocks all premium scanning and PDF tools in Adobe Scan.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 633
+        },
+        {
+          "name": "Anti-delete messages",
+          "description": "Prevents messages deleted by other users from being removed locally.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
+        },
+        {
+          "name": "Anti-disappearing media",
+          "description": "Keeps view-once photos, videos, voice messages, and round videos viewable indefinitely.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
+        },
+        {
+          "name": "Bypass channel restrictions",
+          "description": "Allows opening copyrighted, sensitive, and temporarily disabled channels.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
+        },
+        {
+          "name": "Bypass content restrictions",
+          "description": "Allows saving and forwarding content from restricted channels and chats.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
+        },
+        {
+          "name": "Bypass integrity check",
+          "description": "Spoofs certificate fingerprint and SafetyNet results so login works on a patched APK.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
+        },
+        {
+          "name": "Disable auto-update",
+          "description": "Disables automatic app update checks, the blocking update screen, and the proxy sponsor channel insertion.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
+        },
+        {
+          "name": "Download speed boost",
+          "description": "Increases download chunk size to 512 KB and max concurrent requests to 8.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
+        },
+        {
+          "name": "Hide typing indicator",
+          "description": "Hides your typing indicator from other users in all chats.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
+        },
+        {
+          "name": "Oxygen Updater Contributor",
+          "description": "Removes ads and hides the purchase button by patching all five contribute-flag gate sites across SharedPreferences, DataStore, and StateFlow.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 635
+        },
+        {
+          "name": "Remove ads",
+          "description": "Removes sponsored messages and video ads from all chats and channels.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks all premium features in Awake by bypassing the RC entitlement check chain and the Pairip Play Licensing verification.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 636
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks all Fitia premium features by permanently reporting an active subscription.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 637
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks Fuelio Premium, restores Google Maps, and suppresses the Limited Promo paywall banner for unlocked users.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 638
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks Park4Night premium (Pro) access, removing all feature gates for offline maps, advanced filters, and publisher content.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 639
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks Relane VPN Premium by patching the RevenueCat SDK to always report an active \"premium_vpn\" entitlement, enabling premium servers, unlimited data, and premium sync.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 640
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks all premium features in re-Link by forcing the license StateFlow to always emit a Licensed state and the sync purchase check to always return true.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 641
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks Telegram Premium features for the current account.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
+        },
+        {
+          "name": "Unlock Pro",
+          "description": "Unlocks Drivvo Pro by patching all four gateway methods in the y9 subscription class: isPremium() → true, getPlanType() → 'pro', checkVehicleLimit() → true (no vehicle cap), checkPremiumScreen() → true (no screen lock).",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 642
+        },
+        {
+          "name": "Unlock Pro",
+          "description": "Bypasses the Google Play Billing premium check, unlocking pro features.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 643
+        },
+        {
+          "name": "VRadio Premium",
+          "description": "Unlocks all VRadio premium features by bypassing the SharedPreferences purchase gate.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 644
+        },
+        {
+          "name": "Voice to music",
+          "description": "Plays voice notes in the full music player with seek bar and background playback.",
+          "default": false,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 634
         }
       ],
-      "changelog": "## [1.16.0](https://github.com/rushiranpise/morphe-patches/compare/v1.15.1...v1.16.0) (2026-08-03)\n\n### ✨ New Features\n\n* update and add new apps ([ec79ee9](https://github.com/rushiranpise/morphe-patches/commit/ec79ee9c35e567e7eba47ec9f3f4eac059e7d84a))\n\n## [1.16.0-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.15.1...v1.16.0-dev.1) (2026-08-03)\n\n### ✨ New Features\n\n* update and add new apps ([ec79ee9](https://github.com/rushiranpise/morphe-patches/commit/ec79ee9c35e567e7eba47ec9f3f4eac059e7d84a))\n\n## [1.15.1](https://github.com/rushiranpise/morphe-patches/compare/v1.15.0...v1.15.1) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* photos ([b21dec5](https://github.com/rushiranpise/morphe-patches/commit/b21dec59e6419c06e20e8f95c46e44daad01284a))\n* trading view ([05dde41](https://github.com/rushiranpise/morphe-patches/commit/05dde4166fd3fefbe5d764564415418db5790107))\n\n## [1.15.1-dev.2](https://github.com/rushiranpise/morphe-patches/compare/v1.15.1-dev.1...v1.15.1-dev.2) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* trading view ([05dde41](https://github.com/rushiranpise/morphe-patches/commit/05dde4166fd3fefbe5d764564415418db5790107))\n\n## [1.15.1-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.15.0...v1.15.1-dev.1) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* photos ([b21dec5](https://github.com/rushiranpise/morphe-patches/commit/b21dec59e6419c06e20e8f95c46e44daad01284a))\n\n## [1.15.0](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0...v1.15.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* build ([625f7e6](https://github.com/rushiranpise/morphe-patches/commit/625f7e67880ce888514e99f815d88b7cb8545bb5))\n\n### ✨ New Features\n\n* add sai ([aaa5163](https://github.com/rushiranpise/morphe-patches/commit/aaa51635541b49ee830d6190263c799c7847aabf))\n* update & add new apps ([8611906](https://github.com/rushiranpise/morphe-patches/commit/8611906c0e35142e73be18fcf403b6f4d7f93d3a))\n* update &add new apps ([729f9f0](https://github.com/rushiranpise/morphe-patches/commit/729f9f0b5a13ad65ae9f8e1c747de63a13bff6fe))\n\n## [1.15.0-dev.2](https://github.com/rushiranpise/morphe-patches/compare/v1.15.0-dev.1...v1.15.0-dev.2) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* build ([625f7e6](https://github.com/rushiranpise/morphe-patches/commit/625f7e67880ce888514e99f815d88b7cb8545bb5))\n\n### ✨ New Features\n\n* add sai ([aaa5163](https://github.com/rushiranpise/morphe-patches/commit/aaa51635541b49ee830d6190263c799c7847aabf))\n* update &add new apps ([729f9f0](https://github.com/rushiranpise/morphe-patches/commit/729f9f0b5a13ad65ae9f8e1c747de63a13bff6fe))\n\n## [1.15.0-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0...v1.15.0-dev.1) (2026-07-23)\n\n### ✨ New Features\n\n* update & add new apps ([8611906](https://github.com/rushiranpise/morphe-patches/commit/8611906c0e35142e73be18fcf403b6f4d7f93d3a))\n\n## [1.14.0](https://github.com/rushiranpise/morphe-patches/compare/v1.13.1...v1.14.0) (2026-07-19)\n\n### 🐛 Bug Fixes\n\n* format release notes for update badges ([20fe7b5](https://github.com/rushiranpise/morphe-patches/commit/20fe7b546e9e1facf70b46cedf9ea2dad845d3ed))\n\n### ✨ New Features\n\n* add boxbox ([84183bc](https://github.com/rushiranpise/morphe-patches/commit/84183bc87b0368ac06deec0b962f7d1306a64531))\n* add flud ([ce7c0a1](https://github.com/rushiranpise/morphe-patches/commit/ce7c0a1f4570e4935a0e35ce6dccca37e365d476))\n* add google photos ([58552d0](https://github.com/rushiranpise/morphe-patches/commit/58552d0154b588ad1b05a2934cf2b9b7d81a002b))\n* add mapy ([eedc71a](https://github.com/rushiranpise/morphe-patches/commit/eedc71ae90ee77bc9a4ea4129212593aa6487a46))\n* add pcremote ([274df88](https://github.com/rushiranpise/morphe-patches/commit/274df888f8dcee59628b6cadf2624b6e09660086))\n* add torrdroid ([6efb2f4](https://github.com/rushiranpise/morphe-patches/commit/6efb2f4cc60cabaddb15da48116a8dcc8c97ca10))\n\n## [1.14.0-dev.4](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0-dev.3...v1.14.0-dev.4) (2026-07-19)\n\n### 🐛 Bug Fixes\n\n* format release notes for update badges ([20fe7b5](https://github.com/rushiranpise/morphe-patches/commit/20fe7b546e9e1facf70b46cedf9ea2dad845d3ed))\n\n## [1.14.0-dev.3](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0-dev.2...v1.14.0-dev.3) (2026-07-19)\n\n### ? New Features\n\n* add google photos ([58552d0](https://github.com/rushiranpise/morphe-patches/commit/58552d0154b588ad1b05a2934cf2b9b7d81a002b))\n\n## [1.14.0-dev.2](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0-dev.1...v1.14.0-dev.2) (2026-07-18)\n\n### ? New Features\n\n* add flud ([ce7c0a1](https://github.com/rushiranpise/morphe-patches/commit/ce7c0a1f4570e4935a0e35ce6dccca37e365d476))\n* add mapy ([eedc71a](https://github.com/rushiranpise/morphe-patches/commit/eedc71ae90ee77bc9a4ea4129212593aa6487a46))\n\n## [1.14.0-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.13.1...v1.14.0-dev.1) (2026-07-17)\n\n### ? New Features\n\n* add boxbox ([84183bc](https://github.com/rushiranpise/morphe-patches/commit/84183bc87b0368ac06deec0b962f7d1306a64531))\n* add pcremote ([274df88](https://github.com/rushiranpise/morphe-patches/commit/274df888f8dcee59628b6cadf2624b6e09660086))\n* add torrdroid ([6efb2f4](https://github.com/rushiranpise/morphe-patches/commit/6efb2f4cc60cabaddb15da48116a8dcc8c97ca10))\n\n## [1.13.1](https://github.com/rushiranpise/morphe-patches/compare/v1.13.0...v1.13.1) (2026-07-16)\n\n### ?? Bug Fixes\n\n* minimal widgets ([d7e7857](https://github.com/rushiranpise/morphe-patches/commit/d7e7857bba7fbbf8a8d4b1eacd5f3c76cf921050))\n\n## [1.13.1-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.13.0...v1.13.1-dev.1) (2026-07-16)\n\n### ?? Bug Fixes\n\n* minimal widgets ([d7e7857](https://github.com/rushiranpise/morphe-patches/commit/d7e7857bba7fbbf8a8d4b1eacd5f3c76cf921050))",
+      "changelog": "## [1.17.0-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.16.0...v1.17.0-dev.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* build ([1ac2d4c](https://github.com/rushiranpise/morphe-patches/commit/1ac2d4c447aaa54f7245f9da34f2de5f7af8fca6))\n\n### ✨ New Features\n\n* update and add new apps ([ea06106](https://github.com/rushiranpise/morphe-patches/commit/ea06106ff37399c81a654b020fd1ad99c52f9fe7)), closes [#541](https://github.com/rushiranpise/morphe-patches/issues/541) [#549](https://github.com/rushiranpise/morphe-patches/issues/549) [#545](https://github.com/rushiranpise/morphe-patches/issues/545) [#544](https://github.com/rushiranpise/morphe-patches/issues/544) [#543](https://github.com/rushiranpise/morphe-patches/issues/543) [#542](https://github.com/rushiranpise/morphe-patches/issues/542) [#472](https://github.com/rushiranpise/morphe-patches/issues/472) [#531](https://github.com/rushiranpise/morphe-patches/issues/531) [#530](https://github.com/rushiranpise/morphe-patches/issues/530) [#515](https://github.com/rushiranpise/morphe-patches/issues/515) [#361](https://github.com/rushiranpise/morphe-patches/issues/361) [#432](https://github.com/rushiranpise/morphe-patches/issues/432) [#425](https://github.com/rushiranpise/morphe-patches/issues/425) [#349](https://github.com/rushiranpise/morphe-patches/issues/349)\n\n## [1.16.0](https://github.com/rushiranpise/morphe-patches/compare/v1.15.1...v1.16.0) (2026-08-03)\n\n### ✨ New Features\n\n* update and add new apps ([ec79ee9](https://github.com/rushiranpise/morphe-patches/commit/ec79ee9c35e567e7eba47ec9f3f4eac059e7d84a))\n\n## [1.16.0-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.15.1...v1.16.0-dev.1) (2026-08-03)\n\n### ✨ New Features\n\n* update and add new apps ([ec79ee9](https://github.com/rushiranpise/morphe-patches/commit/ec79ee9c35e567e7eba47ec9f3f4eac059e7d84a))\n\n## [1.15.1](https://github.com/rushiranpise/morphe-patches/compare/v1.15.0...v1.15.1) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* photos ([b21dec5](https://github.com/rushiranpise/morphe-patches/commit/b21dec59e6419c06e20e8f95c46e44daad01284a))\n* trading view ([05dde41](https://github.com/rushiranpise/morphe-patches/commit/05dde4166fd3fefbe5d764564415418db5790107))\n\n## [1.15.1-dev.2](https://github.com/rushiranpise/morphe-patches/compare/v1.15.1-dev.1...v1.15.1-dev.2) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* trading view ([05dde41](https://github.com/rushiranpise/morphe-patches/commit/05dde4166fd3fefbe5d764564415418db5790107))\n\n## [1.15.1-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.15.0...v1.15.1-dev.1) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* photos ([b21dec5](https://github.com/rushiranpise/morphe-patches/commit/b21dec59e6419c06e20e8f95c46e44daad01284a))\n\n## [1.15.0](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0...v1.15.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* build ([625f7e6](https://github.com/rushiranpise/morphe-patches/commit/625f7e67880ce888514e99f815d88b7cb8545bb5))\n\n### ✨ New Features\n\n* add sai ([aaa5163](https://github.com/rushiranpise/morphe-patches/commit/aaa51635541b49ee830d6190263c799c7847aabf))\n* update & add new apps ([8611906](https://github.com/rushiranpise/morphe-patches/commit/8611906c0e35142e73be18fcf403b6f4d7f93d3a))\n* update &add new apps ([729f9f0](https://github.com/rushiranpise/morphe-patches/commit/729f9f0b5a13ad65ae9f8e1c747de63a13bff6fe))\n\n## [1.15.0-dev.2](https://github.com/rushiranpise/morphe-patches/compare/v1.15.0-dev.1...v1.15.0-dev.2) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* build ([625f7e6](https://github.com/rushiranpise/morphe-patches/commit/625f7e67880ce888514e99f815d88b7cb8545bb5))\n\n### ✨ New Features\n\n* add sai ([aaa5163](https://github.com/rushiranpise/morphe-patches/commit/aaa51635541b49ee830d6190263c799c7847aabf))\n* update &add new apps ([729f9f0](https://github.com/rushiranpise/morphe-patches/commit/729f9f0b5a13ad65ae9f8e1c747de63a13bff6fe))\n\n## [1.15.0-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0...v1.15.0-dev.1) (2026-07-23)\n\n### ✨ New Features\n\n* update & add new apps ([8611906](https://github.com/rushiranpise/morphe-patches/commit/8611906c0e35142e73be18fcf403b6f4d7f93d3a))\n\n## [1.14.0](https://github.com/rushiranpise/morphe-patches/compare/v1.13.1...v1.14.0) (2026-07-19)\n\n### 🐛 Bug Fixes\n\n* format release notes for update badges ([20fe7b5](https://github.com/rushiranpise/morphe-patches/commit/20fe7b546e9e1facf70b46cedf9ea2dad845d3ed))\n\n### ✨ New Features\n\n* add boxbox ([84183bc](https://github.com/rushiranpise/morphe-patches/commit/84183bc87b0368ac06deec0b962f7d1306a64531))\n* add flud ([ce7c0a1](https://github.com/rushiranpise/morphe-patches/commit/ce7c0a1f4570e4935a0e35ce6dccca37e365d476))\n* add google photos ([58552d0](https://github.com/rushiranpise/morphe-patches/commit/58552d0154b588ad1b05a2934cf2b9b7d81a002b))\n* add mapy ([eedc71a](https://github.com/rushiranpise/morphe-patches/commit/eedc71ae90ee77bc9a4ea4129212593aa6487a46))\n* add pcremote ([274df88](https://github.com/rushiranpise/morphe-patches/commit/274df888f8dcee59628b6cadf2624b6e09660086))\n* add torrdroid ([6efb2f4](https://github.com/rushiranpise/morphe-patches/commit/6efb2f4cc60cabaddb15da48116a8dcc8c97ca10))\n\n## [1.14.0-dev.4](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0-dev.3...v1.14.0-dev.4) (2026-07-19)\n\n### 🐛 Bug Fixes\n\n* format release notes for update badges ([20fe7b5](https://github.com/rushiranpise/morphe-patches/commit/20fe7b546e9e1facf70b46cedf9ea2dad845d3ed))\n\n## [1.14.0-dev.3](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0-dev.2...v1.14.0-dev.3) (2026-07-19)\n\n### ? New Features\n\n* add google photos ([58552d0](https://github.com/rushiranpise/morphe-patches/commit/58552d0154b588ad1b05a2934cf2b9b7d81a002b))\n\n## [1.14.0-dev.2](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0-dev.1...v1.14.0-dev.2) (2026-07-18)\n\n### ? New Features\n\n* add flud ([ce7c0a1](https://github.com/rushiranpise/morphe-patches/commit/ce7c0a1f4570e4935a0e35ce6dccca37e365d476))\n* add mapy ([eedc71a](https://github.com/rushiranpise/morphe-patches/commit/eedc71ae90ee77bc9a4ea4129212593aa6487a46))\n\n## [1.14.0-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.13.1...v1.14.0-dev.1) (2026-07-17)\n\n### ? New Features\n\n* add boxbox ([84183bc](https://github.com/rushiranpise/morphe-patches/commit/84183bc87b0368ac06deec0b962f7d1306a64531))\n* add pcremote ([274df88](https://github.com/rushiranpise/morphe-patches/commit/274df888f8dcee59628b6cadf2624b6e09660086))\n* add torrdroid ([6efb2f4](https://github.com/rushiranpise/morphe-patches/commit/6efb2f4cc60cabaddb15da48116a8dcc8c97ca10))\n\n## [1.13.1](https://github.com/rushiranpise/morphe-patches/compare/v1.13.0...v1.13.1) (2026-07-16)\n\n### ?? Bug Fixes\n\n* minimal widgets ([d7e7857](https://github.com/rushiranpise/morphe-patches/commit/d7e7857bba7fbbf8a8d4b1eacd5f3c76cf921050))",
       "fullChangelogUrl": "https://github.com/rushiranpise/morphe-patches/blob/dev/CHANGELOG.md",
       "repoDescription": "Morphe patches I use and maintain in my spare time. Please report bugs and request patches via GitHub.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/37355997?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=rushiranpise/morphe-patches",
-      "patchCount": 272,
+      "patchCount": 295,
       "targetApps": [
         "sksa.aa.customapps",
         "com.aaenabler.app",
@@ -15872,11 +16136,26 @@
         "com.urbandroid.kinestop",
         "com.nytimes.crossword",
         "com.vythera.vyxelapps",
-        "com.onnex.wristweb"
+        "com.onnex.wristweb",
+        "com.adobe.reader",
+        "com.adobe.scan.android",
+        "org.telegram.messenger",
+        "org.telegram.messenger.web",
+        "org.telegram.plus",
+        "com.arjanvlek.oxygenupdater",
+        "com.mk.awake",
+        "com.nutrition.technologies.Fitia",
+        "com.kajda.fuelio",
+        "fr.tramb.park4night",
+        "xorsand.relane",
+        "com.curiouscompany.relink",
+        "br.com.ctncardoso.ctncar",
+        "kha.prog.usbhotspot",
+        "com.ilv.vradio"
       ],
       "appUpdates": {},
       "stars": 304,
-      "updatedAt": 1785715200000,
+      "updatedAt": 1786060800000,
       "firstSeen": 1780395687718,
       "appFirstSeen": {
         "sksa.aa.customapps": 1785742054631,
@@ -16082,7 +16361,22 @@
         "com.urbandroid.kinestop": 1783291168540,
         "com.nytimes.crossword": 1783875617302,
         "com.vythera.vyxelapps": 1785742054631,
-        "com.onnex.wristweb": 1785742054631
+        "com.onnex.wristweb": 1785742054631,
+        "com.adobe.reader": 1786127632705,
+        "com.adobe.scan.android": 1786127632705,
+        "org.telegram.messenger": 1786127632705,
+        "org.telegram.messenger.web": 1786127632705,
+        "org.telegram.plus": 1786127632705,
+        "com.arjanvlek.oxygenupdater": 1786127632705,
+        "com.mk.awake": 1786127632705,
+        "com.nutrition.technologies.Fitia": 1786127632705,
+        "com.kajda.fuelio": 1786127632705,
+        "fr.tramb.park4night": 1786127632705,
+        "xorsand.relane": 1786127632705,
+        "com.curiouscompany.relink": 1786127632705,
+        "br.com.ctncardoso.ctncar": 1786127632705,
+        "kha.prog.usbhotspot": 1786127632705,
+        "com.ilv.vradio": 1786127632705
       },
       "starsGained7d": 34,
       "starsGained40d": 112,
@@ -17304,14 +17598,14 @@
           "description": "Unlock premium features and remove ads in RSS Reader.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 632
+          "compatiblePackagesKey": 645
         },
         {
           "name": "Unlock Premium",
           "description": "Unlocks all premium features by forcing KineService.Companion.isTrial() to return false (pro state).",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 633
+          "compatiblePackagesKey": 646
         },
         {
           "name": "Flud Ad-Free & Bypasses",
@@ -17319,7 +17613,7 @@
           "default": true,
           "options": [],
           "preRelease": true,
-          "compatiblePackagesKey": 634
+          "compatiblePackagesKey": 647
         }
       ],
       "changelog": "## [1.2.0-dev.1](https://github.com/shaun-the-sheep-patches/morphe-patches/compare/v1.1.3-dev.1...v1.2.0-dev.1) (2026-07-12)\n\n### ✨ New Features\n\n* **pinnit:** add premium unlock patch for Pinnit v1.12.0 ([f26c0e1](https://github.com/shaun-the-sheep-patches/morphe-patches/commit/f26c0e1997e87cd6912568ebef76a6a400bdad86))\n\n## [1.1.3-dev.1](https://github.com/shaun-the-sheep-patches/morphe-patches/compare/v1.1.2...v1.1.3-dev.1) (2026-07-08)\n\n### 🐛 Bug Fixes\n\n* **flud:** pairip fix, ads removed, storage permission fix ([53125a7](https://github.com/shaun-the-sheep-patches/morphe-patches/commit/53125a7e7722556aec54e86f1c64338c76f573be))\n\n## [1.1.0](https://github.com/shaun-the-sheep-patches/morphe-patches/compare/v1.0.1...v1.1.0) (2026-07-07)\n\n### ✨ New Features\n\n* **rssreader:** Add RSS Reader Premium unlock patch ([17466f9](https://github.com/shaun-the-sheep-patches/morphe-patches/commit/17466f9aee9add0082c51cf5b5d698efeec775d0))\n\n## [1.0.1](https://github.com/shaun-the-sheep-patches/morphe-patches/compare/v1.0.0...v1.0.1) (2026-07-05)\n\n### 🐛 Bug Fixes\n\n* update repo source URL to new username ([c66a0fd](https://github.com/shaun-the-sheep-patches/morphe-patches/commit/c66a0fdb3f66fe2acffa499e6c2c14fd1f9e7afa))\n\n## [1.0.1-dev.1](https://github.com/shaun-the-sheep-patches/morphe-patches/compare/v1.0.0...v1.0.1-dev.1) (2026-07-05)\n\n### 🐛 Bug Fixes\n\n* update repo source URL to new username ([c66a0fd](https://github.com/shaun-the-sheep-patches/morphe-patches/commit/c66a0fdb3f66fe2acffa499e6c2c14fd1f9e7afa))\n\n## 1.0.0 (2026-07-05)\n\n### ✨ New Features\n\n* add KineStop unlock premium patch ([19735fb](https://github.com/9pyuco7t/morphe-patches/commit/19735fb6e3cf4623391aac86b133c180cc46f9aa))\n\n## 1.0.0-dev.1 (2026-07-05)\n\n### ✨ New Features\n\n* add KineStop unlock premium patch ([19735fb](https://github.com/9pyuco7t/morphe-patches/commit/19735fb6e3cf4623391aac86b133c180cc46f9aa))",
@@ -17361,91 +17655,91 @@
           "description": "Removes the AD_SERVICES_CONFIG property so Android Privacy Sandbox ad APIs (Topics, Attribution Reporting, Custom Audiences) are not opted into.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Disable AppsFlyer tracking",
           "description": "Neutralises the AppsFlyer attribution / tracking SDK. init() becomes a no-op and isStopped() always returns true, so no events, installs, uninstalls or attribution data are transmitted.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Disable Bugsnag crash tracking",
           "description": "Removes the Bugsnag API key metadata so the crash reporting SDK cannot initialize or upload telemetry.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Disable Firebase services",
           "description": "Adds the officially documented Firebase off-switches (`firebase_analytics_collection_deactivated`, `firebase_crashlytics_collection_enabled=false`, `firebase_performance_collection_deactivated`, `google_analytics_adid_collection_enabled=false`) so the Firebase Analytics, Crashlytics and Performance SDKs go dormant.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Disable Google Ads SDK",
           "description": "Removes the Google Mobile Ads (AdMob) initialization metadata so the SDK never starts.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Disable Google Engage integration",
           "description": "Removes the Google Engage broadcast receiver so Pinterest cannot publish content recommendations back to Google (Discover, Assistant, Play Store, etc.).",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Disable Google Engage worker",
           "description": "Rewrites GoogleEngageWorker.createWork() to return null so WorkManager fails the periodic job and no content recommendations are ever published to Google.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Hide ad views",
           "description": "Collapses Pinterest's ad-specific views (TextAdView, promoted closeup action bars, board sponsor headers, …) to zero-size on construction, so ad chrome never draws even if the feed adapter tries to render one.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Hide promoted pins",
           "description": "Neutralises every ad-indicator field on the Pinterest pin/story models (is_promoted, promoted_is_*, is_native, ad_data, ...) so Promoted Pins, shopping-carousel ads, native-content ads and click-out CTAs are never rendered or fired.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Opt out of Google Analytics",
           "description": "Sets the default Google Analytics consent flags to false so the Firebase Measurement SDK does not collect analytics, ad data or personalization signals.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Remove Advertising ID permission",
           "description": "Strips the com.google.android.gms.permission.AD_ID permission so any residual SDK cannot read the device's Google Advertising ID.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Sanitize copied links",
           "description": "Resolves Pinterest short URLs (pin.it/…, pinterest.com/url_shortener/…) to their canonical pin URL before they are placed on the system clipboard, so \"Copy link\" no longer produces a fingerprinted short link.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Sanitize sharing links",
           "description": "Strips UTM and click-ID tracking parameters from the URL the app puts on the Android share sheet, so friends receive clean pin links.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         },
         {
           "name": "Restore Google login (microG-RE)",
@@ -17453,7 +17747,7 @@
           "default": true,
           "options": [],
           "preRelease": true,
-          "compatiblePackagesKey": 635
+          "compatiblePackagesKey": 648
         }
       ],
       "changelog": "## [1.7.0-dev.1](https://github.com/SouBryan/pinterest-morphed/compare/v1.6.0...v1.7.0-dev.1) (2026-07-17)\n\n### ✨ New Features\n\n* **auth:** SpoofGoogleAuthPatch — restore Google Sign-In on microG-RE ([8d4fc62](https://github.com/SouBryan/pinterest-morphed/commit/8d4fc6281c68e13b22f6f949a5fcb6067e185ce2))\n\n## [1.6.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.5.0...v1.6.0) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **ads:** cover third-party, sponsored and promoted-variant flags on first-boot feed ([89e0dec](https://github.com/SouBryan/pinterest-morphed/commit/89e0decc797b53b216f176829d162b48da1b7c7f))\n\n### ✨ New Features\n\n* **tracking:** add DisableFirebaseServicesPatch to flip 5 Firebase auto-init flags ([e536843](https://github.com/SouBryan/pinterest-morphed/commit/e5368437da1accfe06ea8aae4e0b616387f56c29))\n\n## [1.5.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.4.0...v1.5.0) (2026-07-14)\n\n### ✨ New Features\n\n* **safety:** pin Pinterest signing certificate SHA-256 ([0a3fff7](https://github.com/SouBryan/pinterest-morphed/commit/0a3fff7e3ff7b1040e902d333ae27168649bb931))\n\n## [1.4.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.3.0...v1.4.0) (2026-07-14)\n\n### ✨ New Features\n\n* **compat:** support Pinterest 14.20.0-14.27.0 as stable ([0e10291](https://github.com/SouBryan/pinterest-morphed/commit/0e1029111ef8530982d215bd1af05694767de7ae))\n\n## [1.3.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.2.1...v1.3.0) (2026-07-14)\n\n### ✨ New Features\n\n* add HideAdViewsPatch — collapse ad-specific views to GONE ([064d99c](https://github.com/SouBryan/pinterest-morphed/commit/064d99ccb5cbcd7b70955f7b6de0b2d298b83163))\n\n## [1.2.1](https://github.com/SouBryan/pinterest-morphed/compare/v1.2.0...v1.2.1) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* cover shopping ads and ad_data in HidePromotedPinsPatch ([2ac9672](https://github.com/SouBryan/pinterest-morphed/commit/2ac967234e54f113e693454fd6066cc5ba13e312))\n\n## [1.2.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.1.0...v1.2.0) (2026-07-14)\n\n### ✨ New Features\n\n* resolve pin.it and pinterest.com/url_shortener short links to canonical pin URLs, and sanitize clipboard ([1e6b6e4](https://github.com/SouBryan/pinterest-morphed/commit/1e6b6e461300c3ae21000a427ba26f28086e62fa))\n\n## [1.1.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0...v1.1.0) (2026-07-07)\n\n### ✨ New Features\n\n* add Sanitize sharing links + make cross-version patches resilient ([0989429](https://github.com/SouBryan/pinterest-morphed/commit/0989429e1e85dc021c8985cf2affe934fe283207))\n\n## 1.0.0 (2026-07-07)\n\n### ✨ New Features\n\n* add Disable Google Engage and Privacy Sandbox Ad Services patches ([db79293](https://github.com/SouBryan/pinterest-morphed/commit/db79293e26486f1d8e5e34c002ac5a688efda59e))\n* hide promoted pins app-wide via isPromoted getter shotgun ([1811d7a](https://github.com/SouBryan/pinterest-morphed/commit/1811d7a344be1600cdc57f1c8f009221b2422581))\n* hook GoogleEngageWorker.createWork() to no-op success ([ae30cc2](https://github.com/SouBryan/pinterest-morphed/commit/ae30cc25a07da6796d1b8b05661a90469948f899))\n* scaffold pinterest-morphed and add initial tracking / ads patches ([4fecc98](https://github.com/SouBryan/pinterest-morphed/commit/4fecc98f62ebe92759c6d3bf8853e98807de4f25))",
@@ -17475,7 +17769,7 @@
       },
       "starsGained7d": 3,
       "starsGained40d": 11,
-      "hotRank": 37
+      "hotRank": 38
     },
     {
       "source": "github",
@@ -17488,7 +17782,7 @@
           "description": "Unlocks Beeline plus features such as round-trip generation, live traffic and premium map types.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 636
+          "compatiblePackagesKey": 649
         }
       ],
       "changelog": "## 1.0.0 (2026-08-05)\n\n### ✨ New Features\n\n* Add beeline plus patch for beeline app ([2d171b3](https://github.com/spookyexe/morphe-patches/commit/2d171b3517ce69ba67d4e18cfe249e39898caa73))\n\n## 1.0.0-dev.1 (2026-08-05)\n\n### ✨ New Features\n\n* Add beeline plus patch for beeline app ([2d171b3](https://github.com/spookyexe/morphe-patches/commit/2d171b3517ce69ba67d4e18cfe249e39898caa73))",
@@ -17510,7 +17804,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "hotRank": 35
+      "hotRank": 37
     },
     {
       "source": "github",
@@ -17523,7 +17817,7 @@
           "description": "Instantly completes all IAP purchases (remove ads, research coins, budget) on tap and disables all ads in Devices Tycoon.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 637
+          "compatiblePackagesKey": 650
         }
       ],
       "changelog": "## [1.3.2](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.1...v1.3.2) (2026-07-22)\n\n### 🚀 Updated App Support\n\n* remove apps actually ([8fa0ade](https://github.com/tiaruebar1024/tiaruebar-patches/commit/8fa0adefcb16de7b66ab699af1f21359439219c6))\n\n## [1.3.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.0...v1.3.1) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* add Play Integrity bypass for Eatventure ([1133e31](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1133e31c584a28d6b9b17b05e95fa76ee07edddd))\n* add signature spoof for Eatventure billing ([6759612](https://github.com/tiaruebar1024/tiaruebar-patches/commit/67596122a98ae5ae25e7594d429a092c7b93926b))\n* Eatventure prob will be removed ([9d78ffd](https://github.com/tiaruebar1024/tiaruebar-patches/commit/9d78ffda4f075e67482a45025aa130c07be128a9))\n\n## [1.3.1-dev.2](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.1-dev.1...v1.3.1-dev.2) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* add signature spoof for Eatventure billing ([6759612](https://github.com/tiaruebar1024/tiaruebar-patches/commit/67596122a98ae5ae25e7594d429a092c7b93926b))\n\n## [1.3.1-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.0...v1.3.1-dev.1) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* add Play Integrity bypass for Eatventure ([1133e31](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1133e31c584a28d6b9b17b05e95fa76ee07edddd))\n\n## [1.3.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.2.0...v1.3.0) (2026-07-22)\n\n### ✨ New Features\n\n* add Eatventure IAP patch ([1da0d26](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1da0d268e74f3f1cb41c7c9d6a6a5adcfccc9dc0))\n\n### 🚀 Updated App Support\n\n* add support for eatventure ([eb831c8](https://github.com/tiaruebar1024/tiaruebar-patches/commit/eb831c863c2a4814fe04d52df76be576e6d1c9a3))\n\n## [1.3.0-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-07-22)\n\n### ✨ New Features\n\n* add Eatventure IAP patch ([1da0d26](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1da0d268e74f3f1cb41c7c9d6a6a5adcfccc9dc0))\n\n## [1.2.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.1...v1.2.0) (2026-07-22)\n\n### ✨ New Features\n\n* remove mysterium vpn patches ([73e044c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/73e044ce3b41368e4edd009d69b01f63c68ed3e9))\n\n## [1.2.0-dev.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.1...v1.2.0-dev.1) (2026-07-22)\n\n### ✨ New Features\n\n* remove mysterium vpn patches ([73e044c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/73e044ce3b41368e4edd009d69b01f63c68ed3e9))\n\n## [1.1.1](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.1.0...v1.1.1) (2026-07-21)\n\n### 🐛 Bug Fixes\n\n* update patch bundle metadata to tiaruebar-patches ([d6ac9ff](https://github.com/tiaruebar1024/tiaruebar-patches/commit/d6ac9ff7cb6bb1320a246ee45704170ea901e6c8))\n\n## [1.1.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.0.0...v1.1.0) (2026-07-21)\n\n### ✨ New Features\n\n* add consumable IAP bypass for Device Tycoon (coins + budget) ([b2b702c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/b2b702cdda00695feaa914d33208e5cce15027c6))\n\n## 1.0.0 (2026-07-21)\n\n### ✨ New Features\n\n* add Device Tycoon premium patch ([fea42f1](https://github.com/tiaruebar1024/tiaruebar-patches/commit/fea42f12242cb9a98b16adaed7a6b64fdcd192e2))",
@@ -17558,7 +17852,7 @@
           "description": "Blocks advertisements and promo clips.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 638
+          "compatiblePackagesKey": 651
         }
       ],
       "changelog": "## [1.0.9](https://github.com/Tornillo2/movistar-block-ads-morphe/compare/v1.0.8...v1.0.9) (2026-07-04)\n\n### 🚀 Updated App Support\n\n* update 1.0.9 ([e69490f](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/e69490f7e69e3dacefe88fb428abc6ddfb1acb0a))\n* Update version to 1.0.9 and refactor notifyPlayerEnded method for improved event dispatching ([b6518e2](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/b6518e2e8965119a93001f199fe9d77615a51bff))\n* Update version to 1.0.9 in gradle.properties ([e1ba4b9](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/e1ba4b928bc11c739fdac2fd00eb0ce6946de8e4))\n\n## [1.0.8](https://github.com/Tornillo2/movistar-block-ads-morphe/compare/v1.0.7...v1.0.8) (2026-07-04)\n\n### 🚀 Updated App Support\n\n* Update version to 1.0.8 and add new patches for ad blocking functionality ([3211402](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/3211402f783bd9aea6a9914fd5ce9e8fa5580fd1))\n\n## [1.0.7](https://github.com/Tornillo2/movistar-block-ads-morphe/compare/v1.0.6...v1.0.7) (2026-07-04)\n\n### 🚀 Updated App Support\n\n* Update version to 1.0.7 and refine ExamplePatch execution logic ([e539c67](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/e539c67fa32ce167902dccfec49611aef08772d6))\n\n## [1.0.6](https://github.com/Tornillo2/movistar-block-ads-morphe/compare/v1.0.5...v1.0.6) (2026-07-04)\n\n### 🚀 Updated App Support\n\n* Update version to 1.0.6 and refine ExamplePatch execution logic ([dc646b6](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/dc646b6c0b13365828ab935ed577b04b17040d26))\n\n## [1.0.5](https://github.com/Tornillo2/movistar-block-ads-morphe/compare/v1.0.4...v1.0.5) (2026-07-04)\n\n### 🚀 Updated App Support\n\n* Update version to 1.0.5 and enhance blockAdsPatch execution logic ([51c210c](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/51c210c30c204f57d0efa44b8400227f730fa835))\n\n## [1.0.4](https://github.com/Tornillo2/movistar-block-ads-morphe/compare/v1.0.3...v1.0.4) (2026-07-04)\n\n### 🚀 Updated App Support\n\n* Remove sanity check comment from blockAdsPatch execution ([42eb3ef](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/42eb3ef72b5b273ce59f8f840d83b83f2e7ec2f6))\n\n## [1.0.3](https://github.com/Tornillo2/movistar-block-ads-morphe/compare/v1.0.2...v1.0.3) (2026-07-03)\n\n### 🚀 Updated App Support\n\n* Simplify execution logic in blockAdsPatch by removing unused instructions ([9ba11e0](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/9ba11e0f2f31fcb971c042d00fe839024b73fbd9))\n\n## [1.0.2](https://github.com/Tornillo2/movistar-block-ads-morphe/compare/v1.0.1...v1.0.2) (2026-07-03)\n\n### 🚀 Updated App Support\n\n* Update version to 1.0.2 in gradle.properties and refactor smali string in ExamplePatch.kt ([b9a4f52](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/b9a4f524f0707cc4ab582a5a26dffd5b599d3f19))\n\n## [1.0.1](https://github.com/Tornillo2/movistar-block-ads-morphe/compare/v1.0.0...v1.0.1) (2026-07-03)\n\n### 🚀 Updated App Support\n\n* trigger v1.0.1 release ([d844bab](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/d844babbf1ed91903927c91465a554007beca1b5))\n\n## 1.0.0 (2026-07-03)\n\n### ✨ New Features\n\n* add GitHub Actions workflow and update patch descriptor paths ([7a65f79](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/7a65f7937ce52ff7e86e123b2489d93dfd50d18c))\n* enhance ad blocking logic and update method invocations ([87d3754](https://github.com/Tornillo2/movistar-block-ads-morphe/commit/87d3754f098808bbd13a78660c506df32b7cf261))\n\n## 1.0.0 (2026-07-03)\n\n### ✨ New Features\n\n* add GitHub Actions workflow and update patch descriptor paths ([7a65f79](https://github.com/Tornillo2/movistar-block-ads-morphe-lg/commit/7a65f7937ce52ff7e86e123b2489d93dfd50d18c))\n* enhance ad blocking logic and update method invocations ([87d3754](https://github.com/Tornillo2/movistar-block-ads-morphe-lg/commit/87d3754f098808bbd13a78660c506df32b7cf261))",
@@ -17593,84 +17887,84 @@
           "description": "Stops the Insider, TikTok Business SDK and Mixpanel Session Replay trackers from initializing (event/attribution/session-replay tracking never starts). Leaves AWS Amplify, Firebase core/RemoteConfig/FCM and Google Ads init untouched so app data, push and the remote ad-config the ads patch relies on keep working.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 639
+          "compatiblePackagesKey": 652
         },
         {
           "name": "Block trackers (manifest flags)",
           "description": "Disables Firebase Analytics + Google advertiser-id auto-collection and the Facebook SDK's auto app-events / advertiser-id / auto-init via AndroidManifest <meta-data> flags — the SDK-side auto-collection that no bytecode init-stub can reach. Leaves Firebase core (FCM push, RemoteConfig) and the Facebook ContentProvider intact. Separate from the bytecode Block trackers patch so you can pick either or both.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 639
+          "compatiblePackagesKey": 652
         },
         {
           "name": "Bypass PairIP license check",
           "description": "Disables Google PairIP's license/installer check (com.pairip.licensecheck) so a re-signed build runs on a real device instead of being redirected to the Play Store and killed. No-ops the LicenseContentProvider entry point and LicenseClient.initializeLicenseCheck().",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 653
         },
         {
           "name": "Bypass device validation",
           "description": "Neutralizes the client-side device-validation gate (anti-root / anti-emulator / anti-Frida / anti-Xposed / anti-tamper battery) that shows a \"Device validation failed\" toast and kills the app via finishAffinity() on a rooted, emulated or re-signed build. Redirects the single failure callback to the success path so all ~16 checks report as passed and the app keeps running pre- and post-login.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 639
+          "compatiblePackagesKey": 652
         },
         {
           "name": "Bypass signature verification",
           "description": "Disables Simosa's anti-tamper signature check so a re-signed APK launches normally instead of stalling on the splash / \"version is not correct\" dialog.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 641
+          "compatiblePackagesKey": 654
         },
         {
           "name": "Remove ads",
           "description": "Removes every AdMob ad — the interstitial (rerouted to its onAdFailedToLoad branch so the proxy-apply action still runs, but no ad loads or shows) and the on-screen banner (load skipped). No feature is lost.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 642
+          "compatiblePackagesKey": 655
         },
         {
           "name": "Remove ads",
           "description": "Removes every Google Ad Manager ad (banners + interstitials) across Daily Rewards, Home, Test Your Skills and Explore by nulling the remote ad-config chokepoint, so each surface renders its no-ads layout and never requests an interstitial.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 639
+          "compatiblePackagesKey": 652
         },
         {
           "name": "Remove ads & tracking",
           "description": "Removes every ad (AdMob) and every tracker (Firebase Analytics, AppsFlyer, Facebook, TikTok, and the Veridium SDK's own Google Analytics) — event sends, full SDK init (AppsFlyer init, TikTok initializeSdk/startTrack, MobileAds.initialize), and auto-collection. Pushwoosh push is left intact. The app then phones home only to its own Zong API.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 643
+          "compatiblePackagesKey": 656
         },
         {
           "name": "Remove ads & tracking",
           "description": "Removes every ad (interstitial, banner, daily-reward) and every tracker (Mixpanel, Firebase, Facebook, AppsFlyer) — app events, network sends, ad-SDK requests (Google Ads / AppLovin / AnyMind / Prebid), SDK auto-collection, and the ipify IP leak. The app then phones home only to its own Jazz API.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 641
+          "compatiblePackagesKey": 654
         },
         {
           "name": "Unlock daily reward (skip ad)",
           "description": "Claim MyZong's daily reward with no 'watch ad' popup and no ad. Forces the reward-bubble tap to take the app's own direct-claim branch (the same claim call the post-ad path makes), upstream of both the popup and the rewarded ad.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 643
+          "compatiblePackagesKey": 656
         },
         {
           "name": "Unlock premium (NetMonster)",
           "description": "Unlocks NetMonster Premium — forces the premium repo's derived flows so real-time LTE/NR-NSA location calculation is unlocked, ads are removed, and the status shows Active (far-future expiry) without an Adapty subscription.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 644
+          "compatiblePackagesKey": 657
         },
         {
           "name": "Unlock premium (remove ads)",
           "description": "Unlocks Investify premium — forces the backend `no_ads` entitlement getter to report true in both the model and its Realm proxy, so the app treats the account as ad-free without any purchase. Ad SDK loads are gated on this flag app-wide.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 640
+          "compatiblePackagesKey": 653
         }
       ],
       "changelog": "## [1.7.0](https://github.com/totsiaw/proxma-patches/compare/1.6.0...1.7.0) (2026-07-19)\n\n### New Features\n\n* add mytelenor Bypass device validation patch ([7d9a1a7](https://github.com/totsiaw/proxma-patches/commit/7d9a1a76c66a1bc436a9998ea3f18d5d1cb52b39))\n\n## [1.6.0](https://github.com/totsiaw/proxma-patches/compare/1.5.1...1.6.0) (2026-07-17)\n\n### New Features\n\n* add mytelenor patches (Remove ads, Block trackers, manifest flags) ([47b6550](https://github.com/totsiaw/proxma-patches/commit/47b65503d78f254b9d8517051ef17dac33107e16))\n\n## [1.5.1](https://github.com/totsiaw/proxma-patches/compare/1.5.0...1.5.1) (2026-07-14)\n\n### Bug Fixes\n\n* delist Daraz — remove patches (unusable on re-signed builds) ([e6cd42e](https://github.com/totsiaw/proxma-patches/commit/e6cd42ef5c4e43adb7fbab16d303b809d197740c))\n\n## [1.5.0](https://github.com/totsiaw/proxma-patches/compare/1.4.1...1.5.0) (2026-07-13)\n\n### New Features\n\n* Investify unlock premium + PairIP bypass ([20fc9b5](https://github.com/totsiaw/proxma-patches/commit/20fc9b52bf743634826ee77eaca18bac91b1d880))\n* NetMonster unlock premium ([d4de8f8](https://github.com/totsiaw/proxma-patches/commit/d4de8f8de83083d53c588436f8f1612cee81dbd5))\n\n## [1.4.1](https://github.com/totsiaw/proxma-patches/compare/1.4.0...1.4.1) (2026-07-10)\n\n### Bug Fixes\n\n* mark Daraz patch as WIP ([70e51cd](https://github.com/totsiaw/proxma-patches/commit/70e51cdba01af8c738bb9b96156abc3e3523fa2a))\n\n## [1.4.0](https://github.com/totsiaw/proxma-patches/compare/1.3.1...1.4.0) (2026-07-10)\n\n### New Features\n\n* Daraz (com.daraz.android) remove analytics & tracking ([4ddb59c](https://github.com/totsiaw/proxma-patches/commit/4ddb59c0e76e74845ca816ad464b01fb89639cdb))\n\n## [1.3.1](https://github.com/totsiaw/proxma-patches/compare/1.3.0...1.3.1) (2026-07-10)\n\n### Bug Fixes\n\n* compile errors in unlock-daily-reward patch ([4628acc](https://github.com/totsiaw/proxma-patches/commit/4628acc9000d94f0bff8eb5180e0cff94723fcc0))\n* MyZong daily reward — remove the popup too, claim directly ([578ef3d](https://github.com/totsiaw/proxma-patches/commit/578ef3d820c6375847ef48ee57eb21002be68362))\n\n## [1.3.0](https://github.com/totsiaw/proxma-patches/compare/1.2.2...1.3.0) (2026-07-10)\n\n### New Features\n\n* MyZong — unlock daily reward without watching ad ([1bae4e5](https://github.com/totsiaw/proxma-patches/commit/1bae4e5ede5bbc2bd029b2d23108114b06bbeda9))\n\n## [1.2.2](https://github.com/totsiaw/proxma-patches/compare/1.2.1...1.2.2) (2026-07-10)\n\n### Bug Fixes\n\n* MyZong — stub AppOpenAd (launch ad slipped past v1.2.1) ([a4113dc](https://github.com/totsiaw/proxma-patches/commit/a4113dce237c55d202b2c785b568ea9fa147a882))\n\n## [1.2.1](https://github.com/totsiaw/proxma-patches/compare/1.2.0...1.2.1) (2026-07-09)\n\n### Bug Fixes\n\n* MyZong — fully kill AdMob (auto-init provider + all ad loads) ([5a092ad](https://github.com/totsiaw/proxma-patches/commit/5a092adb888015fb92d01e1cce1318387481f3fe))\n\n## [1.2.0](https://github.com/totsiaw/proxma-patches/compare/1.1.0...1.2.0) (2026-07-09)\n\n### New Features\n\n* MyZong — stub AppsFlyer/TikTok SDK init too ([7e17a9c](https://github.com/totsiaw/proxma-patches/commit/7e17a9cd9b60c3af0d52f55ef08a5fb588512015))\n\n## [1.1.0](https://github.com/totsiaw/proxma-patches/compare/1.0.0...1.1.0) (2026-07-09)\n\n### New Features\n\n* MyZong (com.zong.customercare) remove ads & tracking ([09513ad](https://github.com/totsiaw/proxma-patches/commit/09513ad8cf0fcd776eaaf24feefd4a207676897b))\n\n## 1.0.0 (2026-07-09)\n\n### New Features\n\n* Proxma patches for Simosa (Jazz World) ([6d3db83](https://github.com/totsiaw/proxma-patches/commit/6d3db837b0c6c15591efc881ad221ff979c56359))",
@@ -17702,7 +17996,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 3,
-      "hotRank": 53
+      "hotRank": 52
     },
     {
       "source": "github",
@@ -17715,21 +18009,21 @@
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Automatically undelete Imgur images",
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Automatically undelete Reddit content",
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Disable Sync for Lemmy bottom sheet",
@@ -17743,21 +18037,21 @@
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Disable ads",
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 646
+          "compatiblePackagesKey": 659
         },
         {
           "name": "Disable ads",
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 647
+          "compatiblePackagesKey": 660
         },
         {
           "name": "Disable ads",
@@ -17778,28 +18072,28 @@
           "description": "Allows using pro features without ads.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 648
+          "compatiblePackagesKey": 661
         },
         {
           "name": "Fix /r/all",
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Fix /s/ links",
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Fix /s/ links",
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 649
+          "compatiblePackagesKey": 662
         },
         {
           "name": "Fix /s/ links",
@@ -17813,14 +18107,14 @@
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 650
+          "compatiblePackagesKey": 663
         },
         {
           "name": "Fix Redgifs API",
           "description": null,
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Fix Redgifs API",
@@ -17834,7 +18128,7 @@
           "description": "Fixes audio missing in videos downloaded from v.redd.it.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Fix post thumbnails",
@@ -17855,49 +18149,49 @@
           "description": "Hook the exception handler in Boost. Don't enable except for development purposes",
           "use": false,
           "options": [],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Modify login WebView",
           "description": "Modify the WebView used for logging into reddit to prevent login issues",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 650
+          "compatiblePackagesKey": 663
         },
         {
           "name": "Modify login WebView",
           "description": "Modify the WebView used for logging into reddit to prevent login issues",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Modify login WebView",
           "description": "Modify the WebView used for logging into reddit to prevent login issues",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 651
+          "compatiblePackagesKey": 664
         },
         {
           "name": "Modify login WebView",
           "description": "Modify the WebView used for logging into reddit to prevent login issues",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 646
+          "compatiblePackagesKey": 659
         },
         {
           "name": "Modify login WebView",
           "description": "Modify the WebView used for logging into reddit to prevent login issues",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 648
+          "compatiblePackagesKey": 661
         },
         {
           "name": "Modify login WebView",
           "description": "Modify the WebView used for logging into reddit to prevent login issues",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 649
+          "compatiblePackagesKey": 662
         },
         {
           "name": "Modify login WebView",
@@ -17939,7 +18233,7 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 650
+          "compatiblePackagesKey": 663
         },
         {
           "name": "Spoof client",
@@ -17974,7 +18268,7 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 645
+          "compatiblePackagesKey": 658
         },
         {
           "name": "Spoof client",
@@ -18009,7 +18303,7 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 652
+          "compatiblePackagesKey": 665
         },
         {
           "name": "Spoof client",
@@ -18044,7 +18338,7 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 651
+          "compatiblePackagesKey": 664
         },
         {
           "name": "Spoof client",
@@ -18079,7 +18373,7 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 646
+          "compatiblePackagesKey": 659
         },
         {
           "name": "Spoof client",
@@ -18114,7 +18408,7 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 648
+          "compatiblePackagesKey": 661
         },
         {
           "name": "Spoof client",
@@ -18149,7 +18443,7 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 649
+          "compatiblePackagesKey": 662
         },
         {
           "name": "Spoof client",
@@ -18184,7 +18478,7 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 653
+          "compatiblePackagesKey": 666
         },
         {
           "name": "Spoof client",
@@ -18233,7 +18527,7 @@
           "description": "Fix imgur albums not loading.",
           "use": true,
           "options": [],
-          "compatiblePackagesKey": 648
+          "compatiblePackagesKey": 661
         }
       ],
       "changelog": "## [1.4.1-dev.1](https://github.com/wchill/patcheddit/compare/v1.4.0...v1.4.1-dev.1) (2026-04-09)\n\n\n### Bug Fixes\n\n* Resolve login failure caused by non-English language ([fec2ed5](https://github.com/wchill/patcheddit/commit/fec2ed591fa42fa59fd567059cbaae111bfa6caf))\n\n# [1.4.0](https://github.com/wchill/patcheddit/compare/v1.3.1...v1.4.0) (2026-04-07)\n\n\n### Bug Fixes\n\n* Don't show fake premium patch for reddit is fun golden platinum ([15d372e](https://github.com/wchill/patcheddit/commit/15d372e09cd36252483cf468a7d0a09188d2d4d1))\n* Make /r/all patch available ([9740e3d](https://github.com/wchill/patcheddit/commit/9740e3d2ba1c67ae5ba7247f992f3724e8837dbe))\n* reddit is fun imgur album loading ([66c73c9](https://github.com/wchill/patcheddit/commit/66c73c969acbbfa038d52cd020533eb39f95f224))\n\n\n### Features\n\n* /r/all patch for Boost ([60b8743](https://github.com/wchill/patcheddit/commit/60b8743b6fe47aea55fe10d87124b416d692c355))\n* Add experimental patch to help resolve some login issues ([3a1025e](https://github.com/wchill/patcheddit/commit/3a1025e0370e9d7f5f5f0c8a5f4202e81f434979))\n\n# [1.4.0-dev.3](https://github.com/wchill/patcheddit/compare/v1.4.0-dev.2...v1.4.0-dev.3) (2026-04-06)\n\n\n### Features\n\n* Add experimental patch to help resolve some login issues ([3a1025e](https://github.com/wchill/patcheddit/commit/3a1025e0370e9d7f5f5f0c8a5f4202e81f434979))\n\n# [1.4.0-dev.2](https://github.com/wchill/patcheddit/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2026-04-06)\n\n\n### Bug Fixes\n\n* Make /r/all patch available ([9740e3d](https://github.com/wchill/patcheddit/commit/9740e3d2ba1c67ae5ba7247f992f3724e8837dbe))\n\n# [1.4.0-dev.1](https://github.com/wchill/patcheddit/compare/v1.3.1...v1.4.0-dev.1) (2026-04-06)\n\n\n### Bug Fixes\n\n* Don't show fake premium patch for reddit is fun golden platinum ([15d372e](https://github.com/wchill/patcheddit/commit/15d372e09cd36252483cf468a7d0a09188d2d4d1))\n* reddit is fun imgur album loading ([66c73c9](https://github.com/wchill/patcheddit/commit/66c73c969acbbfa038d52cd020533eb39f95f224))\n\n\n### Features\n\n* /r/all patch for Boost ([60b8743](https://github.com/wchill/patcheddit/commit/60b8743b6fe47aea55fe10d87124b416d692c355))\n\n## [1.3.1](https://github.com/wchill/patcheddit/compare/v1.3.0...v1.3.1) (2026-04-01)\n\n\n### Bug Fixes\n\n* Attempt to fix compatibility with Manager 1.14.0 ([174d6ad](https://github.com/wchill/patcheddit/commit/174d6ad6420ba6172f41948053592fea9097d49f))\n* Remove dependency on transformInstructions patch ([ed2697d](https://github.com/wchill/patcheddit/commit/ed2697d3ab6eb796c505627b5da1d36b4b09b563))\n* **Sync for reddit:** User endpoint patch failing to match ([8cab251](https://github.com/wchill/patcheddit/commit/8cab2512a8d5d9fbebcd4d392384fc9774f1d84c))\n* Use replaceStringsPatch with comparison type contains for Sync spoof patch ([b966d81](https://github.com/wchill/patcheddit/commit/b966d8140f9f626bc5919ff84b519e6cce011771))\n\n## [1.3.1-dev.4](https://github.com/wchill/patcheddit/compare/v1.3.1-dev.3...v1.3.1-dev.4) (2026-04-01)\n\n\n### Bug Fixes\n\n* Use replaceStringsPatch with comparison type contains for Sync spoof patch ([b966d81](https://github.com/wchill/patcheddit/commit/b966d8140f9f626bc5919ff84b519e6cce011771))\n\n## [1.3.1-dev.3](https://github.com/wchill/patcheddit/compare/v1.3.1-dev.2...v1.3.1-dev.3) (2026-04-01)\n\n\n### Bug Fixes\n\n* Remove dependency on transformInstructions patch ([ed2697d](https://github.com/wchill/patcheddit/commit/ed2697d3ab6eb796c505627b5da1d36b4b09b563))\n\n## [1.3.1-dev.2](https://github.com/wchill/patcheddit/compare/v1.3.1-dev.1...v1.3.1-dev.2) (2026-04-01)\n\n\n### Bug Fixes\n\n* Attempt to fix compatibility with Manager 1.14.0 ([174d6ad](https://github.com/wchill/patcheddit/commit/174d6ad6420ba6172f41948053592fea9097d49f))\n\n## [1.3.1-dev.1](https://github.com/wchill/patcheddit/compare/v1.3.0...v1.3.1-dev.1) (2026-04-01)\n\n\n### Bug Fixes\n\n* **Sync for reddit:** User endpoint patch failing to match ([8cab251](https://github.com/wchill/patcheddit/commit/8cab2512a8d5d9fbebcd4d392384fc9774f1d84c))\n\n# [1.3.0](https://github.com/wchill/patcheddit/compare/v1.2.0...v1.3.0) (2026-04-01)\n\n\n### Bug Fixes\n\n* Bump gradle plugin version ([6435231](https://github.com/wchill/patcheddit/commit/6435231016b9799e978f059d3f35f6cd69add853))\n* Check for HTTP 5xx when loading posts in Boost ([511fae0](https://github.com/wchill/patcheddit/commit/511fae08a7380343a26675cfa873588ecde1d714))\n* Client ID validation not working ([d6a5e50](https://github.com/wchill/patcheddit/commit/d6a5e500accb41dd001c1f3a6e9bb320c53a41c8))\n* Continuum crashing when cold opening reddit links ([7848ebd](https://github.com/wchill/patcheddit/commit/7848ebdea255379b306fa570712cff0a586a8955))\n* Crash in Infinity+ settings ([3ff1829](https://github.com/wchill/patcheddit/commit/3ff1829bbe0f6f6834bff32e176a1d37a979a79c))\n* Fix issues loading patch bundle ([d644b35](https://github.com/wchill/patcheddit/commit/d644b3582ba7f6f6267f2239d9bee87ffa39c885))\n* Improper regex for client ID ([707b2ba](https://github.com/wchill/patcheddit/commit/707b2ba95edfcf784138f4fa5fe0702978cf0d81))\n* Infinity crashing when cold opening reddit links ([688f574](https://github.com/wchill/patcheddit/commit/688f5744818ef8be5386c7a7097ef14c2a9fc399))\n* Sync for reddit patch errored with \"Collection is empty\" ([bdb71c4](https://github.com/wchill/patcheddit/commit/bdb71c4349c4e9d4b6c1ff15720814a3c94079e6))\n* Use separate names for pro/dev versions of apps ([c060aef](https://github.com/wchill/patcheddit/commit/c060aefbbc6ce28f274278b8d0649bcb7cba30f6))\n\n\n### Features\n\n* Add support for Infinity+ ([9e28199](https://github.com/wchill/patcheddit/commit/9e28199844e770d3c6b56eaaab6b2417c30560a2))\n* Support reddit is fun golden platinum ([a768745](https://github.com/wchill/patcheddit/commit/a768745cdc1a1d703dd5a31b8e026e61a5454cb8))\n* Update to Morphe patcher 1.3.0 ([ded92dc](https://github.com/wchill/patcheddit/commit/ded92dc15a062f0defd9eb655e567c24b0373c98))\n* Use sqlite-backed cache implementation for Boost ([2cfea64](https://github.com/wchill/patcheddit/commit/2cfea642704aef15793d3f0c3548d870ff021690))\n\n# [1.3.0-dev.5](https://github.com/wchill/patcheddit/compare/v1.3.0-dev.4...v1.3.0-dev.5) (2026-04-01)\n\n\n### Bug Fixes\n\n* Bump gradle plugin version ([6435231](https://github.com/wchill/patcheddit/commit/6435231016b9799e978f059d3f35f6cd69add853))\n* Client ID validation not working ([d6a5e50](https://github.com/wchill/patcheddit/commit/d6a5e500accb41dd001c1f3a6e9bb320c53a41c8))\n* Continuum crashing when cold opening reddit links ([7848ebd](https://github.com/wchill/patcheddit/commit/7848ebdea255379b306fa570712cff0a586a8955))\n* Crash in Infinity+ settings ([3ff1829](https://github.com/wchill/patcheddit/commit/3ff1829bbe0f6f6834bff32e176a1d37a979a79c))\n* Improper regex for client ID ([707b2ba](https://github.com/wchill/patcheddit/commit/707b2ba95edfcf784138f4fa5fe0702978cf0d81))\n* Infinity crashing when cold opening reddit links ([688f574](https://github.com/wchill/patcheddit/commit/688f5744818ef8be5386c7a7097ef14c2a9fc399))\n\n\n### Features\n\n* Add support for Infinity+ ([9e28199](https://github.com/wchill/patcheddit/commit/9e28199844e770d3c6b56eaaab6b2417c30560a2))\n\n# [1.3.0-dev.9](https://github.com/wchill/patcheddit/compare/v1.3.0-dev.8...v1.3.0-dev.9) (2026-04-01)\n\n\n### Bug Fixes\n\n* Crash in Infinity+ settings ([6bfa378](https://github.com/wchill/patcheddit/commit/6bfa378f303eeb952117e5c108dcb6185c7bab48))\n\n# [1.3.0-dev.8](https://github.com/wchill/patcheddit/compare/v1.3.0-dev.7...v1.3.0-dev.8) (2026-03-31)\n\n\n### Bug Fixes\n\n* Continuum crashing when cold opening reddit links ([36250c9](https://github.com/wchill/patcheddit/commit/36250c9eddaf382cc25fb7fecb5e3cffe29609a1))\n* Infinity crashing when cold opening reddit links ([1e3ef91](https://github.com/wchill/patcheddit/commit/1e3ef919f1aa1c4371ed140def1b3f8fdc933342))\n\n# [1.3.0-dev.7](https://github.com/wchill/patcheddit/compare/v1.3.0-dev.6...v1.3.0-dev.7) (2026-03-31)\n\n\n### Bug Fixes\n\n* Improper regex for client ID ([90b8161](https://github.com/wchill/patcheddit/commit/90b816125a3ec5c9ac99b636f5570aacdc86fa5e))",
@@ -18286,91 +18580,91 @@
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 654
+          "compatiblePackagesKey": 667
         },
         {
           "name": "Unlock Boostcamp Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 655
+          "compatiblePackagesKey": 668
         },
         {
           "name": "Unlock Built With Science Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 656
+          "compatiblePackagesKey": 669
         },
         {
           "name": "Unlock FST-7 Subscription",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 657
+          "compatiblePackagesKey": 670
         },
         {
           "name": "Unlock Ganbaru Method Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 658
+          "compatiblePackagesKey": 671
         },
         {
           "name": "Unlock JuggernautAI Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 659
+          "compatiblePackagesKey": 672
         },
         {
           "name": "Unlock MH Physique Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 660
+          "compatiblePackagesKey": 673
         },
         {
           "name": "Unlock MyoAdapt Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 661
+          "compatiblePackagesKey": 674
         },
         {
           "name": "Unlock Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 662
+          "compatiblePackagesKey": 675
         },
         {
           "name": "Unlock RP Hypertrophy Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 663
+          "compatiblePackagesKey": 676
         },
         {
           "name": "Unlock STNDRD Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 664
+          "compatiblePackagesKey": 677
         },
         {
           "name": "Unlock THENX Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 665
+          "compatiblePackagesKey": 678
         },
         {
           "name": "Unlock Video Player Premium",
           "description": "Unlock all Paid features",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 666
+          "compatiblePackagesKey": 679
         }
       ],
       "changelog": "## [3.3.0](https://github.com/Xhehab/Xhehab-Patches/compare/v3.2.0...v3.3.0) (2026-07-16)\n\n### ✨ New Features\n\n* Update compatibility for VideoPlayer ([75cf9ab](https://github.com/Xhehab/Xhehab-Patches/commit/75cf9abc98e81d97ca9287f31347e20e54394122))\n\n## [3.2.0](https://github.com/Xhehab/Xhehab-Patches/compare/v3.1.0...v3.2.0) (2026-07-16)\n\n### ✨ New Features\n\n* Add JuggernautAI compatibility and unlock premium patch ([c496bac](https://github.com/Xhehab/Xhehab-Patches/commit/c496bac9b239c9f64a64f6ca022bdb60f393416c))\n\n## [3.1.0](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.15...v3.1.0) (2026-07-16)\n\n### ✨ New Features\n\n* Add BASE Strength AI compatibility and unlock premium patch ([2dd62d6](https://github.com/Xhehab/Xhehab-Patches/commit/2dd62d63ceff4c7763d3f1ab4ef8822219387163))\n* Update README to include BASE Strength AI patch and total patch count ([9a32db3](https://github.com/Xhehab/Xhehab-Patches/commit/9a32db36412ba9bf3619e39e1cd1912f7d62aac8))\n\n## [3.0.15](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.14...v3.0.15) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* MyoAdapt ([ecb0344](https://github.com/Xhehab/Xhehab-Patches/commit/ecb0344bb2dac386f601b8b0692f2371cb7d27cf))\n\n## [3.0.14](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.13...v3.0.14) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* Thenx v2 ([4cf050c](https://github.com/Xhehab/Xhehab-Patches/commit/4cf050c8d1296cb2347596440d24e9e8773aa829))\n\n## [3.0.13](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.12...v3.0.13) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* Thenx ([5b6485d](https://github.com/Xhehab/Xhehab-Patches/commit/5b6485ddb80b3df08e49e567347d729d1134fdca))\n\n## [3.0.12](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.11...v3.0.12) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* Boostcamp v2 ([c43b1cb](https://github.com/Xhehab/Xhehab-Patches/commit/c43b1cb78ad3e7b18267cc214d1c708e14fb50ca))\n\n## [3.0.11](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.10...v3.0.11) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* Boostcamp ([d9fab96](https://github.com/Xhehab/Xhehab-Patches/commit/d9fab96d6144ce57912622df89923f67e4ab0582))\n\n## [3.0.10](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.9...v3.0.10) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* show Ganbaru Method lifetime subscription ([fe7a910](https://github.com/Xhehab/Xhehab-Patches/commit/fe7a910a43824d08cc4249dc63d3cb57af6c06c0))\n\n## [3.0.9](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.8...v3.0.9) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* make Ganbaru Method full member ([8acf717](https://github.com/Xhehab/Xhehab-Patches/commit/8acf7176286f360daaec55d6667206725a975b45))\n\n## [3.0.8](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.7...v3.0.8) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* bypass MH Physique solver subscription gate ([a0c3d93](https://github.com/Xhehab/Xhehab-Patches/commit/a0c3d93f5a7c52101e284e642deb093e870454a1))\n\n## [3.0.7](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.6...v3.0.7) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* route empty MH Physique plans to intake ([2473da4](https://github.com/Xhehab/Xhehab-Patches/commit/2473da46679f78775a5a43b26cff57f98c23f0f3))\n\n## [3.0.6](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.5...v3.0.6) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* correct MH Physique subscription state ([08c1ff7](https://github.com/Xhehab/Xhehab-Patches/commit/08c1ff70fcf841f03bd598ddd29f7441ac40aea4))\n\n## [3.0.5](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.4...v3.0.5) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* repair new app premium patches ([102cb97](https://github.com/Xhehab/Xhehab-Patches/commit/102cb97b83a0363536fc4ba3ad8c333771d3a623))\n\n## [3.0.4](https://github.com/Xhehab/Xhehab-Patches/compare/v3.0.3...v3.0.4) (2026-07-09)\n\n### 🐛 Bug Fixes\n\n* avoid patching THENX CustomerInfo date getters ([dc961a8](https://github.com/Xhehab/Xhehab-Patches/commit/dc961a8acbb9673e77545b2782c5289d6c9d31e1))\n* retry v3.0.4 release after runner failure ([df385ab](https://github.com/Xhehab/Xhehab-Patches/commit/df385ab3447a2f775e4d6a556628aed420ab164d))",
@@ -18430,21 +18724,21 @@
           "description": "Makes dark-theme page, app navigation and system bars pure black (AMOLED) while keeping elevated cards, sheets and controls gray so their boundaries remain visible.",
           "default": false,
           "options": [],
-          "compatiblePackagesKey": 667
+          "compatiblePackagesKey": 680
         },
         {
           "name": "Block listings",
           "description": "Hides Avito offers from blacklisted adverts or sellers and adds a blacklist manager (import/export compatible with the Ave Blacklist extension).",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 667
+          "compatiblePackagesKey": 680
         },
         {
           "name": "Bypass anti-tamper",
           "description": "Stubs TBank's native RASP executor calls and neutralizes tamper flag reporting.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 668
+          "compatiblePackagesKey": 681
         },
         {
           "name": "Disable Adjust",
@@ -18514,28 +18808,28 @@
           "description": "Disables Avito first-party clickstream analytics and Avito's direct Adjust telemetry wrapper.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 667
+          "compatiblePackagesKey": 680
         },
         {
           "name": "Disable update prompts",
           "description": "Prevents Avito's force-update screen opener from launching update screens. Toggleable in Настройки Morphe.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 667
+          "compatiblePackagesKey": 680
         },
         {
           "name": "Hide professional sellers",
           "description": "Adds a maximum seller review count to Avito search filters and hides or dims offers from sellers above that limit.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 667
+          "compatiblePackagesKey": 680
         },
         {
           "name": "Morphe settings",
           "description": "Adds a \"Настройки Morphe\" entry to Avito's settings that hosts the configuration for the other Morphe patches.",
           "default": false,
           "options": [],
-          "compatiblePackagesKey": 667
+          "compatiblePackagesKey": 680
         },
         {
           "name": "Remove Ozon ads",
@@ -18552,14 +18846,14 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 669
+          "compatiblePackagesKey": 682
         },
         {
           "name": "Remove TBank ads",
           "description": "Removes TBank stories and promotional surfaces.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 668
+          "compatiblePackagesKey": 681
         },
         {
           "name": "Remove Wildberries ads",
@@ -18576,14 +18870,14 @@
               "values": null
             }
           ],
-          "compatiblePackagesKey": 670
+          "compatiblePackagesKey": 683
         },
         {
           "name": "Remove ads",
           "description": "Disables Avito ads by removing ad SDK entry points and short-circuiting commercial banner loading.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 667
+          "compatiblePackagesKey": 680
         },
         {
           "name": "Spoof USB debugging status",
@@ -18618,7 +18912,7 @@
           "description": "Optional interface tweaks, each toggleable in Настройки Morphe: single-row home categories, hide the \"Подписки\" tab in Избранное, hide installments (Рассрочка) and the \"Спросите у продавца\" block on offers, expand descriptions by default (no \"Читать далее\"), hide offer recommendations, hide profile raffle, referral and Avito Pro promos, and hide the Avi assistant tab in the bottom navigation.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 667
+          "compatiblePackagesKey": 680
         }
       ],
       "changelog": "## [1.11.8](https://github.com/xob0t/morphe-patches/compare/v1.11.7...v1.11.8) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* **ozon:** scope promo navbar removal ([f3ae900](https://github.com/xob0t/morphe-patches/commit/f3ae900dfb644610d1ae283078bfb95fedb57c9b))\n\n## [1.11.7](https://github.com/xob0t/morphe-patches/compare/v1.11.6...v1.11.7) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* **ozon:** support version 19.29.0 ([729001e](https://github.com/xob0t/morphe-patches/commit/729001e2a173bb796fee2ca8ae4c62ed8beefbbf))\n\n## [1.11.6](https://github.com/xob0t/morphe-patches/compare/v1.11.5...v1.11.6) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* **ozon:** preserve navbar background ([2c2697d](https://github.com/xob0t/morphe-patches/commit/2c2697d3b62e3c997b01c5dea82c2d61a730fc73))\n\n## [1.11.6-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.11.5...v1.11.6-dev.1) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* **ozon:** preserve navbar background ([2c2697d](https://github.com/xob0t/morphe-patches/commit/2c2697d3b62e3c997b01c5dea82c2d61a730fc73))\n\n## [1.11.5](https://github.com/xob0t/morphe-patches/compare/v1.11.4...v1.11.5) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* **wildberries:** support version 7.7.4003-rustore ([96e9bff](https://github.com/xob0t/morphe-patches/commit/96e9bff9917f4e353d28eefcbaaafb644b55a6b1))\n\n## [1.11.4](https://github.com/xob0t/morphe-patches/compare/v1.11.3...v1.11.4) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* **avito:** support version 230.0 ([8908060](https://github.com/xob0t/morphe-patches/commit/89080609912ece8ad6ef943fef5c56b2809eff12))\n\n## [1.11.3](https://github.com/xob0t/morphe-patches/compare/v1.11.2...v1.11.3) (2026-07-30)\n\n### 🐛 Bug Fixes\n\n* **tbank:** support version 7.40.1 ([abf90e3](https://github.com/xob0t/morphe-patches/commit/abf90e327946ce07f4e20af56faa63ae55947d54))\n\n## [1.11.2](https://github.com/xob0t/morphe-patches/compare/v1.11.1...v1.11.2) (2026-07-29)\n\n### 🐛 Bug Fixes\n\n* **ozon:** support version 19.28.0 ([e6d95a6](https://github.com/xob0t/morphe-patches/commit/e6d95a620b5418381f08029e6afa0047c376326b))\n\n## [1.11.1](https://github.com/xob0t/morphe-patches/compare/v1.11.0...v1.11.1) (2026-07-29)\n\n### 🐛 Bug Fixes\n\n* **wildberries:** support version 7.7.3001-rustore ([f5f258c](https://github.com/xob0t/morphe-patches/commit/f5f258c25fc788737e0a3e2edc96f91919eadd79))\n\n## [1.11.0](https://github.com/xob0t/morphe-patches/compare/v1.10.3...v1.11.0) (2026-07-27)\n\n### ✨ New Features\n\n* **automation:** promote qualified app targets ([0c0e410](https://github.com/xob0t/morphe-patches/commit/0c0e4105bad72c0a4e1a7a7ae1c2e500072affc2))\n\n## [1.11.0-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.10.3...v1.11.0-dev.1) (2026-07-27)\n\n### ✨ New Features\n\n* **automation:** promote qualified app targets ([0c0e410](https://github.com/xob0t/morphe-patches/commit/0c0e4105bad72c0a4e1a7a7ae1c2e500072affc2))\n\n## [1.10.3](https://github.com/xob0t/morphe-patches/compare/v1.10.2...v1.10.3) (2026-07-27)\n\n### 🐛 Bug Fixes\n\n* **tbank:** target RuStore version 7.39.0 ([043f15a](https://github.com/xob0t/morphe-patches/commit/043f15adfb82a80878bf91fc1b6e259af47ab14b))\n\n## [1.10.3-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.10.2...v1.10.3-dev.1) (2026-07-27)\n\n### 🐛 Bug Fixes\n\n* **tbank:** target RuStore version 7.39.0 ([043f15a](https://github.com/xob0t/morphe-patches/commit/043f15adfb82a80878bf91fc1b6e259af47ab14b))\n\n## [1.10.2](https://github.com/xob0t/morphe-patches/compare/v1.10.1...v1.10.2) (2026-07-27)\n\n### 🐛 Bug Fixes\n\n* enforce latest-target patch validation ([16a9aa3](https://github.com/xob0t/morphe-patches/commit/16a9aa352a29a407dd3732184ac7b7b6c18dbf1c))\n\n## [1.10.2-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.10.1...v1.10.2-dev.1) (2026-07-27)\n\n### 🐛 Bug Fixes\n\n* enforce latest-target patch validation ([16a9aa3](https://github.com/xob0t/morphe-patches/commit/16a9aa352a29a407dd3732184ac7b7b6c18dbf1c))",
@@ -18659,28 +18953,28 @@
       "name": "Brave Browser",
       "iconUrl": "https://play-lh.googleusercontent.com/UBrZnuXGb-QACU0uUdF5r_n5nx5oBbdfPyEbtsr0xXv00RN7rpaTVu3GjLeE90aHFmNlbaCmm8vNcmY0eE98U9E",
       "description": "Fast internet with AI, Adblock &amp; VPN. Browse on a safe, incognito web browser.",
-      "category": "Social & Communication",
+      "category": "Productivity",
       "firstSeen": 1784321607323
     },
     "com.brave.browser_beta": {
       "name": "Brave Beta",
       "iconUrl": "https://play-lh.googleusercontent.com/m3LnXsbsKcEOw-IpXms9eT6f4X9NvJqtTLpg7dyU93tsKvioJWruRWqZ3keWHx0RC7ebAmMwFf3tF8UnjmHIlQ",
       "description": "Brave browser Beta (early-release preview version for testing &amp; stability)",
-      "category": "Social & Communication",
+      "category": "Productivity",
       "firstSeen": 1786104963166
     },
     "com.brave.browser_nightly": {
       "name": "Brave Nightly",
       "iconUrl": "https://play-lh.googleusercontent.com/m1tbP30ZVRu7-sHKEDrtqt9ObgL4hsIgGTYKQQZy-6GCxGoJ_z7fhuQZpX8AeLbe-Y-s6dLgEi8Zpl5PKpbp",
       "description": "Brave Browser Nightly (for developers &amp; early-release testers)",
-      "category": "Social & Communication",
+      "category": "Productivity",
       "firstSeen": 1786104963166
     },
     "io.github.jqssun.helium": {
       "name": "Helium Browser",
       "iconUrl": "https://play-lh.googleusercontent.com/4JZbe1aLNMxey4NdYOhKci_U5OIe9mVw6PmG6vCSs_-rNs4lo3TEGFdJvUTcU2qzch2T3WkmPVCILYU-uBWung",
       "description": "Private and secure open-source Android browser with support for extensions",
-      "category": "Social & Communication",
+      "category": "Productivity",
       "preRelease": true,
       "firstSeen": 1786104963166
     },
@@ -18737,7 +19031,7 @@
       "name": "Opera GX",
       "iconUrl": "https://play-lh.googleusercontent.com/kxXK3ADh1qi3Rtad1StlXpSRAVlvZ27qaqZ4CIHcQ4YmU3sy54GVPQ2_g-eu6kd1xrZ4E2uINJaT_Jxu04iMEoo",
       "description": "Experience the only browser created for gamers!",
-      "category": "Social & Communication",
+      "category": "Productivity",
       "firstSeen": 1786010130739
     },
     "com.nuvio.tv": {
@@ -19990,7 +20284,7 @@
       "firstSeen": 1773147404000
     },
     "fr.tramb.park4night": {
-      "name": "park4night",
+      "name": "Park4Night",
       "iconUrl": "https://play-lh.googleusercontent.com/BwBPqdRT0ibqDIF_38u-LZD55vx8IXJ19T8uJcoIzrGgsr1kJUKOJpfWX3dKKK6E4Q3QaTT2xG7TlCOvdOWC",
       "description": "Find and share places and services for RVs, motorhomes and campers !",
       "category": "Maps & Navigation",
@@ -20420,7 +20714,7 @@
       "name": "AdGuard",
       "iconUrl": "https://play-lh.googleusercontent.com/7VjTB2PQUCJu0WjfujTscSewruuHPsdOfdEqnCo7w8S8sH_BL1w9_DG2m4orbVlubN8cRYchKTK-8KPHMdIx",
       "description": "Ad Blocker App: Block All Online Ads in Samsung Internet and Yandex Browser",
-      "category": "Tools & Utilities",
+      "category": "Productivity",
       "firstSeen": 1768941201000
     },
     "com.avocards": {
@@ -20965,7 +21259,7 @@
       "name": "Microsoft Edge",
       "iconUrl": "https://play-lh.googleusercontent.com/4Z1Nt1I9HUDevt5VJ7BmgpqSTUpsC0Ei1K-IiXSmkH5Dzorz_isDzq4qdpb75RA1SfOV7v6csav-atWBur1wJQM",
       "description": "What starts here, gets done here.",
-      "category": "Social & Communication",
+      "category": "Productivity",
       "firstSeen": 1780738576635
     },
     "droom.sleepIfUCan": {
@@ -22064,7 +22358,7 @@
       "name": "SPIN",
       "iconUrl": "https://play-lh.googleusercontent.com/smFSNxskrk_HPKDvKciVTJ_F0BGdjUHNkVyAjOrWqCCGq9QDj_TX_Dea7mXzQvjloX2NpN60vQHXDTLB6jxThA",
       "description": "Fast web filter blocks adult content, enforces safe search &amp; ensures web safety.",
-      "category": "Social & Communication",
+      "category": "Productivity",
       "firstSeen": 1783194762733
     },
     "com.guochao.faceshow": {
@@ -22228,6 +22522,108 @@
       "category": "Productivity",
       "firstSeen": 1785742054631
     },
+    "com.adobe.scan.android": {
+      "name": "Adobe Scan",
+      "iconUrl": "https://play-lh.googleusercontent.com/4xN2UipKYDSBDuW0FKLJQ1tnhvgZyfnKj7rnoBJYhWHwUuOTMta3m-Dwc4Lo881wOIz8YUQiFY6XpcJF5h1r",
+      "description": "This PDF and document scanner gives you clean, easy-to-read files with a scan.",
+      "category": "Productivity",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
+    "org.telegram.messenger": {
+      "name": "Telegram",
+      "iconUrl": "https://play-lh.googleusercontent.com/PyZ3akMGXPV0tKKirKNwfO--PSQW3FHR6rD_H9mAaukZ8LiHyYFuBLeU8UZ2ok6r5SP79-3prkfybWKh98AZAD0",
+      "description": "Telegram is a messaging app with a focus on speed and security.",
+      "category": "Social & Communication",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
+    "org.telegram.messenger.web": {
+      "name": "Telegram",
+      "iconUrl": "https://play-lh.googleusercontent.com/PyZ3akMGXPV0tKKirKNwfO--PSQW3FHR6rD_H9mAaukZ8LiHyYFuBLeU8UZ2ok6r5SP79-3prkfybWKh98AZAD0",
+      "description": "Telegram is a messaging app with a focus on speed and security.",
+      "category": "Social & Communication",
+      "firstSeen": 1778457600000
+    },
+    "org.telegram.plus": {
+      "name": "Plus Messenger",
+      "iconUrl": "https://play-lh.googleusercontent.com/tvinmqPRqEdX_C3x319DHieZ6XDUL5PyLZa-8TDJe9gb4d05G9I5zaakv7MOWmXTMQi-Lq5W0yDfUeiHPk9d",
+      "description": "Plus Messenger is an UNOFFICIAL messaging app that uses Telegram's API",
+      "category": "Social & Communication",
+      "firstSeen": 1778457600000
+    },
+    "com.arjanvlek.oxygenupdater": {
+      "name": "Oxygen Updater",
+      "iconUrl": "https://play-lh.googleusercontent.com/XhwnxxKvn9Tyxw0gGyrc7axew6Qy5dEYe5B09t5duJMD2s32vgmN-lWu-GKE_ui6JF-L1LrT960yVXF3TbzRuXU",
+      "description": "Skip staged rollout queues &amp; update your OPPO/OnePlus/realme device ASAP!",
+      "category": "Tools & Utilities",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
+    "com.mk.awake": {
+      "name": "Awake",
+      "iconUrl": "https://play-lh.googleusercontent.com/sM8nsi70w7Iw4q6dIv3OqIbhgM7WQN7djYSaK480rThfhp7CiaNgOB98fKthkuFVTHBSKBYHV9PgUKpQzOF4Lg",
+      "description": "Loud alarm clock for heavy sleepers with wake-up missions and checks",
+      "category": "Productivity",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
+    "com.nutrition.technologies.Fitia": {
+      "name": "Fitia",
+      "iconUrl": "https://play-lh.googleusercontent.com/mJGJbyI6KAfa4RfGX2uehPoceAl1abtme6J8WcqxhOkuUkQcZbq1MKZpSTkToMusytCpA-uf1_D21JrSHiInEA",
+      "description": "Lose weight faster with the most accurate nutrition tracker &amp; meal planner",
+      "category": "Lifestyle, Fitness & Sports",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
+    "com.kajda.fuelio": {
+      "name": "Fuelio",
+      "iconUrl": "https://play-lh.googleusercontent.com/FqW89BfvQ0A29tY1OrmDZNqDw5dX0mt3qUwPf6HxcoEvomRwZphlBC54bSEK8DAhIwnXK7XGyHwoL3Od-ZuTPg",
+      "description": "Car management, gas prices, consumption, expenses, mileage log, GPS tracker",
+      "category": "Tools & Utilities",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
+    "xorsand.relane": {
+      "name": "Relane VPN",
+      "iconUrl": "https://play-lh.googleusercontent.com/5CGELu5__m--OzO7dTirbLMVukyhOGfRkCIMXnGBGGst1GTJ2t83q5jHyKasSuM4oD8fvHd_VOewXUeevIH_",
+      "description": "Private, secure VPN built to bypass censorship. Fast. No logs..",
+      "category": "Tools & Utilities",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
+    "com.curiouscompany.relink": {
+      "name": "re-Link",
+      "iconUrl": "https://play-lh.googleusercontent.com/n5TR5rkWnJtrB3k3z0sKNdycrDrk2Ng3vyyJW8YmrfP7tDhsdGX2fNxQkOCJNClXUQvSW4pp4q6qy0O1afJMQrU",
+      "description": "Effortlessly share your computer's connection with Android devices via USB",
+      "category": "Tools & Utilities",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
+    "br.com.ctncardoso.ctncar": {
+      "name": "Drivvo",
+      "iconUrl": "https://play-lh.googleusercontent.com/NU-TkdJKhZcZ2oSTTHCTca4tCOaMXHU17pSLFE9HaOV6OSVe4rm923nEDwwPDE9xHiyVfvii2Gq4qU-ca9lNfw",
+      "description": "Manage all types of vehicles and equipment in one place",
+      "category": "Tools & Utilities",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
+    "kha.prog.usbhotspot": {
+      "name": "USB Hotspot",
+      "iconUrl": "https://play-lh.googleusercontent.com/1BYlGRKdwi4xND2LfryBK38285giOWv5JjS0bu4CrO83Gmlh7_1VfjC8hQcdGdpc2XacCvsWGtw0oYe7nycN",
+      "description": "Share your internet connection with your computer",
+      "category": "Tools & Utilities",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
+    "com.ilv.vradio": {
+      "name": "VRadio",
+      "iconUrl": "https://play-lh.googleusercontent.com/sYQ4E-KB8wop_41opV9p5krgMwUyZV-1VE60w2iLTTdYkzu00nyo2xLnJ7DzMgd_KeedLUehhmZCybrywqHFfw",
+      "description": "Listen to thousands of radio stations online.",
+      "category": "Music & Audio",
+      "preRelease": true,
+      "firstSeen": 1786127632705
+    },
     "com.vanniktech.rssreader": {
       "name": "RSS Reader",
       "iconUrl": "https://play-lh.googleusercontent.com/xzJ2JhtIX6QQtnMEFhYGY--PQwQr1eHBiN45JMAPbPdc1IKADVarWrZEeQB7lMLHcAE5ve497rVnoyHp7QOSxg",
@@ -22367,20 +22763,6 @@
       "description": "Discounts every day",
       "category": "Shopping",
       "firstSeen": 1778236605000
-    },
-    "org.telegram.plus": {
-      "name": "Plus Messenger",
-      "iconUrl": "https://play-lh.googleusercontent.com/tvinmqPRqEdX_C3x319DHieZ6XDUL5PyLZa-8TDJe9gb4d05G9I5zaakv7MOWmXTMQi-Lq5W0yDfUeiHPk9d",
-      "description": "Plus Messenger is an UNOFFICIAL messaging app that uses Telegram's API",
-      "category": "Social & Communication",
-      "firstSeen": 1778457600000
-    },
-    "org.telegram.messenger.web": {
-      "name": "Telegram",
-      "iconUrl": "https://play-lh.googleusercontent.com/PyZ3akMGXPV0tKKirKNwfO--PSQW3FHR6rD_H9mAaukZ8LiHyYFuBLeU8UZ2ok6r5SP79-3prkfybWKh98AZAD0",
-      "description": "Telegram is a messaging app with a focus on speed and security.",
-      "category": "Social & Communication",
-      "firstSeen": 1778457600000
     },
     "in.cricketexchange.app.cricketexchange": {
       "name": "CREX",
@@ -33781,6 +34163,347 @@
         "targets": [
           {
             "version": "1.1.8",
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.adobe.reader",
+        "name": "Adobe Acrobat",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#B30B00",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "26.7.0.47169",
+            "versionCodes": null,
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.adobe.scan.android",
+        "name": "Adobe Scan",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#B30B00",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "26.08.01",
+            "versionCodes": null,
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "org.telegram.messenger",
+        "name": "Telegram",
+        "description": null,
+        "apkFileType": "APK",
+        "appIconColor": "#2CA5E0",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "12.9.2",
+            "versionCodes": {
+              "ARM64_V8A": 69912,
+              "ARMEABI_V7A": 69912,
+              "X86_64": 69912,
+              "X86": 69912
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      },
+      {
+        "packageName": "org.telegram.messenger.web",
+        "name": "Telegram Web",
+        "description": null,
+        "apkFileType": "APK",
+        "appIconColor": "#2CA5E0",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "12.9.2",
+            "versionCodes": {
+              "ARM64_V8A": 69919,
+              "ARMEABI_V7A": 69919,
+              "X86_64": 69919,
+              "X86": 69919
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      },
+      {
+        "packageName": "org.telegram.plus",
+        "name": "Telegram Plus",
+        "description": null,
+        "apkFileType": "APKM",
+        "appIconColor": "#2CA5E0",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "12.9.0.1",
+            "versionCodes": {
+              "ARM64_V8A": 22437,
+              "ARMEABI_V7A": 22437,
+              "X86_64": 22437,
+              "X86": 22437
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.arjanvlek.oxygenupdater",
+        "name": "Oxygen Updater",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#CC0C00",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "7.1.0",
+            "versionCodes": {
+              "ARM64_V8A": 135,
+              "ARMEABI_V7A": 135,
+              "X86_64": 135,
+              "X86": 135
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.mk.awake",
+        "name": "Awake",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#1A237E",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "1.10.3",
+            "versionCodes": {
+              "ARM64_V8A": 230020072,
+              "ARMEABI_V7A": 230020072,
+              "X86_64": 230020072,
+              "X86": 230020072
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.nutrition.technologies.Fitia",
+        "name": "Fitia",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#FF5722",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "25.0.6",
+            "versionCodes": {
+              "ARM64_V8A": 1473,
+              "ARMEABI_V7A": 1473,
+              "X86_64": 1473,
+              "X86": 1473
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.kajda.fuelio",
+        "name": "Fuelio",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#FF6B00",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "10.3.2",
+            "versionCodes": {
+              "ARM64_V8A": 3435,
+              "ARMEABI_V7A": 3435,
+              "X86_64": 3435,
+              "X86": 3435
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "fr.tramb.park4night",
+        "name": "Park4Night",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#4CAF50",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "7.1.60",
+            "versionCodes": null,
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "xorsand.relane",
+        "name": "Relane VPN",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#1A1A2E",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "8.0.0",
+            "versionCodes": {
+              "ARM64_V8A": 16843307,
+              "ARMEABI_V7A": 16843307,
+              "X86_64": 16843307,
+              "X86": 16843307
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.curiouscompany.relink",
+        "name": "re-Link",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#FF6F00",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "2.0.13",
+            "versionCodes": {
+              "ARM64_V8A": 34,
+              "ARMEABI_V7A": 34,
+              "X86_64": 34,
+              "X86": 34
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "br.com.ctncardoso.ctncar",
+        "name": "Drivvo",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#0077B6",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "9.6.1",
+            "versionCodes": {
+              "ARM64_V8A": 242,
+              "ARMEABI_V7A": 242,
+              "X86_64": 242,
+              "X86": 242
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "kha.prog.usbhotspot",
+        "name": "USB Hotspot",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#FF6900",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "1.6",
+            "versionCodes": {
+              "ARM64_V8A": 6,
+              "ARMEABI_V7A": 6,
+              "X86_64": 6,
+              "X86": 6
+            },
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.ilv.vradio",
+        "name": "VRadio",
+        "description": null,
+        "apkFileType": "APKS",
+        "appIconColor": "#1565C0",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "2.9.2",
+            "versionCodes": {
+              "ARM64_V8A": 90209002,
+              "ARMEABI_V7A": 90209002,
+              "X86_64": 90209002,
+              "X86": 90209002
+            },
             "isExperimental": false,
             "minSdk": null,
             "description": null

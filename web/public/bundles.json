@@ -9,7 +9,7 @@
       "stars": 3131,
       "starsGained7d": 77,
       "starsGained40d": 131,
-      "updatedAt": 1786016635000,
+      "updatedAt": 1786099114000,
       "firstSeen": 1767200400000,
       "appFirstSeen": {
         "com.reddit.frontpage": 1767200400000,
@@ -17004,18 +17004,13 @@
       "stars": 1,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1786055937000,
+      "updatedAt": 1786099702000,
       "firstSeen": 1786094027314,
       "appFirstSeen": {
         "com.valvesoftware.steamlinkvr": 1786094026972,
         "universal": 1786094026972
       },
       "patches": [
-        {
-          "name": "Appear on top",
-          "description": "Recommended. Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
-          "compatiblePackagesKey": 687
-        },
         {
           "name": "Change package name",
           "description": "Renames the app package so it can be installed alongside the original Steam Link. Default appends '.gxr'. Changing the package name may break features that rely on the original identity.",
@@ -17024,7 +17019,7 @@
             {
               "key": "packageName",
               "title": "Package name",
-              "description": "AndroidManifest.xml manifest@package; also updates permission/uses-permission@android:name (custom perms only) and provider@android:authorities. Leave 'Default' to append '.gxr'."
+              "description": "Accepts either a full Java package name (for example, com.valvesoftware.steamlinkvr.galaxyxr) or a display suffix (for example, Galaxy XR). Suffix input appends to app name and generates a package suffix automatically."
             }
           ]
         },
@@ -17054,106 +17049,18 @@
               "description": "libgxr_controller_velocity.so config+44 (float32 rad/s). Falls back to runtime velocity above this derived angular speed. Allowed range: 1 to 100 rad/s."
             }
           ],
-          "compatiblePackagesKey": 688
-        },
-        {
-          "name": "Device identity",
-          "description": "Overrides the HMD manufacturer/model identity reported to SteamVR (hmd_config.json only; controller identity is unaffected). 'samsung-default' leaves the file untouched.",
-          "options": [
-            {
-              "key": "profile",
-              "title": "HMD identity",
-              "description": "assets/config/hmd_config.json: overwrites sSerialNumber, sManufacturerName, sModelNumber, sControllerType, sDeviceType, sInputProfilePath, requestedExtensions."
-            }
-          ],
-          "compatiblePackagesKey": 687
-        },
-        {
-          "name": "GXR face bridge",
-          "description": "Installs libgxr_face_bridge.so (XR_FB_face_tracking2 → XR_ANDROID_face_tracking API layer) and adds android.permission.FACE_TRACKING to the manifest.",
-          "compatiblePackagesKey": 687
-        },
-        {
-          "name": "HMD-only pose fix",
-          "description": "Adds a configurable offset to the HMD OpenXR pose-query time and zeroes all six exported HMD velocity fields. Does not affect controller paths.",
-          "options": [
-            {
-              "key": "offsetMs",
-              "title": "Pose offset (ms)",
-              "description": "libvrlink_scene.so: AArch64 MOVZ/MOVK at PLT cave adds value×1e6 ns to X2 in QSVLDeviceHmd::GetPose. Tested default: 78 ms. Allowed range: 0 to 4000 ms."
-            }
-          ],
-          "compatiblePackagesKey": 689
-        },
-        {
-          "name": "OLED color calibration",
-          "description": "Replaces VRLink's embedded GLSL fragment shader with configurable Galaxy XR OLED gamma and saturation correction.",
-          "options": [
-            {
-              "key": "profile",
-              "title": "Calibration profile",
-              "description": "libvrlink_scene.so GLSL fragment shader (1087-byte block, GL_OES_EGL_image_external_essl3 anchor). Initial: pow vec3(1.06)/mix 1.12; Final balanced: 1.20/1.45; Custom: use fields below."
-            },
-            {
-              "key": "gamma",
-              "title": "Gamma",
-              "description": "libvrlink_scene.so GLSL: pow(clamp(c,0,1), vec3(GAMMA)). Used by Custom profile. Tested: 1.06 (Initial), 1.20 (Final balanced). Allowed range: 0.50 to 2.50."
-            },
-            {
-              "key": "saturation",
-              "title": "Saturation",
-              "description": "libvrlink_scene.so GLSL: mix(vec3(luma), c, SATURATION). Used by Custom profile. Tested: 1.12 (Initial), 1.45 (Final balanced). Allowed range: 0.00 to 3.00."
-            }
-          ],
           "compatiblePackagesKey": 687
         },
         {
           "name": "TEST EXPERIMENTAL - Baseline Overlay Flow",
           "description": "A/B test baseline. Keeps launcher bootstrap plus overlay permission flow (Appear on top behavior). Enable this OR the No-Overlay test patch, not both.",
           "default": false,
-          "compatiblePackagesKey": 690
+          "compatiblePackagesKey": 687
         },
         {
           "name": "TEST EXPERIMENTAL - No Overlay / No Permission",
           "description": "A/B test variant. Replaces GalaxyXRPermissionActivity and GxrOverlayBridge with no-overlay/no-permission-request smali for crash reproduction and comparison.",
           "default": false,
-          "compatiblePackagesKey": 690
-        },
-        {
-          "name": "Video dither",
-          "description": "Enables (or disables) the dormant GLSL dither term in VRLink's video fragment shader. Reduces 8-bit contouring on OLED displays.",
-          "options": [
-            {
-              "key": "enable",
-              "title": "Enable dither",
-              "description": "libvrlink_scene.so GLSL: stock shader toggles '//' on color.rgb+=fract(...)*.00292; calibrated (post-oledCalibration) shader toggles *.00292 vs *.00000."
-            }
-          ],
-          "compatiblePackagesKey": 687
-        },
-        {
-          "name": "XR Core Runtime",
-          "description": "Installs the Galaxy XR runtime bridge resources and extension DEX foundation used by other XR patches.",
-          "compatiblePackagesKey": 687
-        },
-        {
-          "name": "XR Device Config Baseline",
-          "description": "Installs baseline Galaxy XR HMD/controller/default config payloads and dashboard bootstrap assets.",
-          "compatiblePackagesKey": 687
-        },
-        {
-          "name": "XR Input Routing Config",
-          "description": "Installs ui_config.json mappings for XR pointer/button routing in launcher UI flows.",
-          "compatiblePackagesKey": 687
-        },
-        {
-          "name": "XR Launcher Bootstrap (Home Space)",
-          "description": "Installs GalaxyXRPermissionActivity as launcher and configures Steam Link/VRLink activity XR startup wiring.",
-          "compatiblePackagesKey": 687
-        },
-        {
-          "name": "XR Manifest Capability Pack",
-          "description": "Adds Android XR/OpenXR permissions, features, runtime queries, and app-level XR properties.",
           "compatiblePackagesKey": 687
         }
       ],
@@ -17210,9 +17117,6 @@
           },
           {
             "version": "9.15.51"
-          },
-          {
-            "version": "7.29.52"
           }
         ]
       }
@@ -17222,7 +17126,7 @@
         "packageName": "com.reddit.frontpage",
         "targets": [
           {
-            "version": "2026.31.0",
+            "version": "2026.31.1",
             "isExperimental": true
           },
           {
@@ -25135,61 +25039,6 @@
         "targets": [
           {
             "version": "4.7.0.322(001)"
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
-          }
-        ]
-      },
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22",
-            "isExperimental": true
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
-          }
-        ]
-      },
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
-          }
-        ]
-      },
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
           }
         ]
       }

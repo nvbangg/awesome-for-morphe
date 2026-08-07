@@ -1,0 +1,171 @@
+{
+    "version": "",
+    "patches": [
+        {
+            "name": "MonkeyScript userscript manager",
+            "description": "Adds a Chrome 150 Material You userscript manager using a Violentmonkey-derived parser, native app-menu integration, guaranteed Fork-page installation, Greasy Fork/Sleazy Fork support, publishing, and configurable app/package cloning.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.android.chrome",
+                    "name": "Google Chrome",
+                    "description": null,
+                    "apkFileType": "APK",
+                    "appIconColor": "#4285F4",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": true,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Download GX mods as files",
+            "description": "Adds a visible Download Mod button in Opera GX, with URL auto-detection and a Share fallback.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.opera.gx",
+                    "name": "Opera GX",
+                    "description": null,
+                    "apkFileType": "APK",
+                    "appIconColor": "#A31AFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": true,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "GX icon pack",
+            "description": "Adds a separate native selector for all 56 Opera GX launcher icons. Open it from the GX Icon Pack long-press shortcut.",
+            "default": false,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.opera.gx",
+                    "name": "Opera GX",
+                    "description": null,
+                    "apkFileType": "APK",
+                    "appIconColor": "#A31AFF",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": true,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Download timestamped lyrics",
+            "description": "Adds an in-app Lyrics button and share target that exports Suno timing data as LRC, enhanced LRC, SRT, WebVTT, or JSON.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.suno.android",
+                    "name": "Suno",
+                    "description": null,
+                    "apkFileType": "APK",
+                    "appIconColor": "#8B5CF6",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": true,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Customize Suno branding",
+            "description": "Clones Suno to a different package name, with optional app-name and launcher-icon customization. Accepts Morphe's adaptive custom-icon folder layout or a simple icon.png folder.",
+            "default": false,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.suno.android",
+                    "name": "Suno",
+                    "description": null,
+                    "apkFileType": "APK",
+                    "appIconColor": "#8B5CF6",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": true,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": [
+                {
+                    "key": "customName",
+                    "title": "App name",
+                    "description": "Optional replacement name shown by Android for the patched Suno app.",
+                    "required": false,
+                    "type": "kotlin.String",
+                    "default": null,
+                    "values": null
+                },
+                {
+                    "key": "customPackageName",
+                    "title": "Package name",
+                    "description": "Android package ID for the patched Suno clone. It must differ from com.suno.android.",
+                    "required": true,
+                    "type": "kotlin.String",
+                    "default": "com.suno.android.morphe",
+                    "values": null
+                },
+                {
+                    "key": "customIcon",
+                    "title": "Custom icon",
+                    "description": "Optional folder containing the launcher icon.\n\nEasy layout:\n- icon.png\n\nMorphe adaptive layout:\n- mipmap-mdpi/morphe_adaptive_background_custom.png\n- mipmap-mdpi/morphe_adaptive_foreground_custom.png\n- mipmap-hdpi/morphe_adaptive_background_custom.png\n- mipmap-hdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xhdpi/morphe_adaptive_background_custom.png\n- mipmap-xhdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xxhdpi/morphe_adaptive_background_custom.png\n- mipmap-xxhdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xxxhdpi/morphe_adaptive_background_custom.png\n- mipmap-xxxhdpi/morphe_adaptive_foreground_custom.png\n\nYou may provide only the density folders you need, but each provided density\nmust contain both the background and foreground image.",
+                    "required": false,
+                    "type": "kotlin.String",
+                    "default": null,
+                    "values": null
+                }
+            ]
+        }
+    ]
+}

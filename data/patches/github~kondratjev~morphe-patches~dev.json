@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.18.0-dev.3",
+  "version": "1.19.0",
   "patches": [
     {
       "name": "Change version code",
@@ -97,9 +97,7 @@
       "name": "Disable analytics",
       "description": "Disables PulseSDK analytics.",
       "default": true,
-      "dependencies": [
-        "BytecodePatch"
-      ],
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "xyz.rtrvr.pillo",
@@ -110,7 +108,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.6.16",
+              "version": "0.6.18",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -126,8 +124,7 @@
       "description": "Disables VK-specific analytics.",
       "default": true,
       "dependencies": [
-        "ResourcePatch",
-        "BytecodePatch"
+        "ResourcePatch"
       ],
       "compatiblePackages": [
         {
@@ -154,9 +151,7 @@
       "name": "Disable analytics",
       "description": "Disables SoundCloud's analytics.",
       "default": true,
-      "dependencies": [
-        "BytecodePatch"
-      ],
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "com.soundcloud.android",
@@ -221,7 +216,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "11.6.0.1",
+              "version": "11.7.0.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -273,7 +268,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "11.6.0.1",
+              "version": "11.7.0.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -337,34 +332,6 @@
       "options": []
     },
     {
-      "name": "Pillo GmsCore support",
-      "description": "Routes Pillo Google services and legacy Google Sign-In through MicroG-RE.",
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "xyz.rtrvr.pillo",
-          "name": "Pillo",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#7C4DFF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "0.6.16",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Skip update auth",
       "description": "Removes the login requirement when updating apps.",
       "default": true,
@@ -407,7 +374,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "11.6.0.1",
+              "version": "11.7.0.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -461,7 +428,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.578",
+              "version": "1.583",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -595,7 +562,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.6.16",
+              "version": "0.6.18",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

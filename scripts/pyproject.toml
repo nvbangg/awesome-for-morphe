@@ -6,9 +6,8 @@ dependencies = [
     "google-play-scraper>=1.2.7",
 ]
 
-[tool.setuptools]
-packages = ["updater", "providers"]
-py-modules = ["discover", "fetch", "parse", "telegram", "update", "utils", "whats_new"]
+[tool.setuptools.packages.find]
+where = ["."]
 
 [tool.ruff]
 target-version = "py312"

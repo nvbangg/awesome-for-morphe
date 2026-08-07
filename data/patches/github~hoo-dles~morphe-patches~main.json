@@ -1,11 +1,11 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.39.0",
+  "version": "1.40.0-dev.7",
   "patches": [
     {
       "name": "AMOLED dark theme",
       "description": "Changes the default dark theme to use true blacks for AMOLED screens.",
-      "default": false,
+      "default": true,
       "dependencies": [
         "BytecodePatch"
       ],
@@ -19,7 +19,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.255.0",
+              "version": "1.267.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -76,6 +76,34 @@
           "targets": [
             {
               "version": "1.2.75",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass login",
+      "description": "Allows app use without login. BUT breaks many features. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.adobe.lrmobile",
+          "name": "Lightroom Mobile",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#001D35",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.4.5",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -281,7 +309,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "6.6 build 002",
+              "version": "6.6 build 014",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -543,7 +571,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "4.12.81",
+              "version": "4.13.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -874,6 +902,7 @@
       "default": true,
       "dependencies": [
         "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
@@ -886,7 +915,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.7.8",
+              "version": "5.7.9",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1036,32 +1065,6 @@
           "targets": [
             {
               "version": "2.27.3.6291",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Enable Premium",
-      "description": "Enables app features locked behind the subscription paywall.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "net.teuida.teuida",
-          "name": "Teuida",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#52DBD7",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.21.16",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1247,7 +1250,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "81042 (8.5.1)",
+              "version": "88600 (8.8.6)",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1274,6 +1277,34 @@
           "targets": [
             {
               "version": "14.0.6",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Pro",
+      "description": "Enables app features locked behind the subscription paywall.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.simyasolutions.ling.universal",
+          "name": "Ling",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F8485E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.4.4",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1409,7 +1440,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "6.6 build 002",
+              "version": "6.6 build 014",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1435,7 +1466,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.4.1",
+              "version": "3.5.16",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1491,7 +1522,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "10.15.0",
+              "version": "10.17.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1790,37 +1821,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.4.1",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "MicroG integration",
-      "description": "Allows the app to work without root by using MicroG instead of Google Play Services.",
-      "default": true,
-      "dependencies": [
-        "ResourcePatch",
-        "ResourcePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "net.teuida.teuida",
-          "name": "Teuida",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#52DBD7",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.21.16",
+              "version": "3.5.16",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1846,7 +1847,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.17.72.0",
+              "version": "5.19.43.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1987,7 +1988,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.17.72.0",
+              "version": "5.19.43.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -2041,7 +2042,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.17.72.0",
+              "version": "5.19.43.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -2081,6 +2082,34 @@
       "options": []
     },
     {
+      "name": "Unlock premium features",
+      "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.adobe.lrmobile",
+          "name": "Lightroom Mobile",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#001D35",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.4.5",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Unlock split tunneling",
       "description": "Enables the split tunneling feature usually locked behind the Proton Plus paywall.",
       "default": true,
@@ -2095,7 +2124,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.17.72.0",
+              "version": "5.19.43.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

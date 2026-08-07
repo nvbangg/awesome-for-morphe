@@ -1,5 +1,5 @@
 {
-  "version": "1.19.1-dev.2",
+  "version": "1.20.0-dev.1",
   "patches": [
     {
       "name": "Anti-delete messages",
@@ -16,13 +16,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "12.9.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "12.7.3.0",
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -78,13 +72,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "12.9.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "12.7.3.0",
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -140,13 +128,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "12.9.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "12.7.3.0",
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -171,13 +153,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "12.9.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "12.7.3.0",
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -264,13 +240,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "12.9.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "12.7.3.0",
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -426,13 +396,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "12.9.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "12.7.3.0",
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -457,13 +421,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "12.9.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "12.7.3.0",
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -817,6 +775,31 @@
       "options": []
     },
     {
+      "name": "HabitKit Premium",
+      "description": "Unlocks all premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.roehl.habitkit",
+          "name": "HabitKit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#4CAF50",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.15.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Hide Assistant tab",
       "description": "Hides the Assistant tab from the bottom navigation bar.",
       "default": true,
@@ -956,13 +939,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "12.9.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "12.7.3.0",
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1151,13 +1128,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "12.9.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "12.7.3.0",
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1263,13 +1234,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "12.9.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "12.7.3.0",
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1301,6 +1266,31 @@
             },
             {
               "version": "12.8.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Restore push notifications",
+      "description": "Spoofs the original signing certificate so Firebase Cloud Messaging accepts the re-signed app and background notifications keep working.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.telegram.plus",
+          "name": "Plus Messenger",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#2AABEE",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "12.9.2.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null

@@ -89,6 +89,7 @@
 - [Xisrr1/Revancify-Xisr](https://github.com/Xisrr1/Revancify-Xisr)
 - [Graywizard888/Enhancify](https://github.com/Graywizard888/Enhancify)
 - [hoo-dles/jadx-morphe](https://github.com/hoo-dles/jadx-morphe)
+- [rushiranpise/apk-download-helper](https://github.com/rushiranpise/apk-download-helper)
 
 ## ⬇️ Pre-patched sources
 

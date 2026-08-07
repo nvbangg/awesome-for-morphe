@@ -6028,7 +6028,7 @@
       "avatarUrl": "https://avatars.githubusercontent.com/u/37355997?v=4&s=64",
       "stars": 304,
       "starsGained7d": 36,
-      "starsGained40d": 110,
+      "starsGained40d": 109,
       "updatedAt": 1785743588000,
       "firstSeen": 1780370487000,
       "appFirstSeen": {
@@ -16997,7 +16997,7 @@
       "stars": 2,
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "updatedAt": 1786108871000,
+      "updatedAt": 1786114334000,
       "firstSeen": 1786094027314,
       "appFirstSeen": {
         "com.valvesoftware.steamlinkvr": 1786094026972,
@@ -17036,6 +17036,13 @@
         {
           "name": "TEST EXPERIMENTAL - Baseline Overlay Flow",
           "description": "A/B test baseline. Keeps launcher bootstrap plus overlay permission flow (Appear on top behavior). Enable this OR the No-Overlay test patch, not both.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 687
+        },
+        {
+          "name": "TEST EXPERIMENTAL - Legacy Two-Layer Renderer Probe",
+          "description": "A/B probe: applies the known 5002244 four-offset patch set to skip underside swapchain creation/submission and restore the legacy two-layer stream topology.",
           "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 687

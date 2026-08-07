@@ -272,7 +272,7 @@
       },
       "starsGained7d": 11,
       "starsGained40d": 25,
-      "hotRank": 12
+      "hotRank": 11
     },
     {
       "source": "github",
@@ -1986,29 +1986,21 @@
           "compatiblePackagesKey": 41
         },
         {
-          "name": "TEST EXPERIMENTAL - Old Scene Renderer Probe (2.0.20)",
-          "description": "A/B probe: replaces libvrlink_scene.so with the supplied 2.0.20 scene renderer binary for first-screen controller-input regression testing.",
-          "default": false,
-          "options": [],
-          "preRelease": true,
-          "compatiblePackagesKey": 41
-        },
-        {
           "name": "TEST EXPERIMENTAL - Old Scene requestExit Bridge",
-          "description": "A/B probe adapter: rewrites VRLink requestExit() from JNI-native to Java finishAndRemoveTask() for 2.0.20 scene-library compatibility.",
+          "description": "A/B probe adapter: rewrites VRLink requestExit() from JNI-native to Java finishAndRemoveTask() without requiring old-scene binary replacement.",
           "default": false,
           "options": [],
           "preRelease": true,
           "compatiblePackagesKey": 41
         }
       ],
-      "changelog": "## [1.9.0-dev.3](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* trigger release ([c15e65b](https://github.com/AngelDark92/steamlink-patches/commit/c15e65bc1286ed6d8bb0928c1362d41c19f05e1b))\n\n## [1.9.0-dev.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Remove EXP6 version metadata patch and update patch catalog ([d2daa6b](https://github.com/AngelDark92/steamlink-patches/commit/d2daa6b0bd6f0da9c1859778a30b338002aac183))\n\n## [1.9.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.2...v1.9.0-dev.1) (2026-08-07)\n\n### ✨ New Features\n\n* Add EXP6 version metadata patch and update XR launcher bootstrap settings ([4211c55](https://github.com/AngelDark92/steamlink-patches/commit/4211c55dd82841c32f00e5e00476679754e09fe5))\n\n## [1.8.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.1...v1.8.2) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* merge pull request [#33](https://github.com/AngelDark92/steamlink-patches/issues/33) from AngelDark92/dev ([aa1c950](https://github.com/AngelDark92/steamlink-patches/commit/aa1c95058aa7788af98bab3e11db2dc984b94ad4))\n* Update compatible packages and remove deprecated options in patch files ([cf443c5](https://github.com/AngelDark92/steamlink-patches/commit/cf443c5da27bf26ed6730eacdec28fe8294797f2))\n\n## [1.8.2-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.1...v1.8.2-dev.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Update compatible packages and remove deprecated options in patch files ([cf443c5](https://github.com/AngelDark92/steamlink-patches/commit/cf443c5da27bf26ed6730eacdec28fe8294797f2))\n\n## [1.8.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.0...v1.8.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add support for 'all' release channel and update patch generation logic ([788e96d](https://github.com/AngelDark92/steamlink-patches/commit/788e96d96fffd4228ee2bfd7b25f298e1863eddc))\n* Merge pull request [#32](https://github.com/AngelDark92/steamlink-patches/issues/32) from AngelDark92/dev ([0ff41e7](https://github.com/AngelDark92/steamlink-patches/commit/0ff41e7858dcfcc82d14cfc9051abf1597014111))\n\n## [1.8.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.0...v1.8.1-dev.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add support for 'all' release channel and update patch generation logic ([788e96d](https://github.com/AngelDark92/steamlink-patches/commit/788e96d96fffd4228ee2bfd7b25f298e1863eddc))\n\n## [1.8.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.7.0...v1.8.0) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Enhance package name patch to support custom suffixes and update app labels ([c2b9ec4](https://github.com/AngelDark92/steamlink-patches/commit/c2b9ec4603bad5fb45c06831eaac1a76481e9bb2))\n* Merge pull request [#31](https://github.com/AngelDark92/steamlink-patches/issues/31) from AngelDark92/dev ([df29b6f](https://github.com/AngelDark92/steamlink-patches/commit/df29b6f063053f87335cc3b679f256f425a4a63c))\n\n### ✨ New Features\n\n* Implement support for multiple release channels and update patch generation logic ([a4cba70](https://github.com/AngelDark92/steamlink-patches/commit/a4cba70bffab5f14debbe46d13f138a5cc60bb91))\n\n## [1.8.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.7.1-dev.1...v1.8.0-dev.1) (2026-08-07)\n\n### ✨ New Features\n\n* Implement support for multiple release channels and update patch generation logic ([a4cba70](https://github.com/AngelDark92/steamlink-patches/commit/a4cba70bffab5f14debbe46d13f138a5cc60bb91))\n\n## [1.7.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.6.0...v1.7.0) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* Add patches for Galaxy XR compatibility and enhancements ([96baf0c](https://github.com/AngelDark92/steamlink-patches/commit/96baf0c2e79177e02ddb067868ea1042bd677243))\n* more patches ([a68e117](https://github.com/AngelDark92/steamlink-patches/commit/a68e1174be68f4e847efefd7dabb738735a209cd))\n* update compatibility details and patch versions for Steam Link ([207c0b9](https://github.com/AngelDark92/steamlink-patches/commit/207c0b97bbec83c4f67db31e6561cff3f9af3c9f))\n* Update patch list and improve Android XR compatibility handling ([a9adf0e](https://github.com/AngelDark92/steamlink-patches/commit/a9adf0e991dd4ba145f0e04b7f6859118ba171d1))\n* update patch list and improve compatibility for Steam Link HMD-only builds ([45c55fc](https://github.com/AngelDark92/steamlink-patches/commit/45c55fc5fef25d31e4e11ec055e95d0ad876b3c3))\n\n### ✨ New Features\n\n* add experimental overlay and no-permission test patches for Steam Link ([8bfcecc](https://github.com/AngelDark92/steamlink-patches/commit/8bfcecc0413f12fab1caa6a70393ca0ac2d784f0))\n* Merge pull request [#30](https://github.com/AngelDark92/steamlink-patches/issues/30) from AngelDark92/dev ([7c48154](https://github.com/AngelDark92/steamlink-patches/commit/7c481547df112525816afbe59f59484d8ca28e59))\n\n## [1.7.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.6.1-dev.1...v1.7.0-dev.1) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* Add patches for Galaxy XR compatibility and enhancements ([96baf0c](https://github.com/AngelDark92/steamlink-patches/commit/96baf0c2e79177e02ddb067868ea1042bd677243))\n* update compatibility details and patch versions for Steam Link ([207c0b9](https://github.com/AngelDark92/steamlink-patches/commit/207c0b97bbec83c4f67db31e6561cff3f9af3c9f))\n\n### ✨ New Features\n\n* add experimental overlay and no-permission test patches for Steam Link ([8bfcecc](https://github.com/AngelDark92/steamlink-patches/commit/8bfcecc0413f12fab1caa6a70393ca0ac2d784f0))\n\n## [1.6.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.6.0...v1.6.1-dev.1) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* more patches ([a68e117](https://github.com/AngelDark92/steamlink-patches/commit/a68e1174be68f4e847efefd7dabb738735a209cd))\n* Update patch list and improve Android XR compatibility handling ([a9adf0e](https://github.com/AngelDark92/steamlink-patches/commit/a9adf0e991dd4ba145f0e04b7f6859118ba171d1))\n* update patch list and improve compatibility for Steam Link HMD-only builds ([45c55fc](https://github.com/AngelDark92/steamlink-patches/commit/45c55fc5fef25d31e4e11ec055e95d0ad876b3c3))\n\n## [1.6.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.5.0...v1.6.0) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* Merge pull request [#29](https://github.com/AngelDark92/steamlink-patches/issues/29) from AngelDark92/dev ([556420f](https://github.com/AngelDark92/steamlink-patches/commit/556420fc3e15bde9f0afdc3bcb9e4524f6bd1584))\n* Update patches and configurations for XR compatibility and functionality enhancements ([98cb52d](https://github.com/AngelDark92/steamlink-patches/commit/98cb52d3b92133fd81510b7d7ffbbddf5191ecbd))\n\n### ✨ New Features\n\n* Add test variants for overlay handling and permission management ([5b79c54](https://github.com/AngelDark92/steamlink-patches/commit/5b79c543384994509d347c5d6738f761fc805398))\n\n## [1.6.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.5.1-dev.1...v1.6.0-dev.1) (2026-08-06)\n\n### ✨ New Features\n\n* Add test variants for overlay handling and permission management ([5b79c54](https://github.com/AngelDark92/steamlink-patches/commit/5b79c543384994509d347c5d6738f761fc805398))\n\n## [1.5.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.5.0...v1.5.1-dev.1) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* Update patches and configurations for XR compatibility and functionality enhancements ([98cb52d](https://github.com/AngelDark92/steamlink-patches/commit/98cb52d3b92133fd81510b7d7ffbbddf5191ecbd))",
+      "changelog": "## [1.9.0-dev.4](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.3...v1.9.0-dev.4) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Remove old scene renderer probe patch and related code ([d0067c9](https://github.com/AngelDark92/steamlink-patches/commit/d0067c9c82d9da842a2145b0d5e2dccc376fa741))\n\n## [1.9.0-dev.3](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* trigger release ([c15e65b](https://github.com/AngelDark92/steamlink-patches/commit/c15e65bc1286ed6d8bb0928c1362d41c19f05e1b))\n\n## [1.9.0-dev.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Remove EXP6 version metadata patch and update patch catalog ([d2daa6b](https://github.com/AngelDark92/steamlink-patches/commit/d2daa6b0bd6f0da9c1859778a30b338002aac183))\n\n## [1.9.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.2...v1.9.0-dev.1) (2026-08-07)\n\n### ✨ New Features\n\n* Add EXP6 version metadata patch and update XR launcher bootstrap settings ([4211c55](https://github.com/AngelDark92/steamlink-patches/commit/4211c55dd82841c32f00e5e00476679754e09fe5))\n\n## [1.8.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.1...v1.8.2) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* merge pull request [#33](https://github.com/AngelDark92/steamlink-patches/issues/33) from AngelDark92/dev ([aa1c950](https://github.com/AngelDark92/steamlink-patches/commit/aa1c95058aa7788af98bab3e11db2dc984b94ad4))\n* Update compatible packages and remove deprecated options in patch files ([cf443c5](https://github.com/AngelDark92/steamlink-patches/commit/cf443c5da27bf26ed6730eacdec28fe8294797f2))\n\n## [1.8.2-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.1...v1.8.2-dev.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Update compatible packages and remove deprecated options in patch files ([cf443c5](https://github.com/AngelDark92/steamlink-patches/commit/cf443c5da27bf26ed6730eacdec28fe8294797f2))\n\n## [1.8.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.0...v1.8.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add support for 'all' release channel and update patch generation logic ([788e96d](https://github.com/AngelDark92/steamlink-patches/commit/788e96d96fffd4228ee2bfd7b25f298e1863eddc))\n* Merge pull request [#32](https://github.com/AngelDark92/steamlink-patches/issues/32) from AngelDark92/dev ([0ff41e7](https://github.com/AngelDark92/steamlink-patches/commit/0ff41e7858dcfcc82d14cfc9051abf1597014111))\n\n## [1.8.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.8.0...v1.8.1-dev.1) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Add support for 'all' release channel and update patch generation logic ([788e96d](https://github.com/AngelDark92/steamlink-patches/commit/788e96d96fffd4228ee2bfd7b25f298e1863eddc))\n\n## [1.8.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.7.0...v1.8.0) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* Enhance package name patch to support custom suffixes and update app labels ([c2b9ec4](https://github.com/AngelDark92/steamlink-patches/commit/c2b9ec4603bad5fb45c06831eaac1a76481e9bb2))\n* Merge pull request [#31](https://github.com/AngelDark92/steamlink-patches/issues/31) from AngelDark92/dev ([df29b6f](https://github.com/AngelDark92/steamlink-patches/commit/df29b6f063053f87335cc3b679f256f425a4a63c))\n\n### ✨ New Features\n\n* Implement support for multiple release channels and update patch generation logic ([a4cba70](https://github.com/AngelDark92/steamlink-patches/commit/a4cba70bffab5f14debbe46d13f138a5cc60bb91))\n\n## [1.8.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.7.1-dev.1...v1.8.0-dev.1) (2026-08-07)\n\n### ✨ New Features\n\n* Implement support for multiple release channels and update patch generation logic ([a4cba70](https://github.com/AngelDark92/steamlink-patches/commit/a4cba70bffab5f14debbe46d13f138a5cc60bb91))\n\n## [1.7.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.6.0...v1.7.0) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* Add patches for Galaxy XR compatibility and enhancements ([96baf0c](https://github.com/AngelDark92/steamlink-patches/commit/96baf0c2e79177e02ddb067868ea1042bd677243))\n* more patches ([a68e117](https://github.com/AngelDark92/steamlink-patches/commit/a68e1174be68f4e847efefd7dabb738735a209cd))\n* update compatibility details and patch versions for Steam Link ([207c0b9](https://github.com/AngelDark92/steamlink-patches/commit/207c0b97bbec83c4f67db31e6561cff3f9af3c9f))\n* Update patch list and improve Android XR compatibility handling ([a9adf0e](https://github.com/AngelDark92/steamlink-patches/commit/a9adf0e991dd4ba145f0e04b7f6859118ba171d1))\n* update patch list and improve compatibility for Steam Link HMD-only builds ([45c55fc](https://github.com/AngelDark92/steamlink-patches/commit/45c55fc5fef25d31e4e11ec055e95d0ad876b3c3))\n\n### ✨ New Features\n\n* add experimental overlay and no-permission test patches for Steam Link ([8bfcecc](https://github.com/AngelDark92/steamlink-patches/commit/8bfcecc0413f12fab1caa6a70393ca0ac2d784f0))\n* Merge pull request [#30](https://github.com/AngelDark92/steamlink-patches/issues/30) from AngelDark92/dev ([7c48154](https://github.com/AngelDark92/steamlink-patches/commit/7c481547df112525816afbe59f59484d8ca28e59))\n\n## [1.7.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.6.1-dev.1...v1.7.0-dev.1) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* Add patches for Galaxy XR compatibility and enhancements ([96baf0c](https://github.com/AngelDark92/steamlink-patches/commit/96baf0c2e79177e02ddb067868ea1042bd677243))\n* update compatibility details and patch versions for Steam Link ([207c0b9](https://github.com/AngelDark92/steamlink-patches/commit/207c0b97bbec83c4f67db31e6561cff3f9af3c9f))\n\n### ✨ New Features\n\n* add experimental overlay and no-permission test patches for Steam Link ([8bfcecc](https://github.com/AngelDark92/steamlink-patches/commit/8bfcecc0413f12fab1caa6a70393ca0ac2d784f0))\n\n## [1.6.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.6.0...v1.6.1-dev.1) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* more patches ([a68e117](https://github.com/AngelDark92/steamlink-patches/commit/a68e1174be68f4e847efefd7dabb738735a209cd))\n* Update patch list and improve Android XR compatibility handling ([a9adf0e](https://github.com/AngelDark92/steamlink-patches/commit/a9adf0e991dd4ba145f0e04b7f6859118ba171d1))\n* update patch list and improve compatibility for Steam Link HMD-only builds ([45c55fc](https://github.com/AngelDark92/steamlink-patches/commit/45c55fc5fef25d31e4e11ec055e95d0ad876b3c3))\n\n## [1.6.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.5.0...v1.6.0) (2026-08-06)\n\n### 🐛 Bug Fixes\n\n* Merge pull request [#29](https://github.com/AngelDark92/steamlink-patches/issues/29) from AngelDark92/dev ([556420f](https://github.com/AngelDark92/steamlink-patches/commit/556420fc3e15bde9f0afdc3bcb9e4524f6bd1584))\n* Update patches and configurations for XR compatibility and functionality enhancements ([98cb52d](https://github.com/AngelDark92/steamlink-patches/commit/98cb52d3b92133fd81510b7d7ffbbddf5191ecbd))\n\n### ✨ New Features\n\n* Add test variants for overlay handling and permission management ([5b79c54](https://github.com/AngelDark92/steamlink-patches/commit/5b79c543384994509d347c5d6738f761fc805398))\n\n## [1.6.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.5.1-dev.1...v1.6.0-dev.1) (2026-08-06)\n\n### ✨ New Features\n\n* Add test variants for overlay handling and permission management ([5b79c54](https://github.com/AngelDark92/steamlink-patches/commit/5b79c543384994509d347c5d6738f761fc805398))",
       "fullChangelogUrl": "https://github.com/AngelDark92/steamlink-patches/blob/dev/CHANGELOG.md",
       "repoDescription": "Repo template for creating and releasing custom Morphe patches for steamlink",
       "avatarUrl": "https://avatars.githubusercontent.com/u/53372897?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=AngelDark92/steamlink-patches",
-      "patchCount": 17,
+      "patchCount": 16,
       "targetApps": [
         "com.valvesoftware.steamlinkvr"
       ],
@@ -2835,7 +2827,7 @@
       },
       "starsGained7d": 5,
       "starsGained40d": 9,
-      "hotRank": 48
+      "hotRank": 47
     },
     {
       "source": "github",
@@ -3311,7 +3303,7 @@
       },
       "starsGained7d": 5,
       "starsGained40d": 19,
-      "hotRank": 17
+      "hotRank": 18
     },
     {
       "source": "github",
@@ -3611,7 +3603,7 @@
       },
       "starsGained7d": 4,
       "starsGained40d": 30,
-      "hotRank": 18
+      "hotRank": 19
     },
     {
       "source": "github",
@@ -3723,7 +3715,7 @@
       },
       "starsGained7d": 4,
       "starsGained40d": 4,
-      "hotRank": 11
+      "hotRank": 12
     },
     {
       "source": "github",
@@ -4997,7 +4989,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "hotRank": 45
+      "hotRank": 46
     },
     {
       "source": "github",
@@ -6774,7 +6766,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "hotRank": 46
+      "hotRank": 45
     },
     {
       "source": "github",
@@ -7481,7 +7473,7 @@
         "cn.wps.moffice_eng": 1771286400000,
         "ginlemon.flowerfree": 1770076800000
       },
-      "stars": 913,
+      "stars": 914,
       "updatedAt": 1785369600000,
       "firstSeen": 1768941201000,
       "appFirstSeen": {
@@ -7539,8 +7531,8 @@
         "ch.protonvpn.android": 1768941201000,
         "cn.ommiao.iconpacker": 1768941201000
       },
-      "starsGained7d": 24,
-      "starsGained40d": 71,
+      "starsGained7d": 25,
+      "starsGained40d": 72,
       "hotRank": 1
     },
     {
@@ -10042,7 +10034,7 @@
       },
       "starsGained7d": 6,
       "starsGained40d": 7,
-      "hotRank": 19
+      "hotRank": 17
     },
     {
       "source": "github",
@@ -12846,7 +12838,7 @@
       },
       "starsGained7d": 27,
       "starsGained40d": 68,
-      "hotRank": 47
+      "hotRank": 48
     },
     {
       "source": "github",
@@ -15918,7 +15910,7 @@
         "com.onnex.wristweb"
       ],
       "appUpdates": {},
-      "stars": 302,
+      "stars": 303,
       "updatedAt": 1785715200000,
       "firstSeen": 1780395687718,
       "appFirstSeen": {
@@ -16127,8 +16119,8 @@
         "com.vythera.vyxelapps": 1785742054631,
         "com.onnex.wristweb": 1785742054631
       },
-      "starsGained7d": 32,
-      "starsGained40d": 110,
+      "starsGained7d": 33,
+      "starsGained40d": 111,
       "hotRank": 2
     },
     {

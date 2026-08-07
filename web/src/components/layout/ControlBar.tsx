@@ -1,4 +1,10 @@
-import { Grid, Layers, Sparkles, Shapes, ArrowDownWideNarrow } from "lucide-react";
+import {
+  Grid,
+  Layers,
+  Sparkles,
+  Shapes,
+  ArrowDownWideNarrow,
+} from "lucide-react";
 import { NavigationTabType as TabType } from "@/hooks/useUrlSync";
 import { ActiveStats } from "@/data";
 import { SearchInput } from "@/components/common/SearchInput";
@@ -52,7 +58,10 @@ export function ControlBar({
     "flex-1 sm:flex-initial px-3.5 py-1.5 text-xs font-bold rounded-lg cursor-pointer transition-all flex items-center justify-center gap-1.5 outline-none focus:outline-none focus-visible:outline-none text-black dark:text-zinc-300 hover:text-black dark:hover:text-white data-[selected=true]:bg-white dark:data-[selected=true]:bg-zinc-700 data-[selected=true]:text-black dark:data-[selected=true]:text-white data-[selected=true]:shadow-xs";
 
   return (
-    <div className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-3 sm:gap-4 mt-2 mb-3" id="browse-bar">
+    <div
+      className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-3 sm:gap-4 mt-2 mb-3"
+      id="browse-bar"
+    >
       <div
         className="w-full sm:w-auto"
         onKeyDownCapture={(e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -64,7 +73,9 @@ export function ControlBar({
       >
         <Tabs
           selectedKey={activeTab}
-          onSelectionChange={(key) => key && onTabChange(String(key) as TabType)}
+          onSelectionChange={(key) =>
+            key && onTabChange(String(key) as TabType)
+          }
           aria-label="Navigation Tabs"
           className="w-full sm:w-auto p-1 bg-zinc-100 dark:bg-zinc-800/80 border border-divider rounded-xl"
         >
@@ -113,7 +124,14 @@ export function ControlBar({
 
           {activeTab === "apps" && categories.length > 0 && (
             <div className="w-full sm:w-56 shrink-0">
-              <CustomSelect value={selectedCategory || "all"} onChange={(category) => onCategoryChange?.(category)} options={categories} icon={Shapes} ariaLabel="Category filter" className="w-full" />
+              <CustomSelect
+                value={selectedCategory || "all"}
+                onChange={(category) => onCategoryChange?.(category)}
+                options={categories}
+                icon={Shapes}
+                ariaLabel="Category filter"
+                className="w-full"
+              />
             </div>
           )}
 
@@ -122,12 +140,16 @@ export function ControlBar({
               id="search-input"
               value={globalSearchQuery}
               onChange={onSearchQueryChange}
-              placeholder={activeTab === "apps" ? "Search apps…" : "Search bundles…"}
+              placeholder={
+                activeTab === "apps" ? "Search apps…" : "Search bundles…"
+              }
               className="flex-1 min-w-0"
             />
             <div className="shrink-0 sm:ml-auto">
               <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-3 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0 whitespace-nowrap">
-                {activeTab === "apps" ? `${statistics.appsCount.toLocaleString()} Apps` : `${statistics.bundlesCount.toLocaleString()} Bundles`}
+                {activeTab === "apps"
+                  ? `${statistics.appsCount.toLocaleString()} Apps`
+                  : `${statistics.bundlesCount.toLocaleString()} Bundles`}
               </span>
             </div>
           </div>

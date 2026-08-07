@@ -1,11 +1,16 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { ActiveData, getAppMeta, RowItem, simplifyString } from "@/data";
 import { SearchInput } from "@/components/common/SearchInput";
 import { useCopy } from "@/hooks/useCopy";
 import { Avatar } from "@heroui/react";
 import { Smartphone, ChevronDown, Plus, Play, Check, Copy } from "lucide-react";
 import { PatchItemRow } from "@/components/common/PatchItemRow";
-import { CustomModal, ModalHeader, ModalBody, CloseButton } from "@/components/common/CustomModal";
+import {
+  CustomModal,
+  ModalHeader,
+  ModalBody,
+  CloseButton,
+} from "@/components/common/CustomModal";
 import { TestBundleData } from "@/utils/testBundleFetcher";
 
 interface TestBundleViewModalProps {
@@ -15,15 +20,22 @@ interface TestBundleViewModalProps {
   activeData: ActiveData | null;
 }
 
-export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestBundleViewModalProps) {
+export function TestBundleViewModal({
+  isOpen,
+  onClose,
+  data,
+  activeData,
+}: TestBundleViewModalProps) {
   const { copiedText, copyToClipboard } = useCopy();
-  const [currentBranch, setCurrentBranch] = useState<string>("main");
   const [searchQuery, setSearchQuery] = useState("");
-  const [expandedAppKeys, setExpandedAppKeys] = useState<Set<string>>(new Set());
 
   const branches = ["main", "dev"];
 
-  useEffect(() => {
+  const [currentBranch, setCurrentBranch] = useState<string>("main");
+  const [prevData, setPrevData] = useState(data);
+
+  if (data !== prevData) {
+    setPrevData(data);
     if (data && data.availableBranches.length > 0) {
       if (data.availableBranches.includes("main")) {
         setCurrentBranch("main");
@@ -31,13 +43,16 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
         setCurrentBranch(data.availableBranches[0]);
       }
     }
-  }, [data]);
+  }
 
-  useEffect(() => {
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
+
+  if (isOpen !== prevIsOpen) {
+    setPrevIsOpen(isOpen);
     if (!isOpen) {
       setSearchQuery("");
     }
-  }, [isOpen]);
+  }
 
   const currentRows: RowItem[] = useMemo(() => {
     if (!data || !currentBranch || !data.branches[currentBranch]) return [];
@@ -48,21 +63,38 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
     if (!data) return "";
     const repo = data.repoName;
     const platform = data.platform || "github";
-    const branchPart = currentBranch === "dev" ? (platform === "gitlab" ? `${repo}/-/tree/dev` : `${repo}/tree/dev`) : repo;
+    const branchPart =
+      currentBranch === "dev"
+        ? platform === "gitlab"
+          ? `${repo}/-/tree/dev`
+          : `${repo}/tree/dev`
+        : repo;
     return `https://morphe.software/add-source?${platform}=${branchPart}`;
   }, [data, currentBranch]);
 
   const appGroups = useMemo(() => {
     if (!currentRows || !activeData) return [];
 
-    const queryWords = searchQuery.trim().split(/\s+/).map(simplifyString).filter(Boolean);
+    const queryWords = searchQuery
+      .trim()
+      .split(/\s+/)
+      .map(simplifyString)
+      .filter(Boolean);
     const filteredRows =
       queryWords.length > 0
         ? currentRows.filter((patchItem) => {
-            const appMeta = getAppMeta(patchItem.packageName, activeData.namesMap);
+            const appMeta = getAppMeta(
+              patchItem.packageName,
+              activeData.namesMap,
+            );
             const appNameClean = simplifyString(appMeta.appName);
             const packageNameClean = simplifyString(patchItem.packageName);
-            return queryWords.every((word) => patchItem.searchPatchesText.includes(word) || packageNameClean.includes(word) || appNameClean.includes(word));
+            return queryWords.every(
+              (word) =>
+                patchItem.searchPatchesText.includes(word) ||
+                packageNameClean.includes(word) ||
+                appNameClean.includes(word),
+            );
           })
         : currentRows;
 
@@ -80,23 +112,47 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
     });
 
     groups.sort((groupA, groupB) => {
-      if ((groupA.packageName === "universal") !== (groupB.packageName === "universal")) {
+      if (
+        (groupA.packageName === "universal") !==
+        (groupB.packageName === "universal")
+      ) {
         return groupA.packageName === "universal" ? 1 : -1;
       }
-      return groupA.appMeta.appName.localeCompare(groupB.appMeta.appName, undefined, { sensitivity: "base" });
+      return groupA.appMeta.appName.localeCompare(
+        groupB.appMeta.appName,
+        undefined,
+        { sensitivity: "base" },
+      );
     });
 
     return groups;
   }, [currentRows, searchQuery, activeData]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    if (appGroups.length === 1 || searchQuery.trim().length > 0) {
-      setExpandedAppKeys(new Set(appGroups.map((appGroup) => appGroup.packageName)));
-    } else {
-      setExpandedAppKeys(new Set());
+  const [expandedAppKeys, setExpandedAppKeys] = useState<Set<string>>(
+    new Set(),
+  );
+  const [syncState, setSyncState] = useState({
+    isOpen,
+    searchQuery,
+    appGroups,
+  });
+
+  if (
+    isOpen !== syncState.isOpen ||
+    searchQuery !== syncState.searchQuery ||
+    appGroups !== syncState.appGroups
+  ) {
+    setSyncState({ isOpen, searchQuery, appGroups });
+    if (isOpen) {
+      if (appGroups.length === 1 || searchQuery.trim().length > 0) {
+        setExpandedAppKeys(
+          new Set(appGroups.map((appGroup) => appGroup.packageName)),
+        );
+      } else {
+        setExpandedAppKeys(new Set());
+      }
     }
-  }, [appGroups, searchQuery, isOpen]);
+  }
 
   const toggleAppGroup = (pkgName: string) => {
     setExpandedAppKeys((prev) => {
@@ -114,10 +170,15 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose}>
-      <ModalHeader onClose={onClose}>
+      <ModalHeader>
         <div className="flex flex-col gap-3 w-full">
           <div className="flex items-center justify-between gap-4 w-full">
-            <a href={data.repoUrl} target="_blank" rel="noopener noreferrer" className="text-lg font-bold text-primary hover:underline dark:text-[#3fe9e8] break-all whitespace-normal">
+            <a
+              href={data.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg font-bold text-primary hover:underline dark:text-[#3fe9e8] break-all whitespace-normal"
+            >
               {data.repoUrl}
             </a>
             <CloseButton onClose={onClose} />
@@ -163,7 +224,13 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
 
       <ModalBody>
         <div className="flex items-center gap-3">
-          <SearchInput id="test-patch-search" placeholder="Search patches…" value={searchQuery} onChange={setSearchQuery} className="flex-1" />
+          <SearchInput
+            id="test-patch-search"
+            placeholder="Search patches…"
+            value={searchQuery}
+            onChange={setSearchQuery}
+            className="flex-1"
+          />
           <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-3 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0 whitespace-nowrap">
             {appGroups.length} {appGroups.length === 1 ? "app" : "apps"}
           </span>
@@ -172,24 +239,35 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
         <div className="flex flex-col gap-3 pr-1 mt-2">
           {appGroups.length === 0 ? (
             <div className="py-12 text-center text-foreground-400 text-sm font-medium">
-              {data.availableBranches.includes(currentBranch) ? "No apps found" : `No patches-list.json found on '${currentBranch}' branch`}
+              {data.availableBranches.includes(currentBranch)
+                ? "No apps found"
+                : `No patches-list.json found on '${currentBranch}' branch`}
             </div>
           ) : (
             appGroups.map((group) => {
               const isUniversal = group.packageName === "universal";
-              const isNotOnPlayStore = group.packageName === "not-on-google-play";
+              const isNotOnPlayStore =
+                group.packageName === "not-on-google-play";
               const showGooglePlay = !isUniversal && !isNotOnPlayStore;
               const isExpanded = expandedAppKeys.has(group.packageName);
 
               return (
-                <div key={group.packageName} className="border border-divider rounded-xl bg-background flex flex-col">
+                <div
+                  key={group.packageName}
+                  className="border border-divider rounded-xl bg-background flex flex-col"
+                >
                   <div
                     onClick={() => toggleAppGroup(group.packageName)}
                     className={`sticky -top-4 z-20 flex flex-col gap-2 px-4 py-3 bg-background cursor-pointer hover:bg-default-100/60 transition-colors rounded-t-xl shadow-sm ${isExpanded ? "border-b border-divider/60" : ""}`}
                   >
                     <div className="flex items-center gap-4 w-full">
                       <Avatar className="w-10 h-10 rounded-xl shrink-0 border border-border bg-zinc-100 dark:bg-zinc-800">
-                        {group.appMeta.appIcon ? <Avatar.Image src={group.appMeta.appIcon} alt={group.appMeta.appName} /> : null}
+                        {group.appMeta.appIcon ? (
+                          <Avatar.Image
+                            src={group.appMeta.appIcon}
+                            alt={group.appMeta.appName}
+                          />
+                        ) : null}
                         <Avatar.Fallback className="bg-transparent flex items-center justify-center">
                           <Smartphone className="size-5 text-foreground-400" />
                         </Avatar.Fallback>
@@ -197,7 +275,9 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
 
                       <div className="flex-1 min-w-0 flex flex-col justify-center">
                         <div className="flex items-center gap-2 flex-wrap min-w-0">
-                          <div className="font-bold text-foreground text-sm truncate">{group.appMeta.appName}</div>
+                          <div className="font-bold text-foreground text-sm truncate">
+                            {group.appMeta.appName}
+                          </div>
                         </div>
                         {!isUniversal && (
                           <div
@@ -208,8 +288,14 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
                             className="flex items-center gap-1.5 mt-0.5 text-xs text-primary cursor-pointer w-fit"
                             title="Copy Package Name"
                           >
-                            {copiedText === group.packageName ? <Check className="size-3 text-success shrink-0" /> : <Copy className="size-3 shrink-0 text-foreground-500 hover:text-primary" />}
-                            <span className="truncate text-primary font-medium dark:text-[#3fe9e8]">{group.packageName}</span>
+                            {copiedText === group.packageName ? (
+                              <Check className="size-3 text-success shrink-0" />
+                            ) : (
+                              <Copy className="size-3 shrink-0 text-foreground-500 hover:text-primary" />
+                            )}
+                            <span className="truncate text-primary font-medium dark:text-[#3fe9e8]">
+                              {group.packageName}
+                            </span>
                           </div>
                         )}
                       </div>
@@ -218,7 +304,8 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
                         <span
                           className={`${showGooglePlay ? "hidden sm:inline-flex" : "inline-flex"} items-center justify-center font-semibold rounded-full text-xs px-2.5 py-0.5 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0`}
                         >
-                          {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
+                          {group.patches.length}{" "}
+                          {group.patches.length === 1 ? "patch" : "patches"}
                         </span>
                         {showGooglePlay && (
                           <a
@@ -233,14 +320,17 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
                             Google Play
                           </a>
                         )}
-                        <ChevronDown className={`w-4 h-4 text-foreground-500 transition-transform duration-200 shrink-0 ${isExpanded ? "rotate-180" : ""}`} />
+                        <ChevronDown
+                          className={`w-4 h-4 text-foreground-500 transition-transform duration-200 shrink-0 ${isExpanded ? "rotate-180" : ""}`}
+                        />
                       </div>
                     </div>
 
                     {showGooglePlay && (
                       <div className="sm:hidden flex items-center justify-between gap-2 pt-1">
                         <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-2.5 py-0.5 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0">
-                          {group.patches.length} {group.patches.length === 1 ? "patch" : "patches"}
+                          {group.patches.length}{" "}
+                          {group.patches.length === 1 ? "patch" : "patches"}
                         </span>
                         <a
                           className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 active:scale-[0.98] shadow-sm shrink-0"
@@ -260,7 +350,12 @@ export function TestBundleViewModal({ isOpen, onClose, data, activeData }: TestB
                   {isExpanded && (
                     <div className="flex flex-col">
                       {group.patches.map((patchItem) => (
-                        <PatchItemRow key={patchItem.id} patchItem={patchItem} copiedText={copiedText} copyToClipboard={copyToClipboard} />
+                        <PatchItemRow
+                          key={patchItem.id}
+                          patchItem={patchItem}
+                          copiedText={copiedText}
+                          copyToClipboard={copyToClipboard}
+                        />
                       ))}
                     </div>
                   )}

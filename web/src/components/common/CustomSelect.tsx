@@ -10,15 +10,26 @@ export interface CustomSelectProps {
   className?: string;
 }
 
-export function CustomSelect({ value, onChange, options, icon: Icon, ariaLabel, className = "" }: CustomSelectProps) {
+export function CustomSelect({
+  value,
+  onChange,
+  options,
+  icon: Icon,
+  ariaLabel,
+  className = "",
+}: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const selectedOption = options.find((option) => option.key === value) || options[0];
+  const selectedOption =
+    options.find((option) => option.key === value) || options[0];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -39,7 +50,9 @@ export function CustomSelect({ value, onChange, options, icon: Icon, ariaLabel, 
           <Icon className="size-4 shrink-0 text-foreground-500" />
           <span className="truncate">{selectedOption?.label || value}</span>
         </div>
-        <ChevronDown className={`size-4 text-foreground-500 shrink-0 ml-1 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+        <ChevronDown
+          className={`size-4 text-foreground-500 shrink-0 ml-1 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+        />
       </button>
 
       {isOpen && (
@@ -55,11 +68,15 @@ export function CustomSelect({ value, onChange, options, icon: Icon, ariaLabel, 
                   setIsOpen(false);
                 }}
                 className={`px-3 py-2 text-sm font-medium rounded-lg text-left cursor-pointer transition-colors flex items-center justify-between whitespace-normal wrap-break-word ${
-                  isSelected ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  isSelected
+                    ? "bg-primary/10 text-primary font-semibold"
+                    : "text-foreground hover:bg-zinc-100 dark:hover:bg-zinc-800"
                 }`}
               >
                 <span>{option.label}</span>
-                {isSelected && <span className="text-xs text-primary font-bold ml-2">✓</span>}
+                {isSelected && (
+                  <span className="text-xs text-primary font-bold ml-2">✓</span>
+                )}
               </button>
             );
           })}

@@ -10,7 +10,9 @@ from utils import fetch, load_json, save_json
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
 DISCOVER_DIR = DATA_DIR / "discover"
-README_URL = "https://raw.githubusercontent.com/rushiforai/morphe-archive/main/README.md"
+README_URL = (
+    "https://raw.githubusercontent.com/rushiforai/morphe-archive/main/README.md"
+)
 OUTPUT_PATH = DISCOVER_DIR / "morphe-archive.json"
 _REPO_RE = re.compile(r"morphe\.software/add-source\?(github|gitlab)=([^)\s]+)")
 
@@ -20,7 +22,9 @@ def discover():
         content = fetch(README_URL)
     except Exception as error:
         existing_data = load_json(OUTPUT_PATH)
-        print(f"::warning title=Discover:: [-] [morphe-archive] Failed: {error}. Kept {len(existing_data)} sources in morphe-archive.json")
+        print(
+            f"::warning title=Discover:: [-] [morphe-archive] Failed: {error}. Kept {len(existing_data)} sources in morphe-archive.json"
+        )
         return existing_data
 
     discovered = {}
@@ -33,13 +37,19 @@ def discover():
 
     if not discovered:
         existing_data = load_json(OUTPUT_PATH)
-        print(f"::warning title=Discover:: [-] [morphe-archive] Empty result. Kept {len(existing_data)} sources in morphe-archive.json")
+        print(
+            f"::warning title=Discover:: [-] [morphe-archive] Empty result. Kept {len(existing_data)} sources in morphe-archive.json"
+        )
         return existing_data
-    save_json(OUTPUT_PATH, dict(sorted(discovered.items(), key=lambda item: item[0].lower())))
+    save_json(
+        OUTPUT_PATH, dict(sorted(discovered.items(), key=lambda item: item[0].lower()))
+    )
     print(f"[morphe-archive] Exported {len(discovered)} sources to morphe-archive.json")
     return discovered
 
 
 if __name__ == "__main__":
     result = discover()
-    print(f"Saved {len(result)} repos to {OUTPUT_PATH.relative_to(OUTPUT_PATH.parents[2])}")
+    print(
+        f"Saved {len(result)} repos to {OUTPUT_PATH.relative_to(OUTPUT_PATH.parents[2])}"
+    )

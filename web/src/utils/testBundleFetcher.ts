@@ -14,7 +14,9 @@ const GITLAB_RAW_BASE = "https://gitlab.com";
 const FILES_TO_TRY = ["patches-list.json"];
 const BRANCHES_TO_TRY = ["main", "dev"];
 
-function parseRepoInput(input: string): { owner: string; repo: string; platform: "github" | "gitlab" } | null {
+function parseRepoInput(
+  input: string,
+): { owner: string; repo: string; platform: "github" | "gitlab" } | null {
   try {
     const cleanInput = input.trim();
     if (!cleanInput.startsWith("http")) return null;
@@ -35,13 +37,20 @@ function parseRepoInput(input: string): { owner: string; repo: string; platform:
   return null;
 }
 
-function getRawUrls(platform: "github" | "gitlab", owner: string, repo: string, branch: string): string[] {
+function getRawUrls(
+  platform: "github" | "gitlab",
+  owner: string,
+  repo: string,
+  branch: string,
+): string[] {
   const urls: string[] = [];
   for (const file of FILES_TO_TRY) {
     if (platform === "gitlab") {
       const encodedProject = encodeURIComponent(`${owner}/${repo}`);
       const encodedFile = encodeURIComponent(file);
-      urls.push(`https://gitlab.com/api/v4/projects/${encodedProject}/repository/files/${encodedFile}/raw?ref=${branch}`);
+      urls.push(
+        `https://gitlab.com/api/v4/projects/${encodedProject}/repository/files/${encodedFile}/raw?ref=${branch}`,
+      );
       urls.push(`${GITLAB_RAW_BASE}/${owner}/${repo}/-/raw/${branch}/${file}`);
     } else {
       urls.push(`${GITHUB_RAW_BASE}/${owner}/${repo}/${branch}/${file}`);
@@ -50,7 +59,7 @@ function getRawUrls(platform: "github" | "gitlab", owner: string, repo: string, 
   return urls;
 }
 
-async function fetchFromUrls(urls: string[]): Promise<any | null> {
+async function fetchFromUrls(urls: string[]): Promise<unknown | null> {
   for (const url of urls) {
     try {
       const res = await fetch(url, { cache: "no-store" });
@@ -72,11 +81,12 @@ async function fetchFromUrls(urls: string[]): Promise<any | null> {
   return null;
 }
 
-function parsePatchesToRows(data: any, bundleKey: string): RowItem[] {
+function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
   let patchesList = Array.isArray(data) ? data : [];
   if (data && typeof data === "object" && !Array.isArray(data)) {
-    if (data.patches && Array.isArray(data.patches)) {
-      patchesList = data.patches;
+    const dataObj = data as Record<string, unknown>;
+    if (dataObj.patches && Array.isArray(dataObj.patches)) {
+      patchesList = dataObj.patches;
     }
   }
 
@@ -91,14 +101,23 @@ function parsePatchesToRows(data: any, bundleKey: string): RowItem[] {
     const options: PatchOption[] = patch.options || [];
     const isDefault = patch.default !== false;
 
-    let compatiblePackages: any[] = [];
+    let compatiblePackages: Array<{
+      packageName: string;
+      targets?: unknown[];
+      isPreRelease?: boolean;
+    }> = [];
     if (Array.isArray(patch.compatiblePackages)) {
       compatiblePackages = patch.compatiblePackages;
-    } else if (patch.compatiblePackages && typeof patch.compatiblePackages === "object") {
-      compatiblePackages = Object.entries(patch.compatiblePackages).map(([pkg, targets]) => ({
-        packageName: pkg,
-        targets: Array.isArray(targets) ? targets : [],
-      }));
+    } else if (
+      patch.compatiblePackages &&
+      typeof patch.compatiblePackages === "object"
+    ) {
+      compatiblePackages = Object.entries(patch.compatiblePackages).map(
+        ([pkg, targets]) => ({
+          packageName: pkg,
+          targets: Array.isArray(targets) ? targets : [],
+        }),
+      );
     }
 
     if (compatiblePackages.length === 0) {
@@ -129,11 +148,18 @@ function parsePatchesToRows(data: any, bundleKey: string): RowItem[] {
         for (const target of pkg.targets) {
           if (typeof target === "string") {
             versions.push({ version: target, isExperimental: false });
-          } else if (target && typeof target === "object" && target.version) {
-            versions.push({
-              version: target.version,
-              isExperimental: !!target.isExperimental,
-            });
+          } else if (
+            target &&
+            typeof target === "object" &&
+            "version" in target
+          ) {
+            const t = target as { version: unknown; isExperimental?: unknown };
+            if (typeof t.version === "string") {
+              versions.push({
+                version: t.version,
+                isExperimental: !!t.isExperimental,
+              });
+            }
           }
         }
       }
@@ -188,13 +214,18 @@ export async function fetchTestBundle(input: string): Promise<TestBundleData> {
   }
 
   if (availableBranches.length === 0) {
-    throw new Error("Found patches-list.json, but no valid patches could be parsed.");
+    throw new Error(
+      "Found patches-list.json, but no valid patches could be parsed.",
+    );
   }
 
   return {
     repoName,
     platform,
-    repoUrl: platform === "github" ? `https://github.com/${repoName}` : `https://gitlab.com/${repoName}`,
+    repoUrl:
+      platform === "github"
+        ? `https://github.com/${repoName}`
+        : `https://gitlab.com/${repoName}`,
     branches: branchesData,
     availableBranches,
   };

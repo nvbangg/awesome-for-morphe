@@ -5,6 +5,7 @@ import json
 import sys
 import time
 from pathlib import Path
+
 from updater import gplay_scrape, local_parse, repo_info
 from utils import load_json, parse_timestamp, save_json
 
@@ -26,26 +27,46 @@ def main() -> int:
 
     repos_data = load_json(REPOS_JSON_PATH, {})
     discover_data = load_json(DISCOVER_JSON_PATH, {})
-    keys_to_remove = [base_key for base_key in repos_data if base_key not in discover_data]
+    keys_to_remove = [
+        base_key for base_key in repos_data if base_key not in discover_data
+    ]
     if keys_to_remove:
         for base_key in keys_to_remove:
             del repos_data[base_key]
         save_json(REPOS_JSON_PATH, repos_data)
         print(f"Removed {len(keys_to_remove)} disabled repos from repos.json")
     existing_bundles_data = load_json(BUNDLES_JSON_PATH, [])
-    existing_bundles_list = existing_bundles_data.get("bundles", []) if isinstance(existing_bundles_data, dict) else existing_bundles_data
-    existing_bundles = {f"{bundle.get('source')}:{bundle.get('repo')}": bundle for bundle in existing_bundles_list}
+    existing_bundles_list = (
+        existing_bundles_data.get("bundles", [])
+        if isinstance(existing_bundles_data, dict)
+        else existing_bundles_data
+    )
+    existing_bundles = {
+        f"{bundle.get('source')}:{bundle.get('repo')}": bundle
+        for bundle in existing_bundles_list
+    }
     apps_dict = load_json(APPS_JSON_PATH, {})
-    existing_apps = {pkg_name: app_data.copy() for pkg_name, app_data in apps_dict.items()}
+    existing_apps = {
+        pkg_name: app_data.copy() for pkg_name, app_data in apps_dict.items()
+    }
     bundle_sources = {}
-    for key, branches in repos_data.items():
+    for key, _branches in repos_data.items():
         source, repo = key.split(":", 1)
         bundle_sources[key] = {"source": source, "repo": repo}
 
         if key in existing_bundles:
-            for attribute_name in ["stars", "avatarUrl", "repoDescription", "starsGained7d", "starsGained40d", "appFirstSeen"]:
+            for attribute_name in [
+                "stars",
+                "avatarUrl",
+                "repoDescription",
+                "starsGained7d",
+                "starsGained40d",
+                "appFirstSeen",
+            ]:
                 if attribute_name in existing_bundles[key]:
-                    bundle_sources[key][attribute_name] = existing_bundles[key][attribute_name]
+                    bundle_sources[key][attribute_name] = existing_bundles[key][
+                        attribute_name
+                    ]
     repo_info.process(bundle_sources, mode, existing_bundles)
     compatibilities_list = local_parse.process(bundle_sources, apps_dict)
 
@@ -53,7 +74,15 @@ def main() -> int:
     now_ms = int(time.time() * 1000)
     final_bundles = []
     sorted_keys = sorted(
-        bundle_sources.keys(), key=lambda sort_key: (parse_timestamp(existing_bundles.get(sort_key, {}).get("firstSeen", bundle_sources[sort_key].get("updatedAt", 0))), sort_key.lower())
+        bundle_sources.keys(),
+        key=lambda sort_key: (
+            parse_timestamp(
+                existing_bundles.get(sort_key, {}).get(
+                    "firstSeen", bundle_sources[sort_key].get("updatedAt", 0)
+                )
+            ),
+            sort_key.lower(),
+        ),
     )
     for key in sorted_keys:
         bundle = bundle_sources[key]
@@ -67,7 +96,9 @@ def main() -> int:
             "starsGained7d": bundle.get("starsGained7d") or 0,
             "starsGained40d": bundle.get("starsGained40d") or 0,
             "updatedAt": bundle.get("updatedAt") or 0,
-            "firstSeen": parse_timestamp(existing_bundles.get(key, {}).get("firstSeen", now_ms)),
+            "firstSeen": parse_timestamp(
+                existing_bundles.get(key, {}).get("firstSeen", now_ms)
+            ),
             "appFirstSeen": bundle.get("appFirstSeen") or {},
             "patches": bundle.get("patches") or [],
             "isPreRelease": bool(bundle.get("isPreRelease")),
@@ -105,13 +136,25 @@ def main() -> int:
                     compat_map[compat_json] = new_key
                     patch["compatiblePackagesKey"] = new_key
 
-    save_json(BUNDLES_JSON_PATH, {"bundles": final_bundles, "compatibilities": reindexed_compatibilities})
+    save_json(
+        BUNDLES_JSON_PATH,
+        {"bundles": final_bundles, "compatibilities": reindexed_compatibilities},
+    )
     save_json(APPS_JSON_PATH, ordered_apps_dict)
-    print(f"Update completed. Saved {len(final_bundles)} bundles and {len(apps_dict)} apps.")
+    print(
+        f"Update completed. Saved {len(final_bundles)} bundles and {len(apps_dict)} apps."
+    )
 
-    invalid_repos = [key for key in repos_data if key not in {f"{bundle['source']}:{bundle['repo']}" for bundle in final_bundles}]
+    invalid_repos = [
+        key
+        for key in repos_data
+        if key
+        not in {f"{bundle['source']}:{bundle['repo']}" for bundle in final_bundles}
+    ]
     if invalid_repos:
-        print(f"::warning title=Update:: [-] Note: {len(invalid_repos)}/{len(repos_data)} repos are invalid or excluded: {', '.join(invalid_repos)}")
+        print(
+            f"::warning title=Update:: [-] Note: {len(invalid_repos)}/{len(repos_data)} repos are invalid or excluded: {', '.join(invalid_repos)}"
+        )
     return 0
 
 

@@ -10,7 +10,10 @@ interface AppCardProps {
   onClick: (packageName: string) => void;
 }
 
-export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps) {
+export const AppCard = memo(function AppCard({
+  appItem,
+  onClick,
+}: AppCardProps) {
   const [imgError, setImgError] = useState(false);
   const { copiedText, copyToClipboard } = useCopy();
 
@@ -19,7 +22,9 @@ export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps)
     copyToClipboard(appItem.packageName);
   };
 
-  const showGooglePlay = appItem.packageName !== "universal" && appItem.categorySlug !== "not-on-google-play";
+  const showGooglePlay =
+    appItem.packageName !== "universal" &&
+    appItem.categorySlug !== "not-on-google-play";
 
   return (
     <div
@@ -47,23 +52,35 @@ export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps)
           <div className="text-base font-bold text-foreground mb-0.5 whitespace-normal break-all flex flex-wrap items-center gap-1.5">
             {appItem.appName}
             {isNew(appItem.firstSeen) && <Badge variant="new" />}
-            {appItem.minInstalls > 0 && appItem.packageName !== "universal" && appItem.categorySlug !== "not-on-google-play" && <Badge variant="downloads" value={appItem.minInstalls} />}
+            {appItem.minInstalls > 0 &&
+              appItem.packageName !== "universal" &&
+              appItem.categorySlug !== "not-on-google-play" && (
+                <Badge variant="downloads" value={appItem.minInstalls} />
+              )}
           </div>
           {appItem.packageName !== "universal" && (
-            <div onClick={handleCopy} className="flex items-start gap-1.5 text-xs cursor-pointer w-fit text-foreground-500 hover:text-primary transition-colors" title="Copy Package Name">
+            <div
+              onClick={handleCopy}
+              className="flex items-start gap-1.5 text-xs cursor-pointer w-fit text-foreground-500 hover:text-primary transition-colors"
+              title="Copy Package Name"
+            >
               {copiedText === appItem.packageName ? (
                 <Check className="w-3.5 h-3.5 text-success shrink-0 mt-0.5" />
               ) : (
                 <Copy className="w-3.5 h-3.5 shrink-0 mt-0.5 text-foreground-500 hover:text-primary" />
               )}
-              <span className="break-all whitespace-normal text-primary font-medium dark:text-[#3fe9e8]">{appItem.packageName}</span>
+              <span className="break-all whitespace-normal text-primary font-medium dark:text-[#3fe9e8]">
+                {appItem.packageName}
+              </span>
             </div>
           )}
         </div>
       </div>
 
       <div className="flex-1">
-        <p className="text-sm text-foreground-600 dark:text-foreground-500 leading-relaxed line-clamp-2">{appItem.description}</p>
+        <p className="text-sm text-foreground-600 dark:text-foreground-500 leading-relaxed line-clamp-2">
+          {appItem.description}
+        </p>
       </div>
 
       <div className="flex items-center justify-between gap-2 mt-auto w-full">
@@ -71,7 +88,9 @@ export const AppCard = memo(function AppCard({ appItem, onClick }: AppCardProps)
           className="font-semibold rounded-full text-xs px-2 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 whitespace-nowrap truncate shrink-0 max-w-[60%]"
           title="Category"
         >
-          {appItem.categorySlug === "not-on-google-play" ? "Not on Google Play" : appItem.category}
+          {appItem.categorySlug === "not-on-google-play"
+            ? "Not on Google Play"
+            : appItem.category}
         </span>
 
         {showGooglePlay && (

@@ -5,8 +5,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from providers import jman, morphe_archive, official
 from utils import load_json, save_json
-from providers import official, jman, morphe_archive
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
@@ -24,7 +24,10 @@ PROVIDER_PRIORITY = {f"{name}.json": index for index, name in enumerate(PROVIDER
 
 def _run_providers():
     with ThreadPoolExecutor(max_workers=len(PROVIDER_MODULES)) as executor:
-        futures = {executor.submit(module.discover): module.__name__ for module in PROVIDER_MODULES}
+        futures = {
+            executor.submit(module.discover): module.__name__
+            for module in PROVIDER_MODULES
+        }
         for future in as_completed(futures):
             try:
                 future.result()
@@ -84,7 +87,9 @@ def main():
         return 1
     merged = _merge(provider_files)
     print(f"Merged {len(merged)} unique sources")
-    repos = dict(sorted(_build_output(merged).items(), key=lambda item: item[0].lower()))
+    repos = dict(
+        sorted(_build_output(merged).items(), key=lambda item: item[0].lower())
+    )
     print(f"Generated {len(repos)} repos")
     save_json(OUTPUT_PATH, repos)
     print(f"Saved to {OUTPUT_PATH.relative_to(ROOT_DIR)}")

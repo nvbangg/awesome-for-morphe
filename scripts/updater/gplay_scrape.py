@@ -3,7 +3,8 @@
 import concurrent.futures
 import sys
 from pathlib import Path
-from typing import Any, Dict, Optional, Tuple
+from typing import Any
+
 from google_play_scraper import app as gplay_app
 from google_play_scraper.exceptions import NotFoundError
 
@@ -65,7 +66,7 @@ SKIP_WORDS = {
 }
 
 
-def fetch_app_details(package_name: str) -> Tuple[Optional[Dict[str, Any]], bool]:
+def fetch_app_details(package_name: str) -> tuple[dict[str, Any] | None, bool]:
     try:
         result = gplay_app(package_name, lang="en", country="us")
         if not result:
@@ -87,18 +88,42 @@ def fetch_app_details(package_name: str) -> Tuple[Optional[Dict[str, Any]], bool
         return None, False
 
 
-def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any]) -> None:
+def process(
+    apps_dict: dict[str, Any], mode: str, _existing_apps: dict[str, Any]
+) -> None:
     official_data = load_json(OFFICIAL_BUNDLES_PATH, {})
-    official_store = official_data.get("store", {}) if isinstance(official_data, dict) else {}
+    official_store = (
+        official_data.get("store", {}) if isinstance(official_data, dict) else {}
+    )
 
     if mode == "month":
         apps_to_scrape = list(apps_dict.keys())
     else:
-        apps_to_scrape = [package_name for package_name, app_data in apps_dict.items() if any(app_data.get(field) is None for field in ("name", "iconUrl", "description", "minInstalls", "category"))]
+        apps_to_scrape = [
+            package_name
+            for package_name, app_data in apps_dict.items()
+            if any(
+                app_data.get(field) is None
+                for field in (
+                    "name",
+                    "iconUrl",
+                    "description",
+                    "minInstalls",
+                    "category",
+                )
+            )
+        ]
     if apps_to_scrape:
-        print(f"\nScraping Google Play for {len(apps_to_scrape)} apps (mode: {mode})...")
-        with concurrent.futures.ThreadPoolExecutor(max_workers=GPLAY_CONCURRENCY) as executor:
-            future_to_package = {executor.submit(fetch_app_details, package_name): package_name for package_name in apps_to_scrape}
+        print(
+            f"\nScraping Google Play for {len(apps_to_scrape)} apps (mode: {mode})..."
+        )
+        with concurrent.futures.ThreadPoolExecutor(
+            max_workers=GPLAY_CONCURRENCY
+        ) as executor:
+            future_to_package = {
+                executor.submit(fetch_app_details, package_name): package_name
+                for package_name in apps_to_scrape
+            }
             for future in concurrent.futures.as_completed(future_to_package):
                 package_name = future_to_package[future]
                 try:
@@ -119,7 +144,9 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
                             current_app["minInstalls"] = 0
                 except Exception as error:
                     print(f"[-] Error processing {package_name}: {error}")
-    print(f"\nSyncing with official store data ({len(official_store)} apps in store)...")
+    print(
+        f"\nSyncing with official store data ({len(official_store)} apps in store)..."
+    )
     for package_name, app_data in apps_dict.items():
         official_app = official_store.get(package_name)
         if official_app:
@@ -129,7 +156,11 @@ def process(apps_dict: Dict[str, Any], mode: str, existing_apps: Dict[str, Any])
                     app_data[field_name] = field_value
 
     def derive_name(package_name: str) -> str:
-        parts = [part for part in package_name.split(".") if part not in SKIP_WORDS and len(part) > 1]
+        parts = [
+            part
+            for part in package_name.split(".")
+            if part not in SKIP_WORDS and len(part) > 1
+        ]
         name = parts[-1] if parts else package_name.split(".")[-1]
         return name.replace("-", " ").replace("_", " ").title()
 

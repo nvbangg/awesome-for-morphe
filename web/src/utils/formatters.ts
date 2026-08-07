@@ -1,4 +1,7 @@
-const compactFormatter = new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 });
+const compactFormatter = new Intl.NumberFormat("en-US", {
+  notation: "compact",
+  maximumFractionDigits: 1,
+});
 const standardFormatter = new Intl.NumberFormat("en-US");
 
 export function formatNumberCompact(num: number | undefined | null): string {
@@ -11,7 +14,10 @@ export function formatStarCount(num: number | undefined | null): string {
   return standardFormatter.format(num);
 }
 
-export function isNew(firstSeen: number | undefined | null, daysThreshold: number = 7): boolean {
+export function isNew(
+  firstSeen: number | undefined | null,
+  daysThreshold: number = 7,
+): boolean {
   if (!firstSeen || firstSeen <= 0) return false;
   const now = Date.now();
   const diffInDays = (now - firstSeen) / (1000 * 60 * 60 * 24);

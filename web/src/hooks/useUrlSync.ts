@@ -2,16 +2,38 @@ import { useState, useEffect, useCallback } from "react";
 
 export type NavigationTabType = "apps" | "bundles" | "whats-new";
 
-const KNOWN_SORTS = new Set(["default", "new", "downloads", "patches", "updated", "hot", "apps", "stars", "alphabetical", "alpha", "abc"]);
+const KNOWN_SORTS = new Set([
+  "default",
+  "new",
+  "downloads",
+  "patches",
+  "updated",
+  "hot",
+  "apps",
+  "stars",
+  "alphabetical",
+  "alpha",
+  "abc",
+]);
 
 function parseSortSlug(slug: string): string {
   const clean = slug.toLowerCase();
-  if (clean === "alpha" || clean === "alphabetical" || clean === "abc") return "alphabetical";
-  if (["downloads", "patches", "new", "updated", "hot", "apps", "stars"].includes(clean)) return clean;
+  if (clean === "alpha" || clean === "alphabetical" || clean === "abc")
+    return "alphabetical";
+  if (
+    ["downloads", "patches", "new", "updated", "hot", "apps", "stars"].includes(
+      clean,
+    )
+  )
+    return clean;
   return "default";
 }
 
-function parseHash(hash: string): { tab: NavigationTabType; category: string; sort: string } {
+function parseHash(hash: string): {
+  tab: NavigationTabType;
+  category: string;
+  sort: string;
+} {
   const cleanHash = hash.startsWith("#") ? hash.substring(1) : hash;
   if (cleanHash === "whats-new") {
     return { tab: "whats-new", category: "all", sort: "default" };
@@ -21,7 +43,12 @@ function parseHash(hash: string): { tab: NavigationTabType; category: string; so
   }
 
   const parts = cleanHash.split(":");
-  const tab: NavigationTabType = parts[0] === "bundles" ? "bundles" : parts[0] === "whats-new" ? "whats-new" : "apps";
+  const tab: NavigationTabType =
+    parts[0] === "bundles"
+      ? "bundles"
+      : parts[0] === "whats-new"
+        ? "whats-new"
+        : "apps";
 
   if (tab === "whats-new") {
     return { tab: "whats-new", category: "all", sort: "default" };
@@ -34,8 +61,8 @@ function parseHash(hash: string): { tab: NavigationTabType; category: string; so
     return { tab: "bundles", category: "all", sort: parseSortSlug(part1) };
   }
 
-  let category = "all";
-  let sort = "default";
+  let category: string;
+  let sort: string;
 
   if (!part1) {
     return { tab: "apps", category: "all", sort: "default" };
@@ -58,7 +85,11 @@ function getSortSlug(sortKey: string): string {
   return sortKey;
 }
 
-function buildHash(tab: NavigationTabType, category: string, sort: string): string {
+function buildHash(
+  tab: NavigationTabType,
+  category: string,
+  sort: string,
+): string {
   if (tab === "whats-new") return "#whats-new";
 
   const categorySlug = category && category !== "all" ? category : "";
@@ -75,11 +106,14 @@ function buildHash(tab: NavigationTabType, category: string, sort: string): stri
 }
 
 export function useUrlSync() {
+  const [syncInitialized, setSyncInitialized] = useState(false);
   const [activeTab, setActiveTab] = useState<NavigationTabType>("apps");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [appsSort, setAppsSort] = useState<string>("default");
   const [bundlesSort, setBundlesSort] = useState<string>("default");
-  const [selectedAppPackageName, setSelectedAppPackageName] = useState<string | null>(null);
+  const [selectedAppPackageName, setSelectedAppPackageName] = useState<
+    string | null
+  >(null);
   const [popupBundleKey, setPopupBundleKey] = useState<string | null>(null);
   const [popupSearchQuery, setPopupSearchQuery] = useState<string>("");
 
@@ -111,7 +145,9 @@ export function useUrlSync() {
 
     const githubRepository = searchParameters.get("github");
     const gitlabRepository = searchParameters.get("gitlab");
-    const isTestBundleUrl = searchParameters.has("test-bundle") || window.location.hash.includes("test-bundle");
+    const isTestBundleUrl =
+      searchParameters.has("test-bundle") ||
+      window.location.hash.includes("test-bundle");
 
     if (!isTestBundleUrl) {
       if (githubRepository) {
@@ -128,8 +164,12 @@ export function useUrlSync() {
     setPopupSearchQuery(searchParameters.get("patch") || "");
   }, []);
 
-  useEffect(() => {
+  if (!syncInitialized) {
+    setSyncInitialized(true);
     syncFromUrl();
+  }
+
+  useEffect(() => {
     window.addEventListener("popstate", syncFromUrl);
     window.addEventListener("hashchange", syncFromUrl);
     return () => {
@@ -139,7 +179,15 @@ export function useUrlSync() {
   }, [syncFromUrl]);
 
   const updateUrl = useCallback(
-    (urlUpdates: { app?: string | null; bundle?: string | null; search?: string; tab?: NavigationTabType; category?: string; sort?: string; whatsNew?: boolean }) => {
+    (urlUpdates: {
+      app?: string | null;
+      bundle?: string | null;
+      search?: string;
+      tab?: NavigationTabType;
+      category?: string;
+      sort?: string;
+      whatsNew?: boolean;
+    }) => {
       if (typeof window === "undefined") return;
 
       const targetUrl = new URL(window.location.href);
@@ -175,7 +223,10 @@ export function useUrlSync() {
       }
 
       const nextTab = urlUpdates.tab !== undefined ? urlUpdates.tab : activeTab;
-      const nextCategory = urlUpdates.category !== undefined ? urlUpdates.category : selectedCategory;
+      const nextCategory =
+        urlUpdates.category !== undefined
+          ? urlUpdates.category
+          : selectedCategory;
 
       let nextSort = activeTab === "bundles" ? bundlesSort : appsSort;
 

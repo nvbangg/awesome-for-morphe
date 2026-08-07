@@ -9,7 +9,13 @@ interface CustomModalProps {
   centerMobile?: boolean;
 }
 
-export function CustomModal({ isOpen, onClose, children, maxWidth = "max-w-205", centerMobile = false }: CustomModalProps) {
+export function CustomModal({
+  isOpen,
+  onClose,
+  children,
+  maxWidth = "max-w-205",
+  centerMobile = false,
+}: CustomModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,7 +42,10 @@ export function CustomModal({ isOpen, onClose, children, maxWidth = "max-w-205",
   if (!isOpen) return null;
 
   return (
-    <div className={`fixed inset-0 z-50 bg-black/50 flex items-center justify-center ${centerMobile ? "p-4" : "p-4 max-sm:p-0"} animate-in fade-in duration-200`} onClick={onClose}>
+    <div
+      className={`fixed inset-0 z-50 bg-black/50 flex items-center justify-center ${centerMobile ? "p-4" : "p-4 max-sm:p-0"} animate-in fade-in duration-200`}
+      onClick={onClose}
+    >
       <div
         ref={modalRef}
         onClick={(e) => e.stopPropagation()}
@@ -50,11 +59,14 @@ export function CustomModal({ isOpen, onClose, children, maxWidth = "max-w-205",
 
 interface ModalHeaderProps {
   children: React.ReactNode;
-  onClose: () => void;
 }
 
-export function ModalHeader({ children, onClose }: ModalHeaderProps) {
-  return <div className="px-3.5 sm:px-6 pt-5 pb-3 border-b border-divider flex flex-col gap-3 sticky top-0 bg-background/80 backdrop-blur-xl z-20">{children}</div>;
+export function ModalHeader({ children }: ModalHeaderProps) {
+  return (
+    <div className="px-3.5 sm:px-6 pt-5 pb-3 border-b border-divider flex flex-col gap-3 sticky top-0 bg-background/80 backdrop-blur-xl z-20">
+      {children}
+    </div>
+  );
 }
 
 interface ModalBodyProps {
@@ -63,7 +75,13 @@ interface ModalBodyProps {
 }
 
 export function ModalBody({ children, className = "" }: ModalBodyProps) {
-  return <div className={`px-2.5 sm:px-6 pb-5 pt-3 flex flex-col gap-3 overflow-y-auto ${className}`}>{children}</div>;
+  return (
+    <div
+      className={`px-2.5 sm:px-6 pb-5 pt-3 flex flex-col gap-3 overflow-y-auto ${className}`}
+    >
+      {children}
+    </div>
+  );
 }
 
 interface CloseButtonProps {
@@ -76,7 +94,7 @@ export function CloseButton({ onClose }: CloseButtonProps) {
       type="button"
       onClick={onClose}
       aria-label="Close modal"
-      className="rounded-lg shrink-0 border border-default-200 text-foreground-600 hover:text-foreground hover:border-default-400 hover:bg-default-100 bg-background w-8 h-8 flex items-center justify-center transition-colors"
+      className="rounded-xl shrink-0 border border-divider text-foreground-600 hover:text-foreground bg-foreground/5 hover:bg-foreground/10 w-8 h-8 flex items-center justify-center transition-all cursor-pointer outline-none active:scale-95 shadow-2xs"
     >
       <X className="size-4" />
     </button>

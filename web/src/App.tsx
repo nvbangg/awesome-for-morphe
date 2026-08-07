@@ -19,8 +19,24 @@ import { TestBundleViewModal } from "@/components/bundles/TestBundleViewModal";
 import { fetchTestBundle, TestBundleData } from "@/utils/testBundleFetcher";
 
 export default function App() {
-  const { activeTab, selectedCategory, sortOrder, selectedAppPackageName, popupBundleKey, popupSearchQuery, updateUrl } = useUrlSync();
-  const { activeData, isLoading, errorMessage, whatsNewHistory, globalSearch, setGlobalSearch, stats } = usePatchData();
+  const {
+    activeTab,
+    selectedCategory,
+    sortOrder,
+    selectedAppPackageName,
+    popupBundleKey,
+    popupSearchQuery,
+    updateUrl,
+  } = useUrlSync();
+  const {
+    activeData,
+    isLoading,
+    errorMessage,
+    whatsNewHistory,
+    globalSearch,
+    setGlobalSearch,
+    stats,
+  } = usePatchData();
 
   const categories = useMemo(() => {
     if (!activeData) return [];
@@ -35,18 +51,45 @@ export default function App() {
     [setGlobalSearch, updateUrl],
   );
 
-  const handleSortOrderChange = useCallback((sort: string) => updateUrl({ sort }), [updateUrl]);
-  const handleCategoryChange = useCallback((category: string) => updateUrl({ category }), [updateUrl]);
-  const handleAppClick = useCallback((packageName: string) => updateUrl({ app: packageName }), [updateUrl]);
-  const handleBundleClick = useCallback((bundleKey: string) => updateUrl({ bundle: bundleKey }), [updateUrl]);
-  const handlePatchClick = useCallback((packageName: string, patchName: string) => updateUrl({ app: packageName, search: patchName }), [updateUrl]);
-  const handleCloseAppModal = useCallback(() => updateUrl({ app: null, search: "" }), [updateUrl]);
-  const handleCloseBundleModal = useCallback(() => updateUrl({ bundle: null, search: "" }), [updateUrl]);
-  const handleSearchChange = useCallback((search: string) => updateUrl({ search }), [updateUrl]);
+  const handleSortOrderChange = useCallback(
+    (sort: string) => updateUrl({ sort }),
+    [updateUrl],
+  );
+  const handleCategoryChange = useCallback(
+    (category: string) => updateUrl({ category }),
+    [updateUrl],
+  );
+  const handleAppClick = useCallback(
+    (packageName: string) => updateUrl({ app: packageName }),
+    [updateUrl],
+  );
+  const handleBundleClick = useCallback(
+    (bundleKey: string) => updateUrl({ bundle: bundleKey }),
+    [updateUrl],
+  );
+  const handlePatchClick = useCallback(
+    (packageName: string, patchName: string) =>
+      updateUrl({ app: packageName, search: patchName }),
+    [updateUrl],
+  );
+  const handleCloseAppModal = useCallback(
+    () => updateUrl({ app: null, search: "" }),
+    [updateUrl],
+  );
+  const handleCloseBundleModal = useCallback(
+    () => updateUrl({ bundle: null, search: "" }),
+    [updateUrl],
+  );
+  const handleSearchChange = useCallback(
+    (search: string) => updateUrl({ search }),
+    [updateUrl],
+  );
 
   const [isTestBundleInputOpen, setIsTestBundleInputOpen] = useState(false);
   const [isTestBundleViewOpen, setIsTestBundleViewOpen] = useState(false);
-  const [testBundleData, setTestBundleData] = useState<TestBundleData | null>(null);
+  const [testBundleData, setTestBundleData] = useState<TestBundleData | null>(
+    null,
+  );
   const [testBundleLoading, setTestBundleLoading] = useState(false);
   const [testBundleError, setTestBundleError] = useState("");
 
@@ -60,8 +103,12 @@ export default function App() {
         setTestBundleData(data);
         setIsTestBundleInputOpen(false);
         setIsTestBundleViewOpen(true);
-      } catch (error: any) {
-        setTestBundleError(error.message || "Failed to load bundle data. Please check the URL and try again.");
+      } catch (error: unknown) {
+        setTestBundleError(
+          error instanceof Error
+            ? error.message
+            : "Failed to load bundle data. Please check the URL and try again.",
+        );
         setIsTestBundleInputOpen(true);
       } finally {
         setTestBundleLoading(false);
@@ -82,9 +129,17 @@ export default function App() {
 
       const repoInfo = data.repoName;
       const platformParam = data.platform === "gitlab" ? "gitlab" : "github";
-      window.history.replaceState(null, "", `${window.location.pathname}?${platformParam}=${repoInfo}&test-bundle#bundles`);
-    } catch (error: any) {
-      setTestBundleError(error.message || "Failed to load bundle data. Please check the URL and try again.");
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}?${platformParam}=${repoInfo}&test-bundle#bundles`,
+      );
+    } catch (error: unknown) {
+      setTestBundleError(
+        error instanceof Error
+          ? error.message
+          : "Failed to load bundle data. Please check the URL and try again.",
+      );
     } finally {
       setTestBundleLoading(false);
     }
@@ -94,7 +149,9 @@ export default function App() {
     if (!activeData) return;
     const handleUrlState = () => {
       const searchParams = new URLSearchParams(window.location.search);
-      const isTestBundle = searchParams.has("test-bundle") || window.location.hash.includes("test-bundle");
+      const isTestBundle =
+        searchParams.has("test-bundle") ||
+        window.location.hash.includes("test-bundle");
 
       if (isTestBundle) {
         const githubRepo = searchParams.get("github");
@@ -149,7 +206,15 @@ export default function App() {
                 <SkeletonGrid />
               ) : (
                 <>
-                  {activeTab === "apps" && <AppGrid activeData={activeData} sortOrder={sortOrder} selectedCategory={selectedCategory} globalSearch={globalSearch} onAppClick={handleAppClick} />}
+                  {activeTab === "apps" && (
+                    <AppGrid
+                      activeData={activeData}
+                      sortOrder={sortOrder}
+                      selectedCategory={selectedCategory}
+                      globalSearch={globalSearch}
+                      onAppClick={handleAppClick}
+                    />
+                  )}
 
                   {activeTab === "bundles" && (
                     <>
@@ -159,7 +224,11 @@ export default function App() {
                           onClick={() => {
                             setTestBundleError("");
                             setIsTestBundleInputOpen(true);
-                            window.history.replaceState(null, "", `${window.location.pathname}?test-bundle#bundles`);
+                            window.history.replaceState(
+                              null,
+                              "",
+                              `${window.location.pathname}?test-bundle#bundles`,
+                            );
                           }}
                           className="font-semibold text-primary hover:underline hover:text-primary/80 transition-colors"
                         >
@@ -175,7 +244,12 @@ export default function App() {
                           Submit Bundle
                         </a>
                       </div>
-                      <BundleGrid activeData={activeData} sortOrder={sortOrder} globalSearch={globalSearch} onBundleClick={handleBundleClick} />
+                      <BundleGrid
+                        activeData={activeData}
+                        sortOrder={sortOrder}
+                        globalSearch={globalSearch}
+                        onBundleClick={handleBundleClick}
+                      />
                     </>
                   )}
 
@@ -207,7 +281,11 @@ export default function App() {
           setTestBundleError("");
           setIsTestBundleInputOpen(false);
           if (window.location.search.includes("test-bundle")) {
-            window.history.replaceState(null, "", `${window.location.pathname}#bundles`);
+            window.history.replaceState(
+              null,
+              "",
+              `${window.location.pathname}#bundles`,
+            );
           }
         }}
         onSubmit={handleTestBundleSubmit}
@@ -219,7 +297,11 @@ export default function App() {
         isOpen={isTestBundleViewOpen}
         onClose={() => {
           setIsTestBundleViewOpen(false);
-          window.history.replaceState(null, "", `${window.location.pathname}#bundles`);
+          window.history.replaceState(
+            null,
+            "",
+            `${window.location.pathname}#bundles`,
+          );
         }}
         data={testBundleData}
         activeData={activeData}
@@ -234,7 +316,14 @@ export default function App() {
         onSearchChange={handleSearchChange}
       />
 
-      <BundleModal isOpen={!!popupBundleKey} onClose={handleCloseBundleModal} bundleKey={popupBundleKey} activeData={activeData} searchQuery={popupSearchQuery} onSearchChange={handleSearchChange} />
+      <BundleModal
+        isOpen={!!popupBundleKey}
+        onClose={handleCloseBundleModal}
+        bundleKey={popupBundleKey}
+        activeData={activeData}
+        searchQuery={popupSearchQuery}
+        onSearchChange={handleSearchChange}
+      />
     </div>
   );
 }

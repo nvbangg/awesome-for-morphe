@@ -1,10 +1,11 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-import os
 import stat
 import subprocess
 import sys
 from pathlib import Path
+
+from utils import load_json, save_json
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
@@ -17,9 +18,6 @@ PARSED_FILES_PATH = BUNDLE_PARSER_DIR / "parsed_files.txt"
 GRADLE_EXECUTABLE_NAME = "gradlew.bat" if sys.platform == "win32" else "gradlew"
 GRADLE_EXECUTABLE_PATH = BUNDLE_PARSER_DIR / GRADLE_EXECUTABLE_NAME
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from utils import load_json, save_json
-
 
 def commit_pending_repos() -> None:
     if not PENDING_REPOS_PATH.exists():
@@ -31,7 +29,11 @@ def commit_pending_repos() -> None:
 
     successful_parsed_files = set()
     if PARSED_FILES_PATH.exists():
-        successful_parsed_files = {line.strip() for line in PARSED_FILES_PATH.read_text(encoding="utf-8").splitlines() if line.strip()}
+        successful_parsed_files = {
+            line.strip()
+            for line in PARSED_FILES_PATH.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
 
     repos_data = load_json(REPOS_JSON_PATH, {})
     committed_target_count = 0
@@ -51,7 +53,12 @@ def commit_pending_repos() -> None:
                 continue
             file_prefix = f"{source}~{owner}~{repo}~{branch}.json"
             patch_exists = (PATCHES_DIR / file_prefix).exists()
-            if branch == "image" or file_prefix in successful_parsed_files or patch_exists or new_val is None:
+            if (
+                branch == "image"
+                or file_prefix in successful_parsed_files
+                or patch_exists
+                or new_val is None
+            ):
                 repos_data.setdefault(base_key, {})[branch] = new_val
                 committed_target_count += 1
 
@@ -61,7 +68,7 @@ def commit_pending_repos() -> None:
             raw_branches = repos_data[key]
             if isinstance(raw_branches, dict):
                 formatted_branches = {}
-                if "name" in raw_branches and raw_branches["name"]:
+                if raw_branches.get("name"):
                     formatted_branches["name"] = raw_branches["name"]
                 for branch in ["main", "dev", "image"]:
                     if raw_branches.get(branch) is not None:
@@ -69,22 +76,42 @@ def commit_pending_repos() -> None:
                 if formatted_branches:
                     formatted_repos_data[key] = formatted_branches
         save_json(REPOS_JSON_PATH, formatted_repos_data)
-        print(f"Successfully committed pending SHA updates for {committed_target_count} target(s) to repos.json.")
+        print(
+            f"Successfully committed pending SHA updates for {committed_target_count} target(s) to repos.json."
+        )
 
 
 def run_bundle_parser() -> None:
-    has_updated_files = UPDATED_FILES_PATH.exists() and bool(UPDATED_FILES_PATH.read_text(encoding="utf-8").strip())
+    has_updated_files = UPDATED_FILES_PATH.exists() and bool(
+        UPDATED_FILES_PATH.read_text(encoding="utf-8").strip()
+    )
 
     if has_updated_files:
         print("\nRunning bundle-parser to extract patches-list from .mpp files...")
         if sys.platform != "win32" and GRADLE_EXECUTABLE_PATH.exists():
-            os.chmod(GRADLE_EXECUTABLE_PATH, os.stat(GRADLE_EXECUTABLE_PATH).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+            GRADLE_EXECUTABLE_PATH.chmod(
+                GRADLE_EXECUTABLE_PATH.stat().st_mode
+                | stat.S_IXUSR
+                | stat.S_IXGRP
+                | stat.S_IXOTH
+            )
 
-        command_arguments = [str(GRADLE_EXECUTABLE_PATH), "run", "--args=@updated_files.txt"]
+        command_arguments = [
+            str(GRADLE_EXECUTABLE_PATH),
+            "run",
+            "--args=@updated_files.txt",
+        ]
         try:
-            execution_result = subprocess.run(command_arguments, cwd=str(BUNDLE_PARSER_DIR), capture_output=False, text=True)
+            execution_result = subprocess.run(
+                command_arguments,
+                cwd=str(BUNDLE_PARSER_DIR),
+                capture_output=False,
+                text=True,
+            )
             if execution_result.returncode != 0:
-                print(f"[-] [bundle-parser] Exited with code {execution_result.returncode}")
+                print(
+                    f"[-] [bundle-parser] Exited with code {execution_result.returncode}"
+                )
             else:
                 print("bundle-parser completed successfully.")
         except Exception as error:

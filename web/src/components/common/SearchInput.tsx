@@ -11,13 +11,22 @@ interface SearchInputProps {
   debounceMs?: number;
 }
 
-export function SearchInput({ value, onChange, placeholder = "Search…", id, className = "", debounceMs = 150 }: SearchInputProps) {
+export function SearchInput({
+  value,
+  onChange,
+  placeholder = "Search…",
+  id,
+  className = "",
+  debounceMs = 150,
+}: SearchInputProps) {
   const [localValue, setLocalValue] = useState(value);
+  const [prevValue, setPrevValue] = useState(value);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
+  if (value !== prevValue) {
+    setPrevValue(value);
     setLocalValue(value);
-  }, [value]);
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {

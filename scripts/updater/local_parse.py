@@ -5,7 +5,7 @@ import re
 import sys
 import time
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from utils import load_json, parse_timestamp, save_json
@@ -18,19 +18,21 @@ REPOS_JSON_PATH = DATA_DIR / "repos.json"
 STAR_HISTORY_JSON_PATH = DATA_DIR / "star-history.json"
 
 
-def parse_version_item(item: Any) -> Optional[Dict[str, Any]]:
+def parse_version_item(item: Any) -> dict[str, Any] | None:
     if isinstance(item, str):
         return {"version": item}
-    elif isinstance(item, dict) and "version" in item:
-        result: Dict[str, Any] = {"version": item["version"]}
+    if isinstance(item, dict) and "version" in item:
+        result: dict[str, Any] = {"version": item["version"]}
         if item.get("isExperimental"):
             result["isExperimental"] = True
         return result
     return None
 
 
-def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Optional[Dict[str, Any]]:
-    output: Dict[str, Any] = {}
+def strip_patch(
+    patch: dict[str, Any], discovered_names: dict[str, str]
+) -> dict[str, Any] | None:
+    output: dict[str, Any] = {}
     if "name" in patch:
         output["name"] = patch["name"]
     if patch.get("description"):
@@ -91,7 +93,7 @@ def strip_patch(patch: Dict[str, Any], discovered_names: Dict[str, str]) -> Opti
     return output
 
 
-def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any]) -> list:
+def process(bundle_sources: dict[str, Any], apps_dict: dict[str, Any]) -> list:
     compatibilities_list = []
     compatibilities_map = {}
 
@@ -123,38 +125,80 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any]) -> list:
         main_list_path = PATCHES_DIR / f"{file_prefix}~main.json"
         dev_bundle_path = BUNDLES_DIR / f"{file_prefix}~dev.json"
         dev_list_path = PATCHES_DIR / f"{file_prefix}~dev.json"
-        main_json = load_json(main_bundle_path) if main_bundle_path.exists() and main_list_path.exists() else None
-        dev_json = load_json(dev_bundle_path) if dev_bundle_path.exists() and dev_list_path.exists() else None
+        main_json = (
+            load_json(main_bundle_path)
+            if main_bundle_path.exists() and main_list_path.exists()
+            else None
+        )
+        dev_json = (
+            load_json(dev_bundle_path)
+            if dev_bundle_path.exists() and dev_list_path.exists()
+            else None
+        )
         if not main_json and not dev_json:
             keys_to_remove.append(base_key)
             continue
-        main_timestamp = parse_timestamp(main_json["created_at"]) if main_json and "created_at" in main_json else 0
-        dev_timestamp = parse_timestamp(dev_json["created_at"]) if dev_json and "created_at" in dev_json else 0
+        main_timestamp = (
+            parse_timestamp(main_json["created_at"])
+            if main_json and "created_at" in main_json
+            else 0
+        )
+        dev_timestamp = (
+            parse_timestamp(dev_json["created_at"])
+            if dev_json and "created_at" in dev_json
+            else 0
+        )
         is_latest_dev = bool(dev_json and dev_timestamp > main_timestamp)
-        list_path = dev_list_path if is_latest_dev else (main_list_path if main_json else dev_list_path)
-        updated_at = dev_timestamp if is_latest_dev else (main_timestamp if main_json else dev_timestamp)
+        list_path = (
+            dev_list_path
+            if is_latest_dev
+            else (main_list_path if main_json else dev_list_path)
+        )
+        updated_at = (
+            dev_timestamp
+            if is_latest_dev
+            else (main_timestamp if main_json else dev_timestamp)
+        )
         source_entry["isPreRelease"] = not bool(main_json)
         source_entry["updatedAt"] = updated_at
         main_patch_names = set()
         if is_latest_dev and main_json and main_list_path.exists():
             main_list_raw = load_json(main_list_path, [])
-            main_patches_raw = main_list_raw.get("patches", []) if isinstance(main_list_raw, dict) else main_list_raw
+            main_patches_raw = (
+                main_list_raw.get("patches", [])
+                if isinstance(main_list_raw, dict)
+                else main_list_raw
+            )
             if isinstance(main_patches_raw, list):
-                main_patch_names = {patch.get("name") for patch in main_patches_raw if isinstance(patch, dict) and patch.get("name")}
+                main_patch_names = {
+                    patch.get("name")
+                    for patch in main_patches_raw
+                    if isinstance(patch, dict) and patch.get("name")
+                }
         patches_list_json = load_json(list_path, [])
         if isinstance(patches_list_json, list):
             patches_list_json = {"patches": patches_list_json}
         existing_name = source_entry.get("name")
-        repo_name_from_json = repos_data.get(base_key, {}).get("name") if isinstance(repos_data.get(base_key), dict) else None
+        repo_name_from_json = (
+            repos_data.get(base_key, {}).get("name")
+            if isinstance(repos_data.get(base_key), dict)
+            else None
+        )
         bundle_name = repo_name_from_json or existing_name
         cleaned_name = bundle_name if bundle_name else ""
         if cleaned_name:
             if cleaned_name.lower() == "morphe patches":
                 cleaned_name = ""
             else:
-                pattern = re.compile(r"(?i)(?: for use with morphe| for morphe|['']s morphe patches|['']s patches| morphe| patches| patch)+$")
+                pattern = re.compile(
+                    r"(?i)(?: for use with morphe| for morphe|['']s morphe patches|['']s patches| morphe| patches| patch)+$"
+                )
                 cleaned_name = pattern.sub("", cleaned_name).strip("- ")
-        source_entry["name"] = cleaned_name if cleaned_name else (existing_name if existing_name else owner)
+        source_entry["name"] = (
+            cleaned_name
+            if cleaned_name
+            else (existing_name if existing_name else owner)
+        )
         patches = patches_list_json.get("patches", [])
         valid_patches = []
         discovered_names = {}
@@ -182,7 +226,9 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any]) -> list:
                             app_name = discovered_names.get(package_name)
                             if app_name and not apps_dict[package_name].get("name"):
                                 apps_dict[package_name]["name"] = app_name
-                patch_dict["compatiblePackagesKey"] = get_compat_key(patch_dict["compatiblePackages"])
+                patch_dict["compatiblePackagesKey"] = get_compat_key(
+                    patch_dict["compatiblePackages"]
+                )
                 del patch_dict["compatiblePackages"]
             valid_patches.append(patch_dict)
         source_entry["patches"] = valid_patches
@@ -193,7 +239,9 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any]) -> list:
         has_universal_patch = False
         for patch_dict in valid_patches:
             if "compatiblePackagesKey" in patch_dict:
-                compatibility_data = compatibilities_list[patch_dict["compatiblePackagesKey"]]
+                compatibility_data = compatibilities_list[
+                    patch_dict["compatiblePackagesKey"]
+                ]
                 for compatibility_entry in compatibility_data:
                     package_name = compatibility_entry.get("packageName")
                     if package_name and package_name not in app_first_seen_map:
@@ -207,7 +255,9 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any]) -> list:
         if base_key in keys_to_remove:
             continue
         if not source_entry.get("patches"):
-            print(f"[-] Bundle '{base_key}' has no patches. Skipping and excluding from bundles.json.")
+            print(
+                f"[-] Bundle '{base_key}' has no patches. Skipping and excluding from bundles.json."
+            )
             keys_to_remove.append(base_key)
         else:
             bundle_apps = set()
@@ -218,14 +268,22 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any]) -> list:
                         if "packageName" in compat_entry:
                             bundle_apps.add(compat_entry["packageName"])
             if bundle_apps == {"com.example.app"}:
-                print(f"[-] Bundle '{base_key}' only has example app (com.example.app). Skipping and excluding from bundles.json.")
+                print(
+                    f"[-] Bundle '{base_key}' only has example app (com.example.app). Skipping and excluding from bundles.json."
+                )
                 keys_to_remove.append(base_key)
     for key in keys_to_remove:
         bundle_sources.pop(key, None)
-    apps_to_remove = [package_name for package_name in list(apps_dict.keys()) if package_name not in valid_apps_from_bundles and package_name != "universal"]
+    apps_to_remove = [
+        package_name
+        for package_name in list(apps_dict.keys())
+        if package_name not in valid_apps_from_bundles and package_name != "universal"
+    ]
     for package_name in apps_to_remove:
         del apps_dict[package_name]
-        print(f"[INFO] Removed app '{package_name}' (no longer supported by any bundle)")
+        print(
+            f"[INFO] Removed app '{package_name}' (no longer supported by any bundle)"
+        )
     valid_prefixes = set()
     for base_key in repos_data:
         if ":" in base_key:
@@ -238,7 +296,9 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any]) -> list:
     for directory in [BUNDLES_DIR, PATCHES_DIR]:
         if directory.exists():
             for filepath in directory.glob("*.json"):
-                prefix = filepath.name.removesuffix("~main.json").removesuffix("~dev.json")
+                prefix = filepath.name.removesuffix("~main.json").removesuffix(
+                    "~dev.json"
+                )
                 if prefix not in valid_prefixes:
                     filepath.unlink()
     if STAR_HISTORY_JSON_PATH.exists():
@@ -250,7 +310,9 @@ def process(bundle_sources: Dict[str, Any], apps_dict: Dict[str, Any]) -> list:
                     continue
                 if isinstance(history_map, dict):
                     sorted_dates = sorted(history_map.keys())[-40:]
-                    updated_star_history[base_key] = {date: history_map[date] for date in sorted_dates}
+                    updated_star_history[base_key] = {
+                        date: history_map[date] for date in sorted_dates
+                    }
                 else:
                     updated_star_history[base_key] = history_map
             save_json(STAR_HISTORY_JSON_PATH, updated_star_history)

@@ -9,9 +9,18 @@ export function Header() {
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-divider transition-shadow">
       <div className="container mx-auto px-6 max-w-300 py-3 flex items-center justify-between">
-        <a href="https://awesome-morphe.vercel.app/" className="flex items-center gap-3 no-underline shrink-0 group">
-          <img alt="Awesome Morphe" className="h-8 w-8 object-contain" src="assets/favicon.svg" />
-          <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Awesome Morphe</span>
+        <a
+          href="https://awesome-morphe.vercel.app/"
+          className="flex items-center gap-3 no-underline shrink-0 group"
+        >
+          <img
+            alt="Awesome Morphe"
+            className="h-8 w-8 object-contain"
+            src="assets/favicon.svg"
+          />
+          <span className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
+            Awesome Morphe
+          </span>
         </a>
 
         <div className="flex items-center gap-2 shrink-0">

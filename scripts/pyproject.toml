@@ -1,0 +1,18 @@
+[project]
+name = "awesome-morphe-scripts"
+version = "0.0.0"
+requires-python = ">=3.12"
+dependencies = [
+    "google-play-scraper>=1.2.7",
+]
+
+[tool.setuptools]
+packages = ["updater", "providers"]
+py-modules = ["discover", "fetch", "parse", "telegram", "update", "utils", "whats_new"]
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I", "N", "UP", "ASYNC", "A", "C4", "PIE", "RET", "SIM", "ARG", "PTH", "RUF"]
+ignore = ["E501"]

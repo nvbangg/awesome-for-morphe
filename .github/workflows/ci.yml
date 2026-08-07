@@ -51,8 +51,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          pip install -e scripts/
           python scripts/parse.py
-          pip install -r scripts/requirements.txt
           python scripts/update.py
 
       - name: Commit and push changes

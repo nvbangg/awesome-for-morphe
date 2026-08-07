@@ -24,10 +24,14 @@ def discover():
         save_json(SNAPSHOT_PATH, data)
     except Exception as error:
         existing_data = load_json(SNAPSHOT_PATH)
-        print(f"::warning title=Discover:: [-] [official] Failed: {error}. Kept {len(existing_data)} sources in official.json")
+        print(
+            f"::warning title=Discover:: [-] [official] Failed: {error}. Kept {len(existing_data)} sources in official.json"
+        )
         if not existing_data:
             existing_data = load_json(OUTPUT_PATH)
-            print(f"::warning title=Discover:: [-] [official] Empty result. Kept {len(existing_data)} sources in official.json")
+            print(
+                f"::warning title=Discover:: [-] [official] Empty result. Kept {len(existing_data)} sources in official.json"
+            )
             return existing_data
         data = existing_data
 
@@ -44,13 +48,19 @@ def discover():
 
     if not discovered:
         existing_data = load_json(OUTPUT_PATH)
-        print(f"::warning title=Discover:: [-] [official] Empty result. Kept {len(existing_data)} sources in official.json")
+        print(
+            f"::warning title=Discover:: [-] [official] Empty result. Kept {len(existing_data)} sources in official.json"
+        )
         return existing_data
-    save_json(OUTPUT_PATH, dict(sorted(discovered.items(), key=lambda item: item[0].lower())))
+    save_json(
+        OUTPUT_PATH, dict(sorted(discovered.items(), key=lambda item: item[0].lower()))
+    )
     print(f"[official] Exported {len(discovered)} sources to official.json")
     return discovered
 
 
 if __name__ == "__main__":
     result = discover()
-    print(f"Saved {len(result)} repos to {OUTPUT_PATH.relative_to(OUTPUT_PATH.parents[2])}")
+    print(
+        f"Saved {len(result)} repos to {OUTPUT_PATH.relative_to(OUTPUT_PATH.parents[2])}"
+    )

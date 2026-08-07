@@ -14,16 +14,28 @@ export function usePatchData() {
       const loadedData = await loadInitialData();
       setActiveData(loadedData);
     } catch (error: unknown) {
-      setErrorMessage(error instanceof Error ? error.message : "Failed to load data");
+      setErrorMessage(
+        error instanceof Error ? error.message : "Failed to load data",
+      );
     } finally {
       setIsLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    fetchData();
+    let mounted = true;
+    Promise.resolve().then(() => {
+      if (mounted) fetchData();
+    });
+    return () => {
+      mounted = false;
+    };
   }, [fetchData]);
-  const stats = useMemo(() => activeData?.stats || { bundlesCount: 0, patchesCount: 0, appsCount: 0 }, [activeData]);
+  const stats = useMemo(
+    () =>
+      activeData?.stats || { bundlesCount: 0, patchesCount: 0, appsCount: 0 },
+    [activeData],
+  );
 
   return {
     activeData,

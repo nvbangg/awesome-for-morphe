@@ -10,7 +10,12 @@ interface BundleGridProps {
   onBundleClick: (bundleKey: string) => void;
 }
 
-export const BundleGrid = memo(function BundleGrid({ activeData, sortOrder, globalSearch, onBundleClick }: BundleGridProps) {
+export const BundleGrid = memo(function BundleGrid({
+  activeData,
+  sortOrder,
+  globalSearch,
+  onBundleClick,
+}: BundleGridProps) {
   const deferredSearch = useDeferredValue(globalSearch);
 
   const processedBundles = useMemo(() => {
@@ -25,7 +30,11 @@ export const BundleGrid = memo(function BundleGrid({ activeData, sortOrder, glob
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 my-6">
       {processedBundles.map((bundleItem) => (
-        <BundleCard key={bundleItem.key} bundleItem={bundleItem} onClick={onBundleClick} />
+        <BundleCard
+          key={bundleItem.key}
+          bundleItem={bundleItem}
+          onClick={onBundleClick}
+        />
       ))}
     </div>
   );

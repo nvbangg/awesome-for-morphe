@@ -155,7 +155,7 @@
         },
         {
           "name": "Paramount+ Android TV",
-          "description": "Removes VOD ads and pause ads while preserving live TV.",
+          "description": "Removes VOD pre-roll ads and pause ads while preserving live TV.",
           "use": true,
           "options": [],
           "compatiblePackagesKey": 15,
@@ -254,7 +254,7 @@
         "com.wbd.hbomax": 1784332800000,
         "com.univision.prendetv": 1783814400000
       },
-      "stars": 107,
+      "stars": 108,
       "updatedAt": 1782432000000,
       "firstSeen": 1779696344214,
       "appFirstSeen": {
@@ -270,9 +270,9 @@
         "com.tubitv": 1780009881312,
         "tv.twitch.android.app": 1785607698778
       },
-      "starsGained7d": 8,
-      "starsGained40d": 22,
-      "hotRank": 41
+      "starsGained7d": 9,
+      "starsGained40d": 23,
+      "hotRank": 24
     },
     {
       "source": "github",
@@ -328,7 +328,7 @@
       },
       "starsGained7d": 2,
       "starsGained40d": 2,
-      "hotRank": 25
+      "hotRank": 26
     },
     {
       "source": "github",
@@ -364,7 +364,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "hotRank": 27
+      "hotRank": 28
     },
     {
       "source": "github",
@@ -1678,7 +1678,7 @@
       },
       "starsGained7d": 3,
       "starsGained40d": 12,
-      "hotRank": 22
+      "hotRank": 23
     },
     {
       "source": "github",
@@ -3420,7 +3420,7 @@
       "appUpdates": {
         "com.generalcomp.truecloud": 1783123200000
       },
-      "stars": 9,
+      "stars": 10,
       "updatedAt": 1785974400000,
       "firstSeen": 1783246898450,
       "appFirstSeen": {
@@ -3432,9 +3432,9 @@
         "com.touchfoo.swordigo": 1785570399067,
         "com.generalcomp.truecloud": 1783246898450
       },
-      "starsGained7d": 3,
-      "starsGained40d": 3,
-      "hotRank": 13
+      "starsGained7d": 4,
+      "starsGained40d": 4,
+      "hotRank": 12
     },
     {
       "source": "github",
@@ -3640,7 +3640,7 @@
       },
       "starsGained7d": 3,
       "starsGained40d": 4,
-      "hotRank": 19
+      "hotRank": 20
     },
     {
       "source": "github",
@@ -3675,7 +3675,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "hotRank": 49
+      "hotRank": 48
     },
     {
       "source": "github",
@@ -4664,15 +4664,15 @@
         "com.instagram.android": 1785715200000,
         "com.twitter.android": 1785715200000
       },
-      "stars": 4591,
+      "stars": 4593,
       "updatedAt": 1785715200000,
       "firstSeen": 1773154796000,
       "appFirstSeen": {
         "com.twitter.android": 1773154796000,
         "com.instagram.android": 1773154796000
       },
-      "starsGained7d": 70,
-      "starsGained40d": 219,
+      "starsGained7d": 72,
+      "starsGained40d": 221,
       "hotRank": 0
     },
     {
@@ -4708,7 +4708,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "hotRank": 45
+      "hotRank": 44
     },
     {
       "source": "github",
@@ -4753,7 +4753,7 @@
       },
       "starsGained7d": 2,
       "starsGained40d": 2,
-      "hotRank": 51
+      "hotRank": 52
     },
     {
       "source": "github",
@@ -4857,7 +4857,7 @@
       },
       "starsGained7d": 3,
       "starsGained40d": 3,
-      "hotRank": 35
+      "hotRank": 36
     },
     {
       "source": "github",
@@ -6134,6 +6134,13 @@
         },
         {
           "name": "Remove License Activity",
+          "description": "Removes the PairIP LicenseActivity from AndroidManifest.xml.",
+          "default": true,
+          "options": [],
+          "compatiblePackagesKey": 187
+        },
+        {
+          "name": "Remove License Activity",
           "description": "Removes the PairIP LicenseActivity and LicenseContentProvider from AndroidManifest.xml and the com.android.vending.CHECK_LICENSE permission, so the app runs without a valid Play Store license (required because the APK is re-signed during patching).",
           "default": true,
           "options": [],
@@ -6151,14 +6158,14 @@
           "description": "Bypasses the PairIP Google Play Licensing check so the app runs without a valid Play Store license.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 186
+          "compatiblePackagesKey": 187
         },
         {
           "name": "Remove Watermark",
           "description": "Patches the procedural GLSL shader in libharwin_native.so to disable the \"PRISMATICA\" watermark in the video player and exported videos.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 186
+          "compatiblePackagesKey": 187
         },
         {
           "name": "Unlock Premium",
@@ -6169,17 +6176,24 @@
         },
         {
           "name": "Unlock Premium",
+          "description": "Unlocks all premium features in JellyWatch TV. Premium entitlement is server-verified against verify.jellywatch.app and surfaced to the UI as a PremiumStatus data class (isPremium = first boolean field); the patch forces that field to true and neutralizes the PairIP Play Store license check that gates the app on launch.",
+          "default": true,
+          "options": [],
+          "compatiblePackagesKey": 186
+        },
+        {
+          "name": "Unlock Premium",
           "description": "Patches Dart AOT-compiled libapp.so to unlock all premium features. Forces hasPremiumAccess and isPaidUser to always return true by NOPing their ARM64 conditional branch instructions.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 187
+          "compatiblePackagesKey": 188
         },
         {
           "name": "Unlock Premium",
           "description": "Forces the premium entitlement in Native Camera. Premium status is a local 'is_premium' SharedPreferences flag read on startup behind PairIP's Play Store licensing, so this unlocks RAW DNG, 10-bit video, HLG/UHDR and the boosted-ISO seekbar.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 188
+          "compatiblePackagesKey": 189
         },
         {
           "name": "Unlock Premium",
@@ -6194,25 +6208,9 @@
           "default": true,
           "options": [],
           "compatiblePackagesKey": 184
-        },
-        {
-          "name": "Remove License Activity",
-          "description": "Removes the PairIP LicenseActivity from AndroidManifest.xml.",
-          "default": true,
-          "options": [],
-          "preRelease": true,
-          "compatiblePackagesKey": 189
-        },
-        {
-          "name": "Unlock Premium",
-          "description": "Unlocks all premium features in JellyWatch TV. Premium entitlement is server-verified against verify.jellywatch.app and surfaced to the UI as a PremiumStatus data class (isPremium = first boolean field); the patch forces that field to true and neutralizes the PairIP Play Store license check that gates the app on launch.",
-          "default": true,
-          "options": [],
-          "preRelease": true,
-          "compatiblePackagesKey": 189
         }
       ],
-      "changelog": "## [1.3.7-dev.4](https://github.com/franticg33k/morphe-patches/compare/v1.3.7-dev.3...v1.3.7-dev.4) (2026-08-06)\n\n### 🚀 Updated App Support\n\n* fix JellyWatch premium unlock for 2.0.REV-1712 ([ed92817](https://github.com/franticg33k/morphe-patches/commit/ed92817c5fb13a2192919291ed0caea7a2ac2ec0))\n\n## [1.3.7-dev.3](https://github.com/franticg33k/morphe-patches/compare/v1.3.7-dev.2...v1.3.7-dev.3) (2026-08-06)\n\n### 🚀 Updated App Support\n\n* add JellyWatch TV premium unlock patch ([f17d309](https://github.com/franticg33k/morphe-patches/commit/f17d309748c27f9ccc68d99cce1f23f47397cb44))\n* fix Native Camera premium unlock for 1.1.7 ([13c8db8](https://github.com/franticg33k/morphe-patches/commit/13c8db879f8526db74c33085cae4e4c88ed783fb))\n\n## [1.3.7-dev.2](https://github.com/franticg33k/morphe-patches/compare/v1.3.7-dev.1...v1.3.7-dev.2) (2026-08-04)\n\n### 🚀 Updated App Support\n\n* update app name in Compatibility for Karobar ([6724240](https://github.com/franticg33k/morphe-patches/commit/6724240631d6fea3a3b58f8901ff5670d2c1c4e2))\n\n## [1.3.7-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.6...v1.3.7-dev.1) (2026-08-04)\n\n### 🚀 Updated App Support\n\n* update offsets and descriptions in EnablePremiumPatch for premium features ([456db10](https://github.com/franticg33k/morphe-patches/commit/456db10338e8e0bc96de2e204b3d04fd3dedfb3c))\n\n## [1.3.6](https://github.com/franticg33k/morphe-patches/compare/v1.3.5...v1.3.6) (2026-07-31)\n\n### 🚀 Updated App Support\n\n* add native camera premium unlock patch ([be0bb33](https://github.com/franticg33k/morphe-patches/commit/be0bb33179ebe406ae17de69d7682dbb9c4172e9))\n* remove oldroll patches ([97410f9](https://github.com/franticg33k/morphe-patches/commit/97410f96a8e2756fbfa8ea3e38496347a17aaca8))\n\n## [1.3.6-dev.2](https://github.com/franticg33k/morphe-patches/compare/v1.3.6-dev.1...v1.3.6-dev.2) (2026-07-31)\n\n### 🚀 Updated App Support\n\n* add native camera premium unlock patch ([be0bb33](https://github.com/franticg33k/morphe-patches/commit/be0bb33179ebe406ae17de69d7682dbb9c4172e9))\n\n## [1.3.6-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.5...v1.3.6-dev.1) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* remove oldroll patches ([97410f9](https://github.com/franticg33k/morphe-patches/commit/97410f96a8e2756fbfa8ea3e38496347a17aaca8))\n\n## [1.3.5](https://github.com/franticg33k/morphe-patches/compare/v1.3.4...v1.3.5) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* remove overly broad getBoolean patch causing crashes ([df410c6](https://github.com/franticg33k/morphe-patches/commit/df410c6f3a5a168e07aef65161a9c6726a35f6d4))\n\n## [1.3.5-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.4...v1.3.5-dev.1) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* remove overly broad getBoolean patch causing crashes ([df410c6](https://github.com/franticg33k/morphe-patches/commit/df410c6f3a5a168e07aef65161a9c6726a35f6d4))\n\n## [1.3.4](https://github.com/franticg33k/morphe-patches/compare/v1.3.3...v1.3.4) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* fix fingerprints to use smali class paths ([3888e3f](https://github.com/franticg33k/morphe-patches/commit/3888e3f11105c5a67aeb1c5229724284353cfee5))\n\n## [1.3.4-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.3...v1.3.4-dev.1) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* fix fingerprints to use smali class paths ([3888e3f](https://github.com/franticg33k/morphe-patches/commit/3888e3f11105c5a67aeb1c5229724284353cfee5))\n\n## [1.3.3](https://github.com/franticg33k/morphe-patches/compare/v1.3.2...v1.3.3) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* fix oldroll package name to com.accordion.analogcam ([b201d70](https://github.com/franticg33k/morphe-patches/commit/b201d7075d0ca492231f5b60a655e5667d9e7f22))\n\n## [1.3.3-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.2...v1.3.3-dev.1) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* fix oldroll package name to com.accordion.analogcam ([b201d70](https://github.com/franticg33k/morphe-patches/commit/b201d7075d0ca492231f5b60a655e5667d9e7f22))\n\n## [1.3.2](https://github.com/franticg33k/morphe-patches/compare/v1.3.1...v1.3.2) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* add oldroll pro unlock patches ([37aa696](https://github.com/franticg33k/morphe-patches/commit/37aa696c2982594350bdfa307987743df8e02374))\n\n## [1.3.2-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.1...v1.3.2-dev.1) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* add oldroll pro unlock patches ([37aa696](https://github.com/franticg33k/morphe-patches/commit/37aa696c2982594350bdfa307987743df8e02374))",
+      "changelog": "## [1.3.7](https://github.com/franticg33k/morphe-patches/compare/v1.3.6...v1.3.7) (2026-08-07)\n\n### 🚀 Updated App Support\n\n* add JellyWatch TV premium unlock patch ([f17d309](https://github.com/franticg33k/morphe-patches/commit/f17d309748c27f9ccc68d99cce1f23f47397cb44))\n* fix JellyWatch premium unlock for 2.0.REV-1712 ([ed92817](https://github.com/franticg33k/morphe-patches/commit/ed92817c5fb13a2192919291ed0caea7a2ac2ec0))\n* fix Native Camera premium unlock for 1.1.7 ([13c8db8](https://github.com/franticg33k/morphe-patches/commit/13c8db879f8526db74c33085cae4e4c88ed783fb))\n* update app name in Compatibility for Karobar ([6724240](https://github.com/franticg33k/morphe-patches/commit/6724240631d6fea3a3b58f8901ff5670d2c1c4e2))\n* update offsets and descriptions in EnablePremiumPatch for premium features ([456db10](https://github.com/franticg33k/morphe-patches/commit/456db10338e8e0bc96de2e204b3d04fd3dedfb3c))\n\n## [1.3.7-dev.4](https://github.com/franticg33k/morphe-patches/compare/v1.3.7-dev.3...v1.3.7-dev.4) (2026-08-06)\n\n### 🚀 Updated App Support\n\n* fix JellyWatch premium unlock for 2.0.REV-1712 ([ed92817](https://github.com/franticg33k/morphe-patches/commit/ed92817c5fb13a2192919291ed0caea7a2ac2ec0))\n\n## [1.3.7-dev.3](https://github.com/franticg33k/morphe-patches/compare/v1.3.7-dev.2...v1.3.7-dev.3) (2026-08-06)\n\n### 🚀 Updated App Support\n\n* add JellyWatch TV premium unlock patch ([f17d309](https://github.com/franticg33k/morphe-patches/commit/f17d309748c27f9ccc68d99cce1f23f47397cb44))\n* fix Native Camera premium unlock for 1.1.7 ([13c8db8](https://github.com/franticg33k/morphe-patches/commit/13c8db879f8526db74c33085cae4e4c88ed783fb))\n\n## [1.3.7-dev.2](https://github.com/franticg33k/morphe-patches/compare/v1.3.7-dev.1...v1.3.7-dev.2) (2026-08-04)\n\n### 🚀 Updated App Support\n\n* update app name in Compatibility for Karobar ([6724240](https://github.com/franticg33k/morphe-patches/commit/6724240631d6fea3a3b58f8901ff5670d2c1c4e2))\n\n## [1.3.7-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.6...v1.3.7-dev.1) (2026-08-04)\n\n### 🚀 Updated App Support\n\n* update offsets and descriptions in EnablePremiumPatch for premium features ([456db10](https://github.com/franticg33k/morphe-patches/commit/456db10338e8e0bc96de2e204b3d04fd3dedfb3c))\n\n## [1.3.6](https://github.com/franticg33k/morphe-patches/compare/v1.3.5...v1.3.6) (2026-07-31)\n\n### 🚀 Updated App Support\n\n* add native camera premium unlock patch ([be0bb33](https://github.com/franticg33k/morphe-patches/commit/be0bb33179ebe406ae17de69d7682dbb9c4172e9))\n* remove oldroll patches ([97410f9](https://github.com/franticg33k/morphe-patches/commit/97410f96a8e2756fbfa8ea3e38496347a17aaca8))\n\n## [1.3.6-dev.2](https://github.com/franticg33k/morphe-patches/compare/v1.3.6-dev.1...v1.3.6-dev.2) (2026-07-31)\n\n### 🚀 Updated App Support\n\n* add native camera premium unlock patch ([be0bb33](https://github.com/franticg33k/morphe-patches/commit/be0bb33179ebe406ae17de69d7682dbb9c4172e9))\n\n## [1.3.6-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.5...v1.3.6-dev.1) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* remove oldroll patches ([97410f9](https://github.com/franticg33k/morphe-patches/commit/97410f96a8e2756fbfa8ea3e38496347a17aaca8))\n\n## [1.3.5](https://github.com/franticg33k/morphe-patches/compare/v1.3.4...v1.3.5) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* remove overly broad getBoolean patch causing crashes ([df410c6](https://github.com/franticg33k/morphe-patches/commit/df410c6f3a5a168e07aef65161a9c6726a35f6d4))\n\n## [1.3.5-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.4...v1.3.5-dev.1) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* remove overly broad getBoolean patch causing crashes ([df410c6](https://github.com/franticg33k/morphe-patches/commit/df410c6f3a5a168e07aef65161a9c6726a35f6d4))\n\n## [1.3.4](https://github.com/franticg33k/morphe-patches/compare/v1.3.3...v1.3.4) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* fix fingerprints to use smali class paths ([3888e3f](https://github.com/franticg33k/morphe-patches/commit/3888e3f11105c5a67aeb1c5229724284353cfee5))\n\n## [1.3.4-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.3...v1.3.4-dev.1) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* fix fingerprints to use smali class paths ([3888e3f](https://github.com/franticg33k/morphe-patches/commit/3888e3f11105c5a67aeb1c5229724284353cfee5))\n\n## [1.3.3](https://github.com/franticg33k/morphe-patches/compare/v1.3.2...v1.3.3) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* fix oldroll package name to com.accordion.analogcam ([b201d70](https://github.com/franticg33k/morphe-patches/commit/b201d7075d0ca492231f5b60a655e5667d9e7f22))\n\n## [1.3.3-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.2...v1.3.3-dev.1) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* fix oldroll package name to com.accordion.analogcam ([b201d70](https://github.com/franticg33k/morphe-patches/commit/b201d7075d0ca492231f5b60a655e5667d9e7f22))\n\n## [1.3.2](https://github.com/franticg33k/morphe-patches/compare/v1.3.1...v1.3.2) (2026-07-28)\n\n### 🚀 Updated App Support\n\n* add oldroll pro unlock patches ([37aa696](https://github.com/franticg33k/morphe-patches/commit/37aa696c2982594350bdfa307987743df8e02374))",
       "fullChangelogUrl": "https://github.com/franticg33k/morphe-patches/blob/dev/CHANGELOG.md",
       "repoDescription": null,
       "avatarUrl": "https://avatars.githubusercontent.com/u/300474278?v=4&size=168",
@@ -6226,14 +6224,14 @@
         "com.providelite.epicplay",
         "com.ensembleai.scoutai",
         "com.jellywatch.app",
+        "com.jellywatch.tv",
         "com.harwin.prismatica",
         "com.bytecaretech.merokarobar",
-        "com.rawcam.app",
-        "com.jellywatch.tv"
+        "com.rawcam.app"
       ],
       "appUpdates": {},
       "stars": 12,
-      "updatedAt": 1785974400000,
+      "updatedAt": 1786060800000,
       "firstSeen": 1783403226287,
       "appFirstSeen": {
         "com.byairapp.android": 1783403226287,
@@ -6242,10 +6240,10 @@
         "com.providelite.epicplay": 1783724425944,
         "com.ensembleai.scoutai": 1783941236316,
         "com.jellywatch.app": 1783403226287,
+        "com.jellywatch.tv": 1786041810421,
         "com.harwin.prismatica": 1783403226287,
         "com.bytecaretech.merokarobar": 1783403226287,
-        "com.rawcam.app": 1785468401751,
-        "com.jellywatch.tv": 1786041810421
+        "com.rawcam.app": 1785468401751
       },
       "starsGained7d": 3,
       "starsGained40d": 5,
@@ -6284,7 +6282,7 @@
       },
       "starsGained7d": 2,
       "starsGained40d": 2,
-      "hotRank": 55
+      "hotRank": 56
     },
     {
       "source": "github",
@@ -6401,7 +6399,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "hotRank": 46
+      "hotRank": 45
     },
     {
       "source": "github",
@@ -7108,7 +7106,7 @@
         "cn.wps.moffice_eng": 1771286400000,
         "ginlemon.flowerfree": 1770076800000
       },
-      "stars": 911,
+      "stars": 914,
       "updatedAt": 1785369600000,
       "firstSeen": 1768941201000,
       "appFirstSeen": {
@@ -7166,9 +7164,9 @@
         "ch.protonvpn.android": 1768941201000,
         "cn.ommiao.iconpacker": 1768941201000
       },
-      "starsGained7d": 22,
-      "starsGained40d": 69,
-      "hotRank": 3
+      "starsGained7d": 25,
+      "starsGained40d": 72,
+      "hotRank": 2
     },
     {
       "source": "github",
@@ -7275,7 +7273,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "hotRank": 33
+      "hotRank": 35
     },
     {
       "source": "github",
@@ -7432,7 +7430,7 @@
       },
       "starsGained7d": 3,
       "starsGained40d": 9,
-      "hotRank": 12
+      "hotRank": 13
     },
     {
       "source": "github",
@@ -7639,7 +7637,7 @@
       },
       "starsGained7d": 6,
       "starsGained40d": 54,
-      "hotRank": 4
+      "hotRank": 5
     },
     {
       "source": "github",
@@ -7729,7 +7727,7 @@
       },
       "starsGained7d": 2,
       "starsGained40d": 5,
-      "hotRank": 36
+      "hotRank": 37
     },
     {
       "source": "github",
@@ -7775,7 +7773,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 2,
-      "hotRank": 37
+      "hotRank": 38
     },
     {
       "source": "gitlab",
@@ -8036,15 +8034,15 @@
       "appUpdates": {
         "com.google.android.inputmethod.latin": 1785974400000
       },
-      "stars": 183,
+      "stars": 184,
       "updatedAt": 1785974400000,
       "firstSeen": 1775543003000,
       "appFirstSeen": {
         "com.google.android.inputmethod.latin": 1775543003000
       },
-      "starsGained7d": 20,
-      "starsGained40d": 47,
-      "hotRank": 2
+      "starsGained7d": 21,
+      "starsGained40d": 48,
+      "hotRank": 3
     },
     {
       "source": "github",
@@ -8751,7 +8749,7 @@
         "com.ninegag.android.app": 1781395200000,
         "com.imdb.mobile": 1783900800000
       },
-      "stars": 213,
+      "stars": 215,
       "updatedAt": 1785974400000,
       "firstSeen": 1771585164000,
       "appFirstSeen": {
@@ -8760,9 +8758,9 @@
         "com.ninegag.android.app": 1781427843830,
         "com.imdb.mobile": 1771585164000
       },
-      "starsGained7d": 5,
-      "starsGained40d": 21,
-      "hotRank": 5
+      "starsGained7d": 7,
+      "starsGained40d": 23,
+      "hotRank": 4
     },
     {
       "source": "github",
@@ -9394,7 +9392,7 @@
       },
       "starsGained7d": 3,
       "starsGained40d": 14,
-      "hotRank": 20
+      "hotRank": 19
     },
     {
       "source": "github",
@@ -9720,7 +9718,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "hotRank": 44
+      "hotRank": 46
     },
     {
       "source": "github",
@@ -9786,8 +9784,24 @@
       "author": "liongalahad",
       "patches": [
         {
+          "name": "Binge Group Manual Fallback",
+          "description": "Adds Morphe > Playback control to open the source picker when no preferred binge-group stream is found.",
+          "default": false,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 317
+        },
+        {
           "name": "Mark SDH Subtitles",
           "description": "Marks detected English SDH tracks in embedded and addon subtitle lists.",
+          "default": false,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 317
+        },
+        {
+          "name": "Random Episode",
+          "description": "Adds Morphe > Detail Page > Show Random Episode Button and random series playback.",
           "default": false,
           "options": [],
           "preRelease": true,
@@ -9810,26 +9824,26 @@
           "compatiblePackagesKey": 317
         }
       ],
-      "changelog": "## [1.0.0-dev.14](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.13...v1.0.0-dev.14) (2026-08-06)\n\n### ✨ New Features\n\n* add SDH subtitle marking and shared settings layout ([563e257](https://github.com/liongalahad/nuviotv-morphe-patches/commit/563e257c6bf96f92fc29703419ab7403e8028a0f))\n\n## [1.0.0-dev.13](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.12...v1.0.0-dev.13) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* intercept all Media3 subtitle cue groups ([c471059](https://github.com/liongalahad/nuviotv-morphe-patches/commit/c471059fa5db240437172799b41ed39b64f527f9))\n\n## [1.0.0-dev.12](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.11...v1.0.0-dev.12) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* fetch release tags before semantic-release ([7e151f7](https://github.com/liongalahad/nuviotv-morphe-patches/commit/7e151f72a7786484912d049014080f1950ab87c3))\n* fetch semantic-release channel notes ([68ac430](https://github.com/liongalahad/nuviotv-morphe-patches/commit/68ac4302a4131d5d8a8d2f62d65d28c624c31388))\n\n## [1.0.0-dev.11](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.10...v1.0.0-dev.11) (2026-08-05)\n\n### ✨ New Features\n\n* support NuvioTV 0.8.2 and rating controls ([8eefa2c](https://github.com/liongalahad/nuviotv-morphe-patches/commit/8eefa2ce0ef0a3ae8f568cb29dfe8b4a6591f5bc))\n\n## [1.0.0-dev.10](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.9...v1.0.0-dev.10) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* stabilize SDH dialog position ([2de520b](https://github.com/liongalahad/nuviotv-morphe-patches/commit/2de520b650a2066fd4f63225d5e4ad31b60de2c4))\n\n## [1.0.0-dev.9](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.8...v1.0.0-dev.9) (2026-08-05)\n\n### ✨ New Features\n\n* rebrand source and add prerelease warning ([ddd9428](https://github.com/liongalahad/nuviotv-morphe-patches/commit/ddd9428f7febce0112c919beff399e50df560d1e))\n\n## [1.0.0-dev.8](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.7...v1.0.0-dev.8) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* use Nuvio SDH choice dialog ([e9a9f85](https://github.com/liongalahad/nuviotv-patches/commit/e9a9f855bef80389d9663959f43b182f0103861c))\n\n### ✨ New Features\n\n* add three SDH cleanup modes ([9711232](https://github.com/liongalahad/nuviotv-patches/commit/971123200995d196e92e8f4ca4743840fe3b0972))\n\n## [1.0.0-dev.7](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.6...v1.0.0-dev.7) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* restore full SDH annotation removal ([b498bf4](https://github.com/liongalahad/nuviotv-patches/commit/b498bf4a1292ddf9b6cace3ef9bc1611b21592ce))\n\n## [1.0.0-dev.6](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.5...v1.0.0-dev.6) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* make local Morphe builds reproducible ([5adc26d](https://github.com/liongalahad/nuviotv-patches/commit/5adc26dc6b6b62afbd4e44bbbdcf6501d46675e4))\n\n## [1.0.0-dev.5](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.4...v1.0.0-dev.5) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* integrate native Morphe subtitle settings ([4fd6897](https://github.com/liongalahad/nuviotv-patches/commit/4fd68972fe2b46e60f16d76fbf2d41ae8e1dab0b))\n\n## [1.0.0-dev.4](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.3...v1.0.0-dev.4) (2026-08-04)\n\n### ✨ New Features\n\n* support official universal APK ([1eea66f](https://github.com/liongalahad/nuviotv-patches/commit/1eea66f4e8d16039abdf0bf7cd411e8f575defc8))\n\n## [1.0.0-dev.3](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* open Morphe settings from TV rail ([6452d86](https://github.com/liongalahad/nuviotv-patches/commit/6452d86cbeb9f0b5e03a079b58c5f74d9b5e1a0e))\n\n## [1.0.0-dev.2](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* select runtime patch bundle in CI ([b9c2ec2](https://github.com/liongalahad/nuviotv-patches/commit/b9c2ec2cc7df865f990e38ef2e349bec55b61ee8))\n\n## 1.0.0-dev.1 (2026-08-04)\n\n### ✨ New Features\n\n* add isolated NuvioTV SDH patch workflow ([60a546b](https://github.com/liongalahad/nuviotv-patches/commit/60a546b45004d0c94f0e9e4b028184cc88c2595f))",
+      "changelog": "## [1.0.0-dev.15](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.14...v1.0.0-dev.15) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* **playback:** add binge group manual fallback ([d95e919](https://github.com/liongalahad/nuviotv-morphe-patches/commit/d95e919ae96273f6f05a41bc5229d2abc650d595))\n\n### ✨ New Features\n\n* **detail:** add random episode patch ([5040790](https://github.com/liongalahad/nuviotv-morphe-patches/commit/50407900cc6a0de7d8ddc586bf1840613dcc2723))\n\n## [1.0.0-dev.14](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.13...v1.0.0-dev.14) (2026-08-06)\n\n### ✨ New Features\n\n* add SDH subtitle marking and shared settings layout ([563e257](https://github.com/liongalahad/nuviotv-morphe-patches/commit/563e257c6bf96f92fc29703419ab7403e8028a0f))\n\n## [1.0.0-dev.13](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.12...v1.0.0-dev.13) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* intercept all Media3 subtitle cue groups ([c471059](https://github.com/liongalahad/nuviotv-morphe-patches/commit/c471059fa5db240437172799b41ed39b64f527f9))\n\n## [1.0.0-dev.12](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.11...v1.0.0-dev.12) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* fetch release tags before semantic-release ([7e151f7](https://github.com/liongalahad/nuviotv-morphe-patches/commit/7e151f72a7786484912d049014080f1950ab87c3))\n* fetch semantic-release channel notes ([68ac430](https://github.com/liongalahad/nuviotv-morphe-patches/commit/68ac4302a4131d5d8a8d2f62d65d28c624c31388))\n\n## [1.0.0-dev.11](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.10...v1.0.0-dev.11) (2026-08-05)\n\n### ✨ New Features\n\n* support NuvioTV 0.8.2 and rating controls ([8eefa2c](https://github.com/liongalahad/nuviotv-morphe-patches/commit/8eefa2ce0ef0a3ae8f568cb29dfe8b4a6591f5bc))\n\n## [1.0.0-dev.10](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.9...v1.0.0-dev.10) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* stabilize SDH dialog position ([2de520b](https://github.com/liongalahad/nuviotv-morphe-patches/commit/2de520b650a2066fd4f63225d5e4ad31b60de2c4))\n\n## [1.0.0-dev.9](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.8...v1.0.0-dev.9) (2026-08-05)\n\n### ✨ New Features\n\n* rebrand source and add prerelease warning ([ddd9428](https://github.com/liongalahad/nuviotv-morphe-patches/commit/ddd9428f7febce0112c919beff399e50df560d1e))\n\n## [1.0.0-dev.8](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.7...v1.0.0-dev.8) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* use Nuvio SDH choice dialog ([e9a9f85](https://github.com/liongalahad/nuviotv-patches/commit/e9a9f855bef80389d9663959f43b182f0103861c))\n\n### ✨ New Features\n\n* add three SDH cleanup modes ([9711232](https://github.com/liongalahad/nuviotv-patches/commit/971123200995d196e92e8f4ca4743840fe3b0972))\n\n## [1.0.0-dev.7](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.6...v1.0.0-dev.7) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* restore full SDH annotation removal ([b498bf4](https://github.com/liongalahad/nuviotv-patches/commit/b498bf4a1292ddf9b6cace3ef9bc1611b21592ce))\n\n## [1.0.0-dev.6](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.5...v1.0.0-dev.6) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* make local Morphe builds reproducible ([5adc26d](https://github.com/liongalahad/nuviotv-patches/commit/5adc26dc6b6b62afbd4e44bbbdcf6501d46675e4))\n\n## [1.0.0-dev.5](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.4...v1.0.0-dev.5) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* integrate native Morphe subtitle settings ([4fd6897](https://github.com/liongalahad/nuviotv-patches/commit/4fd68972fe2b46e60f16d76fbf2d41ae8e1dab0b))\n\n## [1.0.0-dev.4](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.3...v1.0.0-dev.4) (2026-08-04)\n\n### ✨ New Features\n\n* support official universal APK ([1eea66f](https://github.com/liongalahad/nuviotv-patches/commit/1eea66f4e8d16039abdf0bf7cd411e8f575defc8))\n\n## [1.0.0-dev.3](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* open Morphe settings from TV rail ([6452d86](https://github.com/liongalahad/nuviotv-patches/commit/6452d86cbeb9f0b5e03a079b58c5f74d9b5e1a0e))\n\n## [1.0.0-dev.2](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* select runtime patch bundle in CI ([b9c2ec2](https://github.com/liongalahad/nuviotv-patches/commit/b9c2ec2cc7df865f990e38ef2e349bec55b61ee8))\n\n## 1.0.0-dev.1 (2026-08-04)\n\n### ✨ New Features\n\n* add isolated NuvioTV SDH patch workflow ([60a546b](https://github.com/liongalahad/nuviotv-patches/commit/60a546b45004d0c94f0e9e4b028184cc88c2595f))",
       "fullChangelogUrl": null,
       "repoDescription": "Prerelease Morphe patches for the official NuvioTV Android application",
       "avatarUrl": "https://avatars.githubusercontent.com/u/145302945?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=liongalahad/nuviotv-morphe-patches",
-      "patchCount": 3,
+      "patchCount": 5,
       "targetApps": [
         "com.nuvio.tv"
       ],
       "appUpdates": {},
       "stars": 3,
-      "updatedAt": 1785974400000,
+      "updatedAt": 1786060800000,
       "firstSeen": 1785919858436,
       "appFirstSeen": {
         "com.nuvio.tv": 1785919858436
       },
       "starsGained7d": 2,
       "starsGained40d": 2,
-      "hotRank": 28
+      "hotRank": 32
     },
     {
       "source": "github",
@@ -9864,7 +9878,7 @@
       },
       "starsGained7d": 3,
       "starsGained40d": 3,
-      "hotRank": 24
+      "hotRank": 25
     },
     {
       "source": "github",
@@ -10126,7 +10140,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "hotRank": 39
+      "hotRank": 41
     },
     {
       "source": "github",
@@ -10381,13 +10395,13 @@
       "patchCount": 9,
       "targetApps": [],
       "appUpdates": {},
-      "stars": 218,
+      "stars": 219,
       "updatedAt": 1785628800000,
       "firstSeen": 1783021319050,
       "appFirstSeen": {},
-      "starsGained7d": 9,
-      "starsGained40d": 33,
-      "hotRank": 6
+      "starsGained7d": 10,
+      "starsGained40d": 34,
+      "hotRank": 7
     },
     {
       "source": "github",
@@ -10930,7 +10944,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 4,
-      "hotRank": 23
+      "hotRank": 22
     },
     {
       "source": "github",
@@ -11106,7 +11120,7 @@
       },
       "starsGained7d": 6,
       "starsGained40d": 11,
-      "hotRank": 26
+      "hotRank": 27
     },
     {
       "source": "github",
@@ -11155,7 +11169,7 @@
       },
       "starsGained7d": 2,
       "starsGained40d": 8,
-      "hotRank": 38
+      "hotRank": 39
     },
     {
       "source": "github",
@@ -11375,7 +11389,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "hotRank": 56
+      "hotRank": 55
     },
     {
       "source": "github",
@@ -11440,7 +11454,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "hotRank": 48
+      "hotRank": 49
     },
     {
       "source": "github",
@@ -12425,7 +12439,7 @@
         "com.google.android.apps.magazines": 1775088000000,
         "com.zhiliaoapp.musically": 1775088000000
       },
-      "stars": 1080,
+      "stars": 1082,
       "updatedAt": 1775088000000,
       "firstSeen": 1772385009000,
       "appFirstSeen": {
@@ -12463,8 +12477,8 @@
         "com.disney.disneyplus": 1773594609000,
         "ginlemon.iconpackstudio": 1773594609000
       },
-      "starsGained7d": 22,
-      "starsGained40d": 63,
+      "starsGained7d": 24,
+      "starsGained40d": 65,
       "hotRank": 43
     },
     {
@@ -15537,7 +15551,7 @@
         "com.onnex.wristweb"
       ],
       "appUpdates": {},
-      "stars": 296,
+      "stars": 298,
       "updatedAt": 1785715200000,
       "firstSeen": 1780395687718,
       "appFirstSeen": {
@@ -15746,8 +15760,8 @@
         "com.vythera.vyxelapps": 1785742054631,
         "com.onnex.wristweb": 1785742054631
       },
-      "starsGained7d": 26,
-      "starsGained40d": 104,
+      "starsGained7d": 28,
+      "starsGained40d": 106,
       "hotRank": 1
     },
     {
@@ -17172,7 +17186,7 @@
       },
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "hotRank": 32
+      "hotRank": 33
     },
     {
       "source": "github",
@@ -17364,7 +17378,7 @@
       },
       "starsGained7d": 1,
       "starsGained40d": 3,
-      "hotRank": 52
+      "hotRank": 51
     },
     {
       "source": "github",
@@ -18313,7 +18327,7 @@
       },
       "starsGained7d": 3,
       "starsGained40d": 7,
-      "hotRank": 7
+      "hotRank": 6
     }
   ],
   "store": {
@@ -19923,6 +19937,13 @@
       "category": "Tools & Utilities",
       "firstSeen": 1783403226287
     },
+    "com.jellywatch.tv": {
+      "name": "JellyWatch TV",
+      "iconUrl": "https://play-lh.googleusercontent.com/tJQc2iI0WB3RO3Iwv0rMJFAKrVSdtP-BHhSSbRQwbVVWSETL4-xIRPafHl7URYcxWdyXFzRbaeHdQHqbuDOM6g",
+      "description": "Jellyfin client for Android TV: Direct Play, TrueHD Atmos, 4K HDR, music player",
+      "category": "Video",
+      "firstSeen": 1786041810421
+    },
     "com.harwin.prismatica": {
       "name": "Prismatica Pro",
       "iconUrl": "https://play-lh.googleusercontent.com/-JobtL9RKnBwUNh4uuJqPE1cGFUXhca5G9GMa_gyssFbbTWPvqGtRCutqYA8jj2jXyTJpf1_IZZ6A7gm0wOQ",
@@ -19943,14 +19964,6 @@
       "description": "Your camera is capable of so much more, Native Camera gives you access to it.",
       "category": "Photography & Design",
       "firstSeen": 1785468401751
-    },
-    "com.jellywatch.tv": {
-      "name": "JellyWatch TV",
-      "iconUrl": "https://play-lh.googleusercontent.com/tJQc2iI0WB3RO3Iwv0rMJFAKrVSdtP-BHhSSbRQwbVVWSETL4-xIRPafHl7URYcxWdyXFzRbaeHdQHqbuDOM6g",
-      "description": "Jellyfin client for Android TV: Direct Play, TrueHD Atmos, 4K HDR, music player",
-      "category": "Video",
-      "preRelease": true,
-      "firstSeen": 1786041810421
     },
     "org.languageapp.lingory": {
       "name": "Lingory",
@@ -22341,6 +22354,7 @@
     ],
     {
       "com.cbs.ott": [
+        "16.17.0",
         "16.12.0",
         "16.8.0"
       ]
@@ -22352,6 +22366,10 @@
         "description": null,
         "appIconColor": 25855,
         "targets": [
+          {
+            "version": "16.17.0",
+            "experimental": false
+          },
           {
             "version": "16.12.0",
             "experimental": false
@@ -25369,7 +25387,26 @@
         "signatures": null,
         "targets": [
           {
-            "version": null,
+            "version": "2.0.REV-1712",
+            "versionCodes": null,
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.jellywatch.tv",
+        "name": "JellyWatch TV",
+        "description": null,
+        "apkFileType": "APK",
+        "appIconColor": "#008577",
+        "signatures": null,
+        "targets": [
+          {
+            "version": "1.0.REV-0207",
             "versionCodes": null,
             "isExperimental": false,
             "minSdk": null,
@@ -25426,26 +25463,7 @@
         "signatures": null,
         "targets": [
           {
-            "version": null,
-            "versionCodes": null,
-            "isExperimental": false,
-            "minSdk": null,
-            "description": null
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.jellywatch.tv",
-        "name": "JellyWatch TV",
-        "description": null,
-        "apkFileType": "APK",
-        "appIconColor": "#008577",
-        "signatures": null,
-        "targets": [
-          {
-            "version": "1.0.REV-0207",
+            "version": "1.1.7",
             "versionCodes": null,
             "isExperimental": false,
             "minSdk": null,

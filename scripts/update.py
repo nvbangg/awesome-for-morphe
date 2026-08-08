@@ -15,7 +15,6 @@ PUBLIC_DIR = ROOT_DIR / "web" / "public"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
 DISCOVER_JSON_PATH = DATA_DIR / "discover" / "discover.json"
 BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
-APPS_JSON_PATH = PUBLIC_DIR / "apps.json"
 
 
 def main() -> int:
@@ -35,17 +34,13 @@ def main() -> int:
             del repos_data[base_key]
         save_json(REPOS_JSON_PATH, repos_data)
         print(f"Removed {len(keys_to_remove)} disabled repos from repos.json")
-    existing_bundles_data = load_json(BUNDLES_JSON_PATH, [])
-    existing_bundles_list = (
-        existing_bundles_data.get("bundles", [])
-        if isinstance(existing_bundles_data, dict)
-        else existing_bundles_data
-    )
+    existing_bundles_data = load_json(BUNDLES_JSON_PATH, {})
+    existing_bundles_list = existing_bundles_data.get("bundles", [])
     existing_bundles = {
         f"{bundle.get('source')}:{bundle.get('repo')}": bundle
         for bundle in existing_bundles_list
     }
-    apps_dict = load_json(APPS_JSON_PATH, {})
+    apps_dict = existing_bundles_data.get("store", {})
     existing_apps = {
         pkg_name: app_data.copy() for pkg_name, app_data in apps_dict.items()
     }
@@ -104,11 +99,11 @@ def main() -> int:
             "isPreRelease": bool(bundle.get("isPreRelease")),
         }
         final_bundles.append(ordered_bundle)
-    ordered_apps_dict = {}
+    apps_store = {}
     for package_name, app_data in apps_dict.items():
         app_data.setdefault("firstSeen", now_ms)
         app_data.pop("updatedAt", None)
-        ordered_app = {
+        app_entry = {
             "name": app_data.get("name"),
             "iconUrl": app_data.get("iconUrl"),
             "description": app_data.get("description"),
@@ -117,8 +112,8 @@ def main() -> int:
             "firstSeen": app_data.get("firstSeen"),
         }
         if "altName" in app_data:
-            ordered_app["altName"] = app_data["altName"]
-        ordered_apps_dict[package_name] = ordered_app
+            app_entry["altName"] = app_data["altName"]
+        apps_store[package_name] = app_entry
 
     reindexed_compatibilities = []
     compat_map = {}
@@ -138,11 +133,14 @@ def main() -> int:
 
     save_json(
         BUNDLES_JSON_PATH,
-        {"bundles": final_bundles, "compatibilities": reindexed_compatibilities},
+        {
+            "bundles": final_bundles,
+            "compatibilities": reindexed_compatibilities,
+            "store": apps_store,
+        },
     )
-    save_json(APPS_JSON_PATH, ordered_apps_dict)
     print(
-        f"Update completed. Saved {len(final_bundles)} bundles and {len(apps_dict)} apps."
+        f"Update completed. Saved {len(final_bundles)} bundles and {len(apps_store)} apps."
     )
 
     invalid_repos = [

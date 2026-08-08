@@ -36,7 +36,7 @@ export default function App() {
     globalSearch,
     setGlobalSearch,
     stats,
-  } = usePatchData();
+  } = usePatchData(activeTab);
 
   const categories = useMemo(() => {
     if (!activeData) return [];

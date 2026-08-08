@@ -34,7 +34,7 @@ export function fetchJson<T = unknown>(
   if (!jsonCache.has(cacheKey)) {
     const fetchPromise = (async () => {
       try {
-        const response = await fetch(url, { cache: "no-cache" });
+        const response = await fetch(url);
         if (!response.ok)
           throw new Error(`Failed to load ${url}: ${response.status}`);
         return (await response.json()) as T;
@@ -49,20 +49,28 @@ export function fetchJson<T = unknown>(
   return jsonCache.get(cacheKey) as Promise<T>;
 }
 
+export function fetchWhatsNewHistory(): Promise<WhatsNewHistoryItem[]> {
+  return fetchJson<WhatsNewHistoryItem[]>("whats-new.json", []);
+}
+
+interface BundlesResponseData {
+  bundles: Bundle[];
+  compatibilities: CompatibilityItem[][];
+  store?: Record<string, AppNameMeta>;
+}
+
 export function loadInitialData(): Promise<ActiveData> {
   if (activeDataPromise) {
     return activeDataPromise;
   }
 
   activeDataPromise = (async () => {
-    const [namesMap, sourcesData, whatsNewHistory] = await Promise.all([
-      fetchJson<Record<string, AppNameMeta>>("apps.json", {}),
-      fetchJson<{ bundles: Bundle[]; compatibilities: CompatibilityItem[][] }>(
-        "bundles.json",
-        { bundles: [], compatibilities: [] },
-      ),
-      fetchJson<WhatsNewHistoryItem[]>("whats-new.json", []),
-    ]);
+    const sourcesData = await fetchJson<BundlesResponseData>("bundles.json", {
+      bundles: [],
+      compatibilities: [],
+      store: {},
+    });
+    const namesMap = sourcesData.store ?? {};
     const jsonBundles = sourcesData.bundles ?? [];
     const compatibilitiesList = sourcesData.compatibilities ?? [];
 
@@ -233,7 +241,7 @@ export function loadInitialData(): Promise<ActiveData> {
       namesMap,
       appPatchesMap,
       bundlePatchesMap,
-      whatsNewHistory,
+      whatsNewHistory: [],
       stats,
     };
   })();

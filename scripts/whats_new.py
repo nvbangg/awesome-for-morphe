@@ -12,7 +12,6 @@ PUBLIC_DIR = ROOT_DIR / "web" / "public"
 PATCHES_DIR = DATA_DIR / "patches"
 HISTORY_PATH = DATA_DIR / "history.json"
 BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
-APPS_JSON_PATH = PUBLIC_DIR / "apps.json"
 WHATS_NEW_PATH = ROOT_DIR / "whats-new.md"
 WHATS_NEW_JSON_PATH = PUBLIC_DIR / "whats-new.json"
 WHATS_NEW_MAX_ENTRIES = 21
@@ -238,10 +237,9 @@ def generate_markdown(json_diff, app_metadata):
 
 def main():
     old_history = load_json(HISTORY_PATH, {}) or {}
-    app_metadata = load_json(APPS_JSON_PATH, {})
-
     whats_new_data = load_json(WHATS_NEW_JSON_PATH, []) or []
     bundles_json = load_json(BUNDLES_JSON_PATH, {})
+    app_metadata = bundles_json.get("store", {})
     bundle_names = get_bundle_names(bundles_json)
 
     # Shift time back by 12 hours to handle GitHub Actions delays

@@ -5,7 +5,7 @@ import {
   WhatsNewAppChange,
 } from "@/types/data";
 import { getAppMeta } from "@/utils";
-import { Spinner, Avatar } from "@heroui/react";
+import { Spinner } from "@heroui/react";
 import { Sparkles, Package, Smartphone, Calendar } from "lucide-react";
 import { isNew } from "@/utils/formatters";
 import { Badge } from "@/components/common/Badge";
@@ -114,17 +114,20 @@ export function WhatsNewList({
                                     className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors text-left outline-none min-w-0"
                                     title="Open app details"
                                   >
-                                    <Avatar className="w-6 h-6 rounded-md shrink-0">
-                                      {icon ? (
-                                        <Avatar.Image
-                                          src={icon}
-                                          alt={appName}
-                                        />
-                                      ) : null}
-                                      <Avatar.Fallback className="bg-default-100 flex items-center justify-center">
+                                    {icon ? (
+                                      <img
+                                        className="w-6 h-6 rounded-md object-cover shrink-0"
+                                        src={icon}
+                                        alt={appName}
+                                        width={24}
+                                        height={24}
+                                        loading="lazy"
+                                      />
+                                    ) : (
+                                      <div className="w-6 h-6 rounded-md shrink-0 bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center">
                                         <Smartphone className="size-3.5 text-foreground-400" />
-                                      </Avatar.Fallback>
-                                    </Avatar>
+                                      </div>
+                                    )}
                                     <span className="truncate">{appName}</span>
                                     {isAppNew && <Badge variant="new" />}
                                   </button>

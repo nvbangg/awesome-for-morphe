@@ -1,11 +1,15 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { ActiveData } from "@/types/data";
-import { loadInitialData } from "@/services";
+import { ActiveData, WhatsNewHistoryItem } from "@/types/data";
+import { loadInitialData, fetchWhatsNewHistory } from "@/services";
 
-export function usePatchData() {
+export function usePatchData(activeTab?: string) {
   const [activeData, setActiveData] = useState<ActiveData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [whatsNewHistory, setWhatsNewHistory] = useState<WhatsNewHistoryItem[]>(
+    [],
+  );
+  const [isWhatsNewLoading, setIsWhatsNewLoading] = useState<boolean>(false);
 
   const [globalSearch, setGlobalSearch] = useState<string>("");
 
@@ -23,6 +27,19 @@ export function usePatchData() {
     }
   }, []);
 
+  const loadWhatsNew = useCallback(async () => {
+    if (whatsNewHistory.length > 0 || isWhatsNewLoading) return;
+    try {
+      setIsWhatsNewLoading(true);
+      const history = await fetchWhatsNewHistory();
+      setWhatsNewHistory(history);
+    } catch {
+      // ignore
+    } finally {
+      setIsWhatsNewLoading(false);
+    }
+  }, [whatsNewHistory.length, isWhatsNewLoading]);
+
   useEffect(() => {
     let mounted = true;
     Promise.resolve().then(() => {
@@ -32,6 +49,19 @@ export function usePatchData() {
       mounted = false;
     };
   }, [fetchData]);
+
+  useEffect(() => {
+    let mounted = true;
+    if (activeTab === "whats-new") {
+      Promise.resolve().then(() => {
+        if (mounted) loadWhatsNew();
+      });
+    }
+    return () => {
+      mounted = false;
+    };
+  }, [activeTab, loadWhatsNew]);
+
   const stats = useMemo(
     () =>
       activeData?.stats || { bundlesCount: 0, patchesCount: 0, appsCount: 0 },
@@ -42,7 +72,7 @@ export function usePatchData() {
     activeData,
     isLoading,
     errorMessage,
-    whatsNewHistory: activeData?.whatsNewHistory || [],
+    whatsNewHistory,
     globalSearch,
     setGlobalSearch,
     stats,

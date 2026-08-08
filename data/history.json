@@ -140,7 +140,7 @@
     ],
     "universal": [
       "Change installer source",
-      "Change package name",
+      "Clone app",
       "Disable Play Store updates",
       "Override certificate pinning"
     ]
@@ -919,6 +919,7 @@
       "Default external browser",
       "Disable 300+ unread limit",
       "Disable 99 unread limit",
+      "Disable AdFit environment detection",
       "Disable ChatRoomAdController",
       "Disable Collapse Button",
       "Disable Community Tab",
@@ -961,6 +962,7 @@
       "Spoof App ID",
       "Spoof apk checksums",
       "Spoof attestation package name",
+      "Spoof installer package name",
       "Spoof signature",
       "Strip image metadata",
       "Version info patch"
@@ -1005,6 +1007,7 @@
       "Developer options",
       "Emojis, stickers & GIFs Tab Order",
       "Enable Inline Autofill Suggestions",
+      "Enable OCR / Scan Text",
       "English QWERTY Up-Flick Uppercase",
       "Grammar Checker",
       "Inline Suggestions",
@@ -1236,6 +1239,7 @@
       "Teleprompter Premium"
     ],
     "com.ticktick.task": [
+      "Restore notifications",
       "TickTick Premium"
     ],
     "com.truecaller": [
@@ -1386,6 +1390,13 @@
     ],
     "com.fox.foxone": [
       "Skip ads"
+    ],
+    "com.netflix.ninja": [
+      "Clone Netflix",
+      "Disable Netflix CertCheck",
+      "Minimize Network Fingerprint",
+      "Remove Netflix ads (bundle engine)",
+      "Remove Netflix ads (loader)"
     ],
     "com.peacocktv.peacockandroid": [
       "Clone Peacock",
@@ -2778,6 +2789,7 @@
       "Google Maps API key"
     ],
     "com.jcdecaux.vls.lyon": [
+      "Block data collection",
       "Disable map animations",
       "Easy deeplinks configuration",
       "Google Maps API key",
@@ -2816,6 +2828,7 @@
       "Fix Image Post Selftext",
       "Fix Reddit Video Links",
       "Fix imgur links",
+      "Fix inline images",
       "Fix r/random",
       "Predictive back gesture (Reddit Sync)",
       "Spoof client",
@@ -2827,6 +2840,7 @@
       "Fix Image Post Selftext",
       "Fix Reddit Video Links",
       "Fix imgur links",
+      "Fix inline images",
       "Fix r/random",
       "Predictive back gesture (Reddit Sync)",
       "Spoof client",
@@ -2838,6 +2852,7 @@
       "Fix Image Post Selftext",
       "Fix Reddit Video Links",
       "Fix imgur links",
+      "Fix inline images",
       "Fix r/random",
       "Predictive back gesture (Reddit Sync)",
       "Spoof client",
@@ -3026,6 +3041,9 @@
   "gitlab:early.egg3707/ee-morphe-patches": {
     "com.byairapp.android": [
       "Enable Online Pro",
+      "Enable Pro"
+    ],
+    "com.fentek.derdy": [
       "Enable Pro"
     ],
     "com.going.mobile": [
@@ -3565,7 +3583,7 @@
       "Hide promoted pins",
       "Opt out of Google Analytics",
       "Remove Advertising ID permission",
-      "Restore Google login (microG-RE)",
+      "Restore Google login (signature spoofing)",
       "Sanitize copied links",
       "Sanitize sharing links"
     ]
@@ -3783,14 +3801,6 @@
   "github:drosoCode/morphe-patches": {
     "com.imperihome.lite": [
       "Unlock Premium"
-    ]
-  },
-  "github:dexnis-dev/morphe-patches": {
-    "cz.mafra.jizdnirady": [
-      "Unlock premium"
-    ],
-    "org.zwanoo.android.speedtest": [
-      "Unlock premium"
     ]
   },
   "github:ilikeadofai/vocacolle-morphe-patches": {
@@ -4018,7 +4028,19 @@
     ]
   },
   "github:Entree3k/Morning-Entree-Patches": {
+    "ak.alizandro.smartaudiobookplayer": [
+      "Enable Full Version"
+    ],
+    "armworkout.armworkoutformen.armexercises": [
+      "Enable Premium"
+    ],
+    "com.arlosoft.macrodroid": [
+      "Enable Premium"
+    ],
     "com.boostedproductivity.app": [
+      "Enable Premium"
+    ],
+    "com.elm.elm327.obd2.eobd.obd.car.scanner.diagnostics.tool.dashboard.doctor.check.engine.torque.speed.trouble.codes.mary": [
       "Enable Premium"
     ],
     "com.fossor.panels": [
@@ -4029,6 +4051,9 @@
       "Always incognito mode",
       "Block tracking and analytics",
       "Change package name"
+    ],
+    "com.hinnka.mycamera": [
+      "Enable Premium"
     ],
     "com.hrd.vocabulary": [
       "Enable Premium"
@@ -4042,7 +4067,19 @@
     "com.launcher.hype": [
       "Enable Premium"
     ],
+    "com.mediocre.commute": [
+      "Enable Premium"
+    ],
+    "com.mediocre.pinout": [
+      "Enable Premium"
+    ],
+    "com.mediocre.smashhit": [
+      "Enable Premium"
+    ],
     "com.prismtree.sponge": [
+      "Enable Premium"
+    ],
+    "com.pryshedko.mtisland": [
       "Enable Premium"
     ],
     "com.sillens.shapeupclub": [
@@ -4217,18 +4254,29 @@
     "com.undefined.mate": [
       "Enable Premium"
     ],
+    "com.urbandroid.sleep": [
+      "Enable Premium"
+    ],
     "dev.sasikanth.pinnit2": [
       "Enable Premium"
     ],
     "eu.toneiv.ubktouch": [
       "Enable Premium"
     ],
+    "menloseweight.loseweightappformen.weightlossformen": [
+      "Enable Premium"
+    ],
+    "org.eobdfacile.android": [
+      "Enable Premium"
+    ],
     "pro.listy": [
       "Enable Premium"
     ],
     "universal": [
+      "Provide original app certificate",
       "Remove internet permission",
-      "Spoof install source"
+      "Spoof install source",
+      "Spoof signature verification"
     ]
   },
   "github:alan7383/sofatime-patches": {
@@ -4366,7 +4414,12 @@
   },
   "github:logm1lo/logm1lo-patches": {
     "com.calistree.calistree": [
+      "Dart Pro gates (libapp.so)",
       "Premium Unlock"
+    ],
+    "com.jeffprod.cubesolver": [
+      "Puzzles Unlock",
+      "Remove Ads"
     ]
   },
   "github:heinrich26/morphe-patches": {

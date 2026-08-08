@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "patches": [
     {
       "name": "Add Packet Handler",
@@ -21,7 +21,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -48,7 +48,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -75,7 +75,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -106,7 +106,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -131,7 +131,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -158,7 +158,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -191,7 +191,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -236,7 +236,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -273,7 +273,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -284,10 +284,12 @@
       "options": []
     },
     {
-      "name": "Allow reply to feed",
-      "description": "Allows replying to feed messages",
+      "name": "Allow invisible characters",
+      "description": "Stops zero width and other invisible characters from being stripped out of the chat input and out of the messages shown in a chat room.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "BytecodePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.kakao.talk",
@@ -300,7 +302,95 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Allow open chat media bundle",
+      "description": "Removes the open chat restriction that stops webp, gif and other media from being bundled into a single multi-photo message.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Allow profile media download",
+      "description": "Adds the save option of the profile media viewer to the profile pictures and background images of other people.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Allow reply to feed",
+      "description": "Adds a setting to allow swiping feed messages to reply, or to comment where chat room comments are enabled.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -327,7 +417,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -352,6 +442,12 @@
           "signatures": null,
           "targets": [
             {
+              "version": "3.10.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
               "version": "3.9.0",
               "isExperimental": false,
               "minSdk": null,
@@ -363,8 +459,68 @@
       "options": []
     },
     {
+      "name": "Block reactions on deleted or hidden messages",
+      "description": "Stops reactions, including the double tap gesture, from being sent on messages that the server considers deleted or hidden and that are only still visible because they are kept by a patch.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block replies on deleted or hidden messages",
+      "description": "Stops the swipe gesture, and any reply or comment send, from targeting messages that the server considers deleted or hidden and that are only still visible because they are kept by a patch.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Bypass Moat check",
-      "description": "Add a setting to bypass the Moat integrity check that can prevent KakaoPay from running.",
+      "description": "Add a setting to bypass the KakaoPay Moat integrity check. It stops the native scan from running, so the tamper/root/hook verdict is never computed or reported and KakaoPay is not force-closed. Payments on a modified build are still risky.",
       "default": true,
       "dependencies": [
         "BytecodePatch"
@@ -381,7 +537,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -408,7 +564,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -435,7 +591,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -459,6 +615,18 @@
           "appIconColor": "#0096FA",
           "signatures": null,
           "targets": [
+            {
+              "version": "1.4.4.12",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.4.4.10",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": "1.4.4.9",
               "isExperimental": false,
@@ -489,7 +657,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -518,7 +686,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -578,7 +746,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -635,7 +803,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -686,7 +854,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -725,7 +893,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -752,7 +920,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -779,7 +947,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -808,7 +976,34 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable AdFit environment detection",
+      "description": "Stops the AdFit ad SDK from reporting a root or emulator verdict to its telemetry and ad request endpoints.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -835,7 +1030,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -862,7 +1057,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -887,7 +1082,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -914,7 +1109,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -941,7 +1136,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -968,7 +1163,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -995,7 +1190,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1020,7 +1215,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1047,7 +1242,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1071,6 +1266,12 @@
           "appIconColor": "#00FFA3",
           "signatures": null,
           "targets": [
+            {
+              "version": "3.10.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": "3.9.0",
               "isExperimental": false,
@@ -1099,7 +1300,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "8.28.3",
+              "version": "8.28.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1126,7 +1327,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1153,7 +1354,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1182,7 +1383,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1211,7 +1412,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1246,7 +1447,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1273,7 +1474,34 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable abuse detection report",
+      "description": "Answers the startup and login integrity challenge with an empty token and a benign Play Integrity failure code instead of a Google-signed token that would expose the re-signed certificate. The report itself is still sent, so the client does not go conspicuously silent on the server's nonce the way suppressing it entirely would.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1298,7 +1526,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1322,6 +1550,12 @@
           "appIconColor": "#00FFA3",
           "signatures": null,
           "targets": [
+            {
+              "version": "3.10.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": "3.9.0",
               "isExperimental": false,
@@ -1350,7 +1584,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1379,7 +1613,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1404,7 +1638,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1431,7 +1665,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1460,7 +1694,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1485,7 +1719,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1512,7 +1746,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1541,7 +1775,34 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Filter recently viewed posts by gallery",
+      "description": "Adds a gallery filter below the recently viewed posts filters, which narrows the list down to the posts of a single gallery.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.dcinside.app.android",
+          "name": "dcinside",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#3D4491",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1570,7 +1831,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1597,7 +1858,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1626,7 +1887,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1653,7 +1914,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1678,7 +1939,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1707,7 +1968,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1736,7 +1997,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1760,6 +2021,12 @@
           "appIconColor": "#00FFA3",
           "signatures": null,
           "targets": [
+            {
+              "version": "3.10.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": "3.9.0",
               "isExperimental": false,
@@ -1788,7 +2055,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1815,7 +2082,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1844,7 +2111,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1873,7 +2140,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1902,7 +2169,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1937,7 +2204,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1964,7 +2231,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1991,7 +2258,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2016,7 +2283,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "8.28.3",
+              "version": "8.28.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2043,7 +2310,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2070,7 +2337,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2099,7 +2366,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2124,7 +2391,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "8.28.3",
+              "version": "8.28.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2149,7 +2416,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "8.28.3",
+              "version": "8.28.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2174,7 +2441,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "8.28.3",
+              "version": "8.28.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2201,7 +2468,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2228,7 +2495,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2253,7 +2520,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "8.28.3",
+              "version": "8.28.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2278,7 +2545,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "8.28.3",
+              "version": "8.28.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2303,7 +2570,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "8.28.3",
+              "version": "8.28.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2328,7 +2595,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "8.28.3",
+              "version": "8.28.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2353,7 +2620,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "8.28.3",
+              "version": "8.28.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2380,7 +2647,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2407,7 +2674,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2434,7 +2701,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2463,7 +2730,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2475,7 +2742,7 @@
     },
     {
       "name": "Show author identifier",
-      "description": "Adds options to show the author identifier next to the nickname in posts, post lists, and the recently-viewed posts list. The recently-viewed list only shows it for posts opened after this patch is installed.",
+      "description": "Adds options to show the author identifier next to the nickname in posts, post lists, comments, and the recently-viewed posts list. The recently-viewed list only shows it for posts opened after this patch is installed.",
       "default": true,
       "dependencies": [
         "BytecodePatch",
@@ -2491,7 +2758,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2522,7 +2789,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2555,7 +2822,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2607,7 +2874,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2634,7 +2901,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2661,7 +2928,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "5.3.0",
+              "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2688,7 +2955,61 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Spoof attestation package name",
+      "description": "Reports the original package name in the attestation report, which otherwise reveals a renamed install. Only the report is affected, so the app keeps using its real package name everywhere else.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Spoof installer package name",
+      "description": "Reports Google Play as the install source in the integrity report, which otherwise reveals a sideloaded install.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2715,7 +3036,36 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Strip image metadata",
+      "description": "Removes EXIF metadata, including the GPS capture location, from images sent in original quality, while keeping the picture and its orientation intact.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -2739,6 +3089,18 @@
           "appIconColor": "#0096FA",
           "signatures": null,
           "targets": [
+            {
+              "version": "1.4.4.12",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.4.4.10",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": "1.4.4.9",
               "isExperimental": false,
@@ -2764,6 +3126,12 @@
           "appIconColor": "#00FFA3",
           "signatures": null,
           "targets": [
+            {
+              "version": "3.10.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": "3.9.0",
               "isExperimental": false,
@@ -2792,7 +3160,7 @@
           ],
           "targets": [
             {
-              "version": "26.6.1",
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null

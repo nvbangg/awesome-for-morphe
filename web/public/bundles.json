@@ -9,7 +9,7 @@
       "stars": 3143,
       "starsGained7d": 66,
       "starsGained40d": 143,
-      "updatedAt": 1786203379000,
+      "updatedAt": 1786208624000,
       "firstSeen": 1767200400000,
       "appFirstSeen": {
         "com.reddit.frontpage": 1767200400000,
@@ -10731,7 +10731,7 @@
       "stars": 22,
       "starsGained7d": 2,
       "starsGained40d": 3,
-      "updatedAt": 1786202499000,
+      "updatedAt": 1786214358000,
       "firstSeen": 1781987597000,
       "appFirstSeen": {
         "com.laurencedawson.reddit_sync.dev": 1781987597000,
@@ -10768,7 +10768,6 @@
         {
           "name": "Fix inline images",
           "description": "Fixes images in text posts showing as plain links instead of rendering inline. Also adds captions below the images where applicable.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 518
         },
         {
@@ -13609,7 +13608,7 @@
       "stars": 20,
       "starsGained7d": 3,
       "starsGained40d": 10,
-      "updatedAt": 1784262190000,
+      "updatedAt": 1786212986000,
       "firstSeen": 1784111083000,
       "appFirstSeen": {
         "com.pinterest": 1784136283489
@@ -13671,9 +13670,10 @@
           "compatiblePackagesKey": 629
         },
         {
-          "name": "Restore Google login (microG-RE)",
-          "description": "Adds the microG-RE signature-spoof meta-data so \"Continue with Google\" works on devices that use microG-RE instead of Google Play Services. Ignored by vanilla Play Services.",
+          "name": "Restore Google login (signature spoofing)",
+          "description": "Experimental, off by default. Adds the signature-spoof metadata read by microG-RE and by the XSpoofSignatures LSPosed module, so \"Continue with Google\" may work on devices with a working signature-spoofing setup. Not confirmed working end-to-end; no-op without such a setup.",
           "isPreRelease": true,
+          "default": false,
           "compatiblePackagesKey": 629
         },
         {
@@ -26100,7 +26100,7 @@
       "firstSeen": 1783382453000
     },
     "com.ebay.kleinanzeigen": {
-      "name": "Kleinanzeigen - Marketplace",
+      "name": "Kleinanzeigen",
       "iconUrl": "https://play-lh.googleusercontent.com/PuqeuAmOMsDoB9gRCVr-EQHthinCbtaKPzMbxabfmCY9RI9r1fmWncCb4k6umBszzPaszT_o2RopSpIhy9BAiQ=s64-rw",
       "description": "Buy &amp; sell clothing, books, electronics, home &amp; garden, real estate, cars &amp; more",
       "minInstalls": 50000000,
@@ -30672,7 +30672,7 @@
       "iconUrl": "https://play-lh.googleusercontent.com/gyhpuzua-g01NQsueqoU89HdT9hmHuPRl26fWSbPK2EIIDbgvZIFwPqViVY5RGv-tBhLzjfPbDv2wm-XBZhY=s64-rw",
       "description": "Island-style shortcuts, media controls, notifications &amp; more",
       "minInstalls": 500000,
-      "category": "Tools & Utilities",
+      "category": "Personalization",
       "firstSeen": 1785984596334
     },
     "com.tantantribe.tribe": {

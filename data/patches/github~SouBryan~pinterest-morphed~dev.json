@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.7.0-dev.1",
+  "version": "1.7.0-dev.5",
   "patches": [
     {
       "name": "Disable Android Privacy Sandbox Ad Services",
@@ -1290,9 +1290,9 @@
       "options": []
     },
     {
-      "name": "Restore Google login (microG-RE)",
-      "description": "Adds the microG-RE signature-spoof meta-data so \"Continue with Google\" works on devices that use microG-RE instead of Google Play Services. Ignored by vanilla Play Services.",
-      "default": true,
+      "name": "Restore Google login (signature spoofing)",
+      "description": "Experimental, off by default. Adds the signature-spoof metadata read by microG-RE and by the XSpoofSignatures LSPosed module, so \"Continue with Google\" may work on devices with a working signature-spoofing setup. Not confirmed working end-to-end; no-op without such a setup.",
+      "default": false,
       "dependencies": [],
       "compatiblePackages": [
         {

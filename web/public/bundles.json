@@ -4397,7 +4397,7 @@
       "stars": 195,
       "starsGained7d": 40,
       "starsGained40d": 59,
-      "updatedAt": 1786070223000,
+      "updatedAt": 1786152383000,
       "firstSeen": 1775517803000,
       "appFirstSeen": {
         "com.google.android.inputmethod.latin": 1775543003000
@@ -4446,6 +4446,12 @@
         {
           "name": "Enable Inline Autofill Suggestions",
           "description": "啟用內嵌自動填入建議\nEnable Inline Autofill Suggestions",
+          "compatiblePackagesKey": 128
+        },
+        {
+          "name": "Enable OCR / Scan Text",
+          "description": "啟用 OCR / 掃描文字功能，支援 拉丁、中文、日文、韓文 與 天城文 辨識後端\nEnable the OCR / Scan Text feature with Latin, Chinese, Japanese, Korean, and Devanagari recognition backends.",
+          "isPreRelease": true,
           "compatiblePackagesKey": 128
         },
         {
@@ -16894,16 +16900,32 @@
       "stars": 5,
       "starsGained7d": 4,
       "starsGained40d": 4,
-      "updatedAt": 1785940441000,
+      "updatedAt": 1786147922000,
       "firstSeen": 1785926406013,
       "appFirstSeen": {
-        "com.calistree.calistree": 1785926405780
+        "com.calistree.calistree": 1785926405780,
+        "com.jeffprod.cubesolver": 1786153886261
       },
       "patches": [
+        {
+          "name": "Dart Pro gates (libapp.so)",
+          "description": "Applies the 10 Dart AOT hex patches to libapp.so that unlock the native Pro gates.",
+          "compatiblePackagesKey": 692
+        },
         {
           "name": "Premium Unlock",
           "description": "Unlocks all Calistree PRO features.",
           "compatiblePackagesKey": 692
+        },
+        {
+          "name": "Puzzles Unlock",
+          "description": "Unlocks all puzzles.",
+          "compatiblePackagesKey": 693
+        },
+        {
+          "name": "Remove Ads",
+          "description": "Removes ads.",
+          "compatiblePackagesKey": 693
         }
       ],
       "isPreRelease": false
@@ -16925,7 +16947,7 @@
       "patches": [
         {
           "name": "Unlock Pro",
-          "compatiblePackagesKey": 693
+          "compatiblePackagesKey": 694
         }
       ],
       "isPreRelease": false
@@ -16948,52 +16970,52 @@
         {
           "name": "Ad Removal",
           "description": "Removes all ad displays: navigation bar banner, native feed ads, live streaming banner ads, live square ads, conversation Google ads, marriage guide card, four-select-one card, daily selection card, visitor list ads",
-          "compatiblePackagesKey": 694
+          "compatiblePackagesKey": 695
         },
         {
           "name": "Analytics Disable",
           "description": "Disables all analytics, telemetry, and device fingerprinting for privacy",
-          "compatiblePackagesKey": 694
+          "compatiblePackagesKey": 695
         },
         {
           "name": "Dialog Cleanup",
           "description": "Removes annoying promotional dialogs: 5-star rating, appstore rating, version upgrade, offline popup, notification permission, phone auth prompts, purchase pages",
-          "compatiblePackagesKey": 694
+          "compatiblePackagesKey": 695
         },
         {
           "name": "GMS Compatibility",
           "description": "Makes Google Maps and GMS-dependent features work in re-signed APKs. Includes signature spoofing, auth header fixes, MicroG support, and GMS availability bypass.",
-          "compatiblePackagesKey": 694
+          "compatiblePackagesKey": 695
         },
         {
           "name": "Live Streaming Enhancement",
           "description": "Live streaming enhancement: push limit bypass, swipe card unlimited, chat rate limit removal, voice game access, all-day PK battles, gift leaderboard, knight privileges, entrance limits, permission control, daily payment, noble config, stealth privacy, video chat, voice features, monetization, game operations, star toggle",
-          "compatiblePackagesKey": 694
+          "compatiblePackagesKey": 695
         },
         {
           "name": "Messaging Enhancement",
           "description": "Removes message limits, unlimited pin chat, voice/video calls, quick chat, typing indicator, free gifts, letter, greeting, ice breaker, read receipts, AI translation, message recall, group chat, live chat, message filter, chat partner config, ODiamond visitor config, prologue config, love buzz data, secret crush limit, boost limit",
-          "compatiblePackagesKey": 694
+          "compatiblePackagesKey": 695
         },
         {
           "name": "Premium Unlock",
           "description": "Unlocks all premium features, tier statuses, subscription validation, and display",
-          "compatiblePackagesKey": 694
+          "compatiblePackagesKey": 695
         },
         {
           "name": "Privacy Controls",
           "description": "Unlocks privacy features: hide from nearby, visitor footprint hiding, mysterious mode, nearby people access, read receipt unlock, read receipt dialog suppression, contact access block, location privacy, privacy settings force enable, hide activity time, hide age, hide icon, frozen activity, frozen time, hide distance, core service privacy gate, hide active from SVip, disable ad suggestions, live stealth privacy, online status visibility, hide VIP badge, heartbeat disable, verified user messages, online reminder, unreplied reminder, greeting do not disturb, only show about me inside",
-          "compatiblePackagesKey": 694
+          "compatiblePackagesKey": 695
         },
         {
           "name": "Privacy Enhancement",
           "description": "Advanced privacy protections: root/emulator detection bypass, ShuMeng SDK blocking, Facebook SDK emulator detection bypass, APK signature verification bypass, package enumeration prevention",
-          "compatiblePackagesKey": 694
+          "compatiblePackagesKey": 695
         },
         {
           "name": "UI Cleanup",
           "description": "Removes guides, banners, stickers, decorations, and AI prompts",
-          "compatiblePackagesKey": 694
+          "compatiblePackagesKey": 695
         }
       ],
       "isPreRelease": false
@@ -17016,7 +17038,7 @@
         {
           "name": "Unlock Beeline Plus features",
           "description": "Unlocks Beeline plus features such as round-trip generation, live traffic and premium map types.",
-          "compatiblePackagesKey": 695
+          "compatiblePackagesKey": 696
         }
       ],
       "isPreRelease": false
@@ -17039,27 +17061,27 @@
         {
           "name": "Android Auto",
           "description": "Injects full Android Auto support into Petal Maps, including CarAppService, manifest declarations, and required resources. Also apply 'Anti-Repack Bypass' and 'Manufacturer Check Bypass' for full functionality on non-Huawei devices.",
-          "compatiblePackagesKey": 696
+          "compatiblePackagesKey": 697
         },
         {
           "name": "Android Auto Manifest",
           "description": "Adds the Android Auto CarAppService declaration, meta-data, and permissions to AndroidManifest.xml.",
-          "compatiblePackagesKey": 696
+          "compatiblePackagesKey": 697
         },
         {
           "name": "Android Auto Resources",
           "description": "Adds the automotive_app_desc.xml resource required by Android Auto.",
-          "compatiblePackagesKey": 696
+          "compatiblePackagesKey": 697
         },
         {
           "name": "Android Auto allowlist (root)",
           "description": "Registers the app in Android Auto's allowlist on startup when root is available; no-op without root.",
-          "compatiblePackagesKey": 696
+          "compatiblePackagesKey": 697
         },
         {
           "name": "Anti-Repack Bypass",
           "description": "Neutralizes the native integrity check (SecurityDetect.irpj) that kills the process upon detecting APK re-signing.",
-          "compatiblePackagesKey": 696
+          "compatiblePackagesKey": 697
         },
         {
           "name": "Change package name",
@@ -17082,17 +17104,17 @@
               "description": "Update provider authorities declared by the app. Required for Petal Maps coexistence."
             }
           ],
-          "compatiblePackagesKey": 696
+          "compatiblePackagesKey": 697
         },
         {
           "name": "Huawei login fix",
           "description": "Forces the Account Picker sign-in flow with WebView fallback, fixing login on devices without HMS Core.",
-          "compatiblePackagesKey": 696
+          "compatiblePackagesKey": 697
         },
         {
           "name": "Manufacturer Check Bypass",
           "description": "Forces the Huawei manufacturer check to always return true, allowing non-Huawei devices to use the app.",
-          "compatiblePackagesKey": 696
+          "compatiblePackagesKey": 697
         }
       ],
       "isPreRelease": false
@@ -17115,12 +17137,12 @@
         {
           "name": "Android XR native permission names",
           "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by the legacy Galaxy XR build.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "Appear on top",
           "description": "Recommended. Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "Change package name",
@@ -17133,7 +17155,7 @@
               "description": "Accepts either a full Java package name (for example, com.valvesoftware.steamlinkvr.galaxyxr) or a display suffix (for example, Galaxy XR). Suffix input appends to app name and generates a package suffix automatically."
             }
           ],
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "Controller velocity fix",
@@ -17161,7 +17183,7 @@
               "description": "libgxr_controller_velocity.so config+44 (float32 rad/s). Falls back to runtime velocity above this derived angular speed. Allowed range: 1 to 100 rad/s."
             }
           ],
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "Device identity",
@@ -17173,27 +17195,27 @@
               "description": "assets/config/hmd_config.json: overwrites sSerialNumber, sManufacturerName, sModelNumber, sControllerType, sDeviceType, sInputProfilePath, requestedExtensions."
             }
           ],
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "Force HMD initialization gates",
           "description": "Bypasses the two legacy-tested capability gates in QSVLDeviceHmd::Init for Steam Link build 5002244.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "Force lobby permission-state gate",
           "description": "Bypasses the legacy-tested permission-state gate in XrSceneLobby for Steam Link build 5002244.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "Force stream XR gates",
           "description": "Bypasses the three legacy-tested XR feature/permission gates in XrSceneStream::Init for Steam Link build 5002244.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "GXR face bridge",
           "description": "Installs libgxr_face_bridge.so (XR_FB_face_tracking2 → XR_ANDROID_face_tracking API layer) and adds android.permission.FACE_TRACKING to the manifest.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "HMD-only pose fix",
@@ -17205,7 +17227,7 @@
               "description": "libvrlink_scene.so: AArch64 MOVZ/MOVK at PLT cave adds value×1e6 ns to X2 in QSVLDeviceHmd::GetPose. Tested default: 78 ms. Allowed range: 0 to 4000 ms."
             }
           ],
-          "compatiblePackagesKey": 698
+          "compatiblePackagesKey": 699
         },
         {
           "name": "OLED color calibration",
@@ -17227,7 +17249,7 @@
               "description": "libvrlink_scene.so GLSL: mix(vec3(luma), c, SATURATION). Used by Custom profile. Tested: 1.12 (Initial), 1.45 (Final balanced). Allowed range: 0.00 to 3.00."
             }
           ],
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "Video dither",
@@ -17239,32 +17261,32 @@
               "description": "libvrlink_scene.so GLSL: stock shader toggles '//' on color.rgb+=fract(...)*.00292; calibrated (post-oledCalibration) shader toggles *.00292 vs *.00000."
             }
           ],
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "XR Core Runtime",
           "description": "Installs the Galaxy XR runtime bridge resources and extension DEX foundation used by other XR patches.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "XR Device Config Baseline",
           "description": "Installs baseline Galaxy XR HMD/controller/default config payloads and dashboard bootstrap assets.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "XR Input Routing Config",
           "description": "Installs ui_config.json mappings for XR pointer/button routing in launcher UI flows.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "XR Launcher Bootstrap (Home Space)",
           "description": "Installs GalaxyXRPermissionActivity as launcher and configures Steam Link/VRLink activity XR startup wiring.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         },
         {
           "name": "XR Manifest Capability Pack",
           "description": "Adds Android XR/OpenXR permissions, features, runtime queries, and app-level XR properties.",
-          "compatiblePackagesKey": 697
+          "compatiblePackagesKey": 698
         }
       ],
       "isPreRelease": false
@@ -25315,6 +25337,16 @@
         "targets": [
           {
             "version": "5.8.5"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.jeffprod.cubesolver",
+        "targets": [
+          {
+            "version": "5.0.3"
           }
         ]
       }

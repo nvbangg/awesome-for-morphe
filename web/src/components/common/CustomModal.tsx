@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { X } from "lucide-react";
 
 interface CustomModalProps {
@@ -16,8 +16,6 @@ export function CustomModal({
   maxWidth = "max-w-205",
   centerMobile = false,
 }: CustomModalProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -47,7 +45,6 @@ export function CustomModal({
       onClick={onClose}
     >
       <div
-        ref={modalRef}
         onClick={(e) => e.stopPropagation()}
         className={`rounded-3xl w-full ${maxWidth} overflow-hidden flex flex-col max-h-[90vh] shadow-(--shadow-modal) bg-background border-none ${centerMobile ? "" : "max-sm:rounded-none max-sm:max-h-dvh max-sm:h-full"} outline-none animate-in zoom-in-95 duration-200`}
       >

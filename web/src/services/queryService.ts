@@ -8,6 +8,10 @@ import {
 
 import { simplifyString, slugifyCategory, getAppMeta } from "@/utils";
 
+function parseSearchQuery(query: string): string[] {
+  return query.trim().split(/\s+/).map(simplifyString).filter(Boolean);
+}
+
 export function getAppItems(
   appItems: AppItem[],
   searchQuery = "",
@@ -22,11 +26,7 @@ export function getAppItems(
     );
   }
 
-  const queryWords = searchQuery
-    .trim()
-    .split(/\s+/)
-    .map(simplifyString)
-    .filter(Boolean);
+  const queryWords = parseSearchQuery(searchQuery);
   if (queryWords.length > 0) {
     appList = appList.filter((appItem) =>
       queryWords.every((word) => appItem.searchableText.includes(word)),
@@ -129,11 +129,7 @@ export function getFilteredBundles(
 ): Bundle[] {
   let bundleList = bundles;
 
-  const queryWords = searchQuery
-    .trim()
-    .split(/\s+/)
-    .map(simplifyString)
-    .filter(Boolean);
+  const queryWords = parseSearchQuery(searchQuery);
   if (queryWords.length > 0) {
     bundleList = bundleList.filter((bundleItem) =>
       queryWords.every((word) => bundleItem.searchableText.includes(word)),
@@ -225,11 +221,7 @@ export function getAppBundleGroups(
   const rawPatches = activeData.appPatchesMap[packageName] || [];
   if (rawPatches.length === 0) return [];
 
-  const queryWords = searchQuery
-    .trim()
-    .split(/\s+/)
-    .map(simplifyString)
-    .filter(Boolean);
+  const queryWords = parseSearchQuery(searchQuery);
   const filteredPatches =
     queryWords.length > 0
       ? rawPatches.filter((patchItem: RowItem) => {
@@ -298,11 +290,7 @@ export function getBundleAppGroups(
   const filteredPatches = activeData.bundlePatchesMap[bundleKeyLower] || [];
   if (filteredPatches.length === 0) return [];
 
-  const queryWords = searchQuery
-    .trim()
-    .split(/\s+/)
-    .map(simplifyString)
-    .filter(Boolean);
+  const queryWords = parseSearchQuery(searchQuery);
   const searchedPatches =
     queryWords.length > 0
       ? filteredPatches.filter((patchItem: RowItem) => {

@@ -182,14 +182,8 @@ export function loadInitialData(): Promise<ActiveData> {
     const bundlePatchesMap: Record<string, RowItem[]> = {};
 
     for (const rowItem of rows) {
-      const packageName = rowItem.packageName;
-      if (!appPatchesMap[packageName]) appPatchesMap[packageName] = [];
-      appPatchesMap[packageName].push(rowItem);
-
-      const bundleKeyLower = rowItem.bundleKey.toLowerCase();
-      if (!bundlePatchesMap[bundleKeyLower])
-        bundlePatchesMap[bundleKeyLower] = [];
-      bundlePatchesMap[bundleKeyLower].push(rowItem);
+      (appPatchesMap[rowItem.packageName] ??= []).push(rowItem);
+      (bundlePatchesMap[rowItem.bundleKey.toLowerCase()] ??= []).push(rowItem);
     }
 
     const bundleMap: Record<string, Bundle> = {};

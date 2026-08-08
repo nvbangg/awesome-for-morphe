@@ -9,7 +9,7 @@
       "stars": 3143,
       "starsGained7d": 83,
       "starsGained40d": 143,
-      "updatedAt": 1786115439000,
+      "updatedAt": 1786180246000,
       "firstSeen": 1767200400000,
       "appFirstSeen": {
         "com.reddit.frontpage": 1767200400000,
@@ -99,14 +99,35 @@
           "compatiblePackagesKey": 1
         },
         {
-          "name": "Change package name",
-          "description": "Appends \".morphe\" to the package name by default. Changing the package name of the app can lead to unexpected issues.",
+          "name": "Change start page",
+          "description": "Adds an option to set which page the app opens in instead of the homepage.",
+          "compatiblePackagesKey": 1
+        },
+        {
+          "name": "Change start page",
+          "description": "Adds an option to set which page the app opens in instead of the homepage.",
+          "compatiblePackagesKey": 0
+        },
+        {
+          "name": "Check watch history domain name resolution",
+          "description": "Checks if the device DNS server is preventing user watch history from being saved.",
+          "compatiblePackagesKey": 1
+        },
+        {
+          "name": "Check watch history domain name resolution",
+          "description": "Checks if the device DNS server is preventing user watch history from being saved.",
+          "compatiblePackagesKey": 0
+        },
+        {
+          "name": "Clone app",
+          "description": "Changes the app package name to allow installing the same app multiple times. By default \".morphe\" is appended the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior.",
+          "isPreRelease": true,
           "default": false,
           "options": [
             {
               "key": "packageName",
               "title": "Package name",
-              "description": "The name of the package to rename the app to."
+              "description": "Package name to use for the cloned app."
             },
             {
               "key": "updatePermissions",
@@ -119,26 +140,6 @@
               "description": "Update provider names declared by the app. Enabling this can fix installation conflicts, but this can also break features in certain apps."
             }
           ]
-        },
-        {
-          "name": "Change start page",
-          "description": "Adds an option to set which page the app opens in instead of the homepage.",
-          "compatiblePackagesKey": 1
-        },
-        {
-          "name": "Change start page",
-          "description": "Adds an option to set which page the app opens in instead of the homepage.",
-          "compatiblePackagesKey": 0
-        },
-        {
-          "name": "Check watch history domain name resolution",
-          "description": "Checks if the device DNS server is preventing user watch history from being saved.",
-          "compatiblePackagesKey": 1
-        },
-        {
-          "name": "Check watch history domain name resolution",
-          "description": "Checks if the device DNS server is preventing user watch history from being saved.",
-          "compatiblePackagesKey": 0
         },
         {
           "name": "Copy video link",
@@ -4993,7 +4994,7 @@
       "stars": 31,
       "starsGained7d": 3,
       "starsGained40d": 8,
-      "updatedAt": 1786088890000,
+      "updatedAt": 1786183460000,
       "firstSeen": 1778211405000,
       "appFirstSeen": {
         "com.wildberries.ru": 1778236605000,
@@ -27576,7 +27577,7 @@
       "iconUrl": "https://play-lh.googleusercontent.com/yOedEdrW5mbwFSzANsZyZxm6zI2DnQ_52-KGJxUWv1kJnxeyAY4avqQC0xpMHGP4ukY5pXhE00-H40ktbWkkCVc=s64-rw",
       "description": "Connect and browse the internet with a fast VPN proxy server and IP blocker.",
       "minInstalls": 100000000,
-      "category": "Social & Communication",
+      "category": "Productivity",
       "firstSeen": 1783382675000
     },
     "com.cpuid.cpu_z": {

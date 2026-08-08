@@ -9,6 +9,8 @@ import { Spinner } from "@heroui/react";
 import { Sparkles, Package, Smartphone, Calendar } from "lucide-react";
 import { isNew } from "@/utils/formatters";
 import { Badge } from "@/components/common/Badge";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+import { WHATS_NEW_DAYS_PER_PAGE } from "@/constants";
 
 interface WhatsNewListProps {
   history: WhatsNewHistoryItem[];
@@ -27,6 +29,11 @@ export function WhatsNewList({
   onAppClick,
   onPatchClick,
 }: WhatsNewListProps) {
+  const { visibleItems, loadMoreRef, hasMore } = useInfiniteScroll(
+    history || [],
+    WHATS_NEW_DAYS_PER_PAGE,
+  );
+
   if (isLoading) {
     return (
       <div className="py-12 flex flex-col items-center justify-center text-center gap-3">
@@ -49,7 +56,7 @@ export function WhatsNewList({
 
   return (
     <div className="flex flex-col gap-6">
-      {history.map((dayItem, dayIndex) => (
+      {visibleItems.map((dayItem, dayIndex) => (
         <div key={dayIndex} className="flex flex-col gap-3">
           <div className="sticky top-14 z-10 bg-background/95 backdrop-blur-xs py-3 flex items-center gap-2 text-xs font-bold text-primary dark:text-[#3fe9e8] uppercase tracking-wider border-b border-divider/40 mb-2">
             <Calendar className="size-3.5" />
@@ -172,6 +179,7 @@ export function WhatsNewList({
           </div>
         </div>
       ))}
+      {hasMore && <div ref={loadMoreRef} className="h-px w-full mt-4" />}
     </div>
   );
 }

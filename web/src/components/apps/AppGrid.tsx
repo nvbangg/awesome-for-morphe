@@ -3,6 +3,8 @@ import { AppCard } from "./AppCard";
 import { ActiveData } from "@/types/data";
 import { getAppItems } from "@/services";
 import { EmptyState } from "@/components/common/EmptyState";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+import { ITEMS_PER_PAGE } from "@/constants";
 
 interface AppGridProps {
   activeData: ActiveData | null;
@@ -31,19 +33,27 @@ export const AppGrid = memo(function AppGrid({
     );
   }, [activeData, sortOrder, selectedCategory, deferredSearch]);
 
+  const { visibleItems, loadMoreRef, hasMore } = useInfiniteScroll(
+    appList,
+    ITEMS_PER_PAGE,
+  );
+
   if (appList.length === 0) {
     return <EmptyState message="No apps match your search" />;
   }
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 my-6">
-      {appList.map((appItem) => (
-        <AppCard
-          key={appItem.packageName}
-          appItem={appItem}
-          onClick={onAppClick}
-        />
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 my-6">
+        {visibleItems.map((appItem) => (
+          <AppCard
+            key={appItem.packageName}
+            appItem={appItem}
+            onClick={onAppClick}
+          />
+        ))}
+      </div>
+      {hasMore && <div ref={loadMoreRef} className="h-px w-full" />}
+    </>
   );
 });

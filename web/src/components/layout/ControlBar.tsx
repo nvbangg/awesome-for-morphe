@@ -9,6 +9,7 @@ import { NavigationTabType as TabType } from "@/hooks/useUrlSync";
 import { ActiveStats } from "@/types/data";
 import { SearchInput } from "@/components/common/SearchInput";
 import { CustomSelect } from "@/components/common/CustomSelect";
+import { Badge } from "@/components/common/Badge";
 import { Tabs, TabListContainer, TabList, Tab } from "@heroui/react";
 
 interface ControlBarProps {
@@ -146,11 +147,11 @@ export function ControlBar({
               className="flex-1 min-w-0"
             />
             <div className="shrink-0 sm:ml-auto">
-              <span className="inline-flex items-center justify-center font-semibold rounded-full text-xs px-3 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0 whitespace-nowrap">
+              <Badge variant="count" className="px-3 py-1 whitespace-nowrap">
                 {activeTab === "apps"
                   ? `${statistics.appsCount.toLocaleString()} Apps`
                   : `${statistics.bundlesCount.toLocaleString()} Bundles`}
-              </span>
+              </Badge>
             </div>
           </div>
         </>

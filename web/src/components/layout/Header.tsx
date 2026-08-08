@@ -31,11 +31,7 @@ export function Header() {
             size="sm"
             aria-label="Toggle theme"
             onPress={() => setTheme(isDarkMode ? "light" : "dark")}
-            className={`font-semibold text-xs gap-1.5 transition-all ${
-              isDarkMode
-                ? "bg-zinc-100 text-zinc-900 hover:bg-white dark:bg-zinc-200 dark:text-zinc-900 dark:hover:bg-white"
-                : "bg-zinc-800 text-zinc-100 hover:bg-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-900"
-            }`}
+            className="font-semibold text-xs gap-1.5 transition-all bg-zinc-800 text-zinc-100 hover:bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white border-none"
           >
             {isDarkMode ? (
               <>
@@ -54,11 +50,7 @@ export function Header() {
             href="https://github.com/nvbangg/awesome-morphe"
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center justify-center h-8 px-3 rounded-lg font-semibold text-xs gap-1.5 transition-all ${
-              isDarkMode
-                ? "bg-zinc-100 text-zinc-900 hover:bg-white dark:bg-zinc-200 dark:text-zinc-900 dark:hover:bg-white"
-                : "bg-zinc-800 text-zinc-100 hover:bg-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-900"
-            }`}
+            className="inline-flex items-center justify-center h-8 px-3 rounded-lg font-semibold text-xs gap-1.5 transition-all bg-zinc-800 text-zinc-100 hover:bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white border-none no-underline"
           >
             <GitHubIcon className="size-4" />
             <span className="hidden md:inline">GitHub</span>

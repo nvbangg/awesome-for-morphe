@@ -70,7 +70,7 @@ export function CustomSelect({
                 className={`px-3 py-2 text-sm font-medium rounded-lg text-left cursor-pointer transition-colors flex items-center justify-between whitespace-normal wrap-break-word ${
                   isSelected
                     ? "bg-primary/10 text-primary font-semibold"
-                    : "text-foreground hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                    : "text-foreground hover:bg-divider/40"
                 }`}
               >
                 <span>{option.label}</span>

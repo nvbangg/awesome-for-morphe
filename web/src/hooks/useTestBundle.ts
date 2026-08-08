@@ -85,15 +85,46 @@ export function useTestBundle(activeData: ActiveData | null) {
     };
   }, [activeData, loadTestBundleFromUrl]);
 
+  const handleOpenTestBundle = useCallback(() => {
+    setTestBundleError("");
+    setIsTestBundleInputOpen(true);
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}?test-bundle#bundles`,
+    );
+  }, [setTestBundleError, setIsTestBundleInputOpen]);
+
+  const handleCloseTestBundleInput = useCallback(() => {
+    setTestBundleError("");
+    setIsTestBundleInputOpen(false);
+    if (window.location.search.includes("test-bundle")) {
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}#bundles`,
+      );
+    }
+  }, [setTestBundleError, setIsTestBundleInputOpen]);
+
+  const handleCloseTestBundleView = useCallback(() => {
+    setIsTestBundleViewOpen(false);
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}#bundles`,
+    );
+  }, [setIsTestBundleViewOpen]);
+
   return {
     isTestBundleInputOpen,
-    setIsTestBundleInputOpen,
     isTestBundleViewOpen,
-    setIsTestBundleViewOpen,
     testBundleData,
     testBundleLoading,
     testBundleError,
-    setTestBundleError,
     handleTestBundleSubmit,
+    handleOpenTestBundle,
+    handleCloseTestBundleInput,
+    handleCloseTestBundleView,
   };
 }

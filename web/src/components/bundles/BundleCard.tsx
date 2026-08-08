@@ -28,7 +28,7 @@ export const BundleCard = memo(function BundleCard({
       <div className="flex items-center gap-3.5">
         {bundleItem.avatarUrl && !imgError ? (
           <img
-            className="w-14 h-14 rounded-xl object-cover shrink-0 border border-border bg-zinc-100 dark:bg-zinc-800"
+            className="w-14 h-14 rounded-xl object-cover shrink-0 border border-border bg-divider/40"
             src={bundleItem.avatarUrl}
             alt={bundleItem.name}
             width={56}
@@ -37,7 +37,7 @@ export const BundleCard = memo(function BundleCard({
             onError={() => setImgError(true)}
           />
         ) : (
-          <div className="w-14 h-14 rounded-xl shrink-0 border border-border bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+          <div className="w-14 h-14 rounded-xl shrink-0 border border-border bg-divider/40 flex items-center justify-center">
             <Package className="w-8 h-8 text-foreground-400" />
           </div>
         )}

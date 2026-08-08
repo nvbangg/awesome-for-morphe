@@ -2,10 +2,9 @@ import { Header } from "@/components/layout/Header";
 import { ControlBar } from "@/components/layout/ControlBar";
 import { AppGrid } from "@/components/apps/AppGrid";
 import { AppModal } from "@/components/apps/AppModal";
-import { BundleGrid } from "@/components/bundles/BundleGrid";
+import { BundlesTab } from "@/components/bundles/BundlesTab";
 import { BundleModal } from "@/components/bundles/BundleModal";
-import { WhatsNewList } from "@/components/whatsnew/WhatsNewList";
-import { WhatsNewHeader } from "@/components/whatsnew/WhatsNewHeader";
+import { WhatsNewTab } from "@/components/whatsnew/WhatsNewTab";
 import { Footer } from "@/components/layout/Footer";
 import { SkeletonGrid } from "@/components/common/SkeletonGrid";
 
@@ -87,14 +86,14 @@ export default function App() {
 
   const {
     isTestBundleInputOpen,
-    setIsTestBundleInputOpen,
     isTestBundleViewOpen,
-    setIsTestBundleViewOpen,
     testBundleData,
     testBundleLoading,
     testBundleError,
-    setTestBundleError,
     handleTestBundleSubmit,
+    handleOpenTestBundle,
+    handleCloseTestBundleInput,
+    handleCloseTestBundleView,
   } = useTestBundle(activeData);
 
   return (
@@ -139,54 +138,24 @@ export default function App() {
                   )}
 
                   {activeTab === "bundles" && (
-                    <>
-                      <div className="text-sm sm:text-base text-foreground-700 dark:text-foreground-400 mb-4 px-1 text-right">
-                        Bundle not found?{" "}
-                        <button
-                          onClick={() => {
-                            setTestBundleError("");
-                            setIsTestBundleInputOpen(true);
-                            window.history.replaceState(
-                              null,
-                              "",
-                              `${window.location.pathname}?test-bundle#bundles`,
-                            );
-                          }}
-                          className="font-semibold text-primary hover:underline hover:text-primary/80 transition-colors"
-                        >
-                          Test bundle
-                        </button>
-                        {" | "}
-                        <a
-                          href="https://github.com/nvbangg/awesome-morphe/issues/new?template=bundle-request.yml"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-semibold text-primary hover:underline hover:text-primary/80 transition-colors"
-                        >
-                          Submit Bundle
-                        </a>
-                      </div>
-                      <BundleGrid
-                        activeData={activeData}
-                        sortOrder={sortOrder}
-                        globalSearch={globalSearch}
-                        onBundleClick={handleBundleClick}
-                      />
-                    </>
+                    <BundlesTab
+                      activeData={activeData}
+                      sortOrder={sortOrder}
+                      globalSearch={globalSearch}
+                      onBundleClick={handleBundleClick}
+                      onTestBundleClick={handleOpenTestBundle}
+                    />
                   )}
 
                   {activeTab === "whats-new" && (
-                    <div className="my-3">
-                      <WhatsNewHeader />
-                      <WhatsNewList
-                        history={whatsNewHistory}
-                        isLoading={isLoading}
-                        activeData={activeData}
-                        onBundleClick={handleBundleClick}
-                        onAppClick={handleAppClick}
-                        onPatchClick={handlePatchClick}
-                      />
-                    </div>
+                    <WhatsNewTab
+                      history={whatsNewHistory}
+                      isLoading={isLoading}
+                      activeData={activeData}
+                      onBundleClick={handleBundleClick}
+                      onAppClick={handleAppClick}
+                      onPatchClick={handlePatchClick}
+                    />
                   )}
                 </>
               )}
@@ -199,17 +168,7 @@ export default function App() {
 
       <TestBundleInputModal
         isOpen={isTestBundleInputOpen}
-        onClose={() => {
-          setTestBundleError("");
-          setIsTestBundleInputOpen(false);
-          if (window.location.search.includes("test-bundle")) {
-            window.history.replaceState(
-              null,
-              "",
-              `${window.location.pathname}#bundles`,
-            );
-          }
-        }}
+        onClose={handleCloseTestBundleInput}
         onSubmit={handleTestBundleSubmit}
         isLoading={testBundleLoading}
         error={testBundleError}
@@ -217,14 +176,7 @@ export default function App() {
 
       <TestBundleViewModal
         isOpen={isTestBundleViewOpen}
-        onClose={() => {
-          setIsTestBundleViewOpen(false);
-          window.history.replaceState(
-            null,
-            "",
-            `${window.location.pathname}#bundles`,
-          );
-        }}
+        onClose={handleCloseTestBundleView}
         data={testBundleData}
         activeData={activeData}
       />

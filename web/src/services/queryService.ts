@@ -7,7 +7,7 @@ import {
 } from "@/types/data";
 
 import { simplifyString, slugifyCategory, getAppMeta } from "@/utils";
-
+import { CATEGORY_UNIVERSAL, CATEGORY_LABEL_UNIVERSAL } from "@/constants";
 function parseSearchQuery(query: string): string[] {
   return query.trim().split(/\s+/).map(simplifyString).filter(Boolean);
 }
@@ -106,7 +106,10 @@ export function getAvailableCategories(
   ];
 
   if (hasNotOnGooglePlay) {
-    categories.push({ key: "not-on-google-play", label: "Not on Google Play" });
+    categories.push({
+      key: CATEGORY_UNIVERSAL,
+      label: CATEGORY_LABEL_UNIVERSAL,
+    });
   }
 
   const sortedCategories = Array.from(categoriesSet).sort((a, b) =>

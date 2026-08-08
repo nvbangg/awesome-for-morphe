@@ -1,16 +1,24 @@
 import { Sparkles, FlaskConical, Star, Download } from "lucide-react";
 import { formatNumberCompact, formatStarCount } from "@/utils/formatters";
 
-type BadgeVariant = "new" | "prerelease" | "stars" | "downloads";
+type BadgeVariant =
+  "new" | "prerelease" | "stars" | "downloads" | "count" | "category";
 
 interface BadgeProps {
   variant: BadgeVariant;
   value?: number;
   className?: string;
   title?: string;
+  children?: React.ReactNode;
 }
 
-export function Badge({ variant, value, className = "", title }: BadgeProps) {
+export function Badge({
+  variant,
+  value,
+  className = "",
+  title,
+  children,
+}: BadgeProps) {
   if (variant === "new") {
     return (
       <span
@@ -55,6 +63,23 @@ export function Badge({ variant, value, className = "", title }: BadgeProps) {
       >
         <Download className="w-3 h-3 text-yellow-500" />
         {formatNumberCompact(value)}
+      </span>
+    );
+  }
+
+  if (variant === "count" || variant === "category") {
+    const isCategory = variant === "category";
+    const defaultPadding = isCategory ? "px-2 py-1" : "px-2.5 py-0.5";
+    const hasPadding =
+      className.includes("p-") ||
+      className.includes("px-") ||
+      className.includes("py-");
+    return (
+      <span
+        className={`inline-flex items-center justify-center font-semibold rounded-full text-xs bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 shrink-0 ${hasPadding ? "" : defaultPadding} ${className}`}
+        title={title}
+      >
+        {children}
       </span>
     );
   }

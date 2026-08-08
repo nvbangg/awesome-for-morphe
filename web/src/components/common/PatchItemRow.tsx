@@ -2,12 +2,65 @@ import { memo, useState } from "react";
 import { RowItem } from "@/types/data";
 import { FlaskConical, ChevronDown, ChevronUp } from "lucide-react";
 import { Badge } from "@/components/common/Badge";
+import { PatchOptionsGroup } from "./PatchOptionsGroup";
 
 interface PatchItemRowProps {
   patchItem: RowItem;
   copiedText: string | null;
   copyToClipboard: (text: string, key?: string) => void;
 }
+
+interface VersionChipProps {
+  ver: { version: string; isExperimental?: boolean };
+  chipKey: string;
+  copiedText: string | null;
+  copyToClipboard: (text: string, key?: string) => void;
+}
+
+const VersionChip = memo(function VersionChip({
+  ver,
+  chipKey,
+  copiedText,
+  copyToClipboard,
+}: VersionChipProps) {
+  const isCopied = copiedText === chipKey;
+
+  return (
+    <button
+      type="button"
+      onClick={(e) => {
+        e.stopPropagation();
+        copyToClipboard(ver.version, chipKey);
+      }}
+      className={`inline-grid grid-cols-1 items-center justify-center px-1 py-0 rounded-full text-xs font-normal transition-all cursor-pointer border ${
+        isCopied
+          ? "bg-success/20 text-success-600 dark:text-success-400 border-success/40"
+          : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/20"
+      }`}
+      title={
+        isCopied
+          ? "Copied!"
+          : ver.isExperimental
+            ? "Experimental version (Click to copy)"
+            : "Supported version (Click to copy)"
+      }
+    >
+      <span
+        className={`col-start-1 row-start-1 inline-flex items-center justify-center gap-0.5 ${isCopied ? "invisible" : "visible"}`}
+      >
+        {ver.isExperimental && (
+          <FlaskConical className="w-2.5 h-2.5 text-warning shrink-0" />
+        )}
+        <span>{ver.version}</span>
+      </span>
+      <span
+        className={`col-start-1 row-start-1 inline-flex items-center justify-center ${isCopied ? "visible" : "invisible"}`}
+      >
+        Copied!
+      </span>
+    </button>
+  );
+});
 
 export const PatchItemRow = memo(function PatchItemRow({
   patchItem,
@@ -70,48 +123,12 @@ export const PatchItemRow = memo(function PatchItemRow({
             </span>
           ) : !showAllVersions ? (
             <div className="flex items-center gap-1 flex-wrap">
-              {(() => {
-                const ver = versions[0];
-                const key = `${patchItem.id}-ver-0`;
-                const isCopied = copiedText === key;
-
-                return (
-                  <button
-                    key={0}
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      copyToClipboard(ver.version, key);
-                    }}
-                    className={`inline-grid grid-cols-1 items-center justify-center px-1 py-0 rounded-full text-xs font-normal transition-all cursor-pointer border ${
-                      isCopied
-                        ? "bg-success/20 text-success-600 dark:text-success-400 border-success/40"
-                        : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/20"
-                    }`}
-                    title={
-                      isCopied
-                        ? "Copied!"
-                        : ver.isExperimental
-                          ? "Experimental version (Click to copy)"
-                          : "Supported version (Click to copy)"
-                    }
-                  >
-                    <span
-                      className={`col-start-1 row-start-1 inline-flex items-center justify-center gap-0.5 ${isCopied ? "invisible" : "visible"}`}
-                    >
-                      {ver.isExperimental && (
-                        <FlaskConical className="w-2.5 h-2.5 text-warning shrink-0" />
-                      )}
-                      <span>{ver.version}</span>
-                    </span>
-                    <span
-                      className={`col-start-1 row-start-1 inline-flex items-center justify-center ${isCopied ? "visible" : "invisible"}`}
-                    >
-                      Copied!
-                    </span>
-                  </button>
-                );
-              })()}
+              <VersionChip
+                ver={versions[0]}
+                chipKey={`${patchItem.id}-ver-0`}
+                copiedText={copiedText}
+                copyToClipboard={copyToClipboard}
+              />
 
               {hasMultipleVersions && (
                 <button
@@ -129,47 +146,15 @@ export const PatchItemRow = memo(function PatchItemRow({
             </div>
           ) : (
             <div className="flex flex-wrap items-center gap-1 max-w-full justify-end">
-              {versions.map((ver, idx) => {
-                const key = `${patchItem.id}-ver-${idx}`;
-                const isCopied = copiedText === key;
-
-                return (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      copyToClipboard(ver.version, key);
-                    }}
-                    className={`inline-grid grid-cols-1 items-center justify-center px-1 py-0 rounded-full text-xs font-normal transition-all cursor-pointer border ${
-                      isCopied
-                        ? "bg-success/20 text-success-600 dark:text-success-400 border-success/40"
-                        : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/20"
-                    }`}
-                    title={
-                      isCopied
-                        ? "Copied!"
-                        : ver.isExperimental
-                          ? "Experimental version (Click to copy)"
-                          : "Supported version (Click to copy)"
-                    }
-                  >
-                    <span
-                      className={`col-start-1 row-start-1 inline-flex items-center justify-center gap-0.5 ${isCopied ? "invisible" : "visible"}`}
-                    >
-                      {ver.isExperimental && (
-                        <FlaskConical className="w-2.5 h-2.5 text-warning shrink-0" />
-                      )}
-                      <span>{ver.version}</span>
-                    </span>
-                    <span
-                      className={`col-start-1 row-start-1 inline-flex items-center justify-center ${isCopied ? "visible" : "invisible"}`}
-                    >
-                      Copied!
-                    </span>
-                  </button>
-                );
-              })}
+              {versions.map((ver, idx) => (
+                <VersionChip
+                  key={idx}
+                  ver={ver}
+                  chipKey={`${patchItem.id}-ver-${idx}`}
+                  copiedText={copiedText}
+                  copyToClipboard={copyToClipboard}
+                />
+              ))}
               <button
                 type="button"
                 onClick={(e) => {
@@ -193,23 +178,7 @@ export const PatchItemRow = memo(function PatchItemRow({
       )}
 
       {hasOptions && showOptions && (
-        <div
-          onClick={(e) => e.stopPropagation()}
-          className="mt-1 p-2.5 bg-zinc-100 dark:bg-zinc-800/80 border border-border rounded-lg flex flex-col gap-2 select-text"
-        >
-          {patchItem.options!.map((opt, idx) => (
-            <div key={opt.key || idx} className="flex flex-col gap-0.5">
-              <span className="text-xs font-semibold text-foreground">
-                {opt.title || opt.key}
-              </span>
-              {opt.description && (
-                <p className="text-xs text-foreground-600 dark:text-foreground-400 leading-normal">
-                  {opt.description}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
+        <PatchOptionsGroup options={patchItem.options!} />
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 import { VersionItem, AppNameMeta } from "@/types/data";
 import { CATEGORY_LABEL_UNIVERSAL } from "@/constants";
-import { decodeHtmlEntities } from "./stringUtils";
+import { decodeHtmlEntities, slugifyCategory } from "./stringUtils";
 
 export function extractVersions(rawVersionsValue: unknown): VersionItem[] {
   if (!Array.isArray(rawVersionsValue)) return [];
@@ -58,6 +58,7 @@ export function getAppMeta(
   description: string;
   minInstalls: number;
   category: string;
+  categorySlug: string;
   firstSeen: number;
 } {
   const appMeta = namesMap[packageName];
@@ -67,6 +68,7 @@ export function getAppMeta(
     description: decodeHtmlEntities(appMeta?.description || ""),
     minInstalls: appMeta?.minInstalls || 0,
     category: appMeta?.category || CATEGORY_LABEL_UNIVERSAL,
+    categorySlug: appMeta?.category ? slugifyCategory(appMeta.category) : "",
     firstSeen: appMeta?.firstSeen || 0,
   };
 }

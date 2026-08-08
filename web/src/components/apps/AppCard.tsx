@@ -39,7 +39,7 @@ export const AppCard = memo(function AppCard({
       <div className="flex items-center gap-3.5">
         {appItem.appIcon && !imgError ? (
           <img
-            className="w-14 h-14 rounded-xl object-cover shrink-0 border border-border bg-zinc-100 dark:bg-zinc-800"
+            className="w-14 h-14 rounded-xl object-cover shrink-0 border border-border bg-divider/40"
             src={appItem.appIcon}
             alt={appItem.appName}
             width={56}
@@ -48,7 +48,7 @@ export const AppCard = memo(function AppCard({
             onError={() => setImgError(true)}
           />
         ) : (
-          <div className="w-14 h-14 rounded-xl shrink-0 border border-border bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+          <div className="w-14 h-14 rounded-xl shrink-0 border border-border bg-divider/40 flex items-center justify-center">
             <Smartphone className="w-8 h-8 text-foreground-400" />
           </div>
         )}
@@ -89,14 +89,15 @@ export const AppCard = memo(function AppCard({
       </div>
 
       <div className="flex items-center justify-between gap-2 mt-auto w-full">
-        <span
-          className="font-semibold rounded-full text-xs px-2 py-1 bg-zinc-200 text-foreground-700 dark:text-zinc-300 dark:bg-zinc-700 whitespace-nowrap truncate shrink-0 max-w-[60%]"
+        <Badge
+          variant="category"
+          className="whitespace-nowrap truncate max-w-[60%]"
           title="Category"
         >
           {appItem.categorySlug === CATEGORY_UNIVERSAL
             ? CATEGORY_LABEL_UNIVERSAL
             : appItem.category}
-        </span>
+        </Badge>
 
         {showGooglePlay && (
           <a

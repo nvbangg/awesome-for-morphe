@@ -1,6 +1,18 @@
 {
-  "version": "1.9.1",
+  "version": "1.10.0",
   "patches": [
+    {
+      "name": "Block data collection",
+      "description": "Block Didomi tracking SDK, disable consent prompt.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": []
+    },
     {
       "name": "Bypass PairIp",
       "description": "Bypass the PairIp license check preventing app modification",

@@ -2955,7 +2955,7 @@
       "stars": 2503,
       "starsGained7d": 67,
       "starsGained40d": 238,
-      "updatedAt": 1785774756000,
+      "updatedAt": 1786282519000,
       "firstSeen": 1773129596000,
       "appFirstSeen": {
         "com.instagram.android": 1773154796000,
@@ -3218,7 +3218,8 @@
         },
         {
           "name": "Dynamic color",
-          "description": "Adds an option to replace Twitter Blue with the user's Material You palette.",
+          "description": "Replaces the default Twitter Blue with the user's Material You palette.",
+          "default": false,
           "compatiblePackagesKey": 115
         },
         {
@@ -3471,6 +3472,12 @@
           "compatiblePackagesKey": 115
         },
         {
+          "name": "Recommended flags",
+          "description": "Developer flags suggested by the community",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 116
+        },
+        {
           "name": "Remove Ads",
           "description": "Removed promoted posts, trends and google ads",
           "compatiblePackagesKey": 115
@@ -3553,12 +3560,12 @@
         },
         {
           "name": "Theme",
-          "description": "Adds Material You and AMOLED options to Instagram's Dark mode settings on Android 12 and later. On Android 8–11, it applies a fixed Material You-style theme or an optional AMOLED theme.",
+          "description": "Adds Material You and AMOLED controls to Piko settings on Android 12 and later. On Android 8–11, it applies a fixed Material You-style theme or an optional AMOLED theme.",
           "options": [
             {
               "key": "amoled",
               "title": "Pure-black AMOLED theme for Android 8–11",
-              "description": "Use a fixed pure-black AMOLED theme instead of the fixed Material You-style theme on Android 8–11. On Android 12 and later, select AMOLED in Instagram's Dark mode settings."
+              "description": "Use a fixed pure-black AMOLED theme instead of the fixed Material You-style theme on Android 8–11. On Android 12 and later, use the AMOLED control in Piko settings."
             }
           ],
           "compatiblePackagesKey": 116
@@ -5702,7 +5709,7 @@
       "stars": 110,
       "starsGained7d": 8,
       "starsGained40d": 25,
-      "updatedAt": 1786234812000,
+      "updatedAt": 1786285350000,
       "firstSeen": 1779671144000,
       "appFirstSeen": {
         "tv.pluto.android": 1783087807450,
@@ -5858,6 +5865,11 @@
           "name": "Skip ads",
           "description": "Suppresses ViX ad delivery by stopping the LuraPlayer linear ad-break scheduler (client-side VAST) and preventing the Innovid SSAI ad overlay from mounting.",
           "compatiblePackagesKey": 203
+        },
+        {
+          "name": "Suppress Household Prompt",
+          "description": "Hides the Netflix \"you're traveling\" / update-your-household prompt by keeping the client from activating the misdetection challenge session. Does NOT change what Netflix's servers detect (that's driven by your public IP — use a VPN for that); it only suppresses the on-screen prompt. Opt-in / experimental; only takes visible effect when the account would otherwise be prompted.",
+          "compatiblePackagesKey": 197
         }
       ],
       "isPreRelease": false

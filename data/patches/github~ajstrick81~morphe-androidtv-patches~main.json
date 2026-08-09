@@ -1,5 +1,5 @@
 {
-  "version": "1.22.0",
+  "version": "1.23.0",
   "appNames": {
     "com.fox.foxone": "Fox One Android TV",
     "com.netflix.ninja": "Netflix Android TV",
@@ -805,6 +805,34 @@
             },
             {
               "version": "4.47.2_tv",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Suppress Household Prompt",
+      "description": "Hides the Netflix \"you're traveling\" / update-your-household prompt by keeping the client from activating the misdetection challenge session. Does NOT change what Netflix's servers detect (that's driven by your public IP — use a VPN for that); it only suppresses the on-screen prompt. Opt-in / experimental; only takes visible effect when the account would otherwise be prompted.",
+      "use": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": {
+        "com.netflix.ninja": [
+          "13.0.1 build 25028"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Netflix Android TV",
+          "packageName": "com.netflix.ninja",
+          "description": null,
+          "appIconColor": 15010068,
+          "targets": [
+            {
+              "version": "13.0.1 build 25028",
               "experimental": false
             }
           ]

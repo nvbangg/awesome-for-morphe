@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "patches": [
     {
       "name": "Always incognito mode",
@@ -378,6 +378,39 @@
     },
     {
       "name": "Enable Premium",
+      "description": "Unlocks Fake GPS Location Premium",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.hopefactory2021.fakegpslocation",
+          "name": "Fake GPS Location",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#5F7C8A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "125.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
       "description": "Unlocks Gradient Weather Premium. Use With Spoof Install Source",
       "default": true,
       "dependencies": [],
@@ -524,32 +557,6 @@
           "targets": [
             {
               "version": "5.65.9",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Enable Premium",
-      "description": "Unlocks Material Capsule Pro",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.pryshedko.mtisland",
-          "name": "Material Capsule",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#212121",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "15.7",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

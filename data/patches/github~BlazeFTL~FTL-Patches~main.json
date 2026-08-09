@@ -1,0 +1,120 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.20.0",
+  "patches": [
+    {
+      "name": "APK Junk Cleanup",
+      "description": "Removes build artifacts and metadata that bloat the APK: Play Services / Firebase version files, protobuf descriptors, debug probes, kotlin builtins, META-INF subfolder clutter, and misc junk. Safe — only removes files with no runtime purpose.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "splitByArch",
+          "title": "Keep Only One Architecture",
+          "description": "Keep native libraries (.so files) for only one CPU architecture. To generate separate APKs for each architecture, run this patch multiple times with a different architecture selected each time.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        },
+        {
+          "key": "targetArch",
+          "title": "Target architecture",
+          "description": "Which architecture to keep when splitting is enabled.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "arm64-v8a",
+          "values": {
+            "arm64-v8a": "ARM64 (arm64-v8a)",
+            "armeabi-v7a": "ARMv7 (armeabi-v7a)",
+            "x86": "x86",
+            "x86_64": "x86_64"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Png Optimizer",
+      "description": "Compresses PNG images without losing quality and strips hidden metadata (DPI, timestamps, text) to make the app smaller. Only rewrites files when the result is actually smaller.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove Ads",
+      "description": "Disables ad SDKs, ruins ad network request URLs, and hides empty ad containers across the app.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove Analytics",
+      "description": "Disables tracking and crash-reporting tools, corrupts analytics web links inside the code, and removes background tracking services.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove Debug Info",
+      "description": "Removes debug information (line numbers, variable names, source file references) from every class in the .dex files to reduce overall APK size.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove Duplicate Graphics",
+      "description": "Keeps images for only one screen density (like xhdpi) and removes copies for all other densities. Android will automatically scale the kept images, making the app significantly smaller.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "targetDensity",
+          "title": "Target density",
+          "description": "Density bucket to keep; duplicates are stripped from every other bucket.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "xhdpi",
+          "values": {
+            "ldpi": "ldpi",
+            "mdpi": "mdpi",
+            "hdpi": "hdpi",
+            "xhdpi": "xhdpi",
+            "xxhdpi": "xxhdpi",
+            "xxxhdpi": "xxxhdpi"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Remove Languages",
+      "description": "Removes translations for languages you don't use across ALL resource types (strings, drawables, layouts, raw, xml, etc.). Only keeps the languages you pick. Base resources with no language code are always preserved.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "keepLanguages",
+          "title": "Languages to keep",
+          "description": "Language codes (e.g. en, ru, es) to preserve. All other language variants are deleted.",
+          "required": false,
+          "type": "kotlin.collections.List<kotlin.String>",
+          "default": [
+            "en",
+            "ru"
+          ],
+          "values": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0",
+  "version": "1.5.0-dev.1",
   "patches": [
     {
       "name": "Disable LINE Premium",
@@ -395,6 +395,32 @@
     {
       "name": "Keep chats unread",
       "description": "Opening a 1:1 or group chat no longer marks it read — it stays unread and no read receipt is sent. Manually using \"Mark as read\" / \"Mark all as read\" still marks the chat read and sends the receipt as normal.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "jp.naver.line.android",
+          "name": "LINE",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#06C755",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.11.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Keep unsent messages",
+      "description": "Keeps messages that were unsent in 1:1 and group chats on your device instead of destroying them, and shows the usual \"unsent a message\" notice directly below the message it kept. Doesn't apply to OpenChat.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

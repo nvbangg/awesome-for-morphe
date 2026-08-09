@@ -3706,7 +3706,7 @@
       "stars": 121,
       "starsGained7d": 1,
       "starsGained40d": 8,
-      "updatedAt": 1786194461000,
+      "updatedAt": 1786243379000,
       "firstSeen": 1774731407000,
       "appFirstSeen": {
         "com.dcinside.app.android": 1774756607000,
@@ -4273,6 +4273,12 @@
           "name": "Render big DCCon as normal size",
           "description": "Adds a setting to render big DCCon at normal DCCon size.",
           "compatiblePackagesKey": 123
+        },
+        {
+          "name": "Restore keyword notification log",
+          "description": "Restores the removed keyword notification collection view along with its chat list entry.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 122
         },
         {
           "name": "Restore old post icons",
@@ -5893,13 +5899,13 @@
     {
       "source": "github",
       "repo": "icysymmetra/tiktok-patches-for-morphe",
-      "name": "TikTok",
+      "name": "Metra TikTok",
       "repoDescription": "This repository is a Morphe patch source for TikTok.  It continues the work from earlier community TikTok patch sets, including ReVanced, with the patches adapted for Morphe and tested against newer TikTok builds. The current target version is TikTok 43.8.3",
       "avatarUrl": "https://raw.githubusercontent.com/icysymmetra/tiktok-patches-for-morphe/main/patches-bundle.png",
       "stars": 190,
       "starsGained7d": 7,
       "starsGained40d": 54,
-      "updatedAt": 1785234499000,
+      "updatedAt": 1786241505000,
       "firstSeen": 1780130886000,
       "appFirstSeen": {
         "com.zhiliaoapp.musically": 1780156086693
@@ -5921,13 +5927,23 @@
           "compatiblePackagesKey": 209
         },
         {
+          "name": "Diagnostic tools",
+          "description": "Adds optional Morphe diagnostic logging, filtered reports, and local Java crash capture.",
+          "compatiblePackagesKey": 209
+        },
+        {
           "name": "Disable login requirement",
           "description": "Removes TikTok's mandatory login gate from supported flows.",
           "compatiblePackagesKey": 209
         },
         {
+          "name": "Disable long-press quick share",
+          "description": "Keeps long-pressing Share from opening TikTok's quick-share interaction.",
+          "compatiblePackagesKey": 209
+        },
+        {
           "name": "Disable screen capture detection",
-          "description": "Prevents TikTok from detecting screenshots and screen recordings.",
+          "description": "Prevents TikTok from reacting to screenshots and screen recordings.",
           "compatiblePackagesKey": 209
         },
         {
@@ -5936,8 +5952,13 @@
           "compatiblePackagesKey": 209
         },
         {
-          "name": "Enable Open Debug",
-          "description": "Uses TikTok's hidden Open Debug settings cell as the entry point for Morphe settings. Required for the Morphe settings menu to appear. Supports TikTok 43.8.3.",
+          "name": "Enable Live search",
+          "description": "Shows TikTok's search entry in the Live drawer where supported.",
+          "compatiblePackagesKey": 209
+        },
+        {
+          "name": "Enable non-personalized search",
+          "description": "Uses TikTok's non-personalized search mode instead of its saved account choice.",
           "compatiblePackagesKey": 209
         },
         {
@@ -5962,12 +5983,17 @@
         },
         {
           "name": "Hide CAPTCHA popups",
-          "description": "Prevents client-side verification puzzle dialogs from opening, including those shown while browsing LIVE. This does not bypass server-side checks.",
+          "description": "Adds a default-off setting to hide browsing and LIVE puzzle dialogs while preserving login and account verification.",
           "compatiblePackagesKey": 209
         },
         {
           "name": "Hide floating promotions",
           "description": "Removes floating promotional badges, coin icons, and timer banners from the Home feed.",
+          "compatiblePackagesKey": 209
+        },
+        {
+          "name": "Hide quick comment reactions",
+          "description": "Hides TikTok's exposed quick emoji row in supported comment inputs.",
           "compatiblePackagesKey": 209
         },
         {
@@ -5991,6 +6017,11 @@
           "compatiblePackagesKey": 209
         },
         {
+          "name": "Resume videos after scrolling",
+          "description": "Continues supported videos from where playback stopped when returning after a scroll.",
+          "compatiblePackagesKey": 209
+        },
+        {
           "name": "SIM spoof",
           "description": "Spoofs SIM country and operator information retrieved by TikTok, with country presets for easier setup.",
           "compatiblePackagesKey": 209
@@ -6002,12 +6033,22 @@
         },
         {
           "name": "Settings",
-          "description": "Adds the Morphe settings screen inside TikTok.",
+          "description": "Adds the Metra patches settings menu to TikTok. Supports TikTok 46.2.3.",
           "compatiblePackagesKey": 209
         },
         {
           "name": "Show seekbar",
           "description": "Shows TikTok's native video seekbar where it would normally be hidden.",
+          "compatiblePackagesKey": 209
+        },
+        {
+          "name": "Show seekbar thumbnail",
+          "description": "Shows TikTok's video preview thumbnail while dragging the seekbar.",
+          "compatiblePackagesKey": 209
+        },
+        {
+          "name": "Stop video looping",
+          "description": "Stops videos at the end instead of replaying them.",
           "compatiblePackagesKey": 209
         },
         {
@@ -13640,7 +13681,7 @@
       "stars": 20,
       "starsGained7d": 3,
       "starsGained40d": 10,
-      "updatedAt": 1786212986000,
+      "updatedAt": 1786242383000,
       "firstSeen": 1784111083000,
       "appFirstSeen": {
         "com.pinterest": 1784136283489
@@ -13704,7 +13745,6 @@
         {
           "name": "Restore Google login (signature spoofing)",
           "description": "Experimental, off by default. Adds the signature-spoof metadata read by microG-RE and by the XSpoofSignatures LSPosed module, so \"Continue with Google\" may work on devices with a working signature-spoofing setup. Not confirmed working end-to-end; no-op without such a setup.",
-          "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 631
         },
@@ -17449,22 +17489,22 @@
     },
     {
       "source": "github",
-      "repo": "braiNtropy/braintropy-patches",
-      "name": "braiNtropy",
-      "repoDescription": "Custom patches for use with Morphe",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/87610087?v=4&s=64",
-      "stars": 1,
+      "repo": "ang3lo-azevedo/morphe-patches",
+      "name": "Ang3lo",
+      "repoDescription": "My own version of Morphe Patches - Android app patching framework",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/66081804?v=4&s=64",
+      "stars": 2,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1786217377000,
+      "updatedAt": 1786230000000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
-        "org.wakingup.android": 1786240845676
+        "com.findthefirellc.findthefire": 1786240845674
       },
       "patches": [
         {
-          "name": "Unlock Premium",
-          "description": "Unlocks all premium content and removes subscription banners.",
+          "name": "Unlock FirePass Premium",
+          "description": "Unlocks FirePass premium features in Skimboarding: spot filtering by skill level, advanced map features, and session log tools.",
           "compatiblePackagesKey": 709
         }
       ],
@@ -17551,22 +17591,22 @@
     },
     {
       "source": "github",
-      "repo": "ang3lo-azevedo/morphe-patches",
-      "name": "Ang3lo",
-      "repoDescription": "My own version of Morphe Patches - Android app patching framework",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/66081804?v=4&s=64",
-      "stars": 2,
+      "repo": "braiNtropy/braintropy-patches",
+      "name": "braiNtropy",
+      "repoDescription": "Custom patches for use with Morphe",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/87610087?v=4&s=64",
+      "stars": 1,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1786230000000,
+      "updatedAt": 1786217377000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
-        "com.findthefirellc.findthefire": 1786240845674
+        "org.wakingup.android": 1786240845676
       },
       "patches": [
         {
-          "name": "Unlock FirePass Premium",
-          "description": "Unlocks FirePass premium features in Skimboarding: spot filtering by skill level, advanced map features, and session log tools.",
+          "name": "Unlock Premium",
+          "description": "Unlocks all premium content and removes subscription banners.",
           "compatiblePackagesKey": 710
         }
       ],
@@ -19829,7 +19869,7 @@
         "packageName": "com.zhiliaoapp.musically",
         "targets": [
           {
-            "version": "43.8.3"
+            "version": "46.2.3"
           }
         ]
       }
@@ -24438,6 +24478,15 @@
         "packageName": "com.pinterest",
         "targets": [
           {
+            "version": "14.30.0"
+          },
+          {
+            "version": "14.29.0"
+          },
+          {
+            "version": "14.28.0"
+          },
+          {
             "version": "14.27.0"
           },
           {
@@ -25773,17 +25822,17 @@
     ],
     [
       {
+        "packageName": "com.findthefirellc.findthefire"
+      }
+    ],
+    [
+      {
         "packageName": "org.wakingup.android",
         "targets": [
           {
             "version": "3.24.1"
           }
         ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.findthefirellc.findthefire"
       }
     ]
   ],

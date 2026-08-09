@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0-dev.1",
   "patches": [
     {
       "name": "Add Packet Handler",
@@ -2702,6 +2702,39 @@
           "targets": [
             {
               "version": "5.3.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Restore keyword notification log",
+      "description": "Restores the removed keyword notification collection view along with its chat list entry.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "ResourcePatch",
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null

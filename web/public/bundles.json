@@ -5923,7 +5923,7 @@
       "stars": 206,
       "starsGained7d": 21,
       "starsGained40d": 70,
-      "updatedAt": 1786389372000,
+      "updatedAt": 1786400049000,
       "firstSeen": 1780130886000,
       "appFirstSeen": {
         "com.zhiliaoapp.musically": 1780156086693
@@ -17871,7 +17871,7 @@
       "stars": 1,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1786394784000,
+      "updatedAt": 1786398749000,
       "firstSeen": 1786388501585,
       "appFirstSeen": {
         "com.google.android.deskclock": 1786388501164,
@@ -17891,6 +17891,11 @@
         {
           "name": "Google Clock alarm MediaBrowser bridge v2",
           "description": "Adds the YT Music loadChildren gate fix that prevents the Premium PlaybackState error after Google Clock subscribes. Depends on the base Google Clock alarm MediaBrowser bridge.",
+          "compatiblePackagesKey": 720
+        },
+        {
+          "name": "Google Clock MediaBrowser upstream compatibility",
+          "description": "Isolated port of the upstream YT Music MediaBrowser unlock: bypasses the caller certificate gate and restores the original com.google.android.apps.youtube.music identity inside search_media_items.",
           "compatiblePackagesKey": 720
         }
       ],

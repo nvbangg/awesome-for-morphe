@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0-dev.3",
+  "version": "1.4.0-dev.4",
   "patches": [
     {
       "name": "Add Packet Handler",
@@ -2099,6 +2099,33 @@
       "dependencies": [
         "BytecodePatch"
       ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakao.talk",
+          "name": "Kakao Talk",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FEE500",
+          "signatures": [
+            "2b06cc3d47782d7c497c07f17cb5f859cd6bbcb66829f3e67b96b7a44820d2ce"
+          ],
+          "targets": [
+            {
+              "version": "26.6.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Ignore forward restriction",
+      "description": "Ignores the restrictions that stop messages such as KakaoLink from being forwarded to another chatroom.",
+      "default": true,
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "com.kakao.talk",

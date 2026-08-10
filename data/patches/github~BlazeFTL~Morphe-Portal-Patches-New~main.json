@@ -1,0 +1,155 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Custom DPI",
+      "description": "Forces a higher display density for this app only, so the whole UI scales up without changing the system density. Intended for low-dpi devices such as Meta Portal (160 dpi).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.google.android.apps.youtube.music",
+          "name": "YouTube Music",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.51.51",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "dpi",
+          "title": "Custom DPI",
+          "description": "Forced display density in dots-per-inch for this app only. 160 = system default (mdpi), 240 is roughly 1.5x larger. Range 96-640.",
+          "required": false,
+          "type": "kotlin.Long",
+          "default": 240,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Custom version name",
+      "description": "Overrides the app versionName so a re-patched build of the same upstream version is recognised as a new version. Lets patch-only changes propagate as updates even when the upstream YouTube/YT Music version is unchanged.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.google.android.apps.youtube.music",
+          "name": "YouTube Music",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.51.51",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "versionName",
+          "title": "Version name",
+          "description": "Full value written to android:versionName, e.g. \"20.51.39+1781904670\". Use a monotonic numeric suffix so newer builds compare greater.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Disable experimental notice",
+      "description": "Removes the morphe experimental-version warning dialog, which otherwise nags on every re-patched build whose version differs from the recommended one.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.google.android.apps.youtube.music",
+          "name": "YouTube Music",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.51.51",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

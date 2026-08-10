@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Force enable Megaphone, Tamper Detection, Krutrim and Kruti",
+      "description": "Forces the Megaphone, Tamper & Fall Detection, Krutrim Assistant, and Kruti features to always report as available, regardless of the server-driven onboarding feature flags returned by the app's backend.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.olaelectric.companion",
+          "name": "Ola Electric",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#00D190",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.4.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "High quality document upload",
+      "description": "Raises the JPEG re-encode quality used by the camera capture-with-compression flow from 0 to 100, and raises the 6MB per-file size limit enforced on document uploads to 100MB, so scanned documents and high-resolution photos are no longer degraded or rejected before upload.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.olaelectric.companion",
+          "name": "Ola Electric",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#00D190",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.4.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

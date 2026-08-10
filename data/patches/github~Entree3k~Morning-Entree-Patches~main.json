@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "patches": [
     {
       "name": "Always incognito mode",
@@ -437,7 +437,7 @@
     },
     {
       "name": "Enable Premium",
-      "description": "Unlocks Home Workout Premium",
+      "description": "Unlocks Home Workout Premium. Use with Spoof Signature Verification",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -1014,6 +1014,32 @@
       "options": []
     },
     {
+      "name": "Enable Pro",
+      "description": "Enables Appsales Premium.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "net.tsapps.appsales",
+          "name": "AppSales",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#428BCA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "12.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Provide original app certificate",
       "description": "Extracts and Base64-encodes the original app's signing certificate. Applied automatically by 'Spoof signature verification'; you normally do not need to touch it. Use 'Certificate source' to control where the certificate comes from.",
       "default": false,
@@ -1109,6 +1135,58 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Unlock Elite",
+      "description": "Unlocks JEFIT Elite",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "je.fit",
+          "name": "JEFIT",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0B6FB8",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "17.2.10",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks Projectivy Launcher Premium",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.spocky.projengmenu",
+          "name": "Projectivy Launcher",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F08029",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.71",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     },
     {
       "name": "Unlock all questions",

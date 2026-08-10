@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.23.0-dev.2",
+  "version": "1.23.0-dev.3",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -181,7 +181,12 @@
           "targets": [
             {
               "version": "7.64.0.76450210",
-              "versionCodes": null,
+              "versionCodes": {
+                "ARM64_V8A": 76450210,
+                "ARMEABI_V7A": 76450210,
+                "X86_64": 76450210,
+                "X86": 76450210
+              },
               "isExperimental": false,
               "minSdk": null,
               "description": null

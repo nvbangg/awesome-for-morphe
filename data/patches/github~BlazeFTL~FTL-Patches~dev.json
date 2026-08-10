@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.22.0",
+  "version": "1.23.0-dev.2",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -31,6 +31,35 @@
             "x86": "x86",
             "x86_64": "x86_64"
           }
+        }
+      ]
+    },
+    {
+      "name": "Add Toast",
+      "description": "Shows a custom toast message when the app starts. Works on any app.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "message",
+          "title": "Toast message",
+          "description": "Text shown in the toast.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "Mod By BlazeFTL",
+          "values": null
+        },
+        {
+          "key": "showOnce",
+          "title": "Show once",
+          "description": "On: the toast only shows on the first launch. Off: it shows on every launch.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
         }
       ]
     },
@@ -135,6 +164,32 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Remove Watch Ad To Download",
+      "description": "Removes the requirement to watch a rewarded ad before a download starts.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.snaptube.premium",
+          "name": "SnapTube",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.64.0.76450210",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     }
   ]
 }

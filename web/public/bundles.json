@@ -3708,7 +3708,7 @@
       "stars": 121,
       "starsGained7d": 1,
       "starsGained40d": 8,
-      "updatedAt": 1786346384000,
+      "updatedAt": 1786359276000,
       "firstSeen": 1774731407000,
       "appFirstSeen": {
         "com.dcinside.app.android": 1774756607000,
@@ -4317,6 +4317,12 @@
         {
           "name": "Show message read receipts",
           "description": "Shows the members who have or have not read each chat message.",
+          "compatiblePackagesKey": 122
+        },
+        {
+          "name": "Show messages restricted to mobile",
+          "description": "Shows the content of AlimTalk, Leverage and Universal messages that are replaced with a placeholder asking to open them on mobile while signed in on a sub device.",
+          "isPreRelease": true,
           "compatiblePackagesKey": 122
         },
         {
@@ -15161,7 +15167,7 @@
       "stars": 6,
       "starsGained7d": 2,
       "starsGained40d": 6,
-      "updatedAt": 1785307985000,
+      "updatedAt": 1786356097000,
       "firstSeen": 1784879391615,
       "appFirstSeen": {
         "jp.nicovideo.nicobox": 1784887231838
@@ -15210,6 +15216,13 @@
         {
           "name": "VocaColle compatibility probe",
           "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
+          "default": false,
+          "compatiblePackagesKey": 642
+        },
+        {
+          "name": "VocaDB player titles",
+          "description": "Adds opt-in exact VocaDB title metadata to the full player.",
+          "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 642
         }
@@ -17358,7 +17371,7 @@
       "stars": 2,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1786302267000,
+      "updatedAt": 1786358919000,
       "firstSeen": 1786129326657,
       "appFirstSeen": {
         "com.valvesoftware.steamlinkvr": 1786129322302
@@ -17413,10 +17426,11 @@
       "stars": 2,
       "starsGained7d": 1,
       "starsGained40d": 1,
-      "updatedAt": 1786312261000,
+      "updatedAt": 1786359329000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
-        "universal": 1786240845676
+        "universal": 1786240845676,
+        "com.snaptube.premium": 1786360281622
       },
       "patches": [
         {
@@ -17433,6 +17447,24 @@
               "key": "targetArch",
               "title": "Target architecture",
               "description": "Which architecture to keep when splitting is enabled."
+            }
+          ]
+        },
+        {
+          "name": "Add Toast",
+          "description": "Shows a custom toast message when the app starts. Works on any app.",
+          "isPreRelease": true,
+          "default": false,
+          "options": [
+            {
+              "key": "message",
+              "title": "Toast message",
+              "description": "Text shown in the toast."
+            },
+            {
+              "key": "showOnce",
+              "title": "Show once",
+              "description": "On: the toast only shows on the first launch. Off: it shows on every launch."
             }
           ]
         },
@@ -17491,6 +17523,13 @@
               "description": "Language codes (e.g. en, ru, es) to preserve. All other language variants are deleted."
             }
           ]
+        },
+        {
+          "name": "Remove Watch Ad To Download",
+          "description": "Removes the requirement to watch a rewarded ad before a download starts.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 712
         }
       ],
       "isPreRelease": false
@@ -17513,7 +17552,7 @@
         {
           "name": "Unlock Premium",
           "description": "Unlocks all premium content and removes subscription banners.",
-          "compatiblePackagesKey": 712
+          "compatiblePackagesKey": 713
         }
       ],
       "isPreRelease": false
@@ -25771,6 +25810,16 @@
     ],
     [
       {
+        "packageName": "com.snaptube.premium",
+        "targets": [
+          {
+            "version": "7.64.0.76450210"
+          }
+        ]
+      }
+    ],
+    [
+      {
         "packageName": "org.wakingup.android",
         "targets": [
           {
@@ -31044,6 +31093,14 @@
       "minInstalls": 50000,
       "category": "Productivity",
       "firstSeen": 1786301152347
+    },
+    "com.snaptube.premium": {
+      "name": "SnapTube",
+      "iconUrl": "",
+      "description": "",
+      "minInstalls": 0,
+      "category": "Other",
+      "firstSeen": 1786360281840
     }
   }
 }

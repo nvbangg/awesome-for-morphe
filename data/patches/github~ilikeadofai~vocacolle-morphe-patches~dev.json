@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.0-dev.4",
+  "version": "1.2.0-dev.5",
   "patches": [
     {
       "name": "Customize VocaColle branding",
@@ -166,6 +166,34 @@
       "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
       "default": false,
       "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "jp.nicovideo.nicobox",
+          "name": "VocaColle",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "VocaDB player titles",
+      "description": "Adds opt-in exact VocaDB title metadata to the full player.",
+      "default": false,
+      "dependencies": [
+        "VocaColle Morphe settings"
+      ],
       "compatiblePackages": [
         {
           "packageName": "jp.nicovideo.nicobox",

@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "2.0.0",
   "patches": [
     {
       "name": "Use Morphe YouTube Music for alarms",
@@ -22,7 +22,26 @@
     },
     {
       "name": "Google Clock alarm MediaBrowser bridge",
-      "description": "Prevents the YT Music MediaBrowser Premium error at its source, keeps browse entitlement metadata coherent, bypasses the DeskClock browse-consent detour, and enables background alarm playback.",
+      "description": "Short-circuits YT Music's MediaBrowser capability gate before it can publish PlaybackState ERROR(7), keeps browse entitlement metadata coherent, bypasses the DeskClock browse-consent detour, and enables background alarm playback.",
+      "default": true,
+      "compatiblePackages": [
+        {
+          "packageName": "app.morphe.android.apps.youtube.music",
+          "name": "YT Music Morphe",
+          "targets": [
+            {
+              "version": "9.15.51",
+              "isExperimental": true,
+              "description": "For Morphe-patched YT Music 9.15.51."
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Google Clock alarm MediaBrowser bridge v2",
+      "description": "Adds the YT Music loadChildren gate fix that prevents the Premium PlaybackState error after Google Clock subscribes. Depends on the base Google Clock alarm MediaBrowser bridge.",
       "default": true,
       "compatiblePackages": [
         {

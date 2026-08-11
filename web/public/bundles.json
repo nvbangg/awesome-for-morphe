@@ -17452,169 +17452,24 @@
       "stars": 2,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1786362321000,
+      "updatedAt": 1786444327000,
       "firstSeen": 1786129326657,
       "appFirstSeen": {
         "com.valvesoftware.steamlinkvr": 1786129322302
       },
       "patches": [
         {
-          "name": "Android XR native permission names",
-          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by the legacy Galaxy XR build.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "Appear on top",
-          "description": "Recommended. Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "Change package name",
-          "description": "Renames the app package so it can be installed alongside the original Steam Link. Default appends '.gxr'. Changing the package name may break features that rely on the original identity.",
+          "name": "XR resolution permission experiment",
+          "description": "Experimental window/permission A/B probe. Turn off Appear on top and do not combine with older resolution test APK modifications.",
+          "isPreRelease": true,
           "default": false,
           "options": [
             {
-              "key": "packageName",
-              "title": "Package name",
-              "description": "Accepts either a full Java package name (for example, com.valvesoftware.steamlinkvr.galaxyxr) or a display suffix (for example, Galaxy XR). Suffix input appends to app name and generates a package suffix automatically."
+              "key": "mode",
+              "title": "Experiment mode",
+              "description": "Select exactly one complete test state. Only Granted overlay control requests Appear on top."
             }
           ],
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "Controller velocity fix",
-          "description": "Derives current controller linear and angular velocity from grip/aim pose history, avoiding delayed runtime velocity during throws.",
-          "default": false,
-          "options": [
-            {
-              "key": "maxDeltaMs",
-              "title": "Maximum sample gap (ms)",
-              "description": "libgxr_controller_velocity.so config+32 (int64 ns = value×1e6). Falls back to runtime velocity when pose samples are farther apart. Allowed range: 5 to 100 ms."
-            },
-            {
-              "key": "smoothing",
-              "title": "Derived velocity smoothing",
-              "description": "libgxr_controller_velocity.so config+48 (float32 EMA weight). 0 = no smoothing, minimum lag; higher values reduce jitter. Allowed range: 0.0 to 0.9."
-            },
-            {
-              "key": "maxLinearSpeed",
-              "title": "Maximum linear speed (m/s)",
-              "description": "libgxr_controller_velocity.so config+40 (float32 m/s). Falls back to runtime velocity above this derived linear speed. Allowed range: 1 to 50 m/s."
-            },
-            {
-              "key": "maxAngularSpeed",
-              "title": "Maximum angular speed (rad/s)",
-              "description": "libgxr_controller_velocity.so config+44 (float32 rad/s). Falls back to runtime velocity above this derived angular speed. Allowed range: 1 to 100 rad/s."
-            }
-          ],
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "Device identity",
-          "description": "Overrides the HMD manufacturer/model identity reported to SteamVR (hmd_config.json only; controller identity is unaffected). 'samsung-default' leaves the file untouched.",
-          "options": [
-            {
-              "key": "profile",
-              "title": "HMD identity",
-              "description": "assets/config/hmd_config.json: overwrites sSerialNumber, sManufacturerName, sModelNumber, sControllerType, sDeviceType, sInputProfilePath, requestedExtensions."
-            }
-          ],
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "Force HMD initialization gates",
-          "description": "Bypasses the two legacy-tested capability gates in QSVLDeviceHmd::Init for Steam Link build 5002244.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "Force lobby permission-state gate",
-          "description": "Bypasses the legacy-tested permission-state gate in XrSceneLobby for Steam Link build 5002244.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "Force stream XR gates",
-          "description": "Bypasses the three legacy-tested XR feature/permission gates in XrSceneStream::Init for Steam Link build 5002244.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "GXR face bridge",
-          "description": "Installs libgxr_face_bridge.so (XR_FB_face_tracking2 → XR_ANDROID_face_tracking API layer) and adds android.permission.FACE_TRACKING to the manifest.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "HMD-only pose fix",
-          "description": "Adds a configurable offset to the HMD OpenXR pose-query time and zeroes all six exported HMD velocity fields. Does not affect controller paths.",
-          "options": [
-            {
-              "key": "offsetMs",
-              "title": "Pose offset (ms)",
-              "description": "libvrlink_scene.so: AArch64 MOVZ/MOVK at PLT cave adds value×1e6 ns to X2 in QSVLDeviceHmd::GetPose. Tested default: 60 ms. Allowed range: 0 to 4000 ms."
-            }
-          ],
-          "compatiblePackagesKey": 715
-        },
-        {
-          "name": "OLED color calibration",
-          "description": "Replaces VRLink's embedded GLSL fragment shader with configurable Galaxy XR OLED gamma and saturation correction.",
-          "options": [
-            {
-              "key": "profile",
-              "title": "Calibration profile",
-              "description": "libvrlink_scene.so GLSL fragment shader (1087-byte block, GL_OES_EGL_image_external_essl3 anchor). Initial: pow vec3(1.06)/mix 1.12; Final balanced: 1.20/1.45; Custom: use fields below."
-            },
-            {
-              "key": "gamma",
-              "title": "Gamma",
-              "description": "libvrlink_scene.so GLSL: pow(clamp(c,0,1), vec3(GAMMA)). Used by Custom profile. Tested: 1.06 (Initial), 1.20 (Final balanced). Allowed range: 0.50 to 2.50."
-            },
-            {
-              "key": "saturation",
-              "title": "Saturation",
-              "description": "libvrlink_scene.so GLSL: mix(vec3(luma), c, SATURATION). Used by Custom profile. Tested: 1.12 (Initial), 1.45 (Final balanced). Allowed range: 0.00 to 3.00."
-            }
-          ],
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "Unrestricted battery usage",
-          "description": "Recommended. Opens Android's per-app Battery usage page at startup so Unrestricted can be selected for XR streaming.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "Video dither",
-          "description": "Enables (or disables) the dormant GLSL dither term in VRLink's video fragment shader. Reduces 8-bit contouring on OLED displays.",
-          "options": [
-            {
-              "key": "enable",
-              "title": "Enable dither",
-              "description": "libvrlink_scene.so GLSL: stock shader toggles '//' on color.rgb+=fract(...)*.00292; calibrated (post-oledCalibration) shader toggles *.00292 vs *.00000."
-            }
-          ],
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "XR Core Runtime",
-          "description": "Installs the Galaxy XR runtime bridge resources and extension DEX foundation used by other XR patches.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "XR Device Config Baseline",
-          "description": "Installs baseline Galaxy XR HMD/controller/default config payloads and dashboard bootstrap assets.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "XR Input Routing Config",
-          "description": "Installs ui_config.json mappings for XR pointer/button routing in launcher UI flows.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "XR Launcher Bootstrap (Home Space)",
-          "description": "Installs GalaxyXRPermissionActivity as launcher and configures Steam Link/VRLink activity XR startup wiring.",
-          "compatiblePackagesKey": 714
-        },
-        {
-          "name": "XR Manifest Capability Pack",
-          "description": "Adds Android XR/OpenXR permissions, features, runtime queries, and app-level XR properties.",
           "compatiblePackagesKey": 714
         }
       ],
@@ -17638,7 +17493,7 @@
         {
           "name": "Unlock FirePass Premium",
           "description": "Unlocks FirePass premium features in Skimboarding: spot filtering by skill level, advanced map features, and session log tools.",
-          "compatiblePackagesKey": 716
+          "compatiblePackagesKey": 715
         }
       ],
       "isPreRelease": false
@@ -17652,11 +17507,13 @@
       "stars": 4,
       "starsGained7d": 3,
       "starsGained40d": 3,
-      "updatedAt": 1786430226000,
+      "updatedAt": 1786439785000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
         "universal": 1786240845676,
-        "com.snaptube.premium": 1786360281622
+        "com.snaptube.premium": 1786360281622,
+        "com.mxtech.videoplayer.pro": 1786445546411,
+        "com.mxtech.videoplayer.ad": 1786445546411
       },
       "patches": [
         {
@@ -17679,7 +17536,6 @@
         {
           "name": "Add Toast",
           "description": "Shows a custom toast message when the app starts. Works on any app.",
-          "isPreRelease": true,
           "default": false,
           "options": [
             {
@@ -17709,14 +17565,24 @@
         {
           "name": "Disable Notification Defaults",
           "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default.",
-          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 716
+        },
+        {
+          "name": "Hide Me tab promo items",
+          "description": "Collapses the WhatsApp, Legal, and Help entries on the Me tab.",
           "default": false,
           "compatiblePackagesKey": 717
         },
         {
           "name": "Hide Settings Items",
           "description": "Hides the Download tools and Phone clean categories, and their sub-items, from Settings.",
-          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 716
+        },
+        {
+          "name": "Hide local tiles banner",
+          "description": "Collapses the local device tiles banner.",
           "default": false,
           "compatiblePackagesKey": 717
         },
@@ -17767,7 +17633,12 @@
         {
           "name": "Remove Watch Ad To Download",
           "description": "Removes the requirement to watch a rewarded ad before a download starts.",
-          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 716
+        },
+        {
+          "name": "Skip welcome screen",
+          "description": "Moves the launcher intent filters and app shortcuts from the welcome/splash activity to the main activity, so the app boots straight past the splash and update screen.",
           "default": false,
           "compatiblePackagesKey": 717
         }
@@ -17931,7 +17802,7 @@
       "stars": 1,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1786430208000,
+      "updatedAt": 1786439552000,
       "firstSeen": 1786388501585,
       "appFirstSeen": {
         "com.google.android.deskclock": 1786388501164,
@@ -17961,6 +17832,12 @@
         {
           "name": "Google Clock MediaBrowser full bridge",
           "description": "Full Google Clock/YT Music MediaBrowser chain: combines root/entitlement/consent fixes, upstream package identity/certificate compatibility, the Premium-producing onLoadChildren capability gate, and the client browse allow-list gate.",
+          "compatiblePackagesKey": 723
+        },
+        {
+          "name": "Google Clock MediaBrowser error stack diagnostic",
+          "description": "Temporary diagnostic that dumps the call stack whenever YT Music publishes a MediaBrowser playback error. Depends on the full bridge.",
+          "default": false,
           "compatiblePackagesKey": 723
         }
       ],
@@ -26336,33 +26213,8 @@
         "packageName": "com.valvesoftware.steamlinkvr",
         "targets": [
           {
-            "version": "2.0.22"
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
-          }
-        ]
-      },
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
-          }
-        ]
-      },
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
+            "version": "2.0.22",
+            "isExperimental": true
           }
         ]
       }
@@ -26378,6 +26230,24 @@
         "targets": [
           {
             "version": "7.64.0.76450210"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.mxtech.videoplayer.pro",
+        "targets": [
+          {
+            "version": null
+          }
+        ]
+      },
+      {
+        "packageName": "com.mxtech.videoplayer.ad",
+        "targets": [
+          {
+            "version": null
           }
         ]
       }
@@ -31808,6 +31678,14 @@
       "minInstalls": 5000,
       "category": "Casual",
       "firstSeen": 1786413494363
+    },
+    "com.mxtech.videoplayer.ad": {
+      "name": "MX Player",
+      "iconUrl": "https://play-lh.googleusercontent.com/kuU8L2zHfkE8rDQ8iUwMpYcV8TzUDBz7n_KYaEV4R5M7W5qHiZGqxWk9f1ysP2Lk72GmRTps3iaXUXfH-18pWw=s64-rw",
+      "description": "Powerful video player with advanced hardware acceleration and subtitle supports",
+      "minInstalls": 1000000000,
+      "category": "Video",
+      "firstSeen": 1786445546646
     }
   }
 }

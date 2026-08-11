@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "patches": [
     {
       "name": "Use Morphe YouTube Music for alarms",
@@ -90,6 +90,25 @@
               "version": "9.15.51",
               "isExperimental": true,
               "description": "For Morphe-patched YT Music 9.15.51."
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Google Clock MediaBrowser error stack diagnostic",
+      "description": "Temporary diagnostic that dumps the call stack whenever YT Music publishes a MediaBrowser playback error. Depends on the full bridge.",
+      "default": false,
+      "compatiblePackages": [
+        {
+          "packageName": "app.morphe.android.apps.youtube.music",
+          "name": "YT Music Morphe",
+          "targets": [
+            {
+              "version": "9.15.51",
+              "isExperimental": true,
+              "description": "Temporary diagnostic for Morphe-patched YT Music 9.15.51."
             }
           ]
         }

@@ -1,5 +1,5 @@
 {
-  "version": "2.3.0",
+  "version": "2.5.0",
   "patches": [
     {
       "name": "Use Morphe YouTube Music for alarms",
@@ -79,7 +79,7 @@
     },
     {
       "name": "Google Clock MediaBrowser full bridge",
-      "description": "Full Google Clock/YT Music MediaBrowser chain: combines root/entitlement/consent fixes, upstream package identity/certificate compatibility, the Premium-producing onLoadChildren capability gate, and the client browse allow-list gate.",
+      "description": "Full Google Clock/YT Music MediaBrowser chain: root/entitlement/consent fixes, upstream package identity/certificate compatibility, loadChildren capability and client allow-list bypasses, plus the cached browse-error fast-path bypass that was still returning empty children and the Music Premium PlaybackState ERROR(7).",
       "default": true,
       "compatiblePackages": [
         {
@@ -98,7 +98,7 @@
     },
     {
       "name": "Google Clock MediaBrowser error stack diagnostic",
-      "description": "Temporary diagnostic that dumps the call stack whenever YT Music publishes a MediaBrowser playback error. Depends on the full bridge.",
+      "description": "Temporary diagnostic that dumps the call stack from both known YT Music MediaBrowser error publishers (Llin.e and Lkzf.f). Depends on the full bridge.",
       "default": false,
       "compatiblePackages": [
         {

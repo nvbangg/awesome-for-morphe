@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "patches": [
     {
       "name": "Example Patch",
@@ -38,16 +38,8 @@
       "options": []
     },
     {
-      "name": "Invert light and dark theme colors",
-      "description": "Swaps the VALUES of paired light/dark theme color resources (same-file dark/light pairs, and values/ vs values-night/ counterparts) so the app's light and dark themes are effectively inverted. Resource names are never modified.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "Remote script injector",
-      "description": "Hooks WebView to inject integrity-checked userscripts.",
+      "name": "Fix file picker camera prompt",
+      "description": "Strips the capture attribute from file inputs so the file picker doesn't request camera permission.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -76,6 +68,14 @@
           ]
         }
       ],
+      "options": []
+    },
+    {
+      "name": "Invert light and dark theme colors",
+      "description": "Swaps the VALUES of paired light/dark theme color resources (same-file dark/light pairs, and values/ vs values-night/ counterparts) so the app's light and dark themes are effectively inverted. Resource names are never modified.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
       "options": []
     },
     {

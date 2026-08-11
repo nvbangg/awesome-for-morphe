@@ -17157,7 +17157,7 @@
       "stars": 8,
       "starsGained7d": 7,
       "starsGained40d": 7,
-      "updatedAt": 1786339970000,
+      "updatedAt": 1786405939000,
       "firstSeen": 1785911533420,
       "appFirstSeen": {
         "com.nuvio.tv": 1785884829695
@@ -17165,14 +17165,21 @@
       "patches": [
         {
           "name": "Allow Importing Subs from Local Storage",
-          "description": "Adds Local Storage to Nuvio's ExoPlayer subtitle menu and imports subtitle files from the device.",
+          "description": "Imports device subtitle files into Nuvio's ExoPlayer subtitle menu without rebuilding active playback.",
           "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 706
         },
         {
-          "name": "Binge Group Manual Fallback",
-          "description": "Adds Morphe > Playback control to open the source picker when no preferred binge-group stream is found.",
+          "name": "Library Mode Focus Fix",
+          "description": "Returns Library focus to the previously selected Saved or Cloud mode.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 706
+        },
+        {
+          "name": "Local Media",
+          "description": "Adds Library > Storage playback, folder selection, and same-basename sidecar subtitles for local video files.",
           "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 706
@@ -17936,6 +17943,46 @@
           "name": "Google Clock MediaBrowser upstream compatibility",
           "description": "Isolated port of the upstream YT Music MediaBrowser unlock: bypasses the caller certificate gate and restores the original com.google.android.apps.youtube.music identity inside search_media_items.",
           "compatiblePackagesKey": 722
+        }
+      ],
+      "isPreRelease": false
+    },
+    {
+      "source": "github",
+      "repo": "Nagol12344/patch",
+      "name": "Nagol12344",
+      "repoDescription": "",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/63481547?v=4&s=64",
+      "stars": 0,
+      "starsGained7d": 0,
+      "starsGained40d": 0,
+      "updatedAt": 1786405405000,
+      "firstSeen": 1786413494363,
+      "appFirstSeen": {
+        "com.example.app": 1786413494162,
+        "com.bplace": 1786413494162,
+        "universal": 1786413494162
+      },
+      "patches": [
+        {
+          "name": "Example Patch",
+          "description": "Example patch to start with.",
+          "compatiblePackagesKey": 723
+        },
+        {
+          "name": "Invert light and dark theme colors",
+          "description": "Swaps the VALUES of paired light/dark theme color resources (same-file dark/light pairs, and values/ vs values-night/ counterparts) so the app's light and dark themes are effectively inverted. Resource names are never modified.",
+          "default": false
+        },
+        {
+          "name": "Remote script injector",
+          "description": "Hooks WebView to inject integrity-checked userscripts.",
+          "compatiblePackagesKey": 724
+        },
+        {
+          "name": "Remove Camera Requirements",
+          "description": "Removes camera permissions and hardware requirements from the manifest.",
+          "default": false
         }
       ],
       "isPreRelease": false
@@ -26146,7 +26193,7 @@
         "packageName": "com.nuvio.tv",
         "targets": [
           {
-            "version": "0.8.2-beta"
+            "version": "0.8.3-beta"
           }
         ]
       }
@@ -26330,6 +26377,32 @@
           {
             "version": "9.15.51",
             "isExperimental": true
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.example.app",
+        "targets": [
+          {
+            "version": "2.0.0"
+          },
+          {
+            "version": "1.0.2"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.bplace",
+        "targets": [
+          {
+            "version": null
+          },
+          {
+            "version": "1.0.7"
           }
         ]
       }
@@ -31647,6 +31720,14 @@
       "minInstalls": 1000000,
       "category": "Health & Fitness",
       "firstSeen": 1786404764430
+    },
+    "com.bplace": {
+      "name": "Better Place - Pixel game",
+      "iconUrl": "https://play-lh.googleusercontent.com/JRF3zvWS6qdhgGnVLdnaei8u6FukLufJzp3E7hXzuEVXtvCA_VFxyJKinFxlddIf5DtqAjVJu5DQtQECY0e2_Ns=s64-rw",
+      "description": "Create pixel art on the world map & draw with your friends",
+      "minInstalls": 5000,
+      "category": "Casual",
+      "firstSeen": 1786413494363
     }
   }
 }

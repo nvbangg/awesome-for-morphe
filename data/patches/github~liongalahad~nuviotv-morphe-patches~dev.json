@@ -1,10 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0-dev.17",
+  "version": "1.0.0-dev.18",
   "patches": [
     {
       "name": "Allow Importing Subs from Local Storage",
-      "description": "Adds Local Storage to Nuvio's ExoPlayer subtitle menu and imports subtitle files from the device.",
+      "description": "Imports device subtitle files into Nuvio's ExoPlayer subtitle menu without rebuilding active playback.",
       "default": false,
       "dependencies": [
         "BytecodePatch",
@@ -20,7 +20,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.8.2-beta",
+              "version": "0.8.3-beta",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -32,8 +32,34 @@
       "options": []
     },
     {
-      "name": "Binge Group Manual Fallback",
-      "description": "Adds Morphe > Playback control to open the source picker when no preferred binge-group stream is found.",
+      "name": "Library Mode Focus Fix",
+      "description": "Returns Library focus to the previously selected Saved or Cloud mode.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nuvio.tv",
+          "name": "NuvioTV",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#111827",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.3-beta",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Local Media",
+      "description": "Adds Library > Storage playback, folder selection, and same-basename sidecar subtitles for local video files.",
       "default": false,
       "dependencies": [
         "BytecodePatch",
@@ -49,7 +75,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.8.2-beta",
+              "version": "0.8.3-beta",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -78,7 +104,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.8.2-beta",
+              "version": "0.8.3-beta",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -107,7 +133,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.8.2-beta",
+              "version": "0.8.3-beta",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -136,7 +162,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.8.2-beta",
+              "version": "0.8.3-beta",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -165,7 +191,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.8.2-beta",
+              "version": "0.8.3-beta",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

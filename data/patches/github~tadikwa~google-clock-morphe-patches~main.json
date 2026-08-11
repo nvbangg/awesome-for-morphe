@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "patches": [
     {
       "name": "Use Morphe YouTube Music for alarms",
@@ -71,6 +71,25 @@
               "version": "9.15.51",
               "isExperimental": true,
               "description": "Experimental upstream MediaBrowser compatibility port for Morphe-patched YT Music 9.15.51."
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Google Clock MediaBrowser full bridge",
+      "description": "Full Google Clock/YT Music MediaBrowser chain: combines root/entitlement/consent fixes, upstream package identity/certificate compatibility, the Premium-producing onLoadChildren capability gate, and the client browse allow-list gate.",
+      "default": true,
+      "compatiblePackages": [
+        {
+          "packageName": "app.morphe.android.apps.youtube.music",
+          "name": "YT Music Morphe",
+          "targets": [
+            {
+              "version": "9.15.51",
+              "isExperimental": true,
+              "description": "For Morphe-patched YT Music 9.15.51."
             }
           ]
         }

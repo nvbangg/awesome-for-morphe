@@ -5011,7 +5011,7 @@
       "stars": 31,
       "starsGained7d": 2,
       "starsGained40d": 8,
-      "updatedAt": 1786352311000,
+      "updatedAt": 1786431695000,
       "firstSeen": 1778211405000,
       "appFirstSeen": {
         "com.wildberries.ru": 1778236605000,
@@ -17652,7 +17652,7 @@
       "stars": 4,
       "starsGained7d": 3,
       "starsGained40d": 3,
-      "updatedAt": 1786424894000,
+      "updatedAt": 1786430226000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
         "universal": 1786240845676,
@@ -17931,7 +17931,7 @@
       "stars": 1,
       "starsGained7d": 0,
       "starsGained40d": 0,
-      "updatedAt": 1786398749000,
+      "updatedAt": 1786430208000,
       "firstSeen": 1786388501585,
       "appFirstSeen": {
         "com.google.android.deskclock": 1786388501164,
@@ -17957,6 +17957,34 @@
           "name": "Google Clock MediaBrowser upstream compatibility",
           "description": "Isolated port of the upstream YT Music MediaBrowser unlock: bypasses the caller certificate gate and restores the original com.google.android.apps.youtube.music identity inside search_media_items.",
           "compatiblePackagesKey": 722
+        },
+        {
+          "name": "Google Clock MediaBrowser full bridge",
+          "description": "Full Google Clock/YT Music MediaBrowser chain: combines root/entitlement/consent fixes, upstream package identity/certificate compatibility, the Premium-producing onLoadChildren capability gate, and the client browse allow-list gate.",
+          "compatiblePackagesKey": 722
+        }
+      ],
+      "isPreRelease": false
+    },
+    {
+      "source": "github",
+      "repo": "sushruth/imgur-patches",
+      "name": "Imgur",
+      "repoDescription": "Experimental Morphe patches that remove all ads from the Imgur Android app. Educational purposes only.",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/2114206?v=4&s=64",
+      "stars": 1,
+      "starsGained7d": 0,
+      "starsGained40d": 0,
+      "updatedAt": 1786389522000,
+      "firstSeen": 1786432378089,
+      "appFirstSeen": {
+        "com.imgur.mobile": 1786432378065
+      },
+      "patches": [
+        {
+          "name": "Remove ads",
+          "description": "Removes all ads in the app by forcing the no-ads (Emerald) entitlement flag.",
+          "compatiblePackagesKey": 723
         }
       ],
       "isPreRelease": false
@@ -17981,7 +18009,7 @@
         {
           "name": "Example Patch",
           "description": "Example patch to start with.",
-          "compatiblePackagesKey": 723
+          "compatiblePackagesKey": 724
         },
         {
           "name": "Invert light and dark theme colors",
@@ -17991,7 +18019,7 @@
         {
           "name": "Remote script injector",
           "description": "Hooks WebView to inject integrity-checked userscripts.",
-          "compatiblePackagesKey": 724
+          "compatiblePackagesKey": 725
         },
         {
           "name": "Remove Camera Requirements",
@@ -19607,6 +19635,9 @@
       {
         "packageName": "ru.ozon.app.android",
         "targets": [
+          {
+            "version": "19.30.0"
+          },
           {
             "version": "19.29.0"
           },
@@ -26391,6 +26422,16 @@
           {
             "version": "9.15.51",
             "isExperimental": true
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.imgur.mobile",
+        "targets": [
+          {
+            "version": "7.34.0.0"
           }
         ]
       }

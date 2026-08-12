@@ -6174,7 +6174,7 @@
       "stars": 341,
       "starsGained7d": 53,
       "starsGained40d": 146,
-      "updatedAt": 1786494259000,
+      "updatedAt": 1786518954000,
       "firstSeen": 1780370487000,
       "appFirstSeen": {
         "com.tradingview.tradingviewapp": 1783596088539,
@@ -6500,7 +6500,14 @@
         },
         {
           "name": "Anti-disappearing media",
-          "description": "Keeps view-once photos, videos, voice messages, and round videos viewable indefinitely.",
+          "description": "Keeps view-once photos, videos and voice messages viewable indefinitely.",
+          "compatiblePackagesKey": 217
+        },
+        {
+          "name": "Anti-screenshot notification",
+          "description": "Blocks screenshot notifications from being sent to the other user.",
+          "isPreRelease": true,
+          "default": false,
           "compatiblePackagesKey": 217
         },
         {
@@ -6567,12 +6574,12 @@
         },
         {
           "name": "Bypass channel restrictions",
-          "description": "Allows opening copyrighted, sensitive, and temporarily disabled channels.",
+          "description": "Allows opening, viewing, saving and forwarding content from restricted, sensitive, and copyright-restricted channels.",
           "compatiblePackagesKey": 217
         },
         {
           "name": "Bypass content restrictions",
-          "description": "Allows saving and forwarding content from restricted channels and chats.",
+          "description": "Allows saving and forwarding content from restricted channels, chats, and users.",
           "compatiblePackagesKey": 217
         },
         {
@@ -6711,8 +6718,26 @@
           "default": false
         },
         {
+          "name": "Disable analytics",
+          "description": "Blocks all Firebase analytics and event tracking in Telegram Plus.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 155
+        },
+        {
           "name": "Disable auto-update",
           "description": "Disables automatic app update checks, the blocking update screen, and the proxy sponsor channel insertion.",
+          "compatiblePackagesKey": 217
+        },
+        {
+          "name": "Disable auto-update",
+          "description": "Disables automatic app update checks in Telegram Plus.",
+          "compatiblePackagesKey": 155
+        },
+        {
+          "name": "Disable channel switching",
+          "description": "Disables the pull-down gesture that switches to the next unread channel.",
+          "isPreRelease": true,
+          "default": false,
           "compatiblePackagesKey": 217
         },
         {
@@ -6839,13 +6864,6 @@
           "default": false
         },
         {
-          "name": "Fix auto-restore crash (internal)",
-          "description": "Spoofs the package name in hWL.<init> so the E2EE backup lookup always resolves to com.facebook.katana. Required by Change package name.",
-          "isPreRelease": true,
-          "default": false,
-          "compatiblePackagesKey": 224
-        },
-        {
           "name": "Force Pro",
           "description": "Unlocks Parallel Space Pro features by bypassing all Pro status checks.",
           "compatiblePackagesKey": 233
@@ -6917,6 +6935,12 @@
           "description": "Blanks the promoted post render method and forces promoted/ad flags to false at the model layer.",
           "isPreRelease": true,
           "compatiblePackagesKey": 229
+        },
+        {
+          "name": "Hide Reels ads",
+          "description": "Suppresses the Reels ads floating CTA overlay and blocks playable ad activities.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 224
         },
         {
           "name": "Hide Rufus tab",
@@ -7009,6 +7033,11 @@
           "compatiblePackagesKey": 217
         },
         {
+          "name": "Hide typing indicator",
+          "description": "Prevents typing status from being sent in Telegram Plus.",
+          "compatiblePackagesKey": 155
+        },
+        {
           "name": "Map Skin (Vitamin C)",
           "description": "Applies Chuppito's 'Vitamin C' map skin. All visual values configurable.\n• Night: true black AMOLED background (saves battery, prevents burn-in)\n• Day: warm beige background\n• Larger font labels across the board\n• Wider navigation arrow head for better visibility\n• Custom car 3D models: Batmobile, Riddler, race car, 3D arrow\nNote: skin changes require a fresh APK install; updating an existing patched install may keep cached skin files.\nCredits: ALEX02-GTT (skin design), Waze Chuppito Mod (integration).",
           "options": [
@@ -7049,13 +7078,6 @@
             }
           ],
           "compatiblePackagesKey": 216
-        },
-        {
-          "name": "Messenger signature + install source",
-          "description": "Pre-seeds the Facebook signing certificate and enables signature and install-source spoofing.",
-          "isPreRelease": true,
-          "default": false,
-          "compatiblePackagesKey": 225
         },
         {
           "name": "Navigation & Map",
@@ -7126,6 +7148,12 @@
           "compatiblePackagesKey": 234
         },
         {
+          "name": "Plus Premium",
+          "description": "Unlocks premium UI and suppresses premium nag dialogs. isPremiumUser returns true only for self to avoid showing premium badges on others.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 155
+        },
+        {
           "name": "Popup Suppression",
           "description": "Prevents promotional and ad popups from appearing while driving.\nRaises the minimum trigger speed to a near-impossible value so popups never appear.\nWrites both Popup_ and Popu__ key variants for version resilience.\nCredits: Waze Chuppito Mod.",
           "options": [
@@ -7161,6 +7189,12 @@
           "name": "Predictive back gesture",
           "description": "Enables Android predictive back gesture.",
           "default": false
+        },
+        {
+          "name": "Premium UI",
+          "description": "Hides story strip, allows saving stories, suppresses story/translate nags, enables swipe-back everywhere, and suppresses pinned message server fetches.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 217
         },
         {
           "name": "Price history charts",
@@ -7310,6 +7344,11 @@
           "name": "Remove ads",
           "description": "Removes sponsored messages and video ads from all chats and channels.",
           "compatiblePackagesKey": 217
+        },
+        {
+          "name": "Remove ads",
+          "description": "Removes Plus banner ads, native ads, Telegram sponsored messages, and video ads.",
+          "compatiblePackagesKey": 155
         },
         {
           "name": "Remove internet permission",
@@ -8250,7 +8289,7 @@
         },
         {
           "name": "Unlock Pro",
-          "description": "Unlocks the Pro upgrade in Bluetooth Volume Manager by forcing isUpgraded=true in the billing Info constructor.",
+          "description": "Unlocks the Pro upgrade in Bluetooth Volume Manager by forcing isUpgraded=true.",
           "compatiblePackagesKey": 364
         },
         {

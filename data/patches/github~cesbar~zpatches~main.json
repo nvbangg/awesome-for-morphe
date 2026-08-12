@@ -1,5 +1,5 @@
 {
-  "version": "1.11.0",
+  "version": "1.12.0",
   "patches": [
     {
       "name": "Block data collection",
@@ -139,6 +139,18 @@
     {
       "name": "Spoof package signature",
       "description": "Spoofs the package signature required for Firebase, fixes notifications",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.jcdecaux.vls.lyon": [
+          "3.1.1"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Use multiple devices",
+      "description": "Fix the login error \"Access denied. This account is already in use on another device.\" by pretending to be the web client",
       "use": true,
       "dependencies": [],
       "compatiblePackages": {

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "patches": [
     {
       "name": "AMOLED dark theme",
@@ -113,6 +113,32 @@
               },
               "isExperimental": false,
               "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Open Library on launch",
+      "description": "Opens the Library tab instead of Home on launch. Applies only while signed in.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.audible.application",
+          "name": "Audible",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#F8991C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
               "description": null
             }
           ]
@@ -298,7 +324,7 @@
     },
     {
       "name": "Unlock premium",
-      "description": "Unlocks ad removal, light theme, custom images, list view types, quick ratings, and transparent widgets.",
+      "description": "Unlocks ad removal, light theme, custom images, list view types, quick ratings, and transparent widgets. The News feed is not included.",
       "default": true,
       "dependencies": [
         "ResourcePatch"

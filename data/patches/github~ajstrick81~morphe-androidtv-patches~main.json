@@ -1,5 +1,5 @@
 {
-  "version": "1.24.0",
+  "version": "1.25.0",
   "appNames": {
     "com.fox.foxone": "Fox One Android TV",
     "com.netflix.ninja": "Netflix Android TV",
@@ -15,6 +15,32 @@
     "com.cbs.ott": "Paramount+ Android TV"
   },
   "patches": [
+    {
+      "name": "Block TV ads",
+      "description": "Blocks live ads on the Twitch ANDROID TV app (tv.twitch.android.app v13.0.0.2, the \"Starshot\" living-room build — NOT the phone app). That app runs the Twitch web player (laserarray/hls.js) in a WebView, and live ads are server-stitched into the video-weaver HLS playlist. This wraps the app's WebViewClient so a native shouldInterceptRequest override re-fetches the weaver playlist and strips the twitch-stitched-ad segments before hls.js sees them — timing-independent, no proxy, Twitch's own servers only.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "tv.twitch.android.app": [
+          "13.0.0.2"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "Twitch",
+          "packageName": "tv.twitch.android.app",
+          "description": null,
+          "appIconColor": 9521151,
+          "targets": [
+            {
+              "version": "13.0.0.2",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Bundle native ad-strip hook",
       "description": "Packages libpvhook.so into the APK's native lib dir for the in-process PRS Remote-item strip (libignite memcpy/memmove GOT/PLT import hook).",

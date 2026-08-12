@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.26.0-dev.4",
+  "version": "1.26.0-dev.9",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -76,9 +76,9 @@
           "key": "dpi",
           "title": "Display scale",
           "description": "Scales this app's display relative to the device's own setting. 100% = no change, 150% = 1.5x larger, 50% = half size. Range 25-300%.",
-          "required": false,
-          "type": "kotlin.Long",
-          "default": 100,
+          "required": true,
+          "type": "kotlin.String",
+          "default": "100",
           "values": null
         }
       ]
@@ -116,7 +116,7 @@
     },
     {
       "name": "ES File Explorer Cleanup",
-      "description": "Removes selected ES File Explorer home tiles, menu actions, navigation header, media handler, and web-search entry.",
+      "description": "Removes ES File Explorer home tiles/media, menu actions, navigation header, media handler, and web-search entry.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [

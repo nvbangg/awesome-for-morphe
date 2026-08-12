@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "patches": [
     {
       "name": "Copy direct link",
@@ -272,6 +272,37 @@
     {
       "name": "Hide Search nav button",
       "description": "Hooks the search button: hidden if enabled in Morphe settings.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide greeting header buttons",
+      "description": "Hooks the '+' (create) and inbox/notifications buttons in the home feed header: hidden if the matching Morphe settings are enabled.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.8.0-dev.1",
+  "version": "1.8.0-dev.2",
   "patches": [
     {
       "name": "Doodle Jump Billing Bypass",
@@ -237,8 +237,8 @@
       "options": []
     },
     {
-      "name": "Into the Dead Free IAP",
-      "description": "Unlocks all in-app purchases for free: every store item is granted instantly without launching the Google Play payment dialog.",
+      "name": "Into the Dead Ad Removal",
+      "description": "Removes all ads and grants rewarded-video rewards instantly: rewarded videos (legacy IronSource and LevelPlay), interstitials, launch, banner and AdMob App Open ads are all eliminated.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -263,138 +263,8 @@
       "options": []
     },
     {
-      "name": "Into the Dead Instant Rewards",
-      "description": "Skips rewarded video ads (legacy IronSource path): the reward is granted immediately without showing the ad.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.sidheinteractive.sif.DR",
-          "name": "Into the Dead",
-          "description": null,
-          "apkFileType": "APKM",
-          "appIconColor": "#8B0000",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.9.3",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Into the Dead Instant Rewards (LevelPlay)",
-      "description": "Skips rewarded video ads (new LevelPlayRewardedAd API): the reward is granted immediately without showing the ad.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.sidheinteractive.sif.DR",
-          "name": "Into the Dead",
-          "description": null,
-          "apkFileType": "APKM",
-          "appIconColor": "#8B0000",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.9.3",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Into the Dead Remove Ads",
-      "description": "Removes interstitial, launch and banner ads (legacy IronSource bridge): the C# interstitial-ready signal is killed, readiness polls return false, explicit loads are no-ops, and any show call completes the C# lifecycle instantly without displaying an ad.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.sidheinteractive.sif.DR",
-          "name": "Into the Dead",
-          "description": null,
-          "apkFileType": "APKM",
-          "appIconColor": "#8B0000",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.9.3",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Into the Dead Remove Ads (LevelPlay)",
-      "description": "Safety nets for the new LevelPlay API: InterstitialAd.loadAd/showAd and BannerAd.load/showAd become no-ops and isAdReady returns false, so no interstitial or banner can ever display through the new API.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.sidheinteractive.sif.DR",
-          "name": "Into the Dead",
-          "description": null,
-          "apkFileType": "APKM",
-          "appIconColor": "#8B0000",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.9.3",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Into the Dead Remove App Open Ad",
-      "description": "Removes the AdMob App Open full-screen ad (the one shown on the second launch): the load, show, pollAd preloader and lifecycle-trigger entry points on the com.google.unity.ads bridge all become no-ops, so an app open ad can never load or display.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.sidheinteractive.sif.DR",
-          "name": "Into the Dead",
-          "description": null,
-          "apkFileType": "APKM",
-          "appIconColor": "#8B0000",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2.9.3",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Into the Dead Verify Bypass",
-      "description": "Bypasses SHA1withRSA purchase receipt verification so fabricated purchase receipts are accepted.",
+      "name": "Into the Dead Billing Bypass",
+      "description": "Unlocks all in-app purchases for free and bypasses SHA1withRSA receipt verification: every store item is granted instantly without launching the Google Play payment dialog, and any fabricated receipt is accepted.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

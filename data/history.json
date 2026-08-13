@@ -942,8 +942,10 @@
   "github:jasonwu1994/Gboard-patches": {
     "com.google.android.inputmethod.latin": [
       "AI Writing Tools",
+      "Access Points menu style",
       "Add Gboard Signature Bypass",
       "Advanced Voice Typing",
+      "Change emoji size",
       "Clipboard Custom Character Limit",
       "Clipboard Enhancements",
       "Custom Symbols",
@@ -951,6 +953,9 @@
       "Emojis, stickers & GIFs Tab Order",
       "Enable Inline Autofill Suggestions",
       "Enable OCR / Scan Text",
+      "Enable accessibility layout",
+      "Enable cursor trackpad mode",
+      "Enable split keyboard",
       "English QWERTY Up-Flick Uppercase",
       "Grammar Checker",
       "Incognito Mode Toggle",
@@ -2648,6 +2653,9 @@
     "io.stashteam.games.tracker.stashapp": [
       "Unlock Pro"
     ],
+    "net.uniquegem.directchat": [
+      "Unlock Premium"
+    ],
     "studio.muggle.chatboost": [
       "Unlock Premium"
     ],
@@ -2735,7 +2743,6 @@
       "Disable resuming Miniplayer on startup",
       "Disable resuming Shorts on startup",
       "Disable sign in to TV popup",
-      "Disable splash animation",
       "Enable debug logging",
       "Enable gradient loading screen",
       "Force original audio",
@@ -2753,13 +2760,13 @@
       "Hide player buttons",
       "Hide player flyout menu",
       "Hide shortcuts",
-      "Hook YouTube Music actions",
       "Hook download actions",
       "MaterialYou",
       "Miniplayer",
       "Navigation bar components",
       "Open links externally",
       "Overlay buttons",
+      "Override YouTube Music buttons",
       "Playback in feeds",
       "Player components",
       "Reload video",
@@ -3109,6 +3116,10 @@
     ],
     "com.mediocre.smashhit": [
       "Smash Hit Premium Unlock"
+    ],
+    "com.sidheinteractive.sif.DR": [
+      "Into the Dead Ad Removal",
+      "Into the Dead Billing Bypass"
     ],
     "com.touchfoo.swordigo": [
       "Swordigo Premium Unlock"
@@ -4485,11 +4496,13 @@
     "com.nuvio.tv": [
       "Allow Importing Subs from Local Storage",
       "Library Mode Focus Fix",
+      "Local Downloads",
       "Local Media",
       "Mark SDH Subtitles",
       "Random Episode",
       "Rating Visibility",
-      "Remove SDH Annotations"
+      "Remove SDH Annotations",
+      "Restore Source Selection"
     ]
   },
   "github:logm1lo/logm1lo-patches": {
@@ -4540,8 +4553,28 @@
   },
   "github:AngelDark92/steamlink-patches": {
     "com.valvesoftware.steamlinkvr": [
-      "XR compositor path experiment",
-      "XR compositor quad probe"
+      "Android XR native permission names",
+      "Appear on top",
+      "Change package name",
+      "Controller velocity fix",
+      "Device identity",
+      "Force HMD initialization gates",
+      "Force lobby permission-state gate",
+      "Force stream XR gates",
+      "GXR face bridge",
+      "HMD-only pose fix",
+      "Microphone input preset",
+      "OLED color calibration",
+      "Unrestricted battery usage",
+      "Video dither",
+      "XR Core Runtime",
+      "XR Device Config Baseline",
+      "XR Input Routing Config",
+      "XR Launcher Bootstrap (Home Space)",
+      "XR Manifest Capability Pack",
+      "XR projection quality settings",
+      "XR projection settings stripped",
+      "XR projection trace control"
     ]
   },
   "github:ang3lo-azevedo/morphe-patches": {
@@ -4552,12 +4585,6 @@
   "github:BlazeFTL/FTL-Patches": {
     "com.estrongs.android.pop": [
       "ES File Explorer Cleanup"
-    ],
-    "com.mxtech.videoplayer.ad": [
-      "Hide File Transfer, Video Playlist, Private Folder tiles",
-      "Hide Me tab promo items",
-      "Hide local tiles banner",
-      "Skip welcome screen"
     ],
     "com.mxtech.videoplayer.pro": [
       "Hide File Transfer, Video Playlist, Private Folder tiles",
@@ -4615,18 +4642,6 @@
       "High quality document upload"
     ]
   },
-  "github:tadikwa/google-clock-morphe-patches": {
-    "app.morphe.android.apps.youtube.music": [
-      "Google Clock MediaBrowser error stack diagnostic",
-      "Google Clock MediaBrowser full bridge",
-      "Google Clock MediaBrowser upstream compatibility",
-      "Google Clock alarm MediaBrowser bridge",
-      "Google Clock alarm MediaBrowser bridge v2"
-    ],
-    "com.google.android.deskclock": [
-      "Use Morphe YouTube Music for alarms"
-    ]
-  },
   "github:Nagol12344/patch": {
     "com.bplace": [
       "Fix file picker camera prompt",
@@ -4649,6 +4664,152 @@
     "br.com.zetabit.ios_standby": [
       "Rename StandBy",
       "Unlock Premium"
+    ]
+  },
+  "github:ozeroztas/Morphe-Patch": {
+    "com.google.android.apps.youtube.music": [
+      "Bypass certificate checks",
+      "Change header",
+      "Change miniplayer color",
+      "Change start page",
+      "Check watch history domain name resolution",
+      "Crossfade",
+      "Custom branding",
+      "Disable DRC audio",
+      "Disable QUIC protocol",
+      "Disable dislike redirection",
+      "Downloads",
+      "Enable debugging",
+      "Enable exclusive audio playback",
+      "Enable forced miniplayer",
+      "Enable swipe to dismiss miniplayer",
+      "Force original audio",
+      "GmsCore support",
+      "Hide ads",
+      "Hide buttons",
+      "Hide filter bar",
+      "Hide flyout menu components",
+      "Hide layout components",
+      "Hide music action buttons",
+      "Miniplayer previous and next buttons",
+      "Navigation bar",
+      "Network proxy",
+      "Remember repeat state",
+      "Remember shuffle state",
+      "Remove background playback restrictions",
+      "Remove viewer discretion dialog",
+      "Return YouTube Dislike",
+      "Sanitize sharing links",
+      "Scrobbling",
+      "Settings menu filter",
+      "SponsorBlock",
+      "Spoof app version",
+      "Spoof video streams",
+      "Theme",
+      "Third-party lyrics"
+    ],
+    "com.google.android.youtube": [
+      "Add to queue",
+      "Alternative thumbnails",
+      "Ambient mode",
+      "Bypass image region restrictions",
+      "Bypass link redirects",
+      "Captions",
+      "Change form factor",
+      "Change header",
+      "Change start page",
+      "Check watch history domain name resolution",
+      "Copy video link",
+      "Custom branding",
+      "Custom player overlay opacity",
+      "Disable DRC audio",
+      "Disable QUIC protocol",
+      "Disable Shorts resuming on startup",
+      "Disable double tap actions",
+      "Disable fullscreen gestures",
+      "Disable haptic feedback",
+      "Disable layout updates",
+      "Disable player popup panels",
+      "Disable rolling number animations",
+      "Disable sign in to TV popup",
+      "Disable video codecs",
+      "Double tap to seek",
+      "Downloads",
+      "Enable debugging",
+      "Exit fullscreen mode",
+      "Force original audio",
+      "GmsCore support",
+      "Hide Shorts components",
+      "Hide ads",
+      "Hide autoplay preview",
+      "Hide end screen cards",
+      "Hide end screen suggested video",
+      "Hide info cards",
+      "Hide layout components",
+      "Hide player flyout menu components",
+      "Hide player overlay buttons",
+      "Hide related video overlay",
+      "Hide related videos",
+      "Hide timestamp",
+      "Hide video action buttons",
+      "Loop video",
+      "Media notification controls",
+      "Miniplayer",
+      "Navigation bar",
+      "Network proxy",
+      "Open Shorts in regular player",
+      "Open channel of live avatar",
+      "Open links externally",
+      "Open system share sheet",
+      "Open videos fullscreen",
+      "Override YouTube Music buttons",
+      "Play all",
+      "Playback in feeds",
+      "Playback speed",
+      "Reload video",
+      "Remove background playback restrictions",
+      "Remove viewer discretion dialog",
+      "Return YouTube Dislike",
+      "Sanitize sharing links",
+      "Save to watch later",
+      "Seekbar",
+      "Settings menu filter",
+      "Shorts autoplay",
+      "SponsorBlock",
+      "Spoof app version",
+      "Spoof device dimensions",
+      "Spoof video streams",
+      "Swipe controls",
+      "Theme",
+      "Video quality",
+      "Voice over translation",
+      "Wide search bar"
+    ],
+    "com.reddit.frontpage": [
+      "Custom branding name for Reddit",
+      "Custom font",
+      "Disable modern home",
+      "Disable screenshot popup",
+      "Force system font",
+      "Hide Ask button",
+      "Hide Reddit search",
+      "Hide Trending shelves",
+      "Hide ads",
+      "Hide communities shelf",
+      "Hide navigation buttons",
+      "Hide sidebar components",
+      "Open links directly",
+      "Open links externally",
+      "Remove subreddit dialog",
+      "Sanitize sharing links",
+      "Show view count",
+      "Spoof signature"
+    ],
+    "universal": [
+      "Change installer source",
+      "Clone app",
+      "Disable Play Store updates",
+      "Override certificate pinning"
     ]
   }
 }

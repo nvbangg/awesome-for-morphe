@@ -1,0 +1,118 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Disable CleverTap",
+      "description": "Prevents the CleverTap analytics SDK from initializing, stopping behavioral tracking and advertising-id (GAID) collection.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 Android TV",
+          "description": "ZEE5: Movies, TV Shows, Series (Android TV)",
+          "apkFileType": "APKM_REQUIRED",
+          "appIconColor": "#1C1C28",
+          "signatures": [
+            "17df0bbfa43f2a1d057c0a0c96e11b9c20c595f43873388b2719eb0a7e23e0cb"
+          ],
+          "targets": [
+            {
+              "version": "5.83.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Firebase analytics",
+      "description": "Prevents Firebase Analytics from initializing, stopping event and user-property reporting to Google.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 Android TV",
+          "description": "ZEE5: Movies, TV Shows, Series (Android TV)",
+          "apkFileType": "APKM_REQUIRED",
+          "appIconColor": "#1C1C28",
+          "signatures": [
+            "17df0bbfa43f2a1d057c0a0c96e11b9c20c595f43873388b2719eb0a7e23e0cb"
+          ],
+          "targets": [
+            {
+              "version": "5.83.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable ads",
+      "description": "Removes Google IMA ad insertion (client-side and server-side DAI) from the ZEE5 player. The media source factory is returned DRM-configured but with ad-insertion components never attached, so content and DRM playback are unaffected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 Android TV",
+          "description": "ZEE5: Movies, TV Shows, Series (Android TV)",
+          "apkFileType": "APKM_REQUIRED",
+          "appIconColor": "#1C1C28",
+          "signatures": [
+            "17df0bbfa43f2a1d057c0a0c96e11b9c20c595f43873388b2719eb0a7e23e0cb"
+          ],
+          "targets": [
+            {
+              "version": "5.83.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables all third-party analytics (CleverTap, Firebase, Mixpanel, videoanalytics) by short-circuiting the central analytics dispatch method. No tracking data is sent.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 Android TV",
+          "description": "ZEE5: Movies, TV Shows, Series (Android TV)",
+          "apkFileType": "APKM_REQUIRED",
+          "appIconColor": "#1C1C28",
+          "signatures": [
+            "17df0bbfa43f2a1d057c0a0c96e11b9c20c595f43873388b2719eb0a7e23e0cb"
+          ],
+          "targets": [
+            {
+              "version": "5.83.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

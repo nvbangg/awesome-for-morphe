@@ -19126,6 +19126,114 @@
         }
       ],
       "isPreRelease": false
+    },
+    {
+      "source": "github",
+      "repo": "WZSE/aapam-patches",
+      "name": "aapam",
+      "repoDescription": "",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/9087102?v=4&s=64",
+      "stars": 2,
+      "starsGained7d": 0,
+      "starsGained40d": 0,
+      "updatedAt": 1786602735000,
+      "firstSeen": 1786685987544,
+      "appFirstSeen": {
+        "com.graymatrix.did": 1786685987350
+      },
+      "patches": [
+        {
+          "name": "Disable CleverTap",
+          "description": "Prevents the CleverTap analytics SDK from initializing, stopping behavioral tracking and advertising-id (GAID) collection.",
+          "compatiblePackagesKey": 730
+        },
+        {
+          "name": "Disable Firebase analytics",
+          "description": "Prevents Firebase Analytics from initializing, stopping event and user-property reporting to Google.",
+          "compatiblePackagesKey": 730
+        },
+        {
+          "name": "Disable ads",
+          "description": "Removes Google IMA ad insertion (client-side and server-side DAI) from the ZEE5 player. The media source factory is returned DRM-configured but with ad-insertion components never attached, so content and DRM playback are unaffected.",
+          "compatiblePackagesKey": 730
+        },
+        {
+          "name": "Disable analytics",
+          "description": "Disables all third-party analytics (CleverTap, Firebase, Mixpanel, videoanalytics) by short-circuiting the central analytics dispatch method. No tracking data is sent.",
+          "compatiblePackagesKey": 730
+        }
+      ],
+      "isPreRelease": false
+    },
+    {
+      "source": "github",
+      "repo": "RabehX/rabehx-patches",
+      "name": "RabehX",
+      "repoDescription": "Free-time patches for apps",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/64314390?v=4&s=64",
+      "stars": 2,
+      "starsGained7d": 0,
+      "starsGained40d": 0,
+      "updatedAt": 1786654800000,
+      "firstSeen": 1786685987544,
+      "appFirstSeen": {
+        "app.progres.webetu": 1786685987333,
+        "ru.bpc.mobilebank.bpc": 1786685987333,
+        "com.algeria.selfcare.app.android": 1786685987333
+      },
+      "patches": [
+        {
+          "name": "Allow screenshots",
+          "description": "Removes the screen capture block so screenshots and recordings work.",
+          "compatiblePackagesKey": 731
+        },
+        {
+          "name": "Bypass certificate checks",
+          "description": "Bypasses certificate pinning so intercepted TLS connections are accepted.",
+          "compatiblePackagesKey": 732
+        },
+        {
+          "name": "Disable Play Integrity",
+          "description": "Short-circuits the Google Play Integrity attestation request with a \"DISABLED\" response, avoiding failures on modified or non-Play builds.",
+          "compatiblePackagesKey": 733
+        },
+        {
+          "name": "Disable analytics and crash reporting",
+          "description": "Disables analytics and crash reporting while keeping push notifications.",
+          "compatiblePackagesKey": 732
+        },
+        {
+          "name": "Disable developer options detection",
+          "description": "Stops the app from detecting that Developer Options or USB debugging are enabled on the device, removing the blocking security dialog.",
+          "compatiblePackagesKey": 733
+        },
+        {
+          "name": "Disable root & emulator detection",
+          "description": "Forces every root, jailbreak, emulator and frida check in the app to report a clean device, so no blocking dialog is shown on modified/rooted environments.",
+          "compatiblePackagesKey": 733
+        },
+        {
+          "name": "Disable root detection",
+          "description": "Disables the rooted-device check so the app runs on rooted devices.",
+          "compatiblePackagesKey": 732
+        },
+        {
+          "name": "Enable 30-day Resto reservations",
+          "description": "Allows reserving Resto meals up to 30 days in advance.",
+          "compatiblePackagesKey": 731
+        },
+        {
+          "name": "Remove CleverTap tracking",
+          "description": "Removes CleverTap analytics initialization, stopping the app from collecting the phone number as an identity key and from reporting usage data.",
+          "compatiblePackagesKey": 733
+        },
+        {
+          "name": "Remove PairIP protection",
+          "description": "Removes Google Play's PairIP anti-tamper wrapper so the app runs without license checks. Restores the original Application class in the manifest, removes all injected com.pairip.* components, and neuters PairIP's license client.",
+          "compatiblePackagesKey": 731
+        }
+      ],
+      "isPreRelease": false
     }
   ],
   "compatibilities": [
@@ -27763,6 +27871,46 @@
           }
         ]
       }
+    ],
+    [
+      {
+        "packageName": "com.graymatrix.did",
+        "targets": [
+          {
+            "version": "5.83.2"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "app.progres.webetu",
+        "targets": [
+          {
+            "version": "2.4.0"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "ru.bpc.mobilebank.bpc",
+        "targets": [
+          {
+            "version": "1.29.1"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.algeria.selfcare.app.android",
+        "targets": [
+          {
+            "version": "1.5.13"
+          }
+        ]
+      }
     ]
   ],
   "store": {
@@ -33165,6 +33313,38 @@
       "minInstalls": 50000000,
       "category": "Games",
       "firstSeen": 1786599731743
+    },
+    "app.progres.webetu": {
+      "name": "PROGRES WebEtu",
+      "iconUrl": "https://play-lh.googleusercontent.com/qxcQ6Y__rBh1PZth--MGXb1FY9HY_KZByOa4UHwEz0taLvfVyKgliocVVoXhvqfau8fh54qwSvPK1kCTheuxP-E=s64-rw",
+      "description": "The official mobile application of the Algerian Student",
+      "minInstalls": 1000000,
+      "category": "Education",
+      "firstSeen": 1786685987544
+    },
+    "ru.bpc.mobilebank.bpc": {
+      "name": "BaridiMob",
+      "iconUrl": "https://play-lh.googleusercontent.com/9hxHLjS9v301vyDOOOs0TMlSXA-38pzBn_Yd8IeUXfVVolSXwcfEPLEY5UwTwzdSRr4GEBXJ1470PLatTBqJ=s64-rw",
+      "description": "An intuitive application that manages your electronic banking and financial operations.",
+      "minInstalls": 10000000,
+      "category": "Finance",
+      "firstSeen": 1786685987544
+    },
+    "com.algeria.selfcare.app.android": {
+      "name": "My Ooredoo Algeria",
+      "iconUrl": "https://play-lh.googleusercontent.com/o3JXnuzcPxsSK2P2tkS8JvedsHsNopTdJpdS9IxZghs-EiVi59Dq1gTcD4iUe6GtvmQRuWki-rNt_MK27o3hcA=s64-rw",
+      "description": "Take control with the new My Ooredoo Algeria app",
+      "minInstalls": 10000000,
+      "category": "Tools",
+      "firstSeen": 1786685987544
+    },
+    "com.graymatrix.did": {
+      "name": "ZEE5: Movies, TV Shows, Series",
+      "iconUrl": "https://play-lh.googleusercontent.com/NyMT3ByjkBG1FhdFX9GSj_0mXLNIAuz_IZO8Xr9Noow6D4IQs-Srai9Hklad5gDasSv6F5tHYwsquk1mXErQ5A=s64-rw",
+      "description": "Watch Premium Movies, 2500+ TV Shows, & 574+ Web Series",
+      "minInstalls": 100000000,
+      "category": "Entertainment",
+      "firstSeen": 1786685987544
     }
   }
 }

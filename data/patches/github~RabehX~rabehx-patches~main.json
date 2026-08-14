@@ -1,0 +1,272 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "0.0.1",
+  "patches": [
+    {
+      "name": "Allow screenshots",
+      "description": "Removes the screen capture block so screenshots and recordings work.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "app.progres.webetu",
+          "name": "Webetu",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#023C69",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass certificate checks",
+      "description": "Bypasses certificate pinning so intercepted TLS connections are accepted.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.bpc.mobilebank.bpc",
+          "name": "BaridiMob",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#007A33",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.29.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Play Integrity",
+      "description": "Short-circuits the Google Play Integrity attestation request with a \"DISABLED\" response, avoiding failures on modified or non-Play builds.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.algeria.selfcare.app.android",
+          "name": "My Ooredoo",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#113C8A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.13",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics and crash reporting",
+      "description": "Disables analytics and crash reporting while keeping push notifications.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.bpc.mobilebank.bpc",
+          "name": "BaridiMob",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#007A33",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.29.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable developer options detection",
+      "description": "Stops the app from detecting that Developer Options or USB debugging are enabled on the device, removing the blocking security dialog.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.algeria.selfcare.app.android",
+          "name": "My Ooredoo",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#113C8A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.13",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable root & emulator detection",
+      "description": "Forces every root, jailbreak, emulator and frida check in the app to report a clean device, so no blocking dialog is shown on modified/rooted environments.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.algeria.selfcare.app.android",
+          "name": "My Ooredoo",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#113C8A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.13",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable root detection",
+      "description": "Disables the rooted-device check so the app runs on rooted devices.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.bpc.mobilebank.bpc",
+          "name": "BaridiMob",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#007A33",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.29.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable 30-day Resto reservations",
+      "description": "Allows reserving Resto meals up to 30 days in advance.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "app.progres.webetu",
+          "name": "Webetu",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#023C69",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove CleverTap tracking",
+      "description": "Removes CleverTap analytics initialization, stopping the app from collecting the phone number as an identity key and from reporting usage data.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.algeria.selfcare.app.android",
+          "name": "My Ooredoo",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#113C8A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.13",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove PairIP protection",
+      "description": "Removes Google Play's PairIP anti-tamper wrapper so the app runs without license checks. Restores the original Application class in the manifest, removes all injected com.pairip.* components, and neuters PairIP's license client.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "app.progres.webetu",
+          "name": "Webetu",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#023C69",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.4.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

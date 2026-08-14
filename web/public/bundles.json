@@ -17930,14 +17930,15 @@
       "stars": 5,
       "starsGained7d": 4,
       "starsGained40d": 4,
-      "updatedAt": 1786639090000,
+      "updatedAt": 1786692582000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
         "universal": 1786240845676,
         "com.snaptube.premium": 1786360281622,
         "com.mxtech.videoplayer.pro": 1786445546411,
         "com.mxtech.videoplayer.ad": 1786445546411,
-        "com.estrongs.android.pop": 1786561505668
+        "com.estrongs.android.pop": 1786561505668,
+        "cn.xender": 1786693028385
       },
       "patches": [
         {
@@ -18077,6 +18078,12 @@
           "description": "Moves the launcher intent filters and app shortcuts from the welcome/splash activity to the main activity, so the app boots straight past the splash and update screen.",
           "default": false,
           "compatiblePackagesKey": 721
+        },
+        {
+          "name": "Speed up splash screen",
+          "description": "Enters the main activity directly after the splash permission check instead of delaying for the additional external-storage check.",
+          "default": false,
+          "compatiblePackagesKey": 722
         }
       ],
       "isPreRelease": false
@@ -18099,7 +18106,7 @@
         {
           "name": "Unlock Premium",
           "description": "Unlocks all premium content and removes subscription banners.",
-          "compatiblePackagesKey": 722
+          "compatiblePackagesKey": 723
         }
       ],
       "isPreRelease": false
@@ -18131,7 +18138,7 @@
               "description": "Forced display density in dots-per-inch for this app only. 160 = system default (mdpi), 240 is roughly 1.5x larger. Range 96-640."
             }
           ],
-          "compatiblePackagesKey": 723
+          "compatiblePackagesKey": 724
         },
         {
           "name": "Custom version name",
@@ -18144,13 +18151,13 @@
               "description": "Full value written to android:versionName, e.g. \"20.51.39+1781904670\". Use a monotonic numeric suffix so newer builds compare greater."
             }
           ],
-          "compatiblePackagesKey": 723
+          "compatiblePackagesKey": 724
         },
         {
           "name": "Disable experimental notice",
           "description": "Removes the morphe experimental-version warning dialog, which otherwise nags on every re-patched build whose version differs from the recommended one.",
           "default": false,
-          "compatiblePackagesKey": 723
+          "compatiblePackagesKey": 724
         }
       ],
       "isPreRelease": false
@@ -18196,7 +18203,7 @@
         {
           "name": "Disable ads",
           "description": "Disables banner, interstitial, feed, native, preroll and rewarded ads.",
-          "compatiblePackagesKey": 724
+          "compatiblePackagesKey": 725
         }
       ],
       "isPreRelease": false
@@ -18219,12 +18226,12 @@
         {
           "name": "Force enable Megaphone, Tamper Detection, Krutrim and Kruti",
           "description": "Forces the Megaphone, Tamper & Fall Detection, Krutrim Assistant, and Kruti features to always report as available, regardless of the server-driven onboarding feature flags returned by the app's backend.",
-          "compatiblePackagesKey": 725
+          "compatiblePackagesKey": 726
         },
         {
           "name": "High quality document upload",
           "description": "Raises the JPEG re-encode quality used by the camera capture-with-compression flow from 0 to 100, and raises the 6MB per-file size limit enforced on document uploads to 100MB, so scanned documents and high-resolution photos are no longer degraded or rejected before upload.",
-          "compatiblePackagesKey": 725
+          "compatiblePackagesKey": 726
         }
       ],
       "isPreRelease": false
@@ -18249,12 +18256,12 @@
         {
           "name": "Example Patch",
           "description": "Example patch to start with.",
-          "compatiblePackagesKey": 726
+          "compatiblePackagesKey": 727
         },
         {
           "name": "Fix file picker camera prompt",
           "description": "Strips the capture attribute from file inputs so the file picker doesn't request camera permission.",
-          "compatiblePackagesKey": 727
+          "compatiblePackagesKey": 728
         },
         {
           "name": "Invert light and dark theme colors",
@@ -18269,7 +18276,7 @@
         {
           "name": "Remove unnecessary camera permission request",
           "description": "Prevents the file picker from proactively requesting CAMERA permission.",
-          "compatiblePackagesKey": 727
+          "compatiblePackagesKey": 728
         }
       ],
       "isPreRelease": false
@@ -18292,7 +18299,7 @@
         {
           "name": "Remove ads",
           "description": "Removes all ads in the app by forcing the no-ads (Emerald) entitlement flag.",
-          "compatiblePackagesKey": 728
+          "compatiblePackagesKey": 729
         }
       ],
       "isPreRelease": false
@@ -18315,12 +18322,12 @@
         {
           "name": "Rename StandBy",
           "description": "Changes the launcher name to R3D StandBy.",
-          "compatiblePackagesKey": 729
+          "compatiblePackagesKey": 730
         },
         {
           "name": "Unlock Premium",
           "description": "Unlock Premium Features.",
-          "compatiblePackagesKey": 729
+          "compatiblePackagesKey": 730
         }
       ],
       "isPreRelease": false
@@ -19129,44 +19136,6 @@
     },
     {
       "source": "github",
-      "repo": "WZSE/aapam-patches",
-      "name": "aapam",
-      "repoDescription": "",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/9087102?v=4&s=64",
-      "stars": 2,
-      "starsGained7d": 0,
-      "starsGained40d": 0,
-      "updatedAt": 1786602735000,
-      "firstSeen": 1786685987544,
-      "appFirstSeen": {
-        "com.graymatrix.did": 1786685987350
-      },
-      "patches": [
-        {
-          "name": "Disable CleverTap",
-          "description": "Prevents the CleverTap analytics SDK from initializing, stopping behavioral tracking and advertising-id (GAID) collection.",
-          "compatiblePackagesKey": 730
-        },
-        {
-          "name": "Disable Firebase analytics",
-          "description": "Prevents Firebase Analytics from initializing, stopping event and user-property reporting to Google.",
-          "compatiblePackagesKey": 730
-        },
-        {
-          "name": "Disable ads",
-          "description": "Removes Google IMA ad insertion (client-side and server-side DAI) from the ZEE5 player. The media source factory is returned DRM-configured but with ad-insertion components never attached, so content and DRM playback are unaffected.",
-          "compatiblePackagesKey": 730
-        },
-        {
-          "name": "Disable analytics",
-          "description": "Disables all third-party analytics (CleverTap, Firebase, Mixpanel, videoanalytics) by short-circuiting the central analytics dispatch method. No tracking data is sent.",
-          "compatiblePackagesKey": 730
-        }
-      ],
-      "isPreRelease": false
-    },
-    {
-      "source": "github",
       "repo": "RabehX/rabehx-patches",
       "name": "RabehX",
       "repoDescription": "Free-time patches for apps",
@@ -19231,6 +19200,44 @@
           "name": "Remove PairIP protection",
           "description": "Removes Google Play's PairIP anti-tamper wrapper so the app runs without license checks. Restores the original Application class in the manifest, removes all injected com.pairip.* components, and neuters PairIP's license client.",
           "compatiblePackagesKey": 731
+        }
+      ],
+      "isPreRelease": false
+    },
+    {
+      "source": "github",
+      "repo": "WZSE/aapam-patches",
+      "name": "aapam",
+      "repoDescription": "",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/9087102?v=4&s=64",
+      "stars": 2,
+      "starsGained7d": 0,
+      "starsGained40d": 0,
+      "updatedAt": 1786602735000,
+      "firstSeen": 1786685987544,
+      "appFirstSeen": {
+        "com.graymatrix.did": 1786685987350
+      },
+      "patches": [
+        {
+          "name": "Disable CleverTap",
+          "description": "Prevents the CleverTap analytics SDK from initializing, stopping behavioral tracking and advertising-id (GAID) collection.",
+          "compatiblePackagesKey": 734
+        },
+        {
+          "name": "Disable Firebase analytics",
+          "description": "Prevents Firebase Analytics from initializing, stopping event and user-property reporting to Google.",
+          "compatiblePackagesKey": 734
+        },
+        {
+          "name": "Disable ads",
+          "description": "Removes Google IMA ad insertion (client-side and server-side DAI) from the ZEE5 player. The media source factory is returned DRM-configured but with ad-insertion components never attached, so content and DRM playback are unaffected.",
+          "compatiblePackagesKey": 734
+        },
+        {
+          "name": "Disable analytics",
+          "description": "Disables all third-party analytics (CleverTap, Firebase, Mixpanel, videoanalytics) by short-circuiting the central analytics dispatch method. No tracking data is sent.",
+          "compatiblePackagesKey": 734
         }
       ],
       "isPreRelease": false
@@ -27780,6 +27787,16 @@
     ],
     [
       {
+        "packageName": "cn.xender",
+        "targets": [
+          {
+            "version": "18.8.0.prime"
+          }
+        ]
+      }
+    ],
+    [
+      {
         "packageName": "org.wakingup.android",
         "targets": [
           {
@@ -27874,16 +27891,6 @@
     ],
     [
       {
-        "packageName": "com.graymatrix.did",
-        "targets": [
-          {
-            "version": "5.83.2"
-          }
-        ]
-      }
-    ],
-    [
-      {
         "packageName": "app.progres.webetu",
         "targets": [
           {
@@ -27908,6 +27915,16 @@
         "targets": [
           {
             "version": "1.5.13"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.graymatrix.did",
+        "targets": [
+          {
+            "version": "5.83.2"
           }
         ]
       }
@@ -33345,6 +33362,14 @@
       "minInstalls": 100000000,
       "category": "Entertainment",
       "firstSeen": 1786685987544
+    },
+    "cn.xender": {
+      "name": "Xender - Quick Share, Transfer",
+      "iconUrl": "https://play-lh.googleusercontent.com/7Hf2rw_3DdwM5015tvel3IE_0S3fhHWK7iRYonCd66RI0y2tFB5w_qYxMjflRFNey37Uqnmgsh8XTIRM5sTu=s64-rw",
+      "description": "Quick Share! Share Video, Better AirDrop, Cross-platform, Connect PC and Mac",
+      "minInstalls": 500000000,
+      "category": "Tools",
+      "firstSeen": 1786693028619
     }
   }
 }

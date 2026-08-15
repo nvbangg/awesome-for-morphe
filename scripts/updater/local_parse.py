@@ -13,6 +13,7 @@ DATA_DIR = ROOT_DIR / "data"
 BUNDLES_DIR = DATA_DIR / "bundles"
 PATCHES_DIR = DATA_DIR / "patches"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
+PACKAGE_UNIVERSAL = "__universal__"
 
 
 def parse_version_item(item: Any) -> dict[str, Any] | None:
@@ -211,7 +212,7 @@ def process(bundle_sources: dict[str, Any], apps_dict: dict[str, Any]) -> list:
             if patch_dict.get("compatiblePackages"):
                 for compatibility_package in patch_dict["compatiblePackages"]:
                     package_name = compatibility_package.get("packageName")
-                    if package_name and package_name != "universal":
+                    if package_name and package_name != PACKAGE_UNIVERSAL:
                         valid_apps_from_bundles.add(package_name)
                         if package_name not in apps_dict:
                             app_name = discovered_names.get(package_name)
@@ -245,8 +246,8 @@ def process(bundle_sources: dict[str, Any], apps_dict: dict[str, Any]) -> list:
                         app_first_seen_map[package_name] = current_timestamp_ms
             else:
                 has_universal_patch = True
-        if has_universal_patch and "universal" not in app_first_seen_map:
-            app_first_seen_map["universal"] = current_timestamp_ms
+        if has_universal_patch and PACKAGE_UNIVERSAL not in app_first_seen_map:
+            app_first_seen_map[PACKAGE_UNIVERSAL] = current_timestamp_ms
         source_entry["appFirstSeen"] = app_first_seen_map
     for base_key, source_entry in bundle_sources.items():
         if base_key in keys_to_remove:
@@ -274,7 +275,8 @@ def process(bundle_sources: dict[str, Any], apps_dict: dict[str, Any]) -> list:
     apps_to_remove = [
         package_name
         for package_name in list(apps_dict.keys())
-        if package_name not in valid_apps_from_bundles and package_name != "universal"
+        if package_name not in valid_apps_from_bundles
+        and package_name != PACKAGE_UNIVERSAL
     ]
     for package_name in apps_to_remove:
         del apps_dict[package_name]

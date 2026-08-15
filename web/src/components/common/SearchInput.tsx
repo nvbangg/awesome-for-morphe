@@ -54,6 +54,15 @@ export function SearchInput({
         id={id}
         value={localValue}
         onChange={(event) => setLocalValue(event.target.value)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            if (localValue !== value) {
+              onChange(localValue);
+            }
+            (event.target as HTMLInputElement)?.blur();
+          }
+        }}
+        enterKeyHint="search"
         placeholder={placeholder}
         className="w-full h-10 pl-10 pr-9 bg-background border border-divider rounded-xl text-sm font-medium text-foreground placeholder:text-foreground-subtle placeholder:select-none outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
       />

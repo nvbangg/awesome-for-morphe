@@ -25,6 +25,7 @@ export function Header() {
           <a
             href="https://github.com/nvbangg/awesome-morphe"
             target="_blank"
+            title="Awesome Morphe Repository"
             className="inline-flex items-center justify-center h-8 px-3 rounded-lg font-semibold text-xs gap-1.5 transition-all bg-foreground text-background hover:opacity-90 border-none no-underline"
           >
             <GitHubIcon className="size-4" />

@@ -18,11 +18,13 @@ export const RepoLink = memo(function RepoLink({
   if (!repo || !repoUrl) return null;
 
   const isGitLab = source === "gitlab";
+  const tooltipTitle = isGitLab ? "GitLab Repository" : "GitHub Repository";
 
   return (
     <a
       href={repoUrl}
       target="_blank"
+      title={tooltipTitle}
       onClick={(e) => e.stopPropagation()}
       className={`text-xs text-primary hover:underline font-medium dark:text-secondary inline-flex items-center gap-1.5 mt-0.5 max-w-full w-fit self-start ${className}`}
     >

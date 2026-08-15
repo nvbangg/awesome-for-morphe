@@ -15,6 +15,7 @@ BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
 WHATS_NEW_PATH = ROOT_DIR / "whats-new.md"
 WHATS_NEW_JSON_PATH = PUBLIC_DIR / "whats-new.json"
 WHATS_NEW_MAX_ENTRIES = 21
+PACKAGE_UNIVERSAL = "__universal__"
 
 
 def get_bundle_names(bundles_json):
@@ -48,7 +49,7 @@ def build_new_bundles(bundles_json):
                     if isinstance(item, dict) and (pkg := item.get("packageName")):
                         package_names.add(pkg)
 
-            for package_name in package_names or {"universal"}:
+            for package_name in package_names or {PACKAGE_UNIVERSAL}:
                 patches_dict.setdefault(package_name, set()).add(patch_name)
 
         if patches_dict:
@@ -92,7 +93,7 @@ def make_url(bundle=None, app=None, patch=None):
 def is_valid_pkg(package_name):
     return (
         "." in package_name and " " not in package_name
-    ) or package_name == "universal"
+    ) or package_name == PACKAGE_UNIVERSAL
 
 
 def build_json_diff(old_bundles, new_bundles, app_metadata, bundle_names):
@@ -100,7 +101,7 @@ def build_json_diff(old_bundles, new_bundles, app_metadata, bundle_names):
 
     def app_sort_key(pkg):
         return (
-            pkg == "universal",
+            pkg == PACKAGE_UNIVERSAL,
             format_app_name(pkg, app_metadata).lower(),
         )
 

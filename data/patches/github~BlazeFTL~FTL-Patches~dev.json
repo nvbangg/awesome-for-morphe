@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.32.0",
+  "version": "1.33.0-dev.2",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -263,16 +263,6 @@
       "options": []
     },
     {
-      "name": "Remove Ads",
-      "description": "Disables ad SDKs, ruins ad network request URLs, and hides empty ad containers across the app.",
-      "default": false,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
       "name": "Remove Analytics",
       "description": "Disables tracking and crash-reporting tools, corrupts analytics web links inside the code, and removes background tracking services.",
       "default": false,
@@ -417,6 +407,14 @@
           ]
         }
       ],
+      "options": []
+    },
+    {
+      "name": "Universal Remove Ads",
+      "description": "Stubs known ad SDK entry points and poisons ad-network URL strings across the whole app.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
       "options": []
     }
   ]

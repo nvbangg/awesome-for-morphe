@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0-dev.5",
+  "version": "1.4.0-dev.6",
   "patches": [
     {
       "name": "Add Packet Handler",
@@ -1842,6 +1842,35 @@
       "options": []
     },
     {
+      "name": "Gallery watch mode",
+      "description": "Keeps gallery auto-refresh active, highlights newly arrived posts, and optionally alerts with sound or vibration while the gallery is open.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.dcinside.app.android",
+          "name": "dcinside",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#3D4491",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.3.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Ghost Mode",
       "description": "Don't expose your typing status to the other party.",
       "default": true,
@@ -2044,6 +2073,34 @@
       "default": true,
       "dependencies": [
         "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.dcinside.app.android",
+          "name": "dcinside",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#3D4491",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.3.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide post list page indicators",
+      "description": "Adds a setting to hide the Page N indicators between pages in post lists.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
       ],
       "compatiblePackages": [
         {

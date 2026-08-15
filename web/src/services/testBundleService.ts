@@ -1,5 +1,5 @@
-import { RowItem, VersionItem } from "@/types/data";
-import { PatchOption } from "@/types/data";
+import { RowItem, VersionItem, PatchOption } from "@/types/data";
+import { PACKAGE_UNIVERSAL } from "@/constants";
 
 export interface TestBundleData {
   repoName: string;
@@ -40,30 +40,26 @@ function getRawUrls(
   repo: string,
   branch: string,
 ): string[] {
-  const urls: string[] = [];
-  for (const file of ["patches-list.json"]) {
-    if (platform === "gitlab") {
-      const encodedProject = encodeURIComponent(`${owner}/${repo}`);
-      const encodedFile = encodeURIComponent(file);
-      urls.push(
-        `https://gitlab.com/api/v4/projects/${encodedProject}/repository/files/${encodedFile}/raw?ref=${branch}`,
-      );
-      urls.push(`https://gitlab.com/${owner}/${repo}/-/raw/${branch}/${file}`);
-    } else {
-      urls.push(
-        `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${file}`,
-      );
-    }
+  const file = "patches-list.json";
+  if (platform === "gitlab") {
+    const encodedProject = encodeURIComponent(`${owner}/${repo}`);
+    const encodedFile = encodeURIComponent(file);
+    return [
+      `https://gitlab.com/api/v4/projects/${encodedProject}/repository/files/${encodedFile}/raw?ref=${branch}`,
+      `https://gitlab.com/${owner}/${repo}/-/raw/${branch}/${file}`,
+    ];
   }
-  return urls;
+  return [
+    `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${file}`,
+  ];
 }
 
 async function fetchFromUrls(urls: string[]): Promise<unknown | null> {
   for (const url of urls) {
     try {
-      const res = await fetch(url, { cache: "no-store" });
-      if (res.ok) {
-        const text = await res.text();
+      const response = await fetch(url, { cache: "no-store" });
+      if (response.ok) {
+        const text = await response.text();
         try {
           const json = JSON.parse(text);
           if (Array.isArray(json) || (json && Array.isArray(json.patches))) {
@@ -81,13 +77,12 @@ async function fetchFromUrls(urls: string[]): Promise<unknown | null> {
 }
 
 function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
-  let patchesList = Array.isArray(data) ? data : [];
-  if (data && typeof data === "object" && !Array.isArray(data)) {
-    const dataObj = data as Record<string, unknown>;
-    if (dataObj.patches && Array.isArray(dataObj.patches)) {
-      patchesList = dataObj.patches;
-    }
-  }
+  const dataObject = data as Record<string, unknown>;
+  const patchesList = Array.isArray(data)
+    ? data
+    : Array.isArray(dataObject?.patches)
+      ? dataObject.patches
+      : [];
 
   const rows: RowItem[] = [];
 
@@ -100,24 +95,20 @@ function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
     const options: PatchOption[] = patch.options || [];
     const isDefault = patch.default !== false;
 
-    let compatiblePackages: Array<{
+    const compatiblePackages: Array<{
       packageName: string;
       targets?: unknown[];
       isPreRelease?: boolean;
-    }> = [];
-    if (Array.isArray(patch.compatiblePackages)) {
-      compatiblePackages = patch.compatiblePackages;
-    } else if (
-      patch.compatiblePackages &&
-      typeof patch.compatiblePackages === "object"
-    ) {
-      compatiblePackages = Object.entries(patch.compatiblePackages).map(
-        ([pkg, targets]) => ({
-          packageName: pkg,
-          targets: Array.isArray(targets) ? targets : [],
-        }),
-      );
-    }
+    }> = Array.isArray(patch.compatiblePackages)
+      ? patch.compatiblePackages
+      : patch.compatiblePackages && typeof patch.compatiblePackages === "object"
+        ? Object.entries(patch.compatiblePackages).map(
+            ([packageNameString, targets]) => ({
+              packageName: packageNameString,
+              targets: Array.isArray(targets) ? targets : [],
+            }),
+          )
+        : [];
 
     if (compatiblePackages.length === 0) {
       rows.push({
@@ -125,8 +116,7 @@ function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
         bundleKey,
         patchName,
         patchDescription,
-        packageName: "universal",
-        isAppPreRelease: false,
+        packageName: PACKAGE_UNIVERSAL,
         isPatchPreRelease,
         versions: [],
         searchPatchesText: `${patchName} ${patchDescription}`.toLowerCase(),
@@ -136,15 +126,19 @@ function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
       continue;
     }
 
-    for (const pkg of compatiblePackages) {
-      if (!pkg || typeof pkg !== "object" || !pkg.packageName) continue;
+    for (const packageItem of compatiblePackages) {
+      if (
+        !packageItem ||
+        typeof packageItem !== "object" ||
+        !packageItem.packageName
+      )
+        continue;
 
-      const packageName = pkg.packageName;
-      const isAppPreRelease = !!pkg.isPreRelease;
+      const packageName = packageItem.packageName;
       const versions: VersionItem[] = [];
 
-      if (Array.isArray(pkg.targets)) {
-        for (const target of pkg.targets) {
+      if (Array.isArray(packageItem.targets)) {
+        for (const target of packageItem.targets) {
           if (typeof target === "string") {
             versions.push({ version: target, isExperimental: false });
           } else if (
@@ -152,11 +146,14 @@ function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
             typeof target === "object" &&
             "version" in target
           ) {
-            const t = target as { version: unknown; isExperimental?: unknown };
-            if (typeof t.version === "string") {
+            const targetObject = target as {
+              version: unknown;
+              isExperimental?: unknown;
+            };
+            if (typeof targetObject.version === "string") {
               versions.push({
-                version: t.version,
-                isExperimental: !!t.isExperimental,
+                version: targetObject.version,
+                isExperimental: !!targetObject.isExperimental,
               });
             }
           }
@@ -169,7 +166,6 @@ function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
         patchName,
         patchDescription,
         packageName,
-        isAppPreRelease,
         isPatchPreRelease,
         versions,
         searchPatchesText: `${patchName} ${patchDescription}`.toLowerCase(),

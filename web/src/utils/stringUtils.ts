@@ -10,18 +10,6 @@ export function simplifyString(inputString: string | null | undefined): string {
     : "";
 }
 
-export function decodeHtmlEntities(str: string | null | undefined): string {
-  return str
-    ? str
-        .replace(/&amp;/g, "&")
-        .replace(/&lt;/g, "<")
-        .replace(/&gt;/g, ">")
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'")
-        .replace(/&apos;/g, "'")
-    : "";
-}
-
 export function slugifyCategory(category: string): string {
   return category
     ? category

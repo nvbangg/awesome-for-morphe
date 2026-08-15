@@ -1,16 +1,107 @@
-import {
-  AppItem,
-  RowItem,
-  Bundle,
-  ActiveData,
-  AppNameMeta,
-} from "@/types/data";
+import { AppItem, RowItem, Bundle, ActiveData } from "@/types/data";
 
-import { simplifyString, slugifyCategory, getAppMeta } from "@/utils";
-import { CATEGORY_UNIVERSAL, CATEGORY_LABEL_UNIVERSAL } from "@/constants";
+import { simplifyString, getAppMeta } from "@/utils";
+import {
+  CATEGORY_UNIVERSAL,
+  CATEGORY_LABEL_UNIVERSAL,
+  PACKAGE_UNIVERSAL,
+} from "@/constants";
+
 function parseSearchQuery(query: string): string[] {
-  return query.trim().split(/\s+/).map(simplifyString).filter(Boolean);
+  if (!query) return [];
+  const trimmed = query.trim();
+  if (!trimmed) return [];
+  return trimmed.split(/\s+/).map(simplifyString).filter(Boolean);
 }
+
+export function compareUniversalApp(
+  appItemA: { packageName?: string },
+  appItemB: { packageName?: string },
+): number {
+  if (
+    appItemA.packageName &&
+    appItemB.packageName &&
+    (appItemA.packageName === PACKAGE_UNIVERSAL) !==
+      (appItemB.packageName === PACKAGE_UNIVERSAL)
+  ) {
+    return appItemA.packageName === PACKAGE_UNIVERSAL ? 1 : -1;
+  }
+  return 0;
+}
+
+export function compareAppFallback(
+  appItemA: { firstSeen: number; appName: string },
+  appItemB: { firstSeen: number; appName: string },
+): number {
+  const firstSeenDifference = appItemA.firstSeen - appItemB.firstSeen;
+  if (firstSeenDifference !== 0) return firstSeenDifference;
+  return appItemA.appName.localeCompare(appItemB.appName);
+}
+
+export function compareDefaultApp(
+  appItemA: {
+    packageName?: string;
+    minInstalls: number;
+    firstSeen: number;
+    appName: string;
+  },
+  appItemB: {
+    packageName?: string;
+    minInstalls: number;
+    firstSeen: number;
+    appName: string;
+  },
+): number {
+  return (
+    compareUniversalApp(appItemA, appItemB) ||
+    appItemB.minInstalls - appItemA.minInstalls ||
+    compareAppFallback(appItemA, appItemB)
+  );
+}
+
+export function compareBundleFallback(
+  bundleItemA: Bundle,
+  bundleItemB: Bundle,
+): number {
+  const updatedAtDifference = bundleItemB.updatedAt - bundleItemA.updatedAt;
+  if (updatedAtDifference !== 0) return updatedAtDifference;
+  return bundleItemA.name.localeCompare(bundleItemB.name);
+}
+
+export function compareDefaultBundle(
+  bundleItemA: Bundle,
+  bundleItemB: Bundle,
+): number {
+  return (
+    bundleItemB.starsGained7d - bundleItemA.starsGained7d ||
+    bundleItemB.starsGained40d - bundleItemA.starsGained40d ||
+    bundleItemB.stars - bundleItemA.stars ||
+    compareBundleFallback(bundleItemA, bundleItemB)
+  );
+}
+
+const BUNDLE_SORT_KEY_MAP: Record<string, (bundle: Bundle) => number> = {
+  new: (bundle) => -bundle.firstSeen,
+  updated: (bundle) => -bundle.updatedAt,
+  stars: (bundle) => -bundle.stars,
+  apps: (bundle) => -bundle.appCount,
+  patches: (bundle) => -bundle.patchCount,
+};
+
+const APP_SORT_KEY_MAP: Record<string, (app: AppItem) => number> = {
+  new: (app) => -app.firstSeen,
+  patches: (app) => -app.patchCount,
+};
+
+export const VALID_APP_SORTS = new Set([
+  ...Object.keys(APP_SORT_KEY_MAP),
+  "alpha",
+]);
+
+export const VALID_BUNDLE_SORTS = new Set([
+  ...Object.keys(BUNDLE_SORT_KEY_MAP),
+  "alpha",
+]);
 
 export function getAppItems(
   appItems: AppItem[],
@@ -20,7 +111,7 @@ export function getAppItems(
 ): AppItem[] {
   let appList = appItems;
 
-  if (categoryFilter && categoryFilter !== "all") {
+  if (categoryFilter !== "all") {
     appList = appList.filter(
       (appItem) => appItem.categorySlug === categoryFilter,
     );
@@ -33,99 +124,61 @@ export function getAppItems(
     );
   }
 
-  appList = [...appList];
+  if (appList === appItems) {
+    appList = [...appList];
+  }
 
-  const compareAppFallback = (appItemA: AppItem, appItemB: AppItem): number => {
-    const firstSeenDiff = appItemA.firstSeen - appItemB.firstSeen;
-    if (firstSeenDiff !== 0) return firstSeenDiff;
-    return appItemA.appName.localeCompare(appItemB.appName);
-  };
-
+  const appSortKeySelector = APP_SORT_KEY_MAP[sortOrder];
   appList.sort((appItemA, appItemB) => {
-    if (
-      (appItemA.packageName === "universal") !==
-      (appItemB.packageName === "universal")
-    ) {
-      return appItemA.packageName === "universal" ? 1 : -1;
-    }
+    const universalDiff = compareUniversalApp(appItemA, appItemB);
+    if (universalDiff !== 0) return universalDiff;
 
-    if (sortOrder === "new") {
+    if (appSortKeySelector) {
       return (
-        appItemB.firstSeen - appItemA.firstSeen ||
+        appSortKeySelector(appItemA) - appSortKeySelector(appItemB) ||
         compareAppFallback(appItemA, appItemB)
       );
     }
-    if (sortOrder === "patches") {
-      return (
-        appItemB.patchCount - appItemA.patchCount ||
-        compareAppFallback(appItemA, appItemB)
-      );
-    }
-    if (
-      sortOrder === "alphabetical" ||
-      sortOrder === "alpha" ||
-      sortOrder === "abc"
-    ) {
+    if (sortOrder === "alpha") {
       return (
         appItemA.appName.localeCompare(appItemB.appName) ||
         compareAppFallback(appItemA, appItemB)
       );
     }
-    return (
-      appItemB.minInstalls - appItemA.minInstalls ||
-      compareAppFallback(appItemA, appItemB)
-    );
+    return compareDefaultApp(appItemA, appItemB);
   });
 
   return appList;
 }
 
 export function getAvailableCategories(
-  rowItems: RowItem[],
-  namesMap: Record<string, AppNameMeta>,
+  appItems: AppItem[],
 ): { key: string; label: string }[] {
-  const categoriesSet = new Set<string>();
+  const categoriesMap = new Map<string, string>();
   let hasNotOnGooglePlay = false;
 
-  const seenPackages = new Set<string>();
-  for (const rowItem of rowItems) {
-    const packageName = rowItem.packageName;
-    if (seenPackages.has(packageName)) continue;
-    seenPackages.add(packageName);
-
-    const category = namesMap[packageName]?.category || "";
-    if (category) {
-      categoriesSet.add(category);
-    } else {
+  for (const appItem of appItems) {
+    if (appItem.categorySlug === CATEGORY_UNIVERSAL) {
       hasNotOnGooglePlay = true;
+    } else if (appItem.category) {
+      categoriesMap.set(appItem.categorySlug, appItem.category);
     }
   }
 
-  const categories: { key: string; label: string }[] = [
+  const sortedCategories = Array.from(categoriesMap.entries())
+    .sort(([, labelA], [, labelB]) => labelA.localeCompare(labelB))
+    .map(([key, label]) => ({ key, label }));
+
+  return [
     { key: "all", label: "All categories" },
+    ...(hasNotOnGooglePlay
+      ? [{ key: CATEGORY_UNIVERSAL, label: CATEGORY_LABEL_UNIVERSAL }]
+      : []),
+    ...sortedCategories,
   ];
-
-  if (hasNotOnGooglePlay) {
-    categories.push({
-      key: CATEGORY_UNIVERSAL,
-      label: CATEGORY_LABEL_UNIVERSAL,
-    });
-  }
-
-  const sortedCategories = Array.from(categoriesSet).sort((a, b) =>
-    a.localeCompare(b),
-  );
-  for (const category of sortedCategories) {
-    categories.push({
-      key: slugifyCategory(category),
-      label: category,
-    });
-  }
-
-  return categories;
 }
 
-export function getFilteredBundles(
+export function getBundleItems(
   bundles: Bundle[],
   searchQuery = "",
   sortOrder = "default",
@@ -139,72 +192,25 @@ export function getFilteredBundles(
     );
   }
 
-  bundleList = [...bundleList];
+  if (bundleList === bundles) {
+    bundleList = [...bundleList];
+  }
 
-  const compareBundleFallback = (
-    bundleItemA: Bundle,
-    bundleItemB: Bundle,
-  ): number => {
-    const updatedAtDiff = bundleItemB.updatedAt - bundleItemA.updatedAt;
-    if (updatedAtDiff !== 0) return updatedAtDiff;
-    return bundleItemA.name.localeCompare(bundleItemB.name);
-  };
-
-  const compareHotBundle = (
-    bundleItemA: Bundle,
-    bundleItemB: Bundle,
-  ): number => {
-    const stars7dDiff = bundleItemB.starsGained7d - bundleItemA.starsGained7d;
-    if (stars7dDiff !== 0) return stars7dDiff;
-
-    const stars40dDiff =
-      bundleItemB.starsGained40d - bundleItemA.starsGained40d;
-    if (stars40dDiff !== 0) return stars40dDiff;
-
-    const starsDiff = bundleItemB.stars - bundleItemA.stars;
-    if (starsDiff !== 0) return starsDiff;
-
-    return compareBundleFallback(bundleItemA, bundleItemB);
-  };
-
-  if (sortOrder === "new") {
+  const bundleSortKeySelector = BUNDLE_SORT_KEY_MAP[sortOrder];
+  if (bundleSortKeySelector) {
     bundleList.sort(
-      (bundleItemA, bundleItemB) =>
-        bundleItemB.firstSeen - bundleItemA.firstSeen ||
-        compareBundleFallback(bundleItemA, bundleItemB),
+      (bundleA, bundleB) =>
+        bundleSortKeySelector(bundleA) - bundleSortKeySelector(bundleB) ||
+        compareBundleFallback(bundleA, bundleB),
     );
-  } else if (sortOrder === "updated") {
+  } else if (sortOrder === "alpha") {
     bundleList.sort(
-      (bundleItemA, bundleItemB) =>
-        bundleItemB.updatedAt - bundleItemA.updatedAt ||
-        compareBundleFallback(bundleItemA, bundleItemB),
-    );
-  } else if (sortOrder === "stars") {
-    bundleList.sort(
-      (bundleItemA, bundleItemB) =>
-        bundleItemB.stars - bundleItemA.stars ||
-        compareBundleFallback(bundleItemA, bundleItemB),
-    );
-  } else if (sortOrder === "apps") {
-    bundleList.sort(
-      (bundleItemA, bundleItemB) =>
-        bundleItemB.appCount - bundleItemA.appCount ||
-        compareBundleFallback(bundleItemA, bundleItemB),
-    );
-  } else if (sortOrder === "patches") {
-    bundleList.sort(
-      (bundleItemA, bundleItemB) =>
-        bundleItemB.patchCount - bundleItemA.patchCount ||
-        compareBundleFallback(bundleItemA, bundleItemB),
-    );
-  } else if (sortOrder === "alphabetical" || sortOrder === "abc") {
-    bundleList.sort(
-      (bundleItemA, bundleItemB) =>
-        bundleItemA.name.localeCompare(bundleItemB.name) ||
-        compareBundleFallback(bundleItemA, bundleItemB),
+      (bundleA, bundleB) =>
+        bundleA.name.localeCompare(bundleB.name) ||
+        compareBundleFallback(bundleA, bundleB),
     );
   } else {
-    bundleList.sort(compareHotBundle);
+    bundleList.sort(compareDefaultBundle);
   }
 
   return bundleList;
@@ -214,6 +220,7 @@ export interface BundleGroupData {
   bundleKey: string;
   bundleMeta: Bundle;
   patches: RowItem[];
+  totalPatchCount: number;
 }
 
 export function getAppBundleGroups(
@@ -224,51 +231,59 @@ export function getAppBundleGroups(
   const rawPatches = activeData.appPatchesMap[packageName] || [];
   if (rawPatches.length === 0) return [];
 
-  const queryWords = parseSearchQuery(searchQuery);
-  const filteredPatches =
-    queryWords.length > 0
-      ? rawPatches.filter((patchItem: RowItem) => {
-          const bundleKeyLower = patchItem.bundleKey.toLowerCase();
-          const bundleMetadata = activeData.bundleMap[bundleKeyLower];
-          const bundleNameClean = simplifyString(bundleMetadata?.name);
-          const bundleRepoClean = simplifyString(bundleMetadata?.repo);
-
-          return queryWords.every(
-            (word) =>
-              patchItem.searchPatchesText.includes(word) ||
-              bundleNameClean.includes(word) ||
-              bundleRepoClean.includes(word),
-          );
-        })
-      : rawPatches;
-
-  const groupedPatchesMap = new Map<string, RowItem[]>();
-  for (const patchItem of filteredPatches) {
+  const rawBundlesMap = new Map<
+    string,
+    { patches: RowItem[]; bundleMeta: Bundle }
+  >();
+  for (const patchItem of rawPatches) {
     const bundleKey = patchItem.bundleKey.toLowerCase();
-    const patches = groupedPatchesMap.get(bundleKey) ?? [];
-    patches.push(patchItem);
-    groupedPatchesMap.set(bundleKey, patches);
+    let group = rawBundlesMap.get(bundleKey);
+    if (!group) {
+      const bundleMeta = activeData.bundleMap[bundleKey];
+      if (!bundleMeta) continue;
+      group = { patches: [], bundleMeta };
+      rawBundlesMap.set(bundleKey, group);
+    }
+    group.patches.push(patchItem);
   }
 
-  const bundleGroupList: BundleGroupData[] = [];
-  for (const [bundleKey, patches] of groupedPatchesMap.entries()) {
-    const bundleMetadata = activeData.bundleMap[bundleKey];
-    if (bundleMetadata) {
-      bundleGroupList.push({ bundleKey, bundleMeta: bundleMetadata, patches });
+  const queryWords = parseSearchQuery(searchQuery);
+  const result: BundleGroupData[] = [];
+
+  for (const [bundleKey, group] of rawBundlesMap.entries()) {
+    const totalPatchCount = group.patches.length;
+    let filteredPatches = group.patches;
+
+    if (queryWords.length > 0) {
+      const bundleNameClean = simplifyString(group.bundleMeta.name);
+      const bundleRepoClean = simplifyString(group.bundleMeta.repo);
+      const isBundleMatched = queryWords.every(
+        (word) =>
+          bundleNameClean.includes(word) || bundleRepoClean.includes(word),
+      );
+
+      if (!isBundleMatched) {
+        filteredPatches = group.patches.filter((patchItem) =>
+          queryWords.every((word) =>
+            patchItem.searchPatchesText.includes(word),
+          ),
+        );
+      }
+    }
+
+    if (filteredPatches.length > 0) {
+      result.push({
+        bundleKey,
+        bundleMeta: group.bundleMeta,
+        patches: filteredPatches,
+        totalPatchCount,
+      });
     }
   }
 
-  bundleGroupList.sort((groupA, groupB) => {
-    const starsDiff = groupB.bundleMeta.stars - groupA.bundleMeta.stars;
-    if (starsDiff !== 0) return starsDiff;
-    return groupA.bundleMeta.name.localeCompare(
-      groupB.bundleMeta.name,
-      undefined,
-      { sensitivity: "base" },
-    );
-  });
-
-  return bundleGroupList;
+  return result.sort((groupA, groupB) =>
+    compareDefaultBundle(groupA.bundleMeta, groupB.bundleMeta),
+  );
 }
 
 export interface AppGroupData {
@@ -282,6 +297,73 @@ export interface AppGroupData {
     firstSeen: number;
   };
   patches: RowItem[];
+  totalPatchCount: number;
+}
+
+export function groupPatchesByApp(
+  patches: RowItem[],
+  activeData: ActiveData,
+  searchQuery: string = "",
+): AppGroupData[] {
+  if (!patches || patches.length === 0) return [];
+
+  const rawAppsMap = new Map<
+    string,
+    { patches: RowItem[]; appMeta: AppGroupData["appMeta"] }
+  >();
+  for (const patchItem of patches) {
+    const packageName = patchItem.packageName;
+    let group = rawAppsMap.get(packageName);
+    if (!group) {
+      group = {
+        patches: [],
+        appMeta: getAppMeta(packageName, activeData.namesMap),
+      };
+      rawAppsMap.set(packageName, group);
+    }
+    group.patches.push(patchItem);
+  }
+
+  const queryWords = parseSearchQuery(searchQuery);
+  const result: AppGroupData[] = [];
+
+  for (const [packageName, group] of rawAppsMap.entries()) {
+    const totalPatchCount = group.patches.length;
+    let filteredPatches = group.patches;
+
+    if (queryWords.length > 0) {
+      const appNameClean = simplifyString(group.appMeta.appName);
+      const packageNameClean = simplifyString(packageName);
+      const isAppMatched = queryWords.every(
+        (word) =>
+          appNameClean.includes(word) || packageNameClean.includes(word),
+      );
+
+      if (!isAppMatched) {
+        filteredPatches = group.patches.filter((patchItem) =>
+          queryWords.every((word) =>
+            patchItem.searchPatchesText.includes(word),
+          ),
+        );
+      }
+    }
+
+    if (filteredPatches.length > 0) {
+      result.push({
+        packageName,
+        appMeta: group.appMeta,
+        patches: filteredPatches,
+        totalPatchCount,
+      });
+    }
+  }
+
+  return result.sort((groupA, groupB) =>
+    compareDefaultApp(
+      { packageName: groupA.packageName, ...groupA.appMeta },
+      { packageName: groupB.packageName, ...groupB.appMeta },
+    ),
+  );
 }
 
 export function getBundleAppGroups(
@@ -291,55 +373,5 @@ export function getBundleAppGroups(
 ): AppGroupData[] {
   const bundleKeyLower = bundleKey.toLowerCase();
   const filteredPatches = activeData.bundlePatchesMap[bundleKeyLower] || [];
-  if (filteredPatches.length === 0) return [];
-
-  const queryWords = parseSearchQuery(searchQuery);
-  const searchedPatches =
-    queryWords.length > 0
-      ? filteredPatches.filter((patchItem: RowItem) => {
-          const appMeta = getAppMeta(
-            patchItem.packageName,
-            activeData.namesMap,
-          );
-          const appNameClean = simplifyString(appMeta.appName);
-          const packageNameClean = simplifyString(patchItem.packageName);
-
-          return queryWords.every(
-            (word) =>
-              patchItem.searchPatchesText.includes(word) ||
-              packageNameClean.includes(word) ||
-              appNameClean.includes(word),
-          );
-        })
-      : filteredPatches;
-
-  const groupedPatchesMap = new Map<string, RowItem[]>();
-  for (const patchItem of searchedPatches) {
-    const packageName = patchItem.packageName;
-    const patches = groupedPatchesMap.get(packageName) ?? [];
-    patches.push(patchItem);
-    groupedPatchesMap.set(packageName, patches);
-  }
-
-  const appGroupList: AppGroupData[] = [];
-  for (const [packageName, patches] of groupedPatchesMap.entries()) {
-    const appMeta = getAppMeta(packageName, activeData.namesMap);
-    appGroupList.push({ packageName, appMeta, patches });
-  }
-
-  appGroupList.sort((groupA, groupB) => {
-    if (
-      (groupA.packageName === "universal") !==
-      (groupB.packageName === "universal")
-    ) {
-      return groupA.packageName === "universal" ? 1 : -1;
-    }
-    return groupA.appMeta.appName.localeCompare(
-      groupB.appMeta.appName,
-      undefined,
-      { sensitivity: "base" },
-    );
-  });
-
-  return appGroupList;
+  return groupPatchesByApp(filteredPatches, activeData, searchQuery);
 }

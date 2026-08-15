@@ -6,8 +6,7 @@ export interface PatchOption {
 
 export interface CompatibilityItem {
   packageName?: string;
-  isPreRelease?: boolean;
-  targets?: Array<{ version?: string; isExperimental?: boolean }>;
+  targets?: VersionItem[];
 }
 
 export interface PatchItem {
@@ -33,7 +32,6 @@ export interface Bundle {
   appFirstSeen: Record<string, number>;
   patches: PatchItem[];
   isPreRelease: boolean;
-  isTest?: boolean;
 
   key: string;
   patchCount: number;
@@ -46,13 +44,7 @@ export interface Bundle {
 
 export interface VersionItem {
   version: string;
-  isExperimental: boolean;
-}
-
-export interface PackageTarget {
-  packageName: string;
-  isPreRelease: boolean;
-  versions: VersionItem[];
+  isExperimental?: boolean;
 }
 
 export interface RowItem {
@@ -61,7 +53,6 @@ export interface RowItem {
   patchName: string;
   patchDescription: string;
   packageName: string;
-  isAppPreRelease: boolean;
   isPatchPreRelease: boolean;
   versions: VersionItem[];
   searchPatchesText: string;
@@ -111,7 +102,6 @@ export interface WhatsNewHistoryItem {
 
 export interface ActiveStats {
   bundlesCount: number;
-  patchesCount: number;
   appsCount: number;
 }
 
@@ -123,6 +113,5 @@ export interface ActiveData {
   namesMap: Record<string, AppNameMeta>;
   appPatchesMap: Record<string, RowItem[]>;
   bundlePatchesMap: Record<string, RowItem[]>;
-  whatsNewHistory: WhatsNewHistoryItem[];
   stats: ActiveStats;
 }

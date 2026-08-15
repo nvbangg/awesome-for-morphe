@@ -1,7 +1,9 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
+import { UI_COPY_TIMEOUT_MS } from "@/constants";
 
-export function useCopy(resetDurationMilliseconds: number = 1500) {
+export function useCopy(resetDurationMilliseconds = UI_COPY_TIMEOUT_MS) {
   const [copiedIdentifier, setCopiedIdentifier] = useState<string | null>(null);
+  const timeoutRef = useRef<number | null>(null);
 
   const copyToClipboard = useCallback(
     (textToCopy: string, customIdentifier?: string) => {
@@ -13,8 +15,13 @@ export function useCopy(resetDurationMilliseconds: number = 1500) {
         .writeText(textToCopy)
         .then(() => {
           setCopiedIdentifier(activeIdentifier);
-          setTimeout(() => {
+
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+          }
+          timeoutRef.current = window.setTimeout(() => {
             setCopiedIdentifier(null);
+            timeoutRef.current = null;
           }, resetDurationMilliseconds);
         })
         .catch((copyError) => {
@@ -23,6 +30,14 @@ export function useCopy(resetDurationMilliseconds: number = 1500) {
     },
     [resetDurationMilliseconds],
   );
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return { copiedText: copiedIdentifier, copyToClipboard };
 }

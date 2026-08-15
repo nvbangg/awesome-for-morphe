@@ -2,7 +2,7 @@ import { useMemo, useDeferredValue, memo } from "react";
 import { AppCard } from "./AppCard";
 import { ActiveData } from "@/types/data";
 import { getAppItems } from "@/services";
-import { EmptyState } from "@/components/common/EmptyState";
+import { CardGrid, EmptyState } from "@/components/common/CardGrid";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { ITEMS_PER_PAGE } from "@/constants";
 
@@ -43,17 +43,14 @@ export const AppGrid = memo(function AppGrid({
   }
 
   return (
-    <>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 my-6">
-        {visibleItems.map((appItem) => (
-          <AppCard
-            key={appItem.packageName}
-            appItem={appItem}
-            onClick={onAppClick}
-          />
-        ))}
-      </div>
-      {hasMore && <div ref={loadMoreRef} className="h-px w-full" />}
-    </>
+    <CardGrid hasMore={hasMore} loadMoreRef={loadMoreRef}>
+      {visibleItems.map((appItem) => (
+        <AppCard
+          key={appItem.packageName}
+          appItem={appItem}
+          onClick={onAppClick}
+        />
+      ))}
+    </CardGrid>
   );
 });

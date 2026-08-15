@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Package } from "lucide-react";
 import { Badge } from "@/components/common/Badge";
 import { WhatsNewBundleChange, ActiveData } from "@/types/data";
@@ -14,7 +15,7 @@ interface WhatsNewBundleCardProps {
   onPatchClick: (packageName: string, patchName: string) => void;
 }
 
-export function WhatsNewBundleCard({
+export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
   bundleKey,
   bundleData,
   activeData,
@@ -27,11 +28,11 @@ export function WhatsNewBundleCard({
   const isBundleNew = !!bundleData.isNew || isNew(bundleMeta?.firstSeen);
 
   return (
-    <div className="border border-divider bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl overflow-hidden shadow-2xs">
+    <div className="border border-divider rounded-2xl overflow-hidden shadow-2xs bg-background">
       <button
         type="button"
         onClick={() => onBundleClick(fullBundleKey)}
-        className="w-full flex items-center justify-between gap-3 p-3 bg-primary/5 hover:bg-primary/10 dark:bg-primary/10 dark:hover:bg-primary/20 border-b border-primary/10 dark:border-primary/20 text-left outline-none transition-colors group cursor-pointer"
+        className="w-full flex items-center justify-between gap-3 p-3 bg-primary/5 dark:bg-primary/10 border-b border-primary/10 dark:border-primary/20 text-left outline-none transition-colors group cursor-pointer"
         title="Open bundle details"
       >
         <div className="flex items-center gap-2 text-base font-semibold text-foreground group-hover:text-primary transition-colors min-w-0">
@@ -42,7 +43,7 @@ export function WhatsNewBundleCard({
       </button>
 
       {bundleData.apps && Object.keys(bundleData.apps).length > 0 && (
-        <div className="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="p-2.5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
           {Object.entries(bundleData.apps).map(([packageName, appData]) => {
             const meta = activeData
               ? getAppMeta(packageName, activeData.namesMap)
@@ -69,4 +70,4 @@ export function WhatsNewBundleCard({
       )}
     </div>
   );
-}
+});

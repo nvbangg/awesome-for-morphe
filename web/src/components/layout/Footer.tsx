@@ -30,16 +30,15 @@ export function Footer() {
               Awesome Morphe
             </span>
           </a>
-          <p className="text-foreground-600 dark:text-foreground-500 text-sm">
+          <p className="text-foreground-muted text-sm">
             Explore all patch bundles created by the Morphe community.
           </p>
-          <div className="border-t border-divider pt-3 text-foreground-600 dark:text-foreground-500 text-xs leading-relaxed flex flex-col gap-1.5">
+          <div className="border-t border-divider pt-3 text-foreground-muted text-xs leading-relaxed flex flex-col gap-1.5">
             <p>
               <a
                 href="https://github.com/nvbangg/awesome-morphe"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-primary no-underline hover:opacity-80 transition-opacity"
+                className="hover:text-foreground transition-colors inline-flex items-center gap-1.5"
               >
                 This project
               </a>{" "}
@@ -65,7 +64,7 @@ export function Footer() {
       <Button
         isIconOnly
         variant="primary"
-        className={`fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full shadow-xl transition-all duration-300 ${isScrollTopVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
+        className={`fixed bottom-6 right-6 z-50 size-12 rounded-full shadow-xl transition-all duration-300 ${isScrollTopVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
         aria-label="Scroll to top"
         onPress={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >

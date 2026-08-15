@@ -6,7 +6,7 @@ import { BundlesTab } from "@/components/bundles/BundlesTab";
 import { BundleModal } from "@/components/bundles/BundleModal";
 import { WhatsNewTab } from "@/components/whatsnew/WhatsNewTab";
 import { Footer } from "@/components/layout/Footer";
-import { SkeletonGrid } from "@/components/common/SkeletonGrid";
+import { SkeletonGrid } from "@/components/common/CardGrid";
 
 import { useUrlSync, NavigationTabType } from "@/hooks/useUrlSync";
 import { usePatchData } from "@/hooks/usePatchData";
@@ -39,7 +39,7 @@ export default function App() {
 
   const categories = useMemo(() => {
     if (!activeData) return [];
-    return getAvailableCategories(activeData.rows, activeData.namesMap);
+    return getAvailableCategories(activeData.appItems);
   }, [activeData]);
 
   const handleTabChange = useCallback(
@@ -104,7 +104,7 @@ export default function App() {
         <div id="apps" />
         <div className="container mx-auto px-6 max-w-300">
           {errorMessage ? (
-            <Alert status="danger" className="my-8">
+            <Alert status="warning" className="my-8">
               <AlertTitle>Error</AlertTitle>
               <AlertDescription>{errorMessage}</AlertDescription>
             </Alert>

@@ -46,7 +46,7 @@ export function CustomModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`rounded-3xl w-full ${maxWidth} overflow-hidden flex flex-col max-h-[90vh] shadow-modal bg-background border-none ${centerMobile ? "" : "max-sm:rounded-none max-sm:max-h-dvh max-sm:h-full"} outline-none animate-in zoom-in-95 duration-200`}
+        className={`rounded-3xl w-full ${maxWidth} overflow-hidden flex flex-col max-h-[90vh] shadow-modal bg-background border-none ${centerMobile ? "" : "max-sm:rounded-none max-sm:max-h-dvh max-sm:h-full"} outline-none animate-in zoom-in-95 duration-200 isolate transform-gpu backface-hidden`}
       >
         {children}
       </div>
@@ -77,7 +77,7 @@ interface ModalBodyProps {
 export function ModalBody({ children, className = "" }: ModalBodyProps) {
   return (
     <div
-      className={`px-2.5 sm:px-6 pb-5 pt-3 flex flex-col gap-3 overflow-y-auto flex-1 min-h-0 ${className}`}
+      className={`px-2.5 sm:px-6 pb-5 pt-3 flex flex-col gap-3 overflow-y-auto flex-1 min-h-0 bg-background ${className}`}
     >
       {children}
     </div>

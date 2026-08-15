@@ -78,21 +78,24 @@ export function getBundleMeta(
   if (!bundle) return null;
 
   return {
-    name: bundle.name || bundle.repo,
+    source: bundle.source,
     repo: bundle.repo,
-    repoUrl: bundle.repoUrl,
-    avatarUrl: bundle.avatarUrl,
-    deepLink: bundle.deepLink,
-    rawKey: bundle.key,
+    name: bundle.name || bundle.repo,
     repoDescription: bundle.repoDescription,
+    avatarUrl: bundle.avatarUrl,
+    stars: bundle.stars,
+    updatedAt: bundle.updatedAt,
     firstSeen: bundle.firstSeen,
     appFirstSeen: bundle.appFirstSeen,
     isPreRelease: bundle.isPreRelease,
-    stars: bundle.stars,
-    updatedAt: bundle.updatedAt,
+    hotRank: bundle.hotRank,
+
+    key: bundle.key,
+    repoUrl: bundle.repoUrl,
+    deepLink: bundle.deepLink,
     changelogUrl: bundle.changelogUrl,
-    source: bundle.source,
     appCount: bundle.appCount,
     patchCount: bundle.patchCount,
+    isUnofficial: bundle.isUnofficial,
   };
 }

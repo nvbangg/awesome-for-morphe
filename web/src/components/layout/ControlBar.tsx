@@ -124,7 +124,7 @@ export function ControlBar({
             />
           </div>
 
-          {activeTab === "apps" && categories.length > 0 && (
+          {categories.length > 0 && (
             <div className="w-full sm:w-56 shrink-0">
               <CustomSelect
                 value={selectedCategory || "all"}

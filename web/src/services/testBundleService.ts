@@ -1,5 +1,6 @@
 import { RowItem, VersionItem, PatchOption } from "@/types/data";
 import { PACKAGE_UNIVERSAL } from "@/constants";
+import { simplifyString } from "@/utils";
 
 export interface TestBundleData {
   repoName: string;
@@ -119,7 +120,7 @@ function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
         packageName: PACKAGE_UNIVERSAL,
         isPatchPreRelease,
         versions: [],
-        searchPatchesText: `${patchName} ${patchDescription}`.toLowerCase(),
+        searchPatchesText: simplifyString(`${patchName} ${patchDescription}`),
         options,
         default: isDefault,
       });
@@ -168,7 +169,7 @@ function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
         packageName,
         isPatchPreRelease,
         versions,
-        searchPatchesText: `${patchName} ${patchDescription}`.toLowerCase(),
+        searchPatchesText: simplifyString(`${patchName} ${patchDescription}`),
         options,
         default: isDefault,
       });

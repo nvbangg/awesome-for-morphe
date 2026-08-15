@@ -90,6 +90,11 @@ export function loadInitialData(): Promise<ActiveData> {
         jsonBundle.isPreRelease,
       );
 
+      const hotRank =
+        jsonBundle.hotRank !== undefined && jsonBundle.hotRank !== null
+          ? jsonBundle.hotRank
+          : null;
+
       const bundleItem: Bundle = {
         source: jsonBundle.source,
         repo: jsonBundle.repo,
@@ -97,13 +102,12 @@ export function loadInitialData(): Promise<ActiveData> {
         repoDescription: jsonBundle.repoDescription,
         avatarUrl: jsonBundle.avatarUrl,
         stars: jsonBundle.stars,
-        starsGained7d: jsonBundle.starsGained7d,
-        starsGained40d: jsonBundle.starsGained40d,
         updatedAt: jsonBundle.updatedAt,
         firstSeen: jsonBundle.firstSeen,
         appFirstSeen: jsonBundle.appFirstSeen,
         patches: jsonBundle.patches,
         isPreRelease: !!jsonBundle.isPreRelease,
+        hotRank,
 
         key: bundleKey,
         patchCount: jsonBundle.patches.length,
@@ -114,6 +118,7 @@ export function loadInitialData(): Promise<ActiveData> {
         searchableText: simplifyString(
           `${jsonBundle.name} ${jsonBundle.source} ${jsonBundle.repo}`,
         ),
+        isUnofficial: hotRank === null,
       };
 
       bundleList.push(bundleItem);

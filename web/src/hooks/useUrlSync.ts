@@ -4,6 +4,24 @@ import { DEFAULT_TAB } from "@/constants";
 
 export type NavigationTabType = "apps" | "bundles" | "whats-new";
 
+function parseTabSegments(
+  segments: string[],
+  validSorts: Set<string>,
+): { category: string; sort: string } {
+  const firstSegment = segments[0] || "";
+  const secondSegment = segments[1] || "";
+
+  const isFirstSegmentSort = validSorts.has(firstSegment);
+  const category = (isFirstSegmentSort ? secondSegment : firstSegment) || "all";
+  const sort = isFirstSegmentSort
+    ? firstSegment
+    : validSorts.has(secondSegment)
+      ? secondSegment
+      : "default";
+
+  return { category, sort };
+}
+
 function parseHash(hash: string): {
   tab: NavigationTabType;
   category: string;
@@ -22,23 +40,18 @@ function parseHash(hash: string): {
   }
 
   if (firstPart === "bundles") {
-    const sort = VALID_BUNDLE_SORTS.has(parts[1]) ? parts[1] : "default";
-    return { tab: "bundles", category: "all", sort };
+    const { category, sort } = parseTabSegments(
+      parts.slice(1),
+      VALID_BUNDLE_SORTS,
+    );
+    return { tab: "bundles", category, sort };
   }
 
   if (firstPart === "apps") {
-    const firstSegment = parts[1] || "";
-    const secondSegment = parts[2] || "";
-
-    const isFirstSegmentSort = VALID_APP_SORTS.has(firstSegment);
-    const category =
-      (isFirstSegmentSort ? secondSegment : firstSegment) || "all";
-    const sort = isFirstSegmentSort
-      ? firstSegment
-      : VALID_APP_SORTS.has(secondSegment)
-        ? secondSegment
-        : "default";
-
+    const { category, sort } = parseTabSegments(
+      parts.slice(1),
+      VALID_APP_SORTS,
+    );
     return { tab: "apps", category, sort };
   }
 
@@ -60,21 +73,18 @@ function buildHash(
   const categorySlug = category && category !== "all" ? category : "";
   const sortSlug = getSortSlug(sort);
 
-  if (tab === "bundles") {
-    return sortSlug ? `#bundles:${sortSlug}` : "#bundles";
-  }
-
-  if (!categorySlug && !sortSlug) return "#apps";
-  if (categorySlug && !sortSlug) return `#apps:${categorySlug}`;
-  if (!categorySlug && sortSlug) return `#apps:${sortSlug}`;
-  return `#apps:${categorySlug}:${sortSlug}`;
+  if (!categorySlug && !sortSlug) return `#${tab}`;
+  if (categorySlug && !sortSlug) return `#${tab}:${categorySlug}`;
+  if (!categorySlug && sortSlug) return `#${tab}:${sortSlug}`;
+  return `#${tab}:${categorySlug}:${sortSlug}`;
 }
 
 function getInitialState() {
   if (typeof window === "undefined") {
     return {
       activeTab: DEFAULT_TAB,
-      selectedCategory: "all",
+      appsCategory: "all",
+      bundlesCategory: "all",
       appsSort: "default",
       bundlesSort: "default",
       selectedAppPackageName: null as string | null,
@@ -87,7 +97,9 @@ function getInitialState() {
   const parsedHash = parseHash(window.location.hash);
 
   const activeTab = parsedHash.tab;
-  const selectedCategory = parsedHash.category;
+  const appsCategory = parsedHash.tab === "apps" ? parsedHash.category : "all";
+  const bundlesCategory =
+    parsedHash.tab === "bundles" ? parsedHash.category : "all";
 
   const appsSort = parsedHash.tab === "apps" ? parsedHash.sort : "default";
   const bundlesSort =
@@ -107,6 +119,8 @@ function getInitialState() {
       popupBundleKey = `github:${githubRepo}`;
     } else if (gitlabRepo) {
       popupBundleKey = `gitlab:${gitlabRepo}`;
+    } else {
+      popupBundleKey = null;
     }
   }
 
@@ -114,7 +128,8 @@ function getInitialState() {
 
   return {
     activeTab,
-    selectedCategory,
+    appsCategory,
+    bundlesCategory,
     appsSort,
     bundlesSort,
     selectedAppPackageName,
@@ -129,8 +144,9 @@ export function useUrlSync() {
   const [activeTab, setActiveTab] = useState<NavigationTabType>(
     initialState.activeTab,
   );
-  const [selectedCategory, setSelectedCategory] = useState(
-    initialState.selectedCategory,
+  const [appsCategory, setAppsCategory] = useState(initialState.appsCategory);
+  const [bundlesCategory, setBundlesCategory] = useState(
+    initialState.bundlesCategory,
   );
   const [appsSort, setAppsSort] = useState(initialState.appsSort);
   const [bundlesSort, setBundlesSort] = useState(initialState.bundlesSort);
@@ -144,6 +160,8 @@ export function useUrlSync() {
     initialState.popupSearchQuery,
   );
 
+  const selectedCategory =
+    activeTab === "bundles" ? bundlesCategory : appsCategory;
   const sortOrder = activeTab === "bundles" ? bundlesSort : appsSort;
 
   const syncFromUrl = useCallback(() => {
@@ -159,9 +177,10 @@ export function useUrlSync() {
 
     setActiveTab(parsedHash.tab);
     if (parsedHash.tab === "apps") {
-      setSelectedCategory(parsedHash.category);
+      setAppsCategory(parsedHash.category);
       setAppsSort(parsedHash.sort);
     } else if (parsedHash.tab === "bundles") {
+      setBundlesCategory(parsedHash.category);
       setBundlesSort(parsedHash.sort);
     }
 
@@ -241,9 +260,17 @@ export function useUrlSync() {
       }
 
       const nextTab = urlUpdates.tab ?? activeTab;
-      const nextCategory = urlUpdates.category ?? selectedCategory;
+      let nextCategory = nextTab === "bundles" ? bundlesCategory : appsCategory;
+      let nextSort = nextTab === "bundles" ? bundlesSort : appsSort;
 
-      let nextSort = activeTab === "bundles" ? bundlesSort : appsSort;
+      if (urlUpdates.category !== undefined) {
+        nextCategory = urlUpdates.category;
+        if (nextTab === "apps") {
+          setAppsCategory(urlUpdates.category);
+        } else if (nextTab === "bundles") {
+          setBundlesCategory(urlUpdates.category);
+        }
+      }
 
       if (urlUpdates.sort !== undefined) {
         nextSort = urlUpdates.sort;
@@ -251,12 +278,6 @@ export function useUrlSync() {
           setAppsSort(urlUpdates.sort);
         } else if (nextTab === "bundles") {
           setBundlesSort(urlUpdates.sort);
-        }
-      } else if (urlUpdates.tab !== undefined) {
-        if (urlUpdates.tab === "apps") {
-          nextSort = appsSort;
-        } else if (urlUpdates.tab === "bundles") {
-          nextSort = bundlesSort;
         }
       }
 
@@ -266,7 +287,14 @@ export function useUrlSync() {
       window.history.pushState(null, "", formattedUrlString);
       syncFromUrl();
     },
-    [syncFromUrl, activeTab, selectedCategory, appsSort, bundlesSort],
+    [
+      syncFromUrl,
+      activeTab,
+      appsCategory,
+      bundlesCategory,
+      appsSort,
+      bundlesSort,
+    ],
   );
 
   return {

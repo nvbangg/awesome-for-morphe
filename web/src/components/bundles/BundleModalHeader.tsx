@@ -6,22 +6,25 @@ import { ModalHeader, CloseButton } from "@/components/common/CustomModal";
 import { isNew } from "@/utils/formatters";
 
 export interface BundleModalMeta {
-  name: string;
+  source: string;
   repo: string;
-  repoUrl: string;
-  avatarUrl: string;
-  deepLink: string;
-  rawKey: string;
+  name: string;
   repoDescription: string;
+  avatarUrl: string;
+  stars: number;
+  updatedAt: number;
   firstSeen: number;
   appFirstSeen: Record<string, number>;
   isPreRelease: boolean;
-  stars: number;
-  updatedAt: number;
+  hotRank: number | null;
+
+  key: string;
+  repoUrl: string;
+  deepLink: string;
   changelogUrl: string;
-  source: string;
   appCount: number;
   patchCount: number;
+  isUnofficial: boolean;
 }
 
 interface BundleModalHeaderProps {
@@ -51,6 +54,7 @@ export function BundleModalHeader({
               </h2>
               {isNew(bundleMeta.firstSeen) && <Badge variant="new" />}
               {bundleMeta.isPreRelease && <Badge variant="prerelease" />}
+              {bundleMeta.isUnofficial && <Badge variant="unofficial" />}
               {bundleMeta.stars > 0 && (
                 <Badge variant="stars" value={bundleMeta.stars} />
               )}

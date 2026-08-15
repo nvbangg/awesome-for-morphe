@@ -25,13 +25,12 @@ export interface Bundle {
   repoDescription: string;
   avatarUrl: string;
   stars: number;
-  starsGained7d: number;
-  starsGained40d: number;
   updatedAt: number;
   firstSeen: number;
   appFirstSeen: Record<string, number>;
   patches: PatchItem[];
   isPreRelease: boolean;
+  hotRank: number | null;
 
   key: string;
   patchCount: number;
@@ -40,6 +39,7 @@ export interface Bundle {
   deepLink: string;
   changelogUrl: string;
   searchableText: string;
+  isUnofficial: boolean;
 }
 
 export interface VersionItem {

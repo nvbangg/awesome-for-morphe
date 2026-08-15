@@ -11,6 +11,7 @@ import { SkeletonGrid } from "@/components/common/CardGrid";
 import { useUrlSync, NavigationTabType } from "@/hooks/useUrlSync";
 import { usePatchData } from "@/hooks/usePatchData";
 import { getAvailableCategories } from "@/services";
+import { BUNDLE_CATEGORY_OPTIONS } from "@/constants";
 import { Alert, AlertTitle, AlertDescription } from "@heroui/react";
 import { useMemo, useCallback } from "react";
 import { TestBundleInputModal } from "@/components/bundles/TestBundleInputModal";
@@ -38,9 +39,10 @@ export default function App() {
   } = usePatchData(activeTab);
 
   const categories = useMemo(() => {
+    if (activeTab === "bundles") return BUNDLE_CATEGORY_OPTIONS;
     if (!activeData) return [];
     return getAvailableCategories(activeData.appItems);
-  }, [activeData]);
+  }, [activeTab, activeData]);
 
   const handleTabChange = useCallback(
     (tab: NavigationTabType) => {
@@ -141,6 +143,7 @@ export default function App() {
                     <BundlesTab
                       activeData={activeData}
                       sortOrder={sortOrder}
+                      selectedCategory={selectedCategory}
                       globalSearch={globalSearch}
                       onBundleClick={handleBundleClick}
                       onTestBundleClick={handleOpenTestBundle}

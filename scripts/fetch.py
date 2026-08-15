@@ -181,15 +181,16 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
     old_repos_data = load_json(REPOS_JSON_PATH, {})
     new_repos_data = {}
 
-    for base_key, _discover_meta in discover_data.items():
+    for base_key in discover_data:
         if ":" not in base_key:
             continue
+        old_repo = old_repos_data.get(base_key, {})
         repo_data = {
-            "main": old_repos_data.get(base_key, {}).get("main"),
-            "dev": old_repos_data.get(base_key, {}).get("dev"),
+            "main": old_repo.get("main"),
+            "dev": old_repo.get("dev"),
         }
-        if "image" in old_repos_data.get(base_key, {}):
-            repo_data["image"] = old_repos_data[base_key]["image"]
+        if "image" in old_repo:
+            repo_data["image"] = old_repo["image"]
         new_repos_data[base_key] = repo_data
 
     BUNDLES_DIR.mkdir(parents=True, exist_ok=True)

@@ -6,14 +6,13 @@ import time
 from pathlib import Path
 from typing import Any
 
-from utils import load_json, parse_timestamp, save_json
+from utils import load_json, parse_timestamp
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
 BUNDLES_DIR = DATA_DIR / "bundles"
 PATCHES_DIR = DATA_DIR / "patches"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
-STAR_HISTORY_JSON_PATH = DATA_DIR / "star-history.json"
 
 
 def parse_version_item(item: Any) -> dict[str, Any] | None:
@@ -299,19 +298,4 @@ def process(bundle_sources: dict[str, Any], apps_dict: dict[str, Any]) -> list:
                 )
                 if prefix not in valid_prefixes:
                     filepath.unlink()
-    if STAR_HISTORY_JSON_PATH.exists():
-        star_history_data = load_json(STAR_HISTORY_JSON_PATH, {})
-        if isinstance(star_history_data, dict):
-            updated_star_history = {}
-            for base_key, history_map in star_history_data.items():
-                if base_key not in bundle_sources:
-                    continue
-                if isinstance(history_map, dict):
-                    sorted_dates = sorted(history_map.keys())[-40:]
-                    updated_star_history[base_key] = {
-                        date: history_map[date] for date in sorted_dates
-                    }
-                else:
-                    updated_star_history[base_key] = history_map
-            save_json(STAR_HISTORY_JSON_PATH, updated_star_history)
     return compatibilities_list

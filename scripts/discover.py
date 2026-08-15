@@ -68,13 +68,14 @@ def _merge(provider_files):
     return merged
 
 
-def _build_output(merged):
-    repos_output = {}
-    for canonical_key, entry in sorted(merged.items()):
-        if entry.get("enabled") is False:
-            continue
-        repos_output[canonical_key] = {}
-    return repos_output
+def _build_output(merged: dict) -> dict:
+    return {
+        canonical_key: {}
+        for canonical_key, entry in sorted(
+            merged.items(), key=lambda item: item[0].lower()
+        )
+        if entry.get("enabled") is not False
+    }
 
 
 def main():
@@ -86,9 +87,7 @@ def main():
         return 1
     merged = _merge(provider_files)
     print(f"Merged {len(merged)} unique sources")
-    repos = dict(
-        sorted(_build_output(merged).items(), key=lambda item: item[0].lower())
-    )
+    repos = _build_output(merged)
     print(f"Generated {len(repos)} repos")
     save_json(OUTPUT_PATH, repos)
     print(f"Saved to {OUTPUT_PATH.relative_to(ROOT_DIR)}")

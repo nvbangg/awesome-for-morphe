@@ -9,6 +9,7 @@ import { ITEMS_PER_PAGE } from "@/constants";
 interface BundleGridProps {
   activeData: ActiveData | null;
   sortOrder: string;
+  selectedCategory?: string;
   globalSearch: string;
   onBundleClick: (bundleKey: string) => void;
 }
@@ -16,6 +17,7 @@ interface BundleGridProps {
 export const BundleGrid = memo(function BundleGrid({
   activeData,
   sortOrder,
+  selectedCategory = "all",
   globalSearch,
   onBundleClick,
 }: BundleGridProps) {
@@ -23,8 +25,13 @@ export const BundleGrid = memo(function BundleGrid({
 
   const processedBundles = useMemo(() => {
     if (!activeData) return [];
-    return getBundleItems(activeData.bundles, deferredSearch, sortOrder);
-  }, [activeData, sortOrder, deferredSearch]);
+    return getBundleItems(
+      activeData.bundles,
+      deferredSearch,
+      sortOrder,
+      selectedCategory,
+    );
+  }, [activeData, sortOrder, selectedCategory, deferredSearch]);
 
   const { visibleItems, loadMoreRef, hasMore } = useInfiniteScroll(
     processedBundles,

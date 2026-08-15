@@ -1,10 +1,18 @@
 import { memo } from "react";
-import { Sparkles, FlaskConical, Star, Download, Calendar } from "lucide-react";
+import {
+  Sparkles,
+  FlaskConical,
+  Star,
+  Download,
+  Calendar,
+  TriangleAlert,
+} from "lucide-react";
 import { formatNumberCompact, formatStarCount } from "@/utils/formatters";
 
 type BadgeVariant =
   | "new"
   | "prerelease"
+  | "unofficial"
   | "off"
   | "stars"
   | "downloads"
@@ -50,6 +58,18 @@ export const Badge = memo(function Badge({
       >
         <FlaskConical className="size-3 text-warning shrink-0" />
         Pre-release
+      </span>
+    );
+  }
+
+  if (variant === "unofficial") {
+    return (
+      <span
+        className={`inline-flex items-center justify-center gap-1 px-1 py-0.5 text-xs font-semibold whitespace-nowrap text-warning border border-warning/30 rounded-md shrink-0 select-none ${className}`}
+        title={title || "Not included in Official Morphe Community Patches"}
+      >
+        <TriangleAlert className="size-3 text-warning shrink-0" />
+        Unofficial
       </span>
     );
   }

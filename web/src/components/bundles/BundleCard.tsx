@@ -36,6 +36,7 @@ export const BundleCard = memo(function BundleCard({
             {bundleItem.name}
             {isNew(bundleItem.firstSeen) && <Badge variant="new" />}
             {bundleItem.isPreRelease && <Badge variant="prerelease" />}
+            {bundleItem.isUnofficial && <Badge variant="unofficial" />}
             {bundleItem.stars > 0 && (
               <Badge variant="stars" value={bundleItem.stars} />
             )}

@@ -60,6 +60,7 @@ export function AppBundleGroup({
                   <Badge variant="new" />
                 )}
               {group.bundleMeta.isPreRelease && <Badge variant="prerelease" />}
+              {group.bundleMeta.isUnofficial && <Badge variant="unofficial" />}
               {group.bundleMeta.stars > 0 && (
                 <Badge variant="stars" value={group.bundleMeta.stars} />
               )}

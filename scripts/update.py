@@ -15,6 +15,7 @@ DATA_DIR = ROOT_DIR / "data"
 PUBLIC_DIR = ROOT_DIR / "web" / "public"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
 DISCOVER_JSON_PATH = DATA_DIR / "discover" / "discover.json"
+OFFICIAL_BUNDLES_PATH = DATA_DIR / "official-bundles.json"
 BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
 
 
@@ -55,8 +56,6 @@ def main() -> int:
                 "stars",
                 "avatarUrl",
                 "repoDescription",
-                "starsGained7d",
-                "starsGained40d",
                 "appFirstSeen",
             ]:
                 if attribute_name in existing_bundles[key]:
@@ -67,6 +66,20 @@ def main() -> int:
     compatibilities_list = local_parse.process(bundle_sources, apps_dict)
 
     gplay_scrape.process(apps_dict, mode, existing_apps)
+    official_data = load_json(OFFICIAL_BUNDLES_PATH, {})
+    official_bundles_list = (
+        official_data.get("bundles", []) if isinstance(official_data, dict) else []
+    )
+    official_ranks = {}
+    for bundle_entry in official_bundles_list:
+        source = bundle_entry.get("source")
+        repo = bundle_entry.get("repo")
+        if source and repo:
+            official_ranks[f"{source.lower()}:{repo.lower()}"] = bundle_entry.get(
+                "hotRank"
+            )
+    official_ranks["github:morpheapp/morphe-patches"] = -1
+
     now_ms = int(time.time() * 1000)
     final_bundles = []
     sorted_keys = sorted(
@@ -82,6 +95,8 @@ def main() -> int:
     )
     for key in sorted_keys:
         bundle = bundle_sources[key]
+        hot_rank = official_ranks.get(key.lower())
+
         ordered_bundle = {
             "source": bundle.get("source") or "",
             "repo": bundle.get("repo") or "",
@@ -89,8 +104,6 @@ def main() -> int:
             "repoDescription": html.unescape(bundle.get("repoDescription") or ""),
             "avatarUrl": bundle.get("avatarUrl") or "",
             "stars": bundle.get("stars") or 0,
-            "starsGained7d": bundle.get("starsGained7d") or 0,
-            "starsGained40d": bundle.get("starsGained40d") or 0,
             "updatedAt": bundle.get("updatedAt") or 0,
             "firstSeen": parse_timestamp(
                 existing_bundles.get(key, {}).get("firstSeen", now_ms)
@@ -98,6 +111,7 @@ def main() -> int:
             "appFirstSeen": bundle.get("appFirstSeen") or {},
             "patches": bundle.get("patches") or [],
             "isPreRelease": bool(bundle.get("isPreRelease")),
+            "hotRank": hot_rank if hot_rank is not None else None,
         }
         final_bundles.append(ordered_bundle)
     apps_store = {}

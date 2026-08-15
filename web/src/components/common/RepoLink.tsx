@@ -24,12 +24,12 @@ export const RepoLink = memo(function RepoLink({
       href={repoUrl}
       target="_blank"
       onClick={(e) => e.stopPropagation()}
-      className={`text-xs text-primary hover:underline font-medium dark:text-secondary inline-flex items-start gap-1.5 mt-0.5 max-w-full ${className}`}
+      className={`text-xs text-primary hover:underline font-medium dark:text-secondary inline-flex items-center gap-1.5 mt-0.5 max-w-full w-fit self-start ${className}`}
     >
       {isGitLab ? (
-        <GitLabIcon className="size-3.5 text-warning shrink-0 mt-0.5" />
+        <GitLabIcon className="size-3.5 text-warning shrink-0" />
       ) : (
-        <GitHubIcon className="size-3.5 text-foreground shrink-0 mt-0.5" />
+        <GitHubIcon className="size-3.5 text-foreground shrink-0" />
       )}
       <span className="break-all whitespace-normal min-w-0">{repo}</span>
     </a>

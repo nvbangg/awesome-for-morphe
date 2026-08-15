@@ -39,6 +39,7 @@ export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
           <Package className="size-4 text-primary shrink-0" />
           <span className="truncate">{bundleMeta?.name || bundleKey}</span>
           {isBundleNew && <Badge variant="new" />}
+          {bundleMeta?.isUnofficial && <Badge variant="unofficial" />}
         </div>
       </button>
 

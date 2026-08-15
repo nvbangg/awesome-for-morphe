@@ -72,12 +72,19 @@ export function compareDefaultBundle(
   bundleItemA: Bundle,
   bundleItemB: Bundle,
 ): number {
-  return (
-    bundleItemB.starsGained7d - bundleItemA.starsGained7d ||
-    bundleItemB.starsGained40d - bundleItemA.starsGained40d ||
-    bundleItemB.stars - bundleItemA.stars ||
-    compareBundleFallback(bundleItemA, bundleItemB)
-  );
+  const rankA = bundleItemA.hotRank;
+  const rankB = bundleItemB.hotRank;
+
+  if (rankA !== null && rankB !== null) {
+    const rankDiff = rankA - rankB;
+    if (rankDiff !== 0) return rankDiff;
+  } else if (rankA !== null) {
+    return -1;
+  } else if (rankB !== null) {
+    return 1;
+  }
+
+  return compareBundleFallback(bundleItemA, bundleItemB);
 }
 
 const BUNDLE_SORT_KEY_MAP: Record<string, (bundle: Bundle) => number> = {
@@ -182,8 +189,15 @@ export function getBundleItems(
   bundles: Bundle[],
   searchQuery = "",
   sortOrder = "default",
+  categoryFilter = "all",
 ): Bundle[] {
   let bundleList = bundles;
+
+  if (categoryFilter === "official") {
+    bundleList = bundleList.filter((bundleItem) => !bundleItem.isUnofficial);
+  } else if (categoryFilter === "unofficial") {
+    bundleList = bundleList.filter((bundleItem) => bundleItem.isUnofficial);
+  }
 
   const queryWords = parseSearchQuery(searchQuery);
   if (queryWords.length > 0) {

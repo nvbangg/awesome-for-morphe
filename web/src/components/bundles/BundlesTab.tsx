@@ -4,6 +4,7 @@ import { BundleGrid } from "./BundleGrid";
 interface BundlesTabProps {
   activeData: ActiveData | null;
   sortOrder: string;
+  selectedCategory?: string;
   globalSearch: string;
   onBundleClick: (bundleKey: string) => void;
   onTestBundleClick: () => void;
@@ -12,6 +13,7 @@ interface BundlesTabProps {
 export function BundlesTab({
   activeData,
   sortOrder,
+  selectedCategory = "all",
   globalSearch,
   onBundleClick,
   onTestBundleClick,
@@ -38,6 +40,7 @@ export function BundlesTab({
       <BundleGrid
         activeData={activeData}
         sortOrder={sortOrder}
+        selectedCategory={selectedCategory}
         globalSearch={globalSearch}
         onBundleClick={onBundleClick}
       />

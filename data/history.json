@@ -1,5 +1,11 @@
 {
   "github:MorpheApp/morphe-patches": {
+    "__universal__": [
+      "Change installer source",
+      "Clone app",
+      "Disable Play Store updates",
+      "Override certificate pinning"
+    ],
     "com.google.android.apps.youtube.music": [
       "Bypass certificate checks",
       "Change header",
@@ -137,15 +143,12 @@
       "Sanitize sharing links",
       "Show view count",
       "Spoof signature"
-    ],
-    "universal": [
-      "Change installer source",
-      "Clone app",
-      "Disable Play Store updates",
-      "Override certificate pinning"
     ]
   },
   "github:wchill/patcheddit": {
+    "__universal__": [
+      "Enable Android debugging"
+    ],
     "com.andrewshu.android.reddit": [
       "Fake reddit premium",
       "Modify login WebView",
@@ -250,9 +253,6 @@
       "Fix /s/ links",
       "Modify login WebView",
       "Spoof client"
-    ],
-    "universal": [
-      "Enable Android debugging"
     ]
   },
   "github:andronedev/morphe-patches": {
@@ -268,6 +268,12 @@
     ]
   },
   "github:hoo-dles/morphe-patches": {
+    "__universal__": [
+      "Change package name",
+      "Disable Pairip license check",
+      "Enable debug",
+      "Hide app icon"
+    ],
     "app.ttmikstories.android": [
       "Enable Premium"
     ],
@@ -446,17 +452,25 @@
     "ru.iiec.pydroid3": [
       "Enable Premium"
     ],
-    "universal": [
-      "Change package name",
-      "Disable Pairip license check",
-      "Enable debug",
-      "Hide app icon"
-    ],
     "videoeditor.videorecorder.screenrecorder": [
       "Enable Pro"
     ]
   },
   "github:jkennethcarino/adobo": {
+    "__universal__": [
+      "Block ads, trackers, and analytics",
+      "Change package name",
+      "Deactivate Firebase Analytics",
+      "Deactivate Firebase Performance Monitoring",
+      "Disable Google Safe Browsing in WebView",
+      "Disable metrics collection in WebView",
+      "Disable mobile ads",
+      "Remove internet permission",
+      "Replace Google Maps API key",
+      "Spoof Advertising ID",
+      "Spoof Firebase certificate hash",
+      "Spoof signature verification"
+    ],
     "com.google.android.inputmethod.latin": [
       "Always-incognito mode",
       "Enable OCR feature",
@@ -494,23 +508,13 @@
       "Open external links directly",
       "Remove ads and telemetry",
       "Sanitize share links"
-    ],
-    "universal": [
-      "Block ads, trackers, and analytics",
-      "Change package name",
-      "Deactivate Firebase Analytics",
-      "Deactivate Firebase Performance Monitoring",
-      "Disable Google Safe Browsing in WebView",
-      "Disable metrics collection in WebView",
-      "Disable mobile ads",
-      "Remove internet permission",
-      "Replace Google Maps API key",
-      "Spoof Advertising ID",
-      "Spoof Firebase certificate hash",
-      "Spoof signature verification"
     ]
   },
   "github:RookieEnough/De-Vanced": {
+    "__universal__": [
+      "Change package name",
+      "Override certificate pinning"
+    ],
     "com.adobe.photoshopmix": [
       "Bypass login"
     ],
@@ -613,10 +617,6 @@
       "Block video ads",
       "Debug mode",
       "Show deleted messages"
-    ],
-    "universal": [
-      "Change package name",
-      "Override certificate pinning"
     ]
   },
   "github:brosssh/morphe-patches": {
@@ -789,6 +789,9 @@
     ]
   },
   "github:docbt/patched-up": {
+    "__universal__": [
+      "Change package name"
+    ],
     "com.ebay.kleinanzeigen": [
       "Hide Pur",
       "Hide ads",
@@ -797,9 +800,6 @@
     "com.google.android.apps.magazines": [
       "Enable CustomTabs",
       "GmsCore support"
-    ],
-    "universal": [
-      "Change package name"
     ]
   },
   "github:PixelPusher247/morphe-patches": {
@@ -808,6 +808,10 @@
     ]
   },
   "github:AmpleReVanced/revanced-patches": {
+    "__universal__": [
+      "Add shared user ID",
+      "Disable Sentry telemetry"
+    ],
     "com.dcinside.app.android": [
       "Add notification shortcut",
       "Add settings",
@@ -824,10 +828,12 @@
       "Disable update check",
       "Enable OneStore feature",
       "Filter recently viewed posts by gallery",
+      "Gallery watch mode",
       "Hide DC official notices",
       "Hide Main Ad",
       "Hide home components",
       "Hide mini gallery cover image",
+      "Hide post list page indicators",
       "Register settings activity",
       "Render big DCCon as normal size",
       "Restore old post icons",
@@ -927,10 +933,6 @@
       "Remove live ads",
       "Remove live banner ads",
       "Remove main board ads"
-    ],
-    "universal": [
-      "Add shared user ID",
-      "Disable Sentry telemetry"
     ]
   },
   "github:RealCyberwash/max-patches": {
@@ -1017,6 +1019,9 @@
     ]
   },
   "github:Joristdh/Platypatch": {
+    "__universal__": [
+      "Predictive back gesture"
+    ],
     "com.laurencedawson.reddit_sync": [
       "Experimental: Restore \"Swipe to return\" translucency"
     ],
@@ -1025,9 +1030,6 @@
     ],
     "com.laurencedawson.reddit_sync.pro": [
       "Experimental: Restore \"Swipe to return\" translucency"
-    ],
-    "universal": [
-      "Predictive back gesture"
     ]
   },
   "github:vladon/morphe-patches-navi": {
@@ -1100,6 +1102,21 @@
     ]
   },
   "github:xob0t/morphe-patches": {
+    "__universal__": [
+      "Disable Adjust",
+      "Disable AppMetrica",
+      "Disable AppsFlyer",
+      "Disable Firebase telemetry",
+      "Disable Google Analytics",
+      "Disable MyTracker",
+      "Disable RuStore metrics",
+      "Disable Sentry telemetry",
+      "Disable freeRASP",
+      "Spoof USB debugging status",
+      "Spoof VPN status",
+      "Spoof emulator status",
+      "Spoof install source"
+    ],
     "com.avito.android": [
       "AMOLED dark theme",
       "Block listings",
@@ -1119,21 +1136,6 @@
     ],
     "ru.ozon.app.android": [
       "Remove Ozon ads"
-    ],
-    "universal": [
-      "Disable Adjust",
-      "Disable AppMetrica",
-      "Disable AppsFlyer",
-      "Disable Firebase telemetry",
-      "Disable Google Analytics",
-      "Disable MyTracker",
-      "Disable RuStore metrics",
-      "Disable Sentry telemetry",
-      "Disable freeRASP",
-      "Spoof USB debugging status",
-      "Spoof VPN status",
-      "Spoof emulator status",
-      "Spoof install source"
     ]
   },
   "gitlab:Paresh-Maheshwari/paresh-patches": {
@@ -1245,6 +1247,11 @@
     ]
   },
   "github:BholeyKaBhakt/android-patches-xtra": {
+    "__universal__": [
+      "Bypass ADB/Developer Options Detection",
+      "Disable Facebook SDK Tracking",
+      "Disable Firebase(Google) Analytics"
+    ],
     "com.atmfee": [
       "Hide Location Permission Popup",
       "Unlock Premium"
@@ -1293,11 +1300,6 @@
     "pl.solidexplorer2": [
       "Disable Telemetry",
       "Unlock Pro"
-    ],
-    "universal": [
-      "Bypass ADB/Developer Options Detection",
-      "Disable Facebook SDK Tracking",
-      "Disable Firebase(Google) Analytics"
     ]
   },
   "github:kontsevoye/emorphe-patches": {
@@ -1428,6 +1430,46 @@
     ]
   },
   "github:rushiranpise/morphe-patches": {
+    "__universal__": [
+      "Change version code",
+      "Disable PairIP license check",
+      "Disable ad SDK calls",
+      "Disable clipboard access",
+      "Disable shake ads",
+      "Enable Android debugging",
+      "Enable ROM signature spoofing",
+      "Enable debug build target",
+      "Export all activities",
+      "Export internal data documents provider",
+      "Fix Firebase after re-signing",
+      "Force dark theme",
+      "GmsCore support (MicroG)",
+      "Hide ADB status",
+      "Hide VPN and proxy",
+      "Hide app icon",
+      "Hide mock location",
+      "Override certificate pinning",
+      "Predictive back gesture",
+      "Provide Original app certificate",
+      "Remove ad manifest entries",
+      "Remove internet permission",
+      "Remove share targets",
+      "Set target SDK 34",
+      "Spoof Android ID",
+      "Spoof Bluetooth identifiers",
+      "Spoof Pixel device",
+      "Spoof Play age signals",
+      "Spoof SIM provider",
+      "Spoof Wi-Fi connection",
+      "Spoof Wi-Fi identifiers",
+      "Spoof Widevine / DRM level",
+      "Spoof app signature",
+      "Spoof build info",
+      "Spoof install source",
+      "Spoof keystore security level",
+      "Spoof root of trust",
+      "Spoof telephony IDs"
+    ],
     "ai.metaverselabs.obdandroid": [
       "Unlock Premium"
     ],
@@ -2196,46 +2238,6 @@
     "torrent.search.revolutionv2": [
       "Unlock Pro"
     ],
-    "universal": [
-      "Change version code",
-      "Disable PairIP license check",
-      "Disable ad SDK calls",
-      "Disable clipboard access",
-      "Disable shake ads",
-      "Enable Android debugging",
-      "Enable ROM signature spoofing",
-      "Enable debug build target",
-      "Export all activities",
-      "Export internal data documents provider",
-      "Fix Firebase after re-signing",
-      "Force dark theme",
-      "GmsCore support (MicroG)",
-      "Hide ADB status",
-      "Hide VPN and proxy",
-      "Hide app icon",
-      "Hide mock location",
-      "Override certificate pinning",
-      "Predictive back gesture",
-      "Provide Original app certificate",
-      "Remove ad manifest entries",
-      "Remove internet permission",
-      "Remove share targets",
-      "Set target SDK 34",
-      "Spoof Android ID",
-      "Spoof Bluetooth identifiers",
-      "Spoof Pixel device",
-      "Spoof Play age signals",
-      "Spoof SIM provider",
-      "Spoof Wi-Fi connection",
-      "Spoof Wi-Fi identifiers",
-      "Spoof Widevine / DRM level",
-      "Spoof app signature",
-      "Spoof build info",
-      "Spoof install source",
-      "Spoof keystore security level",
-      "Spoof root of trust",
-      "Spoof telephony IDs"
-    ],
     "verbosus.pialytic": [
       "Unlock All Features"
     ],
@@ -2244,14 +2246,21 @@
     ]
   },
   "gitlab:inotia00/proguard-patches": {
+    "__universal__": [
+      "Find dummy classes"
+    ],
     "com.java.inspector": [
       "Assemble LSPosed module"
-    ],
-    "universal": [
-      "Find dummy classes"
     ]
   },
   "github:kiraio-moe/Lain-Patches": {
+    "__universal__": [
+      "Change package name",
+      "Disable Pairip license check",
+      "Hide app icon",
+      "Override certificate pinning",
+      "Spoof Install Source"
+    ],
     "cn.adonet.proxyevery": [
       "Disable Ads"
     ],
@@ -2354,13 +2363,6 @@
     ],
     "studio.muggle.chatboost": [
       "Enable Premium"
-    ],
-    "universal": [
-      "Change package name",
-      "Disable Pairip license check",
-      "Hide app icon",
-      "Override certificate pinning",
-      "Spoof Install Source"
     ]
   },
   "github:quantavil/edge-morphe-patches": {
@@ -2465,6 +2467,11 @@
     ]
   },
   "github:kondratjev/morphe-patches": {
+    "__universal__": [
+      "Change version code",
+      "Disable Pairip license check",
+      "Disable analytics"
+    ],
     "air.com.musclemotion.strength.mobile": [
       "Unlock Premium"
     ],
@@ -2506,11 +2513,6 @@
       "Disable background scan",
       "Disable gaming profile",
       "Skip update auth"
-    ],
-    "universal": [
-      "Change version code",
-      "Disable Pairip license check",
-      "Disable analytics"
     ],
     "xyz.rtrvr.pillo": [
       "Disable analytics",
@@ -2647,6 +2649,9 @@
     "com.wanderlog.android": [
       "Unlock Pro"
     ],
+    "currency.converter.moneta": [
+      "Unlock Plus"
+    ],
     "dk.tacit.android.foldersync.lite": [
       "Unlock Premium"
     ],
@@ -2674,6 +2679,14 @@
     ]
   },
   "github:anddea/revanced-patches": {
+    "__universal__": [
+      "Change installer package name",
+      "Change version code",
+      "Disable edge-to-edge display",
+      "Override certificate pinning",
+      "Spoof Wi-Fi connection",
+      "Spoof signature"
+    ],
     "com.google.android.apps.youtube.music": [
       "Bitrate default value",
       "Bypass image region restrictions",
@@ -2793,17 +2806,12 @@
       "Visual preferences icons for YouTube",
       "Voice Over Translation",
       "Wide search bar"
-    ],
-    "universal": [
-      "Change installer package name",
-      "Change version code",
-      "Disable edge-to-edge display",
-      "Override certificate pinning",
-      "Spoof Wi-Fi connection",
-      "Spoof signature"
     ]
   },
   "github:cesbar/zpatches": {
+    "__universal__": [
+      "Export all activities"
+    ],
     "com.citymapper.app.release": [
       "Enable Club",
       "Google Maps API key"
@@ -2830,13 +2838,10 @@
     "ee.dustland.android.solitaire": [
       "Disable Internet and Telemetry",
       "Enable Premium"
-    ],
-    "universal": [
-      "Export all activities"
     ]
   },
   "github:sjshb57/Pairip-Patches": {
-    "universal": [
+    "__universal__": [
       "Inline pairip call wrappers",
       "Remove pairip protection",
       "Restore extracted methods",
@@ -2844,6 +2849,9 @@
     ]
   },
   "github:humzakh/HK-Morphe-Patches": {
+    "__universal__": [
+      "Predictive back gesture"
+    ],
     "com.laurencedawson.reddit_sync": [
       "Fix \"Other Discussions\"",
       "Fix \"Restore Comment\"",
@@ -2852,6 +2860,7 @@
       "Fix imgur links",
       "Fix inline images",
       "Fix r/random",
+      "Hacker News Feed",
       "Predictive back gesture (Reddit Sync)",
       "Spoof client",
       "Unlock Sync Ultra"
@@ -2864,6 +2873,7 @@
       "Fix imgur links",
       "Fix inline images",
       "Fix r/random",
+      "Hacker News Feed",
       "Predictive back gesture (Reddit Sync)",
       "Spoof client",
       "Unlock Sync Ultra"
@@ -2876,12 +2886,10 @@
       "Fix imgur links",
       "Fix inline images",
       "Fix r/random",
+      "Hacker News Feed",
       "Predictive back gesture (Reddit Sync)",
       "Spoof client",
       "Unlock Sync Ultra"
-    ],
-    "universal": [
-      "Predictive back gesture"
     ]
   },
   "github:bdgerszewski/morphe-patches-ihealth": {
@@ -2959,7 +2967,7 @@
     ]
   },
   "github:Pa-kon/morphe-screenshot-patches": {
-    "universal": [
+    "__universal__": [
       "Remove screenshot restriction"
     ]
   },
@@ -2978,12 +2986,12 @@
     ]
   },
   "github:PrathxmOp/ytmusic-patches": {
+    "__universal__": [
+      "Change package name"
+    ],
     "com.google.android.apps.youtube.music": [
       "Discord Rich Presence",
       "Scrobbling"
-    ],
-    "universal": [
-      "Change package name"
     ]
   },
   "github:PrathxmOp/Prathxm-Patches": {
@@ -3004,7 +3012,7 @@
     ]
   },
   "github:Nai64/Nai64Patches": {
-    "universal": [
+    "__universal__": [
       "Ads Free Rewards",
       "Custom App Resolution (Experimental)",
       "Disable Root Checks",
@@ -3062,6 +3070,13 @@
     ]
   },
   "gitlab:early.egg3707/ee-morphe-patches": {
+    "__universal__": [
+      "Change package name",
+      "Clone app",
+      "Disable Pairip license check",
+      "Enable debug",
+      "Hide app icon"
+    ],
     "com.byairapp.android": [
       "Enable Online Pro",
       "Enable Pro"
@@ -3081,13 +3096,6 @@
     ],
     "net.tsapps.appsales": [
       "Enable Pro"
-    ],
-    "universal": [
-      "Change package name",
-      "Clone app",
-      "Disable Pairip license check",
-      "Enable debug",
-      "Hide app icon"
     ]
   },
   "github:byehi98/okish-morphe-patches": {
@@ -3229,6 +3237,11 @@
     ]
   },
   "github:chirag127/morphe-patches": {
+    "__universal__": [
+      "Force hasSystemFeature true (narrow)",
+      "Spoof Pixel model check (narrow)",
+      "Strip root detection (narrow)"
+    ],
     "com.amazon.avod.thirdpartyclient": [
       "PrimeVideoRegionUnlock (STUB)",
       "PrimeVideoRemoveFreeTierAds (STUB)"
@@ -3332,11 +3345,6 @@
     ],
     "in.amazon.mShop.android.shopping": [
       "AmazonShoppingRemoveSponsoredProducts (STUB)"
-    ],
-    "universal": [
-      "Force hasSystemFeature true (narrow)",
-      "Spoof Pixel model check (narrow)",
-      "Strip root detection (narrow)"
     ]
   },
   "github:alejandrobellver/pichiwa-patches": {
@@ -3363,6 +3371,14 @@
     ]
   },
   "github:saieshshirodkar/saiesh-morphe-patches": {
+    "__universal__": [
+      "Fix Firebase after re-signing",
+      "GmsCore support (MicroG)",
+      "Provide Original app certificate",
+      "Spoof Widevine / DRM level",
+      "Spoof app signature",
+      "Spoof install source"
+    ],
     "com.nicedayapps.iss_free": [
       "Unlock Premium"
     ],
@@ -3372,14 +3388,6 @@
     ],
     "com.spocky.projengmenu": [
       "Unlock Premium"
-    ],
-    "universal": [
-      "Fix Firebase after re-signing",
-      "GmsCore support (MicroG)",
-      "Provide Original app certificate",
-      "Spoof Widevine / DRM level",
-      "Spoof app signature",
-      "Spoof install source"
     ]
   },
   "github:skulldogged/cobalt-morphe": {
@@ -3564,6 +3572,10 @@
     ]
   },
   "github:MiguelNinja19/miguel-morphe-patches": {
+    "__universal__": [
+      "Billing bypass",
+      "Unity IL2CPP hex patch"
+    ],
     "air.com.midjiwan.polytopia": [
       "Free in-app purchases",
       "Unlock all tribes"
@@ -3596,10 +3608,6 @@
     ],
     "jpark.AOS5": [
       "Free in-app purchases"
-    ],
-    "universal": [
-      "Billing bypass",
-      "Unity IL2CPP hex patch"
     ]
   },
   "github:SouBryan/pinterest-morphed": {
@@ -3626,6 +3634,12 @@
     ]
   },
   "github:variablenine/morphe-patches": {
+    "__universal__": [
+      "Change installer source",
+      "Clone app",
+      "Disable Play Store updates",
+      "Override certificate pinning"
+    ],
     "com.google.android.apps.youtube.music": [
       "Bypass certificate checks",
       "Change header",
@@ -3764,16 +3778,10 @@
       "Sanitize sharing links",
       "Show view count",
       "Spoof signature"
-    ],
-    "universal": [
-      "Change installer source",
-      "Clone app",
-      "Disable Play Store updates",
-      "Override certificate pinning"
     ]
   },
   "github:rushiranpise/Ri-Vanced-Universal-Morphe-Patches": {
-    "universal": [
+    "__universal__": [
       "Change package name",
       "Change version code",
       "Custom network security",
@@ -3815,6 +3823,9 @@
     ]
   },
   "github:hxreborn/morphe-patches": {
+    "app.symfonik.music.player": [
+      "Unlock premium"
+    ],
     "ch.protonmail.android": [
       "AMOLED dark theme",
       "Hide upgrade upselling",
@@ -3880,6 +3891,9 @@
     ]
   },
   "github:brealorg/breal-morphe-patches": {
+    "__universal__": [
+      "Enable Android debugging"
+    ],
     "com.andrewshu.android.reddit": [
       "Fake reddit premium",
       "Modify login WebView",
@@ -4021,9 +4035,6 @@
       "Fix /s/ links",
       "Modify login WebView",
       "Spoof client"
-    ],
-    "universal": [
-      "Enable Android debugging"
     ]
   },
   "github:andrewliang25/morphe-patches": {
@@ -4057,6 +4068,11 @@
     ]
   },
   "github:dh6k/morphe-patches": {
+    "__universal__": [
+      "Change app icon",
+      "Change app name",
+      "Disable analytics"
+    ],
     "com.brave.browser": [
       "Brave Origin"
     ],
@@ -4074,13 +4090,16 @@
     ],
     "net.quetta.browser.official": [
       "Block Quetta bundled extension installation"
-    ],
-    "universal": [
-      "Change app icon",
-      "Change app name"
     ]
   },
   "github:Entree3k/Morning-Entree-Patches": {
+    "__universal__": [
+      "Change package name",
+      "Provide original app certificate",
+      "Remove internet permission",
+      "Spoof install source",
+      "Spoof signature verification"
+    ],
     "ak.alizandro.smartaudiobookplayer": [
       "Enable Full Version"
     ],
@@ -4358,12 +4377,8 @@
     "pro.listy": [
       "Enable Premium"
     ],
-    "universal": [
-      "Change package name",
-      "Provide original app certificate",
-      "Remove internet permission",
-      "Spoof install source",
-      "Spoof signature verification"
+    "sixpack.sixpackabs.absworkout": [
+      "Enable Premium"
     ],
     "xyz.thefor.habits.habits": [
       "Enable Premium"
@@ -4378,6 +4393,9 @@
     ]
   },
   "github:Hiosdra/morphe-patches": {
+    "__universal__": [
+      "Compile-only example"
+    ],
     "com.formulaone.production": [
       "F1 TV - Background playback",
       "F1 TV - Foreground playback service",
@@ -4387,9 +4405,6 @@
       "Movie Paradise - Force RevenueCat entitlement (experimental)",
       "Movie Paradise - GmsCore support (microG login)",
       "Movie Paradise - PairIP license bypass"
-    ],
-    "universal": [
-      "Compile-only example"
     ]
   },
   "github:Jl4cTuk/morphe-patches": {
@@ -4542,6 +4557,7 @@
   "github:andersonlucasg3/PetalMaps-AndroidAuto": {
     "com.huawei.maps.app": [
       "Android Auto",
+      "Android Auto API Level File",
       "Android Auto Manifest",
       "Android Auto Resources",
       "Android Auto allowlist (root)",
@@ -4562,11 +4578,11 @@
       "Force lobby permission-state gate",
       "Force stream XR gates",
       "GXR face bridge",
-      "HMD-only pose fix",
       "Microphone input preset",
       "OLED color calibration",
       "Unrestricted battery usage",
       "Video dither",
+      "Visual Delay Fix",
       "XR Core Runtime",
       "XR Device Config Baseline",
       "XR Input Routing Config",
@@ -4583,11 +4599,22 @@
     ]
   },
   "github:BlazeFTL/FTL-Patches": {
+    "__universal__": [
+      "APK Junk Cleanup",
+      "Add Toast",
+      "Custom DPI (Universal)",
+      "Png Optimizer",
+      "Remove Analytics",
+      "Remove Debug Info",
+      "Remove Duplicate Graphics",
+      "Remove Languages",
+      "Universal Remove Ads"
+    ],
     "cn.xender": [
       "Speed up splash screen"
     ],
     "com.estrongs.android.pop": [
-      "ES File Explorer Cleanup"
+      "ES File Explorer Ui Cleanup"
     ],
     "com.mxtech.videoplayer.pro": [
       "Hide File Transfer, Video Playlist, Private Folder tiles",
@@ -4599,17 +4626,6 @@
       "Disable Notification Defaults",
       "Hide Settings Items",
       "Remove Watch Ad To Download"
-    ],
-    "universal": [
-      "APK Junk Cleanup",
-      "Add Toast",
-      "Custom DPI (Universal)",
-      "Png Optimizer",
-      "Remove Ads",
-      "Remove Analytics",
-      "Remove Debug Info",
-      "Remove Duplicate Graphics",
-      "Remove Languages"
     ]
   },
   "github:braiNtropy/braintropy-patches": {
@@ -4645,19 +4661,6 @@
       "High quality document upload"
     ]
   },
-  "github:Nagol12344/patch": {
-    "com.bplace": [
-      "Fix file picker camera prompt",
-      "Remove unnecessary camera permission request"
-    ],
-    "com.example.app": [
-      "Example Patch"
-    ],
-    "universal": [
-      "Invert light and dark theme colors",
-      "Remove Camera Requirements"
-    ]
-  },
   "github:sushruth/imgur-patches": {
     "com.imgur.mobile": [
       "Remove ads"
@@ -4670,6 +4673,12 @@
     ]
   },
   "github:ozeroztas/Morphe-Patch": {
+    "__universal__": [
+      "Change installer source",
+      "Clone app",
+      "Disable Play Store updates",
+      "Override certificate pinning"
+    ],
     "com.google.android.apps.youtube.music": [
       "Bypass certificate checks",
       "Change header",
@@ -4807,12 +4816,6 @@
       "Sanitize sharing links",
       "Show view count",
       "Spoof signature"
-    ],
-    "universal": [
-      "Change installer source",
-      "Clone app",
-      "Disable Play Store updates",
-      "Override certificate pinning"
     ]
   },
   "github:RabehX/rabehx-patches": {

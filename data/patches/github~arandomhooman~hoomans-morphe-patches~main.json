@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.44.0",
+  "version": "1.45.0",
   "patches": [
     {
       "name": "Auto claim channel points",
@@ -615,6 +615,33 @@
           "targets": [
             {
               "version": "3.73.179",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Plus",
+      "description": "Unlocks Moneta Plus features, including the full asset catalog, more than five selected assets, five-minute rate updates, camera price scanning, and extended historical charts. Purchases, restore purchases, and server account state are unchanged. This is the arm64 build.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "currency.converter.moneta",
+          "name": "Moneta",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#4BBA17",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.2.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null

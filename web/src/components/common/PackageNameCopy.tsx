@@ -25,15 +25,15 @@ export const PackageNameCopy = memo(function PackageNameCopy({
         e.stopPropagation();
         copyToClipboard(packageName);
       }}
-      className={`flex items-center gap-1.5 mt-0.5 text-xs text-primary cursor-pointer w-fit ${className}`}
+      className={`inline-flex items-start gap-1.5 mt-0.5 text-xs text-primary cursor-pointer max-w-full ${className}`}
       title="Copy Package Name"
     >
       {isCopied ? (
-        <Check className="size-3 text-success shrink-0" />
+        <Check className="size-3 text-success shrink-0 mt-0.5" />
       ) : (
-        <Copy className="size-3 shrink-0 text-foreground-muted hover:text-primary" />
+        <Copy className="size-3 shrink-0 mt-0.5 text-foreground-muted hover:text-primary" />
       )}
-      <span className="truncate text-primary font-medium dark:text-secondary">
+      <span className="break-all whitespace-normal text-primary font-medium dark:text-secondary min-w-0">
         {packageName}
       </span>
     </div>

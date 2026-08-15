@@ -44,7 +44,6 @@
 ## <a id="resources"></a> 📚 Resources
 
 - [Morphe Documentation](https://github.com/MorpheApp/morphe-documentation)
-  - [Basic patching guide](https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/guide.md)
   - [Frequently asked questions](https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/questions.md)
   - [Troubleshooting Help](https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/troubleshooting.md)
 - [Morphe links, help, guides, and troubleshooting](https://www.reddit.com/r/MorpheApp/comments/1pverk7/morphe_links_help_guides_and_troubleshooting/)
@@ -52,11 +51,8 @@
   - [Shorts player has no buttons](https://www.reddit.com/r/MorpheApp/comments/1pverk7/comment/ogdw6mk/)
   - [Cannot login to Reddit](https://www.reddit.com/r/MorpheApp/comments/1pverk7/comment/oot13cq/)
 - [How To Patch More Apps With Morphe](https://www.reddit.com/r/MorpheApp/comments/1ta0bek/how_to_patch_more_apps_with_morphe/)
-- [(Guide) Fix video playback issue on YouTube and YT music](https://www.reddit.com/r/MorpheApp/comments/1uxcvgp/guide_fix_video_playback_issue_on_youtube_and_yt/)
+- [How to request app patches](https://www.reddit.com/r/MorpheApp/comments/1vmfizy/how_to_request_app_patches/)
 - [Morphe Desktop (Currently Morphe CLI)](https://www.reddit.com/r/MorpheApp/comments/1rtr3ee/morphe_desktop_currently_morphe_cli/)
-- ~~[How to patch X with Piko patches](https://www.reddit.com/r/MorpheApp/comments/1r4xt24/x_twitter_can_now_be_patched_with_piko_patches/)~~
-  - [PSA: X / Twitter Piko no longer requires X Shim on the latest version!](https://www.reddit.com/r/MorpheApp/comments/1v5zf40/psa_x_twitter_piko_no_longer_requires_x_shim_on/)
-- [Likes count not showing](https://www.reddit.com/r/MorpheApp/comments/1u4kjms/likes_count_not_showing/)
 - [Regarding the Morphe DMCA](https://www.reddit.com/r/MorpheApp/comments/1s3w1er/regarding_the_morphe_dmca/)
 - [How to install and use Shizuku](https://github.com/thedjchi/Shizuku/wiki)
 - [Beginner-friendly Morphe CLI guide](https://gist.github.com/akshay-abraham/01d63dc1911a8879943d781efd04ddfe)
@@ -82,14 +78,54 @@
 
 ## <a id="projects"></a> 🛠️ Other Projects
 
-- [Jman-Github/Awesome-ReVanced](https://github.com/Jman-Github/Awesome-ReVanced)
-- [Jman-Github/Universal-ReVanced-Manager](https://github.com/Jman-Github/Universal-ReVanced-Manager)
-- [nvbangg/builder-for-morphe](https://github.com/nvbangg/builder-for-morphe)
-- [Paresh-Maheshwari/morphe-ai](https://github.com/Paresh-Maheshwari/morphe-ai)
-- [Xisrr1/Revancify-Xisr](https://github.com/Xisrr1/Revancify-Xisr)
-- [Graywizard888/Enhancify](https://github.com/Graywizard888/Enhancify)
-- [hoo-dles/jadx-morphe](https://github.com/hoo-dles/jadx-morphe)
-- [rushiranpise/apk-download-helper](https://github.com/rushiranpise/apk-download-helper)
+<a href="https://github.com/rushiranpise/apk-download-helper">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=rushiranpise&repo=apk-download-helper&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=rushiranpise&repo=apk-download-helper&border_radius=20&show_owner=true" />
+  </picture>
+</a>
+<a href="https://github.com/Paresh-Maheshwari/morphe-ai">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=Paresh-Maheshwari&repo=morphe-ai&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Paresh-Maheshwari&repo=morphe-ai&border_radius=20&show_owner=true" />
+  </picture>
+</a>
+<a href="https://github.com/hoo-dles/jadx-morphe">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=hoo-dles&repo=jadx-morphe&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=hoo-dles&repo=jadx-morphe&border_radius=20&show_owner=true" />
+  </picture>
+</a>
+<a href="https://github.com/nvbangg/builder-for-morphe">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=nvbangg&repo=builder-for-morphe&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=nvbangg&repo=builder-for-morphe&border_radius=20&show_owner=true" />
+  </picture>
+</a>
+<a href="https://github.com/Jman-Github/Awesome-ReVanced">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Awesome-ReVanced&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Awesome-ReVanced&border_radius=20&show_owner=true" />
+  </picture>
+</a>
+<a href="https://github.com/Jman-Github/Universal-ReVanced-Manager">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Universal-ReVanced-Manager&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Universal-ReVanced-Manager&border_radius=20&show_owner=true" />
+  </picture>
+</a>
+<a href="https://github.com/Xisrr1/Revancify-Xisr">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=Xisrr1&repo=Revancify-Xisr&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Xisrr1&repo=Revancify-Xisr&border_radius=20&show_owner=true" />
+  </picture>
+</a>
+<a href="https://github.com/Graywizard888/Enhancify">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=Graywizard888&repo=Enhancify&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Graywizard888&repo=Enhancify&border_radius=20&show_owner=true" />
+  </picture>
+</a>
 
 ## ⬇️ Pre-patched sources
 

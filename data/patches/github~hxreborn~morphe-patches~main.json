@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "patches": [
     {
       "name": "AMOLED dark theme",
@@ -348,6 +348,49 @@
               },
               "isExperimental": false,
               "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks all premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "app.symfonik.music.player",
+          "name": "Symfonium",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#E22728",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.0.0",
+              "versionCodes": {
+                "ARM64_V8A": 127708,
+                "ARMEABI_V7A": 127708,
+                "X86_64": 127708,
+                "X86": 127708
+              },
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "14.1.0",
+              "versionCodes": {
+                "ARM64_V8A": 127734,
+                "ARMEABI_V7A": 127734,
+                "X86_64": 127734,
+                "X86": 127734
+              },
+              "isExperimental": false,
+              "minSdk": 32,
               "description": null
             }
           ]

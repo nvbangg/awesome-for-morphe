@@ -3,9 +3,7 @@ import {
   Bundle,
   RowItem,
   AppItem,
-  PatchItem,
   CompatibilityItem,
-  PackageTarget,
   WhatsNewHistoryItem,
   ActiveStats,
   AppNameMeta,
@@ -16,11 +14,12 @@ import {
   extractVersions,
   simplifyString,
   slugifyCategory,
-  decodeHtmlEntities,
 } from "@/utils";
 
-const universalDefaultTarget: PackageTarget[] = [
-  { packageName: "universal", versions: [], isPreRelease: false },
+import { PACKAGE_UNIVERSAL } from "@/constants";
+
+const universalDefaultTarget: CompatibilityItem[] = [
+  { packageName: PACKAGE_UNIVERSAL, targets: [] },
 ];
 
 const jsonCache = new Map<string, Promise<unknown>>();
@@ -31,12 +30,15 @@ export function fetchJson<T = unknown>(
   defaultFallbackData?: T,
 ): Promise<T> {
   const cacheKey = url.toString();
-  if (!jsonCache.has(cacheKey)) {
-    const fetchPromise = (async () => {
+  let fetchPromise = jsonCache.get(cacheKey) as Promise<T> | undefined;
+
+  if (!fetchPromise) {
+    fetchPromise = (async () => {
       try {
         const response = await fetch(url);
-        if (!response.ok)
+        if (!response.ok) {
           throw new Error(`Failed to load ${url}: ${response.status}`);
+        }
         return (await response.json()) as T;
       } catch (error) {
         jsonCache.delete(cacheKey);
@@ -46,7 +48,8 @@ export function fetchJson<T = unknown>(
     })();
     jsonCache.set(cacheKey, fetchPromise);
   }
-  return jsonCache.get(cacheKey) as Promise<T>;
+
+  return fetchPromise;
 }
 
 export function fetchWhatsNewHistory(): Promise<WhatsNewHistoryItem[]> {
@@ -56,7 +59,7 @@ export function fetchWhatsNewHistory(): Promise<WhatsNewHistoryItem[]> {
 interface BundlesResponseData {
   bundles: Bundle[];
   compatibilities: CompatibilityItem[][];
-  store?: Record<string, AppNameMeta>;
+  store: Record<string, AppNameMeta>;
 }
 
 export function loadInitialData(): Promise<ActiveData> {
@@ -70,9 +73,9 @@ export function loadInitialData(): Promise<ActiveData> {
       compatibilities: [],
       store: {},
     });
-    const namesMap = sourcesData.store ?? {};
-    const jsonBundles = sourcesData.bundles ?? [];
-    const compatibilitiesList = sourcesData.compatibilities ?? [];
+    const jsonBundles = sourcesData.bundles;
+    const appNamesMap = sourcesData.store;
+    const compatibilitiesList = sourcesData.compatibilities;
 
     const bundleList: Bundle[] = [];
     const rows: RowItem[] = [];
@@ -87,11 +90,11 @@ export function loadInitialData(): Promise<ActiveData> {
         jsonBundle.isPreRelease,
       );
 
-      const bundleObj: Bundle = {
+      const bundleItem: Bundle = {
         source: jsonBundle.source,
         repo: jsonBundle.repo,
         name: jsonBundle.name,
-        repoDescription: decodeHtmlEntities(jsonBundle.repoDescription),
+        repoDescription: jsonBundle.repoDescription,
         avatarUrl: jsonBundle.avatarUrl,
         stars: jsonBundle.stars,
         starsGained7d: jsonBundle.starsGained7d,
@@ -104,76 +107,67 @@ export function loadInitialData(): Promise<ActiveData> {
 
         key: bundleKey,
         patchCount: jsonBundle.patches.length,
-        appCount: jsonBundle.appFirstSeen
-          ? Object.keys(jsonBundle.appFirstSeen).length
-          : 0,
+        appCount: Object.keys(jsonBundle.appFirstSeen).length,
         repoUrl: calculatedUrls.repoUrl,
         deepLink: calculatedUrls.deepLink,
         changelogUrl: calculatedUrls.changelogUrl,
-        searchableText: simplifyString(`${jsonBundle.name} ${jsonBundle.repo}`),
+        searchableText: simplifyString(
+          `${jsonBundle.name} ${jsonBundle.source} ${jsonBundle.repo}`,
+        ),
       };
 
-      bundleList.push(bundleObj);
+      bundleList.push(bundleItem);
 
-      const patchRows = bundleObj.patches.flatMap(
-        (patchItem: PatchItem, patchIndex: number) => {
-          const patchId = `${bundleKey}:${patchIndex}`;
-          const compatiblePackages =
-            patchItem.compatiblePackagesKey !== undefined
-              ? compatibilitiesList[patchItem.compatiblePackagesKey]
-              : undefined;
+      const patchRows = bundleItem.patches.flatMap((patchItem, patchIndex) => {
+        const patchId = `${bundleKey}:${patchIndex}`;
+        const compatiblePackages =
+          patchItem.compatiblePackagesKey !== undefined
+            ? compatibilitiesList[patchItem.compatiblePackagesKey]
+            : undefined;
 
-          let packageTargetRows: PackageTarget[] = universalDefaultTarget;
-          if (Array.isArray(compatiblePackages)) {
-            const mappedTargetRows = compatiblePackages.flatMap(
-              (compatibilityItem: CompatibilityItem) =>
-                compatibilityItem?.packageName
-                  ? [
-                      {
-                        packageName: compatibilityItem.packageName,
-                        isPreRelease: !!compatibilityItem.isPreRelease,
-                        versions: extractVersions(compatibilityItem.targets),
-                      },
-                    ]
-                  : [],
-            );
-            if (mappedTargetRows.length > 0)
-              packageTargetRows = mappedTargetRows;
+        let packageTargetRows: CompatibilityItem[] = universalDefaultTarget;
+        if (Array.isArray(compatiblePackages)) {
+          const mappedTargetRows: CompatibilityItem[] = [];
+          for (const compatibilityItem of compatiblePackages) {
+            if (compatibilityItem?.packageName) {
+              mappedTargetRows.push({
+                packageName: compatibilityItem.packageName,
+                targets: extractVersions(compatibilityItem.targets),
+              });
+            }
           }
+          if (mappedTargetRows.length > 0) {
+            packageTargetRows = mappedTargetRows;
+          }
+        }
 
-          const searchParts = [patchItem.name, patchItem.description];
-          if (Array.isArray(patchItem.options)) {
-            patchItem.options.forEach((patchOption) =>
-              searchParts.push(
-                patchOption.title,
-                patchOption.key,
-                patchOption.description,
-              ),
+        const searchParts = [patchItem.name, patchItem.description];
+        if (Array.isArray(patchItem.options)) {
+          for (const patchOption of patchItem.options) {
+            searchParts.push(
+              patchOption.title,
+              patchOption.key,
+              patchOption.description,
             );
           }
-          const searchPatchesText = simplifyString(
-            searchParts.filter(Boolean).join(" "),
-          );
+        }
+        const searchPatchesText = simplifyString(
+          searchParts.filter(Boolean).join(" "),
+        );
 
-          return packageTargetRows.map((targetPackage, targetIndex) => {
-            const packageName = targetPackage.packageName ?? "universal";
-
-            return {
-              id: `${patchId}:${targetIndex}`,
-              bundleKey,
-              patchName: patchItem.name,
-              patchDescription: patchItem.description,
-              packageName,
-              isAppPreRelease: !!targetPackage.isPreRelease,
-              isPatchPreRelease: !!patchItem.isPreRelease,
-              versions: targetPackage.versions,
-              searchPatchesText,
-              options: patchItem.options,
-              default: patchItem.default,
-            };
-          });
-        },
-      );
+        return packageTargetRows.map((targetPackage, targetIndex) => ({
+          id: `${patchId}:${targetIndex}`,
+          bundleKey,
+          patchName: patchItem.name,
+          patchDescription: patchItem.description,
+          packageName: targetPackage.packageName ?? PACKAGE_UNIVERSAL,
+          isPatchPreRelease: !!patchItem.isPreRelease,
+          versions: targetPackage.targets ?? [],
+          searchPatchesText,
+          options: patchItem.options,
+          default: patchItem.default,
+        }));
+      });
 
       rows.push(...patchRows);
     }
@@ -196,7 +190,7 @@ export function loadInitialData(): Promise<ActiveData> {
       const packageName = rowItem.packageName;
       const existingApp = appMap.get(packageName);
       if (!existingApp) {
-        const appMeta = getAppMeta(packageName, namesMap);
+        const appMeta = getAppMeta(packageName, appNamesMap);
         const categorySlug = slugifyCategory(appMeta.category);
         const searchableText = simplifyString(
           `${appMeta.appName} ${packageName} ${appMeta.description}`,
@@ -221,10 +215,11 @@ export function loadInitialData(): Promise<ActiveData> {
 
     const stats: ActiveStats = {
       bundlesCount: bundleList.length,
-      patchesCount: rows.length,
-      appsCount: appItems.filter(
-        (appItem) => appItem.packageName !== "universal",
-      ).length,
+      appsCount: appItems.reduce(
+        (count, appItem) =>
+          count + (appItem.packageName !== PACKAGE_UNIVERSAL ? 1 : 0),
+        0,
+      ),
     };
 
     return {
@@ -232,10 +227,9 @@ export function loadInitialData(): Promise<ActiveData> {
       rows,
       appItems,
       bundleMap,
-      namesMap,
+      namesMap: appNamesMap,
       appPatchesMap,
       bundlePatchesMap,
-      whatsNewHistory: [],
       stats,
     };
   })();

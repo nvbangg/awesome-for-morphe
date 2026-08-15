@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { AddToMorpheButton } from "@/components/common/ActionButtons";
 import { ModalHeader, CloseButton } from "@/components/common/CustomModal";
 
 interface TestBundleViewModalHeaderProps {
@@ -27,8 +27,7 @@ export function TestBundleViewModalHeader({
           <a
             href={repoUrl}
             target="_blank"
-            rel="noopener noreferrer"
-            className="text-lg font-bold text-primary hover:underline dark:text-[#3fe9e8] break-all whitespace-normal"
+            className="text-lg font-bold text-primary hover:underline dark:text-secondary break-all whitespace-normal"
           >
             {repoUrl}
           </a>
@@ -36,7 +35,7 @@ export function TestBundleViewModalHeader({
         </div>
 
         <div className="flex items-center justify-between gap-3 flex-wrap">
-          <div className="flex items-center gap-1 bg-background-100 dark:bg-background-800 p-1 rounded-xl border border-divider">
+          <div className="flex items-center gap-1 bg-card p-1 rounded-xl border border-divider">
             {branches.map((branch) => {
               const isAvailable = availableBranches.includes(branch);
               return (
@@ -47,10 +46,10 @@ export function TestBundleViewModalHeader({
                   onClick={() => isAvailable && setCurrentBranch(branch)}
                   className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                     currentBranch === branch
-                      ? "bg-primary text-white shadow-xs"
+                      ? "bg-primary text-background dark:text-foreground shadow-xs"
                       : isAvailable
-                        ? "text-foreground-600 hover:text-foreground hover:bg-background-200 dark:hover:bg-background-700 cursor-pointer"
-                        : "text-foreground-300 dark:text-foreground-600 opacity-50 cursor-not-allowed"
+                        ? "text-foreground-muted hover:text-foreground cursor-pointer"
+                        : "text-foreground-subtle opacity-50 cursor-not-allowed"
                   }`}
                 >
                   {branch}
@@ -59,16 +58,7 @@ export function TestBundleViewModalHeader({
             })}
           </div>
 
-          {deepLink && (
-            <a
-              href={deepLink}
-              target="_blank"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-(image:--primary-gradient) text-white text-sm font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] shadow-sm select-none"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Plus className="w-4 h-4" /> Add to Morphe
-            </a>
-          )}
+          <AddToMorpheButton deepLink={deepLink} />
         </div>
       </div>
     </ModalHeader>

@@ -8,28 +8,32 @@
     "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
   --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
   --color-card: var(--card);
+  --color-divider: var(--divider);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
-  --color-divider: var(--divider);
-  --color-border: var(--divider);
-  --color-foreground: var(--foreground);
-  --color-foreground-600: var(--foreground-600);
-  --color-foreground-500: var(--foreground-500);
-  --color-foreground-400: var(--foreground-400);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-overlay: var(--overlay);
+  --background-image-primary-gradient: var(--primary-gradient);
+  --shadow-modal: var(--shadow-modal);
 }
 
 :root {
   --background: #ffffff;
+  --foreground: #18181b;
+  --foreground-muted: #52525b;
+  --foreground-subtle: #a1a1aa;
   --card: #fafafa;
+  --divider: #e4e4e7;
   --primary: #1e5aa8;
   --secondary: #00afae;
-  --foreground: #18181b;
-  --foreground-600: #52525b;
-  --foreground-500: #a1a1aa;
-  --foreground-400: #a1a1aa;
-  --divider: #e4e4e7;
-  --primary-light: rgba(30, 90, 168, 0.06);
+  --success: #10b981;
+  --warning: #ffae00;
+  --overlay: rgba(0, 0, 0, 0.5);
   --primary-gradient: linear-gradient(135deg, #1e5aa8 0%, #00afae 100%);
   --shadow-modal:
     0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -37,15 +41,16 @@
 
 .dark {
   --background: #18181b;
+  --foreground: #fafafa;
+  --foreground-muted: #b8b8b8;
+  --foreground-subtle: #71717a;
   --card: #27272a;
+  --divider: #3f3f46;
   --primary: #4a7fc8;
   --secondary: #20cfce;
-  --foreground: #fafafa;
-  --foreground-600: #d4d4d8;
-  --foreground-500: #a1a1aa;
-  --foreground-400: #a1a1aa;
-  --divider: #3f3f46;
-  --primary-light: rgba(74, 127, 200, 0.08);
+  --success: #34d399;
+  --warning: #fbbf24;
+  --overlay: rgba(0, 0, 0, 0.7);
   --primary-gradient: linear-gradient(135deg, #4a7fc8 0%, #20cfce 100%);
   --shadow-modal:
     0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);

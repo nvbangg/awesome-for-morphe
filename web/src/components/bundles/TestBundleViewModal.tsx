@@ -1,14 +1,12 @@
 import { useMemo, useState } from "react";
 import { ActiveData, RowItem } from "@/types/data";
-import { getAppMeta, simplifyString } from "@/utils";
-import { SearchInput } from "@/components/common/SearchInput";
+import { ModalSearchBar } from "@/components/common/ModalSearchBar";
 import { useCopy } from "@/hooks/useCopy";
+import { useExpandedKeys } from "@/hooks/useExpandedKeys";
 import { CustomModal, ModalBody } from "@/components/common/CustomModal";
-import { PACKAGE_UNIVERSAL } from "@/constants";
-import { TestBundleData } from "@/utils/testBundleFetcher";
+import { TestBundleData, groupPatchesByApp } from "@/services";
 import { TestBundleViewModalHeader } from "./TestBundleViewModalHeader";
-import { TestBundleAppGroup, TestAppGroupData } from "./TestBundleAppGroup";
-import { Badge } from "@/components/common/Badge";
+import { BundleAppGroup } from "./BundleAppGroup";
 
 interface TestBundleViewModalProps {
   isOpen: boolean;
@@ -25,31 +23,22 @@ export function TestBundleViewModal({
 }: TestBundleViewModalProps) {
   const { copiedText, copyToClipboard } = useCopy();
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedBranch, setSelectedBranch] = useState<string | null>(null);
 
   const branches = ["main", "dev"];
 
-  const [currentBranch, setCurrentBranch] = useState<string>("main");
-  const [prevData, setPrevData] = useState(data);
+  const currentBranch =
+    selectedBranch && data?.availableBranches.includes(selectedBranch)
+      ? selectedBranch
+      : data?.availableBranches.includes("main")
+        ? "main"
+        : data?.availableBranches[0] || "main";
 
-  if (data !== prevData) {
-    setPrevData(data);
-    if (data && data.availableBranches.length > 0) {
-      if (data.availableBranches.includes("main")) {
-        setCurrentBranch("main");
-      } else {
-        setCurrentBranch(data.availableBranches[0]);
-      }
-    }
-  }
-
-  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
-
-  if (isOpen !== prevIsOpen) {
-    setPrevIsOpen(isOpen);
-    if (!isOpen) {
-      setSearchQuery("");
-    }
-  }
+  const handleClose = () => {
+    setSearchQuery("");
+    setSelectedBranch(null);
+    onClose();
+  };
 
   const currentRows: RowItem[] = useMemo(() => {
     if (!data || !currentBranch || !data.branches[currentBranch]) return [];
@@ -71,140 +60,57 @@ export function TestBundleViewModal({
 
   const appGroups = useMemo(() => {
     if (!currentRows || !activeData) return [];
+    return groupPatchesByApp(currentRows, activeData, searchQuery);
+  }, [currentRows, activeData, searchQuery]);
 
-    const queryWords = searchQuery
-      .trim()
-      .split(/\s+/)
-      .map(simplifyString)
-      .filter(Boolean);
-    const filteredRows =
-      queryWords.length > 0
-        ? currentRows.filter((patchItem) => {
-            const appMeta = getAppMeta(
-              patchItem.packageName,
-              activeData.namesMap,
-            );
-            const appNameClean = simplifyString(appMeta.appName);
-            const packageNameClean = simplifyString(patchItem.packageName);
-            return queryWords.every(
-              (word) =>
-                patchItem.searchPatchesText.includes(word) ||
-                packageNameClean.includes(word) ||
-                appNameClean.includes(word),
-            );
-          })
-        : currentRows;
-
-    const map = new Map<string, RowItem[]>();
-    for (const row of filteredRows) {
-      const packageName = row.packageName || PACKAGE_UNIVERSAL;
-      const list = map.get(packageName) || [];
-      list.push(row);
-      map.set(packageName, list);
-    }
-
-    const groups: TestAppGroupData[] = Array.from(map.entries()).map(
-      ([packageName, patches]) => {
-        const appMeta = getAppMeta(packageName, activeData.namesMap);
-        return { packageName, appMeta, patches };
-      },
-    );
-
-    groups.sort((groupA, groupB) => {
-      if (
-        (groupA.packageName === PACKAGE_UNIVERSAL) !==
-        (groupB.packageName === PACKAGE_UNIVERSAL)
-      ) {
-        return groupA.packageName === PACKAGE_UNIVERSAL ? 1 : -1;
-      }
-      return groupA.appMeta.appName.localeCompare(
-        groupB.appMeta.appName,
-        undefined,
-        { sensitivity: "base" },
-      );
-    });
-
-    return groups;
-  }, [currentRows, searchQuery, activeData]);
-
-  const [expandedAppKeys, setExpandedAppKeys] = useState<Set<string>>(
-    new Set(),
+  const appKeys = useMemo(
+    () => appGroups.map((g) => g.packageName),
+    [appGroups],
   );
-  const [syncState, setSyncState] = useState({
+
+  const { expandedKeys, toggleKey: toggleAppGroup } = useExpandedKeys(
     isOpen,
+    appKeys,
     searchQuery,
-    appGroups,
-  });
+  );
 
-  if (
-    isOpen !== syncState.isOpen ||
-    searchQuery !== syncState.searchQuery ||
-    appGroups !== syncState.appGroups
-  ) {
-    setSyncState({ isOpen, searchQuery, appGroups });
-    if (isOpen) {
-      if (appGroups.length === 1 || searchQuery.trim().length > 0) {
-        setExpandedAppKeys(
-          new Set(appGroups.map((appGroup) => appGroup.packageName)),
-        );
-      } else {
-        setExpandedAppKeys(new Set());
-      }
-    }
-  }
-
-  const toggleAppGroup = (pkgName: string) => {
-    setExpandedAppKeys((prev) => {
-      const next = new Set(prev);
-      if (next.has(pkgName)) {
-        next.delete(pkgName);
-      } else {
-        next.add(pkgName);
-      }
-      return next;
-    });
-  };
+  const totalAppsCount = useMemo(() => {
+    if (!currentRows) return 0;
+    return new Set(currentRows.map((r) => r.packageName)).size;
+  }, [currentRows]);
 
   if (!data) return null;
 
   return (
-    <CustomModal isOpen={isOpen} onClose={onClose}>
+    <CustomModal isOpen={isOpen} onClose={handleClose}>
       <TestBundleViewModalHeader
         repoUrl={data.repoUrl}
         branches={branches}
         availableBranches={data.availableBranches}
         currentBranch={currentBranch}
-        setCurrentBranch={setCurrentBranch}
+        setCurrentBranch={setSelectedBranch}
         deepLink={deepLink}
-        onClose={onClose}
+        onClose={handleClose}
       />
 
       <ModalBody>
-        <div className="flex items-center gap-3">
-          <SearchInput
-            id="test-patch-search"
-            placeholder="Search patches…"
-            value={searchQuery}
-            onChange={setSearchQuery}
-            className="flex-1"
-          />
-          <Badge variant="count" className="px-3 py-1 whitespace-nowrap">
-            {appGroups.length} {appGroups.length === 1 ? "app" : "apps"}
-          </Badge>
-        </div>
+        <ModalSearchBar
+          value={searchQuery}
+          onChange={setSearchQuery}
+          count={totalAppsCount}
+          label="app"
+        />
 
-        <div className="flex flex-col gap-3 pr-1 mt-2">
+        <div className="flex flex-col gap-3 pr-1">
           {appGroups.length === 0 ? (
-            <div className="py-12 text-center text-foreground-400 text-sm font-medium">
-              {data.availableBranches.includes(currentBranch)
-                ? "No apps found"
-                : `No patches-list.json found on '${currentBranch}' branch`}
+            <div className="py-12 text-center text-foreground-subtle text-sm font-medium">
+              No apps found
             </div>
           ) : (
             appGroups.map((group) => {
-              const isExpanded = expandedAppKeys.has(group.packageName);
+              const isExpanded = expandedKeys.has(group.packageName);
               return (
-                <TestBundleAppGroup
+                <BundleAppGroup
                   key={group.packageName}
                   group={group}
                   isExpanded={isExpanded}

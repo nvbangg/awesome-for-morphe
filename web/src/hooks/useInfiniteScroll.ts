@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { UI_SCROLL_ROOT_MARGIN, ITEMS_PER_PAGE } from "@/constants";
 
-export function useInfiniteScroll<T>(items: T[], chunkSize: number = 30) {
+export function useInfiniteScroll<T>(items: T[], chunkSize = ITEMS_PER_PAGE) {
   const [visibleCount, setVisibleCount] = useState(chunkSize);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
-  const [prevItems, setPrevItems] = useState(items);
-  if (items !== prevItems) {
-    setPrevItems(items);
+  const [previousItems, setPreviousItems] = useState(items);
+  if (items !== previousItems) {
+    setPreviousItems(items);
     setVisibleCount(chunkSize);
   }
 
@@ -15,7 +16,9 @@ export function useInfiniteScroll<T>(items: T[], chunkSize: number = 30) {
     (entries: IntersectionObserverEntry[]) => {
       const target = entries[0];
       if (target.isIntersecting) {
-        setVisibleCount((prev) => Math.min(prev + chunkSize, items.length));
+        setVisibleCount((previousCount) =>
+          Math.min(previousCount + chunkSize, items.length),
+        );
       }
     },
     [chunkSize, items.length],
@@ -27,16 +30,14 @@ export function useInfiniteScroll<T>(items: T[], chunkSize: number = 30) {
 
     observerRef.current = new IntersectionObserver(handleObserver, {
       root: null,
-      rootMargin: "400px",
+      rootMargin: UI_SCROLL_ROOT_MARGIN,
       threshold: 0,
     });
 
     observerRef.current.observe(currentElement);
 
     return () => {
-      if (observerRef.current && currentElement) {
-        observerRef.current.unobserve(currentElement);
-      }
+      observerRef.current?.disconnect();
     };
   }, [handleObserver]);
 

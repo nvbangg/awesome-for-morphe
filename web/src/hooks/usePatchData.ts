@@ -1,70 +1,59 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { ActiveData, WhatsNewHistoryItem } from "@/types/data";
 import { loadInitialData, fetchWhatsNewHistory } from "@/services";
 
 export function usePatchData(activeTab?: string) {
   const [activeData, setActiveData] = useState<ActiveData | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
   const [whatsNewHistory, setWhatsNewHistory] = useState<WhatsNewHistoryItem[]>(
     [],
   );
-  const [isWhatsNewLoading, setIsWhatsNewLoading] = useState<boolean>(false);
+  const [globalSearch, setGlobalSearch] = useState("");
 
-  const [globalSearch, setGlobalSearch] = useState<string>("");
-
-  const fetchData = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      const loadedData = await loadInitialData();
-      setActiveData(loadedData);
-    } catch (error: unknown) {
-      setErrorMessage(
-        error instanceof Error ? error.message : "Failed to load data",
-      );
-    } finally {
-      setIsLoading(false);
-    }
+  useEffect(() => {
+    let isComponentMounted = true;
+    loadInitialData()
+      .then((loadedData) => {
+        if (isComponentMounted) {
+          setActiveData(loadedData);
+          setIsLoading(false);
+        }
+      })
+      .catch((error: unknown) => {
+        if (isComponentMounted) {
+          setErrorMessage(
+            error instanceof Error ? error.message : "Failed to load data",
+          );
+          setIsLoading(false);
+        }
+      });
+    return () => {
+      isComponentMounted = false;
+    };
   }, []);
 
-  const loadWhatsNew = useCallback(async () => {
-    if (whatsNewHistory.length > 0 || isWhatsNewLoading) return;
-    try {
-      setIsWhatsNewLoading(true);
-      const history = await fetchWhatsNewHistory();
-      setWhatsNewHistory(history);
-    } catch {
-      // ignore
-    } finally {
-      setIsWhatsNewLoading(false);
-    }
-  }, [whatsNewHistory.length, isWhatsNewLoading]);
-
   useEffect(() => {
-    let mounted = true;
-    Promise.resolve().then(() => {
-      if (mounted) fetchData();
-    });
-    return () => {
-      mounted = false;
-    };
-  }, [fetchData]);
+    if (activeTab !== "whats-new" || whatsNewHistory.length > 0) return;
 
-  useEffect(() => {
-    let mounted = true;
-    if (activeTab === "whats-new") {
-      Promise.resolve().then(() => {
-        if (mounted) loadWhatsNew();
+    let isComponentMounted = true;
+    fetchWhatsNewHistory()
+      .then((history) => {
+        if (isComponentMounted) {
+          setWhatsNewHistory(history);
+        }
+      })
+      .catch(() => {
+        // ignore error
       });
-    }
+
     return () => {
-      mounted = false;
+      isComponentMounted = false;
     };
-  }, [activeTab, loadWhatsNew]);
+  }, [activeTab, whatsNewHistory.length]);
 
   const stats = useMemo(
-    () =>
-      activeData?.stats || { bundlesCount: 0, patchesCount: 0, appsCount: 0 },
+    () => activeData?.stats || { bundlesCount: 0, appsCount: 0 },
     [activeData],
   );
 

@@ -31,7 +31,7 @@ export function WhatsNewList({
     return (
       <div className="py-12 flex flex-col items-center justify-center text-center gap-3">
         <Spinner size="lg" color="warning" />
-        <p className="text-sm font-medium text-foreground-500">
+        <p className="text-sm font-medium text-foreground-muted">
           Loading What's New data...
         </p>
       </div>
@@ -40,7 +40,7 @@ export function WhatsNewList({
 
   if (!history || history.length === 0) {
     return (
-      <div className="py-12 flex flex-col items-center justify-center text-center text-foreground-400 gap-2">
+      <div className="py-12 flex flex-col items-center justify-center text-center text-foreground-subtle gap-2">
         <Sparkles className="size-8" />
         <p className="text-sm font-medium">No changes recorded.</p>
       </div>
@@ -51,7 +51,7 @@ export function WhatsNewList({
     <div className="flex flex-col gap-6">
       {visibleItems.map((dayItem, dayIndex) => (
         <div key={dayIndex} className="flex flex-col gap-3">
-          <div className="sticky top-14 z-10 bg-background/95 backdrop-blur-xs py-3 flex items-center gap-2 text-xs font-bold text-primary dark:text-[#3fe9e8] uppercase tracking-wider border-b border-divider/40 mb-2">
+          <div className="sticky top-14 z-10 bg-background/95 backdrop-blur-xs py-2 flex items-center gap-2 text-xs font-bold text-primary dark:text-secondary uppercase tracking-wider border-b border-divider mb-1.5">
             <Calendar className="size-3.5" />
             <span>{dayItem.date}</span>
           </div>

@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { fetchTestBundle, TestBundleData } from "@/utils/testBundleFetcher";
+import { fetchTestBundle, TestBundleData } from "@/services";
 import { ActiveData } from "@/types/data";
 
 export function useTestBundle(activeData: ActiveData | null) {
@@ -93,7 +93,7 @@ export function useTestBundle(activeData: ActiveData | null) {
       "",
       `${window.location.pathname}?test-bundle#bundles`,
     );
-  }, [setTestBundleError, setIsTestBundleInputOpen]);
+  }, []);
 
   const handleCloseTestBundleInput = useCallback(() => {
     setTestBundleError("");
@@ -105,7 +105,7 @@ export function useTestBundle(activeData: ActiveData | null) {
         `${window.location.pathname}#bundles`,
       );
     }
-  }, [setTestBundleError, setIsTestBundleInputOpen]);
+  }, []);
 
   const handleCloseTestBundleView = useCallback(() => {
     setIsTestBundleViewOpen(false);
@@ -114,7 +114,7 @@ export function useTestBundle(activeData: ActiveData | null) {
       "",
       `${window.location.pathname}#bundles`,
     );
-  }, [setIsTestBundleViewOpen]);
+  }, []);
 
   return {
     isTestBundleInputOpen,

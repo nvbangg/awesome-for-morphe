@@ -1,6 +1,8 @@
-import { Avatar } from "@heroui/react";
-import { Smartphone, Check, Copy, Play, ChevronDown } from "lucide-react";
 import { Badge } from "@/components/common/Badge";
+import { GooglePlayButton } from "@/components/common/ActionButtons";
+import { PackageNameCopy } from "@/components/common/PackageNameCopy";
+import { AppAvatar } from "@/components/common/ItemAvatar";
+import { ExpandChevron } from "@/components/common/ExpandChevron";
 import { PatchItemRow } from "@/components/common/PatchItemRow";
 import { isNew } from "@/utils/formatters";
 import { PACKAGE_UNIVERSAL } from "@/constants";
@@ -11,9 +13,9 @@ import { BundleModalMeta } from "./BundleModalHeader";
 
 interface BundleAppGroupProps {
   group: AppGroupData;
-  bundleMeta: BundleModalMeta;
+  bundleMeta?: BundleModalMeta;
   isExpanded: boolean;
-  toggleAppGroup: (pkgName: string) => void;
+  toggleAppGroup: (packageName: string) => void;
   copiedText: string | null;
   copyToClipboard: (text: string) => void;
 }
@@ -26,108 +28,64 @@ export function BundleAppGroup({
   copiedText,
   copyToClipboard,
 }: BundleAppGroupProps) {
-  const isUniversal = group.packageName === PACKAGE_UNIVERSAL;
-  const isNotOnPlayStore = !group.appMeta.minInstalls;
-  const showGooglePlay = !isUniversal && !isNotOnPlayStore;
+  const showGooglePlay = group.packageName !== PACKAGE_UNIVERSAL;
+
+  const patchBadge = (
+    <Badge variant="patches">
+      {group.totalPatchCount}{" "}
+      {group.totalPatchCount === 1 ? "patch" : "patches"}
+    </Badge>
+  );
 
   return (
-    <div className="border border-divider rounded-xl bg-background flex flex-col">
+    <div className="border border-divider rounded-xl bg-card flex flex-col">
       <div
         onClick={() => toggleAppGroup(group.packageName)}
-        className={`sticky -top-4 z-20 flex flex-col gap-2 px-4 py-3 bg-background cursor-pointer hover:bg-default-100/60 transition-colors rounded-t-xl shadow-sm ${isExpanded ? "border-b border-divider/60" : ""}`}
+        className={`sticky -top-4 z-20 flex flex-col gap-2 px-4 py-3 bg-card cursor-pointer rounded-t-xl ${isExpanded ? "border-b border-divider shadow-sm" : "rounded-b-xl"}`}
       >
-        <div className="flex items-center gap-4 w-full">
-          <Avatar className="w-10 h-10 rounded-xl shrink-0 border border-border bg-divider/40">
-            {group.appMeta.appIcon ? (
-              <Avatar.Image
-                src={group.appMeta.appIcon}
-                alt={group.appMeta.appName}
-              />
-            ) : null}
-            <Avatar.Fallback className="bg-transparent flex items-center justify-center">
-              <Smartphone className="size-5 text-foreground-400" />
-            </Avatar.Fallback>
-          </Avatar>
+        <div className="flex items-center justify-between gap-3 w-full">
+          <AppAvatar src={group.appMeta.appIcon} alt={group.appMeta.appName} />
 
           <div className="flex-1 min-w-0 flex flex-col justify-center">
-            <div className="flex items-center gap-2 flex-wrap min-w-0">
+            <div className="flex items-center gap-2 min-w-0 flex-wrap">
               <div className="font-bold text-foreground text-sm truncate">
                 {group.appMeta.appName}
               </div>
-              {isNew(bundleMeta.appFirstSeen?.[group.packageName]) && (
-                <Badge variant="new" />
-              )}
-              {group.patches.some((p: RowItem) => p.isAppPreRelease) && (
+              {bundleMeta &&
+                isNew(bundleMeta.appFirstSeen?.[group.packageName]) && (
+                  <Badge variant="new" />
+                )}
+              {group.patches.some((p: RowItem) => p.isPatchPreRelease) && (
                 <Badge variant="prerelease" />
               )}
             </div>
-            {group.packageName !== PACKAGE_UNIVERSAL && (
-              <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                  copyToClipboard(group.packageName);
-                }}
-                className="flex items-center gap-1.5 mt-0.5 text-xs text-primary cursor-pointer w-fit"
-                title="Copy Package Name"
-              >
-                {copiedText === group.packageName ? (
-                  <Check className="size-3 text-success shrink-0" />
-                ) : (
-                  <Copy className="size-3 shrink-0 text-foreground-500 hover:text-primary" />
-                )}
-                <span className="truncate text-primary font-medium dark:text-[#3fe9e8]">
-                  {group.packageName}
-                </span>
-              </div>
-            )}
+            <PackageNameCopy
+              packageName={group.packageName}
+              copiedText={copiedText}
+              copyToClipboard={copyToClipboard}
+            />
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
-            <Badge
-              variant="count"
-              className={
-                showGooglePlay ? "hidden sm:inline-flex" : "inline-flex"
-              }
-            >
-              {group.patches.length}{" "}
-              {group.patches.length === 1 ? "patch" : "patches"}
-            </Badge>
-            {showGooglePlay && (
-              <a
-                className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 hover:scale-[1.02] shadow-sm shrink-0"
-                href={`https://play.google.com/store/apps/details?id=${group.packageName}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Open on Google Play"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Play className="w-3 h-3 fill-current" />
-                Google Play
-              </a>
+            {showGooglePlay ? (
+              <div className="hidden sm:flex items-center gap-2">
+                {patchBadge}
+                <GooglePlayButton packageName={group.packageName} size="sm" />
+              </div>
+            ) : (
+              patchBadge
             )}
-            <ChevronDown
-              className={`w-4 h-4 text-foreground-500 transition-transform duration-200 shrink-0 ${isExpanded ? "rotate-180" : ""}`}
+            <ExpandChevron
+              isExpanded={isExpanded}
+              className="hidden sm:inline-flex"
             />
           </div>
         </div>
 
         {showGooglePlay && (
           <div className="sm:hidden flex items-center justify-between gap-2 pt-1">
-            <Badge variant="count">
-              {group.patches.length}{" "}
-              {group.patches.length === 1 ? "patch" : "patches"}
-            </Badge>
-            <a
-              className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-lg bg-(image:--primary-gradient) text-white text-xs font-semibold no-underline border-none cursor-pointer transition-all hover:opacity-90 active:scale-[0.98] shadow-sm shrink-0"
-              href={`https://play.google.com/store/apps/details?id=${group.packageName}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Open on Google Play"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Play className="w-3.5 h-3.5 fill-current" />
-              Google Play
-            </a>
+            {patchBadge}
+            <GooglePlayButton packageName={group.packageName} size="sm" />
           </div>
         )}
       </div>

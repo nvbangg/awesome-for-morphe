@@ -1,6 +1,7 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 import argparse
+import html
 import json
 import sys
 import time
@@ -85,7 +86,7 @@ def main() -> int:
             "source": bundle.get("source") or "",
             "repo": bundle.get("repo") or "",
             "name": bundle.get("name") or "",
-            "repoDescription": bundle.get("repoDescription") or "",
+            "repoDescription": html.unescape(bundle.get("repoDescription") or ""),
             "avatarUrl": bundle.get("avatarUrl") or "",
             "stars": bundle.get("stars") or 0,
             "starsGained7d": bundle.get("starsGained7d") or 0,
@@ -106,7 +107,7 @@ def main() -> int:
         app_entry = {
             "name": app_data.get("name"),
             "iconUrl": app_data.get("iconUrl"),
-            "description": app_data.get("description"),
+            "description": html.unescape(app_data.get("description") or ""),
             "minInstalls": app_data.get("minInstalls"),
             "category": app_data.get("category"),
             "firstSeen": app_data.get("firstSeen"),

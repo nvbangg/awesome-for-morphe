@@ -18,11 +18,11 @@ export function BundlesTab({
 }: BundlesTabProps) {
   return (
     <>
-      <div className="text-sm sm:text-base text-foreground-700 dark:text-foreground-400 mb-4 px-1 text-right">
+      <div className="text-sm sm:text-base text-foreground-muted mb-4 px-1 text-right">
         Bundle not found?{" "}
         <button
           onClick={onTestBundleClick}
-          className="font-semibold text-primary hover:underline hover:text-primary/80 transition-colors cursor-pointer"
+          className="font-semibold text-primary hover:underline hover:opacity-80 transition-opacity cursor-pointer"
         >
           Test bundle
         </button>
@@ -30,8 +30,7 @@ export function BundlesTab({
         <a
           href="https://github.com/nvbangg/awesome-morphe/issues/new?template=bundle-request.yml"
           target="_blank"
-          rel="noopener noreferrer"
-          className="font-semibold text-primary hover:underline hover:text-primary/80 transition-colors"
+          className="font-semibold text-primary hover:underline hover:opacity-80 transition-opacity"
         >
           Submit Bundle
         </a>

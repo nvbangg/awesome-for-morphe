@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Spinner } from "@heroui/react";
 import { CustomModal, ModalBody } from "@/components/common/CustomModal";
 import { SearchInput } from "@/components/common/SearchInput";
 
@@ -24,7 +25,7 @@ export function TestBundleInputModal({
       isOpen={isOpen}
       onClose={onClose}
       maxWidth="max-w-lg"
-      centerMobile={true}
+      centerMobile
     >
       <ModalBody className="pt-6">
         <form
@@ -45,47 +46,27 @@ export function TestBundleInputModal({
             <SearchInput
               value={link}
               onChange={setLink}
-              placeholder="https://github.com/owner/repo"
-              className="w-full"
+              placeholder="https://github.com/user/repo"
             />
-            {error && <p className="text-sm text-danger mt-1">{error}</p>}
+            {error && <p className="text-sm text-warning mt-1">{error}</p>}
           </div>
-          <div className="flex justify-end gap-3 mt-2">
+
+          <div className="flex justify-end gap-2 mt-2">
             <button
               type="button"
               onClick={onClose}
-              disabled={isLoading}
-              className="px-5 py-2.5 rounded-xl font-medium text-foreground-600 bg-background-200 hover:bg-background-300 dark:bg-background-800 dark:hover:bg-background-700 transition-colors"
+              className="px-4 py-2 text-sm font-semibold rounded-xl border border-divider hover:bg-divider transition-colors text-foreground cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={!link.trim() || isLoading}
-              className="px-5 py-2.5 rounded-xl font-medium text-white bg-primary hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="px-4 py-2 text-sm font-semibold rounded-xl bg-primary text-background dark:text-foreground hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center gap-2"
             >
               {isLoading ? (
                 <>
-                  <svg
-                    className="animate-spin h-5 w-5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
+                  <Spinner size="sm" color="current" />
                   Loading...
                 </>
               ) : (

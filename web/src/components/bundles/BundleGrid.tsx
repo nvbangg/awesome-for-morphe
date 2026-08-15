@@ -1,8 +1,8 @@
 import { useMemo, useDeferredValue, memo } from "react";
 import { BundleCard } from "./BundleCard";
 import { ActiveData } from "@/types/data";
-import { getFilteredBundles } from "@/services";
-import { EmptyState } from "@/components/common/EmptyState";
+import { getBundleItems } from "@/services";
+import { CardGrid, EmptyState } from "@/components/common/CardGrid";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { ITEMS_PER_PAGE } from "@/constants";
 
@@ -23,7 +23,7 @@ export const BundleGrid = memo(function BundleGrid({
 
   const processedBundles = useMemo(() => {
     if (!activeData) return [];
-    return getFilteredBundles(activeData.bundles, deferredSearch, sortOrder);
+    return getBundleItems(activeData.bundles, deferredSearch, sortOrder);
   }, [activeData, sortOrder, deferredSearch]);
 
   const { visibleItems, loadMoreRef, hasMore } = useInfiniteScroll(
@@ -36,17 +36,14 @@ export const BundleGrid = memo(function BundleGrid({
   }
 
   return (
-    <>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 my-6">
-        {visibleItems.map((bundleItem) => (
-          <BundleCard
-            key={bundleItem.key}
-            bundleItem={bundleItem}
-            onClick={onBundleClick}
-          />
-        ))}
-      </div>
-      {hasMore && <div ref={loadMoreRef} className="h-px w-full" />}
-    </>
+    <CardGrid hasMore={hasMore} loadMoreRef={loadMoreRef}>
+      {visibleItems.map((bundleItem) => (
+        <BundleCard
+          key={bundleItem.key}
+          bundleItem={bundleItem}
+          onClick={onBundleClick}
+        />
+      ))}
+    </CardGrid>
   );
 });

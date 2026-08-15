@@ -1,7 +1,7 @@
 {
-    "version": "1.1.13",
-    "created_at": "2026-08-15T02:47:37",
-    "description": "Fix Finsky forge: ownership rows now mirror real Play-installed apps (account = device Google account discovered at runtime, backend=3, offer_type=1). Previous rows with account='' were invisible to PlayGearheadService ('app owners empty').\n\n- **Android Auto**: injects PetalCarAppService and projects the built-in HiCar automotive UI (AutoPetalMapsActivity) onto the head-unit surface via VirtualDisplay, with synthetic pan/zoom/recenter gestures.\n- **Anti-Repack Bypass**: neutralises the native SecurityDetect.irpj() integrity check that kills the process on re-signed APKs.\n- **Manufacturer Check Bypass**: removes the Huawei/Honor-only device gate.\n- **Change package name**: install alongside the original app (default: morphe.huawei.petal.maps).",
-    "download_url": "https://github.com/andersonlucasg3/PetalMaps-AndroidAuto/releases/download/v1.1.13/patches-1.1.13.mpp",
+    "version": "1.1.15",
+    "created_at": "2026-08-15T11:32:31",
+    "description": "Add androidx.car.app.ACCESS_SURFACE permission — the car host throws SecurityException when the app registers its SurfaceCallback without it (crashed PetalSession.onCreateScreen).\n\n- **Android Auto**: injects PetalCarAppService and projects the built-in HiCar automotive UI (AutoPetalMapsActivity) onto the head-unit surface via VirtualDisplay, with synthetic pan/zoom/recenter gestures.\n- **Anti-Repack Bypass**: neutralises the native SecurityDetect.irpj() integrity check that kills the process on re-signed APKs.\n- **Manufacturer Check Bypass**: removes the Huawei/Honor-only device gate.\n- **Change package name**: install alongside the original app (default: morphe.huawei.petal.maps).",
+    "download_url": "https://github.com/andersonlucasg3/PetalMaps-AndroidAuto/releases/download/v1.1.15/patches-1.1.15.mpp",
     "signature_download_url": ""
 }

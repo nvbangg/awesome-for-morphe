@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.13",
+  "version": "1.1.15",
   "patches": [
     {
       "name": "Android Auto",
@@ -8,8 +8,37 @@
       "default": true,
       "dependencies": [
         "ResourcePatch",
+        "ResourcePatch",
         "ResourcePatch"
       ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.huawei.maps.app",
+          "name": "Petal Maps",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#E60012",
+          "signatures": [
+            "ddab0c1db857b116ab1f7a41583f8b452a609cdbd9a2ef088f5592d6fadb5cff"
+          ],
+          "targets": [
+            {
+              "version": "4.7.0.322(001)",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Android Auto API Level File",
+      "description": "Adds car-app-api.level to the APK root for androidx.car.app compatibility.",
+      "default": true,
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "com.huawei.maps.app",

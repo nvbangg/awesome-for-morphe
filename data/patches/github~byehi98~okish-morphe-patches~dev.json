@@ -1,7 +1,111 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "patches": [
+    {
+      "name": "Big Hunter Fake Purchase",
+      "description": "Tapping any store item grants the product immediately (via the game's own confirmed-purchase path -> native applyProduct) without opening Google Play billing. Entitlements persist across restarts.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakarod.bighunter",
+          "name": "Big Hunter",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#8B4513",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Big Hunter PairIP License Bypass",
+      "description": "Disables the PairIP license check (installer verification + Google Play licensing service validation + paywall/exit dialog). Required for patched APKs — the original check fails on any non-Play signature and force-closes the app.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakarod.bighunter",
+          "name": "Big Hunter",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#8B4513",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Big Hunter Remove Ads",
+      "description": "Interstitial ads are never shown (show() short-circuits via the ad-not-ready path on all three network bridges: AdMob, AppLovin, Unity Ads).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakarod.bighunter",
+          "name": "Big Hunter",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#8B4513",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Big Hunter Rewards Without Ads",
+      "description": "Rewarded video requests grant the reward immediately via the game's own native rewardCallback() without loading or showing any ad (AdMob, AppLovin, Unity Ads).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kakarod.bighunter",
+          "name": "Big Hunter",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#8B4513",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Doodle Jump Billing Bypass",
       "description": "Unlocks the full game by bypassing Google Play billing.",

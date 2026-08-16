@@ -1,7 +1,7 @@
 {
-    "version": "1.1.20",
-    "created_at": "2026-08-16T12:29:17",
-    "description": "Fix drag and small centered window: launch with --windowingMode fullscreen (drops stale task bounds), and scroll/fling gestures now anchor at the live window center instead of the last click position.\n\n- **Android Auto**: injects PetalCarAppService and projects the built-in HiCar automotive UI (AutoPetalMapsActivity) onto the head-unit surface via VirtualDisplay, with synthetic pan/zoom/recenter gestures.\n- **Anti-Repack Bypass**: neutralises the native SecurityDetect.irpj() integrity check that kills the process on re-signed APKs.\n- **Manufacturer Check Bypass**: removes the Huawei/Honor-only device gate.\n- **Change package name**: install alongside the original app (default: morphe.huawei.petal.maps).",
-    "download_url": "https://github.com/andersonlucasg3/PetalMaps-AndroidAuto/releases/download/v1.1.20/patches-1.1.20.mpp",
+    "version": "1.1.24",
+    "created_at": "2026-08-16T14:23:19",
+    "description": "Remove forced car mode (power-off/lockscreen — natural behavior preferred) and attack the portrait letterbox: force SENSOR_LANDSCAPE in runtime on the projected activity + explicit resizeableActivity=true in the manifest. Window bounds logged 2s after orientation change for diagnosis.\n\n- **Android Auto**: injects PetalCarAppService and projects the built-in HiCar automotive UI (AutoPetalMapsActivity) onto the head-unit surface via VirtualDisplay, with synthetic pan/zoom/recenter gestures.\n- **Anti-Repack Bypass**: neutralises the native SecurityDetect.irpj() integrity check that kills the process on re-signed APKs.\n- **Manufacturer Check Bypass**: removes the Huawei/Honor-only device gate.\n- **Change package name**: install alongside the original app (default: morphe.huawei.petal.maps).",
+    "download_url": "https://github.com/andersonlucasg3/PetalMaps-AndroidAuto/releases/download/v1.1.24/patches-1.1.24.mpp",
     "signature_download_url": ""
 }

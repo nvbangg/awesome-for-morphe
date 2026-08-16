@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0-dev.6",
+  "version": "1.4.0-dev.8",
   "patches": [
     {
       "name": "Add Packet Handler",
@@ -1722,6 +1722,35 @@
               "version": "5.3.2",
               "isExperimental": false,
               "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable non-One UI ROM support",
+      "description": "Makes Samsung Keyboard installable and usable on non-One UI ROMs.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch",
+        "ResourcePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.samsung.android.honeyboard",
+          "name": "Samsung Keyboard",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.9.40.48",
+              "isExperimental": false,
+              "minSdk": 33,
               "description": null
             }
           ]

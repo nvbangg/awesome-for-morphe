@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0-dev.20",
+  "version": "1.0.0-dev.21",
   "patches": [
     {
       "name": "Allow Importing Subs from Local Storage",
@@ -204,7 +204,7 @@
     },
     {
       "name": "Remove SDH Annotations",
-      "description": "Adds Settings → Morphe → Subtitles and removes SDH annotations from Media3 subtitles when enabled.",
+      "description": "Adds Settings → Morphe → Subtitles to normalize music symbols and remove SDH annotations from Media3 subtitles.",
       "default": false,
       "dependencies": [
         "BytecodePatch",
@@ -239,6 +239,32 @@
         "BytecodePatch",
         "ResourcePatch"
       ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nuvio.tv",
+          "name": "NuvioTV",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#111827",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.4-beta",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Side-by-side installation",
+      "description": "Installs the patched app separately as Nuvio Morphe instead of replacing NuvioTV.",
+      "default": true,
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "com.nuvio.tv",

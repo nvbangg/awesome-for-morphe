@@ -1167,7 +1167,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 28
+      "hotRank": 29
     },
     {
       "source": "github",
@@ -3576,7 +3576,7 @@
       "repoDescription": "morphe patches for kakaotalk/dcinside",
       "avatarUrl": "https://avatars.githubusercontent.com/u/240258030?v=4&s=64",
       "stars": 125,
-      "updatedAt": 1786889800000,
+      "updatedAt": 1786895205000,
       "firstSeen": 1774731407000,
       "appFirstSeen": {
         "com.dcinside.app.android": 1774756607000,
@@ -4264,7 +4264,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 20
+      "hotRank": 21
     },
     {
       "source": "github",
@@ -5065,7 +5065,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 17
+      "hotRank": 18
     },
     {
       "source": "gitlab",
@@ -5407,7 +5407,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 11
+      "hotRank": 12
     },
     {
       "source": "github",
@@ -9194,7 +9194,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 21
+      "hotRank": 22
     },
     {
       "source": "github",
@@ -11235,7 +11235,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 12
+      "hotRank": 13
     },
     {
       "source": "github",
@@ -12161,7 +12161,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 22
+      "hotRank": 20
     },
     {
       "source": "github",
@@ -12470,7 +12470,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 27
+      "hotRank": 28
     },
     {
       "source": "github",
@@ -13779,7 +13779,7 @@
       "repoDescription": "🧩Patches for Morphe, made with AI",
       "avatarUrl": "https://avatars.githubusercontent.com/u/212266985?v=4&s=64",
       "stars": 22,
-      "updatedAt": 1786889791000,
+      "updatedAt": 1786896196000,
       "firstSeen": 1784103515000,
       "appFirstSeen": {
         "com.mobge.Oddmar": 1784386508682,
@@ -13872,7 +13872,7 @@
         },
         {
           "name": "Unlimited coins",
-          "description": "Hex patches libil2cpp.so to skip SaveCoins, preventing the game from persisting coin deductions.",
+          "description": "Hex patches libil2cpp.so to skip SavePlayerData, SavePlayerProfile, and SaveCoins. This prevents the game from persisting coin deductions — when you spend coins on weapons, skins, maps, or modes, the reduced amount is never saved. Your coin balance stays unlimited across sessions. Does NOT affect weapon/skin/map unlock saves (those keep working).",
           "isPreRelease": true,
           "compatiblePackagesKey": 626
         },
@@ -13882,8 +13882,8 @@
           "compatiblePackagesKey": 625
         },
         {
-          "name": "Unlock all (weapons, modes, maps, no ads)",
-          "description": "Hex patches libil2cpp.so to: (1) make get_AdsRemoved return true (No Ads purchased), (2) make unlockBattleMode and unlockMiniGame free, (3) skip rewarded ads for weapons and rewards.",
+          "name": "Unlock all (weapons, skins, colors, modes, maps, no ads)",
+          "description": "Hex patches libil2cpp.so to: (1) make get_AdsRemoved return true (No Ads purchased), (2) make all purchases free (AchatWeapon, AchatSkin, AchatColor, buyMap, buyMiniGames), (3) skip all rewarded ads (ShowRewardedWeaponAd, WatchReward, WatchRewardedAd, SkinAd), (4) make unlockBattleMode and unlockMiniGame free. 14 hex patches total.",
           "isPreRelease": true,
           "compatiblePackagesKey": 626
         },
@@ -13904,7 +13904,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 29
+      "hotRank": 27
     },
     {
       "source": "github",
@@ -15356,7 +15356,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 13
+      "hotRank": 11
     },
     {
       "source": "github",
@@ -16843,7 +16843,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 41
+      "hotRank": 40
     },
     {
       "source": "github",
@@ -17416,7 +17416,7 @@
       "repoDescription": "Prerelease Morphe patches for the official NuvioTV Android application",
       "avatarUrl": "https://avatars.githubusercontent.com/u/145302945?v=4&s=64",
       "stars": 13,
-      "updatedAt": 1786627628000,
+      "updatedAt": 1786897039000,
       "firstSeen": 1785911533420,
       "appFirstSeen": {
         "com.nuvio.tv": 1785884829695
@@ -17473,7 +17473,7 @@
         },
         {
           "name": "Remove SDH Annotations",
-          "description": "Adds Settings → Morphe → Subtitles and removes SDH annotations from Media3 subtitles when enabled.",
+          "description": "Adds Settings → Morphe → Subtitles to normalize music symbols and remove SDH annotations from Media3 subtitles.",
           "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 720
@@ -17484,10 +17484,16 @@
           "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 720
+        },
+        {
+          "name": "Side-by-side installation",
+          "description": "Installs the patched app separately as Nuvio Morphe instead of replacing NuvioTV.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 720
         }
       ],
       "isPreRelease": false,
-      "hotRank": 18
+      "hotRank": 17
     },
     {
       "source": "github",
@@ -19303,7 +19309,7 @@
         }
       ],
       "isPreRelease": false,
-      "hotRank": 40
+      "hotRank": 41
     }
   ],
   "compatibilities": [

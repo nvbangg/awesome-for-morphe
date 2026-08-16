@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.33.0-dev.2",
+  "version": "1.33.0",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -104,6 +104,37 @@
                 "ARMEABI_V7A": 76450210,
                 "X86_64": 76450210,
                 "X86": 76450210
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable ad dialog when reopening app",
+      "description": "Prevents the full-screen \"loading ad\" dialog from appearing when the app is reopened after being minimized.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "videoplayer.videodownloader.downloader",
+          "name": "All Video Downloader & Ace Player",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.9.7",
+              "versionCodes": {
+                "ARM64_V8A": 24011893,
+                "ARMEABI_V7A": 24011893,
+                "X86_64": 24011893,
+                "X86": 24011893
               },
               "isExperimental": false,
               "minSdk": null,
@@ -263,6 +294,14 @@
       "options": []
     },
     {
+      "name": "Remove Ads",
+      "description": "Stubs known ad SDK entry points and poisons ad-network URL strings across the whole app.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
       "name": "Remove Analytics",
       "description": "Disables tracking and crash-reporting tools, corrupts analytics web links inside the code, and removes background tracking services.",
       "default": false,
@@ -358,6 +397,37 @@
       "options": []
     },
     {
+      "name": "Skip splash and language screens",
+      "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "videoplayer.videodownloader.downloader",
+          "name": "All Video Downloader & Ace Player",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.9.7",
+              "versionCodes": {
+                "ARM64_V8A": 24011893,
+                "ARMEABI_V7A": 24011893,
+                "X86_64": 24011893,
+                "X86": 24011893
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Skip welcome screen",
       "description": "Moves the launcher intent filters and app shortcuts from the welcome/splash activity to the main activity, so the app boots straight past the splash and update screen.",
       "default": false,
@@ -407,14 +477,6 @@
           ]
         }
       ],
-      "options": []
-    },
-    {
-      "name": "Universal Remove Ads",
-      "description": "Stubs known ad SDK entry points and poisons ad-network URL strings across the whole app.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
       "options": []
     }
   ]

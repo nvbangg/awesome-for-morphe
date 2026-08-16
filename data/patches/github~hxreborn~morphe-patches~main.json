@@ -1,7 +1,35 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "patches": [
+    {
+      "name": "AMOLED dark theme",
+      "description": "Replaces the dark theme background with pure black.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ai.perplexity.app.android",
+          "name": "Perplexity",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#20808D",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "AMOLED dark theme",
       "description": "Replaces the dark theme background with pure black.",
@@ -73,6 +101,32 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#F08029",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide membership upselling",
+      "description": "Hides the membership promotion on the Home screen and the free trial bottom sheet.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.audible.application",
+          "name": "Audible",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#F8991C",
           "signatures": null,
           "targets": [
             {

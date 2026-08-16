@@ -1,0 +1,190 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.5.0",
+  "patches": [
+    {
+      "name": "10x Bullet Damage",
+      "description": "Multiplies the player's bullet damage by 10 in the Bullet Hell minigame (damage 1 -> 10), applied to both enemies and bosses.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rookery.courier",
+          "name": "Roost",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2A1E9E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.12",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Beam of Death (10x Fire Rate)",
+      "description": "Multiplies the player's firing speed by 10 in the Bullet Hell minigame (fire interval 0.15 -> 0.015) for a near-continuous beam.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rookery.courier",
+          "name": "Roost",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2A1E9E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.12",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass Play Store license check",
+      "description": "Disables the PairIP Play-license check so a non-Play (e.g. patched/sideloaded) install no longer redirects to the \"get it on Google Play\" wall on launch.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rookery.courier",
+          "name": "Roost",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2A1E9E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.12",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Free Nest Egg (bypass claim cooldown)",
+      "description": "Removes the client-side cooldown timer check on the nest-egg free-bird claim button so the claim request is sent to the server on every tap. The server still controls eligibility; this only stops the client from blocking the request.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rookery.courier",
+          "name": "Roost",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2A1E9E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.12",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Redirect Google login to microG",
+      "description": "Routes Roost's Google Play Services calls to microG RE so a patched install can sign in with Google. Requires microG RE (app.revanced.android.gms) installed.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rookery.courier",
+          "name": "Roost",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2A1E9E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.12",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip Play Integrity (fix microG Firebase delay)",
+      "description": "Makes Play Integrity attestation fail fast instead of hanging ~60s under microG, removing the delay before Firebase logins, leaderboards, and other backend calls.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rookery.courier",
+          "name": "Roost",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2A1E9E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.12",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Triple Bullet Size",
+      "description": "Triples the on-screen size of the player's bullets in the Bullet Hell minigame (sizePx 6.0 -> 18.0).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rookery.courier",
+          "name": "Roost",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2A1E9E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.12",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

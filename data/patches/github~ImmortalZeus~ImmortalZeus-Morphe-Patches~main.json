@@ -1,0 +1,75 @@
+{
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Block hosts in string resources",
+      "description": "Blocks ads and trackers by replacing hosts in XML string resources. Works alongside bytecode hosts blocker for comprehensive coverage.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "hosts",
+          "title": "Hosts file",
+          "description": "The hosts file containing hosts or domains you want to block.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        },
+        {
+          "key": "redirectionIp",
+          "title": "Redirection IP",
+          "description": "The IP address to redirect blocked domains to.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "0.0.0.0",
+          "values": {
+            "Default": "0.0.0.0",
+            "localhost": "127.0.0.1"
+          }
+        },
+        {
+          "key": "isWildcard",
+          "title": "Wildcard blocking",
+          "description": "Enable subdomain matching.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Example Patch",
+      "description": "Example patch to start with.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.example.app",
+          "name": "XYZ app",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0045",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.0.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

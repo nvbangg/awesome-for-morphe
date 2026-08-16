@@ -14,6 +14,7 @@ export function Header() {
               alt="Awesome Morphe"
               className="size-9 object-contain"
               src="assets/favicon.svg"
+              decoding="async"
             />
           </a>
           <div className="flex flex-col justify-center">

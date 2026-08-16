@@ -25,6 +25,8 @@ export function Footer() {
               alt="Awesome Morphe"
               className="h-8 w-auto"
               src="assets/favicon.svg"
+              loading="lazy"
+              decoding="async"
             />
             <span className="font-bold text-xl text-foreground group-hover:text-primary transition-colors">
               Awesome Morphe

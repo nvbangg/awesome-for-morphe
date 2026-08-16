@@ -34,7 +34,13 @@ const BaseAvatar = memo(function BaseAvatar({
     <Avatar
       className={`${container} border border-divider bg-card shrink-0 ${className}`}
     >
-      <Avatar.Image src={src || undefined} alt={alt} className="object-cover" />
+      <Avatar.Image
+        src={src || undefined}
+        alt={alt}
+        className="object-cover"
+        loading="lazy"
+        decoding="async"
+      />
       <Avatar.Fallback className="flex items-center justify-center bg-transparent">
         <Icon className={`${icon} text-foreground-subtle`} />
       </Avatar.Fallback>

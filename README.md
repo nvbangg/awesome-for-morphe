@@ -1,10 +1,8 @@
-## [nvbangg/awesome-morphe](https://github.com/nvbangg/awesome-morphe)
-
-### <img src="web/public/assets/favicon.svg" width="20" height="20" alt="Favicon Website"> [awesome-morphe.vercel.app](https://awesome-morphe.vercel.app)
+# <img src="web/public/assets/favicon.svg" width="30" height="30" alt="Awesome Morphe" /> [Awesome Morphe](https://github.com/nvbangg/awesome-morphe)
 
 > [!NOTE]
 > 🌐 A curated list of [Morphe](https://morphe.software) resources and community projects.  
-> 🔍 Explore [all patch bundles](https://awesome-morphe.vercel.app) created by the Morphe community.  
+> 🔍 Explore [all patch bundles](https://awesome-morphe.vercel.app) from the Morphe community.  
 > 🔔 Get notified via the [Telegram channel](https://t.me/awesome_morphe) whenever there's a new update.  
 > 📂 For contribution guidelines and documentation, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -90,28 +88,28 @@
     <img src="https://github-stats-extended.vercel.app/api/pin/?username=Paresh-Maheshwari&repo=morphe-ai&border_radius=20&show_owner=true" />
   </picture>
 </a>
-<a href="https://github.com/hoo-dles/jadx-morphe">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=hoo-dles&repo=jadx-morphe&border_radius=20&theme=dracula&show_owner=true" />
-    <img src="https://github-stats-extended.vercel.app/api/pin/?username=hoo-dles&repo=jadx-morphe&border_radius=20&show_owner=true" />
-  </picture>
-</a>
 <a href="https://github.com/nvbangg/builder-for-morphe">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=nvbangg&repo=builder-for-morphe&border_radius=20&theme=dracula&show_owner=true" />
     <img src="https://github-stats-extended.vercel.app/api/pin/?username=nvbangg&repo=builder-for-morphe&border_radius=20&show_owner=true" />
   </picture>
 </a>
-<a href="https://github.com/Jman-Github/Awesome-ReVanced">
+<a href="https://github.com/hoo-dles/jadx-morphe">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Awesome-ReVanced&border_radius=20&theme=dracula&show_owner=true" />
-    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Awesome-ReVanced&border_radius=20&show_owner=true" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=hoo-dles&repo=jadx-morphe&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=hoo-dles&repo=jadx-morphe&border_radius=20&show_owner=true" />
   </picture>
 </a>
 <a href="https://github.com/Jman-Github/Universal-ReVanced-Manager">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Universal-ReVanced-Manager&border_radius=20&theme=dracula&show_owner=true" />
     <img src="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Universal-ReVanced-Manager&border_radius=20&show_owner=true" />
+  </picture>
+</a>
+<a href="https://github.com/Jman-Github/Awesome-ReVanced">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Awesome-ReVanced&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Awesome-ReVanced&border_radius=20&show_owner=true" />
   </picture>
 </a>
 <a href="https://github.com/Xisrr1/Revancify-Xisr">
@@ -136,11 +134,12 @@
 
 ---
 
+## ℹ️ About
+
 <div align="center">
 
-**[github.com/nvbangg/awesome-morphe](https://github.com/nvbangg/awesome-morphe)**  
-⭐ Star this repo if you find it useful!  
-Maintained with ❤️ by **[@nvbangg](https://github.com/nvbangg)**
+Maintained with ❤️ by **[@nvbangg](https://github.com/nvbangg)**  
+⭐ Star [this repo](https://github.com/nvbangg/awesome-morphe) if you find it useful!
 
 </div>
 

@@ -31,14 +31,14 @@ export function Footer() {
             </span>
           </a>
           <p className="text-foreground-muted text-sm">
-            Explore all patch bundles created by the Morphe community.
+            Explore all patch bundles from the Morphe community.
           </p>
           <div className="border-t border-divider pt-3 text-foreground-muted text-xs leading-relaxed flex flex-col gap-1.5">
             <p>
               <a
                 href="https://github.com/nvbangg/awesome-morphe"
                 target="_blank"
-                className="hover:text-foreground transition-colors inline-flex items-center gap-1.5"
+                className="font-semibold text-primary no-underline hover:opacity-80 transition-opacity"
               >
                 This project
               </a>{" "}

@@ -51,7 +51,7 @@ export function WhatsNewList({
     <div className="flex flex-col gap-6">
       {visibleItems.map((dayItem, dayIndex) => (
         <div key={dayIndex} className="flex flex-col gap-3">
-          <div className="sticky top-14 z-10 bg-background/95 backdrop-blur-xs py-2 flex items-center gap-2 text-xs font-bold text-primary dark:text-secondary uppercase tracking-wider border-b border-divider mb-1.5">
+          <div className="sticky top-16 z-10 bg-background/95 backdrop-blur-xs py-2 flex items-center gap-2 text-xs font-bold text-primary dark:text-secondary uppercase tracking-wider border-b border-divider mb-1.5">
             <Calendar className="size-3.5" />
             <span>{dayItem.date}</span>
           </div>

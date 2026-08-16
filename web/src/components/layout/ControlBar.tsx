@@ -62,7 +62,7 @@ export function ControlBar({
 
   return (
     <div
-      className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-3 sm:gap-4 mt-2 mb-3"
+      className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-3 sm:gap-4 mt-2 mb-3 relative"
       id="browse-bar"
     >
       <div
@@ -104,12 +104,14 @@ export function ControlBar({
       </div>
 
       {activeTab === "whats-new" ? (
-        <div className="w-full md:w-auto flex items-center justify-center md:justify-start gap-2.5 text-sm text-foreground font-semibold md:ml-2 py-1 select-text">
+        <div className="w-full sm:w-auto sm:absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 flex items-center justify-center gap-2.5 text-sm text-foreground font-semibold py-1 select-text">
           <span className="relative flex size-2 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
             <span className="relative inline-flex rounded-full size-2 bg-secondary"></span>
           </span>
-          <span>Recently added bundles, apps & patches</span>
+          <span className="whitespace-nowrap">
+            Recently added bundles, apps & patches
+          </span>
         </div>
       ) : (
         <>

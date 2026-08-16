@@ -23,7 +23,7 @@ export function WhatsNewHeader() {
           target="_blank"
           className="font-semibold text-primary hover:underline"
         >
-          <GitHubIcon className="inline size-4 text-foreground mr-1 align-[-2px] shrink-0" />
+          <GitHubIcon className="inline size-4 text-foreground ml-1 mr-1 align-[-2px] shrink-0" />
           GitHub repository.
         </a>
       </p>

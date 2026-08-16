@@ -1,7 +1,35 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.1",
+  "version": "1.7.0",
   "patches": [
+    {
+      "name": "AMOLED dark theme",
+      "description": "Replaces the dark theme background with pure black.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ai.perplexity.app.android",
+          "name": "Perplexity",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#20808D",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "AMOLED dark theme",
       "description": "Replaces the dark theme background with pure black.",
@@ -36,6 +64,32 @@
       "options": []
     },
     {
+      "name": "AMOLED dark theme",
+      "description": "Replaces the dark theme background with pure black.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.michaldrabik.showly2",
+          "name": "Showly",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#F44336",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable tracking",
       "description": "Disables analytics and crash reporting.",
       "default": true,
@@ -47,6 +101,63 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#F08029",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide ads",
+      "description": "Removes the adverts shown between search results.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.thetrainline",
+          "name": "Trainline",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00A88F",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "407.0.0.178994",
+              "versionCodes": {
+                "ARM64_V8A": 1278994,
+                "ARMEABI_V7A": 1278994,
+                "X86_64": 1278994,
+                "X86": 1278994
+              },
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide membership upselling",
+      "description": "Hides the membership promotion on the Home screen and the free trial bottom sheet.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.audible.application",
+          "name": "Audible",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#F8991C",
           "signatures": null,
           "targets": [
             {
@@ -95,6 +206,32 @@
       "options": []
     },
     {
+      "name": "Open Library on launch",
+      "description": "Opens the Library tab instead of Home on launch. Applies only while signed in.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.audible.application",
+          "name": "Audible",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#F8991C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remove 'Sent from' signature",
       "description": "Removes the 'Sent from Proton Mail' signature from emails.",
       "default": true,
@@ -128,6 +265,99 @@
     {
       "name": "Remove free accounts limit",
       "description": "Removes the limit for maximum free accounts logged in.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ch.protonmail.android",
+          "name": "Proton Mail",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6D4AFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.10.4",
+              "versionCodes": {
+                "ARM64_V8A": 17667,
+                "ARMEABI_V7A": 17667,
+                "X86_64": 17667,
+                "X86": 17667
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove nags",
+      "description": "Removes the rate this app dialog and the promotional dialogs shown on startup.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.readera",
+          "name": "ReadEra",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#0061BD",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.05.20+2300",
+              "versionCodes": {
+                "ARM64_V8A": 2300,
+                "ARMEABI_V7A": 2300,
+                "X86_64": 2300,
+                "X86": 2300
+              },
+              "isExperimental": false,
+              "minSdk": 16,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Spoof signature",
+      "description": "Restores push notifications by spoofing the original app signature.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ch.protonmail.android",
+          "name": "Proton Mail",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6D4AFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.10.4",
+              "versionCodes": {
+                "ARM64_V8A": 17667,
+                "ARMEABI_V7A": 17667,
+                "X86_64": 17667,
+                "X86": 17667
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock custom time picker",
+      "description": "Enables picking a custom date and time when snoozing conversations and scheduling messages.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -210,7 +440,7 @@
     },
     {
       "name": "Unlock premium",
-      "description": "Unlocks ad removal, light theme, custom images, list view types, quick ratings, and transparent widgets.",
+      "description": "Unlocks ad removal, light theme, custom images, list view types, quick ratings, and transparent widgets. The News feed is not included.",
       "default": true,
       "dependencies": [
         "ResourcePatch"
@@ -225,10 +455,58 @@
           "signatures": null,
           "targets": [
             {
-              "version": null,
-              "versionCodes": null,
+              "version": "3.70.0",
+              "versionCodes": {
+                "ARM64_V8A": 840,
+                "ARMEABI_V7A": 840,
+                "X86_64": 840,
+                "X86": 840
+              },
               "isExperimental": false,
-              "minSdk": null,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks all premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "app.symfonik.music.player",
+          "name": "Symfonium",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#E22728",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.0.0",
+              "versionCodes": {
+                "ARM64_V8A": 127708,
+                "ARMEABI_V7A": 127708,
+                "X86_64": 127708,
+                "X86": 127708
+              },
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "14.1.0",
+              "versionCodes": {
+                "ARM64_V8A": 127734,
+                "ARMEABI_V7A": 127734,
+                "X86_64": 127734,
+                "X86": 127734
+              },
+              "isExperimental": false,
+              "minSdk": 32,
               "description": null
             }
           ]

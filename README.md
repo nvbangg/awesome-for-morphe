@@ -100,6 +100,18 @@
     <img src="https://github-stats-extended.vercel.app/api/pin/?username=hoo-dles&repo=jadx-morphe&border_radius=20&show_owner=true" />
   </picture>
 </a>
+<a href="https://github.com/brosssh/morphe-mcp">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=brosssh&repo=morphe-mcp&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=brosssh&repo=morphe-mcp&border_radius=20&show_owner=true" />
+  </picture>
+</a>
+<a href="https://github.com/jpa102/morphe_feature_flags">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=jpa102&repo=morphe_feature_flags&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=jpa102&repo=morphe_feature_flags&border_radius=20&show_owner=true" />
+  </picture>
+</a>
 <a href="https://github.com/Jman-Github/Universal-ReVanced-Manager">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=Jman-Github&repo=Universal-ReVanced-Manager&border_radius=20&theme=dracula&show_owner=true" />

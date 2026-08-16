@@ -12,6 +12,7 @@
 - [📚 Resources](#resources)
 - [🔍 Patch Indexes](#patch-indexes)
 - [🛠️ Other Projects](#projects)
+- [ℹ️ About](#about)
 
 <div align="center"> 
 <picture>
@@ -146,7 +147,7 @@
 
 ---
 
-## ℹ️ About
+## <a id="about"></a> ℹ️ About
 
 <div align="center">
 

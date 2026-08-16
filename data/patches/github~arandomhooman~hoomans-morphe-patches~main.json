@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.47.0",
+  "version": "1.48.0",
   "patches": [
     {
       "name": "7TV and BTTV emotes",
@@ -330,6 +330,31 @@
           "targets": [
             {
               "version": "45.8.0.110",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix login",
+      "description": "Fixes the \"This app version/OS is not currently supported\" error that blocks login after the app has been patched. Twitch runs a Play Integrity check in the background and reports the result to its login server; re-signing makes that check fail, so the server refuses the login. This stops the app from sending that attestation, so it looks like a device without Google Play, where login works normally. It does not change anything else about how you log in.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "tv.twitch.android.app",
+          "name": "Twitch",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#9147FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "30.7.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null

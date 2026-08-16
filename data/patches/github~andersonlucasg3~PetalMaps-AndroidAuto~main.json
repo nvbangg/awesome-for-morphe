@@ -1,12 +1,13 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.17",
+  "version": "1.1.20",
   "patches": [
     {
       "name": "Android Auto",
       "description": "Injects full Android Auto support into Petal Maps, including CarAppService, manifest declarations, and required resources. Also apply 'Anti-Repack Bypass' and 'Manufacturer Check Bypass' for full functionality on non-Huawei devices.",
       "default": true,
       "dependencies": [
+        "ResourcePatch",
         "ResourcePatch",
         "ResourcePatch",
         "ResourcePatch"
@@ -151,6 +152,34 @@
     {
       "name": "Anti-Repack Bypass",
       "description": "Neutralizes the native integrity check (SecurityDetect.irpj) that kills the process upon detecting APK re-signing.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.huawei.maps.app",
+          "name": "Petal Maps",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#E60012",
+          "signatures": [
+            "ddab0c1db857b116ab1f7a41583f8b452a609cdbd9a2ef088f5592d6fadb5cff"
+          ],
+          "targets": [
+            {
+              "version": "4.7.0.322(001)",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Automotive orientation fix",
+      "description": "Changes AutoPetalMapsActivity's screenOrientation from landscape to unspecified so it follows the VirtualDisplay orientation.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

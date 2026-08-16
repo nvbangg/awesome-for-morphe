@@ -32,13 +32,23 @@ export const BundleCard = memo(function BundleCard({
         />
 
         <div className="flex-1 min-w-0 flex flex-col justify-center">
-          <div className="text-base font-bold text-foreground mb-0.5 whitespace-normal break-all flex flex-wrap items-center gap-1.5">
-            {bundleItem.name}
-            {isNew(bundleItem.firstSeen) && <Badge variant="new" />}
-            {bundleItem.isPreRelease && <Badge variant="prerelease" />}
-            {bundleItem.isUnofficial && <Badge variant="unofficial" />}
+          <div className="text-base font-bold text-foreground mb-0.5 whitespace-normal wrap-break-word">
+            <span>{bundleItem.name}</span>
+            {isNew(bundleItem.firstSeen) && (
+              <Badge variant="new" className="ml-1.5" />
+            )}
+            {bundleItem.isPreRelease && (
+              <Badge variant="prerelease" className="ml-1.5" />
+            )}
+            {bundleItem.isUnofficial && (
+              <Badge variant="unofficial" className="ml-1.5" />
+            )}
             {bundleItem.stars > 0 && (
-              <Badge variant="stars" value={bundleItem.stars} />
+              <Badge
+                variant="stars"
+                value={bundleItem.stars}
+                className="ml-1.5"
+              />
             )}
           </div>
           <RepoLink

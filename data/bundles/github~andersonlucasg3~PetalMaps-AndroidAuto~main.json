@@ -1,7 +1,7 @@
 {
-    "version": "1.1.15",
-    "created_at": "2026-08-15T11:32:31",
-    "description": "Add androidx.car.app.ACCESS_SURFACE permission — the car host throws SecurityException when the app registers its SurfaceCallback without it (crashed PetalSession.onCreateScreen).\n\n- **Android Auto**: injects PetalCarAppService and projects the built-in HiCar automotive UI (AutoPetalMapsActivity) onto the head-unit surface via VirtualDisplay, with synthetic pan/zoom/recenter gestures.\n- **Anti-Repack Bypass**: neutralises the native SecurityDetect.irpj() integrity check that kills the process on re-signed APKs.\n- **Manufacturer Check Bypass**: removes the Huawei/Honor-only device gate.\n- **Change package name**: install alongside the original app (default: morphe.huawei.petal.maps).",
-    "download_url": "https://github.com/andersonlucasg3/PetalMaps-AndroidAuto/releases/download/v1.1.15/patches-1.1.15.mpp",
+    "version": "1.1.16",
+    "created_at": "2026-08-15T23:39:27",
+    "description": "Fix black screen on the car: launch the automotive activity via root 'am start --display <id>' (stock Android blocks launchDisplayId for regular apps). Shared RootShell helper (su --mount-master) between tweaker and CarDisplay; fallback to direct startActivity without root.\n\n- **Android Auto**: injects PetalCarAppService and projects the built-in HiCar automotive UI (AutoPetalMapsActivity) onto the head-unit surface via VirtualDisplay, with synthetic pan/zoom/recenter gestures.\n- **Anti-Repack Bypass**: neutralises the native SecurityDetect.irpj() integrity check that kills the process on re-signed APKs.\n- **Manufacturer Check Bypass**: removes the Huawei/Honor-only device gate.\n- **Change package name**: install alongside the original app (default: morphe.huawei.petal.maps).",
+    "download_url": "https://github.com/andersonlucasg3/PetalMaps-AndroidAuto/releases/download/v1.1.16/patches-1.1.16.mpp",
     "signature_download_url": ""
 }

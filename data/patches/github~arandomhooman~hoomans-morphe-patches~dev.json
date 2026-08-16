@@ -1,7 +1,32 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.44.0-dev.4",
+  "version": "1.47.0",
   "patches": [
+    {
+      "name": "7TV and BTTV emotes",
+      "description": "Renders global and current-channel 7TV and BTTV emotes in incoming live chat. Type an emote code normally to send it; this patch does not add a picker or provider login.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "tv.twitch.android.app",
+          "name": "Twitch",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#9147FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "30.7.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Auto claim channel points",
       "description": "Claims the channel points bonus chest for you automatically. Whenever Twitch makes a bonus available, the claim fires on its own so you don't have to tap the chest.",
@@ -17,7 +42,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "29.9.1",
+              "version": "30.7.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -42,7 +67,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "29.9.1",
+              "version": "30.7.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -69,7 +94,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "45.0.0.109",
+              "version": "45.8.0.110",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -96,7 +121,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "45.0.0.109",
+              "version": "45.8.0.110",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -121,7 +146,34 @@
           "signatures": null,
           "targets": [
             {
-              "version": "45.0.0.109",
+              "version": "45.8.0.110",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable cloud sign-in prompt",
+      "description": "Keeps the optional Microsoft cloud sign-in onboarding from replacing SwiftKey's launcher, so local keyboard setup and settings remain usable without an account. This does not sign in or unlock cloud sync and other account-backed features.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.touchtype.swiftkey",
+          "name": "Microsoft SwiftKey",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00A4EF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "9.13.13.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -146,7 +198,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "45.0.0.109",
+              "version": "45.8.0.110",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -173,7 +225,61 @@
           "signatures": null,
           "targets": [
             {
-              "version": "45.0.0.109",
+              "version": "45.8.0.110",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable screenshot sharing",
+      "description": "Stops the share sheet that pops up when you take a screenshot in the app.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.tumblr",
+          "name": "Tumblr",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#001935",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "45.8.0.110",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable telemetry",
+      "description": "Stops SwiftKey's first-party telemetry records and uploads, Adjust attribution, Crashlytics, Firebase Sessions, legacy Google Analytics, and app exception reporting. Push messaging and the multipurpose job service stay enabled.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.touchtype.swiftkey",
+          "name": "Microsoft SwiftKey",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00A4EF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "9.13.13.5",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -223,7 +329,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "45.0.0.109",
+              "version": "45.8.0.110",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -248,7 +354,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "29.9.1",
+              "version": "30.7.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -377,7 +483,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "45.0.0.109",
+              "version": "45.8.0.110",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -427,7 +533,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "29.9.1",
+              "version": "30.7.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -504,7 +610,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "4.56.0",
+              "version": "4.57.4",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -593,6 +699,12 @@
               "isExperimental": false,
               "minSdk": null,
               "description": null
+            },
+            {
+              "version": "2.5.0.6",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
             }
           ]
         }
@@ -615,6 +727,33 @@
           "targets": [
             {
               "version": "3.73.179",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Plus",
+      "description": "Unlocks Moneta Plus features, including the full asset catalog, more than five selected assets, five-minute rate updates, camera price scanning, and extended historical charts. Purchases, restore purchases, and server account state are unchanged. This is the arm64 build.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "currency.converter.moneta",
+          "name": "Moneta",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#4BBA17",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.2.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null

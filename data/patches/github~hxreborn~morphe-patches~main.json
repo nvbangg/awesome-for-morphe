@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "patches": [
     {
       "name": "AMOLED dark theme",
@@ -108,6 +108,37 @@
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide ads",
+      "description": "Removes the adverts shown between search results.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.thetrainline",
+          "name": "Trainline",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00A88F",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "407.0.0.178994",
+              "versionCodes": {
+                "ARM64_V8A": 1278994,
+                "ARMEABI_V7A": 1278994,
+                "X86_64": 1278994,
+                "X86": 1278994
+              },
+              "isExperimental": false,
+              "minSdk": 26,
               "description": null
             }
           ]
@@ -255,6 +286,37 @@
               },
               "isExperimental": false,
               "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove nags",
+      "description": "Removes the rate this app dialog and the promotional dialogs shown on startup.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.readera",
+          "name": "ReadEra",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#0061BD",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.05.20+2300",
+              "versionCodes": {
+                "ARM64_V8A": 2300,
+                "ARMEABI_V7A": 2300,
+                "X86_64": 2300,
+                "X86": 2300
+              },
+              "isExperimental": false,
+              "minSdk": 16,
               "description": null
             }
           ]

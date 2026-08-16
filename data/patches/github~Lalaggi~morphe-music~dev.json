@@ -1,0 +1,185 @@
+{
+  "version": "1.1.0-dev.10",
+  "appNames": {
+    "com.amazon.mp3": "Amazon Music",
+    "com.soundcloud.android": "SoundCloud"
+  },
+  "patches": [
+    {
+      "name": "Prevent log upload",
+      "description": "Avoid uploading logs when the application crashes.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.amazon.mp3": null
+      },
+      "compatibility": [
+        {
+          "name": "Amazon Music",
+          "packageName": "com.amazon.mp3",
+          "description": null,
+          "appIconColor": 16750848,
+          "targets": [
+            {
+              "version": "",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Removes all ads from SoundCloud, including promoted tracks and banner ads.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.soundcloud.android": [
+          "2026.07.23-release"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "SoundCloud",
+          "packageName": "com.soundcloud.android",
+          "description": null,
+          "appIconColor": 0,
+          "targets": [
+            {
+              "version": "2026.07.23-release",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Rename shared permissions",
+      "description": "Rename certain permissions shared across Amazon apps. Applying this patch can fix installation errors, but can also break features in certain apps.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.amazon.mp3": null
+      },
+      "compatibility": [
+        {
+          "name": "Amazon Music",
+          "packageName": "com.amazon.mp3",
+          "description": null,
+          "appIconColor": 16750848,
+          "targets": [
+            {
+              "version": "",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip ads",
+      "description": "Skip ads between the tracks.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.amazon.mp3": null
+      },
+      "compatibility": [
+        {
+          "name": "Amazon Music",
+          "packageName": "com.amazon.mp3",
+          "description": null,
+          "appIconColor": 16750848,
+          "targets": [
+            {
+              "version": "",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlimited track skipping",
+      "description": "Unlocks the ability to skip tracks without restriction.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.amazon.mp3": null
+      },
+      "compatibility": [
+        {
+          "name": "Amazon Music",
+          "packageName": "com.amazon.mp3",
+          "description": null,
+          "appIconColor": 16750848,
+          "targets": [
+            {
+              "version": "",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Unlimited",
+      "description": "Unlock Music Unlimited features.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.amazon.mp3": null
+      },
+      "compatibility": [
+        {
+          "name": "Amazon Music",
+          "packageName": "com.amazon.mp3",
+          "description": null,
+          "appIconColor": 16750848,
+          "targets": [
+            {
+              "version": "",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks SoundCloud Go+ premium features including offline downloads and high quality audio.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.soundcloud.android": [
+          "2026.07.23-release"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "SoundCloud",
+          "packageName": "com.soundcloud.android",
+          "description": null,
+          "appIconColor": 0,
+          "targets": [
+            {
+              "version": "2026.07.23-release",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

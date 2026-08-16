@@ -2,7 +2,6 @@ import { memo } from "react";
 import { Package } from "lucide-react";
 import { Badge } from "@/components/common/Badge";
 import { WhatsNewBundleChange, ActiveData } from "@/types/data";
-import { isNew } from "@/utils/formatters";
 import { getAppMeta } from "@/utils";
 import { WhatsNewAppCard } from "./WhatsNewAppCard";
 
@@ -24,8 +23,7 @@ export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
   onPatchClick,
 }: WhatsNewBundleCardProps) {
   const fullBundleKey = `${bundleData.source}:${bundleData.repo}`;
-  const bundleMeta = activeData?.bundleMap[fullBundleKey.toLowerCase()];
-  const isBundleNew = !!bundleData.isNew || isNew(bundleMeta?.firstSeen);
+  const isBundleNew = !!bundleData.isNew;
 
   return (
     <div className="border border-divider rounded-2xl overflow-hidden shadow-2xs bg-background">
@@ -37,9 +35,8 @@ export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
       >
         <div className="flex items-center gap-2 text-base font-semibold text-foreground group-hover:text-primary transition-colors min-w-0">
           <Package className="size-4 text-primary shrink-0" />
-          <span className="truncate">{bundleMeta?.name || bundleKey}</span>
+          <span className="truncate">{bundleKey}</span>
           {isBundleNew && <Badge variant="new" />}
-          {bundleMeta?.isUnofficial && <Badge variant="unofficial" />}
         </div>
       </button>
 
@@ -51,8 +48,7 @@ export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
               : null;
             const icon = meta?.appIcon || null;
             const appName = appData.appName || meta?.appName || packageName;
-            const isAppNew =
-              !isBundleNew && (!!appData.isNew || isNew(meta?.firstSeen));
+            const isAppNew = !isBundleNew && !!appData.isNew;
 
             return (
               <WhatsNewAppCard

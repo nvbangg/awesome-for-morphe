@@ -104,10 +104,10 @@ export function loadInitialData(): Promise<ActiveData> {
         stars: jsonBundle.stars,
         updatedAt: jsonBundle.updatedAt,
         firstSeen: jsonBundle.firstSeen,
+        hotRank,
+        isPreRelease: !!jsonBundle.isPreRelease,
         appFirstSeen: jsonBundle.appFirstSeen,
         patches: jsonBundle.patches,
-        isPreRelease: !!jsonBundle.isPreRelease,
-        hotRank,
 
         key: bundleKey,
         patchCount: jsonBundle.patches.length,
@@ -166,7 +166,8 @@ export function loadInitialData(): Promise<ActiveData> {
           patchName: patchItem.name,
           patchDescription: patchItem.description,
           packageName: targetPackage.packageName ?? PACKAGE_UNIVERSAL,
-          isPatchPreRelease: !!patchItem.isPreRelease,
+          isPatchPreRelease:
+            Boolean(jsonBundle.isPreRelease) || Boolean(patchItem.isPreRelease),
           versions: targetPackage.targets ?? [],
           searchPatchesText,
           options: patchItem.options,
@@ -211,6 +212,7 @@ export function loadInitialData(): Promise<ActiveData> {
           patchCount: 1,
           categorySlug,
           searchableText,
+          isPreRelease: appMeta.isPreRelease,
         });
       } else {
         existingApp.patchCount += 1;

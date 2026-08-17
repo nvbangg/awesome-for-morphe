@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { ActiveData } from "@/types/data";
 import { getAppMeta } from "@/utils/domainUtils";
+import { isNew } from "@/utils/formatters";
 import { getAppBundleGroups } from "@/services";
 import { ModalSearchBar } from "@/components/common/ModalSearchBar";
 import { CustomModal, ModalBody } from "@/components/common/CustomModal";
@@ -39,7 +40,7 @@ export function AppModal({
   }, [packageName, activeData, searchQuery]);
 
   const bundleKeys = useMemo(
-    () => bundleGroups.map((g) => g.bundleKey),
+    () => bundleGroups.map((group) => group.bundleKey),
     [bundleGroups],
   );
 
@@ -52,7 +53,9 @@ export function AppModal({
   const totalBundlesCount = useMemo(() => {
     if (!packageName || !activeData) return 0;
     const rawPatches = activeData.appPatchesMap[packageName] || [];
-    return new Set(rawPatches.map((p) => p.bundleKey.toLowerCase())).size;
+    return new Set(
+      rawPatches.map((patchItem) => patchItem.bundleKey.toLowerCase()),
+    ).size;
   }, [packageName, activeData]);
 
   if (!applicationMeta || !packageName) return null;
@@ -92,6 +95,8 @@ export function AppModal({
                   toggleBundleGroup={toggleBundleGroup}
                   copiedText={copiedText}
                   copyToClipboard={copyToClipboard}
+                  isAppNew={isNew(applicationMeta.firstSeen)}
+                  isAppPreRelease={applicationMeta.isPreRelease}
                 />
               );
             })

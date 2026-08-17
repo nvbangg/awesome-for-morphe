@@ -42,7 +42,7 @@ export function BundleModal({
   }, [bundleKey, activeData, searchQuery]);
 
   const appKeys = useMemo(
-    () => appGroups.map((g) => g.packageName),
+    () => appGroups.map((group) => group.packageName),
     [appGroups],
   );
 

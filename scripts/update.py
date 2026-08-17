@@ -108,32 +108,23 @@ def main() -> int:
             "firstSeen": parse_timestamp(
                 existing_bundles.get(key, {}).get("firstSeen", now_ms)
             ),
-            "appFirstSeen": bundle.get("appFirstSeen") or {},
-            "patches": bundle.get("patches") or [],
-            "isPreRelease": bool(bundle.get("isPreRelease")),
-            "hotRank": hot_rank if hot_rank is not None else None,
         }
+        if hot_rank is not None:
+            ordered_bundle["hotRank"] = hot_rank
+        if bundle.get("isPreRelease"):
+            ordered_bundle["isPreRelease"] = True
+        ordered_bundle["appFirstSeen"] = bundle.get("appFirstSeen") or {}
+        ordered_bundle["patches"] = bundle.get("patches") or []
         final_bundles.append(ordered_bundle)
-    apps_store = {}
-    for package_name, app_data in apps_dict.items():
-        app_data.setdefault("firstSeen", now_ms)
-        app_data.pop("updatedAt", None)
-        app_entry = {
-            "name": app_data.get("name"),
-            "iconUrl": app_data.get("iconUrl"),
-            "description": html.unescape(app_data.get("description") or ""),
-            "minInstalls": app_data.get("minInstalls"),
-            "category": app_data.get("category"),
-            "firstSeen": app_data.get("firstSeen"),
-        }
-        if "altName" in app_data:
-            app_entry["altName"] = app_data["altName"]
-        apps_store[package_name] = app_entry
-
+    app_patches_status: dict[str, list[bool]] = {}
     reindexed_compatibilities = []
     compat_map = {}
     for bundle in final_bundles:
+        is_bundle_prerelease = bool(bundle.get("isPreRelease"))
         for patch in bundle.get("patches", []):
+            is_patch_prerelease = is_bundle_prerelease or bool(
+                patch.get("isPreRelease")
+            )
             if "compatiblePackagesKey" in patch:
                 old_key = patch["compatiblePackagesKey"]
                 compat_data = compatibilities_list[old_key]
@@ -145,6 +136,36 @@ def main() -> int:
                     reindexed_compatibilities.append(compat_data)
                     compat_map[compat_json] = new_key
                     patch["compatiblePackagesKey"] = new_key
+                for compat_entry in compat_data:
+                    package_name = compat_entry.get("packageName")
+                    if package_name:
+                        app_patches_status.setdefault(package_name, []).append(
+                            is_patch_prerelease
+                        )
+            else:
+                app_patches_status.setdefault(
+                    local_parse.PACKAGE_UNIVERSAL, []
+                ).append(is_patch_prerelease)
+
+    apps_store = {}
+    for package_name, app_data in apps_dict.items():
+        app_data.setdefault("firstSeen", now_ms)
+        app_data.pop("updatedAt", None)
+        statuses = app_patches_status.get(package_name, [])
+        is_app_prerelease = bool(statuses and all(statuses))
+        app_entry = {
+            "name": app_data.get("name"),
+            "iconUrl": app_data.get("iconUrl"),
+            "description": html.unescape(app_data.get("description") or ""),
+            "minInstalls": app_data.get("minInstalls"),
+            "category": app_data.get("category"),
+            "firstSeen": app_data.get("firstSeen"),
+        }
+        if is_app_prerelease:
+            app_entry["isPreRelease"] = True
+        if "altName" in app_data:
+            app_entry["altName"] = app_data["altName"]
+        apps_store[package_name] = app_entry
 
     save_json(
         BUNDLES_JSON_PATH,

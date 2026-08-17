@@ -3,6 +3,7 @@ import { GooglePlayButton } from "@/components/common/ActionButtons";
 import { PackageNameCopy } from "@/components/common/PackageNameCopy";
 import { AppAvatar } from "@/components/common/ItemAvatar";
 import { ModalHeader, CloseButton } from "@/components/common/CustomModal";
+import { isNew } from "@/utils/formatters";
 import {
   PACKAGE_UNIVERSAL,
   CATEGORY_LABEL_UNIVERSAL,
@@ -18,6 +19,7 @@ interface AppModalHeaderProps {
     category: string;
     categorySlug: string;
     firstSeen: number;
+    isPreRelease: boolean;
   };
   packageName: string | null;
   copiedText: string | null;
@@ -50,6 +52,8 @@ export function AppModalHeader({
               <h2 className="text-xl font-bold tracking-tight text-foreground truncate">
                 {applicationMeta.appName}
               </h2>
+              {isNew(applicationMeta.firstSeen) && <Badge variant="new" />}
+              {applicationMeta.isPreRelease && <Badge variant="prerelease" />}
               {applicationMeta.minInstalls !== undefined &&
                 applicationMeta.minInstalls > 0 &&
                 packageName !== PACKAGE_UNIVERSAL &&

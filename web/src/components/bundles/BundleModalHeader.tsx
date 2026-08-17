@@ -4,31 +4,12 @@ import { RepoLink } from "@/components/common/RepoLink";
 import { BundleAvatar } from "@/components/common/ItemAvatar";
 import { ModalHeader, CloseButton } from "@/components/common/CustomModal";
 import { isNew } from "@/utils/formatters";
+import { BundleMeta } from "@/utils/domainUtils";
 
-export interface BundleModalMeta {
-  source: string;
-  repo: string;
-  name: string;
-  repoDescription: string;
-  avatarUrl: string;
-  stars: number;
-  updatedAt: number;
-  firstSeen: number;
-  appFirstSeen: Record<string, number>;
-  isPreRelease: boolean;
-  hotRank: number | null;
-
-  key: string;
-  repoUrl: string;
-  deepLink: string;
-  changelogUrl: string;
-  appCount: number;
-  patchCount: number;
-  isUnofficial: boolean;
-}
+export type BundleModalMeta = BundleMeta;
 
 interface BundleModalHeaderProps {
-  bundleMeta: BundleModalMeta;
+  bundleMeta: BundleMeta;
   formattedDate: string;
   onClose: () => void;
 }

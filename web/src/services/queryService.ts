@@ -1,6 +1,7 @@
 import { AppItem, RowItem, Bundle, ActiveData } from "@/types/data";
 
 import { simplifyString, getAppMeta } from "@/utils";
+import { AppMeta } from "@/utils/domainUtils";
 import {
   CATEGORY_UNIVERSAL,
   CATEGORY_LABEL_UNIVERSAL,
@@ -302,14 +303,7 @@ export function getAppBundleGroups(
 
 export interface AppGroupData {
   packageName: string;
-  appMeta: {
-    appName: string;
-    appIcon: string;
-    description: string;
-    minInstalls: number;
-    category: string;
-    firstSeen: number;
-  };
+  appMeta: AppMeta;
   patches: RowItem[];
   totalPatchCount: number;
 }

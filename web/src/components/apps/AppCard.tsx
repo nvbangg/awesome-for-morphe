@@ -42,6 +42,9 @@ export const AppCard = memo(function AppCard({
             {isNew(appItem.firstSeen) && (
               <Badge variant="new" className="ml-1.5" />
             )}
+            {appItem.isPreRelease && (
+              <Badge variant="prerelease" className="ml-1.5" />
+            )}
             {appItem.minInstalls > 0 &&
               appItem.packageName !== PACKAGE_UNIVERSAL &&
               appItem.categorySlug !== CATEGORY_UNIVERSAL && (

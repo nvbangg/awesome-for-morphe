@@ -5,8 +5,8 @@ import { BundleAvatar } from "@/components/common/ItemAvatar";
 import { ExpandChevron } from "@/components/common/ExpandChevron";
 import { PatchItemRow } from "@/components/common/PatchItemRow";
 import { isNew, formatDate } from "@/utils/formatters";
+import { isAllPatchesPreRelease } from "@/utils/domainUtils";
 import { BundleGroupData } from "@/services/queryService";
-import { RowItem } from "@/types/data";
 
 interface AppBundleGroupProps {
   group: BundleGroupData;
@@ -15,6 +15,8 @@ interface AppBundleGroupProps {
   toggleBundleGroup: (bundleKey: string) => void;
   copiedText: string | null;
   copyToClipboard: (text: string, key?: string) => void;
+  isAppNew?: boolean;
+  isAppPreRelease?: boolean;
 }
 
 export function AppBundleGroup({
@@ -24,7 +26,19 @@ export function AppBundleGroup({
   toggleBundleGroup,
   copiedText,
   copyToClipboard,
+  isAppNew,
+  isAppPreRelease,
 }: AppBundleGroupProps) {
+  const isBundleRowPreRelease = isAllPatchesPreRelease(group.patches);
+
+  const showBundleNewBadge =
+    !isAppNew &&
+    Boolean(
+      displayPackage && isNew(group.bundleMeta.appFirstSeen?.[displayPackage]),
+    );
+  const showBundlePreReleaseBadge = !isAppPreRelease && isBundleRowPreRelease;
+  const hidePatchPreReleaseBadge = isAppPreRelease || isBundleRowPreRelease;
+
   const patchBadge = (
     <Badge variant="patches">
       {group.totalPatchCount}{" "}
@@ -55,11 +69,8 @@ export function AppBundleGroup({
               <div className="font-bold text-foreground text-sm truncate">
                 {group.bundleMeta.name}
               </div>
-              {displayPackage &&
-                isNew(group.bundleMeta.appFirstSeen?.[displayPackage]) && (
-                  <Badge variant="new" />
-                )}
-              {group.bundleMeta.isPreRelease && <Badge variant="prerelease" />}
+              {showBundleNewBadge && <Badge variant="new" />}
+              {showBundlePreReleaseBadge && <Badge variant="prerelease" />}
               {group.bundleMeta.isUnofficial && <Badge variant="unofficial" />}
               {group.bundleMeta.stars > 0 && (
                 <Badge variant="stars" value={group.bundleMeta.stars} />
@@ -109,12 +120,13 @@ export function AppBundleGroup({
 
       {isExpanded && (
         <div className="flex flex-col">
-          {group.patches.map((patchItem: RowItem) => (
+          {group.patches.map((patchItem) => (
             <PatchItemRow
               key={patchItem.id}
               patchItem={patchItem}
               copiedText={copiedText}
               copyToClipboard={copyToClipboard}
+              hidePreReleaseBadge={hidePatchPreReleaseBadge}
             />
           ))}
         </div>

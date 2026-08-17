@@ -5,15 +5,13 @@ import { AppAvatar } from "@/components/common/ItemAvatar";
 import { ExpandChevron } from "@/components/common/ExpandChevron";
 import { PatchItemRow } from "@/components/common/PatchItemRow";
 import { isNew } from "@/utils/formatters";
+import { isAllPatchesPreRelease, BundleMeta } from "@/utils/domainUtils";
 import { PACKAGE_UNIVERSAL } from "@/constants";
 import { AppGroupData } from "@/services/queryService";
-import { RowItem } from "@/types/data";
-
-import { BundleModalMeta } from "./BundleModalHeader";
 
 interface BundleAppGroupProps {
   group: AppGroupData;
-  bundleMeta?: BundleModalMeta;
+  bundleMeta?: BundleMeta;
   isExpanded: boolean;
   toggleAppGroup: (packageName: string) => void;
   copiedText: string | null;
@@ -29,6 +27,17 @@ export function BundleAppGroup({
   copyToClipboard,
 }: BundleAppGroupProps) {
   const showGooglePlay = group.packageName !== PACKAGE_UNIVERSAL;
+
+  const isBundleNew = Boolean(bundleMeta && isNew(bundleMeta.firstSeen));
+  const isBundlePreRelease = Boolean(bundleMeta?.isPreRelease);
+
+  const isAppNew =
+    !isBundleNew &&
+    Boolean(bundleMeta && isNew(bundleMeta.appFirstSeen?.[group.packageName]));
+  const isAppPreRelease =
+    !isBundlePreRelease && isAllPatchesPreRelease(group.patches);
+
+  const hidePatchPreReleaseBadge = isBundlePreRelease || isAppPreRelease;
 
   const patchBadge = (
     <Badge variant="patches">
@@ -51,13 +60,8 @@ export function BundleAppGroup({
               <div className="font-bold text-foreground text-sm truncate">
                 {group.appMeta.appName}
               </div>
-              {bundleMeta &&
-                isNew(bundleMeta.appFirstSeen?.[group.packageName]) && (
-                  <Badge variant="new" />
-                )}
-              {group.patches.some((p: RowItem) => p.isPatchPreRelease) && (
-                <Badge variant="prerelease" />
-              )}
+              {isAppNew && <Badge variant="new" />}
+              {isAppPreRelease && <Badge variant="prerelease" />}
             </div>
             <PackageNameCopy
               packageName={group.packageName}
@@ -92,12 +96,13 @@ export function BundleAppGroup({
 
       {isExpanded && (
         <div className="flex flex-col">
-          {group.patches.map((patchItem: RowItem) => (
+          {group.patches.map((patchItem) => (
             <PatchItemRow
               key={patchItem.id}
               patchItem={patchItem}
               copiedText={copiedText}
               copyToClipboard={copyToClipboard}
+              hidePreReleaseBadge={hidePatchPreReleaseBadge}
             />
           ))}
         </div>

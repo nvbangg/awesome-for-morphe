@@ -8,6 +8,7 @@ interface PatchItemRowProps {
   patchItem: RowItem;
   copiedText: string | null;
   copyToClipboard: (text: string, key?: string) => void;
+  hidePreReleaseBadge?: boolean;
 }
 
 const PatchOptionsGroup = memo(function PatchOptionsGroup({
@@ -40,6 +41,7 @@ export const PatchItemRow = memo(function PatchItemRow({
   patchItem,
   copiedText,
   copyToClipboard,
+  hidePreReleaseBadge,
 }: PatchItemRowProps) {
   const [showOptions, setShowOptions] = useState(false);
 
@@ -62,7 +64,9 @@ export const PatchItemRow = memo(function PatchItemRow({
             {patchItem.patchName}
           </span>
 
-          {patchItem.isPatchPreRelease && <Badge variant="prerelease" />}
+          {!hidePreReleaseBadge && patchItem.isPatchPreRelease && (
+            <Badge variant="prerelease" />
+          )}
 
           {isDefaultOff && <Badge variant="off" />}
 

@@ -1,6 +1,13 @@
-import { VersionItem, AppNameMeta, Bundle } from "@/types/data";
+import { VersionItem, AppNameMeta, Bundle, RowItem } from "@/types/data";
 import { CATEGORY_LABEL_UNIVERSAL } from "@/constants";
 import { slugifyCategory } from "./stringUtils";
+
+export function isAllPatchesPreRelease(patches: RowItem[]): boolean {
+  return (
+    patches.length > 0 &&
+    patches.every((patchItem) => patchItem.isPatchPreRelease)
+  );
+}
 
 export function extractVersions(rawVersionsValue: unknown): VersionItem[] {
   if (!Array.isArray(rawVersionsValue)) return [];
@@ -48,15 +55,7 @@ export function buildBundleUrls(
 export function getAppMeta(
   packageName: string,
   appNamesMap: Record<string, AppNameMeta>,
-): {
-  appName: string;
-  appIcon: string;
-  description: string;
-  minInstalls: number;
-  category: string;
-  categorySlug: string;
-  firstSeen: number;
-} {
+) {
   const appMeta = appNamesMap[packageName];
   return {
     appName: appMeta?.name || packageName,
@@ -66,8 +65,11 @@ export function getAppMeta(
     category: appMeta?.category || CATEGORY_LABEL_UNIVERSAL,
     categorySlug: appMeta?.category ? slugifyCategory(appMeta.category) : "",
     firstSeen: appMeta?.firstSeen || 0,
+    isPreRelease: Boolean(appMeta?.isPreRelease),
   };
 }
+
+export type AppMeta = ReturnType<typeof getAppMeta>;
 
 export function getBundleMeta(
   bundleKey: string,
@@ -86,9 +88,9 @@ export function getBundleMeta(
     stars: bundle.stars,
     updatedAt: bundle.updatedAt,
     firstSeen: bundle.firstSeen,
-    appFirstSeen: bundle.appFirstSeen,
-    isPreRelease: bundle.isPreRelease,
     hotRank: bundle.hotRank,
+    isPreRelease: bundle.isPreRelease,
+    appFirstSeen: bundle.appFirstSeen,
 
     key: bundle.key,
     repoUrl: bundle.repoUrl,
@@ -99,3 +101,5 @@ export function getBundleMeta(
     isUnofficial: bundle.isUnofficial,
   };
 }
+
+export type BundleMeta = NonNullable<ReturnType<typeof getBundleMeta>>;

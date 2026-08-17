@@ -27,10 +27,10 @@ export interface Bundle {
   stars: number;
   updatedAt: number;
   firstSeen: number;
+  hotRank: number | null;
+  isPreRelease: boolean;
   appFirstSeen: Record<string, number>;
   patches: PatchItem[];
-  isPreRelease: boolean;
-  hotRank: number | null;
 
   key: string;
   patchCount: number;
@@ -67,6 +67,7 @@ export interface AppNameMeta {
   minInstalls: number;
   category: string;
   firstSeen: number;
+  isPreRelease?: boolean;
 }
 
 export interface AppItem {
@@ -80,6 +81,7 @@ export interface AppItem {
   patchCount: number;
   categorySlug: string;
   searchableText: string;
+  isPreRelease: boolean;
 }
 
 export interface WhatsNewAppChange {

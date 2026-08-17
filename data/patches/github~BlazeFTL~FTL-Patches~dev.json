@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.34.0-dev.3",
+  "version": "1.34.0-dev.5",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -276,6 +276,68 @@
             {
               "version": null,
               "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide more actions",
+      "description": "Hides Hide, Add to desktop, Encrypt, Add bookmark, Web Search, Copy to, Move to, and Transfer from the \"More actions\" menu.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rs.explorer.filemanager",
+          "name": "RS File Manager",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.3.0.4",
+              "versionCodes": {
+                "ARM64_V8A": 239,
+                "ARMEABI_V7A": 239,
+                "X86_64": 239,
+                "X86": 239
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide network, tools and bookmarks on home page",
+      "description": "Hides the Network, Tools and Bookmarks sections from the home page section list.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rs.explorer.filemanager",
+          "name": "RS File Manager",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.3.0.4",
+              "versionCodes": {
+                "ARM64_V8A": 239,
+                "ARMEABI_V7A": 239,
+                "X86_64": 239,
+                "X86": 239
+              },
               "isExperimental": false,
               "minSdk": null,
               "description": null

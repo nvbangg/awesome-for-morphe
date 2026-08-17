@@ -1,15 +1,7 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0-dev.2",
+  "version": "1.4.0-dev.3",
   "patches": [
-    {
-      "name": "Compile-only example",
-      "description": "Provides a no-op patch for validating the project build.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
     {
       "name": "F1 TV - Background playback",
       "description": "Keeps the F1 TV player alive when the activity goes to the background or the screen turns off.",
@@ -167,6 +159,32 @@
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "VesselFinder - Disable advertisements",
+      "description": "Prevents the VesselFinder advertisement plugin from creating or showing banner ads.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.astrapaging.vff",
+          "name": "VesselFinder",
+          "description": "VesselFinder mobile APK",
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.6.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
               "description": null
             }
           ]

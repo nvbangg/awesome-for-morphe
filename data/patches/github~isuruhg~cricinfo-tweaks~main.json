@@ -1,0 +1,98 @@
+{
+  "version": "1.1.0",
+  "patches": [
+    {
+      "name": "Block tracking & telemetry",
+      "description": "Stops AppsFlyer, comScore, Conviva and Adobe Marketing from initializing, so they collect or send no attribution/analytics data. Leaves CleverTap intact to preserve push notifications.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.july.cricinfo",
+          "name": "ESPNcricinfo",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#C8102E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.07.24",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "26.05.11",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Stops ESPNcricinfo from fetching or showing banner, interstitial, native, rewarded and app-open ads (Google Ad Manager, Meta Audience Network, Taboola) by severing the Flutter ad plugins and skipping the ad SDK setup.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.july.cricinfo",
+          "name": "ESPNcricinfo",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#C8102E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.07.24",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "26.05.11",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove splash ad, startup delay & forced update",
+      "description": "Removes the full-screen splash ad shown on every cold start (the main cause of the slow boot), the GPT interstitial, and the \"you must update\" blocking screen, by hiding their Firebase Remote Config keys from the app. Other remote config is untouched.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.july.cricinfo",
+          "name": "ESPNcricinfo",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#C8102E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.07.24",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "26.05.11",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

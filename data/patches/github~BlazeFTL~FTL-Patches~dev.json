@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.34.0-dev.2",
+  "version": "1.34.0-dev.3",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -429,9 +429,11 @@
     },
     {
       "name": "Skip splash screen",
-      "description": "Calls the all-files-access permission request directly instead of first showing the full-screen 'grant storage access' splash dialog.",
+      "description": "Moves the launcher intent filter to the main activity and calls the all-files-access permission request directly, instead of showing the splash activity and its full-screen 'grant storage access' dialog.",
       "default": false,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.rs.explorer.filemanager",

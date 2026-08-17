@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.33.0",
+  "version": "1.34.0-dev.2",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -417,6 +417,37 @@
                 "ARMEABI_V7A": 24011893,
                 "X86_64": 24011893,
                 "X86": 24011893
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip splash screen",
+      "description": "Calls the all-files-access permission request directly instead of first showing the full-screen 'grant storage access' splash dialog.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rs.explorer.filemanager",
+          "name": "RS File Manager",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.3.0.4",
+              "versionCodes": {
+                "ARM64_V8A": 239,
+                "ARMEABI_V7A": 239,
+                "X86_64": 239,
+                "X86": 239
               },
               "isExperimental": false,
               "minSdk": null,

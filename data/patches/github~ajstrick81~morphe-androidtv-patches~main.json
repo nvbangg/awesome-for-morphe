@@ -1,5 +1,5 @@
 {
-  "version": "1.28.0",
+  "version": "1.29.0",
   "appNames": {
     "com.fox.foxone": "Fox One Android TV",
     "com.netflix.ninja": "Netflix Android TV",
@@ -327,12 +327,13 @@
       "options": []
     },
     {
-      "name": "HBO Max - Disable Ads",
-      "description": "Suppresses nonlinear overlay ads (Bolt), SSAI linear ad timeline registration (GMSS/AdSparx), and live stream preroll ad timeline entry generation for all content types.",
-      "use": true,
+      "name": "HBO Max - Block SSAI Ad Origins",
+      "description": "Reproduces the AdGuard DNS ad-block inside the app: fails media3 segment requests to HBO's SSAI ad origins (amer-free/emea-free.prd.media.max.com, gmss, FreeWheel) so the player's resiliency layer falls back to the clean, ad-free manifest — removing the stitched ad VIDEO the default Disable Ads patch leaves behind. Opt-in / experimental; verify playback on-device.",
+      "use": false,
       "dependencies": [],
       "compatiblePackages": {
         "com.wbd.hbomax": [
+          "7.9.0.61",
           "7.7.0.78",
           "7.5.0.73",
           "7.2.0.41"
@@ -345,6 +346,51 @@
           "description": null,
           "appIconColor": 16777215,
           "targets": [
+            {
+              "version": "7.9.0.61",
+              "experimental": false
+            },
+            {
+              "version": "7.7.0.78",
+              "experimental": false
+            },
+            {
+              "version": "7.5.0.73",
+              "experimental": false
+            },
+            {
+              "version": "7.2.0.41",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "HBO Max - Disable Ads",
+      "description": "Suppresses nonlinear overlay ads (Bolt), SSAI linear ad timeline registration (GMSS/AdSparx), and live stream preroll ad timeline entry generation for all content types.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.wbd.hbomax": [
+          "7.9.0.61",
+          "7.7.0.78",
+          "7.5.0.73",
+          "7.2.0.41"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "HBO Max Android TV",
+          "packageName": "com.wbd.hbomax",
+          "description": null,
+          "appIconColor": 16777215,
+          "targets": [
+            {
+              "version": "7.9.0.61",
+              "experimental": false
+            },
             {
               "version": "7.7.0.78",
               "experimental": false

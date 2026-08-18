@@ -17,7 +17,7 @@ WHATS_NEW_JSON_PATH = PUBLIC_DIR / "whats-new.json"
 WHATS_NEW_MAX_ENTRIES = 21
 
 
-def get_bundle_names(bundles_json):
+def get_bundle_names(bundles_json: dict) -> dict[str, str]:
     return {
         f"{bundle['source']}:{bundle['repo']}": bundle.get(
             "name", bundle["repo"].split("/")[-1]
@@ -26,7 +26,7 @@ def get_bundle_names(bundles_json):
     }
 
 
-def build_new_bundles(bundles_json):
+def build_new_bundles(bundles_json: dict) -> dict:
     bundles_list = bundles_json.get("bundles", [])
     compatibilities = bundles_json.get("compatibilities", [])
 
@@ -45,20 +45,21 @@ def build_new_bundles(bundles_json):
             if compat_key is not None and compat_key < len(compatibilities):
                 compat_list = compatibilities[compat_key]
                 for item in compat_list:
-                    if isinstance(item, dict) and (pkg := item.get("packageName")):
-                        package_names.add(pkg)
+                    if isinstance(item, dict) and (package_name := item.get("packageName")):
+                        package_names.add(package_name)
 
             for package_name in package_names or {PACKAGE_UNIVERSAL}:
                 patches_dict.setdefault(package_name, set()).add(patch_name)
 
         if patches_dict:
             new_dict[base] = {
-                pkg: sorted(patches_dict[pkg]) for pkg in sorted(patches_dict)
+                package_name: sorted(patches_dict[package_name])
+                for package_name in sorted(patches_dict)
             }
     return new_dict
 
 
-def format_app_name(package_name, app_metadata):
+def format_app_name(package_name: str, app_metadata: dict) -> str:
     meta = app_metadata.get(package_name)
     if isinstance(meta, dict):
         return meta.get("name") or meta.get("altName") or package_name
@@ -67,7 +68,7 @@ def format_app_name(package_name, app_metadata):
     return package_name
 
 
-def make_url(bundle=None, app=None, patch=None):
+def make_url(bundle: str | None = None, app: str | None = None, patch: str | None = None) -> str:
     url = "https://awesome-morphe.vercel.app/"
     query = {}
 
@@ -89,31 +90,29 @@ def make_url(bundle=None, app=None, patch=None):
     return url
 
 
-def is_valid_pkg(package_name):
-    return (
-        "." in package_name and " " not in package_name
-    ) or package_name == PACKAGE_UNIVERSAL
+def is_valid_package_name(package_name: str) -> bool:
+    return ("." in package_name and " " not in package_name) or package_name == PACKAGE_UNIVERSAL
 
 
-def build_json_diff(old_bundles, new_bundles, app_metadata, bundle_names):
+def build_json_diff(old_bundles: dict, new_bundles: dict, app_metadata: dict, bundle_names: dict) -> dict:
     json_diff = {}
 
-    def app_sort_key(pkg):
+    def app_sort_key(package_name: str) -> tuple[bool, str]:
         return (
-            pkg == PACKAGE_UNIVERSAL,
-            format_app_name(pkg, app_metadata).lower(),
+            package_name == PACKAGE_UNIVERSAL,
+            format_app_name(package_name, app_metadata).lower(),
         )
 
-    for key, patches_dict in sorted(new_bundles.items(), key=lambda x: x[0].lower()):
-        new_package_names = {pkg for pkg in patches_dict if is_valid_pkg(pkg)}
+    for key, patches_dict in sorted(new_bundles.items(), key=lambda item: item[0].lower()):
+        new_package_names = {package_name for package_name in patches_dict if is_valid_package_name(package_name)}
         display_name = bundle_names.get(key, key.split("/")[-1] if "/" in key else key)
         source, repo = key.split(":", 1) if ":" in key else ("github", key)
 
         if key not in old_bundles:
             apps = {}
-            for pkg in sorted(new_package_names, key=app_sort_key):
-                apps[pkg] = {
-                    "patches": sorted(patches_dict.get(pkg, [])),
+            for package_name in sorted(new_package_names, key=app_sort_key):
+                apps[package_name] = {
+                    "patches": sorted(patches_dict.get(package_name, [])),
                     "isNew": True,
                 }
             json_diff[display_name] = {
@@ -124,21 +123,21 @@ def build_json_diff(old_bundles, new_bundles, app_metadata, bundle_names):
             }
         else:
             old_patches_dict = old_bundles[key]
-            old_package_names = {pkg for pkg in old_patches_dict if is_valid_pkg(pkg)}
+            old_package_names = {package_name for package_name in old_patches_dict if is_valid_package_name(package_name)}
             apps_dict = {}
 
-            for pkg in sorted(new_package_names, key=app_sort_key):
-                if pkg not in old_package_names:
-                    apps_dict[pkg] = {
-                        "patches": sorted(patches_dict.get(pkg, [])),
+            for package_name in sorted(new_package_names, key=app_sort_key):
+                if package_name not in old_package_names:
+                    apps_dict[package_name] = {
+                        "patches": sorted(patches_dict.get(package_name, [])),
                         "isNew": True,
                     }
                 else:
-                    added_patches = set(patches_dict.get(pkg, [])) - set(
-                        old_patches_dict.get(pkg, [])
+                    added_patches = set(patches_dict.get(package_name, [])) - set(
+                        old_patches_dict.get(package_name, [])
                     )
                     if added_patches:
-                        apps_dict[pkg] = {
+                        apps_dict[package_name] = {
                             "patches": sorted(added_patches),
                         }
 
@@ -151,7 +150,7 @@ def build_json_diff(old_bundles, new_bundles, app_metadata, bundle_names):
     return json_diff
 
 
-def generate_markdown(json_diff, app_metadata):
+def generate_markdown(json_diff: dict, app_metadata: dict) -> str:
     all_changes = {}
     markdown_lines = []
 
@@ -235,7 +234,7 @@ def generate_markdown(json_diff, app_metadata):
     return "\n\n".join(sections)
 
 
-def main():
+def main() -> None:
     old_history = load_json(HISTORY_PATH, {}) or {}
     whats_new_data = load_json(WHATS_NEW_JSON_PATH, []) or []
     bundles_json = load_json(BUNDLES_JSON_PATH, {})
@@ -243,8 +242,8 @@ def main():
     bundle_names = get_bundle_names(bundles_json)
 
     # Shift time back by 12 hours to handle GitHub Actions delays
-    now = datetime.datetime.now(datetime.UTC) - datetime.timedelta(hours=12)
-    today_str = now.strftime(f"%B {now.day}, %Y")
+    current_time = datetime.datetime.now(datetime.UTC) - datetime.timedelta(hours=12)
+    today_str = current_time.strftime(f"%B {current_time.day}, %Y")
 
     new_bundles = build_new_bundles(bundles_json)
     json_diff = build_json_diff(old_history, new_bundles, app_metadata, bundle_names)

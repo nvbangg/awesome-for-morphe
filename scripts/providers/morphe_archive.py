@@ -24,13 +24,11 @@ def discover() -> str | None:
         print(f"[-] {warning_message}")
         return warning_message
 
-    discovered = {}
-    for match in _REPO_RE.finditer(content):
-        platform, repo_path = match.group(1), match.group(2).strip()
-        parts = repo_path.split("/", 1)
-        if len(parts) == 2:
-            owner, repo = parts[0].strip(), parts[1].strip()
-            discovered[f"{platform}:{owner}/{repo}"] = {}
+    discovered = {
+        f"{match.group(1)}:{parts[0].strip()}/{parts[1].strip()}": {}
+        for match in _REPO_RE.finditer(content)
+        if len(parts := match.group(2).strip().split("/", 1)) == 2
+    }
 
     return export_provider("morphe-archive", discovered, OUTPUT_PATH)
 

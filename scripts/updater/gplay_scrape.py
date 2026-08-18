@@ -1,8 +1,7 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-import concurrent.futures
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
-from typing import Any
 
 from google_play_scraper import app as gplay_app
 from google_play_scraper.exceptions import NotFoundError
@@ -65,7 +64,7 @@ SKIP_WORDS = {
 }
 
 
-def fetch_app_details(package_name: str) -> tuple[dict[str, Any] | None, bool]:
+def fetch_app_details(package_name: str) -> tuple[dict | None, bool]:
     try:
         result = gplay_app(package_name, lang="en", country="us")
         if not result:
@@ -87,9 +86,7 @@ def fetch_app_details(package_name: str) -> tuple[dict[str, Any] | None, bool]:
         return None, False
 
 
-def process(
-    apps_dict: dict[str, Any], mode: str,
-) -> None:
+def process(apps_dict: dict, mode: str) -> None:
     official_data = load_json(OFFICIAL_BUNDLES_PATH, {})
     official_store = (
         official_data.get("store", {}) if isinstance(official_data, dict) else {}
@@ -116,14 +113,12 @@ def process(
         print(
             f"\nScraping Google Play for {len(apps_to_scrape)} apps (mode: {mode})..."
         )
-        with concurrent.futures.ThreadPoolExecutor(
-            max_workers=GPLAY_CONCURRENCY
-        ) as executor:
+        with ThreadPoolExecutor(max_workers=GPLAY_CONCURRENCY) as executor:
             future_to_package = {
                 executor.submit(fetch_app_details, package_name): package_name
                 for package_name in apps_to_scrape
             }
-            for future in concurrent.futures.as_completed(future_to_package):
+            for future in as_completed(future_to_package):
                 package_name = future_to_package[future]
                 try:
                     details, is_404 = future.result()

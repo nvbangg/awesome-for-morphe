@@ -1,10 +1,9 @@
 from pathlib import Path
-from typing import Any
 
 from utils import save_json
 
 
-def export_provider(provider_name: str, discovered: dict[str, Any], output_path: Path) -> str | None:
+def export_provider(provider_name: str, discovered: dict, output_path: Path) -> str | None:
     if not discovered:
         warning_message = f"[{provider_name}] Empty result. Kept existing {output_path.name}"
         print(f"[-] {warning_message}")

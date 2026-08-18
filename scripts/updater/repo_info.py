@@ -1,20 +1,20 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-import concurrent.futures
 import os
 import time
 import urllib.error
 import urllib.parse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
-from typing import Any
 
 from updater import normalize_image_url
-from utils import build_raw_url, fetch, load_json
+from utils import build_raw_url, fetch, load_json, save_json
 
 GITHUB_CONCURRENCY = 8
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
 CUSTOM_JSON_PATH = DATA_DIR / "discover" / "custom.json"
+HISTORY_PATH = DATA_DIR / "history.json"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
 
 
@@ -103,9 +103,9 @@ def fetch_repo_details(repo_url: str) -> dict:
 
 
 def process(
-    bundle_sources: dict[str, Any],
+    bundle_sources: dict,
     mode: str,
-    existing_bundles: dict[str, Any],
+    existing_bundles: dict,
     errors: list[str] | None = None,
 ) -> None:
     tasks = {}
@@ -129,14 +129,12 @@ def process(
 
     custom_data = load_json(CUSTOM_JSON_PATH, {})
     repos_data = load_json(REPOS_JSON_PATH, {})
-    with concurrent.futures.ThreadPoolExecutor(
-        max_workers=GITHUB_CONCURRENCY
-    ) as executor:
+    with ThreadPoolExecutor(max_workers=GITHUB_CONCURRENCY) as executor:
         future_to_base_key = {
             executor.submit(fetch_repo_details, url): base_key
             for base_key, url in tasks.items()
         }
-        for future in concurrent.futures.as_completed(future_to_base_key):
+        for future in as_completed(future_to_base_key):
             base_key = future_to_base_key[future]
             try:
                 details = future.result()
@@ -181,6 +179,37 @@ def process(
                 full_name = details.get("full_name")
                 old_repo = source_entry.get("repo")
                 if full_name and old_repo and full_name.lower() != old_repo.lower():
-                    source_entry["repo"] = full_name
+                    source = source_entry.get("source")
+                    old_key = f"{source}:{old_repo}"
+                    new_key = f"{source}:{full_name}"
+                    print(f"[RENAME DETECTED] {old_key} -> {new_key}")
+                    if errors is not None:
+                        errors.append(f"[RENAME DETECTED] `{old_key}` -> `{new_key}`")
+
+                    repos_json_data = load_json(REPOS_JSON_PATH, {})
+                    if old_key in repos_json_data:
+                        repos_json_data.setdefault(new_key, repos_json_data.pop(old_key))
+                        save_json(REPOS_JSON_PATH, repos_json_data)
+
+                    custom_json_data = load_json(CUSTOM_JSON_PATH, {})
+                    custom_json_data[old_key] = {
+                        "enabled": False,
+                        "note": f"Automatically disabled by GitHub Actions (Redirected/Renamed to {full_name})",
+                    }
+                    if new_key not in custom_json_data:
+                        custom_json_data[new_key] = {
+                            "note": f"Automatically added by GitHub Actions (Redirected/Renamed from {old_repo})"
+                        }
+                    save_json(CUSTOM_JSON_PATH, custom_json_data)
+
+                    history_data = load_json(HISTORY_PATH, {})
+                    if old_key in history_data:
+                        history_data.setdefault(new_key, history_data.pop(old_key))
+                        save_json(HISTORY_PATH, history_data)
+
+                    if new_key in bundle_sources:
+                        bundle_sources.pop(base_key, None)
+                    else:
+                        source_entry["repo"] = full_name
             except Exception as error:
                 print(f"[-] Failed to fetch details for {base_key}: {error}")

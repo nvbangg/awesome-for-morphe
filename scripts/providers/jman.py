@@ -19,7 +19,7 @@ CONCURRENCY = 8
 _REPO_RE = re.compile(r"(github|gitlab)\.com/([^/]+)/([^/\s\"']+)")
 
 
-def _extract_canonical_key(bundle_json):
+def _extract_canonical_key(bundle_json: dict) -> str | None:
     download_url = bundle_json.get("download_url", "")
     if not (isinstance(download_url, str) and download_url.lower().endswith(".mpp")):
         return None
@@ -31,7 +31,9 @@ def _extract_canonical_key(bundle_json):
     return None
 
 
-def _process_bundle(bundle_name, bundle_path, blob_sha, cached):
+def _process_bundle(
+    bundle_name: str, bundle_path: str, blob_sha: str, cached: dict | None
+) -> tuple[str, str | None, str | None]:
     cached_sha = cached.get("sha") if cached else None
     if blob_sha and blob_sha == cached_sha:
         return bundle_name, blob_sha, cached.get("key")
@@ -62,19 +64,15 @@ def discover() -> str | None:
 
     tree_files = tree_data.get("tree", [])
 
-    bundles = {}
-    for item in tree_files:
-        path = item.get("path", "")
-        parts = path.split("/")
-        if (
-            len(parts) == 3
-            and parts[0] == "patch-bundles"
-            and item.get("type") == "blob"
-            and parts[2].endswith("-latest-patches-bundle.json")
-        ):
-            folder = parts[1]
-            name = folder.removesuffix("-patch-bundles").removesuffix("-patches")
-            bundles[name] = (path, item.get("sha", ""))
+    bundles = {
+        parts[1].removesuffix("-patch-bundles").removesuffix("-patches"): (path, item.get("sha", ""))
+        for item in tree_files
+        if (path := item.get("path", ""))
+        and len(parts := path.split("/")) == 3
+        and parts[0] == "patch-bundles"
+        and item.get("type") == "blob"
+        and parts[2].endswith("-latest-patches-bundle.json")
+    }
 
     cached_bundles = snapshot.get("jman_bundles", {})
     changed_count = sum(

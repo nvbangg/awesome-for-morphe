@@ -29,20 +29,15 @@ def commit_pending_repos(updated_files: list[str] | None = None, parse_error: st
     errors = [parse_error] if parse_error else []
     if updated_files:
         for file_path in sorted(updated_files):
-            target_json = file_path.replace("mpp/", "").replace(".mpp", ".json")
-            if target_json not in successful_parsed_files:
-                target_name = file_path.replace("mpp/", "").replace(".mpp", "")
+            target_name = Path(file_path).stem
+            if f"{target_name}.json" not in successful_parsed_files:
                 errors.append(f"Failed to parse bundle: {target_name}")
 
     if errors:
         markdown_lines = ["### ⚠️ Parse", *[f"- {error}" for error in errors]]
         append_step_summary("\n".join(markdown_lines))
 
-    if not PENDING_REPOS_PATH.exists():
-        return
-
-    pending_repos = load_json(PENDING_REPOS_PATH, {})
-    if not pending_repos:
+    if not (pending_repos := load_json(PENDING_REPOS_PATH, {})):
         return
 
     repos_data = load_json(REPOS_JSON_PATH, {})
@@ -80,11 +75,7 @@ def commit_pending_repos(updated_files: list[str] | None = None, parse_error: st
 
 def run_bundle_parser() -> None:
     updated_files = (
-        [
-            line.strip()
-            for line in UPDATED_FILES_PATH.read_text(encoding="utf-8").splitlines()
-            if line.strip()
-        ]
+        [line.strip() for line in UPDATED_FILES_PATH.read_text(encoding="utf-8").splitlines() if line.strip()]
         if UPDATED_FILES_PATH.exists()
         else []
     )

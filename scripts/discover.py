@@ -74,7 +74,7 @@ def _sync_repos(merged: dict, existing_repos: dict) -> dict:
     return new_repos_data
 
 
-def main():
+def main() -> int:
     warnings = _run_providers()
     print()
     provider_files = _load_provider_files()

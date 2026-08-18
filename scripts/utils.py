@@ -85,8 +85,9 @@ def parse_timestamp(timestamp: Any) -> int:
     if isinstance(timestamp, str) and timestamp.isdigit():
         return int(timestamp)
     with contextlib.suppress(Exception):
-        dt = datetime.fromisoformat(str(timestamp).replace("Z", "+00:00"))
-        return int((dt if dt.tzinfo else dt.replace(tzinfo=UTC)).timestamp() * 1000)
+        parsed_datetime = datetime.fromisoformat(str(timestamp).replace("Z", "+00:00"))
+        tz_aware = parsed_datetime if parsed_datetime.tzinfo else parsed_datetime.replace(tzinfo=UTC)
+        return int(tz_aware.timestamp() * 1000)
     return 0
 
 

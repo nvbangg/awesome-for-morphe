@@ -43,8 +43,8 @@ def main() -> int:
         }
 
     errors: list[str] = []
-    repo_info.process(bundle_sources, mode, existing_bundles, errors)
     compatibilities_list = local_parse.process(bundle_sources, apps_dict, errors)
+    repo_info.process(bundle_sources, mode, existing_bundles, errors)
 
     gplay_scrape.process(apps_dict, mode)
     official_ranks = {

@@ -1,4 +1,6 @@
+import contextlib
 import json
+import os
 import time
 import urllib.error
 import urllib.parse
@@ -8,6 +10,20 @@ from pathlib import Path
 from typing import Any
 
 
+def get_auth_headers(url: str, headers: dict[str, str] | None = None) -> dict[str, str]:
+    result_headers = dict(headers) if headers else {}
+    result_headers.setdefault("User-Agent", "AwesomeMorphe/1.0 (+https://github.com/nvbangg/awesome-morphe)")
+
+    github_token = os.environ.get("GITHUB_TOKEN")
+    if github_token and "Authorization" not in result_headers:
+        parsed_url = urllib.parse.urlparse(url)
+        hostname = parsed_url.hostname or ""
+        if hostname.endswith(("github.com", "githubusercontent.com")):
+            result_headers["Authorization"] = f"Bearer {github_token}"
+
+    return result_headers
+
+
 def fetch(
     url: str,
     headers: dict[str, str] | None = None,
@@ -15,13 +31,11 @@ def fetch(
     as_json: bool = False,
     binary: bool = False,
 ) -> Any:
-    if headers is None:
-        headers = {}
-    headers.setdefault("User-Agent", "AwesomeMorphe/1.0")
+    request_headers = get_auth_headers(url, headers)
 
     for attempt in range(3):
         try:
-            request = urllib.request.Request(url, headers=headers)
+            request = urllib.request.Request(url, headers=request_headers)
             with urllib.request.urlopen(request, timeout=timeout) as response:
                 content = response.read()
                 if binary:
@@ -29,12 +43,9 @@ def fetch(
                 decoded = content.decode("utf-8")
                 return json.loads(decoded) if as_json else decoded
 
-        except urllib.error.HTTPError as error:
-            if error.code in (401, 403, 429) and attempt < 2:
-                time.sleep(2**attempt)
-            else:
+        except Exception as error:
+            if isinstance(error, urllib.error.HTTPError) and error.code not in (401, 403, 429):
                 raise
-        except (urllib.error.URLError, TimeoutError):
             if attempt < 2:
                 time.sleep(1)
             else:
@@ -43,15 +54,19 @@ def fetch(
     raise RuntimeError(f"Failed to fetch {url}")
 
 
+def append_step_summary(markdown_content: str) -> None:
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_path and markdown_content.strip():
+        with contextlib.suppress(Exception), Path(summary_path).open("a", encoding="utf-8") as file:
+            file.write(markdown_content.strip() + "\n\n")
+
+
 def load_json(path: str | Path, default: Any = None) -> Any:
     path = Path(path)
-    if not path.exists():
-        return default if default is not None else {}
-    try:
-        with path.open(encoding="utf-8") as file:
+    if path.exists():
+        with contextlib.suppress(OSError, json.JSONDecodeError), path.open(encoding="utf-8") as file:
             return json.load(file)
-    except (OSError, json.JSONDecodeError):
-        return default if default is not None else {}
+    return default if default is not None else {}
 
 
 def save_json(path: str | Path, data: Any) -> None:
@@ -65,23 +80,17 @@ def save_json(path: str | Path, data: Any) -> None:
 def parse_timestamp(timestamp: Any) -> int:
     if not timestamp:
         return 0
-    if isinstance(timestamp, int):
-        return timestamp
+    if isinstance(timestamp, (int, float)):
+        return int(timestamp)
     if isinstance(timestamp, str) and timestamp.isdigit():
         return int(timestamp)
-    try:
-        timestamp_str = str(timestamp).replace("Z", "+00:00")
-        dt = datetime.fromisoformat(timestamp_str)
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=UTC)
-        return int(dt.timestamp() * 1000)
-    except Exception:
-        return 0
+    with contextlib.suppress(Exception):
+        dt = datetime.fromisoformat(str(timestamp).replace("Z", "+00:00"))
+        return int((dt if dt.tzinfo else dt.replace(tzinfo=UTC)).timestamp() * 1000)
+    return 0
 
 
-def build_raw_url(
-    source: str, owner_repo: str, branch: str, file_path: str
-) -> str | None:
+def build_raw_url(source: str, owner_repo: str, branch: str, file_path: str) -> str | None:
     if source == "github":
         return f"https://raw.githubusercontent.com/{owner_repo}/{branch}/{file_path}"
     if source == "gitlab":

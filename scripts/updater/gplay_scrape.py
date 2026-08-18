@@ -88,7 +88,7 @@ def fetch_app_details(package_name: str) -> tuple[dict[str, Any] | None, bool]:
 
 
 def process(
-    apps_dict: dict[str, Any], mode: str, _existing_apps: dict[str, Any]
+    apps_dict: dict[str, Any], mode: str,
 ) -> None:
     official_data = load_json(OFFICIAL_BUNDLES_PATH, {})
     official_store = (

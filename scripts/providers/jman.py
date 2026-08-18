@@ -1,7 +1,6 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 import json
-import os
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -13,11 +12,10 @@ ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
 DISCOVER_DIR = DATA_DIR / "discover"
 TREE_API_URL = "https://api.github.com/repos/Jman-Github/ReVanced-Patch-Bundles/git/trees/bundles?recursive=1"
-RAW_BASE = (
-    "https://raw.githubusercontent.com/Jman-Github/ReVanced-Patch-Bundles/bundles"
-)
+RAW_BASE = "https://raw.githubusercontent.com/Jman-Github/ReVanced-Patch-Bundles/bundles"
 OUTPUT_PATH = DISCOVER_DIR / "jman.json"
 SNAPSHOT_PATH = DISCOVER_DIR / "snapshot.json"
+CONCURRENCY = 8
 _REPO_RE = re.compile(r"(github|gitlab)\.com/([^/]+)/([^/\s\"']+)")
 
 
@@ -26,19 +24,10 @@ def _extract_canonical_key(bundle_json):
     if not (isinstance(download_url, str) and download_url.lower().endswith(".mpp")):
         return None
 
-    for url in [
-        bundle_json.get("download_url"),
-        bundle_json.get("release_url"),
-        (bundle_json.get("patches") or {}).get("url"),
-        (bundle_json.get("integrations") or {}).get("url"),
-    ]:
-        if not url:
-            continue
-
-        match = _REPO_RE.search(url)
-        if match:
-            platform, owner, repo = match.groups()
-            return f"{platform}:{owner}/{repo}"
+    match = _REPO_RE.search(download_url)
+    if match:
+        platform, owner, repo = match.groups()
+        return f"{platform}:{owner}/{repo}"
     return None
 
 
@@ -56,29 +45,21 @@ def _process_bundle(bundle_name, bundle_path, blob_sha, cached):
     return bundle_name, blob_sha, canonical_key
 
 
-def discover():
-    headers = {}
-    if os.environ.get("GITHUB_TOKEN"):
-        headers["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
-
+def discover() -> str | None:
     try:
-        tree_data = fetch(TREE_API_URL, headers=headers, timeout=30, as_json=True)
+        tree_data = fetch(TREE_API_URL, timeout=30, as_json=True)
     except Exception as error:
-        existing_data = load_json(OUTPUT_PATH)
-        print(
-            f"::warning title=Discover:: [-] [jman] Failed to fetch tree: {error}. Kept {len(existing_data)} sources in jman.json"
-        )
-        return existing_data
+        warning_message = f"[jman] Failed to fetch tree: {error}. Kept existing sources in jman.json"
+        print(f"[-] {warning_message}")
+        return warning_message
 
     tree_sha = tree_data.get("sha", "")
     snapshot = load_json(SNAPSHOT_PATH)
 
     if tree_sha and tree_sha == snapshot.get("jman_tree_sha"):
-        existing_data = load_json(OUTPUT_PATH)
-        print(
-            f"[jman] No changes detected. Kept {len(existing_data)} sources in jman.json"
-        )
-        return existing_data
+        print("[jman] No changes detected. Kept existing sources in jman.json")
+        return None
+
     tree_files = tree_data.get("tree", [])
 
     bundles = {}
@@ -105,11 +86,9 @@ def discover():
     new_bundles = {}
     discovered = {}
 
-    with ThreadPoolExecutor(max_workers=10) as executor:
+    with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
         futures = {
-            executor.submit(
-                _process_bundle, name, path, blob_sha, cached_bundles.get(name)
-            ): name
+            executor.submit(_process_bundle, name, path, blob_sha, cached_bundles.get(name)): name
             for name, (path, blob_sha) in bundles.items()
         }
         for future in as_completed(futures):
@@ -120,16 +99,11 @@ def discover():
                 discovered[canonical_key] = {}
 
     snapshot["jman_tree_sha"] = tree_sha
-    snapshot["jman_bundles"] = dict(
-        sorted(new_bundles.items(), key=lambda item: item[0].lower())
-    )
+    snapshot["jman_bundles"] = dict(sorted(new_bundles.items(), key=lambda item: item[0].lower()))
     save_json(SNAPSHOT_PATH, snapshot)
 
     return export_provider("jman", discovered, OUTPUT_PATH)
 
 
 if __name__ == "__main__":
-    result = discover()
-    print(
-        f"Saved {len(result)} repos to {OUTPUT_PATH.relative_to(OUTPUT_PATH.parents[2])}"
-    )
+    discover()

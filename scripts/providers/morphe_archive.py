@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 from providers import export_provider
-from utils import fetch, load_json
+from utils import fetch
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
@@ -16,15 +16,13 @@ OUTPUT_PATH = DISCOVER_DIR / "morphe-archive.json"
 _REPO_RE = re.compile(r"morphe\.software/add-source\?(github|gitlab)=([^)\s]+)")
 
 
-def discover():
+def discover() -> str | None:
     try:
         content = fetch(README_URL)
     except Exception as error:
-        existing_data = load_json(OUTPUT_PATH)
-        print(
-            f"::warning title=Discover:: [-] [morphe-archive] Failed: {error}. Kept {len(existing_data)} sources in morphe-archive.json"
-        )
-        return existing_data
+        warning_message = f"[morphe-archive] Failed: {error}. Kept existing sources in morphe-archive.json"
+        print(f"[-] {warning_message}")
+        return warning_message
 
     discovered = {}
     for match in _REPO_RE.finditer(content):
@@ -38,7 +36,4 @@ def discover():
 
 
 if __name__ == "__main__":
-    result = discover()
-    print(
-        f"Saved {len(result)} repos to {OUTPUT_PATH.relative_to(OUTPUT_PATH.parents[2])}"
-    )
+    discover()

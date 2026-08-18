@@ -3,6 +3,14 @@
 > [!NOTE]
 > This document contains contribution guidelines, project structure details, and automation workflows for the [Awesome Morphe Website](https://awesome-morphe.vercel.app/).
 
+## ✨ Highlight Features
+
+- 🔍 Automatically synchronizes bundle data from multiple sources to explore [all patch bundles](https://awesome-morphe.vercel.app/) from the Morphe community.
+- 🔔 Automatically notifies via the [Telegram channel](https://t.me/awesome_morphe) whenever there's a new update.
+- 🛡️ Automatically filters out taken-down or unavailable bundles, while detecting archived or renamed (redirected) repositories.
+- 🧩 Ensures all bundles have an available `.mpp` file, with bundle names extracted directly and patch data parsed from it when raw lists are unavailable.
+- ⚙️ Data is fully updated automatically, while also allowing manual adjustments if anything is missing.
+
 ## 📬 Contributing
 
 - To add or remove a bundle source, please submit a [Bundle Request](https://github.com/nvbangg/awesome-morphe/issues/new?template=bundle-request.yml).
@@ -24,8 +32,7 @@ awesome-morphe/
 │   └── ...                             # Other supporting files
 ├── web/                                # Website source code
 │   ├── public/                         
-│   │   ├── apps.json                   # Metadata of all apps
-│   │   ├── bundles.json                # Metadata of all active bundles
+│   │   ├── bundles.json                # Metadata of all active bundles and apps
 │   │   └── whats-new.json              # Rolling changelog (last 21 releases)
 │   └── ...                             # Other supporting files
 ├── CONTRIBUTING.md
@@ -74,7 +81,7 @@ All core automation logic is written in Python inside the `scripts/` directory.
 
 ### `discover.py`
 
-Scans community patch repositories and merges them into `data/discover/discover.json`.
+Scans community patch repositories and synchronizes them directly into `data/repos.json` (adding new repositories and auto-pruning removed ones).
 
 #### Discovered Sources
 
@@ -98,7 +105,7 @@ Manually add or remove target repositories in [`data/discover/custom.json`](data
 
 ### `fetch.py`
 
-Downloads raw patch lists and bundle metadata from remote sources based on `data/discover/discover.json`.
+Downloads raw patch lists and bundle metadata from remote sources based on `data/repos.json`.
 It checks for new SHAs, downloads `patches-bundle.json` into `data/bundles/`, the corresponding `.mpp` file into `scripts/bundle-parser/mpp/` to extract the bundle name, and `patches-list.json` (if available) into `data/patches/`. Pending SHA and name updates are written to `scripts/bundle-parser/pending_repos.json`. Updated `.mpp` target paths are written to `scripts/bundle-parser/updated_files.txt` (only generated when there are bundles without a `patches-list.json`). With the `--image` flag, it also fetches the bundle avatar image SHA for each repo.
 
 ### `parse.py`
@@ -107,7 +114,7 @@ Executes the Kotlin-based `bundle-parser` (taken from [Jman's ReVanced Patch Bun
 
 ### `update.py`
 
-Compiles and syncs data from raw JSON files (`data/repos.json`, `data/bundles/`, and `data/patches/`) into the main public database files (`web/public/bundles.json` and `web/public/apps.json`). Missing metadata is scraped from Google Play (with a fallback to official Morphe data) or fetched via GitHub/GitLab APIs. It automatically cleans up orphaned bundle and patch files from local storage if they no longer exist in `data/repos.json`.
+Compiles and syncs data from raw JSON files (`data/repos.json`, `data/bundles/`, and `data/patches/`) into the main public database file (`web/public/bundles.json`). Missing metadata is scraped from Google Play (with a fallback to official Morphe data) or fetched via GitHub/GitLab APIs. It automatically cleans up orphaned bundle and patch files from local storage if they no longer exist in `data/repos.json`.
 
 Supported execution modes:
 

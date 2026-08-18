@@ -4,18 +4,17 @@ import datetime
 import urllib.parse
 from pathlib import Path
 
+from updater.local_parse import PACKAGE_UNIVERSAL
 from utils import load_json, save_json
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
 PUBLIC_DIR = ROOT_DIR / "web" / "public"
-PATCHES_DIR = DATA_DIR / "patches"
 HISTORY_PATH = DATA_DIR / "history.json"
 BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
 WHATS_NEW_PATH = ROOT_DIR / "whats-new.md"
 WHATS_NEW_JSON_PATH = PUBLIC_DIR / "whats-new.json"
 WHATS_NEW_MAX_ENTRIES = 21
-PACKAGE_UNIVERSAL = "__universal__"
 
 
 def get_bundle_names(bundles_json):

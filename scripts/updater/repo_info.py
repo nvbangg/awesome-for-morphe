@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from updater import normalize_image_url
-from utils import build_raw_url, fetch, load_json, save_json
+from utils import build_raw_url, fetch, load_json
 
 GITHUB_CONCURRENCY = 8
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -103,7 +103,10 @@ def fetch_repo_details(repo_url: str) -> dict:
 
 
 def process(
-    bundle_sources: dict[str, Any], mode: str, existing_bundles: dict[str, Any]
+    bundle_sources: dict[str, Any],
+    mode: str,
+    existing_bundles: dict[str, Any],
+    errors: list[str] | None = None,
 ) -> None:
     tasks = {}
     for base_key, source_entry in bundle_sources.items():
@@ -126,7 +129,6 @@ def process(
 
     custom_data = load_json(CUSTOM_JSON_PATH, {})
     repos_data = load_json(REPOS_JSON_PATH, {})
-    has_changes = False
     with concurrent.futures.ThreadPoolExecutor(
         max_workers=GITHUB_CONCURRENCY
     ) as executor:
@@ -141,24 +143,16 @@ def process(
                 if not details:
                     continue
                 if details.get("is_404"):
-                    print(f"[-] Disabling {base_key} due to 404 Not Found")
-                    custom_data[base_key] = {
-                        "enabled": False,
-                        "note": "Automatically disabled by GitHub Actions (404 Not Found)",
-                    }
-                    has_changes = True
+                    print(f"[-] Excluding {base_key} due to 404 Not Found")
+                    if errors is not None:
+                        errors.append(f"`{base_key}`: Repository not found (404)")
                     bundle_sources.pop(base_key, None)
                     continue
 
                 if details.get("is_archived"):
-                    print(f"[-] Disabling {base_key} due to Repository Archived")
-                    custom_data[base_key] = {
-                        "enabled": False,
-                        "note": "Automatically disabled by GitHub Actions (Repository Archived)",
-                    }
-                    has_changes = True
-                    bundle_sources.pop(base_key, None)
-                    continue
+                    print(f"[-] Repository archived: {base_key}")
+                    if errors is not None:
+                        errors.append(f"`{base_key}`: Repository is archived")
 
                 source_entry = bundle_sources[base_key]
                 source_entry["stars"] = details.get("stars", 0) - custom_data.get(
@@ -186,35 +180,7 @@ def process(
 
                 full_name = details.get("full_name")
                 old_repo = source_entry.get("repo")
-
-                # Handle repo rename
                 if full_name and old_repo and full_name.lower() != old_repo.lower():
-                    source = source_entry.get("source")
-                    print(
-                        f"[RENAME DETECTED] {source}:{old_repo} -> {source}:{full_name}"
-                    )
-                    has_changes = True
-
-                    old_key = f"{source}:{old_repo}"
-                    new_key = f"{source}:{full_name}"
-                    custom_data[old_key] = {
-                        "enabled": False,
-                        "note": f"Automatically disabled by GitHub Actions (Redirected/Renamed to {full_name})",
-                    }
-                    custom_data[new_key] = {
-                        "note": f"Automatically added by GitHub Actions (Redirected/Renamed from {old_repo})"
-                    }
-
                     source_entry["repo"] = full_name
-                    bundle_sources[new_key] = source_entry
-                    if old_key in bundle_sources:
-                        bundle_sources.pop(old_key, None)
-                    if old_key in repos_data:
-                        repos_data[new_key] = repos_data.pop(old_key)
             except Exception as error:
                 print(f"[-] Failed to fetch details for {base_key}: {error}")
-
-    if has_changes:
-        save_json(CUSTOM_JSON_PATH, custom_data)
-        save_json(REPOS_JSON_PATH, repos_data)
-        print("Updated custom.json and repos.json for repository status changes.")

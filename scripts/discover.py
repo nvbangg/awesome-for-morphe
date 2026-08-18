@@ -5,60 +5,55 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from providers import jman, morphe_archive, official
-from utils import load_json, save_json
+from utils import append_step_summary, load_json, save_json
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
 DISCOVER_DIR = DATA_DIR / "discover"
-OUTPUT_PATH = DISCOVER_DIR / "discover.json"
+REPOS_JSON_PATH = DATA_DIR / "repos.json"
 PROVIDERS = [
     "custom",
     "official",
-    "jman",
     "morphe-archive",
+    "jman",
 ]
 PROVIDER_MODULES = [official, jman, morphe_archive]
 PROVIDER_PRIORITY = {f"{name}.json": index for index, name in enumerate(PROVIDERS)}
 
 
-def _run_providers():
+def _run_providers() -> list[str]:
+    warnings = []
     with ThreadPoolExecutor(max_workers=len(PROVIDER_MODULES)) as executor:
-        futures = {
-            executor.submit(module.discover): module.__name__
-            for module in PROVIDER_MODULES
-        }
+        futures = [executor.submit(module.discover) for module in PROVIDER_MODULES]
         for future in as_completed(futures):
             try:
-                future.result()
+                warning_message = future.result()
+                if warning_message:
+                    warnings.append(warning_message)
             except Exception as error:
-                print(f"[-] [{futures[future]}] Failed: {error}")
+                warnings.append(f"Unhandled exception: {error}")
+    return warnings
 
 
-def _load_provider_files():
-    results = []
-    for provider in PROVIDERS:
-        file_name = f"{provider}.json"
-        path = DISCOVER_DIR / file_name
-        if path.exists():
-            data = load_json(path)
-            if data:
-                results.append((file_name, data))
-    return results
+def _load_provider_files() -> list[tuple[str, dict]]:
+    return [
+        (f"{provider}.json", data)
+        for provider in PROVIDERS
+        if (data := load_json(DISCOVER_DIR / f"{provider}.json"))
+    ]
 
 
-def _merge(provider_files):
+def _merge(provider_files: list[tuple[str, dict]]) -> dict:
     groups = {}
     for filename, provider_dict in provider_files:
         priority = PROVIDER_PRIORITY.get(filename, 99)
         for raw_key, data in provider_dict.items():
-            lower_key = raw_key.lower()
-            groups.setdefault(lower_key, []).append((priority, raw_key, data))
+            groups.setdefault(raw_key.lower(), []).append((priority, raw_key, data))
 
     merged = {}
     for entries in groups.values():
         entries.sort(key=lambda entry: (entry[0], entry[1]))
         final_key = entries[0][1]
-
         merged_data = {}
         for _, _, data in entries:
             for key, value in data.items():
@@ -68,29 +63,40 @@ def _merge(provider_files):
     return merged
 
 
-def _build_output(merged: dict) -> dict:
-    return {
-        canonical_key: {}
-        for canonical_key, entry in sorted(
-            merged.items(), key=lambda item: item[0].lower()
-        )
-        if entry.get("enabled") is not False
-    }
+def _sync_repos(merged: dict, existing_repos: dict) -> dict:
+    new_repos_data = {}
+    for canonical_key, entry in sorted(merged.items(), key=lambda item: item[0].lower()):
+        if entry.get("enabled") is not False:
+            old_entry = existing_repos.get(canonical_key, {})
+            new_repos_data[canonical_key] = {
+                field: old_entry[field] for field in ("name", "image") if old_entry.get(field)
+            } | {"main": old_entry.get("main"), "dev": old_entry.get("dev")}
+    return new_repos_data
 
 
 def main():
-    _run_providers()
+    warnings = _run_providers()
     print()
     provider_files = _load_provider_files()
     if not provider_files:
         print("No provider files found.")
+        append_step_summary(
+            "### ⚠️ Discover\n- No provider files found in `data/discover/`."
+        )
         return 1
+
+    if warnings:
+        markdown_lines = ["### ⚠️ Discover", *[f"- {warning}" for warning in sorted(warnings)]]
+        append_step_summary("\n".join(markdown_lines))
+
     merged = _merge(provider_files)
     print(f"Merged {len(merged)} unique sources")
-    repos = _build_output(merged)
-    print(f"Generated {len(repos)} repos")
-    save_json(OUTPUT_PATH, repos)
-    print(f"Saved to {OUTPUT_PATH.relative_to(ROOT_DIR)}")
+
+    existing_repos = load_json(REPOS_JSON_PATH, {})
+    synced_repos = _sync_repos(merged, existing_repos)
+    print(f"Synced {len(synced_repos)} repos")
+    save_json(REPOS_JSON_PATH, synced_repos)
+    print(f"Saved to {REPOS_JSON_PATH.relative_to(ROOT_DIR)}")
     return 0
 
 

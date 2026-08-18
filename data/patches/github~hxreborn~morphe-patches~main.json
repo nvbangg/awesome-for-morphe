@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "patches": [
     {
       "name": "AMOLED dark theme",
@@ -108,6 +108,68 @@
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide ads",
+      "description": "Removes promoted listings and the \"with Ads\" label from search results.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.etsy.android",
+          "name": "Etsy",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#F1641E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.90.0",
+              "versionCodes": {
+                "ARM64_V8A": 79000153,
+                "ARMEABI_V7A": 79000153,
+                "X86_64": 79000153,
+                "X86": 79000153
+              },
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide ads",
+      "description": "Disables banner, interstitial, and native ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.gamma.scan",
+          "name": "QR & Barcode Scanner",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#2196F3",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.2.221",
+              "versionCodes": {
+                "ARM64_V8A": 221,
+                "ARMEABI_V7A": 221,
+                "X86_64": 221,
+                "X86": 221
+              },
+              "isExperimental": false,
+              "minSdk": 24,
               "description": null
             }
           ]

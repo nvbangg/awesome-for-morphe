@@ -34,7 +34,7 @@
       "hotRank": 92,
       "hot_hash_1": "Mzg5OS42MA",
       "hot_hash_2": "NDA2MS40MA",
-      "hot_hash_3": "MTIwNzguMzU",
+      "hot_hash_3": "MTIwODAuMjM",
       "hot_hash_4": "MzczNy44MA"
     },
     {
@@ -282,6 +282,14 @@
           "options": [],
           "compatiblePackagesKey": 5,
           "compatibilityKey": 6
+        },
+        {
+          "name": "Suppress Household Prompt",
+          "description": "Hides the Disney+ \"Verify Household Network\" / out-of-household prompt by forcing the client's out-of-household check to report in-household, so the app routes straight to home. Does NOT change what Disney's servers detect (that's driven by your public IP — use a VPN for that); it only suppresses the on-screen prompt/routing. Opt-in / experimental; only takes visible effect when the device would otherwise be prompted.",
+          "use": false,
+          "options": [],
+          "compatiblePackagesKey": 11,
+          "compatibilityKey": 12
         }
       ],
       "changelog": "## [1.5.7-dev.3](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.7-dev.2...v1.5.7-dev.3) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** re-add Layer 9 (NativeNetworkApi interceptor) only ([b14707e](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b14707e23290fa26597f3b2ddda9b3c39442efc2))\n\n## [1.5.7-dev.2](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.7-dev.1...v1.5.7-dev.2) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** remove blocking Thread.sleep() from ad-block interceptors ([ba8e4c6](https://github.com/ajstrick81/morphe-androidtv-patches/commit/ba8e4c66979543c4902833e55478dc483cf5b16e))\n\n## [1.5.7-dev.1](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.6...v1.5.7-dev.1) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** rewrite wrapClient() to use named class, not anonymous ([adbd78d](https://github.com/ajstrick81/morphe-androidtv-patches/commit/adbd78d3e54a08f4c6de5eda45eef4a18493b436))\n\n## [1.5.6](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.5...v1.5.6) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** fix Layer 7 VerifyError launch crash + re-add Layers 9-11 ([#32](https://github.com/ajstrick81/morphe-androidtv-patches/issues/32)) ([c5257dd](https://github.com/ajstrick81/morphe-androidtv-patches/commit/c5257dde17b6ae5b9d5fa6e9025d14788abe5337))\n\n## [1.5.5](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.4...v1.5.5) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** roll back to known-good Layers 1-8; remove launch-breaking Layers 9-10 ([#31](https://github.com/ajstrick81/morphe-androidtv-patches/issues/31)) ([3641c54](https://github.com/ajstrick81/morphe-androidtv-patches/commit/3641c54c2387b143168e7a199ec1c81cb7a86d58))\n\n## [1.5.4](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.3...v1.5.4) (2026-06-25)\n\n\n### Bug Fixes\n\n* **peacock:** revert Layer 11 + SAS/VAC matcher that broke playback on v7.5.100 ([#29](https://github.com/ajstrick81/morphe-androidtv-patches/issues/29)) ([#30](https://github.com/ajstrick81/morphe-androidtv-patches/issues/30)) ([09f5c64](https://github.com/ajstrick81/morphe-androidtv-patches/commit/09f5c64a0b33569779e32d9a1fe55903980ca757)), closes [#27](https://github.com/ajstrick81/morphe-androidtv-patches/issues/27)\n\n## [1.5.3](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.2...v1.5.3) (2026-06-25)\n\n\n### Bug Fixes\n\n* **peacock:** Layer 11 media-client coverage + SAS/VAC shard matching ([#27](https://github.com/ajstrick81/morphe-androidtv-patches/issues/27)) ([a132655](https://github.com/ajstrick81/morphe-androidtv-patches/commit/a132655743cff6cdf56e7ff65be3150952544759))\n\n## [1.5.2](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.1...v1.5.2) (2026-06-25)\n\n\n### Bug Fixes\n\n* **peacock:** DNS-independent ad suppression — Sky SDK addon OkHttp client + New Relic agent kill ([#26](https://github.com/ajstrick81/morphe-androidtv-patches/issues/26)) ([5e592a4](https://github.com/ajstrick81/morphe-androidtv-patches/commit/5e592a4a23464c7ed6492cdd69b488f98beb06d8))\n\n## [1.5.1](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.0...v1.5.1) (2026-06-23)\n\n\n### Bug Fixes\n\n* **mlbtv:** re-enable SSAI/DAI/TXXX blocking patches alongside overlay ([4cfcf7c](https://github.com/ajstrick81/morphe-androidtv-patches/commit/4cfcf7c4b3a22a1352e87f25a250ee05c8f5d0a3))\n\n# [1.5.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.4.107...v1.5.0) (2026-06-23)\n\n\n### Features\n\n* replace MLB At Bat SSAI/DAI blocking with ad-break overlay ([adc3d3f](https://github.com/ajstrick81/morphe-androidtv-patches/commit/adc3d3fa802a43c494e487e28472a0c40a26899b))\n\n## [1.4.107](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.4.106...v1.4.107) (2026-06-23)\n\n\n### Bug Fixes\n\n* **primevideo:** replace non-existent allowAutoUpdates attribute with versionCode bump ([e758753](https://github.com/ajstrick81/morphe-androidtv-patches/commit/e75875319b5831a3da95b6d30758b47934020a29))\n\n## [1.4.106](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.4.105...v1.4.106) (2026-06-23)\n\n\n### Bug Fixes\n\n* push new version with changes to Update Fingerprints.kt ([3775332](https://github.com/ajstrick81/morphe-androidtv-patches/commit/37753320a316f5e351a0cf5e628fc1ca29d06f39))\n\n## [1.4.105](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.4.104...v1.4.105) (2026-06-23)\n\n\n### Bug Fixes\n\n* Peacock Layer 7 constructor coverage + HBO Max 7.5.0.73 support ([#21](https://github.com/ajstrick81/morphe-androidtv-patches/issues/21)) ([b4e862a](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b4e862af3b8e974d485c7e9634f08210ec52d647))\n\n## [1.4.104](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.4.103...v1.4.104) (2026-06-22)\n\n\n### Bug Fixes\n\n* trigger release for Peacock ad-leak fixes and HBO Max 7.5.0.73 support ([dd1ba7b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/dd1ba7bb04fe87836ca69c6565b9ac2020ecd3be))\n\n## [1.4.103](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.4.102...v1.4.103) (2026-06-22)\n\n\n### Bug Fixes\n\n* push new version while Updating proguard rules to include enforceAdBlock ([54e320a](https://github.com/ajstrick81/morphe-androidtv-patches/commit/54e320ac7d5f325770a1a7b02fd72a74d3b8da02))",
@@ -290,7 +298,7 @@
       "avatarUrl": "https://avatars.githubusercontent.com/u/229211337?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=ajstrick81/morphe-androidtv-patches",
-      "patchCount": 30,
+      "patchCount": 31,
       "targetApps": [
         "tv.twitch.android.app",
         "com.amazon.amazonvideo.livingroom",
@@ -306,10 +314,10 @@
         "com.tubitv"
       ],
       "appUpdates": {
+        "com.disney.disneyplus": 1786924800000,
         "com.netflix.ninja": 1786665600000,
         "tv.pluto.android": 1786060800000,
         "tv.twitch.android.app": 1785542400000,
-        "com.disney.disneyplus": 1784678400000,
         "com.tubitv": 1784505600000,
         "com.wbd.hbomax": 1784332800000,
         "com.univision.prendetv": 1783814400000
@@ -331,10 +339,10 @@
         "com.fox.foxone": 1780293505455,
         "com.tubitv": 1780009881312
       },
-      "hotRank": 8,
-      "hot_hash_1": "OTIzNS4wMA",
+      "hotRank": 10,
+      "hot_hash_1": "ODI2NC4yMA",
       "hot_hash_2": "MTMyODAuMDA",
-      "hot_hash_3": "NDg1NDYyLjYx",
+      "hot_hash_3": "NDQ0MjIzLjQ4",
       "hot_hash_4": "NTUxMy42MA"
     },
     {
@@ -392,7 +400,7 @@
       "hotRank": 33,
       "hot_hash_1": "NDM0Mi4yMA",
       "hot_hash_2": "NDY2NS44MA",
-      "hot_hash_3": "NDU4MDguMjQ",
+      "hot_hash_3": "NDQ0NTUuMjQ",
       "hot_hash_4": "NDAxOC42MA"
     },
     {
@@ -430,7 +438,7 @@
       "hotRank": 58,
       "hot_hash_1": "NDk1NS44MA",
       "hot_hash_2": "NDk1NS44MA",
-      "hot_hash_3": "MTcxNzkuNzM",
+      "hot_hash_3": "MTcxNzIuOTA",
       "hot_hash_4": "NDYzMi4yMA"
     },
     {
@@ -474,7 +482,7 @@
       "hotRank": 98,
       "hot_hash_1": "NDIxMi45MA",
       "hot_hash_2": "NDM3NC43MA",
-      "hot_hash_3": "ODUyOS43NQ",
+      "hot_hash_3": "ODUzNi45MQ",
       "hot_hash_4": "NDA1MS4xMA"
     },
     {
@@ -520,7 +528,7 @@
       "hot_hash_1": "NDQxOS42MA",
       "hot_hash_2": "NDkwNS4wMA",
       "hot_hash_3": "NDI1Ny44MA",
-      "hot_hash_4": "MTIxNjkuMTU"
+      "hot_hash_4": "MTIxNjcuNTc"
     },
     {
       "source": "github",
@@ -565,7 +573,7 @@
       "hotRank": 95,
       "hot_hash_1": "NDQzNi41MA",
       "hot_hash_2": "NDc2MC4xMA",
-      "hot_hash_3": "MTQxMTEuNDU",
+      "hot_hash_3": "MTQxMTMuOTc",
       "hot_hash_4": "NDI3NC43MA"
     },
     {
@@ -1572,8 +1580,8 @@
       "hotRank": 24,
       "hot_hash_1": "NTQ4NC44MA",
       "hot_hash_2": "Njc3OS4yMA",
-      "hot_hash_3": "Njg3MzAuNjA",
-      "hot_hash_4": "MTE3ODEuNDM"
+      "hot_hash_3": "NjgyMzUuMDc",
+      "hot_hash_4": "MTExODguMjM"
     },
     {
       "source": "github",
@@ -1879,7 +1887,7 @@
       "hotRank": 11,
       "hot_hash_1": "NzAxMy43MA",
       "hot_hash_2": "OTExNy4xMA",
-      "hot_hash_3": "MzY0NzAuOTU",
+      "hot_hash_3": "MzYwNTIuNDQ",
       "hot_hash_4": "NDU4Ni43MA"
     },
     {
@@ -1935,7 +1943,7 @@
       "hotRank": 96,
       "hot_hash_1": "NDQ4Mi4wMA",
       "hot_hash_2": "NDgwNS42MA",
-      "hot_hash_3": "MTY0MTcuMTU",
+      "hot_hash_3": "MTY0MTQuNjc",
       "hot_hash_4": "NDMyMC4yMA"
     },
     {
@@ -1976,7 +1984,7 @@
       "hotRank": 72,
       "hot_hash_1": "NDg4OC45MA",
       "hot_hash_2": "NDg4OC45MA",
-      "hot_hash_3": "MTIyMzAuNTE",
+      "hot_hash_3": "MTIyMTguMTc",
       "hot_hash_4": "NDcyNy4xMA"
     },
     {
@@ -2584,8 +2592,8 @@
       "hotRank": 37,
       "hot_hash_1": "NTExMS4xMA",
       "hot_hash_2": "NTExMS4xMA",
-      "hot_hash_3": "MTI1MTIuNTI",
-      "hot_hash_4": "MTMzNjIuNTA"
+      "hot_hash_3": "MTI1OTkuMjg",
+      "hot_hash_4": "MTI5ODguMTI"
     },
     {
       "source": "github",
@@ -3167,7 +3175,7 @@
         "com.thehungrywasp.iamsober": 1782336283293
       },
       "hotRank": 6,
-      "hot_hash_1": "ODA0MS40MA",
+      "hot_hash_1": "Nzg3OS42MA",
       "hot_hash_2": "MTE0MzkuMjA",
       "hot_hash_3": "NTU0NzYzLjYw",
       "hot_hash_4": "NTc3Ni4yMA"
@@ -3243,7 +3251,7 @@
       "hotRank": 91,
       "hot_hash_1": "NTgwNS40MA",
       "hot_hash_2": "NTk2Ny4yMA",
-      "hot_hash_3": "MTIyMTMuMDA",
+      "hot_hash_3": "MTIyMTUuODQ",
       "hot_hash_4": "NTY0My42MA"
     },
     {
@@ -3474,7 +3482,7 @@
       "hotRank": 31,
       "hot_hash_1": "NjQ3OC41MA",
       "hot_hash_2": "ODQyMC4xMA",
-      "hot_hash_3": "NDk5MjMuMTk",
+      "hot_hash_3": "NDk4OTUuNjY",
       "hot_hash_4": "NTM0NS45MA"
     },
     {
@@ -3520,7 +3528,7 @@
       "hotRank": 84,
       "hot_hash_1": "NTExOS4wMA",
       "hot_hash_2": "NTYwNC40MA",
-      "hot_hash_3": "MTMyMTguMTc",
+      "hot_hash_3": "MTMyMTcuNDM",
       "hot_hash_4": "NDk1Ny4yMA"
     },
     {
@@ -3646,7 +3654,7 @@
       "hotRank": 61,
       "hot_hash_1": "NTI5NC45MA",
       "hot_hash_2": "NjQyNy41MA",
-      "hot_hash_3": "Mzk4MTIuNzc",
+      "hot_hash_3": "Mzk3OTEuNTg",
       "hot_hash_4": "NDMyNC4xMA"
     },
     {
@@ -3946,7 +3954,7 @@
       "hotRank": 18,
       "hot_hash_1": "NDkwOS45MA",
       "hot_hash_2": "NDkwOS45MA",
-      "hot_hash_3": "ODI3NzguMTY",
+      "hot_hash_3": "NzcyNDkuNTM",
       "hot_hash_4": "MzI5MS45MA"
     },
     {
@@ -3980,10 +3988,10 @@
       "appFirstSeen": {
         "org.wakingup.android": 1786267928589
       },
-      "hotRank": 39,
+      "hotRank": 38,
       "hot_hash_1": "NTM5MS45MA",
       "hot_hash_2": "NTM5MS45MA",
-      "hot_hash_3": "MjE2MzUuOTU",
+      "hot_hash_3": "MjE0MDAuOTI",
       "hot_hash_4": "NDkwNi41MA"
     },
     {
@@ -4290,10 +4298,10 @@
         "fr.tramb.park4night": 1773147404000,
         "cz.seznam.mapy": 1773147404000
       },
-      "hotRank": 20,
-      "hot_hash_1": "NDkxNC4wMA",
+      "hotRank": 21,
+      "hot_hash_1": "NDc1Mi4yMA",
       "hot_hash_2": "ODQ3My42MA",
-      "hot_hash_3": "ODM1NjMuOTQ",
+      "hot_hash_3": "ODM0MjUuNDM",
       "hot_hash_4": "Mzk0My4yMA"
     },
     {
@@ -4464,10 +4472,10 @@
         "com.pinterest": 1782206425615,
         "easy.sudoku.puzzle.solver.free": 1785577233427
       },
-      "hotRank": 15,
+      "hotRank": 13,
       "hot_hash_1": "NTgwMi41MA",
       "hot_hash_2": "Nzc0NC4xMA",
-      "hot_hash_3": "MTIzMDY5LjAw",
+      "hot_hash_3": "MTIwOTQ4LjIw",
       "hot_hash_4": "NDY2OS45MA"
     },
     {
@@ -4601,10 +4609,10 @@
         "com.Splitwise.SplitwiseMobile": 1783348412813,
         "com.overdevs.at4k": 1783348412813
       },
-      "hotRank": 12,
-      "hot_hash_1": "NTUyMC45MA",
+      "hotRank": 14,
+      "hot_hash_1": "NDg3My43MA",
       "hot_hash_2": "MTA1MzYuNzA",
-      "hot_hash_3": "NjExMzcuMTQ",
+      "hot_hash_3": "NjEwMjQuMjc",
       "hot_hash_4": "MzkwMi45MA"
     },
     {
@@ -4823,10 +4831,10 @@
         "com.touchfoo.swordigo": 1785570399067,
         "com.generalcomp.truecloud": 1783246898450
       },
-      "hotRank": 17,
-      "hot_hash_1": "NTY2OS45MA",
+      "hotRank": 19,
+      "hot_hash_1": "NTM0Ni4zMA",
       "hot_hash_2": "NjMxNy4xMA",
-      "hot_hash_3": "MTI3NzcyLjU1",
+      "hot_hash_3": "MTE3NjgyLjM0",
       "hot_hash_4": "NDUzNy4zMA"
     },
     {
@@ -4967,7 +4975,7 @@
       "hotRank": 34,
       "hot_hash_1": "MzE2Ni40MA",
       "hot_hash_2": "MzY1MS44MA",
-      "hot_hash_3": "NjI2NzcuMTI",
+      "hot_hash_3": "NjE4MTkuNDE",
       "hot_hash_4": "MzAwNC42MA"
     },
     {
@@ -5054,10 +5062,10 @@
         "com.github.android": 1785942106591,
         "com.x8bit.bitwarden": 1785156172223
       },
-      "hotRank": 36,
-      "hot_hash_1": "MzYyMi42MA",
+      "hotRank": 39,
+      "hot_hash_1": "MzQ2MC44MA",
       "hot_hash_2": "NDI2OS44MA",
-      "hot_hash_3": "MTg3MTIuMjU",
+      "hot_hash_3": "MTg2NjMuMjY",
       "hot_hash_4": "MzEzNy4yMA"
     },
     {
@@ -5094,7 +5102,7 @@
       "hotRank": 71,
       "hot_hash_1": "NDQ5Ni45MA",
       "hot_hash_2": "NDY1OC43MA",
-      "hot_hash_3": "MTMzMjAuOTM",
+      "hot_hash_3": "MTMzNDUuMzc",
       "hot_hash_4": "NDE3My4zMA"
     },
     {
@@ -6124,7 +6132,7 @@
         "com.instagram.android": 1786924800000,
         "com.twitter.android": 1786924800000
       },
-      "stars": 4738,
+      "stars": 4740,
       "updatedAt": 1786924800000,
       "firstSeen": 1773154796000,
       "appFirstSeen": {
@@ -6132,10 +6140,10 @@
         "com.instagram.android": 1773154796000
       },
       "hotRank": 0,
-      "hot_hash_1": "MjM3ODkuNjA",
-      "hot_hash_2": "NjE4MTIuNjA",
-      "hot_hash_3": "NDQ3MjI4LjMz",
-      "hot_hash_4": "NTQxNjE1LjQ1"
+      "hot_hash_1": "MjEyMDAuODA",
+      "hot_hash_2": "NjIxMzYuMjA",
+      "hot_hash_3": "NDQ2Njg0LjI3",
+      "hot_hash_4": "NDk3MDc2LjAz"
     },
     {
       "source": "github",
@@ -6171,8 +6179,8 @@
       "hotRank": 70,
       "hot_hash_1": "MzczNi40MA",
       "hot_hash_2": "Mzg5OC4yMA",
-      "hot_hash_3": "MTA1OTIuOTE",
-      "hot_hash_4": "Mzg0Mi4wOQ"
+      "hot_hash_3": "MTA1OTcuODU",
+      "hot_hash_4": "Mzg0Ny43NQ"
     },
     {
       "source": "github",
@@ -6273,11 +6281,11 @@
         "com.brave.browser_nightly": 1786104963166,
         "io.github.jqssun.helium": 1786104963166
       },
-      "hotRank": 13,
-      "hot_hash_1": "NTUxNy41MA",
+      "hotRank": 12,
+      "hot_hash_1": "NTM1NS43MA",
       "hot_hash_2": "NTY3OS4zMA",
-      "hot_hash_3": "ODAwMTEuMDA",
-      "hot_hash_4": "MjgxODMuNjI"
+      "hot_hash_3": "Nzg3ODMuOTU",
+      "hot_hash_4": "MjcyNTMuMjc"
     },
     {
       "source": "github",
@@ -6379,10 +6387,10 @@
         "com.google.android.apps.magazines": 1785149331689,
         "com.ebay.kleinanzeigen": 1785149331689
       },
-      "hotRank": 45,
+      "hotRank": 44,
       "hot_hash_1": "Mzg2MS43MA",
       "hot_hash_2": "NDM0Ny4xMA",
-      "hot_hash_3": "MjI3NDcuMzQ",
+      "hot_hash_3": "MjI3MTYuODY",
       "hot_hash_4": "MzA1Mi43MA"
     },
     {
@@ -6419,7 +6427,7 @@
       "hotRank": 79,
       "hot_hash_1": "NDQ3Mi4yMA",
       "hot_hash_2": "NDYzNC4wMA",
-      "hot_hash_3": "ODkwMy44MQ",
+      "hot_hash_3": "ODkxMS40MQ",
       "hot_hash_4": "NDE0OC42MA"
     },
     {
@@ -7007,7 +7015,7 @@
       "hotRank": 23,
       "hot_hash_1": "NjQ3MC4wMA",
       "hot_hash_2": "ODczNS4yMA",
-      "hot_hash_3": "NDkyODYuNjk",
+      "hot_hash_3": "NDkxNzkuNDY",
       "hot_hash_4": "NTE3NS42MA"
     },
     {
@@ -7219,7 +7227,7 @@
         "com.going.mobile": 1783889536144,
         "com.innologica.inoreader": 1783911432616
       },
-      "hotRank": 52,
+      "hotRank": 49,
       "hot_hash_1": "NDY5NC42MA",
       "hot_hash_2": "NDY5NC42MA",
       "hot_hash_3": "NDY5NC42MA",
@@ -7846,10 +7854,10 @@
         "com.spocky.projengmenu": 1786391122078,
         "eu.darken.bluemusic": 1786413608053
       },
-      "hotRank": 19,
+      "hotRank": 17,
       "hot_hash_1": "Njc5NC44MA",
       "hot_hash_2": "NzI4MC4yMA",
-      "hot_hash_3": "MTc3MTYwLjEz",
+      "hot_hash_3": "MTczNjU0Ljk5",
       "hot_hash_4": "NDg1My4yMA"
     },
     {
@@ -7901,7 +7909,7 @@
       "hotRank": 63,
       "hot_hash_1": "NjQxMC41MA",
       "hot_hash_2": "NzIxOS41MA",
-      "hot_hash_3": "MTMyNTguMzc",
+      "hot_hash_3": "MTMyNTYuNDI",
       "hot_hash_4": "NjA4Ni45MA"
     },
     {
@@ -7945,7 +7953,7 @@
       "hotRank": 64,
       "hot_hash_1": "Mzg0NS42MA",
       "hot_hash_2": "NDAwNy40MA",
-      "hot_hash_3": "OTA3Mi4wNQ",
+      "hot_hash_3": "OTA5MS4yNA",
       "hot_hash_4": "MzUyMi4wMA"
     },
     {
@@ -8133,11 +8141,11 @@
         "com.rawcam.app": 1785468401751,
         "com.bolpatranepal.axios": 1786889351093
       },
-      "hotRank": 26,
+      "hotRank": 25,
       "hot_hash_1": "NDk1OC4zMA",
       "hot_hash_2": "NTc2Ny4zMA",
-      "hot_hash_3": "NDYxODcuMDg",
-      "hot_hash_4": "Mzk2OTkuMzI"
+      "hot_hash_3": "NDU4NjguNjc",
+      "hot_hash_4": "MzcyMDYuNTI"
     },
     {
       "source": "github",
@@ -8173,7 +8181,7 @@
       "hotRank": 74,
       "hot_hash_1": "NDI5Ni43MA",
       "hot_hash_2": "NDYyMC4zMA",
-      "hot_hash_3": "NjI2My4zOA",
+      "hot_hash_3": "NjI4NS45Nw",
       "hot_hash_4": "Mzk3My4xMA"
     },
     {
@@ -8210,7 +8218,7 @@
       "hotRank": 87,
       "hot_hash_1": "NTg4Mi4xMA",
       "hot_hash_2": "NjA0My45MA",
-      "hot_hash_3": "MTM3NjYuNTk",
+      "hot_hash_3": "MTM3NjYuMjk",
       "hot_hash_4": "NTcyMC4zMA"
     },
     {
@@ -8247,7 +8255,7 @@
       "hotRank": 53,
       "hot_hash_1": "NDI1OS42MA",
       "hot_hash_2": "NDI1OS42MA",
-      "hot_hash_3": "MTI1NzEuNzg",
+      "hot_hash_3": "MTI2MDEuMDU",
       "hot_hash_4": "Mzc3NC4yMA"
     },
     {
@@ -8334,8 +8342,8 @@
       "hotRank": 48,
       "hot_hash_1": "NDE5MS40MA",
       "hot_hash_2": "NDM1My4yMA",
-      "hot_hash_3": "MTA4NTguNTY",
-      "hot_hash_4": "NTYwMC44Nw"
+      "hot_hash_3": "MTA4MTguMzM",
+      "hot_hash_4": "NTU5MC4xMQ"
     },
     {
       "source": "github",
@@ -8934,7 +8942,7 @@
           "compatiblePackagesKey": 299
         }
       ],
-      "changelog": "# [1.41.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.41.0-dev.2...v1.41.0-dev.3) (2026-08-17)\n\n\n### Features\n\n* **Duolingo:** Update patches to support `6.92.5` ([dca61c3](https://github.com/hoo-dles/morphe-patches/commit/dca61c3c602aecb8c0b6fcc79a4368c4bb59cf67))\n\n# [1.41.0-dev.2](https://github.com/hoo-dles/morphe-patches/compare/v1.41.0-dev.1...v1.41.0-dev.2) (2026-08-17)\n\n\n### Features\n\n* **Windy:** Update patches to support `51.0.1` ([634ad8a](https://github.com/hoo-dles/morphe-patches/commit/634ad8aa627ce3f35ecc023d0e0df0f015b4c53c))\n\n# [1.41.0-dev.1](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0...v1.41.0-dev.1) (2026-08-16)\n\n\n### Features\n\n* **MyFitnessPal:** Update patches to support `26.31.0` ([4d50bf9](https://github.com/hoo-dles/morphe-patches/commit/4d50bf9db7d4bd1ac32f393036683090429232c2))\n* **Smart Launcher:** Update patches to support `6.6 build 016` ([1218a1d](https://github.com/hoo-dles/morphe-patches/commit/1218a1d902fd28e90528765c8e6396df28d8981e))\n\n# [1.40.0](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0...v1.40.0) (2026-08-07)\n\n\n### Bug Fixes\n\n* **Adguard:** Fix UI issue on license status page ([7051309](https://github.com/hoo-dles/morphe-patches/commit/705130957dc233d05aa42e1058a3124d373e52a5))\n* **Adguard:** Update patch to support v4.13.0 ([8c2facc](https://github.com/hoo-dles/morphe-patches/commit/8c2facc2827c8e5c416180fa18af1454b7ad17d4))\n* **MacroFactor:** Bump version and spoof installer source ([cde3be0](https://github.com/hoo-dles/morphe-patches/commit/cde3be0710459043ebd1d622c9356a1388ef04e4))\n* Temporarily remove Teuida patches until MicroG RE update ([871c44e](https://github.com/hoo-dles/morphe-patches/commit/871c44e273154e59dd5a5352dea4602e7ec498af))\n\n\n### Features\n\n* **Github:** Update patch to support v1.267 ([0a51f27](https://github.com/hoo-dles/morphe-patches/commit/0a51f27ba24e410ed0a813dffbc63780552e3a03))\n* **Lightroom:** Add `Bypass login` and `Unlock premium features` patches ([d05f378](https://github.com/hoo-dles/morphe-patches/commit/d05f378b776ca4c2a4d423c2c90ec652b1ff070f))\n* **Ling:** Add `Enable Pro` patch ([5d682ef](https://github.com/hoo-dles/morphe-patches/commit/5d682ef19539896349af176273b31101e8372451))\n\n# [1.40.0-dev.7](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.6...v1.40.0-dev.7) (2026-07-30)\n\n\n### Bug Fixes\n\n* **Adguard:** Fix UI issue on license status page ([7051309](https://github.com/hoo-dles/morphe-patches/commit/705130957dc233d05aa42e1058a3124d373e52a5))\n\n# [1.40.0-dev.6](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.5...v1.40.0-dev.6) (2026-07-29)\n\n\n### Bug Fixes\n\n* **Adguard:** Update patch to support v4.13.0 ([8c2facc](https://github.com/hoo-dles/morphe-patches/commit/8c2facc2827c8e5c416180fa18af1454b7ad17d4))\n\n# [1.40.0-dev.5](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.4...v1.40.0-dev.5) (2026-07-29)\n\n\n### Features\n\n* **Lightroom:** Add `Bypass login` and `Unlock premium features` patches ([d05f378](https://github.com/hoo-dles/morphe-patches/commit/d05f378b776ca4c2a4d423c2c90ec652b1ff070f))\n\n# [1.40.0-dev.4](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.3...v1.40.0-dev.4) (2026-07-25)\n\n\n### Bug Fixes\n\n* Temporarily remove Teuida patches until MicroG RE update ([871c44e](https://github.com/hoo-dles/morphe-patches/commit/871c44e273154e59dd5a5352dea4602e7ec498af))\n\n# [1.40.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.2...v1.40.0-dev.3) (2026-07-22)\n\n\n### Features\n\n* **Ling:** Add `Enable Pro` patch ([5d682ef](https://github.com/hoo-dles/morphe-patches/commit/5d682ef19539896349af176273b31101e8372451))\n\n# [1.40.0-dev.2](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.1...v1.40.0-dev.2) (2026-07-17)\n\n\n### Bug Fixes\n\n* **MacroFactor:** Bump version and spoof installer source ([cde3be0](https://github.com/hoo-dles/morphe-patches/commit/cde3be0710459043ebd1d622c9356a1388ef04e4))\n\n# [1.40.0-dev.1](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0...v1.40.0-dev.1) (2026-07-16)\n\n\n### Features\n\n* **Github:** Update patch to support v1.267 ([0a51f27](https://github.com/hoo-dles/morphe-patches/commit/0a51f27ba24e410ed0a813dffbc63780552e3a03))\n\n# [1.39.0](https://github.com/hoo-dles/morphe-patches/compare/v1.38.2...v1.39.0) (2026-07-15)\n\n\n### Bug Fixes\n\n* **SuperChinese:** Allow starting pre-downloaded lessons after VIP lapse ([3f84b3c](https://github.com/hoo-dles/morphe-patches/commit/3f84b3c47ecf66c7cae96d17481fc9ed0be14a0a))\n\n\n### Features\n\n* **Duolingo:** Update patches to support v6.86.5 ([266024c](https://github.com/hoo-dles/morphe-patches/commit/266024ce90fe0b6fca71a1c5b914dff7031a4208))\n* **IbisPaint X:** Update patch to support v14.0.6 and be more resilient to new versions ([b664261](https://github.com/hoo-dles/morphe-patches/commit/b664261a9c70e34082f6da983de5b1ac376fd6d1))\n* **SuperChinese:** Add `Unlock all lessons` and `Disable telemetry` patches ([5a4000e](https://github.com/hoo-dles/morphe-patches/commit/5a4000e7cc1282518fe963582c3731deda929b57))\n\n# [1.39.0-dev.4](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0-dev.3...v1.39.0-dev.4) (2026-07-12)\n\n\n### Bug Fixes\n\n* **SuperChinese:** Allow starting pre-downloaded lessons after VIP lapse ([3f84b3c](https://github.com/hoo-dles/morphe-patches/commit/3f84b3c47ecf66c7cae96d17481fc9ed0be14a0a))\n\n# [1.39.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0-dev.2...v1.39.0-dev.3) (2026-07-10)\n\n\n### Features\n\n* **Duolingo:** Update patches to support v6.86.5 ([266024c](https://github.com/hoo-dles/morphe-patches/commit/266024ce90fe0b6fca71a1c5b914dff7031a4208))\n\n# [1.39.0-dev.2](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0-dev.1...v1.39.0-dev.2) (2026-07-10)\n\n\n### Features\n\n* **IbisPaint X:** Update patch to support v14.0.6 and be more resilient to new versions ([b664261](https://github.com/hoo-dles/morphe-patches/commit/b664261a9c70e34082f6da983de5b1ac376fd6d1))",
+      "changelog": "# [1.41.0-dev.4](https://github.com/hoo-dles/morphe-patches/compare/v1.41.0-dev.3...v1.41.0-dev.4) (2026-08-18)\n\n\n### Bug Fixes\n\n* **Duolingo:** Force max energy ([969359c](https://github.com/hoo-dles/morphe-patches/commit/969359c24d2d3ac6d75e06eb052c0f3cc7911b62))\n\n# [1.41.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.41.0-dev.2...v1.41.0-dev.3) (2026-08-17)\n\n\n### Features\n\n* **Duolingo:** Update patches to support `6.92.5` ([dca61c3](https://github.com/hoo-dles/morphe-patches/commit/dca61c3c602aecb8c0b6fcc79a4368c4bb59cf67))\n\n# [1.41.0-dev.2](https://github.com/hoo-dles/morphe-patches/compare/v1.41.0-dev.1...v1.41.0-dev.2) (2026-08-17)\n\n\n### Features\n\n* **Windy:** Update patches to support `51.0.1` ([634ad8a](https://github.com/hoo-dles/morphe-patches/commit/634ad8aa627ce3f35ecc023d0e0df0f015b4c53c))\n\n# [1.41.0-dev.1](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0...v1.41.0-dev.1) (2026-08-16)\n\n\n### Features\n\n* **MyFitnessPal:** Update patches to support `26.31.0` ([4d50bf9](https://github.com/hoo-dles/morphe-patches/commit/4d50bf9db7d4bd1ac32f393036683090429232c2))\n* **Smart Launcher:** Update patches to support `6.6 build 016` ([1218a1d](https://github.com/hoo-dles/morphe-patches/commit/1218a1d902fd28e90528765c8e6396df28d8981e))\n\n# [1.40.0](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0...v1.40.0) (2026-08-07)\n\n\n### Bug Fixes\n\n* **Adguard:** Fix UI issue on license status page ([7051309](https://github.com/hoo-dles/morphe-patches/commit/705130957dc233d05aa42e1058a3124d373e52a5))\n* **Adguard:** Update patch to support v4.13.0 ([8c2facc](https://github.com/hoo-dles/morphe-patches/commit/8c2facc2827c8e5c416180fa18af1454b7ad17d4))\n* **MacroFactor:** Bump version and spoof installer source ([cde3be0](https://github.com/hoo-dles/morphe-patches/commit/cde3be0710459043ebd1d622c9356a1388ef04e4))\n* Temporarily remove Teuida patches until MicroG RE update ([871c44e](https://github.com/hoo-dles/morphe-patches/commit/871c44e273154e59dd5a5352dea4602e7ec498af))\n\n\n### Features\n\n* **Github:** Update patch to support v1.267 ([0a51f27](https://github.com/hoo-dles/morphe-patches/commit/0a51f27ba24e410ed0a813dffbc63780552e3a03))\n* **Lightroom:** Add `Bypass login` and `Unlock premium features` patches ([d05f378](https://github.com/hoo-dles/morphe-patches/commit/d05f378b776ca4c2a4d423c2c90ec652b1ff070f))\n* **Ling:** Add `Enable Pro` patch ([5d682ef](https://github.com/hoo-dles/morphe-patches/commit/5d682ef19539896349af176273b31101e8372451))\n\n# [1.40.0-dev.7](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.6...v1.40.0-dev.7) (2026-07-30)\n\n\n### Bug Fixes\n\n* **Adguard:** Fix UI issue on license status page ([7051309](https://github.com/hoo-dles/morphe-patches/commit/705130957dc233d05aa42e1058a3124d373e52a5))\n\n# [1.40.0-dev.6](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.5...v1.40.0-dev.6) (2026-07-29)\n\n\n### Bug Fixes\n\n* **Adguard:** Update patch to support v4.13.0 ([8c2facc](https://github.com/hoo-dles/morphe-patches/commit/8c2facc2827c8e5c416180fa18af1454b7ad17d4))\n\n# [1.40.0-dev.5](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.4...v1.40.0-dev.5) (2026-07-29)\n\n\n### Features\n\n* **Lightroom:** Add `Bypass login` and `Unlock premium features` patches ([d05f378](https://github.com/hoo-dles/morphe-patches/commit/d05f378b776ca4c2a4d423c2c90ec652b1ff070f))\n\n# [1.40.0-dev.4](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.3...v1.40.0-dev.4) (2026-07-25)\n\n\n### Bug Fixes\n\n* Temporarily remove Teuida patches until MicroG RE update ([871c44e](https://github.com/hoo-dles/morphe-patches/commit/871c44e273154e59dd5a5352dea4602e7ec498af))\n\n# [1.40.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.2...v1.40.0-dev.3) (2026-07-22)\n\n\n### Features\n\n* **Ling:** Add `Enable Pro` patch ([5d682ef](https://github.com/hoo-dles/morphe-patches/commit/5d682ef19539896349af176273b31101e8372451))\n\n# [1.40.0-dev.2](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.1...v1.40.0-dev.2) (2026-07-17)\n\n\n### Bug Fixes\n\n* **MacroFactor:** Bump version and spoof installer source ([cde3be0](https://github.com/hoo-dles/morphe-patches/commit/cde3be0710459043ebd1d622c9356a1388ef04e4))\n\n# [1.40.0-dev.1](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0...v1.40.0-dev.1) (2026-07-16)\n\n\n### Features\n\n* **Github:** Update patch to support v1.267 ([0a51f27](https://github.com/hoo-dles/morphe-patches/commit/0a51f27ba24e410ed0a813dffbc63780552e3a03))\n\n# [1.39.0](https://github.com/hoo-dles/morphe-patches/compare/v1.38.2...v1.39.0) (2026-07-15)\n\n\n### Bug Fixes\n\n* **SuperChinese:** Allow starting pre-downloaded lessons after VIP lapse ([3f84b3c](https://github.com/hoo-dles/morphe-patches/commit/3f84b3c47ecf66c7cae96d17481fc9ed0be14a0a))\n\n\n### Features\n\n* **Duolingo:** Update patches to support v6.86.5 ([266024c](https://github.com/hoo-dles/morphe-patches/commit/266024ce90fe0b6fca71a1c5b914dff7031a4208))\n* **IbisPaint X:** Update patch to support v14.0.6 and be more resilient to new versions ([b664261](https://github.com/hoo-dles/morphe-patches/commit/b664261a9c70e34082f6da983de5b1ac376fd6d1))\n* **SuperChinese:** Add `Unlock all lessons` and `Disable telemetry` patches ([5a4000e](https://github.com/hoo-dles/morphe-patches/commit/5a4000e7cc1282518fe963582c3731deda929b57))\n\n# [1.39.0-dev.4](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0-dev.3...v1.39.0-dev.4) (2026-07-12)\n\n\n### Bug Fixes\n\n* **SuperChinese:** Allow starting pre-downloaded lessons after VIP lapse ([3f84b3c](https://github.com/hoo-dles/morphe-patches/commit/3f84b3c47ecf66c7cae96d17481fc9ed0be14a0a))\n\n# [1.39.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0-dev.2...v1.39.0-dev.3) (2026-07-10)\n\n\n### Features\n\n* **Duolingo:** Update patches to support v6.86.5 ([266024c](https://github.com/hoo-dles/morphe-patches/commit/266024ce90fe0b6fca71a1c5b914dff7031a4208))",
       "fullChangelogUrl": "https://github.com/hoo-dles/morphe-patches/blob/dev/CHANGELOG.md",
       "repoDescription": "🍃 Patches for Morphe",
       "avatarUrl": "https://avatars.githubusercontent.com/u/207470673?v=4&size=168",
@@ -9002,7 +9010,7 @@
         "com.github.android": 1786060800000,
         "com.simyasolutions.ling.universal": 1786060800000,
         "com.superchinese": 1784073600000,
-        "com.duolingo": 1786924800000,
+        "com.duolingo": 1787011200000,
         "jp.ne.ibis.ibispaintx.app": 1784073600000,
         "com.intsig.camscanner": 1783296000000,
         "com.goodreads": 1782518400000,
@@ -9043,7 +9051,7 @@
         "ginlemon.flowerfree": 1786838400000
       },
       "stars": 952,
-      "updatedAt": 1786924800000,
+      "updatedAt": 1787011200000,
       "firstSeen": 1768941201000,
       "appFirstSeen": {
         "com.github.android": 1778803200000,
@@ -9100,11 +9108,11 @@
         "ch.protonvpn.android": 1768941201000,
         "cn.ommiao.iconpacker": 1768941201000
       },
-      "hotRank": 5,
-      "hot_hash_1": "ODY2NS4zMA",
+      "hotRank": 4,
+      "hot_hash_1": "ODUwMy41MA",
       "hot_hash_2": "MjE3NzEuMTA",
-      "hot_hash_3": "NTgyNjAyLjc2",
-      "hot_hash_4": "NjE0MTIuMTA"
+      "hot_hash_3": "NTc4NTA0LjE3",
+      "hot_hash_4": "MzYzNjU0LjUw"
     },
     {
       "source": "github",
@@ -9148,10 +9156,10 @@
         "se.hedekonsult.sparkle": 1786949194669,
         "com.overdevs.at4k": 1786949194669
       },
-      "hotRank": 46,
+      "hotRank": 47,
       "hot_hash_1": "NDU0MS4yMA",
       "hot_hash_2": "NDU0MS4yMA",
-      "hot_hash_3": "MTE5MjEuNTI",
+      "hot_hash_3": "MTIyMzQuNDI",
       "hot_hash_4": "NDU0MS4yMA"
     },
     {
@@ -9257,11 +9265,11 @@
         "hu.mav.emmapp": 1785919717167,
         "hu.idokep.idokep": 1785919717167
       },
-      "hotRank": 59,
+      "hotRank": 60,
       "hot_hash_1": "Mzk1Ny40MA",
       "hot_hash_2": "NDExOS4yMA",
-      "hot_hash_3": "ODgwNS4wMA",
-      "hot_hash_4": "Mzk4MC4yOQ"
+      "hot_hash_3": "ODgwNi4yOA",
+      "hot_hash_4": "Mzk4OS4zNQ"
     },
     {
       "source": "github",
@@ -9304,7 +9312,7 @@
       "hotRank": 94,
       "hot_hash_1": "MzA0Mi45MA",
       "hot_hash_2": "MzM2Ni41MA",
-      "hot_hash_3": "MTgxNTQuNzg",
+      "hot_hash_3": "MTgwODAuNzE",
       "hot_hash_4": "Mjg4MS4xMA"
     },
     {
@@ -9475,10 +9483,10 @@
         "com.myvitale.forus": 1784353679503,
         "app.symfonik.music.player": 1786782790781
       },
-      "hotRank": 9,
+      "hotRank": 8,
       "hot_hash_1": "NjAxNC44MA",
       "hot_hash_2": "Nzc5NC42MA",
-      "hot_hash_3": "MTkyOTU5LjUw",
+      "hot_hash_3": "MTgzOTIwLjQ0",
       "hot_hash_4": "NDA3My4yMA"
     },
     {
@@ -9740,11 +9748,11 @@
       "appFirstSeen": {
         "com.zhiliaoapp.musically": 1780156086693
       },
-      "hotRank": 4,
-      "hot_hash_1": "MTU3ODEuMjA",
+      "hotRank": 5,
+      "hot_hash_1": "MTMxOTIuNDA",
       "hot_hash_2": "MjQ2ODAuMjA",
-      "hot_hash_3": "Mjg4MDQxLjM3",
-      "hot_hash_4": "MjAxMzMyLjQy"
+      "hot_hash_3": "Mjg2MjM1LjIy",
+      "hot_hash_4": "MTg1MzM3Ljc2"
     },
     {
       "source": "github",
@@ -9840,11 +9848,11 @@
       "appFirstSeen": {
         "jp.nicovideo.nicobox": 1784887231838
       },
-      "hotRank": 35,
+      "hotRank": 36,
       "hot_hash_1": "NjAzOC43MA",
       "hot_hash_2": "NzAwOS41MA",
-      "hot_hash_3": "MTA3MzYuNDk",
-      "hot_hash_4": "OTI4Ny4xMQ"
+      "hot_hash_3": "MTA3MzcuODc",
+      "hot_hash_4": "OTI3Mi40OA"
     },
     {
       "source": "github",
@@ -9891,7 +9899,7 @@
       "hotRank": 75,
       "hot_hash_1": "MzUxMC45MA",
       "hot_hash_2": "MzgzNC41MA",
-      "hot_hash_3": "MjYwNTkuMzk",
+      "hot_hash_3": "MjYwMzkuNTc",
       "hot_hash_4": "MzM0OS4xMA"
     },
     {
@@ -9968,7 +9976,7 @@
       "appFirstSeen": {
         "com.twitter.android": 1781596395094
       },
-      "hotRank": 60,
+      "hotRank": 59,
       "hot_hash_1": "MjgwNy4wMA",
       "hot_hash_2": "MzEzMC42MA",
       "hot_hash_3": "MjgwNy4wMA",
@@ -10019,7 +10027,7 @@
       "appFirstSeen": {
         "com.july.cricinfo": 1786994310888
       },
-      "hotRank": 38,
+      "hotRank": 40,
       "hot_hash_1": "NDA4My42MA",
       "hot_hash_2": "NDA4My42MA",
       "hot_hash_3": "NDI0NS40MA",
@@ -10269,9 +10277,9 @@
         "com.google.android.inputmethod.latin": 1775543003000
       },
       "hotRank": 2,
-      "hot_hash_1": "MjIyNzAuMjA",
+      "hot_hash_1": "MTgwNjMuNDA",
       "hot_hash_2": "MzI5NDkuMDA",
-      "hot_hash_3": "MzIxNTcyLjk4",
+      "hot_hash_3": "MzEzODk2Ljc1",
       "hot_hash_4": "NDE0OC42MA"
     },
     {
@@ -10993,10 +11001,10 @@
         "com.imdb.mobile": 1771585164000
       },
       "hotRank": 7,
-      "hot_hash_1": "NTQ1Ny44MA",
+      "hot_hash_1": "NTI5Ni4wMA",
       "hot_hash_2": "OTM0MS4wMA",
-      "hot_hash_3": "MjM4MzEzLjA2",
-      "hot_hash_4": "NDM1MjUuOTI"
+      "hot_hash_3": "MjM2NDg5LjA5",
+      "hot_hash_4": "NDMwNjQuNDc"
     },
     {
       "source": "github",
@@ -11117,7 +11125,7 @@
       "hot_hash_1": "NDA5Ny44MA",
       "hot_hash_2": "NDA5Ny44MA",
       "hot_hash_3": "Mzc3NC4yMA",
-      "hot_hash_4": "NDc0MS44OQ"
+      "hot_hash_4": "NDc4OC44MA"
     },
     {
       "source": "github",
@@ -11166,8 +11174,8 @@
       "hotRank": 97,
       "hot_hash_1": "MzY4NS4xMA",
       "hot_hash_2": "MzY4NS4xMA",
-      "hot_hash_3": "OTI4NC4wNQ",
-      "hot_hash_4": "NjAyMy40Nw"
+      "hot_hash_3": "OTI4Mi4zMA",
+      "hot_hash_4": "NjAyNi44MA"
     },
     {
       "source": "github",
@@ -11230,10 +11238,10 @@
       "appFirstSeen": {
         "com.google.android.inputmethod.latin": 1786958060481
       },
-      "hotRank": 40,
+      "hotRank": 42,
       "hot_hash_1": "MjU0NS43MA",
       "hot_hash_2": "MjU0NS43MA",
-      "hot_hash_3": "Mjg5OC45NA",
+      "hot_hash_3": "Mjg3Ni45MQ",
       "hot_hash_4": "MTA2MzUuNzA"
     },
     {
@@ -11718,11 +11726,11 @@
         "com.mixapplications.ventoy_app": 1783953500646,
         "io.github.sds100.keymapper": 1784342313600
       },
-      "hotRank": 25,
-      "hot_hash_1": "NDgzMy40MA",
+      "hotRank": 26,
+      "hot_hash_1": "NDY3MS42MA",
       "hot_hash_2": "NzI2MC40MA",
-      "hot_hash_3": "NjY0NTMuMDA",
-      "hot_hash_4": "MTM3NTUuODI"
+      "hot_hash_3": "NjYzOTAuMTU",
+      "hot_hash_4": "MTM3NTMuNDY"
     },
     {
       "source": "github",
@@ -11760,8 +11768,8 @@
       "hotRank": 90,
       "hot_hash_1": "NDI0OC42MA",
       "hot_hash_2": "NDQxMC40MA",
-      "hot_hash_3": "OTQyOC45OQ",
-      "hot_hash_4": "NDg0Ni4zMA"
+      "hot_hash_3": "OTQzMy44Ng",
+      "hot_hash_4": "NDg0NS4xMg"
     },
     {
       "source": "github",
@@ -12000,7 +12008,7 @@
       "hotRank": 30,
       "hot_hash_1": "NDY2Ny4yMA",
       "hot_hash_2": "NTc5OS44MA",
-      "hot_hash_3": "ODI0OTIuODU",
+      "hot_hash_3": "ODE5NDIuMjE",
       "hot_hash_4": "NDM0My42MA"
     },
     {
@@ -12063,16 +12071,16 @@
         "mam.reader.ipusnas"
       ],
       "appUpdates": {},
-      "stars": 3,
+      "stars": 5,
       "updatedAt": 1786924800000,
       "firstSeen": 1786949281955,
       "appFirstSeen": {
         "mam.reader.ipusnas": 1786949281955
       },
-      "hotRank": 42,
-      "hot_hash_1": "NDc1OS42MA",
-      "hot_hash_2": "NDc1OS42MA",
-      "hot_hash_3": "MTIzNjQuMjA",
+      "hotRank": 32,
+      "hot_hash_1": "NTA4My4yMA",
+      "hot_hash_2": "NTA4My4yMA",
+      "hot_hash_3": "MTUxMTQuODA",
       "hot_hash_4": "NDc1OS42MA"
     },
     {
@@ -12109,7 +12117,7 @@
       "hotRank": 73,
       "hot_hash_1": "NDI3OC41MA",
       "hot_hash_2": "NDQ0MC4zMA",
-      "hot_hash_3": "Nzc4Ni4yOQ",
+      "hot_hash_3": "NzgyMC42NA",
       "hot_hash_4": "Mzk1NC45MA"
     },
     {
@@ -12168,7 +12176,7 @@
       "hotRank": 81,
       "hot_hash_1": "NDc3OS4wMA",
       "hot_hash_2": "NDk0MC44MA",
-      "hot_hash_3": "MTc3NzEuMTc",
+      "hot_hash_3": "MTc3NTQuNzk",
       "hot_hash_4": "NDQ1NS40MA"
     },
     {
@@ -12269,17 +12277,17 @@
         "com.nuvio.tv"
       ],
       "appUpdates": {},
-      "stars": 15,
+      "stars": 16,
       "updatedAt": 1786838400000,
       "firstSeen": 1785919858436,
       "appFirstSeen": {
         "com.nuvio.tv": 1785919858436
       },
-      "hotRank": 22,
-      "hot_hash_1": "NjgwOC4wMA",
-      "hot_hash_2": "Nzc3OC44MA",
+      "hotRank": 20,
+      "hot_hash_1": "Njk2OS44MA",
+      "hot_hash_2": "Nzk0MC42MA",
       "hot_hash_3": "NTUxMy42MA",
-      "hot_hash_4": "MjY5OTUuNTA"
+      "hot_hash_4": "MjU4MDEuNDA"
     },
     {
       "source": "github",
@@ -12335,10 +12343,10 @@
         "com.calistree.calistree": 1785926248177,
         "com.jeffprod.cubesolver": 1786153262639
       },
-      "hotRank": 49,
+      "hotRank": 50,
       "hot_hash_1": "NDIzNC4zMA",
       "hot_hash_2": "NDcxOS43MA",
-      "hot_hash_3": "MTQyMjYuMzE",
+      "hot_hash_3": "MTQyMTMuOTA",
       "hot_hash_4": "MzkxMC43MA"
     },
     {
@@ -12382,7 +12390,7 @@
       "hotRank": 57,
       "hot_hash_1": "NDc1OS41MA",
       "hot_hash_2": "NDc1OS41MA",
-      "hot_hash_3": "MTAxNTAuNTM",
+      "hot_hash_3": "MTAxODcuMDQ",
       "hot_hash_4": "NDQzNS45MA"
     },
     {
@@ -12428,10 +12436,10 @@
       "appFirstSeen": {
         "com.facebook.katana": 1775943939000
       },
-      "hotRank": 55,
-      "hot_hash_1": "Njc3MC4zMA",
+      "hotRank": 56,
+      "hot_hash_1": "NjQ0Ni43MA",
       "hot_hash_2": "ODIyNi41MA",
-      "hot_hash_3": "MjIxNDAuMzk",
+      "hot_hash_3": "MjIxNDcuMjc",
       "hot_hash_4": "NTQ3NS45MA"
     },
     {
@@ -12623,8 +12631,8 @@
       "hotRank": 16,
       "hot_hash_1": "NTczNC41MA",
       "hot_hash_2": "NzAyOC45MA",
-      "hot_hash_3": "MTY4MTYxLjE0",
-      "hot_hash_4": "NDI4NjcuODE"
+      "hot_hash_3": "MTYwOTI4LjE1",
+      "hot_hash_4": "Mzk5NzEuODA"
     },
     {
       "source": "github",
@@ -12661,8 +12669,8 @@
       "hotRank": 83,
       "hot_hash_1": "NTI2Mi42MA",
       "hot_hash_2": "NTI2Mi42MA",
-      "hot_hash_3": "MTAzNDcuODY",
-      "hot_hash_4": "Nzc2Ni4xMg"
+      "hot_hash_3": "MTAzOTEuNzE",
+      "hot_hash_4": "Nzc4NC4zMQ"
     },
     {
       "source": "github",
@@ -12921,10 +12929,10 @@
       "updatedAt": 1785628800000,
       "firstSeen": 1783021319050,
       "appFirstSeen": {},
-      "hotRank": 10,
-      "hot_hash_1": "NDI5MS4yMA",
+      "hotRank": 9,
+      "hot_hash_1": "NDYxNC44MA",
       "hot_hash_2": "MTAyNzcuODA",
-      "hot_hash_3": "NTcwNjguODU",
+      "hot_hash_3": "NTY3NDIuMzU",
       "hot_hash_4": "Mjk5Ni44MA"
     },
     {
@@ -12961,7 +12969,7 @@
       "hotRank": 82,
       "hot_hash_1": "NTk3OC45MA",
       "hot_hash_2": "NjE0MC43MA",
-      "hot_hash_3": "MjA3MzEuMTk",
+      "hot_hash_3": "MjA3MzMuNjY",
       "hot_hash_4": "NTY1NS4zMA"
     },
     {
@@ -12998,7 +13006,7 @@
       "hotRank": 88,
       "hot_hash_1": "NDQ4OS44MA",
       "hot_hash_2": "NDgxMy40MA",
-      "hot_hash_3": "OTcwMS45Mg",
+      "hot_hash_3": "OTcxMC4zMQ",
       "hot_hash_4": "NDMyOC4wMA"
     },
     {
@@ -13496,8 +13504,8 @@
         "com.frontrow.vlog": 1778457600000,
         "com.roehl.habitkit": 1786121044505
       },
-      "hotRank": 14,
-      "hot_hash_1": "NTQ0OC41MA",
+      "hotRank": 15,
+      "hot_hash_1": "NTI4Ni43MA",
       "hot_hash_2": "NjA5NS43MA",
       "hot_hash_3": "NTEyNC45MA",
       "hot_hash_4": "NTEyNC45MA"
@@ -13536,7 +13544,7 @@
       "hotRank": 86,
       "hot_hash_1": "NDk1NS44MA",
       "hot_hash_2": "NTYwMy4wMA",
-      "hot_hash_3": "MjQyOTYuMTE",
+      "hot_hash_3": "MjQyOTEuMTk",
       "hot_hash_4": "NDYzMi4yMA"
     },
     {
@@ -13599,8 +13607,8 @@
       "hotRank": 89,
       "hot_hash_1": "NDU1MC4yMA",
       "hot_hash_2": "NDg3My44MA",
-      "hot_hash_3": "MTMwMTYuMjY",
-      "hot_hash_4": "NzcxNC44Mg"
+      "hot_hash_3": "MTMwMTQuMTg",
+      "hot_hash_4": "NzcxMi43Mg"
     },
     {
       "source": "github",
@@ -13678,11 +13686,11 @@
       "appFirstSeen": {
         "com.chess": 1782804287706
       },
-      "hotRank": 32,
-      "hot_hash_1": "NDcwOS40MA",
+      "hotRank": 35,
+      "hot_hash_1": "NDU0Ny42MA",
       "hot_hash_2": "NjY1MS4wMA",
-      "hot_hash_3": "MzI3NjQuNDk",
-      "hot_hash_4": "ODM0OC4xMQ"
+      "hot_hash_3": "MzI3MDcuOTk",
+      "hot_hash_4": "ODM0Mi45MA"
     },
     {
       "source": "github",
@@ -13729,10 +13737,10 @@
       "appFirstSeen": {
         "com.microsoft.emmx": 1780738576635
       },
-      "hotRank": 56,
+      "hotRank": 55,
       "hot_hash_1": "NDk2MS43MA",
       "hot_hash_2": "NjQxNy45MA",
-      "hot_hash_3": "MjEzNjQuMDI",
+      "hot_hash_3": "MjEzMjguMTk",
       "hot_hash_4": "NDc5OS45MA"
     },
     {
@@ -13832,7 +13840,7 @@
       "hotRank": 68,
       "hot_hash_1": "NDM3OS45MA",
       "hot_hash_2": "NTE4OC45MA",
-      "hot_hash_3": "MTc2OTUuNDk",
+      "hot_hash_3": "MTc3MDcuNjU",
       "hot_hash_4": "NDA1Ni4zMA"
     },
     {
@@ -13933,10 +13941,10 @@
         "ru.bpc.mobilebank.bpc": 1786703409649,
         "com.algeria.selfcare.app.android": 1786703409649
       },
-      "hotRank": 44,
+      "hotRank": 43,
       "hot_hash_1": "NDE0My45MA",
       "hot_hash_2": "NDE0My45MA",
-      "hot_hash_3": "MTI4MTguNTE",
+      "hot_hash_3": "MTI3NDQuNDE",
       "hot_hash_4": "MzY1OC41MA"
     },
     {
@@ -13984,7 +13992,7 @@
       "hot_hash_1": "NDM1OS4xMA",
       "hot_hash_2": "NDY4Mi43MA",
       "hot_hash_3": "NDAzNS41MA",
-      "hot_hash_4": "MTU2NDEuNTc"
+      "hot_hash_4": "MTU2MzkuOTU"
     },
     {
       "source": "github",
@@ -14020,7 +14028,7 @@
       "hotRank": 99,
       "hot_hash_1": "NDQwMC4xMA",
       "hot_hash_2": "NDQwMC4xMA",
-      "hot_hash_3": "MTI0MzguNTI",
+      "hot_hash_3": "MTI0MzguMzA",
       "hot_hash_4": "NDIzOC4zMA"
     },
     {
@@ -14064,7 +14072,7 @@
       "hotRank": 76,
       "hot_hash_1": "NDIyMC4wMA",
       "hot_hash_2": "NDM4MS44MA",
-      "hot_hash_3": "Nzg1MS40NA",
+      "hot_hash_3": "Nzg2NS45NA",
       "hot_hash_4": "Mzg5Ni40MA"
     },
     {
@@ -14098,11 +14106,11 @@
       "appFirstSeen": {
         "com.Meteosolutions.Meteo3b": 1786949256911
       },
-      "hotRank": 43,
+      "hotRank": 45,
       "hot_hash_1": "Mzk5My45MA",
       "hot_hash_2": "Mzk5My45MA",
-      "hot_hash_3": "MTA3MDAuNDc",
-      "hot_hash_4": "NDE1NS43MA"
+      "hot_hash_3": "MTAwMjMuNTM",
+      "hot_hash_4": "NDMxNy41MA"
     },
     {
       "source": "github",
@@ -14168,7 +14176,7 @@
       "hotRank": 78,
       "hot_hash_1": "NTU2Ni4xMA",
       "hot_hash_2": "NTU2Ni4xMA",
-      "hot_hash_3": "OTI5NS41OQ",
+      "hot_hash_3": "OTMxOC4zNg",
       "hot_hash_4": "NTA4MC43MA"
     },
     {
@@ -14876,9 +14884,9 @@
         "ginlemon.iconpackstudio": 1773594609000
       },
       "hotRank": 3,
-      "hot_hash_1": "OTg2NS40MA",
+      "hot_hash_1": "OTU0MS44MA",
       "hot_hash_2": "MjIwMDAuNDA",
-      "hot_hash_3": "OTcxOTY3LjAy",
+      "hot_hash_3": "OTYxMTY4Ljcy",
       "hot_hash_4": "MzcxNy4wMA"
     },
     {
@@ -14915,7 +14923,7 @@
       "hotRank": 41,
       "hot_hash_1": "NTk4Ni43MA",
       "hot_hash_2": "NjMxMC4zMA",
-      "hot_hash_3": "MjI3MjQuNDA",
+      "hot_hash_3": "MjI2ODQuNTM",
       "hot_hash_4": "NTY2My4xMA"
     },
     {
@@ -18046,7 +18054,7 @@
       "appUpdates": {
         "com.facebook.orca": 1786924800000
       },
-      "stars": 400,
+      "stars": 403,
       "updatedAt": 1786924800000,
       "firstSeen": 1780395687718,
       "appFirstSeen": {
@@ -18292,9 +18300,9 @@
         "com.nytimes.crossword": 1783875617302
       },
       "hotRank": 1,
-      "hot_hash_1": "MTgzOTQuMzA",
-      "hot_hash_2": "MzgyOTUuNzA",
-      "hot_hash_3": "NTc0NTAwLjkw",
+      "hot_hash_1": "MTc0MjMuNTA",
+      "hot_hash_2": "Mzg3ODEuMTA",
+      "hot_hash_3": "NTgwNjQ5LjMw",
       "hot_hash_4": "NDY0MS4zMA"
     },
     {
@@ -19498,10 +19506,10 @@
       "updatedAt": 1784246400000,
       "firstSeen": 1784191866679,
       "appFirstSeen": {},
-      "hotRank": 50,
+      "hotRank": 51,
       "hot_hash_1": "NzMxMC4xMA",
       "hot_hash_2": "ODc2Ni4zMA",
-      "hot_hash_3": "MjU2MTEuNTY",
+      "hot_hash_3": "MjU2MDEuMTk",
       "hot_hash_4": "Njk4Ni41MA"
     },
     {
@@ -19560,8 +19568,8 @@
       "hotRank": 80,
       "hot_hash_1": "NjIyMi4wMA",
       "hot_hash_2": "NjM4My44MA",
-      "hot_hash_3": "MTM5MjcuMjU",
-      "hot_hash_4": "Nzg3Ni4yMQ"
+      "hot_hash_3": "MTM5MTkuMjI",
+      "hot_hash_4": "Nzg4Mi44Nw"
     },
     {
       "source": "github",
@@ -19688,7 +19696,7 @@
       "hotRank": 27,
       "hot_hash_1": "NDkzOS41MA",
       "hot_hash_2": "NjcxOS4zMA",
-      "hot_hash_3": "NDI3ODUuMTg",
+      "hot_hash_3": "NDI1NzAuNjY",
       "hot_hash_4": "NDQ1NC4xMA"
     },
     {
@@ -19725,7 +19733,7 @@
       "hotRank": 65,
       "hot_hash_1": "NDU2MS45MA",
       "hot_hash_2": "NDU2MS45MA",
-      "hot_hash_3": "OTc5OS43MA",
+      "hot_hash_3": "OTgzNS43MA",
       "hot_hash_4": "NDIzOC4zMA"
     },
     {
@@ -19762,7 +19770,7 @@
       "hotRank": 54,
       "hot_hash_1": "NDQ2My43MA",
       "hot_hash_2": "NDQ2My43MA",
-      "hot_hash_3": "MTIzNDkuMjg",
+      "hot_hash_3": "MTIzODcuMDY",
       "hot_hash_4": "Mzk3OC4zMA"
     },
     {
@@ -19825,8 +19833,8 @@
       "hotRank": 29,
       "hot_hash_1": "NTQ5Mi42MA",
       "hot_hash_2": "NTY1NC40MA",
-      "hot_hash_3": "NTg4NzQuOTg",
-      "hot_hash_4": "Mjc2ODEuNDk"
+      "hot_hash_3": "NTc0ODAuMTM",
+      "hot_hash_4": "MjY0NzUuOTM"
     },
     {
       "source": "github",
@@ -19862,7 +19870,7 @@
       "hotRank": 77,
       "hot_hash_1": "NTgyMC4zMA",
       "hot_hash_2": "NjE0My45MA",
-      "hot_hash_3": "MTA1MjAuODY",
+      "hot_hash_3": "MTA1MjguOTg",
       "hot_hash_4": "NTQ5Ni43MA"
     },
     {
@@ -19986,7 +19994,7 @@
       "hotRank": 69,
       "hot_hash_1": "NDI5MS41MA",
       "hot_hash_2": "NDc3Ni45MA",
-      "hot_hash_3": "MTU1NTMuMTA",
+      "hot_hash_3": "MTU1NTQuNTk",
       "hot_hash_4": "Mzk2Ny45MA"
     },
     {
@@ -20559,8 +20567,8 @@
       "hotRank": 28,
       "hot_hash_1": "NTIxMC4xMA",
       "hot_hash_2": "MTA1NDkuNTA",
-      "hot_hash_3": "NzEzMDQuMTQ",
-      "hot_hash_4": "MTIzMzIuODE"
+      "hot_hash_3": "NzEyODQuMjY",
+      "hot_hash_4": "MTIzMjkuMzE"
     },
     {
       "source": "github",
@@ -20614,10 +20622,10 @@
       "appFirstSeen": {
         "com.graymatrix.did": 1786703322126
       },
-      "hotRank": 47,
+      "hotRank": 46,
       "hot_hash_1": "MzY3Mi4wMA",
       "hot_hash_2": "MzY3Mi4wMA",
-      "hot_hash_3": "MTE5MjguMDI",
+      "hot_hash_3": "MTE5NzUuODU",
       "hot_hash_4": "MzE4Ni42MA"
     },
     {
@@ -20762,7 +20770,7 @@
       "hotRank": 67,
       "hot_hash_1": "MzkxNC41MA",
       "hot_hash_2": "NDM5OS45MA",
-      "hot_hash_3": "MjcxODMuNzk",
+      "hot_hash_3": "MjcxNTQuODM",
       "hot_hash_4": "MzU5MC45MA"
     },
     {
@@ -20996,10 +21004,10 @@
         "ru.ozon.app.android": 1778236605000,
         "com.wildberries.ru": 1778236605000
       },
-      "hotRank": 21,
+      "hotRank": 22,
       "hot_hash_1": "NDA2NS45MA",
       "hot_hash_2": "NTE5OC41MA",
-      "hot_hash_3": "MTM0OTM4Ljc2",
+      "hot_hash_3": "MTMxNTA5LjQ4",
       "hot_hash_4": "MzU4MC41MA"
     },
     {
@@ -21040,10 +21048,10 @@
       "appFirstSeen": {
         "br.com.zetabit.ios_standby": 1786476836015
       },
-      "hotRank": 51,
+      "hotRank": 52,
       "hot_hash_1": "NDA2Ny4yMA",
       "hot_hash_2": "NDA2Ny4yMA",
-      "hot_hash_3": "MTA2NDguOTc",
+      "hot_hash_3": "MTA3MTcuMTc",
       "hot_hash_4": "MzU4MS44MA"
     }
   ],

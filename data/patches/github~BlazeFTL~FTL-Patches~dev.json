@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.35.0-dev.6",
+  "version": "1.35.0-dev.8",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -64,8 +64,8 @@
       ]
     },
     {
-      "name": "Clean main UI",
-      "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+      "name": "Clean up main UI",
+      "description": "Hides the nav drawer's Guide/Rate/Help/About items and the bottom navigation view, and keeps the Connect/Create/Join buttons on top.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -550,7 +550,7 @@
     },
     {
       "name": "Skip splash screen",
-      "description": "Jumps straight from SplashActivity.onCreate() to the main activity, skipping the splash/guide UI and its permission flow entirely.",
+      "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [

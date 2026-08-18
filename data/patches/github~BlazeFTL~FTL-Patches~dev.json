@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.35.0-dev.17",
+  "version": "1.35.0-dev.19",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -64,8 +64,8 @@
       ]
     },
     {
-      "name": "Clean main UI",
-      "description": "Adds the wanted register-isolated MainActivity UI helpers and reapplies them at safe lifecycle points.",
+      "name": "Clean up main UI",
+      "description": "Hides the nav drawer's Guide/Rate/Help/About items and the bottom navigation view, and keeps the Connect/Create/Join buttons on top.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -550,7 +550,7 @@
     },
     {
       "name": "Skip splash screen",
-      "description": "Restores MainActivity local-data and startup-permission helpers, then reduces SplashActivity to the wanted direct MainActivity launch flow.",
+      "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [

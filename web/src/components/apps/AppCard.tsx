@@ -11,6 +11,7 @@ import {
   PACKAGE_UNIVERSAL,
   CATEGORY_UNIVERSAL,
   CATEGORY_LABEL_UNIVERSAL,
+  MIN_DISPLAY_INSTALLS,
 } from "@/constants";
 
 interface AppCardProps {
@@ -45,7 +46,7 @@ export const AppCard = memo(function AppCard({
             {appItem.isPreRelease && (
               <Badge variant="prerelease" className="ml-1.5" />
             )}
-            {appItem.minInstalls > 0 &&
+            {appItem.minInstalls >= MIN_DISPLAY_INSTALLS &&
               appItem.packageName !== PACKAGE_UNIVERSAL &&
               appItem.categorySlug !== CATEGORY_UNIVERSAL && (
                 <Badge

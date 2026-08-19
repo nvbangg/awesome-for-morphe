@@ -117,23 +117,26 @@ export function getAppItems(
   sortOrder = "default",
   categoryFilter = "all",
 ): AppItem[] {
-  let appList = appItems;
-
-  if (categoryFilter !== "all") {
-    appList = appList.filter(
-      (appItem) => appItem.categorySlug === categoryFilter,
-    );
-  }
+  let appList: AppItem[];
 
   const queryWords = parseSearchQuery(searchQuery);
-  if (queryWords.length > 0) {
-    appList = appList.filter((appItem) =>
-      queryWords.every((word) => appItem.searchableText.includes(word)),
-    );
-  }
+  const hasCategoryFilter = categoryFilter !== "all";
+  const hasSearch = queryWords.length > 0;
 
-  if (appList === appItems) {
-    appList = [...appList];
+  if (hasCategoryFilter || hasSearch) {
+    appList = appItems.filter((appItem) => {
+      if (hasCategoryFilter && appItem.categorySlug !== categoryFilter) {
+        return false;
+      }
+      if (hasSearch) {
+        for (let i = 0; i < queryWords.length; i++) {
+          if (!appItem.searchableText.includes(queryWords[i])) return false;
+        }
+      }
+      return true;
+    });
+  } else {
+    appList = [...appItems];
   }
 
   const appSortKeySelector = APP_SORT_KEY_MAP[sortOrder];
@@ -192,23 +195,28 @@ export function getBundleItems(
   sortOrder = "default",
   categoryFilter = "all",
 ): Bundle[] {
-  let bundleList = bundles;
-
-  if (categoryFilter === "official") {
-    bundleList = bundleList.filter((bundleItem) => !bundleItem.isUnofficial);
-  } else if (categoryFilter === "unofficial") {
-    bundleList = bundleList.filter((bundleItem) => bundleItem.isUnofficial);
-  }
+  let bundleList: Bundle[];
 
   const queryWords = parseSearchQuery(searchQuery);
-  if (queryWords.length > 0) {
-    bundleList = bundleList.filter((bundleItem) =>
-      queryWords.every((word) => bundleItem.searchableText.includes(word)),
-    );
-  }
+  const isOfficialFilter = categoryFilter === "official";
+  const isUnofficialFilter = categoryFilter === "unofficial";
+  const hasCategoryFilter = isOfficialFilter || isUnofficialFilter;
+  const hasSearch = queryWords.length > 0;
 
-  if (bundleList === bundles) {
-    bundleList = [...bundleList];
+  if (hasCategoryFilter || hasSearch) {
+    bundleList = bundles.filter((bundleItem) => {
+      if (isOfficialFilter && bundleItem.isUnofficial) return false;
+      if (isUnofficialFilter && !bundleItem.isUnofficial) return false;
+
+      if (hasSearch) {
+        for (let i = 0; i < queryWords.length; i++) {
+          if (!bundleItem.searchableText.includes(queryWords[i])) return false;
+        }
+      }
+      return true;
+    });
+  } else {
+    bundleList = [...bundles];
   }
 
   const bundleSortKeySelector = BUNDLE_SORT_KEY_MAP[sortOrder];

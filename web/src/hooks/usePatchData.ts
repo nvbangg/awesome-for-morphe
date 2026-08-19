@@ -44,7 +44,7 @@ export function usePatchData(activeTab?: string) {
         }
       })
       .catch(() => {
-        // ignore error
+        // Ignore fetch errors to keep previous state or fallback
       });
 
     return () => {

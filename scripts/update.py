@@ -42,7 +42,7 @@ def main() -> int:
             **{field: existing[field] for field in ("stars", "avatarUrl", "repoDescription", "appFirstSeen") if field in existing},
         }
 
-    errors: list[str] = []
+    errors: dict[str, list[str]] = {"unavailable": [], "warnings": []}
     compatibilities_list = local_parse.process(bundle_sources, apps_dict, errors)
     repo_info.process(bundle_sources, mode, existing_bundles, errors)
 
@@ -145,21 +145,43 @@ def main() -> int:
     summary_sections = []
     final_bundle_keys = {f"{bundle['source']}:{bundle['repo']}" for bundle in final_bundles}
     invalid_repos = [key for key in repos_data if key not in final_bundle_keys]
-    reported_keys = {error.split("`")[1] for error in errors if "`" in error}
+    all_reported = errors["unavailable"] + errors["warnings"]
+    reported_keys = {error.split("`")[1] for error in all_reported if "`" in error}
     for repo_key in sorted(invalid_repos):
         if repo_key not in reported_keys:
-            errors.append(f"`{repo_key}`: No release bundle published or available")
+            errors["unavailable"].append(f"`{repo_key}`: Not found or no release bundle")
 
     if invalid_repos:
         note_message = f"Note: {len(invalid_repos)}/{len(repos_data)} repos are invalid or excluded"
         print(f"[-] {note_message}")
-        for error in sorted(errors):
-            print(f"  - {error}")
-        summary_sections.append(f"### ⚠️ Update\n{note_message}:\n" + "\n".join(f"- {error}" for error in sorted(errors)))
+        update_lines = [f"## ⚠️ Update\n{note_message}:"]
+        for category_name, category_icon, category_errors in (
+            ("Unavailable", "⛔", errors["unavailable"]),
+            ("Warnings", "⚠️", errors["warnings"]),
+        ):
+            if category_errors:
+                sorted_errors = sorted(category_errors)
+                print(f"  {category_name} ({len(sorted_errors)}):")
+                for error in sorted_errors:
+                    print(f"    - {error}")
+                update_lines.append(
+                    f"### {category_icon} {category_name} ({len(sorted_errors)})\n"
+                    + "\n".join(f"- {error}" for error in sorted_errors)
+                )
+
+        summary_sections.append("\n\n".join(update_lines))
 
     if incomplete_apps:
-        print(f"[-] Note: {len(incomplete_apps)} apps have incomplete metadata (missing icon/name)")
-        summary_sections.append(f"#### 📱 Incomplete Apps ({len(incomplete_apps)})\n" + "\n".join(sorted(incomplete_apps)))
+        sorted_incomplete_apps = sorted(incomplete_apps)
+        print(
+            f"[-] Note: {len(sorted_incomplete_apps)} apps have incomplete metadata (missing icon/name):"
+        )
+        for app_issue in sorted_incomplete_apps:
+            print(f"  {app_issue}")
+        summary_sections.append(
+            f"### 📱 Incomplete Apps ({len(sorted_incomplete_apps)})\n"
+            + "\n".join(sorted_incomplete_apps)
+        )
 
     if summary_sections:
         append_step_summary("\n\n".join(summary_sections))

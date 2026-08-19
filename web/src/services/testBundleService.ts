@@ -30,7 +30,7 @@ function parseRepoInput(
       };
     }
   } catch {
-    // Ignore error
+    // Return null if parsing fails
   }
   return null;
 }
@@ -67,11 +67,11 @@ async function fetchFromUrls(urls: string[]): Promise<unknown | null> {
             return json;
           }
         } catch {
-          // not json
+          // Ignore invalid JSON responses
         }
       }
     } catch {
-      // fetch error, try next
+      // Continue to the next URL on fetch failure
     }
   }
   return null;

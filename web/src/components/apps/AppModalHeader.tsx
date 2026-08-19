@@ -8,6 +8,7 @@ import {
   PACKAGE_UNIVERSAL,
   CATEGORY_LABEL_UNIVERSAL,
   CATEGORY_UNIVERSAL,
+  MIN_DISPLAY_INSTALLS,
 } from "@/constants";
 
 interface AppModalHeaderProps {
@@ -55,7 +56,7 @@ export function AppModalHeader({
               {isNew(applicationMeta.firstSeen) && <Badge variant="new" />}
               {applicationMeta.isPreRelease && <Badge variant="prerelease" />}
               {applicationMeta.minInstalls !== undefined &&
-                applicationMeta.minInstalls > 0 &&
+                applicationMeta.minInstalls >= MIN_DISPLAY_INSTALLS &&
                 packageName !== PACKAGE_UNIVERSAL &&
                 applicationMeta.category !== CATEGORY_LABEL_UNIVERSAL && (
                   <Badge

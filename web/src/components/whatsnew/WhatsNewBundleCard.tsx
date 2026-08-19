@@ -25,6 +25,19 @@ export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
   const fullBundleKey = `${bundleData.source}:${bundleData.repo}`;
   const isBundleNew = !!bundleData.isNew;
 
+  const isBundleValid =
+    !activeData || !!activeData.bundleMap[fullBundleKey.toLowerCase()];
+  if (!isBundleValid) return null;
+
+  const validAppEntries = bundleData.apps
+    ? Object.entries(bundleData.apps).filter(
+        ([packageName]) =>
+          !activeData || !!activeData.appPatchesMap[packageName],
+      )
+    : [];
+
+  if (!isBundleNew && validAppEntries.length === 0) return null;
+
   return (
     <div className="border border-divider rounded-2xl overflow-hidden shadow-2xs bg-background">
       <button
@@ -40,9 +53,9 @@ export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
         </div>
       </button>
 
-      {bundleData.apps && Object.keys(bundleData.apps).length > 0 && (
+      {validAppEntries.length > 0 && (
         <div className="p-2.5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
-          {Object.entries(bundleData.apps).map(([packageName, appData]) => {
+          {validAppEntries.map(([packageName, appData]) => {
             const meta = activeData
               ? getAppMeta(packageName, activeData.namesMap)
               : null;

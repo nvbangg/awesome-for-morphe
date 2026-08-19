@@ -106,7 +106,7 @@ def process(
     bundle_sources: dict,
     mode: str,
     existing_bundles: dict,
-    errors: list[str] | None = None,
+    errors: dict[str, list[str]] | None = None,
 ) -> None:
     tasks = {}
     for base_key, source_entry in bundle_sources.items():
@@ -143,14 +143,14 @@ def process(
                 if details.get("is_404"):
                     print(f"[-] Excluding {base_key} due to 404 Not Found")
                     if errors is not None:
-                        errors.append(f"`{base_key}`: Repository not found (404)")
+                        errors["unavailable"].append(f"`{base_key}`: Not found or no release bundle")
                     bundle_sources.pop(base_key, None)
                     continue
 
                 if details.get("is_archived"):
                     print(f"[-] Repository archived: {base_key}")
                     if errors is not None:
-                        errors.append(f"`{base_key}`: Repository is archived")
+                        errors["warnings"].append(f"`{base_key}`: Repository is archived")
 
                 source_entry = bundle_sources[base_key]
                 source_entry["stars"] = details.get("stars", 0) - custom_data.get(
@@ -184,7 +184,7 @@ def process(
                     new_key = f"{source}:{full_name}"
                     print(f"[RENAME DETECTED] {old_key} -> {new_key}")
                     if errors is not None:
-                        errors.append(f"[RENAME DETECTED] `{old_key}` -> `{new_key}`")
+                        errors["warnings"].append(f"`{old_key}`: Renamed to `{new_key}`")
 
                     repos_json_data = load_json(REPOS_JSON_PATH, {})
                     if old_key in repos_json_data:

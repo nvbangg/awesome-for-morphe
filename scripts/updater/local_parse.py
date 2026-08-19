@@ -144,7 +144,7 @@ def load_branch_data(
 def process(
     bundle_sources: dict,
     apps_dict: dict,
-    errors: list[str] | None = None,
+    errors: dict[str, list[str]] | None = None,
 ) -> list:
     compatibilities_list = []
     compatibilities_map = {}
@@ -204,10 +204,8 @@ def process(
         if not main_patches and not dev_patches:
             keys_to_remove.append(base_key)
             if errors is not None:
-                if main_sha or dev_sha:
-                    errors.append(f"`{base_key}`: Missing bundle or patch files")
-                else:
-                    errors.append(f"`{base_key}`: No release bundle published or available")
+                message = "Missing bundle or patch files" if (main_sha or dev_sha) else "Not found or no release bundle"
+                errors["unavailable"].append(f"`{base_key}`: {message}")
             continue
 
         main_timestamp = parse_timestamp(main_bundle.get("created_at")) if main_patches and main_bundle else 0

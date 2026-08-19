@@ -8,6 +8,7 @@ import {
   TriangleAlert,
 } from "lucide-react";
 import { formatNumberCompact, formatStarCount } from "@/utils/formatters";
+import { MIN_DISPLAY_INSTALLS } from "@/constants";
 
 type BadgeVariant =
   | "new"
@@ -97,7 +98,11 @@ export const Badge = memo(function Badge({
     );
   }
 
-  if (variant === "downloads" && value !== undefined) {
+  if (
+    variant === "downloads" &&
+    value !== undefined &&
+    value >= MIN_DISPLAY_INSTALLS
+  ) {
     return (
       <span
         className={`inline-flex items-center justify-center align-middle gap-1 px-1 py-0.5 text-xs font-semibold whitespace-nowrap text-foreground-muted border border-divider rounded-md shrink-0 ${className}`}

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.37.0-dev.2",
+  "version": "1.37.0-dev.7",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -64,8 +64,8 @@
       ]
     },
     {
-      "name": "Clean up main UI",
-      "description": "Hides the nav drawer's Guide/Rate/Help/About items and the bottom navigation view, and keeps the Connect/Create/Join buttons on top.",
+      "name": "Clean main UI",
+      "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [

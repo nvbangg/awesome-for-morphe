@@ -1,6 +1,41 @@
 {
-  "version": "1.33.0",
+  "version": "1.35.0",
   "patches": [
+    {
+      "name": "Change package name",
+      "description": "Changes the application package name in AndroidManifest.xml (e.g. for media display whitelist compatibility or cloning).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.microsoft.emmx",
+          "name": "Microsoft Edge",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "151.0.4129.70",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "packageName",
+          "title": "Package name",
+          "description": "New package name for Microsoft Edge (e.g. com.microsoft.emmx.morphe or a custom package name)",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "com.microsoft.emmx.morphe",
+          "values": null
+        }
+      ]
+    },
     {
       "name": "Copilot feature toggle",
       "description": "Disables all Copilot and Bing Chat feature flags by forcing boolean feature evaluation methods to return false.",
@@ -16,7 +51,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "150.0.4078.81",
+              "version": "151.0.4129.70",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -41,7 +76,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "150.0.4078.81",
+              "version": "151.0.4129.70",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -52,8 +87,8 @@
       "options": []
     },
     {
-      "name": "Telemetry elimination",
-      "description": "Eliminates Microsoft Edge telemetry by redirecting data collection endpoints to localhost and short-circuiting OneDS Logger event methods.",
+      "name": "Disable news notifications",
+      "description": "Disables Bing news and weather push notifications by short-circuiting device push token registration and notification dispatch services.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -66,7 +101,32 @@
           "signatures": null,
           "targets": [
             {
-              "version": "150.0.4078.81",
+              "version": "151.0.4129.70",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Telemetry elimination",
+      "description": "Eliminates Microsoft Edge telemetry and tracking by redirecting data collection endpoints (OneCollector, AppCenter, Adjust) to localhost and short-circuiting OneDS and Adjust tracking methods.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.microsoft.emmx",
+          "name": "Microsoft Edge",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "151.0.4129.70",
               "isExperimental": false,
               "minSdk": null,
               "description": null

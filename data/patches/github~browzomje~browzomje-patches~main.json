@@ -1,10 +1,121 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.7.0",
+  "version": "1.9.0",
   "patches": [
     {
       "name": "Copy direct link",
-      "description": "Adds a 'Copy direct link' option to the pin menu to copy a link under the direct CDN media format instead of the standard Pinterest web link.",
+      "description": "Adds a \"Copy direct link\" option to the pin menu, copying the direct CDN media link instead of the Pinterest web link.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.32.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable AppsFlyer tracking",
+      "description": "Neutralises the AppsFlyer attribution SDK, so no install, event or uninstall data leaves the device.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.32.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Google Engage",
+      "description": "Stops Pinterest publishing your content to Google (Discover, Assistant, Play Store).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.32.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Google Engage worker",
+      "description": "Blocks the periodic Google Engage job, the other way content reaches Google.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -66,7 +177,7 @@
     },
     {
       "name": "Disable ads",
-      "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds. Also carries two more filters turned on from the Morphe settings screen: \"Hide product pins\", off by default, and \"Hide board modules in search\" (sponsored carousel and featured boards), on by default. They ride on the same three hooks because the search landing page is delivered by the very same feed responses.",
+      "description": "Removes sponsored pins from the home, search, related and board feeds. Also carries the \"Hide product pins\" and \"Hide board modules in search\" filters, both switchable from the Morphe settings screen.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -103,7 +214,44 @@
     },
     {
       "name": "Disable email confirmation dialog",
-      "description": "Immediately closes the \"confirm your email\" modal (and similar ones: connect Google, etc.) if enabled in Morphe settings.",
+      "description": "Closes the \"confirm your email\" modal, and similar ones, when enabled in Morphe settings.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.32.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable third-party trackers",
+      "description": "Turns off the embedded advertising and telemetry SDKs (AdMob, Bugsnag, Firebase, Privacy Sandbox) and strips the Advertising ID permission. Push notifications keep working.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -165,7 +313,44 @@
     },
     {
       "name": "Download board",
-      "description": "Adds an option to the board's \"…\" menu to bulk download images and videos from already loaded pins. Streaming-only videos are reported and skipped.",
+      "description": "Adds an option to the board's \"…\" menu to bulk download the images and videos of the loaded pins.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.32.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Download pin from long press",
+      "description": "Adds a download button to the circular menu you get by long-pressing a pin, so the image can be saved without opening it.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -202,7 +387,7 @@
     },
     {
       "name": "Download video",
-      "description": "Adds a 'Download video' option to the pin menu for video pins, saving the clip to the Downloads folder.",
+      "description": "Adds a \"Download video\" option to the pin menu, saving the clip to the Downloads folder.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -239,7 +424,7 @@
     },
     {
       "name": "Hide Create nav button",
-      "description": "Hooks the '+' (create Pin) navigation bar button: hidden if enabled in Morphe settings.",
+      "description": "Hides the \"+\" (create Pin) navigation button, when enabled in Morphe settings.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -276,7 +461,7 @@
     },
     {
       "name": "Hide Notifications nav button",
-      "description": "Hooks the notifications button: hidden if enabled in Morphe settings.",
+      "description": "Hides the notifications navigation button, when enabled in Morphe settings.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -313,7 +498,44 @@
     },
     {
       "name": "Hide Search nav button",
-      "description": "Hooks the search button: hidden if enabled in Morphe settings.",
+      "description": "Hides the search navigation button, when enabled in Morphe settings.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.32.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide ad views",
+      "description": "Collapses Pinterest's ad-only views, so no ad chrome is drawn even if the app builds one. Follows the \"Disable ads\" switch.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -350,7 +572,7 @@
     },
     {
       "name": "Hide greeting header buttons",
-      "description": "Hooks the '+' (create) and inbox/notifications buttons in the home feed header: hidden if the matching Morphe settings are enabled.",
+      "description": "Hides the create and inbox buttons in the home feed header, when the matching Morphe settings are enabled.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -387,7 +609,7 @@
     },
     {
       "name": "Hide screenshot share menu",
-      "description": "Removes the panel Pinterest opens after you take a screenshot, and stops it from watching for screenshots in the first place on the screens where that is possible. Can be turned back off from the Morphe settings screen.",
+      "description": "Removes the panel Pinterest opens after a screenshot, and stops it watching for screenshots where possible.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -424,7 +646,7 @@
     },
     {
       "name": "Hide search history",
-      "description": "Hides the \"Recent searches\" section both on the search screen and in the carousel below the search bar. It does not prevent Pinterest from logging searches (server-side), but stops them from being shown anywhere in the app.",
+      "description": "Hides the \"Recent searches\" section on the search screen and below the search bar. Pinterest still logs searches server-side.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -475,6 +697,43 @@
           "targets": [
             {
               "version": "5.70.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Morphe runtime names",
+      "description": "Resolves the class Pinterest builds its toasts with, so Morphe's messages look like the app's own.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.32.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -600,7 +859,7 @@
     },
     {
       "name": "Neutralize advertising ID",
-      "description": "Returns an empty Google Advertising ID and forces ‘limit ad tracking’, disabling ad tracking without causing the app to crash.",
+      "description": "Returns an empty Google Advertising ID and forces \"limit ad tracking\", without crashing the app.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -686,8 +945,82 @@
       "options": []
     },
     {
+      "name": "Sanitize copied links",
+      "description": "Turns the pin.it link that \"Copy link\" copies, whose slug identifies who shared it, into the plain pin link. Switchable from Morphe settings.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.32.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Sanitize shared links",
+      "description": "Strips tracking parameters from the link on the Android share sheet and resolves pin.it short links to the plain pin link. Switchable from Morphe settings.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pinterest",
+          "name": "Pinterest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#E60023",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "14.23.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.28.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "14.32.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Set pin as wallpaper",
-      "description": "It adds the ‘Set as wallpaper’ option to the pin menu, which downloads uses the image and sets it as the device’s wallpaper.",
+      "description": "Adds a \"Set as wallpaper\" option to the pin menu, which downloads the image and sets it as the device wallpaper.",
       "default": true,
       "dependencies": [
         "ResourcePatch"

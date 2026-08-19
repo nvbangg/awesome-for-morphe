@@ -1,7 +1,33 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.8.0",
+  "version": "1.9.1",
   "patches": [
+    {
+      "name": "AMOLED dark theme",
+      "description": "Replaces the dark theme background with pure black. Disables over-the-air updates that would restore the original background.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kick.mobile",
+          "name": "Kick",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#53FC18",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "AMOLED dark theme",
       "description": "Replaces the dark theme background with pure black.",

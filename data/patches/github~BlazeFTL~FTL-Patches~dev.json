@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.38.0-dev.1",
+  "version": "1.38.0-dev.2",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -143,6 +143,37 @@
     {
       "name": "Disable ad dialog when reopening app",
       "description": "Prevents the full-screen \"loading ad\" dialog from appearing when the app is reopened after being minimized.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "videoplayer.videodownloader.downloader",
+          "name": "All Video Downloader & Ace Player",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.9.7",
+              "versionCodes": {
+                "ARM64_V8A": 24011893,
+                "ARMEABI_V7A": 24011893,
+                "X86_64": 24011893,
+                "X86": 24011893
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable downloader from download menu",
+      "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [

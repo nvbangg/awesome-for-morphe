@@ -7,7 +7,7 @@
       "repoDescription": "Morphe Patches",
       "avatarUrl": "https://raw.githubusercontent.com/MorpheApp/morphe-patches/main/patches-bundle.png",
       "stars": 3281,
-      "updatedAt": 1787130364000,
+      "updatedAt": 1787140491000,
       "firstSeen": 1767200400000,
       "hotRank": -1,
       "appFirstSeen": {
@@ -119,7 +119,7 @@
         },
         {
           "name": "Clone app",
-          "description": "Changes the app package name to allow installing the same app multiple times. By default \".morphe\" is appended the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior.",
+          "description": "Changes the app package name to allow installing the same app multiple times. By default \".morphe\" is appended to the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior.",
           "default": false,
           "options": [
             {
@@ -537,11 +537,13 @@
         {
           "name": "Network proxy",
           "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
+          "default": false,
           "compatiblePackagesKey": 1
         },
         {
           "name": "Network proxy",
           "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
+          "default": false,
           "compatiblePackagesKey": 0
         },
         {
@@ -17566,7 +17568,7 @@
       "repoDescription": "Morphe patches to remove ads, analytics, apk junk, debug info, duplicate graphics, unused languages, and use custom dpi☠️",
       "avatarUrl": "https://avatars.githubusercontent.com/u/139938337?v=4&s=64",
       "stars": 12,
-      "updatedAt": 1787129679000,
+      "updatedAt": 1787138929000,
       "firstSeen": 1786240845995,
       "hotRank": 20,
       "appFirstSeen": {
@@ -17646,8 +17648,13 @@
         },
         {
           "name": "Disable downloader from download menu",
+          "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
+          "default": false,
+          "compatiblePackagesKey": 757
+        },
+        {
+          "name": "Disable downloader from download menu",
           "description": "Strips RsDownloadActivity's file-extension and scheme/mimeType intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
-          "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 337
         },

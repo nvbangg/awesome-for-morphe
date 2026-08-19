@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.40.0-dev.11",
+  "version": "1.40.0-dev.12",
   "patches": [
     {
       "name": "Add to queue",
@@ -1064,7 +1064,7 @@
     },
     {
       "name": "Clone app",
-      "description": "Changes the app package name to allow installing the same app multiple times. By default \".morphe\" is appended the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior.",
+      "description": "Changes the app package name to allow installing the same app multiple times. By default \".morphe\" is appended to the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior.",
       "default": false,
       "dependencies": [
         "BytecodePatch"
@@ -5780,7 +5780,7 @@
     {
       "name": "Network proxy",
       "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
-      "default": true,
+      "default": false,
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
@@ -5834,7 +5834,7 @@
     {
       "name": "Network proxy",
       "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
-      "default": true,
+      "default": false,
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",

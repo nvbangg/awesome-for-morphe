@@ -144,7 +144,7 @@ def process(apps_dict: dict, mode: str) -> None:
     for package_name, app_data in apps_dict.items():
         official_app = official_store.get(package_name)
         if official_app:
-            for field_name in ("name", "iconUrl", "description", "category"):
+            for field_name in ("name", "iconUrl", "description"):
                 field_value = official_app.get(field_name)
                 if field_value:
                     app_data[field_name] = field_value

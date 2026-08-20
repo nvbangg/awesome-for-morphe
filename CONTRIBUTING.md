@@ -1,20 +1,7 @@
 ### [nvbangg/awesome-morphe](https://github.com/nvbangg/awesome-morphe)
 
 > [!NOTE]
-> This document contains contribution guidelines, project structure details, and automation workflows for the [Awesome Morphe Website](https://awesome-morphe.vercel.app/).
-
-## ✨ Highlight Features
-
-- 🔍 Automatically synchronizes bundle data from multiple sources to explore [all patch bundles](https://awesome-morphe.vercel.app/) from the Morphe community.
-- 🔔 Automatically notifies via the [Telegram channel](https://t.me/awesome_morphe) whenever there's a new update.
-- 🛡️ Automatically filters out taken-down or unavailable bundles, while detecting archived or renamed (redirected) repositories.
-- 🧩 Ensures all bundles have an available `.mpp` file, with bundle names extracted directly and patch data parsed from it when raw lists are unavailable.
-- ⚙️ Data is fully updated automatically, while also allowing manual adjustments if anything is missing.
-
-## 📬 Contributing
-
-- To add or remove a bundle source, please submit a [Bundle Request](https://github.com/nvbangg/awesome-morphe/issues/new?template=bundle-request.yml).
-- For any other issues, suggestions, or questions, feel free to [open a new issue](https://github.com/nvbangg/awesome-morphe/issues/new).
+> This document contains the project structure and automation workflows for the [Awesome Morphe Website](https://awesome-morphe.vercel.app/).
 
 ## 📂 Project Structure
 
@@ -31,7 +18,7 @@ awesome-morphe/
 │   ├── whats_new.py                    # Generates release changelog
 │   └── ...                             # Other supporting files
 ├── web/                                # Website source code
-│   ├── public/                         
+│   ├── public/
 │   │   ├── bundles.json                # Metadata of all active bundles and apps
 │   │   └── whats-new.json              # Rolling changelog (last 21 releases)
 │   └── ...                             # Other supporting files
@@ -58,7 +45,7 @@ flowchart TD
     F --> H
 ```
 
-### 2. Release Workflow (`release.yml` - Daily at 23:00 UTC)
+### 2. Release Workflow (`release.yml` - Daily at 23:30 UTC)
 
 ```mermaid
 flowchart TD
@@ -85,10 +72,10 @@ Scans community patch repositories and synchronizes them directly into `data/rep
 
 #### Discovered Sources
 
+- nvbangg's custom sources defined in [`data/discover/custom.json`](data/discover/custom.json)
 - [Morphe Community Patches](https://morphe-patches.software)
 - [Jman's ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles)
 - [Morphe Archive](https://github.com/rushiforai/morphe-archive)
-- My custom sources defined in [`data/discover/custom.json`](data/discover/custom.json)
 
 #### Customization
 
@@ -110,7 +97,7 @@ It checks for new SHAs, downloads `patches-bundle.json` into `data/bundles/`, th
 
 ### `parse.py`
 
-Executes the Kotlin-based `bundle-parser` (taken from [Jman's ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) and modified to fit this project and Morphe) to parse `.mpp` files listed in `scripts/bundle-parser/updated_files.txt` and extract structured patch lists into `data/patches/`. Upon successful parsing, it commits pending commit SHAs and bundle names from `scripts/bundle-parser/pending_repos.json` into `data/repos.json`.
+Executes the Kotlin-based `bundle-parser` (adapted from [Jman's ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) to fit this project and Morphe) to parse `.mpp` files listed in `scripts/bundle-parser/updated_files.txt` and extract structured patch lists into `data/patches/`. Upon successful parsing, it commits pending commit SHAs and bundle names from `scripts/bundle-parser/pending_repos.json` into `data/repos.json`.
 
 ### `update.py`
 

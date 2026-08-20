@@ -1,10 +1,4 @@
-# <img src="web/public/assets/favicon.svg" width="30" height="30" alt="Awesome Morphe" /> [Awesome Morphe](https://github.com/nvbangg/awesome-morphe)
-
-> [!NOTE]
-> 🌐 A curated list of [Morphe](https://morphe.software) resources and community projects.  
-> 🔍 Explore [all patch bundles](https://awesome-morphe.vercel.app) from the Morphe community.  
-> 🔔 Get notified via the [Telegram channel](https://t.me/awesome_morphe) whenever there's a new update.  
-> 📂 For contribution guidelines and documentation, see [CONTRIBUTING.md](CONTRIBUTING.md).
+# <img src="web/public/assets/favicon.svg" width="30" height="30"/> [Awesome Morphe](https://github.com/nvbangg/awesome-morphe)
 
 ### 🔗 Jump to:
 
@@ -13,6 +7,25 @@
 - [🔍 Patch Indexes](#patch-indexes)
 - [🛠️ Other Projects](#projects)
 - [ℹ️ About](#about)
+
+### ✨ Highlight Features
+
+- 🌐 A curated list of [Morphe](https://morphe.software) resources and community projects.
+- 🔍 Explore all patch bundles from the Morphe community on the [website](https://awesome-morphe.vercel.app/), with data aggregated automatically.
+- 🔔 Automatically notifies via the [Telegram channel](https://t.me/awesome_morphe) whenever there's a new update.
+- 🛡️ Automatically filters out taken-down or unavailable bundles, while detecting archived or renamed (redirected) repositories.
+- 🧩 Ensures all bundles have an available `.mpp` file, parsing patch data from it when `patches-list.json` is missing.
+
+### 📬 Contributing
+
+- To add or remove a bundle source, please submit a [Bundle Request](https://github.com/nvbangg/awesome-morphe/issues/new?template=bundle-request.yml).
+- For any other issues or suggestions, feel free to [open a new issue](https://github.com/nvbangg/awesome-morphe/issues/new).
+- Contributions and [pull requests](https://github.com/nvbangg/awesome-morphe/pulls) are always welcome!
+
+> [!NOTE]
+> 📖 For project workflows and documentation, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+---
 
 <div align="center"> 
 <picture>
@@ -27,8 +40,6 @@
      alt="Morphe"/>
 </picture>
 </div>
-
----
 
 ## <a id="official"></a> ✅ Official
 
@@ -163,5 +174,5 @@ Maintained with ❤️ by **[@nvbangg](https://github.com/nvbangg)**
 
 #### 🙏 Credits
 
-- Patch data is automatically aggregated from: [My custom sources](data/repos/custom.json), [Morphe Community Patches](https://morphe-patches.software), [ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) and [Morphe Archive](https://github.com/rushiforai/morphe-archive).
-- This project's design is inspired by [Awesome ReVanced](https://github.com/Jman-Github/Awesome-ReVanced), [Morphe Community Patches](https://morphe-patches.software), [ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) and [Patch Explorer](https://github.com/Paresh-Maheshwari/patch-explorer).
+- Patch data is automatically aggregated from: [nvbangg's custom sources](data/discover/custom.json), [Morphe Community Patches](https://morphe-patches.software), [ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) and [Morphe Archive](https://github.com/rushiforai/morphe-archive).
+- Website design is inspired by [Morphe Community Patches](https://morphe-patches.software), with other references credited in [CONTRIBUTING.md](CONTRIBUTING.md) and the source code.

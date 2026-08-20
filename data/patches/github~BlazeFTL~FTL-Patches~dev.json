@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.39.0-dev.2",
+  "version": "1.39.0-dev.3",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -445,9 +445,12 @@
     },
     {
       "name": "Remove Ads",
-      "description": "Stubs known ad SDK entry points and poisons ad-network URL strings across the whole app.",
+      "description": "Stubs known ad SDK entry points and poisons ad-network URL strings across the whole app. Async load calls are redirected into the callback's own failure method instead of being deleted, so completion-gated app logic doesn't hang waiting on an orphaned listener.",
       "default": false,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch"
+      ],
       "compatiblePackages": null,
       "options": []
     },

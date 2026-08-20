@@ -1,5 +1,5 @@
 {
-  "version": "0.7.0-dev.6",
+  "version": "0.7.0-dev.7",
   "appNames": {
     "com.zhiliaoapp.musically": "TikTok"
   },
@@ -144,6 +144,34 @@
     {
       "name": "Disable long-press quick share",
       "description": "Keeps long-pressing Share from opening TikTok's quick-share interaction.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "46.2.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "46.2.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable long-press repost",
+      "description": "Keeps holding Like from opening TikTok's repost action.",
       "use": true,
       "dependencies": [
         "BytecodePatch"

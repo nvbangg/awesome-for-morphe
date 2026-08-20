@@ -1,5 +1,5 @@
 {
-  "version": "1.18.0",
+  "version": "1.19.0",
   "patches": [
     {
       "name": "Add food search bar",
@@ -36,9 +36,9 @@
       "compatiblePackages": [
         {
           "packageName": "com.sonyliv",
-          "name": "SonyLIV",
+          "name": "SonyLIV (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#7460A4",
           "signatures": null,
           "targets": [
@@ -61,9 +61,9 @@
       "compatiblePackages": [
         {
           "packageName": "com.sonyliv",
-          "name": "SonyLIV",
+          "name": "SonyLIV (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#7460A4",
           "signatures": null,
           "targets": [
@@ -71,6 +71,31 @@
               "version": "6.23.1",
               "isExperimental": false,
               "minSdk": 22,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Auto-skip intro and recap",
+      "description": "Automatically skips the intro and recap of a show instead of waiting for you to press the Skip button. When the player reaches an intro (SKIP_INTRO_MARKER=1) or recap (SKIP_RECAP_MARKER=2) marker, it does exactly what tapping the Skip button does — sets seek-exact and seeks straight to that marker's end. Seek-exact is required: without it the seek snaps to a keyframe before the intro end, which lands back inside the marker window and loops. It only acts on intro/recap markers, never on next-episode or ad markers. Disable this if a title's markers are wrong and it skips too far.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 (Android TV)",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6E1EE5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.83.2",
+              "isExperimental": false,
+              "minSdk": 23,
               "description": null
             }
           ]
@@ -111,9 +136,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -206,9 +231,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -241,7 +266,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.jio.media.jiotvplus",
-          "name": "Jiotv+: LiveTV & OTT",
+          "name": "Jiotv+: LiveTV & OTT (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#0C2074",
@@ -311,9 +336,9 @@
       "compatiblePackages": [
         {
           "packageName": "com.sonyliv",
-          "name": "SonyLIV",
+          "name": "SonyLIV (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#7460A4",
           "signatures": null,
           "targets": [
@@ -381,7 +406,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.vimtv",
-          "name": "Vi Movies and TV",
+          "name": "Vi Movies and TV (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#EE1C25",
@@ -404,6 +429,41 @@
           "required": true,
           "type": "kotlin.String",
           "default": "Vi Movies and TV Morphe",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change app name",
+      "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 (Android TV)",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6E1EE5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.83.2",
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "The name shown under the app icon.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "ZEE5 Morphe",
           "values": null
         }
       ]
@@ -486,9 +546,9 @@
       "compatiblePackages": [
         {
           "packageName": "com.sonyliv",
-          "name": "SonyLIV",
+          "name": "SonyLIV (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#7460A4",
           "signatures": null,
           "targets": [
@@ -556,9 +616,9 @@
       "compatiblePackages": [
         {
           "packageName": "com.sonyliv",
-          "name": "SonyLIV",
+          "name": "SonyLIV (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#7460A4",
           "signatures": null,
           "targets": [
@@ -581,9 +641,9 @@
       "compatiblePackages": [
         {
           "packageName": "com.sonyliv",
-          "name": "SonyLIV",
+          "name": "SonyLIV (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#7460A4",
           "signatures": null,
           "targets": [
@@ -656,9 +716,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -681,7 +741,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.jio.media.jiotvplus",
-          "name": "Jiotv+: LiveTV & OTT",
+          "name": "Jiotv+: LiveTV & OTT (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#0C2074",
@@ -731,7 +791,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.vimtv",
-          "name": "Vi Movies and TV",
+          "name": "Vi Movies and TV (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#EE1C25",
@@ -756,9 +816,9 @@
       "compatiblePackages": [
         {
           "packageName": "com.sonyliv",
-          "name": "SonyLIV",
+          "name": "SonyLIV (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#7460A4",
           "signatures": null,
           "targets": [
@@ -781,7 +841,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.vimtv",
-          "name": "Vi Movies and TV",
+          "name": "Vi Movies and TV (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#EE1C25",
@@ -799,6 +859,56 @@
       "options": []
     },
     {
+      "name": "Disable forced upgrade",
+      "description": "Stops ZEE5 from forcing an app update. BlockerScreenInfo.isBlocked() gates the block/upgrade wall; forcing it false lets the current version keep running. This is the only hard client block screen in the app (there is no geo/VPN/tamper block).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 (Android TV)",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6E1EE5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.83.2",
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable nuisance popups",
+      "description": "Suppresses the ZEE5 app-rating prompt and the subscription 'Buy Plan' upsell popup on the home screen by forcing HomeActivityViewModel.canLaunchAppRating() and toShowBuyPlanPopup() to false. Both are plain boolean gates, so this only stops the dialogs from being shown; nothing else changes.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 (Android TV)",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6E1EE5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.83.2",
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Enable all codecs",
       "description": "Forces all video codecs (H265/VP9/AV1) and 4K support on by bypassing the capability/blacklist checks. Off by default: forcing a codec/resolution a TV cannot actually decode can break playback. Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
       "default": true,
@@ -806,9 +916,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -831,9 +941,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -856,9 +966,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -866,6 +976,31 @@
               "version": "26.06.22.3",
               "isExperimental": false,
               "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Faster video start",
+      "description": "Lowers the ExoPlayer start buffer (bufferForPlayback) to 1500ms by forcing DefaultPlayerConfig.defaultBuffersForPlaybackMs() to return 1500 instead of the server value (~2500ms). Playback starts after less initial buffering, so the first frame appears sooner. The player still fills the full min/max buffer in the background; only the start threshold drops. On a weak network or slow CPU this slightly raises the chance of an early re-buffer. Does not affect the DRM-license/manifest part of startup.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 (Android TV)",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6E1EE5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.83.2",
+              "isExperimental": false,
+              "minSdk": 23,
               "description": null
             }
           ]
@@ -906,9 +1041,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -956,9 +1091,9 @@
       "compatiblePackages": [
         {
           "packageName": "com.sonyliv",
-          "name": "SonyLIV",
+          "name": "SonyLIV (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#7460A4",
           "signatures": null,
           "targets": [
@@ -1006,9 +1141,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -1024,6 +1159,31 @@
       "options": []
     },
     {
+      "name": "Make installable on TV",
+      "description": "Makes the ZEE5 APK install on Android TV / Chromecast with Google TV. The build marks android.software.live_tv as required, but streamer devices without a TV tuner do not have that feature, so the installer reports \"not compatible with your TV\". This marks live_tv and leanback optional so it installs everywhere; the leanback launcher entry is kept, so it still appears on the TV home screen.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 (Android TV)",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6E1EE5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.83.2",
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Premium unlock",
       "description": "Unlocks premium UI state: shows the subscribed badge, enables the download button for all content and suppresses subscription nudges during playback. This is a UI unlock only — it does not grant access to DRM content you are not entitled to. Approach adapted from Paresh-Maheshwari's patches (GPL-3.0).",
       "default": true,
@@ -1031,9 +1191,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -1056,7 +1216,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.vimtv",
-          "name": "Vi Movies and TV",
+          "name": "Vi Movies and TV (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#EE1C25",
@@ -1131,9 +1291,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -1156,7 +1316,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.jio.media.jiotvplus",
-          "name": "Jiotv+: LiveTV & OTT",
+          "name": "Jiotv+: LiveTV & OTT (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#0C2074",
@@ -1206,7 +1366,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.vimtv",
-          "name": "Vi Movies and TV",
+          "name": "Vi Movies and TV (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#EE1C25",
@@ -1281,9 +1441,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -1306,7 +1466,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.jio.media.jiotvplus",
-          "name": "Jiotv+: LiveTV & OTT",
+          "name": "Jiotv+: LiveTV & OTT (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#0C2074",
@@ -1331,7 +1491,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.vimtv",
-          "name": "Vi Movies and TV",
+          "name": "Vi Movies and TV (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#EE1C25",
@@ -1349,6 +1509,56 @@
       "options": []
     },
     {
+      "name": "Remove display ads",
+      "description": "Removes ZEE5 non-video display ads: the home-screen native masthead banner (HomeActivityViewModel.getNeedToShowNativeMastheadAd() forced false, so it never loads) and the on-pause display overlay (FetchPlaybackUrlUseCase.toPauseAds() forced null). No extra ad requests are made, so this makes the UI lighter rather than laggier.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 (Android TV)",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6E1EE5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.83.2",
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove player logo",
+      "description": "Removes the ZEE5/channel logo overlaid on the video player. The logo is shown via WaterMarkViewModel's _logoVisibility LiveData; forcing updateLogoVisibility(...) to always post false keeps the logo hidden. Client render only — this does not affect any logo baked into a partner's video stream.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 (Android TV)",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6E1EE5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.83.2",
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remove player watermark",
       "description": "Removes the per-content watermark/logo overlaid on the video (the one that changes depending on what you play). The player only shows the watermark ImageView when Configs.getWaterMarkInfoOnPlayer() returns non-empty JSON; forcing that getter to null makes the player's own guard hide the overlay. Client render only, so this is fully removable (it is not baked into the stream).",
       "default": true,
@@ -1356,7 +1566,7 @@
       "compatiblePackages": [
         {
           "packageName": "com.vimtv",
-          "name": "Vi Movies and TV",
+          "name": "Vi Movies and TV (Android TV)",
           "description": null,
           "apkFileType": "APKS",
           "appIconColor": "#EE1C25",
@@ -1381,9 +1591,9 @@
       "compatiblePackages": [
         {
           "packageName": "com.sonyliv",
-          "name": "SonyLIV",
+          "name": "SonyLIV (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#7460A4",
           "signatures": null,
           "targets": [
@@ -1399,6 +1609,31 @@
       "options": []
     },
     {
+      "name": "Remove video ads",
+      "description": "Blocks ZEE5 video ads (pre-roll, mid-roll and the video-start slate) client-side. The player inserts ads from an ad-tag URL supplied by MediaData (adsUrl + adTags), not from the stream, and ad-free users already receive a null adsUrl / empty adTags — a supported path. This forces MediaData.getAdsUrl() to null and getAdTags() to an empty list so no ad break is ever built, and forces FetchPlaybackUrlUseCase.toPreRollDaiSlateMedia() to null so no pre-roll slate is prepended. Content goes straight to play — fewer ad requests, so it is lighter, not laggy. Server-DAI mid-roll (if a title is DAI-only) is not affected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.graymatrix.did",
+          "name": "ZEE5 (Android TV)",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6E1EE5",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.83.2",
+              "isExperimental": false,
+              "minSdk": 23,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Spoof device attestation",
       "description": "Forces the device-attestation blob JioHotstar sends to the server to report a clean device (IsTampered/IsRooted/IsProxy/isVpnActive/IsEmulator/suspicious-file/open-ports/debugger all false). The re-signed build otherwise sends IsTampered=true, which the server flags as \"suspicious activity\" and locks the account for 24 hours (error NM-4290). WARNING: this reduces one client-sent signal but does NOT make the account safe — the server still sees the VPN exit IP, and an already-flagged account stays on Hotstar's radar. Do not run this on an account you cannot afford to lose.",
       "default": true,
@@ -1406,9 +1641,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -1431,9 +1666,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -1456,9 +1691,9 @@
       "compatiblePackages": [
         {
           "packageName": "in.startv.hotstar",
-          "name": "JioHotstar",
+          "name": "JioHotstar (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#1F80E0",
           "signatures": null,
           "targets": [
@@ -1481,9 +1716,9 @@
       "compatiblePackages": [
         {
           "packageName": "com.sonyliv",
-          "name": "SonyLIV",
+          "name": "SonyLIV (Android TV)",
           "description": null,
-          "apkFileType": "APKM",
+          "apkFileType": "APK",
           "appIconColor": "#7460A4",
           "signatures": null,
           "targets": [

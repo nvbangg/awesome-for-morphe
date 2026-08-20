@@ -1,10 +1,104 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.18.1",
+  "version": "1.19.0",
   "patches": [
     {
       "name": "Ads Free Rewards",
-      "description": null,
+      "description": "Skip rewarded ads and claim rewards instantly",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "rewardStrategy",
+          "title": "Reward Strategy",
+          "description": "Which ad networks to patch",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "auto",
+          "values": {
+            "Auto (all networks)": "auto",
+            "AppLovin MAX": "max",
+            "Unity Ads": "unityAds",
+            "ironSource / LevelPlay": "ironSource"
+          }
+        },
+        {
+          "key": "instantReward",
+          "title": "Instant reward",
+          "description": "Claim the reward immediately without showing an ad",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "No Ads",
+      "description": "Remove ads",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "blockInterstitials",
+          "title": "Block Interstitials",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockBanners",
+          "title": "Block Banners",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockAppOpen",
+          "title": "Block App Open",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockMRec",
+          "title": "Block MREC",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockRewarded",
+          "title": "Block Rewarded",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Skip Consent Popup",
+      "description": "Skip the Google consent (GDPR) popup",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Skip Rate-Us Prompt",
+      "description": "Skip the in-app review (rate us) prompt",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -13,6 +107,321 @@
     {
       "name": "Spoof Play Store Install Source",
       "description": null,
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Limit Ad Tracking",
+      "description": "Neutralize the Google advertising ID: empty ID and limit ad tracking enabled",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove Permissions",
+      "description": "Remove permissions from the app manifest",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "removePermissions",
+          "title": "Permissions to remove",
+          "description": "Comma-separated permission names to remove from the manifest",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "android.permission.SEND_SMS,android.permission.RECEIVE_SMS,android.permission.READ_SMS,android.permission.RECORD_AUDIO,android.permission.CAMERA",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Remove Hardware Requirements",
+      "description": "Remove uses-feature entries so the app installs on more devices",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "removeFeatures",
+          "title": "Features to remove",
+          "description": "Comma-separated feature names to remove; leave empty to remove all uses-feature entries",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Unlock Rotation",
+      "description": "Remove screenOrientation locks so the app rotates freely",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Force Landscape / Portrait",
+      "description": "Force the app to a fixed screen orientation",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "orientation",
+          "title": "Orientation",
+          "description": "landscape, portrait, sensorLandscape, sensorPortrait, userLandscape or userPortrait",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "landscape",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Spoof Play Integrity",
+      "description": "Force Play Integrity checks to pass",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Bypass License Verification",
+      "description": "Always pass Google Play license checks",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Bypass Google Play Services Check",
+      "description": "Always report Google Play Services as available",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Pairip Bypass (Experimental)",
+      "description": "Bypass Pairip license protection",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Unlock RevenueCat Entitlements",
+      "description": "Unlock all RevenueCat entitlements",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Unlock All IAPs (Unity IAP)",
+      "description": "Unlock all in-app purchases in Unity IAP games (Experimental)",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Custom App Resolution (Experimental)",
+      "description": "Set a custom resolution for the game",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "enableCustomResolution",
+          "title": "Enable Custom Resolution",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        },
+        {
+          "key": "width",
+          "title": "Resolution width (px)",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Int",
+          "default": 1920,
+          "values": null
+        },
+        {
+          "key": "height",
+          "title": "Resolution height (px)",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Int",
+          "default": 1080,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Allow Screenshots",
+      "description": "Remove the screenshot-blocking window flag",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Skip Splash Screen (Experimental)",
+      "description": "Skip or shorten splash screen delays",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Root Checks",
+      "description": "Disable root detection",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Update Checks",
+      "description": "Disable in-app update prompts",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Telemetry",
+      "description": "Block analytics and tracking",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "blockFirebase",
+          "title": "Block Firebase Analytics",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockAppsFlyer",
+          "title": "Block AppsFlyer",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockAdjust",
+          "title": "Block Adjust",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockAmplitude",
+          "title": "Block Amplitude",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockMixpanel",
+          "title": "Block Mixpanel",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockCleverTap",
+          "title": "Block CleverTap",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockSegment",
+          "title": "Block Segment",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockFacebook",
+          "title": "Block Facebook Analytics",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockBranch",
+          "title": "Block Branch.io",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockUnity",
+          "title": "Block Unity Analytics",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockFlurry",
+          "title": "Block Flurry",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "blockGameAnalytics",
+          "title": "Block GameAnalytics",
+          "description": "",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Block Push Ads",
+      "description": "Block push notification ads (Firebase Cloud Messaging). Also blocks legitimate notifications.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,

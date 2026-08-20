@@ -1,0 +1,60 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "ProxMobo License Check Bypass",
+      "description": "Disables Google's Play app-licensing (PairIP) check so ProxMobo does not show license errors or close when it is not installed/licensed through Google Play.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.halliharp.proxmobo",
+          "name": "ProxMobo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#3F2A44",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.0.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "ProxMobo Premium Unlock",
+      "description": "Reports the lifetime Premium product (proxmobo.premium.lifetime) as purchased so all Premium features are unlocked.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.halliharp.proxmobo",
+          "name": "ProxMobo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#3F2A44",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.0.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

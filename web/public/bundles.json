@@ -5991,7 +5991,7 @@
       "repoDescription": "New mask, same task.                                                                 All patches answer to Doom.",
       "avatarUrl": "https://raw.githubusercontent.com/rushiranpise/morphe-patches/main/patches-bundle.png",
       "stars": 417,
-      "updatedAt": 1787129184000,
+      "updatedAt": 1787178702000,
       "firstSeen": 1780370487000,
       "hotRank": 1,
       "appFirstSeen": {
@@ -6680,7 +6680,6 @@
         {
           "name": "Inure — Unlock Full Version (GitHub)",
           "description": "Bypasses the 15-day trial gate and unlocks all premium features in Inure App Manager (GitHub).",
-          "isPreRelease": true,
           "compatiblePackagesKey": 212
         },
         {
@@ -7259,7 +7258,6 @@
         {
           "name": "Unlock Full Version",
           "description": "Bypasses the 15-day trial gate and unlocks all premium features in Inure App Manager.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 244
         },
         {
@@ -19166,7 +19164,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/10971263?v=4&s=64",
       "stars": 6,
-      "updatedAt": 1787116124000,
+      "updatedAt": 1787180188000,
       "firstSeen": 1786962892864,
       "hotRank": 35,
       "appFirstSeen": {
@@ -19206,7 +19204,6 @@
         {
           "name": "Toolbar Buttons",
           "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Adds six hotkey buttons too, each typing a string you set in Flexboard's settings — they only appear once you have filled one in.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 773
         }
       ]
@@ -19587,7 +19584,7 @@
       "repoDescription": "Custom Morphe patches by heval99",
       "avatarUrl": "https://avatars.githubusercontent.com/u/111246900?v=4&s=64",
       "stars": 0,
-      "updatedAt": 1787160621000,
+      "updatedAt": 1787181716000,
       "firstSeen": 1787164760965,
       "isPreRelease": true,
       "appFirstSeen": {
@@ -19597,7 +19594,11 @@
         "my.saphelink": 1787164759994,
         "com.mobilefootie.wc2010": 1787164759994,
         "com.anydesk.anydeskandroid": 1787164759994,
-        "com.myfitnesspal.android": 1787164759994
+        "com.myfitnesspal.android": 1787164759994,
+        "ru.iptvremote.android.iptv": 1787189031057,
+        "com.livescore": 1787189031057,
+        "com.scores365": 1787189031057,
+        "no.fishbuddy_playground.app": 1787189031057
       },
       "patches": [
         {
@@ -19627,6 +19628,21 @@
         },
         {
           "name": "Disable ads",
+          "description": "Disables Wortise ad SDK initialization, blocking banner, interstitial, native and mediated ads (AppLovin, Yandex, Google Mobile Ads, etc.).",
+          "compatiblePackagesKey": 786
+        },
+        {
+          "name": "Disable ads",
+          "description": "Forces AdsRemovalSettings.areAdsDisabled() to return true, disabling banner, interstitial, MPU, hero placement, coverage sponsorship and announcement ads.",
+          "compatiblePackagesKey": 787
+        },
+        {
+          "name": "Disable ads",
+          "description": "Disables Google Mobile Ads (AdMob) initialization, blocking banner, interstitial, rewarded, native and mediated ads.",
+          "compatiblePackagesKey": 788
+        },
+        {
+          "name": "Disable ads",
           "description": "Disables banner, interstitial, feed, native, preroll and rewarded ads.",
           "compatiblePackagesKey": 783
         },
@@ -19638,7 +19654,7 @@
         {
           "name": "Disable telemetry",
           "description": "Disables Braze custom event tracking. Firebase Analytics/Crashlytics are covered by the universal \"Disable Firebase Analytics & Crashlytics\" patch.",
-          "compatiblePackagesKey": 786
+          "compatiblePackagesKey": 789
         },
         {
           "name": "Disable telemetry",
@@ -19648,12 +19664,12 @@
         {
           "name": "Enable FotMob+",
           "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 787
+          "compatiblePackagesKey": 790
         },
         {
           "name": "Enable Premium",
           "description": "Unlocks premium features by patching the Java license wrapper methods in JniAdExt: isFreeLicense returns false (app treats the license as paid), account registration and address book are allowed, and the remove-license option is available in settings. Note: the underlying license validation is native (libanydesk.so) and cannot be patched via bytecode — this patch only affects the Java-layer feature gates.",
-          "compatiblePackagesKey": 788
+          "compatiblePackagesKey": 791
         },
         {
           "name": "Enable Premium",
@@ -19662,8 +19678,18 @@
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks all features locked behind the Saphe subscription paywall (navigation, car integration, speed limits, voice alarms, roadwork detection, animal nearby, slow-moving traffic, emergency vehicle, etc.).",
+          "description": "Forces User.hasPremium() to return true, unlocking premium features locked behind the RevenueCat subscription entitlement.",
+          "compatiblePackagesKey": 792
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Forces IptvFreeApplication's pro/trial gate to return true, keeping pro features unlocked after the 20-minute trial expires and suppressing the in-app review / buy-pro upsell prompts.",
           "compatiblePackagesKey": 786
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Unlocks all features locked behind the Saphe subscription paywall (navigation, car integration, speed limits, voice alarms, roadwork detection, animal nearby, slow-moving traffic, emergency vehicle, etc.).",
+          "compatiblePackagesKey": 789
         },
         {
           "name": "Enable Premium",
@@ -19673,7 +19699,7 @@
         {
           "name": "Enable Premium+",
           "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 789
+          "compatiblePackagesKey": 793
         }
       ]
     }
@@ -29016,6 +29042,36 @@
     ],
     [
       {
+        "packageName": "ru.iptvremote.android.iptv",
+        "targets": [
+          {
+            "version": "9.1.25"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.livescore",
+        "targets": [
+          {
+            "version": "9.9.1"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.scores365",
+        "targets": [
+          {
+            "version": "14.8.8"
+          }
+        ]
+      }
+    ],
+    [
+      {
         "packageName": "my.saphelink",
         "targets": [
           {
@@ -29040,6 +29096,16 @@
         "targets": [
           {
             "version": "8.3.4"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "no.fishbuddy_playground.app",
+        "targets": [
+          {
+            "version": "11.0.84"
           }
         ]
       }
@@ -34792,8 +34858,7 @@
       "description": "",
       "minInstalls": 0,
       "category": "",
-      "firstSeen": 1787084889453,
-      "isPreRelease": true
+      "firstSeen": 1787084889453
     },
     "app.simple.inure.play": {
       "name": "Inure App Manager",
@@ -34801,8 +34866,7 @@
       "description": "An elegant and intuitve apps manager for all rooted and non-rooted devices.",
       "minInstalls": 50000,
       "category": "Tools",
-      "firstSeen": 1787084889453,
-      "isPreRelease": true
+      "firstSeen": 1787084889453
     },
     "harmonium.music.gameg.real.harmoniumfree": {
       "name": "Harmonium",
@@ -34876,6 +34940,33 @@
       "minInstalls": 100000000,
       "category": "Business",
       "firstSeen": 1787164760965,
+      "isPreRelease": true
+    },
+    "ru.iptvremote.android.iptv": {
+      "name": "IPTV",
+      "iconUrl": "https://play-lh.googleusercontent.com/kTJ4kwC0z32Ce67-FHSubuDEOLTglUyl3Ue9-CxhvcLqVrJfCR99UAE-rrrH2ashjiYSkJMNAohOVe7pXeGt=s64-rw",
+      "description": "Watch IPTV on your Android device",
+      "minInstalls": 10000000,
+      "category": "Video Players & Editors",
+      "firstSeen": 1787189031383,
+      "isPreRelease": true
+    },
+    "com.scores365": {
+      "name": "365Scores: Live Sports Scores",
+      "iconUrl": "https://play-lh.googleusercontent.com/33TTGlcWsh5Jl7XAUp36Tj3hog3ICRAapLhj8glREVX-qYXQ7NqH3lMv0ntdHX4uMmtN1PBzoqlI33U0ORUvXQ=s64-rw",
+      "description": "Live Scores, News, Fixtures, Stats & Results for Soccer, Football, NBA and more",
+      "minInstalls": 50000000,
+      "category": "Sports",
+      "firstSeen": 1787189031383,
+      "isPreRelease": true
+    },
+    "no.fishbuddy_playground.app": {
+      "name": "Fishbuddy: Fishing Spot Finder",
+      "iconUrl": "https://play-lh.googleusercontent.com/cKkvwnswRJ14M9HheoRKU_vNMmUmXgsrZYAqw2u7kMgnHaTBUip4InHio_ijNjlySwFvNpclSeSJ8VF_d3YA=s64-rw",
+      "description": "Get expert fishing spots & 3D maps. Use AI to identify your catch instantly!",
+      "minInstalls": 100000,
+      "category": "Sports",
+      "firstSeen": 1787189031383,
       "isPreRelease": true
     }
   }

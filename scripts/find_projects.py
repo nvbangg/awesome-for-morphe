@@ -55,13 +55,17 @@ def build_search_query(keyword: str) -> str:
     parts.extend(f"-user:{user}" for user in EXCLUDED_USERS)
 
     if CREATED_WITHIN_DAYS:
-        created_after = (datetime.now(UTC) - timedelta(days=CREATED_WITHIN_DAYS)).strftime("%Y-%m-%d")
+        created_after = (
+            datetime.now(UTC) - timedelta(days=CREATED_WITHIN_DAYS)
+        ).strftime("%Y-%m-%d")
         parts.append(f"created:>{created_after}")
     elif CREATED_AFTER:
         parts.append(f"created:>{CREATED_AFTER}")
 
     if PUSHED_WITHIN_DAYS:
-        pushed_after = (datetime.now(UTC) - timedelta(days=PUSHED_WITHIN_DAYS)).strftime("%Y-%m-%d")
+        pushed_after = (
+            datetime.now(UTC) - timedelta(days=PUSHED_WITHIN_DAYS)
+        ).strftime("%Y-%m-%d")
         parts.append(f"pushed:>{pushed_after}")
 
     parts.extend(f"NOT {forbidden}" for forbidden in API_EXCLUDED_KEYWORDS)
@@ -72,10 +76,16 @@ def build_search_query(keyword: str) -> str:
 def sync_excluded_repos() -> set[str]:
     links = set()
     if EXCLUDED_REPOS_PATH.exists():
-        links.update(line.strip() for line in EXCLUDED_REPOS_PATH.read_text(encoding="utf-8").splitlines() if line.strip() and not line.startswith("#"))
+        links.update(
+            line.strip()
+            for line in EXCLUDED_REPOS_PATH.read_text(encoding="utf-8").splitlines()
+            if line.strip() and not line.startswith("#")
+        )
 
     if README_PATH.exists():
-        links.update(GITHUB_REPO_URL_RE.findall(README_PATH.read_text(encoding="utf-8")))
+        links.update(
+            GITHUB_REPO_URL_RE.findall(README_PATH.read_text(encoding="utf-8"))
+        )
 
     sorted_links = sorted(links, key=str.lower)
     PROJECTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -88,7 +98,9 @@ def is_patch_bundle(owner_repo: str) -> bool:
         url = build_raw_url("github", owner_repo, branch, "patches-bundle.json")
         if not url:
             continue
-        request = urllib.request.Request(url, headers=get_auth_headers(url), method="HEAD")
+        request = urllib.request.Request(
+            url, headers=get_auth_headers(url), method="HEAD"
+        )
         with (
             contextlib.suppress(Exception),
             urllib.request.urlopen(request, timeout=HEAD_TIMEOUT) as response,
@@ -147,49 +159,75 @@ def search_repositories() -> list[dict]:
 
     repos_list = list(unique_repos.values())
     save_json(RAW_SEARCH_PATH, repos_list)
-    print(f"Saved {len(repos_list)} raw repositories to {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}\n")
+    print(
+        f"Saved {len(repos_list)} raw repositories to {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}\n"
+    )
     return repos_list
 
 
 def filter_repositories(repositories: list[dict] | None = None) -> list[dict]:
     if repositories is None:
         if not RAW_SEARCH_PATH.exists():
-            print(f"Raw search file not found: {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}. Run with --search first.")
+            print(
+                f"Raw search file not found: {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}. Run with --search first."
+            )
             return []
         repositories = load_json(RAW_SEARCH_PATH, [])
-        print(f"Loaded {len(repositories)} repositories from {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}")
+        print(
+            f"Loaded {len(repositories)} repositories from {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}"
+        )
 
     if not repositories:
         print("Repository list is empty. Skipping filter step.")
         return []
 
     excluded_repos = sync_excluded_repos()
-    print(f"Synced {len(excluded_repos)} excluded repositories from README & {EXCLUDED_REPOS_PATH.name}")
+    print(
+        f"Synced {len(excluded_repos)} excluded repositories from README & {EXCLUDED_REPOS_PATH.name}"
+    )
 
-    candidates = [repo for repo in repositories if repo.get("full_name", "").lower() not in excluded_repos and matches_filter_criteria(repo)]
-    print(f"Filtered {len(candidates)} candidate repositories (excluded {len(repositories) - len(candidates)} repos).")
+    candidates = [
+        repo
+        for repo in repositories
+        if repo.get("full_name", "").lower() not in excluded_repos
+        and matches_filter_criteria(repo)
+    ]
+    print(
+        f"Filtered {len(candidates)} candidate repositories (excluded {len(repositories) - len(candidates)} repos)."
+    )
 
     save_json(RAW_FILTER_PATH, candidates)
-    print(f"Saved {len(candidates)} candidates to {RAW_FILTER_PATH.relative_to(ROOT_DIR)}\n")
+    print(
+        f"Saved {len(candidates)} candidates to {RAW_FILTER_PATH.relative_to(ROOT_DIR)}\n"
+    )
     return candidates
 
 
 def verify_and_export_projects(candidates: list[dict] | None = None) -> list[dict]:
     if candidates is None:
         if not RAW_FILTER_PATH.exists():
-            print(f"Filtered file not found: {RAW_FILTER_PATH.relative_to(ROOT_DIR)}. Run with --filter first.")
+            print(
+                f"Filtered file not found: {RAW_FILTER_PATH.relative_to(ROOT_DIR)}. Run with --filter first."
+            )
             return []
         candidates = load_json(RAW_FILTER_PATH, [])
-        print(f"Loaded {len(candidates)} candidates from {RAW_FILTER_PATH.relative_to(ROOT_DIR)}")
+        print(
+            f"Loaded {len(candidates)} candidates from {RAW_FILTER_PATH.relative_to(ROOT_DIR)}"
+        )
 
     if not candidates:
         print("Candidate list is empty. Skipping verification.")
         return []
 
-    print(f"Checking {len(candidates)} candidates for patches-bundle.json across branches {CHECK_BRANCHES}...\n")
+    print(
+        f"Checking {len(candidates)} candidates for patches-bundle.json across branches {CHECK_BRANCHES}...\n"
+    )
     valid_repos = []
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
-        future_to_repo = {executor.submit(is_patch_bundle, repo.get("full_name", "")): repo for repo in candidates}
+        future_to_repo = {
+            executor.submit(is_patch_bundle, repo.get("full_name", "")): repo
+            for repo in candidates
+        }
         for future in as_completed(future_to_repo):
             repo = future_to_repo[future]
             if not future.result():
@@ -199,7 +237,7 @@ def verify_and_export_projects(candidates: list[dict] | None = None) -> list[dic
         {
             "full_name": repo.get("full_name", ""),
             "stars": repo.get("stargazers_count", 0),
-            "desc": repo.get("description") or "",
+            "description": repo.get("description") or "",
             "created_at": (repo.get("created_at") or "")[:10],
             "pushed_at": (repo.get("pushed_at") or "")[:10],
             "url": repo.get("html_url", ""),
@@ -207,36 +245,71 @@ def verify_and_export_projects(candidates: list[dict] | None = None) -> list[dic
         for repo in valid_repos
     ]
     projects.sort(
-        key=lambda item: (item["stars"], item["pushed_at"], item["created_at"], item["full_name"].lower()),
+        key=lambda item: (
+            item["stars"],
+            item["pushed_at"],
+            item["created_at"],
+            item["full_name"].lower(),
+        ),
         reverse=True,
     )
 
-    query_summary = ", ".join(build_search_query(kw) for kw in SEARCH_KEYWORDS)
+    query_summary = ", ".join(
+        build_search_query(keyword) for keyword in SEARCH_KEYWORDS
+    )
+    excluded_keywords = ", ".join(EXCLUDED_KEYWORDS)
     markdown_lines = [
         "### 🔍 Found Projects",
         "",
         f"- **Query:** `{query_summary}`",
+        f"- **Excluded Keywords:** {excluded_keywords}, non-standalone morphe variants",
         f"- **Total Found:** `{len(projects)}`",
         f"- **Scanned At:** `{datetime.now(UTC).strftime('%Y-%m-%d %H:%M:%S UTC')}`",
         "",
     ]
     for project in projects:
-        description = f"- **Description:** {project['desc']}\n" if project["desc"] else ""
-        markdown_lines.append(f"#### [{project['full_name']}]({project['url']}) (⭐ {project['stars']})\n" f"- **Created:** `{project['created_at']}` | **Updated:** `{project['pushed_at']}`\n" f"{description}")
+        description = (
+            f"- **Description:** {project['description']}\n"
+            if project["description"]
+            else ""
+        )
+        markdown_lines.append(
+            f"#### [{project['full_name']}]({project['url']}) (⭐ {project['stars']})\n"
+            f"- **Created:** `{project['created_at']}` | **Updated:** `{project['pushed_at']}`\n"
+            f"{description}"
+        )
 
     PROJECTS_DIR.mkdir(parents=True, exist_ok=True)
-    OUTPUT_TEXT_PATH.write_text("\n".join(project["url"] for project in projects) + "\n", encoding="utf-8")
+    OUTPUT_TEXT_PATH.write_text(
+        "\n".join(project["url"] for project in projects) + "\n", encoding="utf-8"
+    )
     append_step_summary("\n".join(markdown_lines))
 
-    print(f"Saved {len(projects)} URLs to {OUTPUT_TEXT_PATH.relative_to(ROOT_DIR)} (excluded {len(candidates) - len(projects)} patch bundles)")
+    print(
+        f"Saved {len(projects)} URLs to {OUTPUT_TEXT_PATH.relative_to(ROOT_DIR)} (excluded {len(candidates) - len(projects)} patch bundles)"
+    )
     return projects
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Find and filter standalone repositories in the Morphe ecosystem.")
-    parser.add_argument("--search", action="store_true", help="Fetch raw repositories from GitHub Search API.")
-    parser.add_argument("--filter", action="store_true", help="Filter raw repositories by keywords and exclusion list.")
-    parser.add_argument("--check", action="store_true", help="Verify patch bundle status and export output files.")
+    parser = argparse.ArgumentParser(
+        description="Find and filter standalone repositories in the Morphe ecosystem."
+    )
+    parser.add_argument(
+        "--search",
+        action="store_true",
+        help="Fetch raw repositories from GitHub Search API.",
+    )
+    parser.add_argument(
+        "--filter",
+        action="store_true",
+        help="Filter raw repositories by keywords and exclusion list.",
+    )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Verify patch bundle status and export output files.",
+    )
 
     args = parser.parse_args()
 

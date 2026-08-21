@@ -7,7 +7,9 @@ from providers import export_provider
 from utils import fetch
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
-README_URL = ("https://raw.githubusercontent.com/rushiforai/morphe-archive/main/README.md")
+README_URL = (
+    "https://raw.githubusercontent.com/rushiforai/morphe-archive/main/README.md"
+)
 OUTPUT_PATH = ROOT_DIR / "data" / "discover" / "morphe-archive.json"
 _REPO_RE = re.compile(r"morphe\.software/add-source\?(github|gitlab)=([^)\s]+)")
 

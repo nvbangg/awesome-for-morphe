@@ -65,11 +65,15 @@ def _merge(provider_files: list[tuple[str, dict]]) -> dict:
 
 def _sync_repos(merged: dict, existing_repos: dict) -> dict:
     new_repos_data = {}
-    for canonical_key, entry in sorted(merged.items(), key=lambda item: item[0].lower()):
+    for canonical_key, entry in sorted(
+        merged.items(), key=lambda item: item[0].lower()
+    ):
         if entry.get("enabled") is not False:
             old_entry = existing_repos.get(canonical_key, {})
             new_repos_data[canonical_key] = {
-                field: old_entry[field] for field in ("name", "image") if old_entry.get(field)
+                field: old_entry[field]
+                for field in ("name", "image")
+                if old_entry.get(field)
             } | {"main": old_entry.get("main"), "dev": old_entry.get("dev")}
     return new_repos_data
 
@@ -86,7 +90,10 @@ def main() -> int:
         return 1
 
     if warnings:
-        markdown_lines = ["### ⚠️ Discover", *[f"- {warning}" for warning in sorted(warnings)]]
+        markdown_lines = [
+            "### ⚠️ Discover",
+            *[f"- {warning}" for warning in sorted(warnings)],
+        ]
         append_step_summary("\n".join(markdown_lines))
 
     merged = _merge(provider_files)

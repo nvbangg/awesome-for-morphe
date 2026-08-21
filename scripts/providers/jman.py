@@ -11,7 +11,9 @@ from utils import fetch, load_json, save_json
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DISCOVER_DIR = ROOT_DIR / "data" / "discover"
 TREE_API_URL = "https://api.github.com/repos/Jman-Github/ReVanced-Patch-Bundles/git/trees/bundles?recursive=1"
-RAW_BASE = "https://raw.githubusercontent.com/Jman-Github/ReVanced-Patch-Bundles/bundles"
+RAW_BASE = (
+    "https://raw.githubusercontent.com/Jman-Github/ReVanced-Patch-Bundles/bundles"
+)
 OUTPUT_PATH = DISCOVER_DIR / "jman.json"
 SNAPSHOT_PATH = DISCOVER_DIR / "snapshot.json"
 CONCURRENCY = 8
@@ -50,7 +52,9 @@ def discover() -> str | None:
     try:
         tree_data = fetch(TREE_API_URL, timeout=30, as_json=True)
     except Exception as error:
-        warning_message = f"[jman] Failed to fetch tree: {error}. Kept existing sources in jman.json"
+        warning_message = (
+            f"[jman] Failed to fetch tree: {error}. Kept existing sources in jman.json"
+        )
         print(f"[-] {warning_message}")
         return warning_message
 
@@ -64,7 +68,10 @@ def discover() -> str | None:
     tree_files = tree_data.get("tree", [])
 
     bundles = {
-        parts[1].removesuffix("-patch-bundles").removesuffix("-patches"): (path, item.get("sha", ""))
+        parts[1].removesuffix("-patch-bundles").removesuffix("-patches"): (
+            path,
+            item.get("sha", ""),
+        )
         for item in tree_files
         if (path := item.get("path", ""))
         and len(parts := path.split("/")) == 3
@@ -85,7 +92,9 @@ def discover() -> str | None:
 
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
         futures = {
-            executor.submit(_process_bundle, name, path, blob_sha, cached_bundles.get(name)): name
+            executor.submit(
+                _process_bundle, name, path, blob_sha, cached_bundles.get(name)
+            ): name
             for name, (path, blob_sha) in bundles.items()
         }
         for future in as_completed(futures):
@@ -96,7 +105,9 @@ def discover() -> str | None:
                 discovered[canonical_key] = {}
 
     snapshot["jman_tree_sha"] = tree_sha
-    snapshot["jman_bundles"] = dict(sorted(new_bundles.items(), key=lambda item: item[0].lower()))
+    snapshot["jman_bundles"] = dict(
+        sorted(new_bundles.items(), key=lambda item: item[0].lower())
+    )
     save_json(SNAPSHOT_PATH, snapshot)
 
     return export_provider("jman", discovered, OUTPUT_PATH)

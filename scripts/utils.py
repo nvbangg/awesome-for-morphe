@@ -12,7 +12,9 @@ from typing import Any
 
 def get_auth_headers(url: str, headers: dict[str, str] | None = None) -> dict[str, str]:
     result_headers = dict(headers) if headers else {}
-    result_headers.setdefault("User-Agent", "AwesomeMorphe/1.0 (+https://github.com/nvbangg/awesome-morphe)")
+    result_headers.setdefault(
+        "User-Agent", "AwesomeMorphe/1.0 (+https://github.com/nvbangg/awesome-morphe)"
+    )
 
     github_token = os.environ.get("GITHUB_TOKEN")
     if github_token and "Authorization" not in result_headers:
@@ -44,7 +46,11 @@ def fetch(
                 return json.loads(decoded) if as_json else decoded
 
         except Exception as error:
-            if isinstance(error, urllib.error.HTTPError) and error.code not in (401, 403, 429):
+            if isinstance(error, urllib.error.HTTPError) and error.code not in (
+                401,
+                403,
+                429,
+            ):
                 raise
             if attempt < 2:
                 time.sleep(1)
@@ -57,14 +63,20 @@ def fetch(
 def append_step_summary(markdown_content: str) -> None:
     summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary_path and markdown_content.strip():
-        with contextlib.suppress(Exception), Path(summary_path).open("a", encoding="utf-8") as file:
+        with (
+            contextlib.suppress(Exception),
+            Path(summary_path).open("a", encoding="utf-8") as file,
+        ):
             file.write(markdown_content.strip() + "\n\n")
 
 
 def load_json(path: str | Path, default: Any = None) -> Any:
     path = Path(path)
     if path.exists():
-        with contextlib.suppress(OSError, json.JSONDecodeError), path.open(encoding="utf-8") as file:
+        with (
+            contextlib.suppress(OSError, json.JSONDecodeError),
+            path.open(encoding="utf-8") as file,
+        ):
             return json.load(file)
     return default if default is not None else {}
 
@@ -86,12 +98,18 @@ def parse_timestamp(timestamp: Any) -> int:
         return int(timestamp)
     with contextlib.suppress(Exception):
         parsed_datetime = datetime.fromisoformat(str(timestamp).replace("Z", "+00:00"))
-        tz_aware = parsed_datetime if parsed_datetime.tzinfo else parsed_datetime.replace(tzinfo=UTC)
+        tz_aware = (
+            parsed_datetime
+            if parsed_datetime.tzinfo
+            else parsed_datetime.replace(tzinfo=UTC)
+        )
         return int(tz_aware.timestamp() * 1000)
     return 0
 
 
-def build_raw_url(source: str, owner_repo: str, branch: str, file_path: str) -> str | None:
+def build_raw_url(
+    source: str, owner_repo: str, branch: str, file_path: str
+) -> str | None:
     if source == "github":
         return f"https://raw.githubusercontent.com/{owner_repo}/{branch}/{file_path}"
     if source == "gitlab":

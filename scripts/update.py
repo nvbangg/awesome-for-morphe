@@ -38,7 +38,11 @@ def main() -> int:
         bundle_sources[key] = {
             "source": source,
             "repo": repo,
-            **{field: existing[field] for field in ("stars", "avatarUrl", "repoDescription", "appFirstSeen") if field in existing},
+            **{
+                field: existing[field]
+                for field in ("stars", "avatarUrl", "repoDescription", "appFirstSeen")
+                if field in existing
+            },
         }
 
     errors: dict[str, list[str]] = {"unavailable": [], "warnings": []}
@@ -57,7 +61,11 @@ def main() -> int:
     sorted_keys = sorted(
         bundle_sources.keys(),
         key=lambda sort_key: (
-            parse_timestamp(existing_bundles.get(sort_key, {}).get("firstSeen", bundle_sources[sort_key].get("updatedAt", 0))),
+            parse_timestamp(
+                existing_bundles.get(sort_key, {}).get(
+                    "firstSeen", bundle_sources[sort_key].get("updatedAt", 0)
+                )
+            ),
             sort_key.lower(),
         ),
     )
@@ -73,7 +81,9 @@ def main() -> int:
             "avatarUrl": bundle.get("avatarUrl") or "",
             "stars": bundle.get("stars") or 0,
             "updatedAt": bundle.get("updatedAt") or 0,
-            "firstSeen": parse_timestamp(existing_bundles.get(key, {}).get("firstSeen", now_ms)),
+            "firstSeen": parse_timestamp(
+                existing_bundles.get(key, {}).get("firstSeen", now_ms)
+            ),
             **({"hotRank": hot_rank} if hot_rank is not None else {}),
             **({"isPreRelease": True} if bundle.get("isPreRelease") else {}),
             "appFirstSeen": bundle.get("appFirstSeen") or {},
@@ -87,7 +97,9 @@ def main() -> int:
     for bundle in final_bundles:
         is_bundle_prerelease = bool(bundle.get("isPreRelease"))
         for patch in bundle.get("patches", []):
-            is_patch_prerelease = is_bundle_prerelease or bool(patch.get("isPreRelease"))
+            is_patch_prerelease = is_bundle_prerelease or bool(
+                patch.get("isPreRelease")
+            )
             if "compatiblePackagesKey" in patch:
                 old_key = patch["compatiblePackagesKey"]
                 compat_data = compatibilities_list[old_key]
@@ -102,9 +114,13 @@ def main() -> int:
                 for compat_entry in compat_data:
                     package_name = compat_entry.get("packageName")
                     if package_name:
-                        app_patches_status.setdefault(package_name, []).append(is_patch_prerelease)
+                        app_patches_status.setdefault(package_name, []).append(
+                            is_patch_prerelease
+                        )
             else:
-                app_patches_status.setdefault(local_parse.PACKAGE_UNIVERSAL, []).append(is_patch_prerelease)
+                app_patches_status.setdefault(local_parse.PACKAGE_UNIVERSAL, []).append(
+                    is_patch_prerelease
+                )
 
     apps_store = {}
     incomplete_apps = []
@@ -133,22 +149,34 @@ def main() -> int:
                 issues.append("missing name")
             if issues:
                 display_name = f" ({name or alt_name})" if (name or alt_name) else ""
-                incomplete_apps.append(f"- `{package_name}`{display_name}: {', '.join(issues)}")
+                incomplete_apps.append(
+                    f"- `{package_name}`{display_name}: {', '.join(issues)}"
+                )
 
     save_json(
         BUNDLES_JSON_PATH,
-        {"bundles": final_bundles, "compatibilities": reindexed_compatibilities, "store": apps_store},
+        {
+            "bundles": final_bundles,
+            "compatibilities": reindexed_compatibilities,
+            "store": apps_store,
+        },
     )
-    print(f"Update completed. Saved {len(final_bundles)} bundles and {len(apps_store)} apps.")
+    print(
+        f"Update completed. Saved {len(final_bundles)} bundles and {len(apps_store)} apps."
+    )
 
     summary_sections = []
-    final_bundle_keys = {f"{bundle['source']}:{bundle['repo']}" for bundle in final_bundles}
+    final_bundle_keys = {
+        f"{bundle['source']}:{bundle['repo']}" for bundle in final_bundles
+    }
     invalid_repos = [key for key in repos_data if key not in final_bundle_keys]
     all_reported = errors["unavailable"] + errors["warnings"]
     reported_keys = {error.split("`")[1] for error in all_reported if "`" in error}
     for repo_key in sorted(invalid_repos):
         if repo_key not in reported_keys:
-            errors["unavailable"].append(f"`{repo_key}`: Not found or no release bundle")
+            errors["unavailable"].append(
+                f"`{repo_key}`: Not found or no release bundle"
+            )
 
     if invalid_repos:
         note_message = f"Note: {len(invalid_repos)}/{len(repos_data)} repos are invalid or excluded"

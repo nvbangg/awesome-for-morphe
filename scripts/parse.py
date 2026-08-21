@@ -19,9 +19,15 @@ GRADLE_EXECUTABLE_NAME = "gradlew.bat" if sys.platform == "win32" else "gradlew"
 GRADLE_EXECUTABLE_PATH = BUNDLE_PARSER_DIR / GRADLE_EXECUTABLE_NAME
 
 
-def commit_pending_repos(updated_files: list[str] | None = None, parse_error: str | None = None) -> None:
+def commit_pending_repos(
+    updated_files: list[str] | None = None, parse_error: str | None = None
+) -> None:
     successful_parsed_files = (
-        {line.strip() for line in PARSED_FILES_PATH.read_text(encoding="utf-8").splitlines() if line.strip()}
+        {
+            line.strip()
+            for line in PARSED_FILES_PATH.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
         if PARSED_FILES_PATH.exists()
         else set()
     )
@@ -58,24 +64,39 @@ def commit_pending_repos(updated_files: list[str] | None = None, parse_error: st
                 continue
             file_prefix = f"{source}~{owner}~{repo}~{branch}.json"
             patch_exists = (PATCHES_DIR / file_prefix).exists()
-            if branch == "image" or file_prefix in successful_parsed_files or patch_exists or new_value is None:
+            if (
+                branch == "image"
+                or file_prefix in successful_parsed_files
+                or patch_exists
+                or new_value is None
+            ):
                 repos_data.setdefault(base_key, {})[branch] = new_value
                 committed_target_count += 1
 
     if committed_target_count > 0:
         formatted_repos_data = {
-            key: {field: entry[field] for field in ("name", "image") if entry.get(field)}
+            key: {
+                field: entry[field] for field in ("name", "image") if entry.get(field)
+            }
             | {"main": entry.get("main"), "dev": entry.get("dev")}
-            for key, entry in sorted(repos_data.items(), key=lambda item: item[0].lower())
+            for key, entry in sorted(
+                repos_data.items(), key=lambda item: item[0].lower()
+            )
             if isinstance(entry, dict)
         }
         save_json(REPOS_JSON_PATH, formatted_repos_data)
-        print(f"Successfully committed pending SHA updates for {committed_target_count} target(s) to repos.json.")
+        print(
+            f"Successfully committed pending SHA updates for {committed_target_count} target(s) to repos.json."
+        )
 
 
 def run_bundle_parser() -> None:
     updated_files = (
-        [line.strip() for line in UPDATED_FILES_PATH.read_text(encoding="utf-8").splitlines() if line.strip()]
+        [
+            line.strip()
+            for line in UPDATED_FILES_PATH.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
         if UPDATED_FILES_PATH.exists()
         else []
     )
@@ -85,16 +106,25 @@ def run_bundle_parser() -> None:
         print("\nRunning bundle-parser to extract patches-list from .mpp files...")
         if sys.platform != "win32" and GRADLE_EXECUTABLE_PATH.exists():
             GRADLE_EXECUTABLE_PATH.chmod(
-                GRADLE_EXECUTABLE_PATH.stat().st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH
+                GRADLE_EXECUTABLE_PATH.stat().st_mode
+                | stat.S_IXUSR
+                | stat.S_IXGRP
+                | stat.S_IXOTH
             )
 
-        command_arguments = [str(GRADLE_EXECUTABLE_PATH), "run", "--args=@updated_files.txt"]
+        command_arguments = [
+            str(GRADLE_EXECUTABLE_PATH),
+            "run",
+            "--args=@updated_files.txt",
+        ]
         try:
             execution_result = subprocess.run(
                 command_arguments, cwd=str(BUNDLE_PARSER_DIR), text=True
             )
             if execution_result.returncode != 0:
-                parse_error = f"bundle-parser exited with code {execution_result.returncode}"
+                parse_error = (
+                    f"bundle-parser exited with code {execution_result.returncode}"
+                )
                 print(f"[-] {parse_error}")
             else:
                 print("bundle-parser completed successfully.")

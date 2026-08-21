@@ -23,13 +23,13 @@ def parse_version_item(item: Any) -> dict | None:
     if isinstance(item, str):
         return {"version": item}
     if isinstance(item, dict) and "version" in item:
-        return {"version": item["version"]} | ({"isExperimental": True} if item.get("isExperimental") else {})
+        return {"version": item["version"]} | (
+            {"isExperimental": True} if item.get("isExperimental") else {}
+        )
     return None
 
 
-def strip_patch(
-    patch: dict, discovered_names: dict[str, str]
-) -> dict | None:
+def strip_patch(patch: dict, discovered_names: dict[str, str]) -> dict | None:
     if not isinstance(patch, dict) or not (name := patch.get("name")):
         return None
 
@@ -70,7 +70,8 @@ def strip_patch(
         if app_name:
             discovered_names[package_name] = app_name
         targets = [
-            parsed for version_item in (versions or [])
+            parsed
+            for version_item in (versions or [])
             if (parsed := parse_version_item(version_item))
         ]
         compatibility_targets.append(
@@ -116,7 +117,11 @@ def parse_patches_list(
             bundle_apps.add(PACKAGE_UNIVERSAL)
         valid_patches.append(patch_dict)
 
-    return valid_patches if (valid_patches and bundle_apps != {"com.example.app"}) else None
+    return (
+        valid_patches
+        if (valid_patches and bundle_apps != {"com.example.app"})
+        else None
+    )
 
 
 def load_branch_data(
@@ -134,9 +139,16 @@ def load_branch_data(
     if not bundle_file.exists() or not list_file.exists():
         return None, None
     bundle = load_json(bundle_file)
-    if isinstance(bundle, dict) and bundle.get("download_url") and (raw := load_json(list_file)):
+    if (
+        isinstance(bundle, dict)
+        and bundle.get("download_url")
+        and (raw := load_json(list_file))
+    ):
         return bundle, parse_patches_list(
-            raw, discovered_names, is_dev_branch=is_dev_branch, main_patch_names=main_patch_names
+            raw,
+            discovered_names,
+            is_dev_branch=is_dev_branch,
+            main_patch_names=main_patch_names,
         )
     return None, None
 
@@ -196,32 +208,61 @@ def process(
             file_prefix, "main", bool(main_sha), discovered_names
         )
         if main_patches:
-            main_patch_names = {patch["name"] for patch in main_patches if "name" in patch}
+            main_patch_names = {
+                patch["name"] for patch in main_patches if "name" in patch
+            }
         dev_bundle, dev_patches = load_branch_data(
-            file_prefix, "dev", bool(dev_sha), discovered_names, is_dev_branch=True, main_patch_names=main_patch_names
+            file_prefix,
+            "dev",
+            bool(dev_sha),
+            discovered_names,
+            is_dev_branch=True,
+            main_patch_names=main_patch_names,
         )
 
         if not main_patches and not dev_patches:
             keys_to_remove.append(base_key)
             if errors is not None:
-                message = "Missing bundle or patch files" if (main_sha or dev_sha) else "Not found or no release bundle"
+                message = (
+                    "Missing bundle or patch files"
+                    if (main_sha or dev_sha)
+                    else "Not found or no release bundle"
+                )
                 errors["unavailable"].append(f"`{base_key}`: {message}")
             continue
 
-        main_timestamp = parse_timestamp(main_bundle.get("created_at")) if main_patches and main_bundle else 0
-        dev_timestamp = parse_timestamp(dev_bundle.get("created_at")) if dev_patches and dev_bundle else 0
-        is_latest_dev = bool(dev_patches and (not main_patches or dev_timestamp > main_timestamp))
+        main_timestamp = (
+            parse_timestamp(main_bundle.get("created_at"))
+            if main_patches and main_bundle
+            else 0
+        )
+        dev_timestamp = (
+            parse_timestamp(dev_bundle.get("created_at"))
+            if dev_patches and dev_bundle
+            else 0
+        )
+        is_latest_dev = bool(
+            dev_patches and (not main_patches or dev_timestamp > main_timestamp)
+        )
 
         source_entry["isPreRelease"] = not bool(main_patches)
         source_entry["updatedAt"] = dev_timestamp if is_latest_dev else main_timestamp
 
         raw_name = repo_meta.get("name") or source_entry.get("name") or ""
         if raw_name:
-            raw_name = "" if raw_name.lower() == "morphe patches" else _BUNDLE_NAME_SUFFIX_RE.sub("", raw_name).strip("- ")
+            raw_name = (
+                ""
+                if raw_name.lower() == "morphe patches"
+                else _BUNDLE_NAME_SUFFIX_RE.sub("", raw_name).strip("- ")
+            )
         source_entry["name"] = raw_name or source_entry.get("name") or owner
 
         chosen_patches = dev_patches if is_latest_dev else main_patches
-        app_first_seen_map = source_entry.get("appFirstSeen") if isinstance(source_entry.get("appFirstSeen"), dict) else {}
+        app_first_seen_map = (
+            source_entry.get("appFirstSeen")
+            if isinstance(source_entry.get("appFirstSeen"), dict)
+            else {}
+        )
         has_universal_patch = False
 
         for patch_dict in chosen_patches:
@@ -232,7 +273,9 @@ def process(
                     if package_name and package_name != PACKAGE_UNIVERSAL:
                         valid_apps_from_bundles.add(package_name)
                         apps_dict.setdefault(package_name, {})
-                        if (app_name := discovered_names.get(package_name)) and not apps_dict[package_name].get("name"):
+                        if (
+                            app_name := discovered_names.get(package_name)
+                        ) and not apps_dict[package_name].get("name"):
                             apps_dict[package_name]["name"] = app_name
                         if package_name not in app_first_seen_map:
                             app_first_seen_map[package_name] = now_ms
@@ -252,7 +295,8 @@ def process(
     apps_to_remove = [
         package_name
         for package_name in list(apps_dict.keys())
-        if package_name not in valid_apps_from_bundles and package_name != PACKAGE_UNIVERSAL
+        if package_name not in valid_apps_from_bundles
+        and package_name != PACKAGE_UNIVERSAL
     ]
     for package_name in apps_to_remove:
         del apps_dict[package_name]

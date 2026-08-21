@@ -42,9 +42,13 @@ def extract_mpp_name(mpp_file: Path) -> str | None:
     return None
 
 
-def get_remote_file_hash(url: str, source: str, fallback: str | None = None) -> str | None:
+def get_remote_file_hash(
+    url: str, source: str, fallback: str | None = None
+) -> str | None:
     try:
-        request = urllib.request.Request(url, headers=get_auth_headers(url), method="HEAD")
+        request = urllib.request.Request(
+            url, headers=get_auth_headers(url), method="HEAD"
+        )
         with urllib.request.urlopen(request, timeout=10) as response:
             if source == "github":
                 etag = response.getheader("ETag")
@@ -76,16 +80,40 @@ def get_image_sha(source: str, owner_repo: str) -> str | None:
 
 def process_repo_branch(
     source: str, owner_repo: str, branch: str, current_sha: str | None
-) -> tuple[str, str, str, str | None, str | None, bool, bool, bool, str | None, str | None]:
+) -> tuple[
+    str, str, str, str | None, str | None, bool, bool, bool, str | None, str | None
+]:
     try:
         remote_sha = get_file_sha(source, owner_repo, branch)
     except Exception as error:
         error_message = f"[{owner_repo}:{branch}] Failed: {error}"
         print(f"[-] {error_message}")
-        return source, owner_repo, branch, current_sha, None, False, False, False, None, error_message
+        return (
+            source,
+            owner_repo,
+            branch,
+            current_sha,
+            None,
+            False,
+            False,
+            False,
+            None,
+            error_message,
+        )
 
     if remote_sha == current_sha:
-        return source, owner_repo, branch, remote_sha, None, False, False, False, None, None
+        return (
+            source,
+            owner_repo,
+            branch,
+            remote_sha,
+            None,
+            False,
+            False,
+            False,
+            None,
+            None,
+        )
 
     if remote_sha is None:
         print(f"[-] [{owner_repo}:{branch}] patches-bundle.json not found")
@@ -93,7 +121,18 @@ def process_repo_branch(
 
     raw_bundle_url = build_raw_url(source, owner_repo, branch, "patches-bundle.json")
     if not raw_bundle_url:
-        return source, owner_repo, branch, current_sha, None, False, False, False, None, None
+        return (
+            source,
+            owner_repo,
+            branch,
+            current_sha,
+            None,
+            False,
+            False,
+            False,
+            None,
+            None,
+        )
 
     owner, repo = owner_repo.split("/", 1)
     file_prefix = f"{source}~{owner}~{repo}~{branch}"
@@ -101,12 +140,39 @@ def process_repo_branch(
     try:
         bundle_text = fetch(raw_bundle_url)
     except Exception as error:
-        if isinstance(error, urllib.error.HTTPError) and error.code in UNAVAILABLE_HTTP_CODES:
-            print(f"[-] [{owner_repo}:{branch}] patches-bundle.json not found or taken down (HTTP {error.code})")
-            return source, owner_repo, branch, remote_sha, None, False, True, True, None, None
+        if (
+            isinstance(error, urllib.error.HTTPError)
+            and error.code in UNAVAILABLE_HTTP_CODES
+        ):
+            print(
+                f"[-] [{owner_repo}:{branch}] patches-bundle.json not found or taken down (HTTP {error.code})"
+            )
+            return (
+                source,
+                owner_repo,
+                branch,
+                remote_sha,
+                None,
+                False,
+                True,
+                True,
+                None,
+                None,
+            )
         error_message = f"[{owner_repo}:{branch}] Failed: {error}"
         print(f"[-] {error_message}")
-        return source, owner_repo, branch, current_sha, None, False, False, False, None, error_message
+        return (
+            source,
+            owner_repo,
+            branch,
+            current_sha,
+            None,
+            False,
+            False,
+            False,
+            None,
+            error_message,
+        )
 
     has_mpp = False
     bundle_name = None
@@ -122,16 +188,54 @@ def process_repo_branch(
                 has_mpp = True
                 bundle_name = extract_mpp_name(mpp_file_path)
             except Exception as error:
-                if isinstance(error, urllib.error.HTTPError) and error.code in UNAVAILABLE_HTTP_CODES:
-                    print(f"[-] [{owner_repo}:{branch}] .mpp file not found or taken down (HTTP {error.code})")
-                    return source, owner_repo, branch, remote_sha, bundle_text, False, True, True, None, None
+                if (
+                    isinstance(error, urllib.error.HTTPError)
+                    and error.code in UNAVAILABLE_HTTP_CODES
+                ):
+                    print(
+                        f"[-] [{owner_repo}:{branch}] .mpp file not found or taken down (HTTP {error.code})"
+                    )
+                    return (
+                        source,
+                        owner_repo,
+                        branch,
+                        remote_sha,
+                        bundle_text,
+                        False,
+                        True,
+                        True,
+                        None,
+                        None,
+                    )
                 error_message = f"[{owner_repo}:{branch}] Failed: {error}"
                 print(f"[-] {error_message}")
-                return source, owner_repo, branch, current_sha, None, False, False, False, None, error_message
+                return (
+                    source,
+                    owner_repo,
+                    branch,
+                    current_sha,
+                    None,
+                    False,
+                    False,
+                    False,
+                    None,
+                    error_message,
+                )
     except Exception:
         pass
 
-    return source, owner_repo, branch, remote_sha, bundle_text, has_mpp, True, False, bundle_name, None
+    return (
+        source,
+        owner_repo,
+        branch,
+        remote_sha,
+        bundle_text,
+        has_mpp,
+        True,
+        False,
+        bundle_name,
+        None,
+    )
 
 
 def process_image(
@@ -140,7 +244,10 @@ def process_image(
     try:
         remote_sha = get_image_sha(source, owner_repo)
     except Exception as error:
-        if isinstance(error, urllib.error.HTTPError) and error.code in UNAVAILABLE_HTTP_CODES:
+        if (
+            isinstance(error, urllib.error.HTTPError)
+            and error.code in UNAVAILABLE_HTTP_CODES
+        ):
             return source, owner_repo, None, current_image is not None, None
         error_message = f"[{owner_repo}] Failed: {error}"
         print(f"[-] {error_message}")
@@ -178,7 +285,9 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
 
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
         futures = [
-            executor.submit(process_repo_branch, source, owner_repo, branch, current_sha)
+            executor.submit(
+                process_repo_branch, source, owner_repo, branch, current_sha
+            )
             for source, owner_repo, branch, current_sha in tasks
         ]
 
@@ -211,14 +320,18 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
                 owner, repo = owner_repo.split("/", 1)
                 file_prefix = f"{source}~{owner}~{repo}~{branch}"
                 if bundle_text:
-                    (BUNDLES_DIR / f"{file_prefix}.json").write_text(bundle_text, encoding="utf-8")
+                    (BUNDLES_DIR / f"{file_prefix}.json").write_text(
+                        bundle_text, encoding="utf-8"
+                    )
 
                 has_patch_list = False
                 if patches_list_url := get_patches_list_url(source, owner_repo, branch):
                     with contextlib.suppress(Exception):
                         content = fetch(patches_list_url)
                         json.loads(content)
-                        (PATCHES_DIR / f"{file_prefix}.json").write_text(content, encoding="utf-8")
+                        (PATCHES_DIR / f"{file_prefix}.json").write_text(
+                            content, encoding="utf-8"
+                        )
                         has_patch_list = True
 
                 if not has_patch_list and has_mpp:
@@ -232,14 +345,18 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
                 for source, owner_repo, current_image in image_tasks
             ]
             for future in as_completed(image_futures):
-                source, owner_repo, new_image_sha, status_changed, error_message = future.result()
+                source, owner_repo, new_image_sha, status_changed, error_message = (
+                    future.result()
+                )
                 if error_message:
                     errors.append(error_message)
 
                 if status_changed:
                     updated_count += 1
                     base_key = f"{source}:{owner_repo}"
-                    pending_repository_data.setdefault(base_key, {})["image"] = new_image_sha
+                    pending_repository_data.setdefault(base_key, {})["image"] = (
+                        new_image_sha
+                    )
 
     if errors:
         markdown_lines = ["### ⚠️ Fetch", *[f"- {error}" for error in sorted(errors)]]
@@ -249,7 +366,9 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
 
     if updated_files:
         UPDATED_FILES_PATH.write_text("\n".join(updated_files), encoding="utf-8")
-        print(f"Saved {len(updated_files)} updated targets to updated_files.txt and pending_repos.json")
+        print(
+            f"Saved {len(updated_files)} updated targets to updated_files.txt and pending_repos.json"
+        )
     elif UPDATED_FILES_PATH.exists():
         UPDATED_FILES_PATH.unlink()
 

@@ -1,12 +1,12 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-import datetime
 import html
 import os
 import re
 import sys
 import urllib.parse
 import urllib.request
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 WHATS_NEW_PATH = Path("whats-new.md")
@@ -33,7 +33,7 @@ def convert_to_html(text: str) -> str:
 
 
 def main() -> None:
-    current_time = datetime.datetime.now(datetime.UTC) - datetime.timedelta(hours=12)
+    current_time = datetime.now(UTC) - timedelta(hours=12)
     formatted_date = f"{current_time.strftime('%B')} {current_time.day}"
     title = sys.argv[1] if len(sys.argv) >= 2 else f"🔔 What's New ({formatted_date})"
     filepath = Path(sys.argv[2]) if len(sys.argv) >= 3 else WHATS_NEW_PATH
@@ -47,7 +47,6 @@ def main() -> None:
     lines = [
         line.lstrip("# ") if line.startswith("#") else line
         for line in content.splitlines()
-        if not line.startswith(("📢 *Telegram:*", "📢 _Telegram:"))
     ]
     formatted_content = convert_to_html("\n".join(lines).strip())
     formatted_title = f"<b>{html.escape(title)}</b>"

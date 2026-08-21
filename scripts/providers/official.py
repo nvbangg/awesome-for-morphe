@@ -21,7 +21,9 @@ def discover() -> str | None:
         data = fetch(BUNDLES_URL, headers=HEADERS, timeout=30, as_json=True)
         save_json(SNAPSHOT_PATH, data)
     except Exception as error:
-        warning_message = f"[official] Failed: {error}. Kept existing sources in official.json"
+        warning_message = (
+            f"[official] Failed: {error}. Kept existing sources in official.json"
+        )
         print(f"[-] {warning_message}")
         return warning_message
 

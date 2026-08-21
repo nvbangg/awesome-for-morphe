@@ -1,6 +1,30 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0-dev.1",
   "patches": [
+    {
+      "name": "Bypass Instant Approval",
+      "description": "Bypasses the local coin redemption step for Instant Approval actions.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "io.funswitch.blocker": [
+          "5.0.81"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Enables BlockerX premium gates and premium module access.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "io.funswitch.blocker": [
+          "5.0.81"
+        ]
+      },
+      "options": []
+    },
     {
       "name": "Unlock Premium",
       "description": "Unlocks premium features and disables ads by forcing both premium gates true.",

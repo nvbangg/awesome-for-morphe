@@ -7,9 +7,8 @@ from utils import fetch, save_json
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
-DISCOVER_DIR = DATA_DIR / "discover"
 BUNDLES_URL = "https://morphe-patches.software/data/bundles.json"
-OUTPUT_PATH = DISCOVER_DIR / "official.json"
+OUTPUT_PATH = DATA_DIR / "discover" / "official.json"
 SNAPSHOT_PATH = DATA_DIR / "official-bundles.json"
 HEADERS = {
     "Referer": "https://morphe-patches.software/",

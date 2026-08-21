@@ -7,7 +7,7 @@ from pathlib import Path
 from updater.local_parse import PACKAGE_UNIVERSAL
 from utils import load_json, save_json
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT_DIR / "data"
 PUBLIC_DIR = ROOT_DIR / "web" / "public"
 HISTORY_PATH = DATA_DIR / "history.json"

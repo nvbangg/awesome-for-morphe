@@ -13,8 +13,8 @@ awesome-morphe/
 │   ├── discover.py                     # Discovers all bundles from providers
 │   ├── fetch.py                        # Checks for updates
 │   ├── parse.py                        # Extracts patch metadata via bundle-parser
-│   ├── update.py                       # Compiles raw data into production JSONs
 │   ├── telegram.py                     # Telegram notification service
+│   ├── update.py                       # Compiles raw data into production JSONs
 │   ├── whats_new.py                    # Generates release changelog
 │   └── ...                             # Other supporting files
 ├── web/                                # Website source code
@@ -45,11 +45,11 @@ flowchart TD
     F --> H
 ```
 
-### 2. Release Workflow (`release.yml` - Daily at 23:30 UTC)
+### 2. Daily Workflow (`daily.yml` - Daily at 23:30 UTC)
 
 ```mermaid
 flowchart TD
-    J["Release Workflow (release.yml)"] --> K["Discover bundles (discover.py)"]
+    J["Daily Workflow (daily.yml)"] --> K["Discover bundles (discover.py)"]
     K --> L["Check updates + images (fetch.py --image)"]
     L --> M["Parse bundles (parse.py)"]
     M --> N["Compile data (update.py --daily/--month)"]

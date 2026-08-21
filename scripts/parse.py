@@ -7,7 +7,7 @@ from pathlib import Path
 
 from utils import append_step_summary, load_json, save_json
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT_DIR / "data"
 PATCHES_DIR = DATA_DIR / "patches"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"

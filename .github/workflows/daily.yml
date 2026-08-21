@@ -1,8 +1,8 @@
-name: Generate Release
+name: Daily Update
 
 on:
   schedule:
-    - cron: "30 23 * * *"  
+    - cron: "30 23 * * *"
   workflow_dispatch:
 
 permissions:
@@ -10,7 +10,7 @@ permissions:
   actions: write
 
 jobs:
-  release:
+  daily:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

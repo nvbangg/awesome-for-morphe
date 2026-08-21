@@ -10,12 +10,11 @@ from pathlib import Path
 from updater import gplay_scrape, local_parse, repo_info
 from utils import append_step_summary, load_json, parse_timestamp, save_json
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT_DIR / "data"
-PUBLIC_DIR = ROOT_DIR / "web" / "public"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
 OFFICIAL_BUNDLES_PATH = DATA_DIR / "official-bundles.json"
-BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
+BUNDLES_JSON_PATH = ROOT_DIR / "web" / "public" / "bundles.json"
 
 
 def main() -> int:

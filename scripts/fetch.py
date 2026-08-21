@@ -19,7 +19,7 @@ from utils import (
     save_json,
 )
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT_DIR / "data"
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
 BUNDLES_DIR = DATA_DIR / "bundles"

@@ -11,8 +11,7 @@ from utils import load_json
 
 GPLAY_CONCURRENCY = 8
 ROOT_DIR = Path(__file__).resolve().parents[2]
-DATA_DIR = ROOT_DIR / "data"
-OFFICIAL_BUNDLES_PATH = DATA_DIR / "official-bundles.json"
+OFFICIAL_BUNDLES_PATH = ROOT_DIR / "data" / "official-bundles.json"
 
 SKIP_WORDS = {
     "com",

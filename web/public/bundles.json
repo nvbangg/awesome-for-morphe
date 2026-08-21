@@ -16494,7 +16494,7 @@
       "repoDescription": "morphe patches for personal use",
       "avatarUrl": "https://avatars.githubusercontent.com/u/87336618?v=4&s=64",
       "stars": 36,
-      "updatedAt": 1787275873000,
+      "updatedAt": 1787285982000,
       "firstSeen": 1785036993248,
       "hotRank": 14,
       "appFirstSeen": {
@@ -16509,7 +16509,7 @@
       "patches": [
         {
           "name": "Block Quetta bundled extension installation",
-          "description": "Blocks bundled extension installation/reinstallation on arm64-v8a APKs (framework does not enforce ABI). Does not remove copies already present in existing profiles.",
+          "description": "Blocks bundled extension installation/reinstallation on arm64-v8a APKs (the framework does not enforce ABI restrictions). Does not remove copies already present in existing profiles. Takes effect immediately on clean installs.",
           "compatiblePackagesKey": 697
         },
         {
@@ -16544,7 +16544,6 @@
         {
           "name": "Disable analytics",
           "description": "Disables Firebase Analytics, Crashlytics and Performance through manifest opt-outs and exact runtime setters when present. Other SDK components are disabled only when explicitly declared; custom or server-side telemetry is not covered.",
-          "isPreRelease": true,
           "default": false
         },
         {
@@ -28295,7 +28294,7 @@
         "packageName": "com.brave.browser",
         "targets": [
           {
-            "version": "1.92.140"
+            "version": null
           }
         ]
       },

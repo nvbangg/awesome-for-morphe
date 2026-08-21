@@ -1,10 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0-dev.2",
+  "version": "1.3.0",
   "patches": [
     {
       "name": "Block Quetta bundled extension installation",
-      "description": "Blocks bundled extension installation/reinstallation on arm64-v8a APKs (framework does not enforce ABI). Does not remove copies already present in existing profiles.",
+      "description": "Blocks bundled extension installation/reinstallation on arm64-v8a APKs (the framework does not enforce ABI restrictions). Does not remove copies already present in existing profiles. Takes effect immediately on clean installs.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -62,7 +62,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.92.140",
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

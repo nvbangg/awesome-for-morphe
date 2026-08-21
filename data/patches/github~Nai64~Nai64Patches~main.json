@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.21.0",
+  "version": "1.22.0",
   "patches": [
     {
       "name": "Ads Free Rewards",
@@ -205,6 +205,567 @@
           }
         }
       ]
+    },
+    {
+      "name": "Make App Debuggable",
+      "description": "Sets android:debuggable so debuggers and profiling tools can attach",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Change Version Code",
+      "description": "Overrides the android:versionCode declared in the manifest",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "versionCode",
+          "title": "Version code",
+          "description": "New version code. Use -1 (default) to keep the original.",
+          "required": false,
+          "type": "kotlin.Int",
+          "default": -1,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Change Version Name",
+      "description": "Overrides the android:versionName declared in the manifest",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "versionName",
+          "title": "Version name",
+          "description": "New version name (e.g. 2.5.1). Leave empty to keep the original.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Rename App",
+      "description": "Overrides the launcher label of the app",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "appLabel",
+          "title": "App name",
+          "description": "New launcher name. Leave empty to keep the original.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Remove App Icon",
+      "description": "Replaces the launcher icon with a transparent drawable",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Allow Cleartext Traffic",
+      "description": "Sets android:usesCleartextTraffic and drops any network security config so plain HTTP requests are allowed (useful for debugging through local proxies)",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Keep Screen On",
+      "description": "Adds android:keepScreenOn to every theme so the display stays on while any activity of the app is visible",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove Backup Restrictions",
+      "description": "Sets android:allowBackup and removes data extraction / full backup rules that exclude app data from device transfers and cloud backups",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Export All Activities",
+      "description": "Marks every activity as android:exported so other apps and ADB can launch them",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Battery Optimization Prompt",
+      "description": "Removes the permission and intent filters apps use to ask for battery optimization exemptions, so the 'Ignore battery optimizations?' dialog never appears",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove Network Security Config",
+      "description": "Removes the app's network security config so certificate pinning and cleartext restrictions fall back to platform defaults (useful for HTTPS inspection)",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Enable Large Heap",
+      "description": "Sets android:largeHeap so the app gets a bigger Java heap on devices that allow it, reducing OutOfMemoryError crashes in memory-hungry games",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Force Hardware Acceleration",
+      "description": "Sets android:hardwareAccelerated so every activity renders with GPU acceleration, even when the app disables it globally",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Legacy External Storage",
+      "description": "Sets android:requestLegacyExternalStorage so the app keeps using the classic shared-storage model instead of scoped storage (Android 10; ignored on 11+)",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Keep Data on Uninstall",
+      "description": "Sets android:hasFragileUserData so Android offers to keep the app's data when uninstalling (the confirmation dialog appears on Android 10+)",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Set Install Location",
+      "description": "Overrides the android:installLocation declared in the manifest",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "installLocation",
+          "title": "Install location",
+          "description": "Where Android prefers to install the app.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "auto",
+          "values": {
+            "Auto (system decides)": "auto",
+            "Prefer external storage": "preferExternal",
+            "Internal storage only": "internalOnly"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Force Resizable Activity",
+      "description": "Sets android:resizeableActivity and drops the required touchscreen feature so the app can run in split-screen, free-form windows, DeX, and Chromebooks",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Immersive Fullscreen",
+      "description": "Adds android:windowFullscreen to every theme so activities render edge-to-edge without the status bar",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Strip Translations",
+      "description": "Deletes all translated resources so only the default language remains, reducing APK size. Android falls back to the default strings automatically.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Vibration",
+      "description": "Replaces framework Vibrator.vibrate calls with no-ops so apps cannot make the device buzz",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Crash Reporters",
+      "description": "No-ops the static init/start/register methods of bundled crash-reporting SDKs (Crashlytics, Fabric, Sentry, Bugsnag, ACRA, HockeyApp, AppCenter, Instabug, Countly)",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable App Links Verification",
+      "description": "Removes android:autoVerify from intent filters so Android stops prompting to verify the app's web domains and never converts links into app opens",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Support All Screens",
+      "description": "Removes compatible-screens restrictions and marks every screen size supported so the app installs on devices it would otherwise reject",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove Ad Services Entries",
+      "description": "Strips Privacy Sandbox (AdServices) permissions, the ad ID permission and their config metadata from the manifest",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Permission Auto-Revoke",
+      "description": "Sets android:autoRevokePermissions to discouraged so Android stops resetting unused permissions of apps you rarely open",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Ensure Internet Permission",
+      "description": "Adds the INTERNET permission if it is missing. Useful after aggressive permission stripping or for offline builds that still need web endpoints",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Status Bar Icons",
+      "description": "Forces the status bar and navigation bar icon color in every theme. Pick white icons for dark backgrounds or dark icons for light backgrounds",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "statusBarIcons",
+          "title": "Icon color",
+          "description": "Color of the system bar icons while the app is open.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "white",
+          "values": {
+            "White icons (dark backgrounds)": "white",
+            "Dark icons (light backgrounds)": "dark"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fake Online State",
+      "description": "Makes connectivity checks report an active connection: WifiManager.isWifiEnabled, NetworkInfo.isConnected/isAvailable/isConnectedOrConnecting all return true",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Set Profileable",
+      "description": "Adds <profileable android:shell=\"true\"/> so profilers (Android Studio, simpleperf, Perfetto) can attach to release builds for performance analysis",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Force Extract Native Libs",
+      "description": "Sets android:extractNativeLibs so native libraries are extracted at install time. Some mod loaders, hooks and older tools only work with extracted libs",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Unlock Max Aspect Ratio",
+      "description": "Removes maxAspectRatio limits from the application, activities and metadata so the app fills tall edge-to-edge screens instead of letterboxing",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Bypass VPN Detection",
+      "description": "Makes NetworkCapabilities report no VPN: hasTransport always returns false and hasCapability always returns true, so apps cannot block or alter behavior on VPN",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Spoof Device Model",
+      "description": "Replaces common android.os.Build fields (model, manufacturer, brand) with custom values. Leave an option empty to keep the original value",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "spoofModel",
+          "title": "Model",
+          "description": "Build.MODEL, e.g. Pixel 10 Pro XL. Empty keeps the original.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        },
+        {
+          "key": "spoofManufacturer",
+          "title": "Manufacturer",
+          "description": "Build.MANUFACTURER, e.g. Google. Empty keeps the original.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        },
+        {
+          "key": "spoofBrand",
+          "title": "Brand",
+          "description": "Build.BRAND, e.g. google. Empty keeps the original.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Bypass OkHttp Pinning",
+      "description": "No-ops the certificate verification entry points of bundled OkHttp clients so certificate pinning never rejects connections",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Trust User Certificates",
+      "description": "No-ops the check methods of app-bundled X509TrustManager implementations so custom certificate validation (including pinning reimplemented by hand) accepts anything",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Spoof Build Fingerprint",
+      "description": "Replaces every read of Build.FINGERPRINT with a custom value, useful for integrity and device checks. Leave empty to keep the original fingerprint",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "spoofFingerprint",
+          "title": "Fingerprint",
+          "description": "A full Android build fingerprint, e.g. google/mustang/mustang:17/CP2A.260605.012/15430684:user/release-keys",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Optimize as Game",
+      "description": "Sets android:appCategory to game so Android applies game mode, battery and screenshot optimizations tuned for games",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Relax Shared Libraries",
+      "description": "Marks every <uses-library> entry as optional so missing shared libraries no longer block the app from installing on devices that lack them",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Transparent System Bars",
+      "description": "Forces the status bar and navigation bar to render transparent in every theme so app content draws edge-to-edge behind them",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Custom Startup Toast",
+      "description": "Shows a customizable toast message every time the app starts",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "startupToastMessage",
+          "title": "Toast message",
+          "description": "Text shown in the toast on every app start.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "Patched by Nai's Patches",
+          "values": null
+        },
+        {
+          "key": "startupToastDuration",
+          "title": "Duration",
+          "description": "How long the toast stays visible.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "long",
+          "values": {
+            "Short": "short",
+            "Long": "long"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Custom Startup Dialog",
+      "description": "Shows a customizable dialog once when the app is opened",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "startupDialogTitle",
+          "title": "Dialog title",
+          "description": "Title of the startup dialog.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "Patched App",
+          "values": null
+        },
+        {
+          "key": "startupDialogMessage",
+          "title": "Dialog message",
+          "description": "Body text of the startup dialog.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "This app has been modified by Nai's Patches.",
+          "values": null
+        },
+        {
+          "key": "startupDialogCancelable",
+          "title": "Dismissable",
+          "description": "Allow closing the dialog with the back button or outside taps.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Enable WebView Debugging",
+      "description": "Turns on WebView remote debugging: existing setWebContentsDebuggingEnabled calls are forced to true and it is actively enabled at startup, so WebViews can be inspected via chrome://inspect",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Fake Battery Whitelist",
+      "description": "Makes PowerManager.isIgnoringBatteryOptimizations always return true so apps stop nagging about battery optimization exemptions",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Spoof Signature Match",
+      "description": "Makes PackageManager.checkSignatures always return SIGNATURE_MATCH so apps that verify their own or another package's signature accept any build",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Treat Network as Unmetered",
+      "description": "Makes ConnectivityManager.isActiveNetworkMetered always return false so apps lift download restrictions and quality caps on mobile data",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Grant All-Files Access",
+      "description": "Makes Environment.isExternalStorageManager always return true so apps accept the storage permission state without the special Android 11+ prompt",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Hide Roaming Status",
+      "description": "Makes TelephonyManager.isNetworkRoaming always return false so apps that block or warn while roaming behave as if the device is on its home network",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Ignore Power Save Mode",
+      "description": "Makes PowerManager.isPowerSaveMode and isDeviceIdleMode always return false so apps do not throttle features or downloads while battery saver or Doze is active",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Force Notifications Enabled",
+      "description": "Makes NotificationManager.areNotificationsEnabled always return true so apps that refuse to run when notifications are blocked keep working",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Ignore Screen Lock",
+      "description": "Makes KeyguardManager lock-state checks report an unlocked device so apps that gate features behind a screen lock behave as if none is set",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Ignore GPS Disabled",
+      "description": "Makes LocationManager.isProviderEnabled always return true so apps that refuse to run without location services keep working",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Hide Mock Location",
+      "description": "Makes Location.isMock and Location.isFromMockProvider always return false so apps cannot detect spoofed GPS apps",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
     },
     {
       "name": "Spoof Play Integrity",
@@ -444,8 +1005,234 @@
       ]
     },
     {
+      "name": "Allow Background Activity",
+      "description": "Makes ActivityManager.isBackgroundRestricted always return false so apps ignore background activity restrictions imposed by the system or user",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Allow Clearing App Data",
+      "description": "Sets android:allowClearUserData so the system's Clear Data button stays available even for apps that try to disable it",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Always Allow Biometrics",
+      "description": "Makes BiometricManager.canAuthenticate always return BIOMETRIC_SUCCESS so apps do not block biometric features on unsupported or unenrolled devices",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
       "name": "Block Push Ads",
       "description": "Block push notification ads (Firebase Cloud Messaging). Also blocks legitimate notifications.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Block Screenshot Detection",
+      "description": "Adds FLAG_SECURE to every activity window so the system blocks screenshots, screen recording and recents previews of the app",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Classic Back Gesture",
+      "description": "Sets android:enableOnBackInvokedCallback to false so apps that break under the Android 13+ predictive back system keep the classic back behavior",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Facebook SDK Auto-Init",
+      "description": "Adds Facebook SDK manifest switches that stop auto-initialization, automatic app event logging and advertiser ID collection at startup",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Firebase Auto-Init",
+      "description": "Adds Firebase manifest switches that stop Analytics, Messaging, Crashlytics and Performance from initializing themselves at startup",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable Heap Pointer Tagging",
+      "description": "Sets android:allowNativeHeapPointerTagging to false so older native games that break under Android 12+ tagged pointers keep running",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable StrictMode",
+      "description": "No-ops StrictMode policy installs made by the app so debug builds that enable strict disk or network checks stop crashing on release-like usage",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Empty Clipboard Report",
+      "description": "Makes ClipboardManager.hasPrimaryClip always return false so apps stop harvesting or acting on clipboard content copied from other apps",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Fake Bluetooth Enabled",
+      "description": "Makes BluetoothAdapter.isEnabled always return true so apps that require Bluetooth stop nagging about it being turned off",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Fake Fingerprint Hardware",
+      "description": "Makes FingerprintManager report available hardware and enrolled fingerprints so apps unlock fingerprint-gated features on any device",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Fake NFC Enabled",
+      "description": "Makes NfcAdapter.isEnabled always return true so apps that require NFC stop blocking features on devices without it",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Force Left-to-Right Layout",
+      "description": "Sets android:supportsRtl to false so the app always renders left-to-right, fixing layouts that break under right-to-left system languages",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Hide Debugger Connection",
+      "description": "Makes Debug.isDebuggerConnected and waitingForDebugger always return false so apps that refuse to run under a debugger keep working",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Hide Emulator Radio",
+      "description": "Makes TelephonyManager.getPhoneType always report GSM so emulator detection based on a missing radio reports a normal device",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Ignore Location Services Off",
+      "description": "Makes LocationManager.isLocationEnabled always return true so apps that refuse to run when location services are disabled keep working",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Ignore Low RAM Device",
+      "description": "Makes ActivityManager.isLowRamDevice always return false so apps stop degrading graphics or features on entry-level devices",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Ignore Touch Exploration",
+      "description": "Makes AccessibilityManager.isTouchExplorationEnabled always return false so games that disable or alter gameplay under TalkBack behave normally",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Report Legacy Storage",
+      "description": "Makes Environment.isExternalStorageLegacy always return true so apps behave as if they got classic shared-storage access",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Spoof CPU Architecture",
+      "description": "Replaces reads of Build.CPU_ABI and Build.CPU_ABI2 with a custom value. Leave empty to keep the original",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "spoofCpuAbi",
+          "title": "CPU ABI",
+          "description": "Reported CPU architecture. Only affects the legacy CPU_ABI fields.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "",
+          "values": {
+            "Keep original": "",
+            "arm64-v8a": "arm64-v8a",
+            "armeabi-v7a": "armeabi-v7a",
+            "x86_64": "x86_64",
+            "x86": "x86"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Spoof SDK Level",
+      "description": "Replaces every read of Build.VERSION.SDK_INT with a custom value. WARNING: setting a level lower than the device's real API level makes apps call missing APIs and crash; only use when you know the app checks it",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "spoofSdkLevel",
+          "title": "SDK level",
+          "description": "Reported API level (e.g. 29). Use -1 to keep the original.",
+          "required": false,
+          "type": "kotlin.Int",
+          "default": -1,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Treat Screen as On",
+      "description": "Makes PowerManager.isInteractive always return true so apps keep playing audio or progressing instead of pausing while the screen is off",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Unmark Test Only",
+      "description": "Removes android:testOnly from the manifest so builds marked as test-only can be installed and launched like normal apps",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "VM Safe Mode",
+      "description": "Sets android:vmSafeMode so the app runs with AOT/JIT optimizations disabled, which can stabilize apps that crash from compiler optimizations on some devices",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,

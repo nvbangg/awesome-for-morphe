@@ -9798,7 +9798,7 @@
       "repoDescription": "🧩 Patches for ReVanced",
       "avatarUrl": "https://avatars.githubusercontent.com/u/70171475?v=4&s=64",
       "stars": 638,
-      "updatedAt": 1786612855000,
+      "updatedAt": 1787329451000,
       "firstSeen": 1781599059000,
       "appFirstSeen": {
         "com.google.android.youtube": 1781599059000,
@@ -9904,74 +9904,37 @@
           "compatiblePackagesKey": 532
         },
         {
-          "name": "Custom branding icon for YouTube",
-          "description": "Changes the YouTube app icon to the icon specified in patch options.",
+          "name": "Custom branding for YouTube",
+          "description": "Adds in-app app-name, launcher-icon, header, splash, and settings-icon selection.",
+          "isPreRelease": true,
           "options": [
             {
-              "key": "appIcon",
-              "title": "App icon",
-              "description": "The icon to apply to the app.\n\nIf a path to a folder is provided, the folder must contain the following folders:\n\n- mipmap-xxxhdpi\n- mipmap-xxhdpi\n- mipmap-xhdpi\n- mipmap-hdpi\n- mipmap-mdpi\n\nEach of these folders must contain the following files:\n\n- adaptiveproduct_youtube_background_color_108.png\n- adaptiveproduct_youtube_foreground_color_108.png\n- ic_launcher.png\n- ic_launcher_round.png"
-            },
-            {
-              "key": "changeSplashIcon",
-              "title": "Change splash icons",
-              "description": "Apply the custom branding icon to the splash screen. Supports from YouTube 19.05.36 to YouTube 19.16.39."
-            },
-            {
-              "key": "restoreOldSplashAnimation",
-              "title": "Restore old splash animation",
-              "description": "Restore the old style splash animation.\n\nThis patch option is only supported on Android 12+, as splash animation was added to Android 12.\n\nIncluding this patch option on Android 8.0 - 11 may cause your app to crash."
-            }
-          ],
-          "compatiblePackagesKey": 532
-        },
-        {
-          "name": "Custom branding icon for YouTube Music",
-          "description": "Changes the YouTube Music app icon to the icon specified in patch options.",
-          "options": [
-            {
-              "key": "appIcon",
-              "title": "App icon",
-              "description": "The icon to apply to the app.\n\nIf a path to a folder is provided, the folder must contain the following folders:\n\n- mipmap-xxxhdpi\n- mipmap-xxhdpi\n- mipmap-xhdpi\n- mipmap-hdpi\n- mipmap-mdpi\n\nEach of these folders must contain the following files:\n\n- adaptiveproduct_youtube_music_background_color_108.png\n- adaptiveproduct_youtube_music_foreground_color_108.png\n- ic_launcher_release.png"
-            },
-            {
-              "key": "changeSplashIcon",
-              "title": "Change splash icons",
-              "description": "Apply the custom branding icon to the splash screen."
-            },
-            {
-              "key": "restoreOldSplashIcon",
-              "title": "Restore old splash icon",
-              "description": "Restore the old style splash icon.\n\nIf you enable both the old style splash icon and the Cairo splash animation,\n\nOld style splash icon will appear first and then the Cairo splash animation will start."
-            }
-          ],
-          "compatiblePackagesKey": 533
-        },
-        {
-          "name": "Custom branding name for YouTube",
-          "description": "Changes the YouTube app name to the name specified in patch options.",
-          "options": [
-            {
-              "key": "appName",
+              "key": "customName",
               "title": "App name",
-              "description": "The name of the app."
+              "description": "Custom app name."
+            },
+            {
+              "key": "customIcon",
+              "title": "Custom icon",
+              "description": "    Folder with images to use as a custom icon.\n\n    The folder must contain one or more of the following folders, depending on the DPI of the device:\n    - mipmap-xxxhdpi\n- mipmap-xxhdpi\n- mipmap-xhdpi\n- mipmap-hdpi\n- mipmap-mdpi\n\n    Each provided mipmap folder must contain all of the following files:\n    - morphe_adaptive_background_custom.png\n- morphe_adaptive_foreground_custom.png\n\n    Optionally, the path can contain a 'drawable' folder with:\n    - morphe_adaptive_monochrome_custom.xml\n    - morphe_notification_icon_custom.xml\n\n    A notification icon can instead be supplied as morphe_notification_icon_custom.xml with a\n    .png extension in one or more matching drawable-<dpi> folders."
             }
           ],
           "compatiblePackagesKey": 532
         },
         {
-          "name": "Custom branding name for YouTube Music",
-          "description": "Changes the YouTube Music app name to the name specified in patch options.",
+          "name": "Custom branding for YouTube Music",
+          "description": "Adds in-app app-name, launcher-icon, header, splash, and settings-icon selection.",
+          "isPreRelease": true,
           "options": [
             {
-              "key": "appNameNotification",
-              "title": "App name in notification panel",
-              "description": "The name of the app as it appears in the notification panel."
+              "key": "customName",
+              "title": "App name",
+              "description": "Custom app name."
             },
             {
-              "key": "appNameLauncher",
-              "title": "App name in launcher",
-              "description": "The name of the app as it appears in the launcher."
+              "key": "customIcon",
+              "title": "Custom icon",
+              "description": "    Folder with images to use as a custom icon.\n\n    The folder must contain one or more of the following folders, depending on the DPI of the device:\n    - mipmap-xxxhdpi\n- mipmap-xxhdpi\n- mipmap-xhdpi\n- mipmap-hdpi\n- mipmap-mdpi\n\n    Each provided mipmap folder must contain all of the following files:\n    - morphe_adaptive_background_custom.png\n- morphe_adaptive_foreground_custom.png\n\n    Optionally, the path can contain a 'drawable' folder with:\n    - morphe_adaptive_monochrome_custom.xml\n    - morphe_notification_icon_custom.xml\n\n    A notification icon can instead be supplied as morphe_notification_icon_custom.xml with a\n    .png extension in one or more matching drawable-<dpi> folders."
             }
           ],
           "compatiblePackagesKey": 533
@@ -9987,47 +9950,6 @@
             }
           ],
           "compatiblePackagesKey": 532
-        },
-        {
-          "name": "Custom header for YouTube",
-          "description": "Applies a custom header in the top left corner within the app.",
-          "options": [
-            {
-              "key": "customHeader",
-              "title": "Custom header",
-              "description": "The header to apply to the app.\n\nPatch option 'Custom branding icon' applies only when:\n\n1. Patch 'Custom branding icon for YouTube' is included.\n2. Patch option for 'Custom branding icon for YouTube' is selected from the preset.\n\nIf a path to a folder is provided, the folder must contain one or more of the following folders, depending on the DPI of the device:\n\n- drawable-xxxhdpi\n- drawable-xxhdpi\n- drawable-xhdpi\n- drawable-hdpi\n- drawable-mdpi\n\nEach of the folders must contain all of the following files:\n\n[Generic header]\n\n- yt_wordmark_header_light.png\n- yt_wordmark_header_dark.png\n\nThe image dimensions must be as follows:\n\n- drawable-xxxhdpi: 488px x 192px\n- drawable-xxhdpi: 366px x 144px\n- drawable-xhdpi: 244px x 96px\n- drawable-hdpi: 184px x 72px\n- drawable-mdpi: 122px x 48px\n\n[Premium header]\n\n- yt_premium_wordmark_header_light.png\n- yt_premium_wordmark_header_dark.png\n\nThe image dimensions must be as follows:\n- drawable-xxxhdpi: 516px x 192px\n- drawable-xxhdpi: 387px x 144px\n- drawable-xhdpi: 258px x 96px\n- drawable-hdpi: 194px x 72px\n- drawable-mdpi: 129px x 48px"
-            }
-          ],
-          "compatiblePackagesKey": 532
-        },
-        {
-          "name": "Custom header for YouTube Music",
-          "description": "Applies a custom header in the top left corner within the app.",
-          "options": [
-            {
-              "key": "customHeader",
-              "title": "Custom header",
-              "description": "The header to apply to the app.\n\nPatch option 'Custom branding icon' applies only when:\n\n1. Patch 'Custom branding icon for YouTube Music' is included.\n2. Patch option for 'Custom branding icon for YouTube Music' is selected from the preset.\n\nIf a path to a folder is provided, the folder must contain one or more of the following folders, depending on the DPI of the device:\n\n- drawable-xxxhdpi\n- drawable-xxhdpi\n- drawable-xhdpi\n- drawable-hdpi\n- drawable-mdpi\n\nEach of the folders must contain all of the following files:\n\n- action_bar_logo.png\n- logo_music.png\n- ytm_logo.png\n\nThe image 'action_bar_logo.png' dimensions must be as follows:\n\n- drawable-xxxhdpi: 320px x 96px\n- drawable-xxhdpi: 240px x 72px\n- drawable-xhdpi: 160px x 48px\n- drawable-hdpi: 121px x 36px\n- drawable-mdpi: 80px x 24px\n\nThe image 'logo_music.png' dimensions must be as follows:\n\n- drawable-xxxhdpi: 576px x 200px\n- drawable-xxhdpi: 432px x 150px\n- drawable-xhdpi: 288px x 100px\n- drawable-hdpi: 217px x 76px\n- drawable-mdpi: 144px x 50px\n\nThe image 'ytm_logo.png' dimensions must be as follows:\n\n- drawable-xxxhdpi: 412px x 144px\n- drawable-xxhdpi: 309px x 108px\n- drawable-xhdpi: 206px x 72px\n- drawable-hdpi: 155px x 54px\n- drawable-mdpi: 103px x 36px"
-            }
-          ],
-          "compatiblePackagesKey": 533
-        },
-        {
-          "name": "Dark theme",
-          "description": "Changes the app's dark theme to the values specified in patch options.",
-          "options": [
-            {
-              "key": "darkThemeBackgroundColor",
-              "title": "Dark theme background color",
-              "description": "Can be a hex color (#AARRGGBB) or a color resource reference."
-            },
-            {
-              "key": "materialYou",
-              "title": "MaterialYou",
-              "description": "Applies the MaterialYou theme for Android 12+ devices."
-            }
-          ],
-          "compatiblePackagesKey": 533
         },
         {
           "name": "Description components",
@@ -10589,6 +10511,11 @@
         },
         {
           "name": "Spoof app version",
+          "description": "Adds options to spoof the YouTube Music client version. This can be used to restore old UI elements and features.",
+          "compatiblePackagesKey": 533
+        },
+        {
+          "name": "Spoof app version",
           "description": "Adds options to spoof the YouTube client version. This can be used to restore old UI elements and features.",
           "compatiblePackagesKey": 532
         },
@@ -10635,19 +10562,12 @@
         },
         {
           "name": "Theme",
+          "description": "Changes the app's dark theme to the values specified in patch options.",
+          "compatiblePackagesKey": 533
+        },
+        {
+          "name": "Theme",
           "description": "Adds options to change the app's themes and splash screen style.",
-          "options": [
-            {
-              "key": "darkThemeBackgroundColor",
-              "title": "Dark theme background color",
-              "description": "Can be a hex color (#AARRGGBB) or a color resource reference."
-            },
-            {
-              "key": "lightThemeBackgroundColor",
-              "title": "Light theme background color",
-              "description": "Can be a hex color (#AARRGGBB) or a color resource reference."
-            }
-          ],
           "compatiblePackagesKey": 532
         },
         {
@@ -20322,7 +20242,7 @@
       "repoDescription": "Morphe Patches for Android apps by anxyis",
       "avatarUrl": "https://avatars.githubusercontent.com/u/109168580?v=4&s=64",
       "stars": 1,
-      "updatedAt": 1787340900000,
+      "updatedAt": 1787344740000,
       "firstSeen": 1787265073109,
       "hotRank": 31,
       "appFirstSeen": {

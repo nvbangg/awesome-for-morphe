@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.9.2",
+  "version": "1.10.0",
   "patches": [
     {
       "name": "AMOLED dark theme",
@@ -101,6 +101,32 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#F44336",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass signature check",
+      "description": "Removes the modified-version warning and restores address search and auto-routing.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "psyberia.alpinequest.free",
+          "name": "AlpineQuest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0057BD",
           "signatures": null,
           "targets": [
             {
@@ -467,6 +493,34 @@
               },
               "isExperimental": false,
               "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock full version",
+      "description": "Unlocks the Off-Road Explorer features gated behind activation.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "psyberia.alpinequest.free",
+          "name": "AlpineQuest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0057BD",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
               "description": null
             }
           ]

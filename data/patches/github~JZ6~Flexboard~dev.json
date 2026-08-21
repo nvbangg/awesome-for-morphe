@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.1-dev.7",
+  "version": "1.2.1-dev.10",
   "patches": [
     {
       "name": "Bigger Toolbar",
@@ -65,6 +65,37 @@
       "options": []
     },
     {
+      "name": "Grammar Check Row",
+      "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.inputmethod.latin",
+          "name": "Gboard",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1A73E8",
+          "signatures": [
+            "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+            "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+          ],
+          "targets": [
+            {
+              "version": "18.0.3.954559732-release-arm64-v8a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Install as Gboard Clone",
       "description": "Rename the package to dev.jz6.com.google.android.inputmethod.latin so the patched build installs alongside the official Gboard instead of replacing it.",
       "default": true,
@@ -99,7 +130,9 @@
       "name": "Suggested Settings",
       "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "BytecodePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.google.android.inputmethod.latin",

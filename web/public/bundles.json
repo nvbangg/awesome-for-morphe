@@ -11667,7 +11667,7 @@
       "repoDescription": "Morphe patches: Ads Free Rewards, No Ads, Remove telemetry and more.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/122532548?v=4&s=64",
       "stars": 233,
-      "updatedAt": 1787268422000,
+      "updatedAt": 1787270256000,
       "firstSeen": 1782996119000,
       "hotRank": 8,
       "appFirstSeen": {
@@ -11687,12 +11687,12 @@
             {
               "key": "rewardStrategy",
               "title": "Reward Strategy",
-              "description": "Which ad networks to patch"
+              "description": "Which ad-network integration to patch. 'Auto' covers every supported network"
             },
             {
               "key": "instantReward",
               "title": "Instant reward",
-              "description": "Claim the reward immediately without showing an ad"
+              "description": "Claim the reward immediately without showing an ad (applies to the current patch version)"
             }
           ]
         },
@@ -11703,23 +11703,28 @@
           "options": [
             {
               "key": "blockInterstitials",
-              "title": "Block Interstitials"
+              "title": "Block Interstitials",
+              "description": "Block full-screen ads shown between app content"
             },
             {
               "key": "blockBanners",
-              "title": "Block Banners"
+              "title": "Block Banners",
+              "description": "Block banner ads shown at the top or bottom of the screen"
             },
             {
               "key": "blockAppOpen",
-              "title": "Block App Open"
+              "title": "Block App Open",
+              "description": "Block ads shown when the app starts"
             },
             {
               "key": "blockMRec",
-              "title": "Block MREC"
+              "title": "Block MREC",
+              "description": "Block medium rectangle (MREC) banner ads"
             },
             {
               "key": "blockRewarded",
-              "title": "Block Rewarded"
+              "title": "Block Rewarded",
+              "description": "Block rewarded ads; may disable features that require watching them"
             }
           ]
         },
@@ -11735,6 +11740,7 @@
         },
         {
           "name": "Spoof Play Store Install Source",
+          "description": "Make the app believe it was installed from the Play Store",
           "default": false
         },
         {
@@ -11779,7 +11785,7 @@
             {
               "key": "orientation",
               "title": "Orientation",
-              "description": "landscape, portrait, sensorLandscape, sensorPortrait, userLandscape or userPortrait"
+              "description": "Force a fixed screen orientation on all activities"
             }
           ]
         },
@@ -11820,15 +11826,18 @@
           "options": [
             {
               "key": "enableCustomResolution",
-              "title": "Enable Custom Resolution"
+              "title": "Enable Custom Resolution",
+              "description": "Override the game's window size with the width and height below"
             },
             {
               "key": "width",
-              "title": "Resolution width (px)"
+              "title": "Resolution width (px)",
+              "description": "Horizontal resolution in pixels"
             },
             {
               "key": "height",
-              "title": "Resolution height (px)"
+              "title": "Resolution height (px)",
+              "description": "Vertical resolution in pixels"
             }
           ]
         },
@@ -11859,51 +11868,63 @@
           "options": [
             {
               "key": "blockFirebase",
-              "title": "Block Firebase Analytics"
+              "title": "Block Firebase Analytics",
+              "description": "Google's analytics and crash reporting suite"
             },
             {
               "key": "blockAppsFlyer",
-              "title": "Block AppsFlyer"
+              "title": "Block AppsFlyer",
+              "description": "Mobile attribution and marketing analytics"
             },
             {
               "key": "blockAdjust",
-              "title": "Block Adjust"
+              "title": "Block Adjust",
+              "description": "Mobile attribution analytics"
             },
             {
               "key": "blockAmplitude",
-              "title": "Block Amplitude"
+              "title": "Block Amplitude",
+              "description": "Product analytics platform"
             },
             {
               "key": "blockMixpanel",
-              "title": "Block Mixpanel"
+              "title": "Block Mixpanel",
+              "description": "Product analytics platform"
             },
             {
               "key": "blockCleverTap",
-              "title": "Block CleverTap"
+              "title": "Block CleverTap",
+              "description": "User engagement and analytics"
             },
             {
               "key": "blockSegment",
-              "title": "Block Segment"
+              "title": "Block Segment",
+              "description": "Customer data pipeline and analytics"
             },
             {
               "key": "blockFacebook",
-              "title": "Block Facebook Analytics"
+              "title": "Block Facebook Analytics",
+              "description": "Meta's analytics and event logging"
             },
             {
               "key": "blockBranch",
-              "title": "Block Branch.io"
+              "title": "Block Branch.io",
+              "description": "Deep linking and attribution"
             },
             {
               "key": "blockUnity",
-              "title": "Block Unity Analytics"
+              "title": "Block Unity Analytics",
+              "description": "Unity engine analytics"
             },
             {
               "key": "blockFlurry",
-              "title": "Block Flurry"
+              "title": "Block Flurry",
+              "description": "Yahoo's analytics platform"
             },
             {
               "key": "blockGameAnalytics",
-              "title": "Block GameAnalytics"
+              "title": "Block GameAnalytics",
+              "description": "Game-focused analytics"
             }
           ]
         },
@@ -19543,7 +19564,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/10971263?v=4&s=64",
       "stars": 7,
-      "updatedAt": 1787197460000,
+      "updatedAt": 1787273333000,
       "firstSeen": 1786962892864,
       "hotRank": 33,
       "appFirstSeen": {
@@ -19558,6 +19579,12 @@
         {
           "name": "Bypass Gboard Signature",
           "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
+          "compatiblePackagesKey": 779
+        },
+        {
+          "name": "Grammar Check Row",
+          "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks.",
+          "isPreRelease": true,
           "compatiblePackagesKey": 779
         },
         {

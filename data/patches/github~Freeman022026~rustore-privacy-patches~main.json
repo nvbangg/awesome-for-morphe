@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "patches": [
     {
       "name": "Disable Kaspersky background scan",
@@ -275,6 +275,37 @@
       "description": "Adapts secure-session requests to RuStore 1.108 API changes for re-signed APKs.",
       "default": true,
       "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0A85FF",
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
+          "targets": [
+            {
+              "version": "1.108.0.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Restrict background work to updates",
+      "description": "Keeps only the background workers required for automatic update checks, downloads, patch application, and installation, including charging-triggered checks.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch",
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "ru.vk.store",

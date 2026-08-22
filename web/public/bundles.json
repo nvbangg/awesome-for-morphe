@@ -5984,7 +5984,7 @@
       "repoDescription": "New mask, same task.                                                                 All patches answer to Doom.",
       "avatarUrl": "https://raw.githubusercontent.com/rushiranpise/morphe-patches/main/patches-bundle.png",
       "stars": 447,
-      "updatedAt": 1787370870000,
+      "updatedAt": 1787411250000,
       "firstSeen": 1780370487000,
       "hotRank": 1,
       "appFirstSeen": {
@@ -6538,12 +6538,6 @@
           "name": "Fix Firebase after re-signing",
           "description": "Fixes Firebase services (push notifications, Remote Config, Firebase Auth) that break after Morphe re-signs the app with a different certificate.\n\nApply with Original app certificate patch — no other config needed.",
           "default": false
-        },
-        {
-          "name": "Fix RedGifs Audio",
-          "description": "Routes RedGifs embeds through the WebView iframe path so videos play with audio instead of using the silent direct-stream URL.",
-          "isPreRelease": true,
-          "compatiblePackagesKey": 208
         },
         {
           "name": "Force dark theme",
@@ -16803,7 +16797,7 @@
       "repoDescription": "Andrew's Patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/47963624?v=4&s=64",
       "stars": 44,
-      "updatedAt": 1787233030000,
+      "updatedAt": 1787415981000,
       "firstSeen": 1785036993248,
       "hotRank": 9,
       "appFirstSeen": {
@@ -16812,37 +16806,43 @@
       "patches": [
         {
           "name": "Disable LINE Premium",
-          "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsells, badges, the Premium settings page, and subscribe/manage flows. Premium chat backup falls back to the ordinary chat-history backup. Doesn't unlock anything (premium is server-enforced).",
+          "description": "Hides all LINE Yahoo Premium (LYP) surfaces: the upsells, the badges, the Premium settings page, and the subscribe and manage flows. Premium chat backup changes to the ordinary chat-history backup. This patch unlocks nothing, because the server enforces premium.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Disable VOOM",
-          "description": "Neutralizes VOOM entry points — deep links, shares, and notifications do nothing and the standalone VOOM feed closes on open. Messaging and other tabs are unaffected.",
+          "description": "VOOM deep links, shares, and notifications do nothing. If you open the standalone VOOM feed, it closes. Messaging and the other tabs do not change.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Fix chat backup sign-in via GmsCore",
-          "description": "Routes chat-history backup's Google account picker and Drive token through GmsCore, so backup and restore work on re-signed builds. Requires MicroG-RE. Doesn't affect Google account login. Root Mount install does not need this patch.",
+          "description": "Sends the Google account picker and the Drive token of chat-history backup through GmsCore. Backup and restore then work on a re-signed build. This patch needs MicroG-RE. It does not change how you sign in to a Google account. A Root Mount install does not need this patch.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Fix push notifications",
-          "description": "Restores push notifications on re-signed builds when LINE is fully closed. Root Mount install does not need this patch.",
+          "description": "When LINE is fully closed, push notifications work again on a re-signed build. A Root Mount install does not need this patch.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Hide Events button",
-          "description": "Removes the \"Events\" row from a chat room's slide-out menu. (Events is a separate feature from LINE Calendar — it opens a server-hosted page.)",
+          "description": "Removes the \"Events\" row from the slide-out menu in a chat room. Events is a different feature from LINE Calendar, and it opens a server-hosted page.",
+          "compatiblePackagesKey": 700
+        },
+        {
+          "name": "Hide Home content feed",
+          "description": "Removes the content feed below the friends list on the Home tab. The feed shows LINE NEWS posts, official account posts, live cards, content units, and ranking units. The friends list, the service icons, and the other Home modules do not change.",
+          "isPreRelease": true,
           "compatiblePackagesKey": 700
         },
         {
           "name": "Hide Home modules",
-          "description": "Hides Home-tab clutter modules: the recommended stickers/content section, the real-time hot-topics (即時夯話題) block, and Home feed ads.",
+          "description": "Hides clutter modules on the Home tab: the recommended stickers and content section, the real-time hot-topics (即時夯話題) block, and the ad modules. A separate patch hides the content feed below the friends list.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Hide LINE GIFT button",
-          "description": "Removes the LINE GIFT tile from a chat room's + attach menu.",
+          "description": "Removes the LINE GIFT tile from the + attach menu in a chat room.",
           "compatiblePackagesKey": 700
         },
         {
@@ -16852,12 +16852,12 @@
         },
         {
           "name": "Hide Shopping tab",
-          "description": "Removes the Shopping tab from the main bottom navigation, covering both the Japan (Shopping / ショッピング) and Taiwan (Discover / 逛逛) variants.",
+          "description": "Removes the Shopping tab from the main bottom navigation. This includes the Japan variant (Shopping, ショッピング) and the Taiwan variant (Discover, 逛逛).",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Hide Transfer button",
-          "description": "Removes the Transfer (LINE Pay) tile from a chat room's + attach menu.",
+          "description": "Removes the Transfer (LINE Pay) tile from the + attach menu in a chat room.",
           "compatiblePackagesKey": 700
         },
         {
@@ -16872,17 +16872,17 @@
         },
         {
           "name": "Hide ad views",
-          "description": "Hides LINE display ad views — the LINE Ads SDK containers across the app, the chat-list Smart Channel banner, and Google AdManager ads.",
+          "description": "Hides the LINE display ad views. These are the LINE Ads SDK containers in the whole app, the chat-list Smart Channel banner, and the Google AdManager ads.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Hide attach menu extra tools",
-          "description": "Removes all the server-provided extra tools from a chat room's + attach menu (Poll, Reservation, Schedule, Ladder shuffle, and any others). The built-in tiles (camera, gallery, files, contact, etc.) are unaffected.",
+          "description": "Removes all the server-provided extra tools from the + attach menu in a chat room (Poll, Reservation, Schedule, Ladder shuffle, and more). The built-in tiles (camera, gallery, files, and contact) do not change.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Hide calendar buttons",
-          "description": "Removes every LINE Calendar button inside the messenger: the one in the Chats-tab header, and the four inside a chat room — the top toolbar, the + attach menu, the slide-out chat menu, and the message long-press menu.",
+          "description": "Removes every LINE Calendar button inside the messenger. One is in the Chats-tab header. The other four are in a chat room: the top toolbar, the + attach menu, the slide-out chat menu, and the message long-press menu.",
           "compatiblePackagesKey": 700
         },
         {
@@ -16892,32 +16892,32 @@
         },
         {
           "name": "Hide premium unsend upsells",
-          "description": "Removes the LYP premium-unsend upsells that survive \"Disable LINE Premium\": the \"Unsend discreetly\" button, the post-unsend promo link, and the expired-window unsend upsell. Ordinary unsend still works.",
+          "description": "Removes the LYP premium-unsend upsells that stay after \"Disable LINE Premium\". These are the \"Unsend discreetly\" button, the post-unsend promo link, and the expired-window unsend upsell. Ordinary unsend still works.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Keep chats unread",
-          "description": "Opening a 1:1 or group chat no longer marks it read — it stays unread and no read receipt is sent. Manually using \"Mark as read\" / \"Mark all as read\" still marks the chat read and sends the receipt as normal.",
+          "description": "When you open a 1:1 or group chat, LINE does not mark it read and sends no read receipt. If you use \"Mark as read\" or \"Mark all as read\", LINE marks the chat read and sends the receipt.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Keep unsent messages",
-          "description": "Keeps messages that were unsent in 1:1 and group chats on your device instead of destroying them, and shows the usual \"unsent a message\" notice directly below the message it kept. Doesn't apply to OpenChat.",
+          "description": "Keeps unsent messages from 1:1 and group chats on your device instead of erasing them. This patch shows the usual \"unsent a message\" notice directly below the message that it kept. This patch does not apply to OpenChat.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Open links in external browser",
-          "description": "Opens tapped web links (http/https) in your default browser instead of LINE's in-app browser. LIFF mini-apps and LINE deep links are unaffected.",
+          "description": "When you tap a web link (http or https), it opens in your default browser instead of LINE's in-app browser. LIFF mini-apps and LINE deep links do not change.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Redirect LINE Pay",
-          "description": "Forwards LINE Pay flows to the standalone LINE Pay app instead of running them in-app, so the device-integrity check that fails on a re-signed build never runs. Messaging is unaffected.",
+          "description": "Opens LINE Pay flows in the standalone LINE Pay app instead of inside LINE. The device-integrity check that fails on a re-signed build never runs. Messaging does not change.",
           "compatiblePackagesKey": 700
         },
         {
           "name": "Remove banner ads",
-          "description": "Stops LINE from loading Smart Channel banner ads (neutralizes the getBanners and getPrefetchableBanners responses).",
+          "description": "LINE no longer loads the Smart Channel banner ads. This patch makes the getBanners and getPrefetchableBanners responses null.",
           "compatiblePackagesKey": 700
         }
       ]
@@ -20158,7 +20158,7 @@
       "repoDescription": "Selectable RuStore privacy patches for Morphe with verified automatic releases.",
       "avatarUrl": "https://raw.githubusercontent.com/Freeman022026/rustore-privacy-patches/main/patches-bundle.png",
       "stars": 3,
-      "updatedAt": 1787402371000,
+      "updatedAt": 1787410160000,
       "firstSeen": 1787021898591,
       "appFirstSeen": {
         "ru.vk.store": 1787021898525
@@ -20212,6 +20212,11 @@
         {
           "name": "Restore secure-session compatibility",
           "description": "Adapts secure-session requests to RuStore 1.108 API changes for re-signed APKs.",
+          "compatiblePackagesKey": 786
+        },
+        {
+          "name": "Restrict background work to updates",
+          "description": "Keeps only the background workers required for automatic update checks, downloads, patch application, and installation, including charging-triggered checks.",
           "compatiblePackagesKey": 786
         },
         {

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "patches": [
     {
       "name": "Add AMOLED Theme",
@@ -62,7 +62,6 @@
       "default": true,
       "dependencies": [
         "ResourcePatch",
-        "RawResourcePatch",
         "RawResourcePatch"
       ],
       "compatiblePackages": [
@@ -75,7 +74,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.93.137",
+              "version": "1.93.138",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -127,7 +126,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.93.137",
+              "version": "1.93.138",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -155,7 +154,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.93.137",
+              "version": "1.93.138",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -181,7 +180,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.93.137",
+              "version": "1.93.138",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -520,6 +519,94 @@
           "targets": [
             {
               "version": "18.0.3.954559732-lite_beta-arm64-v8a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Locale PAK Slimmer",
+      "description": "Strips unselected language resource PAKs from assets/locales/.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.brave.browser",
+          "name": "Brave Private Web Browser, VPN",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.93.138",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "locales",
+          "title": "Locales to keep",
+          "description": "Comma-separated locale codes to keep (e.g. 'es, es-419, en-US, pt-BR, fr, de'). English (en-US) is always kept as a safe fallback.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "en-US",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Resource Slimmer",
+      "description": "Strips embedded third-party license text, onboarding tutorial Lottie animations, and promotional GIFs using dynamic content heuristics.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.inputmethod.latin",
+          "name": "Gboard Lite",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4285F4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "18.0.3.954559732-lite_beta-arm64-v8a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip First Run",
+      "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.brave.browser",
+          "name": "Brave Private Web Browser, VPN",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.93.138",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

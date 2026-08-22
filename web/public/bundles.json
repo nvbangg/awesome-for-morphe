@@ -20680,11 +20680,11 @@
     {
       "source": "github",
       "repo": "kveld9/kveld-morphe-patches",
-      "name": "Brave",
+      "name": "kveld9",
       "repoDescription": "Custom Morphe patches for Brave Browser and GBoard Lite on Android.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/179108235?v=4&s=64",
       "stars": 5,
-      "updatedAt": 1787254945000,
+      "updatedAt": 1787360042000,
       "firstSeen": 1787251436744,
       "hotRank": 30,
       "appFirstSeen": {
@@ -20791,6 +20791,28 @@
           "name": "Hardened Intent Security",
           "description": "Enables Gboard internal external intent protection against unauthorized intent hijacking.",
           "compatiblePackagesKey": 808
+        },
+        {
+          "name": "Locale PAK Slimmer",
+          "description": "Strips unselected language resource PAKs from assets/locales/.",
+          "options": [
+            {
+              "key": "locales",
+              "title": "Locales to keep",
+              "description": "Comma-separated locale codes to keep (e.g. 'es, es-419, en-US, pt-BR, fr, de'). English (en-US) is always kept as a safe fallback."
+            }
+          ],
+          "compatiblePackagesKey": 809
+        },
+        {
+          "name": "Resource Slimmer",
+          "description": "Strips embedded third-party license text, onboarding tutorial Lottie animations, and promotional GIFs using dynamic content heuristics.",
+          "compatiblePackagesKey": 808
+        },
+        {
+          "name": "Skip First Run",
+          "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs.",
+          "compatiblePackagesKey": 809
         }
       ]
     },
@@ -30471,7 +30493,7 @@
         "packageName": "com.brave.browser",
         "targets": [
           {
-            "version": "1.93.137"
+            "version": "1.93.138"
           }
         ]
       }

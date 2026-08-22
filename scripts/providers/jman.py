@@ -1,6 +1,5 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-import json
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -40,8 +39,12 @@ def _process_bundle(
         return bundle_name, blob_sha, cached.get("key")
 
     try:
-        content = fetch(f"{RAW_BASE}/{bundle_path}", timeout=10)
-        canonical_key = _extract_canonical_key(json.loads(content))
+        bundle_data = fetch(f"{RAW_BASE}/{bundle_path}", timeout=10, as_json=True)
+        canonical_key = (
+            _extract_canonical_key(bundle_data)
+            if isinstance(bundle_data, dict)
+            else None
+        )
     except Exception as error:
         print(f"[-] [jman] Failed to fetch {bundle_name}: {error}")
         return bundle_name, None, None

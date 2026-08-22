@@ -5,7 +5,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from utils import append_step_summary, load_json, save_json
+from utils import append_step_summary, load_json, load_lines, save_json
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT_DIR / "data"
@@ -22,15 +22,7 @@ GRADLE_EXECUTABLE_PATH = BUNDLE_PARSER_DIR / GRADLE_EXECUTABLE_NAME
 def commit_pending_repos(
     updated_files: list[str] | None = None, parse_error: str | None = None
 ) -> None:
-    successful_parsed_files = (
-        {
-            line.strip()
-            for line in PARSED_FILES_PATH.read_text(encoding="utf-8").splitlines()
-            if line.strip()
-        }
-        if PARSED_FILES_PATH.exists()
-        else set()
-    )
+    successful_parsed_files = set(load_lines(PARSED_FILES_PATH))
 
     errors = [parse_error] if parse_error else []
     if updated_files:
@@ -91,15 +83,7 @@ def commit_pending_repos(
 
 
 def run_bundle_parser() -> None:
-    updated_files = (
-        [
-            line.strip()
-            for line in UPDATED_FILES_PATH.read_text(encoding="utf-8").splitlines()
-            if line.strip()
-        ]
-        if UPDATED_FILES_PATH.exists()
-        else []
-    )
+    updated_files = load_lines(UPDATED_FILES_PATH)
 
     parse_error = None
     if updated_files:
@@ -112,14 +96,14 @@ def run_bundle_parser() -> None:
                 | stat.S_IXOTH
             )
 
-        command_arguments = [
+        command_args = [
             str(GRADLE_EXECUTABLE_PATH),
             "run",
             "--args=@updated_files.txt",
         ]
         try:
             execution_result = subprocess.run(
-                command_arguments, cwd=str(BUNDLE_PARSER_DIR), text=True
+                command_args, cwd=str(BUNDLE_PARSER_DIR), text=True
             )
             if execution_result.returncode != 0:
                 parse_error = (

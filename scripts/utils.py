@@ -12,16 +12,21 @@ from typing import Any
 
 def get_auth_headers(url: str, headers: dict[str, str] | None = None) -> dict[str, str]:
     result_headers = dict(headers) if headers else {}
-    result_headers.setdefault(
-        "User-Agent", "AwesomeMorphe/1.0 (+https://github.com/nvbangg/awesome-morphe)"
-    )
+    parsed_url = urllib.parse.urlparse(url)
+    hostname = parsed_url.hostname or ""
+    is_github = hostname.endswith(("github.com", "githubusercontent.com"))
+
+    if "User-Agent" not in result_headers:
+        if is_github:
+            result_headers["User-Agent"] = (
+                "AwesomeMorphe/1.0 (+https://github.com/nvbangg/awesome-morphe)"
+            )
+        else:
+            result_headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 
     github_token = os.environ.get("GITHUB_TOKEN")
-    if github_token and "Authorization" not in result_headers:
-        parsed_url = urllib.parse.urlparse(url)
-        hostname = parsed_url.hostname or ""
-        if hostname.endswith(("github.com", "githubusercontent.com")):
-            result_headers["Authorization"] = f"Bearer {github_token}"
+    if is_github and github_token and "Authorization" not in result_headers:
+        result_headers["Authorization"] = f"Bearer {github_token}"
 
     return result_headers
 
@@ -89,6 +94,17 @@ def save_json(path: str | Path, data: Any) -> None:
         file.write("\n")
 
 
+def load_lines(path: str | Path) -> list[str]:
+    path = Path(path)
+    if not path.exists():
+        return []
+    return [
+        line.strip()
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line.strip() and not line.startswith("#")
+    ]
+
+
 def parse_timestamp(timestamp: Any) -> int:
     if not timestamp:
         return 0
@@ -107,6 +123,31 @@ def parse_timestamp(timestamp: Any) -> int:
     return 0
 
 
+def parse_repo_url(repo_url: str) -> tuple[str, str] | tuple[None, None]:
+    if not repo_url:
+        return None, None
+
+    if "github.com/" in repo_url:
+        parts = repo_url.split("github.com/")[-1].strip("/").split("/")
+        if len(parts) >= 2:
+            return "github", f"{parts[0]}/{parts[1]}"
+    elif "gitlab.com/" in repo_url:
+        path = repo_url.split("gitlab.com/")[-1].strip("/").removesuffix(".git")
+        if path:
+            return "gitlab", path
+
+    return None, None
+
+
+def build_api_url(source: str, owner_repo: str) -> str | None:
+    if source == "github":
+        return f"https://api.github.com/repos/{owner_repo}"
+    if source == "gitlab":
+        encoded_repo = urllib.parse.quote(owner_repo, safe="")
+        return f"https://gitlab.com/api/v4/projects/{encoded_repo}"
+    return None
+
+
 def build_raw_url(
     source: str, owner_repo: str, branch: str, file_path: str
 ) -> str | None:
@@ -117,3 +158,21 @@ def build_raw_url(
         encoded_file = urllib.parse.quote(file_path, safe="")
         return f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/{encoded_file}/raw?ref={branch}"
     return None
+
+
+def check_link_status(url: str, timeout: int = 5) -> dict:
+    try:
+        headers = get_auth_headers(url)
+        request = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            final_url = response.geturl().rstrip("/")
+            original_url = url.rstrip("/")
+            if final_url.lower() != original_url.lower():
+                return {"is_redirect": True, "final_url": final_url}
+            return {"is_active": True}
+    except urllib.error.HTTPError as error:
+        if error.code in (404, 410):
+            return {"is_dead": True, "error": f"HTTP {error.code}"}
+        return {"error": f"HTTP {error.code}"}
+    except Exception as error:
+        return {"error": str(error)}

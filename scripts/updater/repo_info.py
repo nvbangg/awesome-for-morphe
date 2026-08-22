@@ -1,14 +1,19 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-import os
 import time
 import urllib.error
-import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from updater import normalize_image_url
-from utils import build_raw_url, fetch, load_json, save_json
+from utils import (
+    build_api_url,
+    build_raw_url,
+    fetch,
+    load_json,
+    parse_repo_url,
+    save_json,
+)
 
 GITHUB_CONCURRENCY = 8
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -19,87 +24,45 @@ REPOS_JSON_PATH = DATA_DIR / "repos.json"
 
 
 def fetch_repo_details(repo_url: str) -> dict:
-    if not repo_url:
+    source, owner_repo = parse_repo_url(repo_url)
+    if not source or not owner_repo:
         return {}
 
-    if "github.com" in repo_url:
-        parts = repo_url.split("github.com/")
-        if len(parts) > 1:
-            repo_path = parts[1].split("/")
-            if len(repo_path) >= 2:
-                owner, name = repo_path[0], repo_path[1]
-                api_url = f"https://api.github.com/repos/{owner}/{name}"
+    api_url = build_api_url(source, owner_repo)
+    if not api_url:
+        return {}
 
-                def fetch_details(use_token: bool = True) -> dict:
-                    headers = {"User-Agent": "Awesome-Morphe"}
-                    if use_token and os.environ.get("GITHUB_TOKEN"):
-                        headers["Authorization"] = (
-                            f"Bearer {os.environ['GITHUB_TOKEN']}"
-                        )
-                    response = fetch(api_url, headers=headers, timeout=10, as_json=True)
-                    if not response:
-                        return {}
-                    avatar = response.get("owner", {}).get("avatar_url")
-                    return {
-                        "stars": response.get("stargazers_count", 0),
-                        "description": response.get("description"),
-                        "avatar_url": avatar,
-                        "full_name": response.get("full_name"),
-                        "is_archived": bool(response.get("archived")),
-                    }
+    try:
+        time.sleep(0.1)
+        response = fetch(api_url, timeout=10, as_json=True)
+        if not response or not isinstance(response, dict):
+            return {}
 
-                try:
-                    time.sleep(0.2)
-                    return fetch_details(use_token=True)
-                except urllib.error.HTTPError as error:
-                    if error.code in (401, 403, 429):
-                        try:
-                            time.sleep(1)
-                            return fetch_details(use_token=False)
-                        except Exception as inner_exception:
-                            if (
-                                isinstance(inner_exception, urllib.error.HTTPError)
-                                and inner_exception.code == 404
-                            ):
-                                print(f"[-] Repo not found (404) for {repo_url}")
-                                return {"is_404": True}
-                            print(
-                                f"[-] Error fetching details (no token) for {repo_url}: {inner_exception}"
-                            )
-                            return {}
-                    if error.code == 404:
-                        print(f"[-] Repo not found (404) for {repo_url}")
-                        return {"is_404": True}
-                    print(f"[-] Error fetching details for {repo_url}: {error}")
-                    return {}
-                except Exception as error:
-                    print(f"[-] Error fetching details for {repo_url}: {error}")
-                    return {}
+        if source == "github":
+            avatar = response.get("owner", {}).get("avatar_url")
+            full_name = response.get("full_name")
+            stars = response.get("stargazers_count", 0)
+        else:
+            avatar = response.get("avatar_url") or response.get("namespace", {}).get(
+                "avatar_url"
+            )
+            full_name = response.get("path_with_namespace")
+            stars = response.get("star_count", 0)
 
-    elif "gitlab.com" in repo_url:
-        parts = repo_url.split("gitlab.com/")
-        if len(parts) > 1:
-            repo_path = parts[1].strip("/")
-            encoded_path = urllib.parse.quote(repo_path, safe="")
-            api_url = f"https://gitlab.com/api/v4/projects/{encoded_path}"
-            try:
-                time.sleep(0.2)
-                response = fetch(api_url, timeout=10, as_json=True)
-                if response:
-                    avatar = response.get("avatar_url") or response.get(
-                        "namespace", {}
-                    ).get("avatar_url")
-                    return {
-                        "stars": response.get("star_count", 0),
-                        "description": response.get("description"),
-                        "avatar_url": avatar,
-                        "full_name": response.get("path_with_namespace"),
-                        "is_archived": bool(response.get("archived")),
-                    }
-            except Exception as error:
-                print(f"[-] Error fetching GitLab details for {repo_url}: {error}")
-                return {}
-    return {}
+        return {
+            "stars": stars,
+            "description": response.get("description"),
+            "avatar_url": avatar,
+            "full_name": full_name,
+            "is_archived": bool(response.get("archived")),
+        }
+    except Exception as error:
+        if isinstance(error, urllib.error.HTTPError):
+            if error.code == 404:
+                return {"is_404": True, "error": "404 Not Found"}
+            if error.code == 451:
+                return {"is_451": True, "error": "451 DMCA Takedown"}
+        return {"error": str(error)}
 
 
 def process(

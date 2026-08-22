@@ -1,12 +1,10 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 import argparse
-import contextlib
 import re
 import sys
 import time
 import urllib.parse
-import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -14,18 +12,20 @@ from pathlib import Path
 from utils import (
     append_step_summary,
     build_raw_url,
+    check_link_status,
     fetch,
-    get_auth_headers,
     load_json,
+    load_lines,
+    parse_repo_url,
     save_json,
 )
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 PROJECTS_DIR = ROOT_DIR / "data" / "projects"
 TEMP_DIR = ROOT_DIR / "scripts" / "temp"
-README_PATH = ROOT_DIR / "README.md"
 RAW_SEARCH_PATH = TEMP_DIR / "raw-search.json"
 RAW_FILTER_PATH = TEMP_DIR / "raw-filter.json"
+README_REPOS_PATH = PROJECTS_DIR / "readme-repos.txt"
 EXCLUDED_REPOS_PATH = PROJECTS_DIR / "excluded-repos.txt"
 OUTPUT_TEXT_PATH = PROJECTS_DIR / "new-projects.txt"
 
@@ -46,7 +46,6 @@ SEARCH_TIMEOUT = 15
 HEAD_TIMEOUT = 5
 CONCURRENCY = 8
 
-GITHUB_REPO_URL_RE = re.compile(r"https://github\.com/[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+")
 MORPHE_NAME_RE = re.compile(r"(?<![a-zA-Z0-9])morphe(?![a-zA-Z0-9])", re.IGNORECASE)
 
 
@@ -73,40 +72,17 @@ def build_search_query(keyword: str) -> str:
     return " ".join(parts)
 
 
-def sync_excluded_repos() -> set[str]:
-    links = set()
-    if EXCLUDED_REPOS_PATH.exists():
-        links.update(
-            line.strip()
-            for line in EXCLUDED_REPOS_PATH.read_text(encoding="utf-8").splitlines()
-            if line.strip() and not line.startswith("#")
-        )
-
-    if README_PATH.exists():
-        links.update(
-            GITHUB_REPO_URL_RE.findall(README_PATH.read_text(encoding="utf-8"))
-        )
-
-    sorted_links = sorted(links, key=str.lower)
-    PROJECTS_DIR.mkdir(parents=True, exist_ok=True)
-    EXCLUDED_REPOS_PATH.write_text("\n".join(sorted_links) + "\n", encoding="utf-8")
-    return {link.removeprefix("https://github.com/").lower() for link in sorted_links}
-
-
 def is_patch_bundle(owner_repo: str) -> bool:
     for branch in CHECK_BRANCHES:
-        url = build_raw_url("github", owner_repo, branch, "patches-bundle.json")
-        if not url:
-            continue
-        request = urllib.request.Request(
-            url, headers=get_auth_headers(url), method="HEAD"
-        )
-        with (
-            contextlib.suppress(Exception),
-            urllib.request.urlopen(request, timeout=HEAD_TIMEOUT) as response,
+        if not (
+            url := build_raw_url("github", owner_repo, branch, "patches-bundle.json")
         ):
-            if response.status == 200:
-                return True
+            continue
+        status = check_link_status(url, timeout=HEAD_TIMEOUT)
+        if status.get("is_active"):
+            return True
+        if status.get("error") and not status.get("is_dead"):
+            print(f"[-] Failed to check {owner_repo} ({branch}): {status['error']}")
     return False
 
 
@@ -121,7 +97,7 @@ def matches_filter_criteria(repo: dict) -> bool:
     return bool(MORPHE_NAME_RE.search(repo_name))
 
 
-def search_repositories() -> list[dict]:
+def search_repos() -> list[dict]:
     unique_repos = {}
 
     for keyword in SEARCH_KEYWORDS:
@@ -155,8 +131,6 @@ def search_repositories() -> list[dict]:
             page += 1
             time.sleep(PAGE_DELAY_SECONDS)
 
-        print(f"\nTotal raw repositories collected: {len(unique_repos)}")
-
     repos_list = list(unique_repos.values())
     save_json(RAW_SEARCH_PATH, repos_list)
     print(
@@ -165,35 +139,38 @@ def search_repositories() -> list[dict]:
     return repos_list
 
 
-def filter_repositories(repositories: list[dict] | None = None) -> list[dict]:
-    if repositories is None:
+def filter_repos(repos: list[dict] | None = None) -> list[dict]:
+    if repos is None:
         if not RAW_SEARCH_PATH.exists():
             print(
                 f"Raw search file not found: {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}. Run with --search first."
             )
             return []
-        repositories = load_json(RAW_SEARCH_PATH, [])
+        repos = load_json(RAW_SEARCH_PATH, [])
         print(
-            f"Loaded {len(repositories)} repositories from {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}"
+            f"Loaded {len(repos)} repositories from {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}"
         )
 
-    if not repositories:
+    if not repos:
         print("Repository list is empty. Skipping filter step.")
         return []
 
-    excluded_repos = sync_excluded_repos()
+    known_links = set(load_lines(README_REPOS_PATH)) | set(
+        load_lines(EXCLUDED_REPOS_PATH)
+    )
+    excluded_repos = {(parse_repo_url(link)[1] or link).lower() for link in known_links}
     print(
-        f"Synced {len(excluded_repos)} excluded repositories from README & {EXCLUDED_REPOS_PATH.name}"
+        f"Loaded {len(excluded_repos)} known repositories ({README_REPOS_PATH.name} & {EXCLUDED_REPOS_PATH.name})"
     )
 
     candidates = [
         repo
-        for repo in repositories
+        for repo in repos
         if repo.get("full_name", "").lower() not in excluded_repos
         and matches_filter_criteria(repo)
     ]
     print(
-        f"Filtered {len(candidates)} candidate repositories (excluded {len(repositories) - len(candidates)} repos)."
+        f"Filtered {len(candidates)} candidate repositories (excluded {len(repos) - len(candidates)} repositories)."
     )
 
     save_json(RAW_FILTER_PATH, candidates)
@@ -203,7 +180,7 @@ def filter_repositories(repositories: list[dict] | None = None) -> list[dict]:
     return candidates
 
 
-def verify_and_export_projects(candidates: list[dict] | None = None) -> list[dict]:
+def verify_and_export_repos(candidates: list[dict] | None = None) -> list[dict]:
     if candidates is None:
         if not RAW_FILTER_PATH.exists():
             print(
@@ -233,7 +210,7 @@ def verify_and_export_projects(candidates: list[dict] | None = None) -> list[dic
             if not future.result():
                 valid_repos.append(repo)
 
-    projects = [
+    repos = [
         {
             "full_name": repo.get("full_name", ""),
             "stars": repo.get("stargazers_count", 0),
@@ -244,7 +221,7 @@ def verify_and_export_projects(candidates: list[dict] | None = None) -> list[dic
         }
         for repo in valid_repos
     ]
-    projects.sort(
+    repos.sort(
         key=lambda item: (
             item["stars"],
             item["pushed_at"],
@@ -258,37 +235,27 @@ def verify_and_export_projects(candidates: list[dict] | None = None) -> list[dic
         build_search_query(keyword) for keyword in SEARCH_KEYWORDS
     )
     excluded_keywords = ", ".join(EXCLUDED_KEYWORDS)
-    markdown_lines = [
-        "### 🔍 Found Projects",
-        "",
-        f"- **Query:** `{query_summary}`",
-        f"- **Excluded Keywords:** {excluded_keywords}, non-standalone morphe variants",
-        f"- **Total Found:** `{len(projects)}`",
-        f"- **Scanned At:** `{datetime.now(UTC).strftime('%Y-%m-%d %H:%M:%S UTC')}`",
-        "",
+    summary_sections = [
+        f"## 🔍 Find Projects\n- **Query:** `{query_summary}`\n- **Excluded:** non-standalone morphe variants with: {excluded_keywords}\n- **New Repositories Found:** `{len(repos)}`"
     ]
-    for project in projects:
-        description = (
-            f"- **Description:** {project['description']}\n"
-            if project["description"]
-            else ""
+    for repo in repos:
+        desc = (
+            f"\n- **Description:** {repo['description']}" if repo["description"] else ""
         )
-        markdown_lines.append(
-            f"#### [{project['full_name']}]({project['url']}) (⭐ {project['stars']})\n"
-            f"- **Created:** `{project['created_at']}` | **Updated:** `{project['pushed_at']}`\n"
-            f"{description}"
+        summary_sections.append(
+            f"### [{repo['full_name']}]({repo['url']}) (⭐ {repo['stars']})\n- **Created:** `{repo['created_at']}` | **Updated:** `{repo['pushed_at']}`{desc}"
         )
 
     PROJECTS_DIR.mkdir(parents=True, exist_ok=True)
     OUTPUT_TEXT_PATH.write_text(
-        "\n".join(project["url"] for project in projects) + "\n", encoding="utf-8"
+        "\n".join(repo["url"] for repo in repos) + "\n", encoding="utf-8"
     )
-    append_step_summary("\n".join(markdown_lines))
+    append_step_summary("\n\n".join(summary_sections))
 
     print(
-        f"Saved {len(projects)} URLs to {OUTPUT_TEXT_PATH.relative_to(ROOT_DIR)} (excluded {len(candidates) - len(projects)} patch bundles)"
+        f"Saved {len(repos)} URLs to {OUTPUT_TEXT_PATH.relative_to(ROOT_DIR)} (excluded {len(candidates) - len(repos)} patch bundles)"
     )
-    return projects
+    return repos
 
 
 def main() -> int:
@@ -314,15 +281,15 @@ def main() -> int:
     args = parser.parse_args()
 
     if args.search:
-        search_repositories()
+        search_repos()
     elif args.filter:
-        filter_repositories()
+        filter_repos()
     elif args.check:
-        verify_and_export_projects()
+        verify_and_export_repos()
     else:
-        raw_repos = search_repositories()
-        candidates = filter_repositories(raw_repos)
-        verify_and_export_projects(candidates)
+        raw_repos = search_repos()
+        candidates = filter_repos(raw_repos)
+        verify_and_export_repos(candidates)
 
     return 0
 

@@ -278,7 +278,7 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
             image_tasks.append((source, owner_repo, repo_meta.get("image")))
 
     print(f"Processing {len(tasks)} branch targets...")
-    pending_repository_data = {}
+    pending_repos_data = {}
     updated_count = 0
     updated_files = []
     errors = []
@@ -312,9 +312,9 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
 
             base_key = f"{source}:{owner_repo}"
             updated_count += 1
-            pending_repository_data.setdefault(base_key, {})[branch] = new_sha
+            pending_repos_data.setdefault(base_key, {})[branch] = new_sha
             if bundle_name:
-                pending_repository_data.setdefault(base_key, {})["name"] = bundle_name
+                pending_repos_data.setdefault(base_key, {})["name"] = bundle_name
 
             if not is_unavailable and new_sha is not None:
                 owner, repo = owner_repo.split("/", 1)
@@ -354,9 +354,7 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
                 if status_changed:
                     updated_count += 1
                     base_key = f"{source}:{owner_repo}"
-                    pending_repository_data.setdefault(base_key, {})["image"] = (
-                        new_image_sha
-                    )
+                    pending_repos_data.setdefault(base_key, {})["image"] = new_image_sha
 
     if errors:
         markdown_lines = ["### ⚠️ Fetch", *[f"- {error}" for error in sorted(errors)]]
@@ -372,7 +370,7 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
     elif UPDATED_FILES_PATH.exists():
         UPDATED_FILES_PATH.unlink()
 
-    save_json(PENDING_REPOS_PATH, pending_repository_data)
+    save_json(PENDING_REPOS_PATH, pending_repos_data)
 
 
 def main() -> None:

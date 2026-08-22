@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.39.0-dev.3",
+  "version": "1.39.0-dev.5",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -90,8 +90,8 @@
       "options": []
     },
     {
-      "name": "Custom DPI (Universal)",
-      "description": "Change this app's display size without touching your phone's system settings. Make it bigger if things look too small, or smaller to fit more on screen. Works on any app.",
+      "name": "Custom DPI",
+      "description": "Change any app's display size without touching your phone's system settings. Make it bigger if things look too small, or smaller to fit more on screen. You Need To Configure 100(No Change), 90(10% Smaller App Ui), 110(10% Bigger App Ui).",
       "default": false,
       "dependencies": [
         "ResourcePatch"
@@ -445,11 +445,46 @@
     },
     {
       "name": "Remove Ads",
-      "description": "Stubs known ad SDK entry points and poisons ad-network URL strings across the whole app. Async load calls are redirected into the callback's own failure method instead of being deleted, so completion-gated app logic doesn't hang waiting on an orphaned listener.",
+      "description": "Stubs known ad SDK entry points and poisons ad-network URL strings across the whole app. Async load calls are redirected into the callback's own failure method instead of being deleted, Currently In Some Apps Makes Them Stuck In SplashActivity Due To Their Custom Check Of Ads Load But It Is Superior.",
       "default": false,
       "dependencies": [
         "ResourcePatch",
         "BytecodePatch"
+      ],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove Ads Lite(Adobo)",
+      "description": "Based On (Adobo's Block Ads+Mobile Ads) Disables known ad SDK entry points and neutralizes ad/tracker/analytics Safer than Remove Ads for apps where you will be stuck in SplashActivityIt Is Weaker But Effective, Merged Adobo's Both Patches And Removed The Need Of Selecting A Host File Or Configuring AnythingIn Future It May Replace Remove Ads Patch If I Find No Problem.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "redirectionIp",
+          "title": "Redirection IP",
+          "description": "The IP address to redirect blocked domains to.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "0.0.0.0",
+          "values": {
+            "Default": "0.0.0.0",
+            "localhost": "127.0.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Remove Ads Ultra Lite",
+      "description": "Call finish on ad activities, Forces known ad SDK activities (AdMob, AppLovin MAX, BIGO, InMobi, Liftoff/Vungle) to finish() immediately after super.onCreate(), before they inflate or render anything. Its Even Weaker Than Remove Ads Lite But Wont Make The App Crash Or Stuck(More Safer)",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
       ],
       "compatiblePackages": null,
       "options": []

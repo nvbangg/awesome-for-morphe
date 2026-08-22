@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "patches": [
     {
       "name": "Add AMOLED Theme",
@@ -192,6 +192,44 @@
       "options": []
     },
     {
+      "name": "Clone Gboard",
+      "description": "Changes the package name by appending a dot and custom suffix (defaults to 'kveld') to allow installing Gboard alongside the original application.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.inputmethod.latin",
+          "name": "Gboard Lite",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4285F4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "18.0.3.954559732-lite_beta-arm64-v8a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "packageSuffix",
+          "title": "Package name suffix",
+          "description": "Suffix appended after the original package name and a dot (e.g. 'kveld' -> 'com.google.android.inputmethod.latin.kveld').",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "kveld",
+          "values": null
+        }
+      ]
+    },
+    {
       "name": "Disable Diagnostics",
       "description": "Disables Google's diagnostic and recovery telemetry.",
       "default": true,
@@ -246,7 +284,7 @@
     {
       "name": "Disable In-App Training",
       "description": "Neutralizes periodic in-app training cache generation and federated-learning background work while preserving normal keyboard functionality and explicit user-requested operations.",
-      "default": true,
+      "default": false,
       "dependencies": [],
       "compatiblePackages": [
         {
@@ -272,7 +310,7 @@
     {
       "name": "Disable MDD Background Sync",
       "description": "Neutralizes Mobile Data Download (MDD) periodic background synchronization, automated polling, and prefetch worker tasks while preserving on-demand and user-requested downloads.",
-      "default": true,
+      "default": false,
       "dependencies": [],
       "compatiblePackages": [
         {
@@ -324,7 +362,7 @@
     {
       "name": "Disable Superpacks Eager Sync",
       "description": "Neutralizes eager background Superpacks synchronization during application startup, eliminating unnecessary disk sweeps and network polling while preserving on-demand pack downloads.",
-      "default": true,
+      "default": false,
       "dependencies": [],
       "compatiblePackages": [
         {
@@ -376,7 +414,7 @@
     {
       "name": "Disable WorkManager",
       "description": "Neutralizes background WorkManager initialization, database creation, and periodic maintenance workers.",
-      "default": true,
+      "default": false,
       "dependencies": [],
       "compatiblePackages": [
         {
@@ -480,7 +518,7 @@
     {
       "name": "Force Incognito Mode",
       "description": "Forces Gboard to always operate in incognito mode, disabling personalized learning and persistent input logging across all sessions.",
-      "default": true,
+      "default": false,
       "dependencies": [],
       "compatiblePackages": [
         {

@@ -2,7 +2,6 @@ https://awesome-morphe.vercel.app
 https://crowdin.com/project/morphe
 https://dmh84.github.io/morphe-space-explorer
 https://gist.github.com/akshay-abraham/01d63dc1911a8879943d781efd04ddfe
-https://github.com/MorpheApp/MicroG-RE/releases
 https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/questions.md
 https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/troubleshooting.md
 https://github.com/thedjchi/Shizuku/wiki
@@ -15,8 +14,6 @@ https://patch-atlas.vercel.app
 https://patch-explorer.web.app
 https://revanced-external-bundles.brosssh.com
 https://rushiforai.github.io/morphe-archive
-https://t.me/awesome_morphe
-https://www.reddit.com/r/MorpheApp
 https://www.reddit.com/r/MorpheApp/comments/1pverk7/comment/oag938k
 https://www.reddit.com/r/MorpheApp/comments/1pverk7/comment/ogdw6mk
 https://www.reddit.com/r/MorpheApp/comments/1pverk7/comment/oot13cq

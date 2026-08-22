@@ -31,9 +31,9 @@ OUTPUT_TEXT_PATH = PROJECTS_DIR / "new-projects.txt"
 
 SEARCH_KEYWORDS = ["morphe"]
 CREATED_AFTER = "2026-01-01"
-CREATED_WITHIN_DAYS = None
-PUSHED_WITHIN_DAYS = 60
-EXCLUDED_USERS = ["morpheapp"]
+CREATED_WITHIN_DAYS = 90
+PUSHED_WITHIN_DAYS = 30
+EXCLUDED_USERS = []
 API_EXCLUDED_KEYWORDS = ["morpheus", "morpheme", "morphelab"]
 API_EXCLUDED_NAME_KEYWORDS = ["patches", "builder"]
 EXCLUDED_KEYWORDS = ["build", "magisk", "patched", "patcher", "youtube", "morphe-labs"]

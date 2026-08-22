@@ -1,0 +1,61 @@
+{
+    "version": "",
+    "patches": [
+        {
+            "name": "Local files from a server",
+            "description": "Adds a Nextcloud or WebDAV folder as a source of local files. Its tracks appear under Local Files and are streamed from the server instead of being stored on the device.",
+            "default": true,
+            "dependencies": [
+                "Morphe settings"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.spotify.music",
+                    "name": null,
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Morphe settings",
+            "description": "Adds a Morphe entry to Spotify's settings, which is where the settings of the other Morphe patches live.",
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.spotify.music",
+                    "name": null,
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": null,
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        }
+    ]
+}

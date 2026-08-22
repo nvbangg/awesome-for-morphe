@@ -10,17 +10,19 @@ awesome-morphe/
 ├── .github/                            # CI/CD workflows & configurations
 ├── data/                               # Raw data storage
 ├── scripts/                            # Automated scripts for data processing
+│   ├── audit_readme.py                 # Audits repositories and external links in README
 │   ├── discover.py                     # Discovers all bundles from providers
-│   ├── fetch.py                        # Checks for updates
+│   ├── fetch.py                        # Checks for updates and downloads bundles
+│   ├── find_projects.py                # Searches and filters new Morphe repositories
 │   ├── parse.py                        # Extracts patch metadata via bundle-parser
 │   ├── telegram.py                     # Telegram notification service
 │   ├── update.py                       # Compiles raw data into production JSONs
-│   ├── whats_new.py                    # Generates release changelog
+│   ├── whats_new.py                    # Generates What's New changelog
 │   └── ...                             # Other supporting files
 ├── web/                                # Website source code
 │   ├── public/
 │   │   ├── bundles.json                # Metadata of all active bundles and apps
-│   │   └── whats-new.json              # Rolling changelog (last 21 releases)
+│   │   └── whats-new.json              # Rolling changelog (last 21 updates)
 │   └── ...                             # Other supporting files
 ├── CONTRIBUTING.md
 ├── LICENSE
@@ -29,37 +31,48 @@ awesome-morphe/
 
 ## 🤖 Automation Workflows
 
-### 1. Sync Workflow (`ci.yml` - Every 2 hours)
+### 1. [Sync Workflow](../../actions/workflows/ci.yml)
+
+Unified pipeline for synchronizing bundles, daily/monthly updates, and What's New changelogs:
+- **`default` mode**: Fast sync every 2 hours (skips images, commits only when new bundles are found).
+- **`daily` mode**: Daily sync (fetches images, updates repo info/stars, generates What's New changelog, sends Telegram notifications, and cleans up old workflow runs).
+- **`month` mode**: Monthly refresh on the 1st of each month (full re-scrape of Google Play metadata).
 
 ```mermaid
 flowchart TD
-    A["Sync Workflow (ci.yml)"] --> B["Discover bundles (discover.py)"]
-    B --> C["Check updates (fetch.py)"]
-    C --> D{Changes?}
+    A["Sync Workflow (ci.yml)"] --> B["Determine mode (default / daily / month)"]
+    B --> C["Discover bundles (discover.py)"]
+    C --> D["Check updates (fetch.py / fetch.py --image)"]
+    D --> E{Changes or Daily/Month?}
 
-    D -->|Yes| E["Parse bundles (parse.py) + Compile data (update.py)"]
-    D -->|No| F[Skip]
+    E -->|Yes| F["Parse bundles (parse.py) + Compile data (update.py)"]
+    E -->|No| G[Skip]
 
-    E --> G[Commit & push]
-    G --> H[Complete]
-    F --> H
+    F --> H{Mode != default?}
+    H -->|Yes| I["Generate changelog (whats_new.py)"]
+    H -->|No| J[Commit & push]
+
+    I --> J
+    J --> K{Changes & Mode != default?}
+    K -->|Yes| L["Send notifications (telegram.py) + Cleanup runs"]
+    K -->|No| M[Complete]
+    L --> M
+    G --> M
 ```
 
-### 2. Daily Workflow (`daily.yml` - Daily at 23:30 UTC)
+### 2. [Check Projects Workflow](../../actions/workflows/check-projects.yml) (Weekly on Sunday at 01:00 UTC)
+
+Audits existing README entries and explores newly published Morphe projects:
 
 ```mermaid
 flowchart TD
-    J["Daily Workflow (daily.yml)"] --> K["Discover bundles (discover.py)"]
-    K --> L["Check updates + images (fetch.py --image)"]
-    L --> M["Parse bundles (parse.py)"]
-    M --> N["Compile data (update.py --daily/--month)"]
-    N --> O["Generate changelog (whats_new.py)"]
-    O --> P[Commit & push]
-    P --> Q{Changes?}
+    A["Check Projects (check-projects.yml)"] --> B["Audit README (audit_readme.py)"]
+    B --> C["Find new projects (find_projects.py)"]
+    C --> D{New projects found?}
 
-    Q -->|Yes| R["Send notifications (telegram.py)"]
-    Q -->|No| S[Complete]
-    R --> S
+    D -->|Yes| E["Commit data/projects/new-projects.txt"]
+    D -->|No| F[Complete]
+    E --> F
 ```
 
 ## 🛠️ Usage / Scripts
@@ -111,12 +124,20 @@ Supported execution modes:
 
 ### `whats_new.py`
 
-Generates `web/public/whats-new.json` (rolling changelog for the website) and `whats-new.md` (used for GitHub release notes and Telegram notifications) by comparing current patch data against the previous release state in `data/history.json`.
+Generates `web/public/whats-new.json` (rolling changelog for the website) and `whats-new.md` (used for Telegram notifications) by comparing current patch data against the previous state in `data/history.json`.
 
 ### `telegram.py`
 
-Sends release notifications to a Telegram channel (`TG_CHAT`) using the Telegram Bot API (`TG_TOKEN`). Supports the following usage:
+Sends update notifications to a Telegram channel (`TG_CHAT`) using the Telegram Bot API (`TG_TOKEN`). Supports the following usage:
 
 - **Default**: Posts `whats-new.md` with an auto-generated title (`🔔 What's New (Month Day)`).
 - With `"Custom Title"`: Posts `whats-new.md` with the specified title.
 - With `"Custom Title" "path/to/file.md"`: Posts the specified markdown file with the specified title.
+
+### `audit_readme.py`
+
+Audits repositories in `data/projects/readme-repos.txt` and external links in `data/projects/readme-links.txt`, checking for broken links, deleted repositories, or archived projects to ensure all README references remain active and healthy.
+
+### `find_projects.py`
+
+Discovers and filters new standalone Morphe patch repositories across GitHub, verifies that each candidate contains valid patch bundles, and saves results to `data/projects/new-projects.txt` for review.

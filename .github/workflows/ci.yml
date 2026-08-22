@@ -1,9 +1,25 @@
-name: Sync Bundles
+name: Sync
 
 on:
   schedule:
-    - cron: "0 */2 * * *"
+    - cron: "0 2-22/2 * * *"
+    - cron: "0 0 2-31 * *"
+    - cron: "0 0 1 * *"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Select mode"
+        required: true
+        default: "default"
+        type: choice
+        options:
+          - default
+          - daily
+          - month
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -12,11 +28,30 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
         with:
           ref: main
+
+      - name: Determine execution mode
+        id: config
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            MODE="${{ inputs.mode }}"
+          elif [ "${{ github.event.schedule }}" = "0 0 1 * *" ]; then
+            MODE="month"
+          elif [ "${{ github.event.schedule }}" = "0 0 2-31 * *" ]; then
+            MODE="daily"
+          else
+            MODE="default"
+          fi
+          echo "Selected mode: $MODE"
+          echo "mode=$MODE" >> $GITHUB_OUTPUT
+          if [ "$MODE" != "default" ]; then
+            echo "image_flag=--image" >> $GITHUB_OUTPUT
+            echo "update_flag=--$MODE" >> $GITHUB_OUTPUT
+          fi
 
       - name: Fetch new bundles
         id: update
@@ -24,12 +59,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/discover.py
-          python scripts/fetch.py
+          python scripts/fetch.py ${{ steps.config.outputs.image_flag }}
+
           if [ -n "$(git status --porcelain)" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
+
           if [ -s scripts/bundle-parser/updated_files.txt ]; then
             echo "need_java=true" >> $GITHUB_OUTPUT
           else
@@ -45,21 +82,49 @@ jobs:
           cache: 'gradle'
 
       - name: Parse bundles and update data
-        if: steps.update.outputs.changed == 'true'
+        if: steps.update.outputs.changed == 'true' || steps.config.outputs.mode != 'default'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install -e scripts/
           python scripts/parse.py
-          python scripts/update.py
+          python scripts/update.py ${{ steps.config.outputs.update_flag }}
+
+          if [ "${{ steps.config.outputs.mode }}" != "default" ]; then
+            python scripts/whats_new.py
+          fi
 
       - name: Commit and push changes
-        if: steps.update.outputs.changed == 'true'
+        id: commit
         run: |
           git add data/ web/public/
           if ! git diff --staged --quiet; then
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git commit -m "Sync bundles"
+
+            if [ "${{ steps.config.outputs.mode }}" != "default" ]; then
+              TAG=$(date -d "-12 hours" +'%Y.%m.%d')
+              git commit -m "Update history (${TAG})"
+            else
+              git commit -m "Sync bundles"
+            fi
+
             git push origin HEAD:main
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Send Telegram notification
+        if: steps.config.outputs.mode != 'default' && steps.commit.outputs.changed == 'true' && hashFiles('whats-new.md') != ''
+        env:
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+        run: python scripts/telegram.py
+
+      - name: Cleanup old workflow runs
+        if: steps.config.outputs.mode != 'default'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh run list -L 200 --json databaseId -q '.[].databaseId' | tail -n +91 | xargs -IID gh api "repos/$GITHUB_REPOSITORY/actions/runs/ID" -X DELETE || :

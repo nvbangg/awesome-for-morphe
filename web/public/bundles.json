@@ -11605,7 +11605,7 @@
       "repoDescription": "A curated collection of Morphe patches that tune, unlock and declutter Android games. Skip ads, bypass license checks, hide root, force orientations and more, all from a single patcher.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/122532548?v=4&s=64",
       "stars": 234,
-      "updatedAt": 1787345230000,
+      "updatedAt": 1787428588000,
       "firstSeen": 1782996119000,
       "hotRank": 6,
       "appFirstSeen": {
@@ -12240,8 +12240,25 @@
           "default": false
         },
         {
+          "name": "Bypass Emulator Detection",
+          "description": "Spoofs android.os.Build identity (model, device, manufacturer, hardware, fingerprint, serial) and the ro.kernel.qemu property so apps and games that refuse to run, crash or match you with emulator lobbies cannot tell they are on an emulator. Does not hide root or a debugger connection.",
+          "default": false,
+          "options": [
+            {
+              "key": "emulatorProfile",
+              "title": "Device profile",
+              "description": "Which real device identity to imitate."
+            }
+          ]
+        },
+        {
           "name": "Classic Back Gesture",
           "description": "Sets android:enableOnBackInvokedCallback to false so apps that break under the Android 13+ predictive back system keep the classic back behavior",
+          "default": false
+        },
+        {
+          "name": "Disable Animations",
+          "description": "Forces Settings.Global window/transition/animator scale values to 0 so the app runs without UI animations (faster, less motion).",
           "default": false
         },
         {
@@ -12320,6 +12337,50 @@
           "default": false
         },
         {
+          "name": "Spoof Airplane Mode",
+          "description": "Forces Settings.Global AIRPLANE_MODE_ON reads to 0 (off) so apps that change behavior in airplane mode see a normal connection state.",
+          "default": false
+        },
+        {
+          "name": "Spoof Android ID",
+          "description": "Replaces Settings.Secure.ANDROID_ID reads with a fixed value so the patched app cannot be tracked across reinstalls or matched to a specific device.",
+          "default": false,
+          "options": [
+            {
+              "key": "spoofAndroidIdValue",
+              "title": "Android ID",
+              "description": "Hex string to report as ANDROID_ID (typically 16 characters)."
+            }
+          ]
+        },
+        {
+          "name": "Spoof Bluetooth Enabled",
+          "description": "Forces Settings.Global BLUETOOTH_ON reads to 0 (off) so apps that behave differently when Bluetooth is enabled cannot tell it is on.",
+          "default": false
+        },
+        {
+          "name": "Spoof Bluetooth Identity",
+          "description": "Reports chosen values from BluetoothAdapter.getName() and getAddress() so apps cannot read the real Bluetooth device name or MAC address.",
+          "default": false,
+          "options": [
+            {
+              "key": "spoofBluetoothName",
+              "title": "Bluetooth name",
+              "description": "Bluetooth device name to report."
+            },
+            {
+              "key": "spoofBluetoothAddress",
+              "title": "Bluetooth address",
+              "description": "Bluetooth MAC address to report (XX:XX:XX:XX:XX)."
+            }
+          ]
+        },
+        {
+          "name": "Spoof Build Extras",
+          "description": "Spoofs the remaining android.os.Build identity fields not covered by Bypass Emulator Detection (BOOTLOADER, RADIO, USER, HOST, getRadioVersion, and Build.VERSION RELEASE/INCREMENTAL/SECURITY_PATCH/CODENAME) with values from a real Pixel 6, so apps cannot fingerprint the device through these fields.",
+          "default": false
+        },
+        {
           "name": "Spoof CPU Architecture",
           "description": "Replaces reads of Build.CPU_ABI and Build.CPU_ABI2 with a custom value. Leave empty to keep the original",
           "default": false,
@@ -12332,6 +12393,48 @@
           ]
         },
         {
+          "name": "Spoof Data State",
+          "description": "Reports an active data connection from TelephonyManager.getDataState() (DATA_CONNECTED) and getDataActivity() (DATA_ACTIVITY_INOUT) so apps that change behavior based on mobile data state see a live connection.",
+          "default": false
+        },
+        {
+          "name": "Spoof Developer Options",
+          "description": "Forces Settings.Global/Settings.Secure getters for developer options, USB debugging and wireless debugging to report disabled (0), so apps that refuse to run or crash when they detect debugging cannot tell it is on.",
+          "default": false
+        },
+        {
+          "name": "Spoof Last Known Location",
+          "description": "Forces LocationManager.getLastKnownLocation() to return null so apps cannot read the device's last cached GPS/network position.",
+          "default": false
+        },
+        {
+          "name": "Spoof Locale",
+          "description": "Forces Locale.getDefault() to return a chosen BCP-47 language tag (e.g. en-US) so region- or language-locked apps see the locale you pick.",
+          "default": false,
+          "options": [
+            {
+              "key": "spoofLocaleTag",
+              "title": "Locale tag",
+              "description": "BCP-47 language tag to report (e.g. en-US, ja-JP, en-GB)."
+            }
+          ]
+        },
+        {
+          "name": "Spoof Location Provider",
+          "description": "Forces LocationManager.getBestProvider() to report \"gps\" and isProviderEnabled() to report true, so location-dependent apps believe a GPS provider is always available and enabled.",
+          "default": false
+        },
+        {
+          "name": "Spoof Phone Number",
+          "description": "Reports an empty string from TelephonyManager.getLine1Number() and getLine2Number() so apps cannot read the device's phone number.",
+          "default": false
+        },
+        {
+          "name": "Spoof Ringer Mode",
+          "description": "Forces AudioManager.getRingerMode() to report RINGER_MODE_NORMAL (2) so apps cannot detect silent or vibrate mode.",
+          "default": false
+        },
+        {
           "name": "Spoof SDK Level",
           "description": "Replaces every read of Build.VERSION.SDK_INT with a custom value. WARNING: setting a level lower than the device's real API level makes apps call missing APIs and crash; only use when you know the app checks it",
           "default": false,
@@ -12342,6 +12445,57 @@
               "description": "Reported API level (e.g. 29). Use -1 to keep the original."
             }
           ]
+        },
+        {
+          "name": "Spoof SIM Country",
+          "description": "Reports a chosen ISO country (e.g. us) from TelephonyManager.getSimCountryIso() and getNetworkCountryIso() to bypass region locks and geo-restrictions.",
+          "default": false,
+          "options": [
+            {
+              "key": "spoofSimCountryIso",
+              "title": "Country ISO",
+              "description": "Two-letter ISO 3166-1 country code to report (e.g. us, gb, jp)."
+            }
+          ]
+        },
+        {
+          "name": "Spoof SIM Operator",
+          "description": "Reports a chosen MCC+MNC from TelephonyManager.getSimOperator() and getNetworkOperator() so apps cannot read the real mobile network operator.",
+          "default": false,
+          "options": [
+            {
+              "key": "spoofSimOperatorMccMnc",
+              "title": "MCC+MNC",
+              "description": "Mobile Country Code + Mobile Network Code to report (e.g. 310260)."
+            }
+          ]
+        },
+        {
+          "name": "Spoof SIM Operator Name",
+          "description": "Reports a chosen carrier name from TelephonyManager.getSimOperatorName() and getNetworkOperatorName() so apps cannot read the real carrier display name.",
+          "default": false,
+          "options": [
+            {
+              "key": "spoofSimOperatorName",
+              "title": "Operator name",
+              "description": "Carrier display name to report (e.g. T-Mobile, Verizon)."
+            }
+          ]
+        },
+        {
+          "name": "Spoof Sensor List",
+          "description": "Forces SensorManager.getSensorList() to return an empty list so apps cannot enumerate the device's sensors for fingerprinting or capability checks.",
+          "default": false
+        },
+        {
+          "name": "Spoof Voice Mail",
+          "description": "Reports empty strings from TelephonyManager.getVoiceMailNumber() and getVoiceMailAlphaTag() so apps cannot read the voicemail number or tag.",
+          "default": false
+        },
+        {
+          "name": "Spoof WiFi Enabled",
+          "description": "Forces WifiManager.isWifiEnabled() to report true and getWifiState() to report WIFI_STATE_ENABLED (3) so apps cannot tell Wi-Fi is off.",
+          "default": false
         },
         {
           "name": "Treat Screen as On",
@@ -14405,7 +14559,7 @@
       "repoDescription": "🧩Patches for Morphe, made with AI",
       "avatarUrl": "https://avatars.githubusercontent.com/u/212266985?v=4&s=64",
       "stars": 25,
-      "updatedAt": 1787422919000,
+      "updatedAt": 1787424203000,
       "firstSeen": 1784103515000,
       "hotRank": 30,
       "appFirstSeen": {
@@ -14501,8 +14655,8 @@
           "default": false
         },
         {
-          "name": "Unlimited coins (real - patches coin deduction)",
-          "description": "Real unlimited coins patch. Searches libil2cpp.so for the centralized coin-deduction pattern (sub w8, w8, w21; ...; str w8, [xN, #0x18]) and NOPs the final str instruction in every match. The game will read Coins, subtract the price, but never write the deducted value back — so Coins never decreases. Pattern-based, so works across game versions 4.0.4 and 4.0.5 (il2cpp v29 and v31). Found 55 matches in the ORIGINAL 4.0.5 lib (verified by sha256). Each patch verified before applying.",
+          "name": "Unlimited coins (real - patches coin deduction + branch)",
+          "description": "Real unlimited coins patch. Searches libil2cpp.so for the coin-deduction pattern (sub w8, w8, w21; ...; str w8, [xN, #0x18]; b.le/b.lt) and NOPs BOTH the str instruction AND the conditional branch that follows it. Previous version only NOPed the str, but the b.le still canceled purchases because the subs instruction set the 'less than' flag.",
           "isPreRelease": true,
           "compatiblePackagesKey": 657
         },
@@ -18482,7 +18636,7 @@
       "repoDescription": "Morphe patches to remove ads, analytics, apk junk, debug info, duplicate graphics, unused languages, and use custom dpi☠️",
       "avatarUrl": "https://avatars.githubusercontent.com/u/139938337?v=4&s=64",
       "stars": 13,
-      "updatedAt": 1787423864000,
+      "updatedAt": 1787424609000,
       "firstSeen": 1786240845995,
       "hotRank": 17,
       "appFirstSeen": {
@@ -18633,6 +18787,11 @@
               "key": "redirectionIp",
               "title": "Redirection IP",
               "description": "The IP address to redirect blocked domains to."
+            },
+            {
+              "key": "customHostsFile",
+              "title": "Additional hosts file (optional)",
+              "description": "Optionally add your own hosts file to block extra domains on top of the bundled list. Select a file or paste the full file path. Leave empty to use only the bundled list."
             }
           ]
         },
@@ -20067,7 +20226,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/10971263?v=4&s=64",
       "stars": 7,
-      "updatedAt": 1787420600000,
+      "updatedAt": 1787429891000,
       "firstSeen": 1786962892864,
       "hotRank": 32,
       "appFirstSeen": {
@@ -20969,27 +21128,56 @@
     },
     {
       "source": "github",
-      "repo": "rhubarbshoelaces/morphe-patches",
-      "name": "Rhubarb Shoelaces",
-      "repoDescription": "",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/137114071?v=4&s=64",
-      "stars": 2,
-      "updatedAt": 1787336155000,
+      "repo": "homelander11/beetle-patches",
+      "name": "Beetle",
+      "repoDescription": "Custom Morphe patches for multiple Android apps",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/155063704?v=4&s=64",
+      "stars": 1,
+      "updatedAt": 1787418350000,
       "firstSeen": 1787424114510,
       "appFirstSeen": {
-        "com.rubenmayayo.reddit": 1787424113681,
-        "com.fivemobile.thescore": 1787424113681
+        "com.slowlyapp": 1787424113681
       },
       "patches": [
         {
-          "name": "Fix Random Subreddit Button",
-          "description": "Reroutes all Random buttons to pick from a custom pre-loaded list of thousands of subreddits.",
+          "name": "Slowly Pairip license check bypass",
+          "description": "Disables Pairip's client-side installer and license enforcement.",
           "compatiblePackagesKey": 813
         },
         {
-          "name": "Remove Ads",
-          "description": "Bypasses startup delays and collapses all ad containers.",
-          "compatiblePackagesKey": 814
+          "name": "Slowly avatar builder items",
+          "description": "Enables Avatar Builder items marked as subscription-only without changing coin-priced item checks.",
+          "compatiblePackagesKey": 813
+        },
+        {
+          "name": "Slowly extended Explore filters",
+          "description": "Enables verified client-side Explore filters, including Last online within 48 hours and New Members Only, and raises excluded-country and excluded-topic selection limits.",
+          "compatiblePackagesKey": 813
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "repo": "ImNoammm/morphe-spotify-patches",
+      "name": "Morphe Spotify",
+      "repoDescription": "Morphe patches for Spotify: a Morphe settings tile, and local files served from a Nextcloud/WebDAV folder.",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/268442138?v=4&s=64",
+      "stars": 2,
+      "updatedAt": 1787427551000,
+      "firstSeen": 1787424114510,
+      "appFirstSeen": {
+        "com.spotify.music": 1787424113681
+      },
+      "patches": [
+        {
+          "name": "Local files from a server",
+          "description": "Adds a Nextcloud or WebDAV folder as a source of local files. Its tracks appear under Local Files and are streamed from the server instead of being stored on the device.",
+          "compatiblePackagesKey": 628
+        },
+        {
+          "name": "Morphe settings",
+          "description": "Adds a Morphe entry to Spotify's settings, which is where the settings of the other Morphe patches live.",
+          "compatiblePackagesKey": 628
         }
       ]
     },
@@ -21009,82 +21197,33 @@
         {
           "name": "Enable card screenshot",
           "description": "Allows screenshots of cards by clearing the FLAG_SECURE flag.",
-          "compatiblePackagesKey": 815
+          "compatiblePackagesKey": 814
         }
       ]
     },
     {
       "source": "github",
-      "repo": "XTapped/morphe-patches",
-      "name": "XTapped",
-      "repoDescription": "Collection of my patches",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/30569190?v=4&s=64",
-      "stars": 1,
-      "updatedAt": 1787414264000,
-      "firstSeen": 1787424114510,
-      "appFirstSeen": {
-        "com.readdle.spark": 1787424113681
-      },
-      "patches": [
-        {
-          "name": "Unlock Premium",
-          "description": "Unlocks premium feature access.",
-          "compatiblePackagesKey": 816
-        }
-      ]
-    },
-    {
-      "source": "github",
-      "repo": "homelander11/beetle-patches",
-      "name": "Beetle",
-      "repoDescription": "Custom Morphe patches for multiple Android apps",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/155063704?v=4&s=64",
-      "stars": 1,
-      "updatedAt": 1787418350000,
-      "firstSeen": 1787424114510,
-      "appFirstSeen": {
-        "com.slowlyapp": 1787424113681
-      },
-      "patches": [
-        {
-          "name": "Slowly Pairip license check bypass",
-          "description": "Disables Pairip's client-side installer and license enforcement.",
-          "compatiblePackagesKey": 817
-        },
-        {
-          "name": "Slowly avatar builder items",
-          "description": "Enables Avatar Builder items marked as subscription-only without changing coin-priced item checks.",
-          "compatiblePackagesKey": 817
-        },
-        {
-          "name": "Slowly extended Explore filters",
-          "description": "Enables verified client-side Explore filters, including Last online within 48 hours and New Members Only, and raises excluded-country and excluded-topic selection limits.",
-          "compatiblePackagesKey": 817
-        }
-      ]
-    },
-    {
-      "source": "github",
-      "repo": "ImNoammm/morphe-spotify-patches",
-      "name": "Morphe Spotify",
-      "repoDescription": "Morphe patches for Spotify: a Morphe settings tile, and local files served from a Nextcloud/WebDAV folder.",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/268442138?v=4&s=64",
+      "repo": "rhubarbshoelaces/morphe-patches",
+      "name": "Rhubarb Shoelaces",
+      "repoDescription": "",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/137114071?v=4&s=64",
       "stars": 2,
-      "updatedAt": 1787423140000,
+      "updatedAt": 1787336155000,
       "firstSeen": 1787424114510,
       "appFirstSeen": {
-        "com.spotify.music": 1787424113681
+        "com.rubenmayayo.reddit": 1787424113681,
+        "com.fivemobile.thescore": 1787424113681
       },
       "patches": [
         {
-          "name": "Local files from a server",
-          "description": "Adds a Nextcloud or WebDAV folder as a source of local files. Its tracks appear under Local Files and are streamed from the server instead of being stored on the device.",
-          "compatiblePackagesKey": 628
+          "name": "Fix Random Subreddit Button",
+          "description": "Reroutes all Random buttons to pick from a custom pre-loaded list of thousands of subreddits.",
+          "compatiblePackagesKey": 815
         },
         {
-          "name": "Morphe settings",
-          "description": "Adds a Morphe entry to Spotify's settings, which is where the settings of the other Morphe patches live.",
-          "compatiblePackagesKey": 628
+          "name": "Remove Ads",
+          "description": "Bypasses startup delays and collapses all ad containers.",
+          "compatiblePackagesKey": 816
         }
       ]
     }
@@ -30745,20 +30884,13 @@
     ],
     [
       {
-        "packageName": "com.rubenmayayo.reddit",
+        "packageName": "com.slowlyapp",
         "targets": [
           {
-            "version": null
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.fivemobile.thescore",
-        "targets": [
+            "version": "9.5.6"
+          },
           {
-            "version": null
+            "version": "9.5.8"
           }
         ]
       }
@@ -30775,23 +30907,20 @@
     ],
     [
       {
-        "packageName": "com.readdle.spark",
+        "packageName": "com.rubenmayayo.reddit",
         "targets": [
           {
-            "version": "3.18.6"
+            "version": null
           }
         ]
       }
     ],
     [
       {
-        "packageName": "com.slowlyapp",
+        "packageName": "com.fivemobile.thescore",
         "targets": [
           {
-            "version": "9.5.6"
-          },
-          {
-            "version": "9.5.8"
+            "version": null
           }
         ]
       }
@@ -36775,14 +36904,6 @@
       "description": "Daily stats, news & scores.",
       "minInstalls": 10000000,
       "category": "Sports",
-      "firstSeen": 1787424114510
-    },
-    "com.readdle.spark": {
-      "name": "Spark Mail: AI Email, Calendar",
-      "iconUrl": "https://play-lh.googleusercontent.com/oI2CmA3c59LbW0_MWb3tS8C9ki8W2Ugd_nmZxSELKCXhbLmjF31UVu0o6DSc3ArzZHYKKjqUIRGIbjGbYlAkAg=s64-rw",
-      "description": "AI-powered mail and calendar app. Sync Gmail, AOL, Yahoo, Hotmail in one inbox.",
-      "minInstalls": 1000000,
-      "category": "Productivity",
       "firstSeen": 1787424114510
     }
   }

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.39.1-dev.1",
+  "version": "1.40.0-dev.1",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -476,6 +476,15 @@
             "Default": "0.0.0.0",
             "localhost": "127.0.0.1"
           }
+        },
+        {
+          "key": "customHostsFile",
+          "title": "Additional hosts file (optional)",
+          "description": "Optionally add your own hosts file to block extra domains on top of the bundled list. Select a file or paste the full file path. Leave empty to use only the bundled list.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
         }
       ]
     },

@@ -5749,7 +5749,7 @@
       "repoDescription": "This repository is a Morphe patch source for TikTok.  It continues the work from earlier community TikTok patch sets, including ReVanced, with the patches adapted for Morphe and tested against newer TikTok builds. The current target version is TikTok 46.2.3",
       "avatarUrl": "https://raw.githubusercontent.com/icysymmetra/tiktok-patches-for-morphe/main/patches-bundle.png",
       "stars": 265,
-      "updatedAt": 1787258026000,
+      "updatedAt": 1787435637000,
       "firstSeen": 1780130886000,
       "hotRank": 5,
       "appFirstSeen": {
@@ -20226,7 +20226,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/10971263?v=4&s=64",
       "stars": 7,
-      "updatedAt": 1787429891000,
+      "updatedAt": 1787434590000,
       "firstSeen": 1786962892864,
       "hotRank": 32,
       "appFirstSeen": {
@@ -20266,12 +20266,6 @@
         {
           "name": "Toolbar Buttons",
           "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists.",
-          "compatiblePackagesKey": 118
-        },
-        {
-          "name": "Toolbar Hotkeys",
-          "description": "Adds up to twelve customisable hotkey buttons to Gboard's toolbar, each typing text the user sets in Flexboard's settings.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 118
         },
         {
@@ -21163,7 +21157,7 @@
       "repoDescription": "Morphe patches for Spotify: a Morphe settings tile, and local files served from a Nextcloud/WebDAV folder.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/268442138?v=4&s=64",
       "stars": 2,
-      "updatedAt": 1787427551000,
+      "updatedAt": 1787431368000,
       "firstSeen": 1787424114510,
       "appFirstSeen": {
         "com.spotify.music": 1787424113681
@@ -21172,6 +21166,11 @@
         {
           "name": "Local files from a server",
           "description": "Adds a Nextcloud or WebDAV folder as a source of local files. Its tracks appear under Local Files and are streamed from the server instead of being stored on the device.",
+          "compatiblePackagesKey": 628
+        },
+        {
+          "name": "Beautiful lyrics",
+          "description": "Draws the full screen lyrics larger, with more space between the lines and a gradient behind them, closer to the desktop player. Turned on under Settings, Morphe.",
           "compatiblePackagesKey": 628
         },
         {
@@ -21224,6 +21223,26 @@
           "name": "Remove Ads",
           "description": "Bypasses startup delays and collapses all ad containers.",
           "compatiblePackagesKey": 816
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "repo": "XTapped/morphe-patches",
+      "name": "XTapped",
+      "repoDescription": "A collection of my patches",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/30569190?v=4&s=64",
+      "stars": 0,
+      "updatedAt": 1787434055000,
+      "firstSeen": 1787437810697,
+      "appFirstSeen": {
+        "com.robskie.tether": 1787437809989
+      },
+      "patches": [
+        {
+          "name": "Unlock Pro",
+          "description": "Unlocks Pro tethering and disables purchase actions in the shop.",
+          "compatiblePackagesKey": 817
         }
       ]
     }
@@ -30924,6 +30943,16 @@
           }
         ]
       }
+    ],
+    [
+      {
+        "packageName": "com.robskie.tether",
+        "targets": [
+          {
+            "version": "1.3.2"
+          }
+        ]
+      }
     ]
   ],
   "store": {
@@ -36905,6 +36934,14 @@
       "minInstalls": 10000000,
       "category": "Sports",
       "firstSeen": 1787424114510
+    },
+    "com.robskie.tether": {
+      "name": "Tetrd: USB Universal Tethering",
+      "iconUrl": "https://play-lh.googleusercontent.com/1DK27GmnnpANOuBrClscRhUUQyFyFz8td5L4xO-ar1Lqv7PCCKH_P1nG8-yJb756argPXUOmF8-KXUo2hMDz4w=s64-rw",
+      "description": "USB tethering and reverse tethering: share your internet from or to your device.",
+      "minInstalls": 100000,
+      "category": "Tools",
+      "firstSeen": 1787437810697
     }
   }
 }

@@ -168,7 +168,14 @@ def generate_markdown(json_diff: dict, app_metadata: dict) -> str:
 
     for display_name, bundle_data in json_diff.items():
         is_new_bundle = bundle_data.get("isNew", False)
-        apps_data = bundle_data.get("apps", {})
+        apps_data = {
+            pkg: data
+            for pkg, data in bundle_data.get("apps", {}).items()
+            if pkg != PACKAGE_UNIVERSAL
+        }
+        if not apps_data:
+            continue
+
         source = bundle_data.get("source", "github")
         repo = bundle_data.get("repo", "")
         bundle_key = f"{source}:{repo}" if repo else display_name
@@ -199,7 +206,7 @@ def generate_markdown(json_diff: dict, app_metadata: dict) -> str:
         return ""
 
     full_url = "https://awesome-morphe.vercel.app/#whats-new"
-    return f"✨ [_View full changelog_]({full_url})\n\n" + "\n\n".join(markdown_lines)
+    return f"✨ [_View full changelog_]({full_url})\n\n" + "\n".join(markdown_lines)
 
 
 def main() -> None:

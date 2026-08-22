@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.39.0-dev.5",
+  "version": "1.39.0",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -456,7 +456,7 @@
     },
     {
       "name": "Remove Ads Lite(Adobo)",
-      "description": "Based On (Adobo's Block Ads+Mobile Ads) Disables known ad SDK entry points and neutralizes ad/tracker/analytics Safer than Remove Ads for apps where you will be stuck in SplashActivityIt Is Weaker But Effective, Merged Adobo's Both Patches And Removed The Need Of Selecting A Host File Or Configuring AnythingIn Future It May Replace Remove Ads Patch If I Find No Problem.",
+      "description": "Based On (Adobo's Block Ads+Mobile Ads) Disables known ad SDK entry points and neutralizes ad/tracker/analytics Safer than Remove Ads for apps where you will be stuck in SplashActivity It Is Weaker But Effective, Merged Adobo's Both Patches And Removed The Need Of Selecting A Host File Or Configuring Anything In Future It May Replace Remove Ads Patch If I Find No Problem.",
       "default": false,
       "dependencies": [
         "BytecodePatch",
@@ -481,7 +481,7 @@
     },
     {
       "name": "Remove Ads Ultra Lite",
-      "description": "Call finish on ad activities, Forces known ad SDK activities (AdMob, AppLovin MAX, BIGO, InMobi, Liftoff/Vungle) to finish() immediately after super.onCreate(), before they inflate or render anything. Its Even Weaker Than Remove Ads Lite But Wont Make The App Crash Or Stuck(More Safer)",
+      "description": "Call finish on ad activities (AdMob, AppLovin MAX, BIGO, InMobi, Liftoff/Vungle) Its In Very Early Stage So Test And Provide FeedBack If You Still See Ads In Some App.",
       "default": false,
       "dependencies": [
         "ResourcePatch"

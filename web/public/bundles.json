@@ -18479,7 +18479,7 @@
       "repoDescription": "Morphe patches to remove ads, analytics, apk junk, debug info, duplicate graphics, unused languages, and use custom dpi☠️",
       "avatarUrl": "https://avatars.githubusercontent.com/u/139938337?v=4&s=64",
       "stars": 13,
-      "updatedAt": 1787385254000,
+      "updatedAt": 1787401359000,
       "firstSeen": 1786240845995,
       "hotRank": 19,
       "appFirstSeen": {
@@ -18536,7 +18536,6 @@
         {
           "name": "Custom DPI",
           "description": "Change any app's display size without touching your phone's system settings. Make it bigger if things look too small, or smaller to fit more on screen. You Need To Configure 100(No Change), 90(10% Smaller App Ui), 110(10% Bigger App Ui).",
-          "isPreRelease": true,
           "default": false,
           "options": [
             {
@@ -18624,8 +18623,7 @@
         },
         {
           "name": "Remove Ads Lite(Adobo)",
-          "description": "Based On (Adobo's Block Ads+Mobile Ads) Disables known ad SDK entry points and neutralizes ad/tracker/analytics Safer than Remove Ads for apps where you will be stuck in SplashActivityIt Is Weaker But Effective, Merged Adobo's Both Patches And Removed The Need Of Selecting A Host File Or Configuring AnythingIn Future It May Replace Remove Ads Patch If I Find No Problem.",
-          "isPreRelease": true,
+          "description": "Based On (Adobo's Block Ads+Mobile Ads) Disables known ad SDK entry points and neutralizes ad/tracker/analytics Safer than Remove Ads for apps where you will be stuck in SplashActivity It Is Weaker But Effective, Merged Adobo's Both Patches And Removed The Need Of Selecting A Host File Or Configuring Anything In Future It May Replace Remove Ads Patch If I Find No Problem.",
           "default": false,
           "options": [
             {
@@ -18637,8 +18635,7 @@
         },
         {
           "name": "Remove Ads Ultra Lite",
-          "description": "Call finish on ad activities, Forces known ad SDK activities (AdMob, AppLovin MAX, BIGO, InMobi, Liftoff/Vungle) to finish() immediately after super.onCreate(), before they inflate or render anything. Its Even Weaker Than Remove Ads Lite But Wont Make The App Crash Or Stuck(More Safer)",
-          "isPreRelease": true,
+          "description": "Call finish on ad activities (AdMob, AppLovin MAX, BIGO, InMobi, Liftoff/Vungle) Its In Very Early Stage So Test And Provide FeedBack If You Still See Ads In Some App.",
           "default": false
         },
         {
@@ -20161,7 +20158,7 @@
       "repoDescription": "Selectable RuStore privacy patches for Morphe with verified automatic releases.",
       "avatarUrl": "https://raw.githubusercontent.com/Freeman022026/rustore-privacy-patches/main/patches-bundle.png",
       "stars": 3,
-      "updatedAt": 1787386376000,
+      "updatedAt": 1787402371000,
       "firstSeen": 1787021898591,
       "appFirstSeen": {
         "ru.vk.store": 1787021898525
@@ -20174,12 +20171,12 @@
         },
         {
           "name": "Disable advertisements",
-          "description": "Removes ad providers and ad identifiers, returns an empty ad list, and keeps advertising consent disabled.",
+          "description": "Removes ad providers, sanitizes ad identifiers, returns an empty ad list, and keeps advertising consent disabled.",
           "compatiblePackagesKey": 786
         },
         {
           "name": "Disable analytics and trackers",
-          "description": "Disables AppMetrica, MyTracker, AltCraft, Radar, install referrer, metrics, and audited logging transports.",
+          "description": "Disables audited analytics transports and replaces the stable request device identifier.",
           "compatiblePackagesKey": 786
         },
         {
@@ -20203,8 +20200,18 @@
           "compatiblePackagesKey": 786
         },
         {
+          "name": "Exclude Google Play apps from update checks",
+          "description": "Excludes only apps whose recorded Android installer is Google Play from update requests.",
+          "compatiblePackagesKey": 786
+        },
+        {
           "name": "Hide gaming profile",
           "description": "Removes the gaming profile permission, hides both gaming buttons, and blocks navigation to the gaming profile.",
+          "compatiblePackagesKey": 786
+        },
+        {
+          "name": "Restore secure-session compatibility",
+          "description": "Adapts secure-session requests to RuStore 1.108 API changes for re-signed APKs.",
           "compatiblePackagesKey": 786
         },
         {

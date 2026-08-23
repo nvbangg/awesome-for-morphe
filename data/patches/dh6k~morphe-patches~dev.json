@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0-dev.1",
+  "version": "1.4.0-dev.2",
   "patches": [
     {
       "name": "Block Quetta bundled extension installation",
@@ -155,7 +155,7 @@
     },
     {
       "name": "Keep Helium Child Processes Alive",
-      "description": "Experimental: starts one main-process foreground service with a persistent low-priority notification and forces child STRONG binding plus IMPORTANT/STRONG priority updates. May increase RAM, battery, and process pressure; mitigates LMK kills only. No guarantee, force-stop bypass, watchdog, reload, or crash recovery.",
+      "description": "Experimental version-unpinned structural patch: starts one main-process foreground service with persistent low-priority notification and forces child STRONG binding plus IMPORTANT/STRONG priority updates. May increase RAM, battery, and process pressure; mitigates LMK kills only. Ambiguous fingerprints fail safely; no guarantee, force-stop bypass, watchdog, reload, or crash recovery.",
       "default": false,
       "dependencies": [
         "ResourcePatch"
@@ -170,7 +170,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "152.0.7977.54",
+              "version": null,
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": null,

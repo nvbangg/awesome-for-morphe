@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.39.1",
+  "version": "1.40.0",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -64,6 +64,26 @@
       ]
     },
     {
+      "name": "Change Display Size",
+      "description": "Change any app's display size without touching your phone's system settings. Make it bigger if things look too small, or smaller to fit more on screen. You Need To Configure 100(No Change), 90(10% Smaller App Ui), 110(10% Bigger App Ui).",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "dpi",
+          "title": "Display scale",
+          "description": "Scales this app's display relative to the device's own setting. 100% = no change, 150% = 1.5x larger, 50% = half size. Range 25-300%.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "100",
+          "values": null
+        }
+      ]
+    },
+    {
       "name": "Clean main UI",
       "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
       "default": false,
@@ -88,26 +108,6 @@
         }
       ],
       "options": []
-    },
-    {
-      "name": "Custom DPI",
-      "description": "Change any app's display size without touching your phone's system settings. Make it bigger if things look too small, or smaller to fit more on screen. You Need To Configure 100(No Change), 90(10% Smaller App Ui), 110(10% Bigger App Ui).",
-      "default": false,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": null,
-      "options": [
-        {
-          "key": "dpi",
-          "title": "Display scale",
-          "description": "Scales this app's display relative to the device's own setting. 100% = no change, 150% = 1.5x larger, 50% = half size. Range 25-300%.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "100",
-          "values": null
-        }
-      ]
     },
     {
       "name": "Disable Notification Defaults",
@@ -445,7 +445,7 @@
     },
     {
       "name": "Remove Ads",
-      "description": "Stubs known ad SDK entry points and poisons ad-network URL strings across the whole app. Async load calls are redirected into the callback's own failure method instead of being deleted, Currently In Some Apps Makes Them Stuck In SplashActivity Due To Their Custom Check Of Ads Load But It Is Superior.",
+      "description": "Removes Ads And Hides Ads From Apps Layout. Cleans Apps Code From Ads Junk Currently In Some Apps It Makes Them Stuck In SplashActivity Due To Their Custom Check Of Ads Load But It Is Superior.",
       "default": false,
       "dependencies": [
         "ResourcePatch",
@@ -456,7 +456,7 @@
     },
     {
       "name": "Remove Ads Lite(Adobo)",
-      "description": "Based On (Adobo's Block Ads+Mobile Ads) Disables known ad SDK entry points and neutralizes ad/tracker/analytics Safer than Remove Ads for apps where you will be stuck in SplashActivity It Is Weaker But Effective, Merged Adobo's Both Patches And Removed The Need Of Selecting A Host File Or Configuring Anything In Future It May Replace Remove Ads Patch If I Find No Problem.",
+      "description": "Based On (Adobo's Block Ads+Mobile Ads) It Should Work Where Remove Ads Patch Caused Problem Safer than Remove Ads for apps where you will be stuck in SplashActivity It Is Weaker But Effective, Merged Adobo's Both Patches And Removed The Need Of Selecting A Host File Or Configuring Anything In Future It May Replace Remove Ads Patch If I Find No Problem.",
       "default": false,
       "dependencies": [
         "BytecodePatch",
@@ -476,12 +476,21 @@
             "Default": "0.0.0.0",
             "localhost": "127.0.0.1"
           }
+        },
+        {
+          "key": "customHostsFile",
+          "title": "Additional hosts file (optional)",
+          "description": "Optionally add your own hosts file to block extra domains on top of the bundled list. Select a file or paste the full file path. Leave empty to use only the bundled list.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
         }
       ]
     },
     {
       "name": "Remove Ads Ultra Lite",
-      "description": "Call finish on ad activities (AdMob, AppLovin MAX, BIGO, InMobi, Liftoff/Vungle) Its In Very Early Stage So Test And Provide FeedBack If You Still See Ads In Some App.",
+      "description": "Call finish on ad activities (AdMob, AppLovin MAX, BIGO, InMobi, Liftoff/Vungle, Meta Audience Network, Unity Ads, Mintegral, Pangle). Use Where Remove Ads Lite (Adobo) Caused Problem. Its In Very Early Stage So Test And Provide FeedBack If You Still See Ads In Some App.",
       "default": false,
       "dependencies": [
         "ResourcePatch"

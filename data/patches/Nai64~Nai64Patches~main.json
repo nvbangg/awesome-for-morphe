@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.24.0",
+  "version": "1.25.1",
   "patches": [
     {
       "name": "Ads Free Rewards",
@@ -44,6 +44,15 @@
           "key": "instantReward",
           "title": "Instant reward",
           "description": "Claim the reward immediately without showing an ad (applies to the current patch version)",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "fakeAdAvailability",
+          "title": "Fake ad availability",
+          "description": "Force ad SDKs to report ads as available so the reward flow triggers (needed when no real ad can fill)",
           "required": false,
           "type": "kotlin.Boolean",
           "default": true,
@@ -773,7 +782,7 @@
     },
     {
       "name": "Spoof Play Integrity",
-      "description": "Force Play Integrity checks to pass",
+      "description": "Forces Google Play Integrity attestation to pass, so the app runs on modified or unsupported devices instead of being blocked.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -781,7 +790,7 @@
     },
     {
       "name": "Bypass License Verification",
-      "description": "Always pass Google Play license checks",
+      "description": "Forces Google Play's license (LVL) check to pass, so the app does not refuse to run on unlicensed or modified builds.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -789,7 +798,7 @@
     },
     {
       "name": "Bypass Google Play Services Check",
-      "description": "Always report Google Play Services as available",
+      "description": "Tricks the app into thinking Google Play Services is installed and working, so it does not disable features that depend on it.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -797,7 +806,7 @@
     },
     {
       "name": "Pairip Bypass (Experimental)",
-      "description": "Bypass Pairip license protection",
+      "description": "Pairip is anti-tamper / license protection used by some games. This bypasses its checks so patched or modified builds run instead of being blocked.",
       "default": false,
       "dependencies": [
         "ResourcePatch"
@@ -807,15 +816,7 @@
     },
     {
       "name": "Unlock RevenueCat Entitlements",
-      "description": "Unlock all RevenueCat entitlements",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "Unlock All IAPs (Unity IAP)",
-      "description": "Unlock all in-app purchases in Unity IAP games (Experimental)",
+      "description": "RevenueCat powers in-app subscriptions and 'pro' unlocks. This marks every entitlement (premium, ad-free, etc.) as active, so paid features are available without purchasing.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -1050,7 +1051,7 @@
     },
     {
       "name": "Bypass Emulator Detection",
-      "description": "Spoofs android.os.Build identity (model, device, manufacturer, hardware, fingerprint, serial) and the ro.kernel.qemu property so apps and games that refuse to run, crash or match you with emulator lobbies cannot tell they are on an emulator. Does not hide root or a debugger connection.",
+      "description": "Spoofs android.os.Build identity (model, device, manufacturer, hardware, fingerprint, serial, user, host, radio, bootloader) and Build.getRadioVersion(), TelephonyManager.getPhoneType(), and telltale system properties (ro.kernel.qemu, ro.hardware, ro.product.model/device, ro.bootloader, ro.radio) so apps and games that refuse to run, crash or match you with emulator lobbies cannot tell they are on an emulator. Does not hide root or a debugger connection.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -1444,6 +1445,24 @@
       "dependencies": [],
       "compatiblePackages": null,
       "options": []
+    },
+    {
+      "name": "Spoof Target SDK",
+      "description": "Sets the app's targetSdkVersion in the manifest to a chosen value (default 34) so apps that target a too-low SDK can be installed on newer Android.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "targetSdkVersion",
+          "title": "Target SDK version",
+          "description": "Target SDK level to report in the manifest. Android blocks installing apps targeting below a minimum level on newer versions.",
+          "required": false,
+          "type": "kotlin.Int",
+          "default": 34,
+          "values": null
+        }
+      ]
     },
     {
       "name": "Spoof Voice Mail",

@@ -11605,7 +11605,7 @@
       "repoDescription": "A curated collection of Morphe patches that tune, unlock and declutter Android games. Skip ads, bypass license checks, hide root, force orientations and more, all from a single patcher.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/122532548?v=4&s=64",
       "stars": 294,
-      "updatedAt": 1787428588000,
+      "updatedAt": 1787499786000,
       "firstSeen": 1782996119000,
       "appFirstSeen": {
         "__universal__": 1785178161626
@@ -11630,6 +11630,11 @@
               "key": "instantReward",
               "title": "Instant reward",
               "description": "Claim the reward immediately without showing an ad (applies to the current patch version)"
+            },
+            {
+              "key": "fakeAdAvailability",
+              "title": "Fake ad availability",
+              "description": "Force ad SDKs to report ads as available so the reward flow triggers (needed when no real ad can fill)"
             }
           ]
         },
@@ -12076,32 +12081,27 @@
         },
         {
           "name": "Spoof Play Integrity",
-          "description": "Force Play Integrity checks to pass",
+          "description": "Forces Google Play Integrity attestation to pass, so the app runs on modified or unsupported devices instead of being blocked.",
           "default": false
         },
         {
           "name": "Bypass License Verification",
-          "description": "Always pass Google Play license checks",
+          "description": "Forces Google Play's license (LVL) check to pass, so the app does not refuse to run on unlicensed or modified builds.",
           "default": false
         },
         {
           "name": "Bypass Google Play Services Check",
-          "description": "Always report Google Play Services as available",
+          "description": "Tricks the app into thinking Google Play Services is installed and working, so it does not disable features that depend on it.",
           "default": false
         },
         {
           "name": "Pairip Bypass (Experimental)",
-          "description": "Bypass Pairip license protection",
+          "description": "Pairip is anti-tamper / license protection used by some games. This bypasses its checks so patched or modified builds run instead of being blocked.",
           "default": false
         },
         {
           "name": "Unlock RevenueCat Entitlements",
-          "description": "Unlock all RevenueCat entitlements",
-          "default": false
-        },
-        {
-          "name": "Unlock All IAPs (Unity IAP)",
-          "description": "Unlock all in-app purchases in Unity IAP games (Experimental)",
+          "description": "RevenueCat powers in-app subscriptions and 'pro' unlocks. This marks every entitlement (premium, ad-free, etc.) as active, so paid features are available without purchasing.",
           "default": false
         },
         {
@@ -12240,7 +12240,7 @@
         },
         {
           "name": "Bypass Emulator Detection",
-          "description": "Spoofs android.os.Build identity (model, device, manufacturer, hardware, fingerprint, serial) and the ro.kernel.qemu property so apps and games that refuse to run, crash or match you with emulator lobbies cannot tell they are on an emulator. Does not hide root or a debugger connection.",
+          "description": "Spoofs android.os.Build identity (model, device, manufacturer, hardware, fingerprint, serial, user, host, radio, bootloader) and Build.getRadioVersion(), TelephonyManager.getPhoneType(), and telltale system properties (ro.kernel.qemu, ro.hardware, ro.product.model/device, ro.bootloader, ro.radio) so apps and games that refuse to run, crash or match you with emulator lobbies cannot tell they are on an emulator. Does not hide root or a debugger connection.",
           "default": false,
           "options": [
             {
@@ -12485,6 +12485,18 @@
           "name": "Spoof Sensor List",
           "description": "Forces SensorManager.getSensorList() to return an empty list so apps cannot enumerate the device's sensors for fingerprinting or capability checks.",
           "default": false
+        },
+        {
+          "name": "Spoof Target SDK",
+          "description": "Sets the app's targetSdkVersion in the manifest to a chosen value (default 34) so apps that target a too-low SDK can be installed on newer Android.",
+          "default": false,
+          "options": [
+            {
+              "key": "targetSdkVersion",
+              "title": "Target SDK version",
+              "description": "Target SDK level to report in the manifest. Android blocks installing apps targeting below a minimum level on newer versions."
+            }
+          ]
         },
         {
           "name": "Spoof Voice Mail",
@@ -17169,7 +17181,7 @@
       "repoDescription": "morphe patches for personal use",
       "avatarUrl": "https://avatars.githubusercontent.com/u/87336618?v=4&s=64",
       "stars": 38,
-      "updatedAt": 1787487754000,
+      "updatedAt": 1787495591000,
       "firstSeen": 1785036993248,
       "appFirstSeen": {
         "com.brave.browser_nightly": 1785036993248,
@@ -17222,7 +17234,7 @@
         },
         {
           "name": "Keep Helium Child Processes Alive",
-          "description": "Experimental: starts one main-process foreground service with a persistent low-priority notification and forces child STRONG binding plus IMPORTANT/STRONG priority updates. May increase RAM, battery, and process pressure; mitigates LMK kills only. No guarantee, force-stop bypass, watchdog, reload, or crash recovery.",
+          "description": "Experimental version-unpinned structural patch: starts one main-process foreground service with persistent low-priority notification and forces child STRONG binding plus IMPORTANT/STRONG priority updates. May increase RAM, battery, and process pressure; mitigates LMK kills only. Ambiguous fingerprints fail safely; no guarantee, force-stop bypass, watchdog, reload, or crash recovery.",
           "default": false,
           "compatiblePackagesKey": 708
         }
@@ -18699,7 +18711,7 @@
       "repoDescription": "Morphe patches to remove ads, analytics, apk junk, debug info, duplicate graphics, unused languages, and use custom dpi☠️",
       "avatarUrl": "https://avatars.githubusercontent.com/u/139938337?v=4&s=64",
       "stars": 13,
-      "updatedAt": 1787483955000,
+      "updatedAt": 1787500782000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
         "com.snaptube.premium": 1786360281622,
@@ -18714,7 +18726,7 @@
       "patches": [
         {
           "name": "APK Junk Cleanup",
-          "description": "Removes build artifacts and metadata that bloat the APK: Play Services / Firebase version files, protobuf descriptors, debug probes, kotlin builtins, META-INF subfolder clutter, and misc junk. Safe — only removes files with no runtime purpose.",
+          "description": "Removes junk and useless files with no runtime purpose inside apk.",
           "default": false,
           "options": [
             {
@@ -18747,13 +18759,7 @@
           ]
         },
         {
-          "name": "Clean main UI",
-          "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
-          "default": false,
-          "compatiblePackagesKey": 772
-        },
-        {
-          "name": "Custom DPI",
+          "name": "Change Display Size",
           "description": "Change any app's display size without touching your phone's system settings. Make it bigger if things look too small, or smaller to fit more on screen. You Need To Configure 100(No Change), 90(10% Smaller App Ui), 110(10% Bigger App Ui).",
           "default": false,
           "options": [
@@ -18765,10 +18771,24 @@
           ]
         },
         {
-          "name": "Disable Notification Defaults",
-          "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default.",
+          "name": "Clean SnapTube Settings Page",
+          "description": "Removes the Download tools and Phone clean categories, and their sub-items, from Settings.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 772
+        },
+        {
+          "name": "Clean main UI",
+          "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
           "default": false,
           "compatiblePackagesKey": 773
+        },
+        {
+          "name": "Disable Annoying Snaptube Notifications",
+          "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 772
         },
         {
           "name": "Disable ad dialog when reopening app",
@@ -18807,12 +18827,6 @@
           "compatiblePackagesKey": 776
         },
         {
-          "name": "Hide Settings Items",
-          "description": "Hides the Download tools and Phone clean categories, and their sub-items, from Settings.",
-          "default": false,
-          "compatiblePackagesKey": 773
-        },
-        {
           "name": "Hide local tiles banner",
           "description": "Collapses the local device tiles banner.",
           "default": false,
@@ -18841,8 +18855,9 @@
           "default": false
         },
         {
-          "name": "Remove Ads Lite(Adobo)",
-          "description": "Based On (Adobo's Block Ads+Mobile Ads) It Should Work Where Remove Ads Patch Caused Problem Safer than Remove Ads for apps where you will be stuck in SplashActivity It Is Weaker But Effective, Merged Adobo's Both Patches And Removed The Need Of Selecting A Host File Or Configuring Anything In Future It May Replace Remove Ads Patch If I Find No Problem.",
+          "name": "Remove Ads Lite (Adobo)",
+          "description": "Based On (Adobo's Block Ads+Mobile Ads) Use When Remove Ads Patch Caused Problem. Safer than Remove Ads for apps where you will be stuck in SplashActivity. It Is Weaker But Effective, No Need To Select A Host File Or Configure Anything. In Future It May Replace Remove Ads Patch If I Find No Problems.",
+          "isPreRelease": true,
           "default": false,
           "options": [
             {
@@ -18900,7 +18915,7 @@
           "name": "Remove Watch Ad To Download",
           "description": "Removes the requirement to watch a rewarded ad before a download starts.",
           "default": false,
-          "compatiblePackagesKey": 773
+          "compatiblePackagesKey": 772
         },
         {
           "name": "Skip splash and language screens",
@@ -18918,7 +18933,7 @@
           "name": "Skip splash screen",
           "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
           "default": false,
-          "compatiblePackagesKey": 772
+          "compatiblePackagesKey": 773
         },
         {
           "name": "Skip welcome screen",
@@ -18930,7 +18945,7 @@
           "name": "Speed up splash screen",
           "description": "Enters the main activity directly after the splash permission check instead of delaying for the additional external-storage check.",
           "default": false,
-          "compatiblePackagesKey": 772
+          "compatiblePackagesKey": 773
         }
       ],
       "hotRank": 17
@@ -29393,7 +29408,7 @@
         "packageName": "io.github.jqssun.helium",
         "targets": [
           {
-            "version": "152.0.7977.54",
+            "version": null,
             "isExperimental": true
           }
         ]
@@ -30566,20 +30581,20 @@
     ],
     [
       {
-        "packageName": "cn.xender",
+        "packageName": "com.snaptube.premium",
         "targets": [
           {
-            "version": "18.8.0.prime"
+            "version": "7.64.0.76450210"
           }
         ]
       }
     ],
     [
       {
-        "packageName": "com.snaptube.premium",
+        "packageName": "cn.xender",
         "targets": [
           {
-            "version": "7.64.0.76450210"
+            "version": "18.8.0.prime"
           }
         ]
       }

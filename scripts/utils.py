@@ -125,7 +125,7 @@ def parse_timestamp(timestamp: Any) -> int:
 
 
 _REPO_URL_RE = re.compile(
-    r"(github|gitlab)\.com/([^/#?]+)/([^/#?]+?)(?:\.git)?(?:[/#?]|$)", re.IGNORECASE
+    r"(github|gitlab)\.com[:/]([^/#?]+)/([^/#?]+?)(?:\.git)?(?:[/#?]|$)", re.IGNORECASE
 )
 
 
@@ -136,12 +136,15 @@ def parse_repo_url(repo_url: str) -> tuple[str, str] | tuple[None, None]:
     return None, None
 
 
-def build_api_url(source: str, repo: str) -> str | None:
-    if source == "github":
-        return f"https://api.github.com/repos/{repo}"
-    if source == "gitlab":
-        encoded_repo = urllib.parse.quote(repo, safe="")
-        return f"https://gitlab.com/api/v4/projects/{encoded_repo}"
+def build_repo_url(source: str, repo: str, mode: str = "repo") -> str | None:
+    if mode == "repo":
+        return f"https://{source}.com/{repo}"
+    if mode == "api":
+        if source == "github":
+            return f"https://api.github.com/repos/{repo}"
+        if source == "gitlab":
+            encoded_repo = urllib.parse.quote(repo, safe="")
+            return f"https://gitlab.com/api/v4/projects/{encoded_repo}"
     return None
 
 

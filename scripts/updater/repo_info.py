@@ -7,8 +7,8 @@ from pathlib import Path
 
 from updater import normalize_image_url
 from utils import (
-    build_api_url,
     build_raw_url,
+    build_repo_url,
     fetch,
     load_json,
     parse_repo_url,
@@ -28,7 +28,7 @@ def fetch_repo_details(repo_url: str) -> dict:
     if not source or not repo:
         return {}
 
-    api_url = build_api_url(source, repo)
+    api_url = build_repo_url(source, repo, mode="api")
     if not api_url:
         return {}
 
@@ -79,8 +79,7 @@ def process(
         repo = source_entry.get("repo")
         if not source or not repo:
             continue
-        repo_url = f"https://{source}.com/{repo}"
-        tasks[base_key] = repo_url
+        tasks[base_key] = build_repo_url(source, repo)
 
     if not tasks:
         return

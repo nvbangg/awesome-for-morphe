@@ -3,7 +3,7 @@
 from pathlib import Path
 
 from providers import export_provider
-from utils import fetch, save_json
+from utils import build_repo_url, fetch, save_json
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
@@ -28,9 +28,9 @@ def discover() -> str | None:
         return warning_message
 
     discovered = {
-        f"{source.lower()}:{repo}": {}
+        url: {}
         for bundle in data.get("bundles", [])
-        if (source := bundle.get("source")) and (repo := bundle.get("repo"))
+        if (url := build_repo_url(bundle.get("source"), bundle.get("repo")))
     }
     return export_provider("official", discovered, OUTPUT_PATH)
 

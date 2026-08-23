@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 from providers import export_provider
-from utils import fetch
+from utils import build_repo_url, fetch
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 README_URL = (
@@ -23,9 +23,10 @@ def discover() -> str | None:
         return warning_message
 
     discovered = {
-        f"{match.group(1)}:{parts[0].strip()}/{parts[1].strip()}": {}
+        url: {}
         for match in _REPO_RE.finditer(content)
-        if len(parts := match.group(2).strip().split("/", 1)) == 2
+        if (url := build_repo_url(match.group(1), match.group(2).strip()))
+        and "/" in match.group(2)
     }
 
     return export_provider("morphe-archive", discovered, OUTPUT_PATH)

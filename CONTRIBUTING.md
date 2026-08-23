@@ -96,8 +96,8 @@ Manually add or remove target repositories in [`data/discover/custom.json`](data
 
 ```json
 {
-  "github:owner/repo": {},
-  "gitlab:owner/repo-to-exclude": {
+  "https://github.com/owner/repo": {},
+  "https://gitlab.com/owner/repo-to-exclude": {
     "enabled": false
   }
 }

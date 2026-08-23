@@ -5,7 +5,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from updater.repo_info import fetch_repo_details
-from utils import append_step_summary, check_link_status, load_lines, parse_repo_url
+from utils import (
+    append_step_summary,
+    build_repo_url,
+    check_link_status,
+    load_lines,
+    parse_repo_url,
+)
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 PROJECTS_DIR = ROOT_DIR / "data" / "projects"
@@ -18,36 +24,37 @@ def audit_repos_and_links() -> dict[str, list[str]]:
     repo_urls = load_lines(README_REPOS_PATH)
     link_urls = load_lines(README_LINKS_PATH)
     print(
-        f"Auditing {len(repo_urls)} repositories and {len(link_urls)} external links..."
+        f"Auditing {len(repo_urls)} repositories and {len(link_urls)} links from README..."
     )
 
     errors: dict[str, list[str]] = {"unavailable": [], "warnings": [], "other": []}
 
-    with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
-        future_to_url = {
-            executor.submit(fetch_repo_details, url): url for url in repo_urls
-        }
-        for future in as_completed(future_to_url):
-            url = future_to_url[future]
-            try:
-                details = future.result()
-            except Exception as error:
-                details = {"error": str(error)}
+    if repo_urls:
+        with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
+            future_to_url = {
+                executor.submit(fetch_repo_details, url): url for url in repo_urls
+            }
+            for future in as_completed(future_to_url):
+                url = future_to_url[future]
+                try:
+                    details = future.result()
+                except Exception as error:
+                    details = {"error": str(error)}
 
-            if details.get("is_404"):
-                errors["unavailable"].append(f"{url}: Not Found (404)")
-            elif details.get("is_451"):
-                errors["unavailable"].append(f"{url}: DMCA Takedown (451)")
-            elif details.get("is_archived"):
-                errors["warnings"].append(f"{url}: Archived")
-            elif full_name := details.get("full_name"):
-                source, original_repo = parse_repo_url(url)
-                if original_repo and full_name.lower() != original_repo.lower():
-                    errors["warnings"].append(
-                        f"{url} -> https://{source}.com/{full_name}"
-                    )
-            elif details.get("error"):
-                errors["other"].append(f"{url}: {details['error']}")
+                if details.get("is_404"):
+                    errors["unavailable"].append(f"{url}: Not Found (404)")
+                elif details.get("is_451"):
+                    errors["unavailable"].append(f"{url}: DMCA Takedown (451)")
+                elif details.get("is_archived"):
+                    errors["warnings"].append(f"{url}: Archived")
+                elif full_name := details.get("full_name"):
+                    source, original_repo = parse_repo_url(url)
+                    if original_repo and full_name.lower() != original_repo.lower():
+                        errors["warnings"].append(
+                            f"{url} -> {build_repo_url(source, full_name)}"
+                        )
+                elif details.get("error"):
+                    errors["other"].append(f"{url}: {details['error']}")
 
     if link_urls:
         with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:

@@ -5,7 +5,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from providers import jman, morphe_archive, official
-from utils import append_step_summary, load_json, save_json
+from utils import append_step_summary, load_json, parse_repo_url, save_json
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT_DIR / "data"
@@ -65,10 +65,12 @@ def _merge(provider_files: list[tuple[str, dict]]) -> dict:
 
 def _sync_repos(merged: dict, existing_repos: dict) -> dict:
     new_repos_data = {}
-    for canonical_key, entry in sorted(
-        merged.items(), key=lambda item: item[0].lower()
-    ):
+    for repo_url, entry in sorted(merged.items(), key=lambda item: item[0].lower()):
         if entry.get("enabled") is not False:
+            source, repo = parse_repo_url(repo_url)
+            if not source or not repo:
+                continue
+            canonical_key = f"{source}:{repo}"
             old_entry = existing_repos.get(canonical_key, {})
             new_repos_data[canonical_key] = {
                 field: old_entry[field]

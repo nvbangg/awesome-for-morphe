@@ -1,11 +1,10 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from providers import export_provider
-from utils import fetch, load_json, save_json
+from utils import build_repo_url, fetch, load_json, parse_repo_url, save_json
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DISCOVER_DIR = ROOT_DIR / "data" / "discover"
@@ -16,7 +15,6 @@ RAW_BASE = (
 OUTPUT_PATH = DISCOVER_DIR / "jman.json"
 SNAPSHOT_PATH = DISCOVER_DIR / "snapshot.json"
 CONCURRENCY = 8
-_REPO_RE = re.compile(r"(github|gitlab)\.com/([^/]+)/([^/\s\"']+)")
 
 
 def _extract_canonical_key(bundle_json: dict) -> str | None:
@@ -24,11 +22,8 @@ def _extract_canonical_key(bundle_json: dict) -> str | None:
     if not (isinstance(download_url, str) and download_url.lower().endswith(".mpp")):
         return None
 
-    match = _REPO_RE.search(download_url)
-    if match:
-        platform, owner, repo = match.groups()
-        return f"{platform}:{owner}/{repo}"
-    return None
+    source, repo = parse_repo_url(download_url)
+    return build_repo_url(source, repo) if source and repo else None
 
 
 def _process_bundle(

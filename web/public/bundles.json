@@ -4267,7 +4267,7 @@
       "repoDescription": "Morphe patches for Gboard with practical upgrades for global users and Taiwan-focused enhancements.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/21318815?v=4&s=64",
       "stars": 344,
-      "updatedAt": 1787379664000,
+      "updatedAt": 1787447117000,
       "firstSeen": 1775517803000,
       "hotRank": 2,
       "appFirstSeen": {
@@ -16953,7 +16953,7 @@
       "repoDescription": "Andrew's Patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/47963624?v=4&s=64",
       "stars": 46,
-      "updatedAt": 1787415981000,
+      "updatedAt": 1787453161000,
       "firstSeen": 1785036993248,
       "hotRank": 9,
       "appFirstSeen": {
@@ -20598,7 +20598,7 @@
       "repoDescription": "Mix Patches",
       "avatarUrl": "https://gitlab.com/uploads/-/system/user/avatar/41449487/avatar.png?width=64",
       "stars": 1,
-      "updatedAt": 1787105393000,
+      "updatedAt": 1787450943000,
       "firstSeen": 1787114443138,
       "hotRank": 81,
       "appFirstSeen": {
@@ -20621,6 +20621,17 @@
         {
           "name": "Fix Other discussions",
           "description": "Fixes the 'Other discussions' tab showing '403 error loading page' by updating the API endpoint.",
+          "compatiblePackagesKey": 8
+        },
+        {
+          "name": "Fix Redgifs API",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 8
+        },
+        {
+          "name": "Open Redgifs links in WebView on failure",
+          "description": "Falls back to Sync's in-app WebView when native Redgifs playback fails.",
+          "isPreRelease": true,
           "compatiblePackagesKey": 8
         },
         {
@@ -21121,6 +21132,132 @@
     },
     {
       "source": "github",
+      "repo": "homelander11/beetle-patches",
+      "name": "Beetle",
+      "repoDescription": "Custom Morphe patches for multiple Android apps",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/155063704?v=4&s=64",
+      "stars": 1,
+      "updatedAt": 1787418350000,
+      "firstSeen": 1787424114510,
+      "appFirstSeen": {
+        "com.slowlyapp": 1787424113681
+      },
+      "patches": [
+        {
+          "name": "Slowly Pairip license check bypass",
+          "description": "Disables Pairip's client-side installer and license enforcement.",
+          "compatiblePackagesKey": 813
+        },
+        {
+          "name": "Slowly avatar builder items",
+          "description": "Enables Avatar Builder items marked as subscription-only without changing coin-priced item checks.",
+          "compatiblePackagesKey": 813
+        },
+        {
+          "name": "Slowly extended Explore filters",
+          "description": "Enables verified client-side Explore filters, including Last online within 48 hours and New Members Only, and raises excluded-country and excluded-topic selection limits.",
+          "compatiblePackagesKey": 813
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "repo": "ImNoammm/morphe-spotify-patches",
+      "name": "Morphe Spotify",
+      "repoDescription": "Morphe patches for Spotify: a Morphe settings tile, and local files served from a Nextcloud/WebDAV folder.",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/268442138?v=4&s=64",
+      "stars": 2,
+      "updatedAt": 1787449541000,
+      "firstSeen": 1787424114510,
+      "appFirstSeen": {
+        "com.spotify.music": 1787424113681
+      },
+      "patches": [
+        {
+          "name": "Pin shortcuts on Home",
+          "description": "Keeps chosen playlists at the front of the shortcuts grid on Home. The order is kept on the device, so it does not depend on what the server sends. Set it under Settings, Morphe.",
+          "compatiblePackagesKey": 628
+        },
+        {
+          "name": "Local files from a server",
+          "description": "Adds a Nextcloud or WebDAV folder as a source of local files. Its tracks appear under Local Files and are streamed from the server instead of being stored on the device.",
+          "compatiblePackagesKey": 628
+        },
+        {
+          "name": "Morphe settings",
+          "description": "Adds a Morphe entry to Spotify's settings, which is where the settings of the other Morphe patches live.",
+          "compatiblePackagesKey": 628
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "repo": "jancerny2001/morphe-patches",
+      "name": "jancerny2001",
+      "repoDescription": "",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/11784537?v=4&s=64",
+      "stars": 1,
+      "updatedAt": 1787407021000,
+      "firstSeen": 1787424114510,
+      "appFirstSeen": {
+        "com.bootiq2.gtsisic": 1787424113681
+      },
+      "patches": [
+        {
+          "name": "Enable card screenshot",
+          "description": "Allows screenshots of cards by clearing the FLAG_SECURE flag.",
+          "compatiblePackagesKey": 814
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "repo": "rhubarbshoelaces/morphe-patches",
+      "name": "Rhubarb Shoelaces",
+      "repoDescription": "",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/137114071?v=4&s=64",
+      "stars": 2,
+      "updatedAt": 1787336155000,
+      "firstSeen": 1787424114510,
+      "appFirstSeen": {
+        "com.rubenmayayo.reddit": 1787424113681,
+        "com.fivemobile.thescore": 1787424113681
+      },
+      "patches": [
+        {
+          "name": "Fix Random Subreddit Button",
+          "description": "Reroutes all Random buttons to pick from a custom pre-loaded list of thousands of subreddits.",
+          "compatiblePackagesKey": 815
+        },
+        {
+          "name": "Remove Ads",
+          "description": "Bypasses startup delays and collapses all ad containers.",
+          "compatiblePackagesKey": 816
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "repo": "XTapped/morphe-patches",
+      "name": "XTapped",
+      "repoDescription": "A collection of my patches",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/30569190?v=4&s=64",
+      "stars": 0,
+      "updatedAt": 1787434055000,
+      "firstSeen": 1787437810697,
+      "appFirstSeen": {
+        "com.robskie.tether": 1787437809989
+      },
+      "patches": [
+        {
+          "name": "Unlock Pro",
+          "description": "Unlocks Pro tethering and disables purchase actions in the shop.",
+          "compatiblePackagesKey": 817
+        }
+      ]
+    },
+    {
+      "source": "github",
       "repo": "Burhanverse/test",
       "name": "Gboard",
       "repoDescription": "",
@@ -21286,137 +21423,6 @@
           "name": "Zhuyin Slide Input",
           "description": "注音鍵盤支持上下滑輸入\nEnable slide-up and slide-down input on the Zhuyin keyboard.",
           "compatiblePackagesKey": 118
-        }
-      ]
-    },
-    {
-      "source": "github",
-      "repo": "homelander11/beetle-patches",
-      "name": "Beetle",
-      "repoDescription": "Custom Morphe patches for multiple Android apps",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/155063704?v=4&s=64",
-      "stars": 1,
-      "updatedAt": 1787418350000,
-      "firstSeen": 1787424114510,
-      "appFirstSeen": {
-        "com.slowlyapp": 1787424113681
-      },
-      "patches": [
-        {
-          "name": "Slowly Pairip license check bypass",
-          "description": "Disables Pairip's client-side installer and license enforcement.",
-          "compatiblePackagesKey": 813
-        },
-        {
-          "name": "Slowly avatar builder items",
-          "description": "Enables Avatar Builder items marked as subscription-only without changing coin-priced item checks.",
-          "compatiblePackagesKey": 813
-        },
-        {
-          "name": "Slowly extended Explore filters",
-          "description": "Enables verified client-side Explore filters, including Last online within 48 hours and New Members Only, and raises excluded-country and excluded-topic selection limits.",
-          "compatiblePackagesKey": 813
-        }
-      ]
-    },
-    {
-      "source": "github",
-      "repo": "ImNoammm/morphe-spotify-patches",
-      "name": "Morphe Spotify",
-      "repoDescription": "Morphe patches for Spotify: a Morphe settings tile, and local files served from a Nextcloud/WebDAV folder.",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/268442138?v=4&s=64",
-      "stars": 2,
-      "updatedAt": 1787448205000,
-      "firstSeen": 1787424114510,
-      "appFirstSeen": {
-        "com.spotify.music": 1787424113681
-      },
-      "patches": [
-        {
-          "name": "Pin shortcuts on Home",
-          "description": "Keeps chosen playlists at the front of the shortcuts grid on Home. The order is kept on the device, so it does not depend on what the server sends. Set it under Settings, Morphe.",
-          "compatiblePackagesKey": 628
-        },
-        {
-          "name": "Local files from a server",
-          "description": "Adds a Nextcloud or WebDAV folder as a source of local files. Its tracks appear under Local Files and are streamed from the server instead of being stored on the device.",
-          "compatiblePackagesKey": 628
-        },
-        {
-          "name": "Beautiful lyrics",
-          "description": "Draws the full screen lyrics larger, with more space between the lines and a gradient behind them, closer to the desktop player. Turned on under Settings, Morphe.",
-          "compatiblePackagesKey": 628
-        },
-        {
-          "name": "Morphe settings",
-          "description": "Adds a Morphe entry to Spotify's settings, which is where the settings of the other Morphe patches live.",
-          "compatiblePackagesKey": 628
-        }
-      ]
-    },
-    {
-      "source": "github",
-      "repo": "jancerny2001/morphe-patches",
-      "name": "jancerny2001",
-      "repoDescription": "",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/11784537?v=4&s=64",
-      "stars": 1,
-      "updatedAt": 1787407021000,
-      "firstSeen": 1787424114510,
-      "appFirstSeen": {
-        "com.bootiq2.gtsisic": 1787424113681
-      },
-      "patches": [
-        {
-          "name": "Enable card screenshot",
-          "description": "Allows screenshots of cards by clearing the FLAG_SECURE flag.",
-          "compatiblePackagesKey": 814
-        }
-      ]
-    },
-    {
-      "source": "github",
-      "repo": "rhubarbshoelaces/morphe-patches",
-      "name": "Rhubarb Shoelaces",
-      "repoDescription": "",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/137114071?v=4&s=64",
-      "stars": 2,
-      "updatedAt": 1787336155000,
-      "firstSeen": 1787424114510,
-      "appFirstSeen": {
-        "com.rubenmayayo.reddit": 1787424113681,
-        "com.fivemobile.thescore": 1787424113681
-      },
-      "patches": [
-        {
-          "name": "Fix Random Subreddit Button",
-          "description": "Reroutes all Random buttons to pick from a custom pre-loaded list of thousands of subreddits.",
-          "compatiblePackagesKey": 815
-        },
-        {
-          "name": "Remove Ads",
-          "description": "Bypasses startup delays and collapses all ad containers.",
-          "compatiblePackagesKey": 816
-        }
-      ]
-    },
-    {
-      "source": "github",
-      "repo": "XTapped/morphe-patches",
-      "name": "XTapped",
-      "repoDescription": "A collection of my patches",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/30569190?v=4&s=64",
-      "stars": 0,
-      "updatedAt": 1787434055000,
-      "firstSeen": 1787437810697,
-      "appFirstSeen": {
-        "com.robskie.tether": 1787437809989
-      },
-      "patches": [
-        {
-          "name": "Unlock Pro",
-          "description": "Unlocks Pro tethering and disables purchase actions in the shop.",
-          "compatiblePackagesKey": 817
         }
       ]
     }

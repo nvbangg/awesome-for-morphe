@@ -270,16 +270,16 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
 
     tasks = []
     image_tasks = []
-    for repo, repo_meta in repos_data.items():
-        if not isinstance(repo_meta, dict):
+    for repo, repo_metadata in repos_data.items():
+        if not isinstance(repo_metadata, dict):
             continue
         for platform in ("github", "gitlab"):
-            if platform_meta := repo_meta.get(platform):
+            if platform_metadata := repo_metadata.get(platform):
                 for branch in BRANCHES:
-                    current_sha = platform_meta.get(branch)
+                    current_sha = platform_metadata.get(branch)
                     tasks.append((platform, repo, branch, current_sha))
                 if fetch_images:
-                    image_tasks.append((platform, repo, platform_meta.get("image")))
+                    image_tasks.append((platform, repo, platform_metadata.get("image")))
 
     print(f"Processing {len(tasks)} branch targets...")
     pending_repos_data = {}

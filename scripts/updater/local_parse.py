@@ -184,10 +184,10 @@ def process(
     repos_data = load_json(REPOS_JSON_PATH, {})
     valid_target_files = {
         f"{repo.replace('/', '~')}~{branch}.json"
-        for repo, repo_meta in repos_data.items()
-        if isinstance(repo_meta, dict)
+        for repo, repo_metadata in repos_data.items()
+        if isinstance(repo_metadata, dict)
         for platform in ("github", "gitlab")
-        if isinstance(repo_meta.get(platform), dict)
+        if isinstance(repo_metadata.get(platform), dict)
         for branch in ("main", "dev")
     }
     for directory in (BUNDLES_DIR, PATCHES_DIR):
@@ -207,7 +207,7 @@ def process(
         owner, repo_name = repo.split("/", 1)
         file_prefix = f"{owner}~{repo_name}"
 
-        repo_meta = repos_data.get(repo, {})
+        repo_metadata = repos_data.get(repo, {})
         chosen_platform = None
         main_bundle, main_patches = None, None
         dev_bundle, dev_patches = None, None
@@ -215,11 +215,11 @@ def process(
         has_any_sha = False
 
         for platform in ("github", "gitlab"):
-            platform_meta = repo_meta.get(platform)
-            if not isinstance(platform_meta, dict):
+            platform_metadata = repo_metadata.get(platform)
+            if not isinstance(platform_metadata, dict):
                 continue
-            main_sha = platform_meta.get("main")
-            dev_sha = platform_meta.get("dev")
+            main_sha = platform_metadata.get("main")
+            dev_sha = platform_metadata.get("dev")
             if not main_sha and not dev_sha:
                 continue
             has_any_sha = True
@@ -258,7 +258,7 @@ def process(
                     else "Not found or no release bundle"
                 )
                 for platform in ("github", "gitlab"):
-                    if platform in repo_meta:
+                    if platform in repo_metadata:
                         repo_url = build_repo_url(platform, repo)
                         errors["unavailable"].append(f"{repo_url}: {message}")
             continue
@@ -282,7 +282,7 @@ def process(
         source_entry["isPreRelease"] = not bool(main_patches)
         source_entry["updatedAt"] = dev_timestamp if is_latest_dev else main_timestamp
 
-        raw_name = repo_meta.get("name") or ""
+        raw_name = repo_metadata.get("name") or ""
         if raw_name:
             raw_name = (
                 ""

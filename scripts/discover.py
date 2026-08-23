@@ -65,9 +65,9 @@ def _merge(provider_files: list[tuple[str, dict]]) -> dict:
 
 def _sync_repos(merged: dict, existing_repos: dict) -> dict:
     existing_lower = {
-        existing_repo.lower(): (existing_repo, existing_meta)
-        for existing_repo, existing_meta in existing_repos.items()
-        if isinstance(existing_meta, dict)
+        existing_repo.lower(): (existing_repo, existing_metadata)
+        for existing_repo, existing_metadata in existing_repos.items()
+        if isinstance(existing_metadata, dict)
     }
     repos_platforms = {}
     for repo_url, entry in merged.items():

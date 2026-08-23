@@ -33,8 +33,8 @@ def main() -> int:
     }
     apps_dict = existing_bundles_data.get("store", {})
     bundle_sources = {}
-    for repo, repo_meta in repos_data.items():
-        if not isinstance(repo_meta, dict):
+    for repo, repo_metadata in repos_data.items():
+        if not isinstance(repo_metadata, dict):
             continue
         existing = existing_bundles.get(repo, {})
         source_entry = {"repo": repo}

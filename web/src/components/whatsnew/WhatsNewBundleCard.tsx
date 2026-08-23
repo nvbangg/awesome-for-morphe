@@ -6,7 +6,7 @@ import { getAppMeta } from "@/utils";
 import { WhatsNewAppCard } from "./WhatsNewAppCard";
 
 interface WhatsNewBundleCardProps {
-  bundleKey: string;
+  repo: string;
   bundleData: WhatsNewBundleChange;
   activeData: ActiveData | null;
   onBundleClick: (bundleKey: string) => void;
@@ -15,19 +15,19 @@ interface WhatsNewBundleCardProps {
 }
 
 export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
-  bundleKey,
+  repo,
   bundleData,
   activeData,
   onBundleClick,
   onAppClick,
   onPatchClick,
 }: WhatsNewBundleCardProps) {
-  const fullBundleKey = `${bundleData.source}:${bundleData.repo}`;
-  const isBundleNew = !!bundleData.isNew;
+  const bundle = activeData?.bundleMap[repo.toLowerCase()];
+  if (activeData && !bundle) return null;
 
-  const isBundleValid =
-    !activeData || !!activeData.bundleMap[fullBundleKey.toLowerCase()];
-  if (!isBundleValid) return null;
+  const fullBundleKey = bundle ? bundle.key : repo;
+  const displayName = bundle?.name || repo.split("/")[1] || repo;
+  const isBundleNew = !!bundleData.isNew;
 
   const validAppEntries = bundleData.apps
     ? Object.entries(bundleData.apps).filter(
@@ -48,7 +48,7 @@ export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
       >
         <div className="flex items-center gap-2 text-base font-semibold text-foreground group-hover:text-primary transition-colors min-w-0">
           <Package className="size-4 text-primary shrink-0" />
-          <span className="truncate">{bundleKey}</span>
+          <span className="truncate">{displayName}</span>
           {isBundleNew && <Badge variant="new" />}
         </div>
       </button>

@@ -91,8 +91,6 @@ export interface WhatsNewAppChange {
 }
 
 export interface WhatsNewBundleChange {
-  source: string;
-  repo: string;
   apps?: Record<string, WhatsNewAppChange>;
   isNew?: boolean;
 }

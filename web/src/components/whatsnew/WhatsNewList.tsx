@@ -57,19 +57,17 @@ export function WhatsNewList({
           </div>
 
           <div className="flex flex-col gap-3">
-            {Object.entries(dayItem.bundles || {}).map(
-              ([bundleKey, bundleData]) => (
-                <WhatsNewBundleCard
-                  key={bundleKey}
-                  bundleKey={bundleKey}
-                  bundleData={bundleData}
-                  activeData={activeData}
-                  onBundleClick={onBundleClick}
-                  onAppClick={onAppClick}
-                  onPatchClick={onPatchClick}
-                />
-              ),
-            )}
+            {Object.entries(dayItem.bundles || {}).map(([repo, bundleData]) => (
+              <WhatsNewBundleCard
+                key={repo}
+                repo={repo}
+                bundleData={bundleData}
+                activeData={activeData}
+                onBundleClick={onBundleClick}
+                onAppClick={onAppClick}
+                onPatchClick={onPatchClick}
+              />
+            ))}
           </div>
         </div>
       ))}

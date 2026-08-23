@@ -23,9 +23,10 @@ def parse_version_item(item: Any) -> dict | None:
     if isinstance(item, str):
         return {"version": item}
     if isinstance(item, dict) and "version" in item:
-        return {"version": item["version"]} | (
-            {"isExperimental": True} if item.get("isExperimental") else {}
-        )
+        entry = {"version": item["version"]}
+        if item.get("isExperimental"):
+            entry["isExperimental"] = True
+        return entry
     return None
 
 
@@ -34,30 +35,39 @@ def strip_patch(patch: dict, discovered_names: dict[str, str]) -> dict | None:
         return None
 
     output: dict = {"name": name}
-    if description := patch.get("description"):
-        output["description"] = description
+    if desc := patch.get("description"):
+        output["description"] = desc
     if patch.get("isPreRelease"):
         output["isPreRelease"] = True
     if patch.get("default") is False:
         output["default"] = False
 
     if options := patch.get("options"):
-        options_list = [
-            {"key": opt["key"]}
-            | ({"title": opt["title"]} if opt.get("title") else {})
-            | ({"description": opt["description"]} if opt.get("description") else {})
-            for opt in options
-            if isinstance(opt, dict) and "key" in opt
-        ]
+        options_list = []
+        for opt in options:
+            if isinstance(opt, dict) and "key" in opt:
+                opt_entry = {"key": opt["key"]}
+                if opt.get("title"):
+                    opt_entry["title"] = opt["title"]
+                if opt.get("description"):
+                    opt_entry["description"] = opt["description"]
+                options_list.append(opt_entry)
         if options_list:
             output["options"] = options_list
 
     compatible_packages = patch.get("compatiblePackages")
     package_entries = (
-        [(pkg, versions, None) for pkg, versions in compatible_packages.items()]
+        [
+            (package_name, versions, None)
+            for package_name, versions in compatible_packages.items()
+        ]
         if isinstance(compatible_packages, dict)
         else [
-            (entry.get("packageName"), entry.get("targets", []), entry.get("name"))
+            (
+                entry.get("packageName"),
+                entry.get("targets", []),
+                entry.get("name"),
+            )
             for entry in compatible_packages
             if isinstance(entry, dict) and entry.get("packageName")
         ]
@@ -74,9 +84,10 @@ def strip_patch(patch: dict, discovered_names: dict[str, str]) -> dict | None:
             for version_item in (versions or [])
             if (parsed := parse_version_item(version_item))
         ]
-        compatibility_targets.append(
-            {"packageName": package_name} | ({"targets": targets} if targets else {})
-        )
+        target_entry = {"packageName": package_name}
+        if targets:
+            target_entry["targets"] = targets
+        compatibility_targets.append(target_entry)
 
     if compatibility_targets:
         output["compatiblePackages"] = compatibility_targets
@@ -172,11 +183,13 @@ def process(
 
     repos_data = load_json(REPOS_JSON_PATH, {})
     valid_target_files = {
-        f"{(base_key.split(':', 1)[1] if ':' in base_key else base_key).replace('/', '~')}~{branch}.json"
-        for base_key, repo_meta in repos_data.items()
+        f"{repo.replace('/', '~')}~{branch}.json"
+        for repo, repo_meta in repos_data.items()
         if isinstance(repo_meta, dict)
+        for platform in ("github", "gitlab")
+        if isinstance(repo_meta.get(platform), dict)
         for branch in ("main", "dev")
-        if repo_meta.get(branch)
+        if repo_meta[platform].get(branch)
     }
     for directory in (BUNDLES_DIR, PATCHES_DIR):
         if directory.exists():
@@ -189,46 +202,68 @@ def process(
     now_ms = int(time.time() * 1000)
 
     print(f"\nParsing local patches and bundles for {len(bundle_sources)} sources...")
-    for base_key, source_entry in bundle_sources.items():
-        repo = source_entry.get("repo")
+    for repo, source_entry in bundle_sources.items():
         if not repo or "/" not in repo:
             continue
         owner, repo_name = repo.split("/", 1)
         file_prefix = f"{owner}~{repo_name}"
 
-        repo_meta = repos_data.get(base_key, {})
-        main_sha = repo_meta.get("main")
-        dev_sha = repo_meta.get("dev")
-
+        repo_meta = repos_data.get(repo, {})
+        chosen_platform = None
+        main_bundle, main_patches = None, None
+        dev_bundle, dev_patches = None, None
         discovered_names = {}
-        main_patch_names = set()
+        has_any_sha = False
 
-        main_bundle, main_patches = load_branch_data(
-            file_prefix, "main", bool(main_sha), discovered_names
-        )
-        if main_patches:
-            main_patch_names = {
-                patch["name"] for patch in main_patches if "name" in patch
-            }
-        dev_bundle, dev_patches = load_branch_data(
-            file_prefix,
-            "dev",
-            bool(dev_sha),
-            discovered_names,
-            is_dev_branch=True,
-            main_patch_names=main_patch_names,
-        )
+        for platform in ("github", "gitlab"):
+            if not isinstance(repo_meta, dict):
+                continue
+            platform_meta = repo_meta.get(platform)
+            if not isinstance(platform_meta, dict):
+                continue
+            main_sha = platform_meta.get("main")
+            dev_sha = platform_meta.get("dev")
+            if not main_sha and not dev_sha:
+                continue
+            has_any_sha = True
 
-        if not main_patches and not dev_patches:
-            keys_to_remove.append(base_key)
+            cur_discovered_names = {}
+            cur_main_bundle, cur_main_patches = load_branch_data(
+                file_prefix, "main", bool(main_sha), cur_discovered_names
+            )
+            main_patch_names = (
+                {patch["name"] for patch in cur_main_patches if "name" in patch}
+                if cur_main_patches
+                else set()
+            )
+            cur_dev_bundle, cur_dev_patches = load_branch_data(
+                file_prefix,
+                "dev",
+                bool(dev_sha),
+                cur_discovered_names,
+                is_dev_branch=True,
+                main_patch_names=main_patch_names,
+            )
+
+            if cur_main_patches or cur_dev_patches:
+                chosen_platform = platform
+                main_bundle, main_patches = cur_main_bundle, cur_main_patches
+                dev_bundle, dev_patches = cur_dev_bundle, cur_dev_patches
+                discovered_names = cur_discovered_names
+                break
+
+        if not chosen_platform:
+            keys_to_remove.append(repo)
             if errors is not None:
                 message = (
                     "Missing bundle or patch files"
-                    if (main_sha or dev_sha)
+                    if has_any_sha
                     else "Not found or no release bundle"
                 )
-                errors["unavailable"].append(f"`{base_key}`: {message}")
+                errors["unavailable"].append(f"`{repo}`: {message}")
             continue
+
+        source_entry["source"] = chosen_platform
 
         main_timestamp = (
             parse_timestamp(main_bundle.get("created_at"))

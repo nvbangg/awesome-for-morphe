@@ -86,8 +86,8 @@ def is_patch_bundle(repo: str) -> bool:
 
 def matches_filter_criteria(repo: dict) -> bool:
     repo_name = repo.get("name", "")
-    description = repo.get("description") or ""
-    combined_text = f"{repo.get('full_name', '')} {description}".lower()
+    desc = repo.get("description") or ""
+    combined_text = f"{repo.get('full_name', '')} {desc}".lower()
 
     if any(keyword.lower() in combined_text for keyword in EXCLUDED_KEYWORDS):
         return False

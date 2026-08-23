@@ -267,15 +267,16 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
 
     tasks = []
     image_tasks = []
-    for base_key, repo_meta in repos_data.items():
-        if ":" not in base_key:
+    for repo, repo_meta in repos_data.items():
+        if not isinstance(repo_meta, dict):
             continue
-        source, repo = base_key.split(":", 1)
-        for branch in BRANCHES:
-            current_sha = repo_meta.get(branch)
-            tasks.append((source, repo, branch, current_sha))
-        if fetch_images:
-            image_tasks.append((source, repo, repo_meta.get("image")))
+        for platform in ("github", "gitlab"):
+            if platform_meta := repo_meta.get(platform):
+                for branch in BRANCHES:
+                    current_sha = platform_meta.get(branch)
+                    tasks.append((platform, repo, branch, current_sha))
+                if fetch_images:
+                    image_tasks.append((platform, repo, platform_meta.get("image")))
 
     print(f"Processing {len(tasks)} branch targets...")
     pending_repos_data = {}
@@ -308,11 +309,12 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
             if not status_changed:
                 continue
 
-            base_key = f"{source}:{repo}"
             updated_count += 1
-            pending_repos_data.setdefault(base_key, {})[branch] = new_sha
+            pending_repos_data.setdefault(repo, {}).setdefault(source, {})[branch] = (
+                new_sha
+            )
             if bundle_name:
-                pending_repos_data.setdefault(base_key, {})["name"] = bundle_name
+                pending_repos_data.setdefault(repo, {})["name"] = bundle_name
 
             if not is_unavailable and new_sha is not None:
                 owner, repo_name = repo.split("/", 1)
@@ -351,8 +353,9 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
 
                 if status_changed:
                     updated_count += 1
-                    base_key = f"{source}:{repo}"
-                    pending_repos_data.setdefault(base_key, {})["image"] = new_image_sha
+                    pending_repos_data.setdefault(repo, {}).setdefault(source, {})[
+                        "image"
+                    ] = new_image_sha
 
     if errors:
         markdown_lines = ["### ⚠️ Fetch", *[f"- {error}" for error in sorted(errors)]]

@@ -64,19 +64,38 @@ def _merge(provider_files: list[tuple[str, dict]]) -> dict:
 
 
 def _sync_repos(merged: dict, existing_repos: dict) -> dict:
-    new_repos_data = {}
-    for repo_url, entry in sorted(merged.items(), key=lambda item: item[0].lower()):
+    existing_lower = {
+        existing_repo.lower(): (existing_repo, existing_meta)
+        for existing_repo, existing_meta in existing_repos.items()
+        if isinstance(existing_meta, dict)
+    }
+    repos_platforms = {}
+    for repo_url, entry in merged.items():
         if entry.get("enabled") is not False:
             source, repo = parse_repo_url(repo_url)
-            if not source or not repo:
-                continue
-            canonical_key = f"{source}:{repo}"
-            old_entry = existing_repos.get(canonical_key, {})
-            new_repos_data[canonical_key] = {
-                field: old_entry[field]
-                for field in ("name", "image")
-                if old_entry.get(field)
-            } | {"main": old_entry.get("main"), "dev": old_entry.get("dev")}
+            if source and repo:
+                repo_lower = repo.lower()
+                if repo_lower not in repos_platforms:
+                    canonical_repo = existing_lower.get(repo_lower, (repo, {}))[0]
+                    repos_platforms[repo_lower] = (canonical_repo, set())
+                repos_platforms[repo_lower][1].add(source)
+
+    new_repos_data = {}
+    for repo_lower in sorted(repos_platforms):
+        canonical_repo, platforms = repos_platforms[repo_lower]
+        old_entry = existing_lower.get(repo_lower, ("", {}))[1]
+        repo_entry = {"name": old_entry["name"]} if "name" in old_entry else {}
+        for platform in ("github", "gitlab"):
+            if platform in platforms:
+                old_platform = old_entry.get(platform, {})
+                platform_entry = {
+                    "main": old_platform.get("main"),
+                    "dev": old_platform.get("dev"),
+                }
+                if "image" in old_platform:
+                    platform_entry["image"] = old_platform["image"]
+                repo_entry[platform] = platform_entry
+        new_repos_data[canonical_repo] = repo_entry
     return new_repos_data
 
 

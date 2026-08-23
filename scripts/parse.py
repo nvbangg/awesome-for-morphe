@@ -41,41 +41,53 @@ def commit_pending_repos(
     repos_data = load_json(REPOS_JSON_PATH, {})
     committed_target_count = 0
 
-    for base_key, repo_updates in pending_repos.items():
-        if ":" not in base_key:
-            continue
-        _, repo = base_key.split(":", 1)
+    for repo, repo_updates in pending_repos.items():
         if "/" not in repo:
             continue
         owner, repo_name = repo.split("/", 1)
 
-        for branch, new_value in repo_updates.items():
-            if branch == "name":
-                if new_value:
-                    repos_data.setdefault(base_key, {})["name"] = new_value
+        if name := repo_updates.get("name"):
+            repos_data.setdefault(repo, {})["name"] = name
+
+        for platform in ("github", "gitlab"):
+            if not isinstance(platform_updates := repo_updates.get(platform), dict):
                 continue
-            file_prefix = f"{owner}~{repo_name}~{branch}.json"
-            patch_exists = (PATCHES_DIR / file_prefix).exists()
-            if (
-                branch == "image"
-                or file_prefix in successful_parsed_files
-                or patch_exists
-                or new_value is None
-            ):
-                repos_data.setdefault(base_key, {})[branch] = new_value
+
+            platform_data = repos_data.setdefault(repo, {}).setdefault(platform, {})
+            if "image" in platform_updates:
+                platform_data["image"] = platform_updates["image"]
                 committed_target_count += 1
 
+            for branch in ("main", "dev"):
+                if branch in platform_updates:
+                    new_sha = platform_updates[branch]
+                    file_prefix = f"{owner}~{repo_name}~{branch}.json"
+                    if (
+                        file_prefix in successful_parsed_files
+                        or (PATCHES_DIR / file_prefix).exists()
+                        or new_sha is None
+                    ):
+                        platform_data[branch] = new_sha
+                        committed_target_count += 1
+
     if committed_target_count > 0:
-        formatted_repos_data = {
-            key: {
-                field: entry[field] for field in ("name", "image") if entry.get(field)
-            }
-            | {"main": entry.get("main"), "dev": entry.get("dev")}
-            for key, entry in sorted(
-                repos_data.items(), key=lambda item: item[0].lower()
-            )
-            if isinstance(entry, dict)
-        }
+        formatted_repos_data = {}
+        for repo, entry in sorted(repos_data.items(), key=lambda item: item[0].lower()):
+            if not isinstance(entry, dict):
+                continue
+            repo_entry = {}
+            if "name" in entry:
+                repo_entry["name"] = entry["name"]
+            for platform in ("github", "gitlab"):
+                if platform in entry and isinstance(entry[platform], dict):
+                    platform_entry = {
+                        "main": entry[platform].get("main"),
+                        "dev": entry[platform].get("dev"),
+                    }
+                    if "image" in entry[platform]:
+                        platform_entry["image"] = entry[platform]["image"]
+                    repo_entry[platform] = platform_entry
+            formatted_repos_data[repo] = repo_entry
         save_json(REPOS_JSON_PATH, formatted_repos_data)
         print(
             f"Successfully committed pending SHA updates for {committed_target_count} target(s) to repos.json."

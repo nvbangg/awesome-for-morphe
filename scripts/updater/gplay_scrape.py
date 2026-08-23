@@ -69,11 +69,11 @@ def fetch_app_details(package_name: str) -> tuple[dict | None, bool]:
         if not result:
             return None, False
         icon_url = normalize_image_url(result.get("icon"))
-        description = result.get("summary") or ""
+        desc = result.get("summary") or ""
         details = {
             "name": result.get("title"),
             "iconUrl": icon_url,
-            "description": description,
+            "description": desc,
             "minInstalls": result.get("minInstalls") or 0,
             "category": result.get("genre") or "",
         }

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "patches": [
     {
       "name": "Hide ads",
@@ -57,6 +57,32 @@
     {
       "name": "Unlock Premium features",
       "description": "Unlock Premium features. Some features are not possible to patch (server sided), such as saving a multi-days hike.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "de.komoot.android",
+          "name": "Komoot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#ECEBB4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2026.34.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock map regions",
+      "description": "Spoof Komoot Maps ownership client-side (world pack / owned regions in shop and offline UI). Server-side limits may still apply: offline tile download auth, sync overwriting local state, and Play receipt validation. Does not replace a real Play Store purchase.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

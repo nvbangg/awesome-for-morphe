@@ -47,6 +47,7 @@ jobs:
             MODE="default"
           fi
           echo "Selected mode: $MODE"
+          echo "# Mode: $MODE" >> $GITHUB_STEP_SUMMARY
           echo "mode=$MODE" >> $GITHUB_OUTPUT
           if [ "$MODE" != "default" ]; then
             echo "image_flag=--image" >> $GITHUB_OUTPUT

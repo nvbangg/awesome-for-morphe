@@ -35,19 +35,19 @@ def audit_repos_and_links() -> dict[str, list[str]]:
                 details = {"error": str(error)}
 
             if details.get("is_404"):
-                errors["unavailable"].append(f"`{url}`: Not Found (404)")
+                errors["unavailable"].append(f"{url}: Not Found (404)")
             elif details.get("is_451"):
-                errors["unavailable"].append(f"`{url}`: DMCA Takedown (451)")
+                errors["unavailable"].append(f"{url}: DMCA Takedown (451)")
             elif details.get("is_archived"):
-                errors["warnings"].append(f"`{url}`: Archived")
+                errors["warnings"].append(f"{url}: Archived")
             elif full_name := details.get("full_name"):
                 source, original_repo = parse_repo_url(url)
                 if original_repo and full_name.lower() != original_repo.lower():
                     errors["warnings"].append(
-                        f"`{url}` -> `https://{source}.com/{full_name}`"
+                        f"{url} -> https://{source}.com/{full_name}"
                     )
             elif details.get("error"):
-                errors["other"].append(f"`{url}`: {details['error']}")
+                errors["other"].append(f"{url}: {details['error']}")
 
     if link_urls:
         with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
@@ -63,14 +63,12 @@ def audit_repos_and_links() -> dict[str, list[str]]:
 
                 if status.get("is_dead"):
                     errors["unavailable"].append(
-                        f"`{url}`: {status.get('error', 'Dead')}"
+                        f"{url}: {status.get('error', 'Dead')}"
                     )
                 elif status.get("is_redirect"):
-                    errors["warnings"].append(
-                        f"`{url}` -> `{status.get('final_url', '')}`"
-                    )
+                    errors["warnings"].append(f"{url} -> {status.get('final_url', '')}")
                 elif status.get("error"):
-                    errors["other"].append(f"`{url}`: {status['error']}")
+                    errors["other"].append(f"{url}: {status['error']}")
 
     completed_message = (
         f"Audited {len(repo_urls)} repositories and {len(link_urls)} links."

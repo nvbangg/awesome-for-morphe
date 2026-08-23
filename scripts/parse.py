@@ -22,6 +22,7 @@ GRADLE_EXECUTABLE_PATH = BUNDLE_PARSER_DIR / GRADLE_EXECUTABLE_NAME
 def commit_pending_repos(
     updated_files: list[str] | None = None, parse_error: str | None = None
 ) -> None:
+    updated_files_set = set(updated_files or [])
     successful_parsed_files = set(load_lines(PARSED_FILES_PATH))
 
     errors = [parse_error] if parse_error else []
@@ -61,12 +62,11 @@ def commit_pending_repos(
             for branch in ("main", "dev"):
                 if branch in platform_updates:
                     new_sha = platform_updates[branch]
+                    is_mpp_target = (
+                        f"mpp/{owner}~{repo_name}~{branch}.mpp" in updated_files_set
+                    )
                     file_prefix = f"{owner}~{repo_name}~{branch}.json"
-                    if (
-                        file_prefix in successful_parsed_files
-                        or (PATCHES_DIR / file_prefix).exists()
-                        or new_sha is None
-                    ):
+                    if not is_mpp_target or file_prefix in successful_parsed_files:
                         platform_data[branch] = new_sha
                         committed_target_count += 1
 

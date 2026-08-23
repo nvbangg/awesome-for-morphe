@@ -13,6 +13,7 @@ from pathlib import Path
 from utils import (
     append_step_summary,
     build_raw_url,
+    build_repo_url,
     fetch,
     get_auth_headers,
     load_json,
@@ -83,10 +84,11 @@ def process_repo_branch(
 ) -> tuple[
     str, str, str, str | None, str | None, bool, bool, bool, str | None, str | None
 ]:
+    repo_url = build_repo_url(source, repo)
     try:
         remote_sha = get_file_sha(source, repo, branch)
     except Exception as error:
-        error_message = f"[{repo}:{branch}] Failed: {error}"
+        error_message = f"{repo_url} ({branch}): Failed: {error}"
         print(f"[-] {error_message}")
         return (
             source,
@@ -116,7 +118,7 @@ def process_repo_branch(
         )
 
     if remote_sha is None:
-        print(f"[-] [{repo}:{branch}] patches-bundle.json not found")
+        print(f"[-] {repo_url} ({branch}): patches-bundle.json not found")
         return source, repo, branch, None, None, False, True, True, None, None
 
     raw_bundle_url = build_raw_url(source, repo, branch, "patches-bundle.json")
@@ -145,7 +147,7 @@ def process_repo_branch(
             and error.code in UNAVAILABLE_HTTP_CODES
         ):
             print(
-                f"[-] [{repo}:{branch}] patches-bundle.json not found or taken down (HTTP {error.code})"
+                f"[-] {repo_url} ({branch}): patches-bundle.json not found or taken down (HTTP {error.code})"
             )
             return (
                 source,
@@ -159,7 +161,7 @@ def process_repo_branch(
                 None,
                 None,
             )
-        error_message = f"[{repo}:{branch}] Failed: {error}"
+        error_message = f"{repo_url} ({branch}): Failed: {error}"
         print(f"[-] {error_message}")
         return (
             source,
@@ -193,7 +195,7 @@ def process_repo_branch(
                     and error.code in UNAVAILABLE_HTTP_CODES
                 ):
                     print(
-                        f"[-] [{repo}:{branch}] .mpp file not found or taken down (HTTP {error.code})"
+                        f"[-] {repo_url} ({branch}): .mpp file not found or taken down (HTTP {error.code})"
                     )
                     return (
                         source,
@@ -207,7 +209,7 @@ def process_repo_branch(
                         None,
                         None,
                     )
-                error_message = f"[{repo}:{branch}] Failed: {error}"
+                error_message = f"{repo_url} ({branch}): Failed: {error}"
                 print(f"[-] {error_message}")
                 return (
                     source,
@@ -241,6 +243,7 @@ def process_repo_branch(
 def process_image(
     source: str, repo: str, current_image: str | None
 ) -> tuple[str, str, str | None, bool, str | None]:
+    repo_url = build_repo_url(source, repo)
     try:
         remote_sha = get_image_sha(source, repo)
     except Exception as error:
@@ -249,7 +252,7 @@ def process_image(
             and error.code in UNAVAILABLE_HTTP_CODES
         ):
             return source, repo, None, current_image is not None, None
-        error_message = f"[{repo}] Failed: {error}"
+        error_message = f"{repo_url}: Failed to fetch image: {error}"
         print(f"[-] {error_message}")
         return source, repo, current_image, False, error_message
 

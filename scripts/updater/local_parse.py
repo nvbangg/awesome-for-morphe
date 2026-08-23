@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from utils import load_json, parse_timestamp
+from utils import build_repo_url, load_json, parse_timestamp
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
@@ -189,7 +189,6 @@ def process(
         for platform in ("github", "gitlab")
         if isinstance(repo_meta.get(platform), dict)
         for branch in ("main", "dev")
-        if repo_meta[platform].get(branch)
     }
     for directory in (BUNDLES_DIR, PATCHES_DIR):
         if directory.exists():
@@ -216,8 +215,6 @@ def process(
         has_any_sha = False
 
         for platform in ("github", "gitlab"):
-            if not isinstance(repo_meta, dict):
-                continue
             platform_meta = repo_meta.get(platform)
             if not isinstance(platform_meta, dict):
                 continue
@@ -260,7 +257,10 @@ def process(
                     if has_any_sha
                     else "Not found or no release bundle"
                 )
-                errors["unavailable"].append(f"`{repo}`: {message}")
+                for platform in ("github", "gitlab"):
+                    if platform in repo_meta:
+                        repo_url = build_repo_url(platform, repo)
+                        errors["unavailable"].append(f"{repo_url}: {message}")
             continue
 
         source_entry["source"] = chosen_platform
@@ -282,14 +282,14 @@ def process(
         source_entry["isPreRelease"] = not bool(main_patches)
         source_entry["updatedAt"] = dev_timestamp if is_latest_dev else main_timestamp
 
-        raw_name = repo_meta.get("name") or source_entry.get("name") or ""
+        raw_name = repo_meta.get("name") or ""
         if raw_name:
             raw_name = (
                 ""
                 if raw_name.lower() == "morphe patches"
                 else _BUNDLE_NAME_SUFFIX_RE.sub("", raw_name).strip("- ")
             )
-        source_entry["name"] = raw_name or source_entry.get("name") or owner
+        source_entry["name"] = raw_name or owner
 
         chosen_patches = dev_patches if is_latest_dev else main_patches
         app_first_seen_map = (

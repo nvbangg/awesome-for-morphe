@@ -173,11 +173,6 @@ def main() -> int:
         bundle["repo"] for bundle in final_bundles if bundle.get("repo")
     }
     invalid_repos = [repo for repo in repos_data if repo not in final_bundle_repos]
-    all_reported = errors["unavailable"] + errors["warnings"]
-    reported_keys = {error.split("`")[1] for error in all_reported if "`" in error}
-    for repo in sorted(invalid_repos):
-        if repo not in reported_keys:
-            errors["unavailable"].append(f"`{repo}`: Not found or no release bundle")
 
     if invalid_repos:
         note_message = f"Note: {len(invalid_repos)}/{len(repos_data)} repos are invalid or excluded"

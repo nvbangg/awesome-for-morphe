@@ -105,7 +105,7 @@ def process(
                     print(f"[-] Excluding {repo} due to 404 Not Found")
                     if errors is not None:
                         errors["unavailable"].append(
-                            f"`{repo}`: Not found or no release bundle"
+                            f"{tasks[repo]}: Not found or no release bundle"
                         )
                     bundle_sources.pop(repo, None)
                     continue
@@ -113,7 +113,9 @@ def process(
                 if details.get("is_archived"):
                     print(f"[-] Repository archived: {repo}")
                     if errors is not None:
-                        errors["warnings"].append(f"`{repo}`: Repository is archived")
+                        errors["warnings"].append(
+                            f"{tasks[repo]}: Repository is archived"
+                        )
 
                 source_entry = bundle_sources[repo]
                 repo_url = tasks[repo]
@@ -152,9 +154,7 @@ def process(
                     new_url = build_repo_url(source, full_name)
                     print(f"[RENAME DETECTED] {old_repo} -> {full_name}")
                     if errors is not None:
-                        errors["warnings"].append(
-                            f"`{old_repo}`: Renamed to `{full_name}`"
-                        )
+                        errors["warnings"].append(f"{old_url} -> {new_url}")
 
                     repos_json_data = load_json(REPOS_JSON_PATH, {})
                     if old_repo in repos_json_data:

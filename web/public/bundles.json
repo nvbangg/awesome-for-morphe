@@ -21132,6 +21132,32 @@
     },
     {
       "source": "github",
+      "repo": "Dr4w/morphe-patches",
+      "name": "dr4w",
+      "repoDescription": "",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/38052711?v=4&s=64",
+      "stars": 1,
+      "updatedAt": 1787349045000,
+      "firstSeen": 1787454616238,
+      "appFirstSeen": {
+        "com.jscti.nextgp_f1motogp": 1787454615603
+      },
+      "patches": [
+        {
+          "name": "Enable Premium",
+          "description": "Forces premium state to always be active.",
+          "compatiblePackagesKey": 813
+        },
+        {
+          "name": "Trust user certificates",
+          "description": "Allows user-installed certificates to be trusted for debugging.",
+          "default": false,
+          "compatiblePackagesKey": 813
+        }
+      ]
+    },
+    {
+      "source": "github",
       "repo": "homelander11/beetle-patches",
       "name": "Beetle",
       "repoDescription": "Custom Morphe patches for multiple Android apps",
@@ -21146,17 +21172,17 @@
         {
           "name": "Slowly Pairip license check bypass",
           "description": "Disables Pairip's client-side installer and license enforcement.",
-          "compatiblePackagesKey": 813
+          "compatiblePackagesKey": 814
         },
         {
           "name": "Slowly avatar builder items",
           "description": "Enables Avatar Builder items marked as subscription-only without changing coin-priced item checks.",
-          "compatiblePackagesKey": 813
+          "compatiblePackagesKey": 814
         },
         {
           "name": "Slowly extended Explore filters",
           "description": "Enables verified client-side Explore filters, including Last online within 48 hours and New Members Only, and raises excluded-country and excluded-topic selection limits.",
-          "compatiblePackagesKey": 813
+          "compatiblePackagesKey": 814
         }
       ]
     },
@@ -21206,7 +21232,7 @@
         {
           "name": "Enable card screenshot",
           "description": "Allows screenshots of cards by clearing the FLAG_SECURE flag.",
-          "compatiblePackagesKey": 814
+          "compatiblePackagesKey": 815
         }
       ]
     },
@@ -21227,12 +21253,12 @@
         {
           "name": "Fix Random Subreddit Button",
           "description": "Reroutes all Random buttons to pick from a custom pre-loaded list of thousands of subreddits.",
-          "compatiblePackagesKey": 815
+          "compatiblePackagesKey": 816
         },
         {
           "name": "Remove Ads",
           "description": "Bypasses startup delays and collapses all ad containers.",
-          "compatiblePackagesKey": 816
+          "compatiblePackagesKey": 817
         }
       ]
     },
@@ -21252,7 +21278,7 @@
         {
           "name": "Unlock Pro",
           "description": "Unlocks Pro tethering and disables purchase actions in the shop.",
-          "compatiblePackagesKey": 817
+          "compatiblePackagesKey": 818
         }
       ]
     },
@@ -31083,6 +31109,16 @@
     ],
     [
       {
+        "packageName": "com.jscti.nextgp_f1motogp",
+        "targets": [
+          {
+            "version": "9.0"
+          }
+        ]
+      }
+    ],
+    [
+      {
         "packageName": "com.slowlyapp",
         "targets": [
           {
@@ -37122,6 +37158,14 @@
       "minInstalls": 100000,
       "category": "Tools",
       "firstSeen": 1787437810697
+    },
+    "com.jscti.nextgp_f1motogp": {
+      "name": "NextGP | Calendar F1 MotoGP …",
+      "iconUrl": "https://play-lh.googleusercontent.com/Dy6qFFzMdTAQdg9STHE9luRpnBnE1lwaLhnEoSsAq2AT29ZpblTF8lbxUqlL22y41VRvU2osUVxCjyVR9u22_g=s64-rw",
+      "description": "2026 Racing Calendar (F1 MotoGP Indycar WEC NASCAR …), notification, standing",
+      "minInstalls": 50000,
+      "category": "Sports",
+      "firstSeen": 1787454616238
     }
   }
 }

@@ -172,9 +172,9 @@ def process(
 
     repos_data = load_json(REPOS_JSON_PATH, {})
     valid_target_files = {
-        f"{base_key.split(':')[0]}~{base_key.split(':')[1].replace('/', '~')}~{branch}.json"
+        f"{(base_key.split(':', 1)[1] if ':' in base_key else base_key).replace('/', '~')}~{branch}.json"
         for base_key, repo_meta in repos_data.items()
-        if ":" in base_key and isinstance(repo_meta, dict)
+        if isinstance(repo_meta, dict)
         for branch in ("main", "dev")
         if repo_meta.get(branch)
     }
@@ -190,12 +190,11 @@ def process(
 
     print(f"\nParsing local patches and bundles for {len(bundle_sources)} sources...")
     for base_key, source_entry in bundle_sources.items():
-        source = source_entry.get("source")
         repo = source_entry.get("repo")
-        if not source or not repo or "/" not in repo:
+        if not repo or "/" not in repo:
             continue
         owner, repo_name = repo.split("/", 1)
-        file_prefix = f"{source}~{owner}~{repo_name}"
+        file_prefix = f"{owner}~{repo_name}"
 
         repo_meta = repos_data.get(base_key, {})
         main_sha = repo_meta.get("main")

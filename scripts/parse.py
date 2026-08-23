@@ -44,7 +44,7 @@ def commit_pending_repos(
     for base_key, repo_updates in pending_repos.items():
         if ":" not in base_key:
             continue
-        source, repo = base_key.split(":", 1)
+        _, repo = base_key.split(":", 1)
         if "/" not in repo:
             continue
         owner, repo_name = repo.split("/", 1)
@@ -54,7 +54,7 @@ def commit_pending_repos(
                 if new_value:
                     repos_data.setdefault(base_key, {})["name"] = new_value
                 continue
-            file_prefix = f"{source}~{owner}~{repo_name}~{branch}.json"
+            file_prefix = f"{owner}~{repo_name}~{branch}.json"
             patch_exists = (PATCHES_DIR / file_prefix).exists()
             if (
                 branch == "image"

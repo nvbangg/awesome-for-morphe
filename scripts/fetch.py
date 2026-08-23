@@ -135,7 +135,7 @@ def process_repo_branch(
         )
 
     owner, repo_name = repo.split("/", 1)
-    file_prefix = f"{source}~{owner}~{repo_name}~{branch}"
+    file_prefix = f"{owner}~{repo_name}~{branch}"
 
     try:
         bundle_text = fetch(raw_bundle_url)
@@ -316,7 +316,7 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
 
             if not is_unavailable and new_sha is not None:
                 owner, repo_name = repo.split("/", 1)
-                file_prefix = f"{source}~{owner}~{repo_name}~{branch}"
+                file_prefix = f"{owner}~{repo_name}~{branch}"
                 if bundle_text:
                     (BUNDLES_DIR / f"{file_prefix}.json").write_text(
                         bundle_text, encoding="utf-8"

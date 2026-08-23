@@ -46,10 +46,17 @@ export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
         className="w-full flex items-center justify-between gap-3 p-3 bg-primary/5 dark:bg-primary/10 border-b border-primary/10 dark:border-primary/20 text-left outline-none transition-colors group cursor-pointer"
         title="Open bundle details"
       >
-        <div className="flex items-center gap-2 text-base font-semibold text-foreground group-hover:text-primary transition-colors min-w-0">
+        <div className="flex items-center gap-2.5 min-w-0">
           <Package className="size-4 text-primary shrink-0" />
-          <span className="truncate">{displayName}</span>
-          {isBundleNew && <Badge variant="new" />}
+          <div className="flex flex-col min-w-0">
+            <div className="flex items-center gap-2 text-base font-semibold text-foreground group-hover:text-primary transition-colors min-w-0">
+              <span className="truncate">{displayName}</span>
+              {isBundleNew && <Badge variant="new" />}
+            </div>
+            <span className="text-xs font-medium text-primary dark:text-secondary truncate">
+              {repo}
+            </span>
+          </div>
         </div>
       </button>
 

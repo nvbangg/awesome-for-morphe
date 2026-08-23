@@ -106,13 +106,27 @@ def build_json_diff(
     old_bundles: dict,
     new_bundles: dict,
     app_metadata: dict,
+    bundle_order: dict[str, int],
 ) -> dict:
     json_diff = {}
 
-    def app_sort_key(package_name: str) -> str:
-        return format_app_name(package_name, app_metadata).lower()
+    def app_sort_key(package_name: str) -> tuple:
+        meta = app_metadata.get(package_name)
+        if isinstance(meta, dict):
+            return (
+                -meta.get("minInstalls", 0),
+                meta.get("firstSeen", 0),
+                (meta.get("name") or meta.get("altName") or package_name).lower(),
+            )
+        return (0, 0, package_name.lower())
 
-    for repo, patches_dict in new_bundles.items():
+    for repo, patches_dict in sorted(
+        new_bundles.items(),
+        key=lambda item: (
+            0 if item[0] not in old_bundles else 1,
+            bundle_order.get(item[0], 9999),
+        ),
+    ):
         new_package_names = {
             package_name
             for package_name in patches_dict
@@ -175,17 +189,21 @@ def generate_markdown(
 
         display_name = bundle_names.get(repo) or repo.split("/")[-1]
         source = bundle_sources.get(repo, "github")
+        owner = repo.split("/")[0] if "/" in repo else ""
+        owner_suffix = (
+            f" (by {owner})" if owner and display_name.lower() != owner.lower() else ""
+        )
 
         if is_new_bundle:
             bundle_url = make_url(bundle_source=source, bundle_repo=repo)
-            bundle_md = [f"+ 📦 (✨New) [{display_name}]({bundle_url})"]
+            bundle_md = [f"+ 📦 (✨New) [{display_name}]({bundle_url}){owner_suffix}"]
             for package_name in apps_data:
                 app_name = format_app_name(package_name, app_metadata)
                 app_url = make_url(app=package_name)
                 bundle_md.append(f"    - 📱 [{app_name}]({app_url})")
             markdown_lines.append("\n".join(bundle_md))
         else:
-            bundle_md = [f"- 📦 {display_name}"]
+            bundle_md = [f"- 📦 {display_name}{owner_suffix}"]
             for package_name, app_data in apps_data.items():
                 app_name = format_app_name(package_name, app_metadata)
                 if app_data.get("isNew", False):
@@ -211,12 +229,17 @@ def main() -> None:
     bundles_json = load_json(BUNDLES_JSON_PATH, {})
     app_metadata = bundles_json.get("store", {})
     bundle_names, bundle_sources = get_bundle_meta(bundles_json)
+    bundle_order = {
+        bundle["repo"]: index
+        for index, bundle in enumerate(bundles_json.get("bundles", []))
+        if bundle.get("repo")
+    }
 
     current_time = datetime.now(UTC) - timedelta(hours=12)
     today_str = current_time.strftime(f"%B {current_time.day}, %Y")
 
     new_bundles = build_new_bundles(bundles_json)
-    json_diff = build_json_diff(old_history, new_bundles, app_metadata)
+    json_diff = build_json_diff(old_history, new_bundles, app_metadata, bundle_order)
 
     if not json_diff:
         print("No changes detected in patch bundles. Skipping What's New generation.")

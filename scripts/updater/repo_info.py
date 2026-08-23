@@ -24,11 +24,11 @@ REPOS_JSON_PATH = DATA_DIR / "repos.json"
 
 
 def fetch_repo_details(repo_url: str) -> dict:
-    source, owner_repo = parse_repo_url(repo_url)
-    if not source or not owner_repo:
+    source, repo = parse_repo_url(repo_url)
+    if not source or not repo:
         return {}
 
-    api_url = build_api_url(source, owner_repo)
+    api_url = build_api_url(source, repo)
     if not api_url:
         return {}
 
@@ -76,10 +76,10 @@ def process(
         if mode == "default" and base_key in existing_bundles:
             continue
         source = source_entry.get("source")
-        owner_repo = source_entry.get("repo")
-        if not source or not owner_repo:
+        repo = source_entry.get("repo")
+        if not source or not repo:
             continue
-        repo_url = f"https://{source}.com/{owner_repo}"
+        repo_url = f"https://{source}.com/{repo}"
         tasks[base_key] = repo_url
 
     if not tasks:
@@ -127,12 +127,12 @@ def process(
                 source_entry["repoDescription"] = details.get("description") or ""
 
                 source = source_entry.get("source")
-                owner_repo = source_entry.get("repo")
+                repo = source_entry.get("repo")
                 image_sha = repos_data.get(base_key, {}).get("image")
 
-                if image_sha and source and owner_repo:
+                if image_sha and source and repo:
                     avatar_url = build_raw_url(
-                        source, owner_repo, "main", "patches-bundle.png"
+                        source, repo, "main", "patches-bundle.png"
                     )
                     if avatar_url:
                         source_entry["avatarUrl"] = avatar_url

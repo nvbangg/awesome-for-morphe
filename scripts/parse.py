@@ -44,17 +44,17 @@ def commit_pending_repos(
     for base_key, repo_updates in pending_repos.items():
         if ":" not in base_key:
             continue
-        source, owner_repo = base_key.split(":", 1)
-        if "/" not in owner_repo:
+        source, repo = base_key.split(":", 1)
+        if "/" not in repo:
             continue
-        owner, repo = owner_repo.split("/", 1)
+        owner, repo_name = repo.split("/", 1)
 
         for branch, new_value in repo_updates.items():
             if branch == "name":
                 if new_value:
                     repos_data.setdefault(base_key, {})["name"] = new_value
                 continue
-            file_prefix = f"{source}~{owner}~{repo}~{branch}.json"
+            file_prefix = f"{source}~{owner}~{repo_name}~{branch}.json"
             patch_exists = (PATCHES_DIR / file_prefix).exists()
             if (
                 branch == "image"

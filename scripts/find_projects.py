@@ -72,17 +72,15 @@ def build_search_query(keyword: str) -> str:
     return " ".join(parts)
 
 
-def is_patch_bundle(owner_repo: str) -> bool:
+def is_patch_bundle(repo: str) -> bool:
     for branch in CHECK_BRANCHES:
-        if not (
-            url := build_raw_url("github", owner_repo, branch, "patches-bundle.json")
-        ):
+        if not (url := build_raw_url("github", repo, branch, "patches-bundle.json")):
             continue
         status = check_link_status(url, timeout=HEAD_TIMEOUT)
         if status.get("is_active"):
             return True
         if status.get("error") and not status.get("is_dead"):
-            print(f"[-] Failed to check {owner_repo} ({branch}): {status['error']}")
+            print(f"[-] Failed to check {repo} ({branch}): {status['error']}")
     return False
 
 

@@ -1,6 +1,7 @@
 import contextlib
 import json
 import os
+import re
 import time
 import urllib.error
 import urllib.parse
@@ -123,38 +124,32 @@ def parse_timestamp(timestamp: Any) -> int:
     return 0
 
 
+_REPO_URL_RE = re.compile(
+    r"(github|gitlab)\.com/([^/#?]+)/([^/#?]+?)(?:\.git)?(?:[/#?]|$)", re.IGNORECASE
+)
+
+
 def parse_repo_url(repo_url: str) -> tuple[str, str] | tuple[None, None]:
-    if not repo_url:
-        return None, None
-
-    if "github.com/" in repo_url:
-        parts = repo_url.split("github.com/")[-1].strip("/").split("/")
-        if len(parts) >= 2:
-            return "github", f"{parts[0]}/{parts[1]}"
-    elif "gitlab.com/" in repo_url:
-        path = repo_url.split("gitlab.com/")[-1].strip("/").removesuffix(".git")
-        if path:
-            return "gitlab", path
-
+    if repo_url and (match := _REPO_URL_RE.search(repo_url)):
+        source, owner, repo = match.groups()
+        return source.lower(), f"{owner}/{repo}"
     return None, None
 
 
-def build_api_url(source: str, owner_repo: str) -> str | None:
+def build_api_url(source: str, repo: str) -> str | None:
     if source == "github":
-        return f"https://api.github.com/repos/{owner_repo}"
+        return f"https://api.github.com/repos/{repo}"
     if source == "gitlab":
-        encoded_repo = urllib.parse.quote(owner_repo, safe="")
+        encoded_repo = urllib.parse.quote(repo, safe="")
         return f"https://gitlab.com/api/v4/projects/{encoded_repo}"
     return None
 
 
-def build_raw_url(
-    source: str, owner_repo: str, branch: str, file_path: str
-) -> str | None:
+def build_raw_url(source: str, repo: str, branch: str, file_path: str) -> str | None:
     if source == "github":
-        return f"https://raw.githubusercontent.com/{owner_repo}/{branch}/{file_path}"
+        return f"https://raw.githubusercontent.com/{repo}/{branch}/{file_path}"
     if source == "gitlab":
-        encoded_repo = urllib.parse.quote(owner_repo, safe="")
+        encoded_repo = urllib.parse.quote(repo, safe="")
         encoded_file = urllib.parse.quote(file_path, safe="")
         return f"https://gitlab.com/api/v4/projects/{encoded_repo}/repository/files/{encoded_file}/raw?ref={branch}"
     return None

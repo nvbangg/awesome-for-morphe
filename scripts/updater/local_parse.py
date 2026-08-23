@@ -191,10 +191,10 @@ def process(
     print(f"\nParsing local patches and bundles for {len(bundle_sources)} sources...")
     for base_key, source_entry in bundle_sources.items():
         source = source_entry.get("source")
-        owner_repo = source_entry.get("repo")
-        if not source or not owner_repo or "/" not in owner_repo:
+        repo = source_entry.get("repo")
+        if not source or not repo or "/" not in repo:
             continue
-        owner, repo_name = owner_repo.split("/", 1)
+        owner, repo_name = repo.split("/", 1)
         file_prefix = f"{source}~{owner}~{repo_name}"
 
         repo_meta = repos_data.get(base_key, {})

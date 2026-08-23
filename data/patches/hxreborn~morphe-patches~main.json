@@ -1,7 +1,41 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "patches": [
+    {
+      "name": "AMOLED dark theme",
+      "description": "Adds a pure black option to the dark theme.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.cxinventor.file.explorer",
+          "name": "Cx File Explorer",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#5167F6",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.7.8",
+              "versionCodes": {
+                "ARM64_V8A": 278,
+                "ARMEABI_V7A": 278,
+                "X86_64": 278,
+                "X86": 278
+              },
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "AMOLED dark theme",
       "description": "Replaces the dark theme background with pure black. Disables over-the-air updates that would restore the original background.",
@@ -73,6 +107,18 @@
           "signatures": null,
           "targets": [
             {
+              "version": "7.11.4",
+              "versionCodes": {
+                "ARM64_V8A": 18315,
+                "ARMEABI_V7A": 18315,
+                "X86_64": 18315,
+                "X86": 18315
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "7.10.4",
               "versionCodes": {
                 "ARM64_V8A": 17667,
@@ -134,6 +180,41 @@
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Dark theme",
+      "description": "Renders the app's dark theme and adds it to the settings.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.cxinventor.file.explorer",
+          "name": "Cx File Explorer",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#5167F6",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.7.8",
+              "versionCodes": {
+                "ARM64_V8A": 278,
+                "ARMEABI_V7A": 278,
+                "X86_64": 278,
+                "X86": 278
+              },
+              "isExperimental": false,
+              "minSdk": 21,
               "description": null
             }
           ]
@@ -303,6 +384,18 @@
           "signatures": null,
           "targets": [
             {
+              "version": "7.11.4",
+              "versionCodes": {
+                "ARM64_V8A": 18315,
+                "ARMEABI_V7A": 18315,
+                "X86_64": 18315,
+                "X86": 18315
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "7.10.4",
               "versionCodes": {
                 "ARM64_V8A": 17667,
@@ -359,6 +452,18 @@
           "appIconColor": "#6D4AFF",
           "signatures": null,
           "targets": [
+            {
+              "version": "7.11.4",
+              "versionCodes": {
+                "ARM64_V8A": 18315,
+                "ARMEABI_V7A": 18315,
+                "X86_64": 18315,
+                "X86": 18315
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
             {
               "version": "7.10.4",
               "versionCodes": {
@@ -453,6 +558,18 @@
           "signatures": null,
           "targets": [
             {
+              "version": "7.11.4",
+              "versionCodes": {
+                "ARM64_V8A": 18315,
+                "ARMEABI_V7A": 18315,
+                "X86_64": 18315,
+                "X86": 18315
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "7.10.4",
               "versionCodes": {
                 "ARM64_V8A": 17667,
@@ -483,6 +600,18 @@
           "appIconColor": "#6D4AFF",
           "signatures": null,
           "targets": [
+            {
+              "version": "7.11.4",
+              "versionCodes": {
+                "ARM64_V8A": 18315,
+                "ARMEABI_V7A": 18315,
+                "X86_64": 18315,
+                "X86": 18315
+              },
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
             {
               "version": "7.10.4",
               "versionCodes": {
@@ -530,6 +659,37 @@
     },
     {
       "name": "Unlock premium",
+      "description": "Unlocks premium and removes ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.cxinventor.file.explorer",
+          "name": "Cx File Explorer",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#5167F6",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.7.8",
+              "versionCodes": {
+                "ARM64_V8A": 278,
+                "ARMEABI_V7A": 278,
+                "X86_64": 278,
+                "X86": 278
+              },
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
       "description": "Unlocks all premium features.",
       "default": true,
       "dependencies": [],
@@ -566,6 +726,34 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#F08029",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks running and logging workouts, progress tracking and personal records (AI workout generation is not included).",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "app.rubberbands.fit",
+          "name": "Rubber Bands",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#FD8700",
           "signatures": null,
           "targets": [
             {
@@ -649,6 +837,44 @@
               },
               "isExperimental": false,
               "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "14.0.0 TV",
+              "versionCodes": {
+                "ARM64_V8A": 227708,
+                "ARMEABI_V7A": 227708,
+                "X86_64": 227708,
+                "X86": 227708
+              },
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock pro",
+      "description": "Unlocks task lists, callouts, app lock, and the notebook, tag, colour and reminder limits. Requires a signed-in account. The server still enforces storage, attachment size, monographs and SMS 2FA.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.streetwriters.notesnook",
+          "name": "Notesnook",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#008837",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
               "description": null
             }
           ]

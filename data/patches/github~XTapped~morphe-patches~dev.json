@@ -1,7 +1,37 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0",
+  "version": "1.1.0-dev.1",
   "patches": [
+    {
+      "name": "Unlock Pro",
+      "description": "Enable unlimited photo exports from captured RAW frames, remove the 5-second video recording limit, and enable pro tools for import, export, and advanced camera workflows",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.motioncam",
+          "name": "MotionCam Pro Trial",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.0.8-trial",
+              "versionCodes": {
+                "ARM64_V8A": 3308
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Unlock Pro",
       "description": "Unlocks Pro tethering and disables purchase actions in the shop.",

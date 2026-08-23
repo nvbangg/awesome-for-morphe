@@ -4866,7 +4866,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/32616886?v=4&s=64",
       "stars": 35,
-      "updatedAt": 1787381605000,
+      "updatedAt": 1787466930000,
       "firstSeen": 1778211405000,
       "hotRank": 20,
       "appFirstSeen": {
@@ -16948,7 +16948,7 @@
       "repoDescription": "Andrew's Patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/47963624?v=4&s=64",
       "stars": 46,
-      "updatedAt": 1787453161000,
+      "updatedAt": 1787464149000,
       "firstSeen": 1785036993248,
       "hotRank": 9,
       "appFirstSeen": {
@@ -16983,7 +16983,6 @@
         {
           "name": "Hide Home content feed",
           "description": "Removes the content feed below the friends list on the Home tab. The feed shows LINE NEWS posts, official account posts, live cards, content units, and ranking units. The friends list, the service icons, and the other Home modules do not change.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 699
         },
         {
@@ -20220,7 +20219,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/10971263?v=4&s=64",
       "stars": 8,
-      "updatedAt": 1787434590000,
+      "updatedAt": 1787464264000,
       "firstSeen": 1786962892864,
       "hotRank": 32,
       "appFirstSeen": {
@@ -20426,7 +20425,7 @@
       "repoDescription": "Prerelease Morphe patches for the official NuvioTV Android application",
       "avatarUrl": "https://avatars.githubusercontent.com/u/145302945?v=4&s=64",
       "stars": 18,
-      "updatedAt": 1787098164000,
+      "updatedAt": 1787460944000,
       "firstSeen": 1787057562084,
       "hotRank": 21,
       "isPreRelease": true,
@@ -20467,12 +20466,6 @@
         {
           "name": "Random Episode",
           "description": "Adds Morphe > Detail Page > Show Random Episode Button and random series playback.",
-          "default": false,
-          "compatiblePackagesKey": 787
-        },
-        {
-          "name": "Rating Visibility",
-          "description": "Adds Settings > Morphe > Ratings with independent overall and episode rating controls.",
           "default": false,
           "compatiblePackagesKey": 787
         },
@@ -21238,16 +21231,22 @@
       "repoDescription": "A collection of my patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/30569190?v=4&s=64",
       "stars": 0,
-      "updatedAt": 1787434055000,
+      "updatedAt": 1787466256000,
       "firstSeen": 1787437810697,
       "appFirstSeen": {
-        "com.robskie.tether": 1787437809989
+        "com.robskie.tether": 1787437809989,
+        "com.motioncam": 1787468017506
       },
       "patches": [
         {
           "name": "Unlock Pro",
-          "description": "Unlocks Pro tethering and disables purchase actions in the shop.",
+          "description": "Enable unlimited photo exports from captured RAW frames, remove the 5-second video recording limit, and enable pro tools for import, export, and advanced camera workflows",
           "compatiblePackagesKey": 816
+        },
+        {
+          "name": "Unlock Pro",
+          "description": "Unlocks Pro tethering and disables purchase actions in the shop.",
+          "compatiblePackagesKey": 817
         }
       ]
     },
@@ -21267,13 +21266,13 @@
         {
           "name": "Enable Premium",
           "description": "Forces premium state to always be active.",
-          "compatiblePackagesKey": 817
+          "compatiblePackagesKey": 818
         },
         {
           "name": "Trust user certificates",
           "description": "Allows user-installed certificates to be trusted for debugging.",
           "default": false,
-          "compatiblePackagesKey": 817
+          "compatiblePackagesKey": 818
         }
       ]
     }
@@ -22886,6 +22885,9 @@
       {
         "packageName": "com.idamob.tinkoff.android",
         "targets": [
+          {
+            "version": "8.1.0"
+          },
           {
             "version": "8.0.0"
           },
@@ -30640,7 +30642,7 @@
         "packageName": "com.nuvio.tv",
         "targets": [
           {
-            "version": "0.8.6-beta"
+            "version": "0.8.7-beta"
           }
         ]
       }
@@ -30961,6 +30963,16 @@
         "targets": [
           {
             "version": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.motioncam",
+        "targets": [
+          {
+            "version": "5.0.8-trial"
           }
         ]
       }
@@ -36981,6 +36993,14 @@
       "minInstalls": 50000,
       "category": "Sports",
       "firstSeen": 1787454616238
+    },
+    "com.motioncam": {
+      "name": "MotionCam Pro Trial (5 sec)",
+      "iconUrl": "https://play-lh.googleusercontent.com/PQP5ZXiCixcMfDYqYGsqBL_EJ6n-d1j8ta5Hd-xHNGGvry2Ljj9G3YoJd41DKkyxcgJUQ4wVhnPEMxDBLp5xYQ=s64-rw",
+      "description": "5-second capture limit. RAW video recording with all Pro features",
+      "minInstalls": 500000,
+      "category": "Photography",
+      "firstSeen": 1787468017818
     }
   }
 }

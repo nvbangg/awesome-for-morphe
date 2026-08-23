@@ -1,4 +1,8 @@
 name: Sync
+run-name: >-
+  ${{ (inputs.mode == 'daily' || github.event.schedule == '0 0 2-31 * *') && 'Sync (daily)' ||
+      (inputs.mode == 'month' || github.event.schedule == '0 0 1 * *') && 'Sync (month)' ||
+      '' }}
 
 on:
   schedule:
@@ -78,9 +82,9 @@ jobs:
         if: steps.update.outputs.changed == 'true' && steps.update.outputs.need_java == 'true'
         uses: actions/setup-java@v5
         with:
-          distribution: 'temurin'
-          java-version: '21'
-          cache: 'gradle'
+          distribution: "temurin"
+          java-version: "21"
+          cache: "gradle"
 
       - name: Parse bundles and update data
         if: steps.update.outputs.changed == 'true' || steps.config.outputs.mode != 'default'

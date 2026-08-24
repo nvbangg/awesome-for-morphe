@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "patches": [
     {
       "name": "Big Hunter Fake Purchase",
@@ -1032,6 +1032,32 @@
           "targets": [
             {
               "version": "1.4.12",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Tentacle Wars Free Purchases",
+      "description": "Spoofs in-app purchases as instantly successful: tapping Buy grants the SKU directly through the game's own purchase callback — no Google Play dialog, no payment. For ad-free, just tap the Remove-Ads button on the main game screen.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fdgentertainment.tentaclewars.gp.free",
+          "name": "Tentacle Wars",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#00838F",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.1.27",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

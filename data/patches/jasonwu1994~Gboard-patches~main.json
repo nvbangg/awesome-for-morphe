@@ -1,5 +1,5 @@
 {
-  "version": "3.1.0",
+  "version": "3.2.0",
   "patches": [
     {
       "name": "AI Writing Tools",
@@ -303,7 +303,7 @@
     },
     {
       "name": "Package Rename",
-      "description": "將套件名稱改成 dev.jason.com.google.android.inputmethod.latin 以便共存安裝\nRename the package to dev.jason.com.google.android.inputmethod.latin so it can be installed alongside the official Gboard.",
+      "description": "將套件名稱改成 dev.jason.com.google.android.inputmethod.latin，並可自訂 App 名稱，以便共存安裝\nRename the package to dev.jason.com.google.android.inputmethod.latin and allow a custom app name so it can be installed alongside the official Gboard.",
       "use": true,
       "dependencies": [],
       "compatiblePackages": {
@@ -311,7 +311,23 @@
           "18.0.3.954559732-release-arm64-v8a"
         ]
       },
-      "options": []
+      "options": [
+        {
+          "key": "app_display_name",
+          "title": "App 名稱 / App name",
+          "description": "",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "GboardWu",
+          "values": {
+            "Gboard": "Gboard",
+            "Gboard Dev": "Gboard Dev",
+            "Gboard Patches": "Gboard Patches",
+            "Gboard Mod": "Gboard Mod",
+            "GboardWu": "GboardWu"
+          }
+        }
+      ]
     },
     {
       "name": "Quick Insert",

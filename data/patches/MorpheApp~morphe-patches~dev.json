@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.40.0-dev.21",
+  "version": "1.40.0-dev.22",
   "patches": [
     {
       "name": "Add to queue",
@@ -8624,7 +8624,7 @@
     },
     {
       "name": "Theme",
-      "description": "Adds options for theming, and adds a setting to change the app background color.",
+      "description": "Adds options for theming, and settings to change the app foreground and background colors.",
       "default": true,
       "dependencies": [
         "BytecodePatch",
@@ -8678,11 +8678,37 @@
           ]
         }
       ],
-      "options": []
+      "options": [
+        {
+          "key": "darkThemeColor",
+          "title": "Dark theme color",
+          "description": "Can be a hex color (#RRGGBB) or a color resource reference. Setting a color of either theme applies both while patching and removes the in-app theme color settings.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "in-app",
+          "values": {
+            "Change in the app": "in-app",
+            "Pure black": "@android:color/black",
+            "Material You (Neutral)": "@android:color/system_neutral1_900",
+            "Material You (Primary)": "@android:color/system_accent1_800",
+            "Material You (Secondary)": "@android:color/system_accent2_800",
+            "Material You (Tertiary)": "@android:color/system_accent3_800",
+            "Modern YouTube": "#0F0F0F",
+            "Classic YouTube": "#212121",
+            "Catppuccin (Mocha)": "#181825",
+            "Dark pink": "#290025",
+            "Dark blue": "#001029",
+            "Dark green": "#002905",
+            "Dark yellow": "#282900",
+            "Dark orange": "#291800",
+            "Dark red": "#290000"
+          }
+        }
+      ]
     },
     {
       "name": "Theme",
-      "description": "Adds options for theming, and adds a setting to change the app background color.",
+      "description": "Adds options for theming, and settings to change the app foreground and background colors.",
       "default": true,
       "dependencies": [
         "BytecodePatch",
@@ -8759,7 +8785,56 @@
           ]
         }
       ],
-      "options": []
+      "options": [
+        {
+          "key": "darkThemeColor",
+          "title": "Dark theme color",
+          "description": "Can be a hex color (#RRGGBB) or a color resource reference. Setting a color of either theme applies both while patching and removes the in-app theme color settings.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "in-app",
+          "values": {
+            "Change in the app": "in-app",
+            "Pure black": "@android:color/black",
+            "Material You (Neutral)": "@android:color/system_neutral1_900",
+            "Material You (Primary)": "@android:color/system_accent1_800",
+            "Material You (Secondary)": "@android:color/system_accent2_800",
+            "Material You (Tertiary)": "@android:color/system_accent3_800",
+            "Modern YouTube": "#0F0F0F",
+            "Classic YouTube": "#212121",
+            "Catppuccin (Mocha)": "#181825",
+            "Dark pink": "#290025",
+            "Dark blue": "#001029",
+            "Dark green": "#002905",
+            "Dark yellow": "#282900",
+            "Dark orange": "#291800",
+            "Dark red": "#290000"
+          }
+        },
+        {
+          "key": "lightThemeColor",
+          "title": "Light theme color",
+          "description": "Can be a hex color (#RRGGBB) or a color resource reference. Setting a color of either theme applies both while patching and removes the in-app theme color settings.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "in-app",
+          "values": {
+            "Change in the app": "in-app",
+            "White": "@android:color/white",
+            "Material You (Neutral)": "@android:color/system_neutral1_100",
+            "Material You (Primary)": "@android:color/system_accent1_200",
+            "Material You (Secondary)": "@android:color/system_accent2_200",
+            "Material You (Tertiary)": "@android:color/system_accent3_200",
+            "Catppuccin (Latte)": "#E6E9EF",
+            "Light pink": "#FCCFF3",
+            "Light blue": "#D1E0FF",
+            "Light green": "#CCFFCC",
+            "Light yellow": "#FDFFCC",
+            "Light orange": "#FFE6CC",
+            "Light red": "#FFD6D6"
+          }
+        }
+      ]
     },
     {
       "name": "Third-party lyrics",

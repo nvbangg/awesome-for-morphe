@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0-dev.1",
+  "version": "3.2.0-dev.1",
   "patches": [
     {
       "name": "AI Writing Tools",
@@ -76,6 +76,18 @@
     {
       "name": "Clipboard Enhancements",
       "description": "增強剪貼簿的保留時間、數量上限、預覽行數、倒數/建立時間、順序編號與欄數\nEnhance clipboard retention time, item count limit, preview lines, countdown/creation time labels, order index, and column count.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.google.android.inputmethod.latin": [
+          "18.0.3.954559732-release-arm64-v8a"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Close Proactive Suggestions",
+      "description": "在主動建議列顯示關閉按鈕\nShow a dismiss button in the proactive suggestions bar.",
       "use": true,
       "dependencies": [],
       "compatiblePackages": {
@@ -218,6 +230,18 @@
       "options": []
     },
     {
+      "name": "Hyperspeed Typing Animation",
+      "description": "持續快速輸入時顯示動畫，並支援所有鍵盤\nShow the animation during sustained fast typing with support for all keyboards.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.google.android.inputmethod.latin": [
+          "18.0.3.954559732-release-arm64-v8a"
+        ]
+      },
+      "options": []
+    },
+    {
       "name": "Incognito Mode Toggle",
       "description": "在 Access Point 工具列新增無痕模式切換按鈕，並可設定無痕模式下是否啟用剪貼簿與語音輸入\nAdd an Incognito toggle to the Access Point toolbar and configure clipboard and voice typing availability while Incognito mode is active.",
       "use": true,
@@ -279,7 +303,35 @@
     },
     {
       "name": "Package Rename",
-      "description": "將套件名稱改成 dev.jason.com.google.android.inputmethod.latin 以便共存安裝\nRename the package to dev.jason.com.google.android.inputmethod.latin so it can be installed alongside the official Gboard.",
+      "description": "將套件名稱改成 dev.jason.com.google.android.inputmethod.latin，並可自訂 App 名稱，以便共存安裝\nRename the package to dev.jason.com.google.android.inputmethod.latin and allow a custom app name so it can be installed alongside the official Gboard.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.google.android.inputmethod.latin": [
+          "18.0.3.954559732-release-arm64-v8a"
+        ]
+      },
+      "options": [
+        {
+          "key": "app_display_name",
+          "title": "App 名稱 / App name",
+          "description": "",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "GboardWu",
+          "values": {
+            "Gboard": "Gboard",
+            "Gboard Dev": "Gboard Dev",
+            "Gboard Patches": "Gboard Patches",
+            "Gboard Mod": "Gboard Mod",
+            "GboardWu": "GboardWu"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Quick Insert",
+      "description": "啟用快速插入面板與工具列入口\nEnable the Quick Insert panel and toolbar access point.",
       "use": true,
       "dependencies": [],
       "compatiblePackages": {

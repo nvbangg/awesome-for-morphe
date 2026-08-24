@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.41.0-dev.1",
+  "version": "1.41.0-dev.2",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -757,6 +757,37 @@
             {
               "version": "18.8.0.prime",
               "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks premium features and removes ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "calendar.agenda.schedule.event.advance.calendar.planner",
+          "name": "Calendar",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.0.34",
+              "versionCodes": {
+                "ARM64_V8A": 34,
+                "ARMEABI_V7A": 34,
+                "X86_64": 34,
+                "X86": 34
+              },
               "isExperimental": false,
               "minSdk": null,
               "description": null

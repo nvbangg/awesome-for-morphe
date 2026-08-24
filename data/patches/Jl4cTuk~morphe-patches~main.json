@@ -1,41 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "patches": [
     {
       "name": "Disable Mine redesign",
       "description": "Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "ru.vk.store",
-          "name": "RuStore",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#0077FF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.106.0.3",
-              "versionCodes": {
-                "ARM64_V8A": 1106003,
-                "ARMEABI_V7A": 1106003,
-                "X86_64": 1106003,
-                "X86": 1106003
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Disable ads",
-      "description": "Removes advertisements and recommendations from search.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -48,12 +17,12 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.106.0.3",
+              "version": "1.108.0.2",
               "versionCodes": {
-                "ARM64_V8A": 1106003,
-                "ARMEABI_V7A": 1106003,
-                "X86_64": 1106003,
-                "X86": 1106003
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
               },
               "isExperimental": false,
               "minSdk": null,
@@ -63,6 +32,105 @@
         }
       ],
       "options": []
+    },
+    {
+      "name": "Disable Ozon Bank VPN warning",
+      "description": "Removes the warning shown when Ozon Bank detects an active VPN connection.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.ozon.fintech.finance",
+          "name": "Ozon Bank",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#005BFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "19.31.0",
+              "versionCodes": {
+                "ARM64_V8A": 16030335,
+                "ARMEABI_V7A": 16030335,
+                "X86_64": 16030335,
+                "X86": 16030335
+              },
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable ads",
+      "description": "Removes advertisements, search recommendations, and the unsolicited VK ID prompt, with options for additional interface cleanup.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.108.0.2",
+              "versionCodes": {
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "disableGamingProfile",
+          "title": "Disable gaming profile",
+          "description": "Removes the Game Profile section and usage statistics screen.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "disableLoyaltyProgram",
+          "title": "Disable loyalty program",
+          "description": "Disables loyalty onboarding, points, notifications, links, and cashback banners.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "hideFeaturedAndGamesTabs",
+          "title": "Hide Featured and Games tabs",
+          "description": "Removes the Featured and Games tabs and opens Apps by default.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        },
+        {
+          "key": "hideNotificationButtons",
+          "title": "Hide notification buttons",
+          "description": "Removes notification buttons from the search bar and Mine screen.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        }
+      ]
     },
     {
       "name": "Disable analytics",
@@ -82,12 +150,12 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.106.0.3",
+              "version": "1.108.0.2",
               "versionCodes": {
-                "ARM64_V8A": 1106003,
-                "ARMEABI_V7A": 1106003,
-                "X86_64": 1106003,
-                "X86": 1106003
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
               },
               "isExperimental": false,
               "minSdk": null,
@@ -113,12 +181,12 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.106.0.3",
+              "version": "1.108.0.2",
               "versionCodes": {
-                "ARM64_V8A": 1106003,
-                "ARMEABI_V7A": 1106003,
-                "X86_64": 1106003,
-                "X86": 1106003
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
               },
               "isExperimental": false,
               "minSdk": null,
@@ -144,46 +212,15 @@
           "signatures": null,
           "targets": [
             {
-              "version": "19.28.0",
+              "version": "19.31.0",
               "versionCodes": {
-                "ARM64_V8A": 2698,
-                "ARMEABI_V7A": 2698,
-                "X86_64": 2698,
-                "X86": 2698
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
               },
               "isExperimental": false,
               "minSdk": 26,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Disable gaming profile",
-      "description": "Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "ru.vk.store",
-          "name": "RuStore",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#0077FF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.106.0.3",
-              "versionCodes": {
-                "ARM64_V8A": 1106003,
-                "ARMEABI_V7A": 1106003,
-                "X86_64": 1106003,
-                "X86": 1106003
-              },
-              "isExperimental": false,
-              "minSdk": null,
               "description": null
             }
           ]
@@ -206,12 +243,12 @@
           "signatures": null,
           "targets": [
             {
-              "version": "19.28.0",
+              "version": "19.31.0",
               "versionCodes": {
-                "ARM64_V8A": 2698,
-                "ARMEABI_V7A": 2698,
-                "X86_64": 2698,
-                "X86": 2698
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
               },
               "isExperimental": false,
               "minSdk": 26,
@@ -239,12 +276,12 @@
           "signatures": null,
           "targets": [
             {
-              "version": "19.28.0",
+              "version": "19.31.0",
               "versionCodes": {
-                "ARM64_V8A": 2698,
-                "ARMEABI_V7A": 2698,
-                "X86_64": 2698,
-                "X86": 2698
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
               },
               "isExperimental": false,
               "minSdk": 26,
@@ -256,8 +293,8 @@
       "options": []
     },
     {
-      "name": "Hide Featured and Games tabs",
-      "description": "Removes the Featured and Games tabs and opens Apps by default.",
+      "name": "Exclude Google Play apps from updates",
+      "description": "Excludes Google Play installs from RuStore update checks while keeping RuStore and sideloaded apps.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -270,12 +307,12 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.106.0.3",
+              "version": "1.108.0.2",
               "versionCodes": {
-                "ARM64_V8A": 1106003,
-                "ARMEABI_V7A": 1106003,
-                "X86_64": 1106003,
-                "X86": 1106003
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
               },
               "isExperimental": false,
               "minSdk": null,
@@ -301,12 +338,111 @@
           "signatures": null,
           "targets": [
             {
-              "version": "19.28.0",
+              "version": "19.31.0",
               "versionCodes": {
-                "ARM64_V8A": 2698,
-                "ARMEABI_V7A": 2698,
-                "X86_64": 2698,
-                "X86": 2698
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
+              },
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide Ozon Bank benefit sections",
+      "description": "Adds options to hide selected non-advertising sections from the Benefit page.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.ozon.fintech.finance",
+          "name": "Ozon Bank",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#005BFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "19.31.0",
+              "versionCodes": {
+                "ARM64_V8A": 16030335,
+                "ARMEABI_V7A": 16030335,
+                "X86_64": 16030335,
+                "X86": 16030335
+              },
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "hideBuyForOneRuble",
+          "title": "Hide Buy for 1 ruble",
+          "description": "Hides the Buy for 1 ruble product carousel.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        },
+        {
+          "key": "hidePartnerBenefits",
+          "title": "Hide Partner benefits",
+          "description": "Hides the Partner benefits section.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        },
+        {
+          "key": "hideOzonShoppingBenefits",
+          "title": "Hide For shopping on Ozon",
+          "description": "Hides the For shopping on Ozon section.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        },
+        {
+          "key": "hideOzonPremium",
+          "title": "Hide Ozon Premium",
+          "description": "Hides the Ozon Premium benefits section.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Hide Ozon Bank promotions",
+      "description": "Uses the classic home design and removes promotional cards, sections, shortcuts, and the startup installment offer from Ozon Bank pages.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.ozon.fintech.finance",
+          "name": "Ozon Bank",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#005BFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "19.31.0",
+              "versionCodes": {
+                "ARM64_V8A": 16030335,
+                "ARMEABI_V7A": 16030335,
+                "X86_64": 16030335,
+                "X86": 16030335
               },
               "isExperimental": false,
               "minSdk": 26,
@@ -332,46 +468,15 @@
           "signatures": null,
           "targets": [
             {
-              "version": "19.28.0",
+              "version": "19.31.0",
               "versionCodes": {
-                "ARM64_V8A": 2698,
-                "ARMEABI_V7A": 2698,
-                "X86_64": 2698,
-                "X86": 2698
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
               },
               "isExperimental": false,
               "minSdk": 26,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide notification buttons",
-      "description": "Removes notification buttons from the search bar and Mine screen.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "ru.vk.store",
-          "name": "RuStore",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#0077FF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.106.0.3",
-              "versionCodes": {
-                "ARM64_V8A": 1106003,
-                "ARMEABI_V7A": 1106003,
-                "X86_64": 1106003,
-                "X86": 1106003
-              },
-              "isExperimental": false,
-              "minSdk": null,
               "description": null
             }
           ]
@@ -394,12 +499,12 @@
           "signatures": null,
           "targets": [
             {
-              "version": "19.28.0",
+              "version": "19.31.0",
               "versionCodes": {
-                "ARM64_V8A": 2698,
-                "ARMEABI_V7A": 2698,
-                "X86_64": 2698,
-                "X86": 2698
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
               },
               "isExperimental": false,
               "minSdk": 26,
@@ -425,12 +530,12 @@
           "signatures": null,
           "targets": [
             {
-              "version": "19.28.0",
+              "version": "19.31.0",
               "versionCodes": {
-                "ARM64_V8A": 2698,
-                "ARMEABI_V7A": 2698,
-                "X86_64": 2698,
-                "X86": 2698
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
               },
               "isExperimental": false,
               "minSdk": 26,
@@ -466,46 +571,15 @@
           "signatures": null,
           "targets": [
             {
-              "version": "19.28.0",
+              "version": "19.31.0",
               "versionCodes": {
-                "ARM64_V8A": 2698,
-                "ARMEABI_V7A": 2698,
-                "X86_64": 2698,
-                "X86": 2698
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
               },
               "isExperimental": false,
               "minSdk": 26,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Skip update auth",
-      "description": "Removes the login requirement when updating apps.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "ru.vk.store",
-          "name": "RuStore",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#0077FF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.106.0.3",
-              "versionCodes": {
-                "ARM64_V8A": 1106003,
-                "ARMEABI_V7A": 1106003,
-                "X86_64": 1106003,
-                "X86": 1106003
-              },
-              "isExperimental": false,
-              "minSdk": null,
               "description": null
             }
           ]

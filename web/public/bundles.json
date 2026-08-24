@@ -18511,7 +18511,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/42464534?v=4&s=64",
       "stars": 4,
-      "updatedAt": 1787509324000,
+      "updatedAt": 1787553092000,
       "firstSeen": 1785374551928,
       "appFirstSeen": {
         "ru.vk.store": 1785374545061,
@@ -18527,7 +18527,6 @@
         {
           "name": "Disable Ozon Bank VPN warning",
           "description": "Removes the warning shown when Ozon Bank detects an active VPN connection.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 756
         },
         {
@@ -18585,7 +18584,6 @@
         {
           "name": "Exclude Google Play apps from updates",
           "description": "Excludes Google Play installs from RuStore update checks while keeping RuStore and sideloaded apps.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 755
         },
         {
@@ -18596,7 +18594,6 @@
         {
           "name": "Hide Ozon Bank benefit sections",
           "description": "Adds options to hide selected non-advertising sections from the Benefit page.",
-          "isPreRelease": true,
           "default": false,
           "options": [
             {
@@ -18625,7 +18622,6 @@
         {
           "name": "Hide Ozon Bank promotions",
           "description": "Uses the classic home design and removes promotional cards, sections, shortcuts, and the startup installment offer from Ozon Bank pages.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 756
         },
         {
@@ -19417,7 +19413,7 @@
       "repoDescription": "Morphe patches to remove ads, analytics, apk junk, debug info, duplicate graphics, unused languages, and use custom dpi☠️",
       "avatarUrl": "https://avatars.githubusercontent.com/u/139938337?v=4&s=64",
       "stars": 13,
-      "updatedAt": 1787516424000,
+      "updatedAt": 1787550576000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
         "com.snaptube.premium": 1786360281622,
@@ -19427,7 +19423,8 @@
         "cn.xender": 1786693028385,
         "__universal__": 1786240845676,
         "videoplayer.videodownloader.downloader": 1786869206007,
-        "com.rs.explorer.filemanager": 1786941973703
+        "com.rs.explorer.filemanager": 1786941973703,
+        "calendar.agenda.schedule.event.advance.calendar.planner": 1787553385240
       },
       "patches": [
         {
@@ -19659,6 +19656,12 @@
           "description": "Enters the main activity directly after the splash permission check instead of delaying for the additional external-storage check.",
           "default": false,
           "compatiblePackagesKey": 781
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium features and removes ads.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 784
         }
       ],
       "hotRank": 19
@@ -19680,7 +19683,7 @@
         {
           "name": "Unlock Premium",
           "description": "Unlocks all premium content and removes subscription banners.",
-          "compatiblePackagesKey": 784
+          "compatiblePackagesKey": 785
         }
       ],
       "hotRank": 59
@@ -19710,7 +19713,7 @@
               "description": "Forced display density in dots-per-inch for this app only. 160 = system default (mdpi), 240 is roughly 1.5x larger. Range 96-640."
             }
           ],
-          "compatiblePackagesKey": 785
+          "compatiblePackagesKey": 786
         },
         {
           "name": "Custom version name",
@@ -19723,13 +19726,13 @@
               "description": "Full value written to android:versionName, e.g. \"20.51.39+1781904670\". Use a monotonic numeric suffix so newer builds compare greater."
             }
           ],
-          "compatiblePackagesKey": 785
+          "compatiblePackagesKey": 786
         },
         {
           "name": "Disable experimental notice",
           "description": "Removes the morphe experimental-version warning dialog, which otherwise nags on every re-patched build whose version differs from the recommended one.",
           "default": false,
-          "compatiblePackagesKey": 785
+          "compatiblePackagesKey": 786
         }
       ]
     },
@@ -19769,12 +19772,12 @@
         {
           "name": "Force enable Megaphone, Tamper Detection, Krutrim and Kruti",
           "description": "Forces the Megaphone, Tamper & Fall Detection, Krutrim Assistant, and Kruti features to always report as available, regardless of the server-driven onboarding feature flags returned by the app's backend.",
-          "compatiblePackagesKey": 786
+          "compatiblePackagesKey": 787
         },
         {
           "name": "High quality document upload",
           "description": "Raises the JPEG re-encode quality used by the camera capture-with-compression flow from 0 to 100, and raises the 6MB per-file size limit enforced on document uploads to 100MB, so scanned documents and high-resolution photos are no longer degraded or rejected before upload.",
-          "compatiblePackagesKey": 786
+          "compatiblePackagesKey": 787
         }
       ],
       "hotRank": 70
@@ -19795,7 +19798,7 @@
         {
           "name": "Remove ads",
           "description": "Removes all ads in the app by forcing the no-ads (Emerald) entitlement flag.",
-          "compatiblePackagesKey": 787
+          "compatiblePackagesKey": 788
         }
       ],
       "hotRank": 67
@@ -19816,12 +19819,12 @@
         {
           "name": "Rename StandBy",
           "description": "Changes the launcher name to R3D StandBy.",
-          "compatiblePackagesKey": 788
+          "compatiblePackagesKey": 789
         },
         {
           "name": "Unlock Premium",
           "description": "Unlock Premium Features.",
-          "compatiblePackagesKey": 788
+          "compatiblePackagesKey": 789
         }
       ],
       "hotRank": 65
@@ -20643,52 +20646,52 @@
         {
           "name": "Allow screenshots",
           "description": "Removes the screen capture block so screenshots and recordings work.",
-          "compatiblePackagesKey": 789
+          "compatiblePackagesKey": 790
         },
         {
           "name": "Bypass certificate checks",
           "description": "Bypasses certificate pinning so intercepted TLS connections are accepted.",
-          "compatiblePackagesKey": 790
+          "compatiblePackagesKey": 791
         },
         {
           "name": "Disable Play Integrity",
           "description": "Short-circuits the Google Play Integrity attestation request with a \"DISABLED\" response, avoiding failures on modified or non-Play builds.",
-          "compatiblePackagesKey": 791
+          "compatiblePackagesKey": 792
         },
         {
           "name": "Disable analytics and crash reporting",
           "description": "Disables analytics and crash reporting while keeping push notifications.",
-          "compatiblePackagesKey": 790
+          "compatiblePackagesKey": 791
         },
         {
           "name": "Disable developer options detection",
           "description": "Stops the app from detecting that Developer Options or USB debugging are enabled on the device, removing the blocking security dialog.",
-          "compatiblePackagesKey": 791
+          "compatiblePackagesKey": 792
         },
         {
           "name": "Disable root & emulator detection",
           "description": "Forces every root, jailbreak, emulator and frida check in the app to report a clean device, so no blocking dialog is shown on modified/rooted environments.",
-          "compatiblePackagesKey": 791
+          "compatiblePackagesKey": 792
         },
         {
           "name": "Disable root detection",
           "description": "Disables the rooted-device check so the app runs on rooted devices.",
-          "compatiblePackagesKey": 790
+          "compatiblePackagesKey": 791
         },
         {
           "name": "Enable 30-day Resto reservations",
           "description": "Allows reserving Resto meals up to 30 days in advance.",
-          "compatiblePackagesKey": 789
+          "compatiblePackagesKey": 790
         },
         {
           "name": "Remove CleverTap tracking",
           "description": "Removes CleverTap analytics initialization, stopping the app from collecting the phone number as an identity key and from reporting usage data.",
-          "compatiblePackagesKey": 791
+          "compatiblePackagesKey": 792
         },
         {
           "name": "Remove PairIP protection",
           "description": "Removes Google Play's PairIP anti-tamper wrapper so the app runs without license checks. Restores the original Application class in the manifest, removes all injected com.pairip.* components, and neuters PairIP's license client.",
-          "compatiblePackagesKey": 789
+          "compatiblePackagesKey": 790
         }
       ],
       "hotRank": 46
@@ -20931,12 +20934,12 @@
         {
           "name": "Unlock Plus",
           "description": "Unlocks Sparkle TV's Plus features without purchase, including DVR recording, timeshift, multiview, VOD (movies & series), multi-source setup, and custom channel/category editing.",
-          "compatiblePackagesKey": 792
+          "compatiblePackagesKey": 793
         },
         {
           "name": "Unlock Premium",
           "description": "Unlocks AT4K Launcher's premium features without paying, like more apps per row and the premium wallpaper options. It all runs on the device, so nothing stays locked.",
-          "compatiblePackagesKey": 793
+          "compatiblePackagesKey": 794
         }
       ],
       "hotRank": 74
@@ -20957,32 +20960,32 @@
         {
           "name": "Bypass Play Store redirect",
           "description": "Makes the PairIP license check pass for sideloaded installs so the app no longer redirects to the Play Store and closes.",
-          "compatiblePackagesKey": 794
+          "compatiblePackagesKey": 795
         },
         {
           "name": "Disable Firebase Analytics and FCM",
           "description": "Disables Google Firebase Analytics tracking and removes Firebase Cloud Messaging push notifications.",
-          "compatiblePackagesKey": 794
+          "compatiblePackagesKey": 795
         },
         {
           "name": "Neuter Telegram security breach reporter",
           "description": "Stops the app from reporting security breaches or APK integrity failures to the developers' Telegram channel.",
-          "compatiblePackagesKey": 794
+          "compatiblePackagesKey": 795
         },
         {
           "name": "Remove certificate pinning",
           "description": "Removes the hard-coded OkHttp certificate pins and SSL pinning interceptor so the app trusts system and user CAs.",
-          "compatiblePackagesKey": 794
+          "compatiblePackagesKey": 795
         },
         {
           "name": "Remove screenshot restriction",
           "description": "Disables the FLAG_SECURE window flag in the PDF and EPUB readers so screenshots and screen recordings are allowed.",
-          "compatiblePackagesKey": 794
+          "compatiblePackagesKey": 795
         },
         {
           "name": "Save book to Downloads",
           "description": "Adds a menu option that downloads, decrypts, and saves the book as a readable PDF or EPUB in the public Downloads folder.",
-          "compatiblePackagesKey": 794
+          "compatiblePackagesKey": 795
         }
       ],
       "hotRank": 28
@@ -21007,7 +21010,7 @@
         {
           "name": "Bypass APK security check",
           "description": "Disables the retouch SDK APK signature check that shows a toast when the app was repatched (e.g. after applying Morphe patches). The native check in libretouch_sdk.so still runs but its error UI is suppressed.",
-          "compatiblePackagesKey": 795
+          "compatiblePackagesKey": 796
         },
         {
           "name": "Hide ads",
@@ -21017,7 +21020,7 @@
         {
           "name": "Hide ads",
           "description": "Removes banner, native, cover and interstitial ads and unlocks premium features.",
-          "compatiblePackagesKey": 796
+          "compatiblePackagesKey": 797
         },
         {
           "name": "Unlock Premium features",
@@ -21027,7 +21030,7 @@
         {
           "name": "Unlock Pro",
           "description": "Spoofs client-side Pro/VIP status to unlock premium-gated effects, export options (watermark removal where VIP-gated), and retouch subscribe checks. Also disables watermark_trailer_config so the CapCut ending clip is not applied. ISubscribe.isVip is native and not patchable here. Server-verified features may still require a real subscription.",
-          "compatiblePackagesKey": 795
+          "compatiblePackagesKey": 796
         },
         {
           "name": "Unlock map regions",
@@ -21044,7 +21047,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/10971263?v=4&s=64",
       "stars": 8,
-      "updatedAt": 1787544525000,
+      "updatedAt": 1787550229000,
       "firstSeen": 1786962892864,
       "appFirstSeen": {
         "com.google.android.inputmethod.latin": 1786962892801
@@ -21122,17 +21125,17 @@
         {
           "name": "Block tracking & telemetry",
           "description": "Stops AppsFlyer, comScore, Conviva and Adobe Marketing from initializing, so they collect or send no attribution/analytics data. Leaves CleverTap intact to preserve push notifications.",
-          "compatiblePackagesKey": 797
+          "compatiblePackagesKey": 798
         },
         {
           "name": "Remove ads",
           "description": "Stops ESPNcricinfo from fetching or showing banner, interstitial, native, rewarded and app-open ads (Google Ad Manager, Meta Audience Network, Taboola) by severing the Flutter ad plugins and skipping the ad SDK setup.",
-          "compatiblePackagesKey": 797
+          "compatiblePackagesKey": 798
         },
         {
           "name": "Remove splash ad, startup delay & forced update",
           "description": "Removes the full-screen splash ad shown on every cold start (the main cause of the slow boot), the GPT interstitial, and the \"you must update\" blocking screen, by hiding their Firebase Remote Config keys from the app. Other remote config is untouched.",
-          "compatiblePackagesKey": 797
+          "compatiblePackagesKey": 798
         }
       ],
       "hotRank": 72
@@ -21251,7 +21254,7 @@
         {
           "name": "Example Patch",
           "description": "Example patch to start with.",
-          "compatiblePackagesKey": 798
+          "compatiblePackagesKey": 799
         }
       ]
     },
@@ -21272,54 +21275,54 @@
           "name": "Allow Importing Subs from Local Storage",
           "description": "Imports device subtitle files into Nuvio's ExoPlayer subtitle menu without rebuilding active playback.",
           "default": false,
-          "compatiblePackagesKey": 799
+          "compatiblePackagesKey": 800
         },
         {
           "name": "Library Mode Focus Fix",
           "description": "Returns Library focus to the previously selected Saved or Cloud mode.",
           "default": false,
-          "compatiblePackagesKey": 799
+          "compatiblePackagesKey": 800
         },
         {
           "name": "Local Downloads",
           "description": "Downloads selected direct movie and episode sources to local storage for exact local playback.",
           "default": false,
-          "compatiblePackagesKey": 799
+          "compatiblePackagesKey": 800
         },
         {
           "name": "Local Media",
           "description": "Adds Library > Storage playback, folder selection, and same-basename sidecar subtitles for local video files.",
           "default": false,
-          "compatiblePackagesKey": 799
+          "compatiblePackagesKey": 800
         },
         {
           "name": "Mark SDH Subtitles",
           "description": "Marks explicitly labelled SDH tracks and detected English SDH subtitle files.",
           "default": false,
-          "compatiblePackagesKey": 799
+          "compatiblePackagesKey": 800
         },
         {
           "name": "Random Episode",
           "description": "Adds Morphe > Detail Page > Show Random Episode Button and random series playback.",
           "default": false,
-          "compatiblePackagesKey": 799
+          "compatiblePackagesKey": 800
         },
         {
           "name": "Remove SDH Annotations",
           "description": "Adds Settings → Morphe → Subtitles to normalize music symbols and remove SDH annotations from Media3 subtitles.",
           "default": false,
-          "compatiblePackagesKey": 799
+          "compatiblePackagesKey": 800
         },
         {
           "name": "Restore Source Selection",
           "description": "Returns the source picker to the source played before leaving the player.",
           "default": false,
-          "compatiblePackagesKey": 799
+          "compatiblePackagesKey": 800
         },
         {
           "name": "Side-by-side installation",
           "description": "Installs the patched app separately as Nuvio Morphe instead of replacing NuvioTV.",
-          "compatiblePackagesKey": 799
+          "compatiblePackagesKey": 800
         }
       ],
       "hotRank": 22,
@@ -21341,12 +21344,12 @@
         {
           "name": "AccountPicker WebView force",
           "description": "Forces AccountPickerSignInHubPresenter to always use the WebView H5 login path, bypassing HMS Core availability checks that fail on non-Huawei devices.",
-          "compatiblePackagesKey": 800
+          "compatiblePackagesKey": 801
         },
         {
           "name": "Anti-Repack Bypass",
           "description": "Neutralizes the native integrity check (SecurityDetect.irpj) that kills the process upon detecting APK re-signing.",
-          "compatiblePackagesKey": 800
+          "compatiblePackagesKey": 801
         },
         {
           "name": "Change package name",
@@ -21369,22 +21372,22 @@
               "description": "Update provider authorities declared by the app. Required for Petal Maps coexistence."
             }
           ],
-          "compatiblePackagesKey": 800
+          "compatiblePackagesKey": 801
         },
         {
           "name": "Huawei login fix",
           "description": "Forces HMS Core sign-in path (a.g) in AccountFactory. Requires HMS Core installed. Disable if HMS Core is not available.",
-          "compatiblePackagesKey": 800
+          "compatiblePackagesKey": 801
         },
         {
           "name": "Main activity orientation fix",
           "description": "Changes PetalMapsActivity's screenOrientation from \"behind\" to \"unspecified\", allowing the app to rotate freely.",
-          "compatiblePackagesKey": 800
+          "compatiblePackagesKey": 801
         },
         {
           "name": "Manufacturer Check Bypass",
           "description": "Forces the Huawei manufacturer check to always return true, allowing non-Huawei devices to use the app.",
-          "compatiblePackagesKey": 800
+          "compatiblePackagesKey": 801
         }
       ],
       "hotRank": 80
@@ -21406,12 +21409,12 @@
         {
           "name": "Remove Ads",
           "description": "Removes all banner ads, interstitial ads, open app ads, and enables permanent ad-free status.",
-          "compatiblePackagesKey": 801
+          "compatiblePackagesKey": 802
         },
         {
           "name": "Unlock Pro",
           "description": "Unlocks all Pro and Premium features, taals, variations, scales, Manjeera audio engine, and disables store alerts & ads.",
-          "compatiblePackagesKey": 802
+          "compatiblePackagesKey": 803
         }
       ],
       "hotRank": 66
@@ -21435,12 +21438,12 @@
         {
           "name": "Bypass developer options",
           "description": "Bypasses app usb debugging, wireless debugging and developer options checks.",
-          "compatiblePackagesKey": 803
+          "compatiblePackagesKey": 804
         },
         {
           "name": "Bypass signature check",
           "description": "Bypasses app anti-tampering protection so to work when signed by a different signature.",
-          "compatiblePackagesKey": 803
+          "compatiblePackagesKey": 804
         },
         {
           "name": "Fix Other discussions",
@@ -21490,7 +21493,7 @@
         {
           "name": "Unlock pro",
           "description": "Remove ads, add VIP badge and allow to view 'Your Month in Review'.",
-          "compatiblePackagesKey": 804
+          "compatiblePackagesKey": 805
         }
       ],
       "hotRank": 81
@@ -21521,102 +21524,102 @@
         {
           "name": "Block marketing notifications",
           "description": "Blocks promotional and marketing notification prompts and modals.",
-          "compatiblePackagesKey": 805
+          "compatiblePackagesKey": 806
         },
         {
           "name": "Brave Origin",
           "description": "Unlocks Brave Origin and enables feature toggle controls.",
-          "compatiblePackagesKey": 806
+          "compatiblePackagesKey": 807
         },
         {
           "name": "Disable Facebook SDK",
           "description": "Disables Facebook SDK initialization, marketing, and ad network activity.",
-          "compatiblePackagesKey": 805
+          "compatiblePackagesKey": 806
         },
         {
           "name": "Disable Play Integrity",
           "description": "Bypasses Google Play Integrity API checks.",
-          "compatiblePackagesKey": 805
+          "compatiblePackagesKey": 806
         },
         {
           "name": "Disable ads",
           "description": "Prevents AppLovin interstitial ads from loading and showing.",
-          "compatiblePackagesKey": 807
+          "compatiblePackagesKey": 808
         },
         {
           "name": "Disable ads",
           "description": "Disables Wortise ad SDK initialization, blocking banner, interstitial, native and mediated ads (AppLovin, Yandex, Google Mobile Ads, etc.).",
-          "compatiblePackagesKey": 808
-        },
-        {
-          "name": "Disable ads",
-          "description": "Forces AdsRemovalSettings.areAdsDisabled() to return true, disabling banner, interstitial, MPU, hero placement, coverage sponsorship and announcement ads.",
           "compatiblePackagesKey": 809
         },
         {
           "name": "Disable ads",
-          "description": "Disables Google Mobile Ads (AdMob) initialization, blocking banner, interstitial, rewarded, native and mediated ads.",
+          "description": "Forces AdsRemovalSettings.areAdsDisabled() to return true, disabling banner, interstitial, MPU, hero placement, coverage sponsorship and announcement ads.",
           "compatiblePackagesKey": 810
         },
         {
           "name": "Disable ads",
+          "description": "Disables Google Mobile Ads (AdMob) initialization, blocking banner, interstitial, rewarded, native and mediated ads.",
+          "compatiblePackagesKey": 811
+        },
+        {
+          "name": "Disable ads",
           "description": "Disables banner, interstitial, feed, native, preroll and rewarded ads.",
-          "compatiblePackagesKey": 805
+          "compatiblePackagesKey": 806
         },
         {
           "name": "Disable telemetry",
           "description": "Disables AppsFlyer, Firebase Analytics and Crashlytics event logging.",
-          "compatiblePackagesKey": 807
+          "compatiblePackagesKey": 808
         },
         {
           "name": "Disable telemetry",
           "description": "Disables Braze custom event tracking. Firebase Analytics/Crashlytics are covered by the universal \"Disable Firebase Analytics & Crashlytics\" patch.",
-          "compatiblePackagesKey": 811
+          "compatiblePackagesKey": 812
         },
         {
           "name": "Disable telemetry",
           "description": "Disables AppsFlyer, Firebase Analytics, Crashlytics, and Adjust telemetry.",
-          "compatiblePackagesKey": 805
+          "compatiblePackagesKey": 806
         },
         {
           "name": "Enable FotMob+",
           "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 812
-        },
-        {
-          "name": "Enable Premium",
-          "description": "Unlocks premium features by patching the Java license wrapper methods in JniAdExt: isFreeLicense returns false (app treats the license as paid), account registration and address book are allowed, and the remove-license option is available in settings. Note: the underlying license validation is native (libanydesk.so) and cannot be patched via bytecode — this patch only affects the Java-layer feature gates.",
           "compatiblePackagesKey": 813
         },
         {
           "name": "Enable Premium",
-          "description": "Unlocks premium features by bypassing RevenueCat subscription checks.",
-          "compatiblePackagesKey": 807
-        },
-        {
-          "name": "Enable Premium",
-          "description": "Forces User.hasPremium() to return true, unlocking premium features locked behind the RevenueCat subscription entitlement.",
+          "description": "Unlocks premium features by patching the Java license wrapper methods in JniAdExt: isFreeLicense returns false (app treats the license as paid), account registration and address book are allowed, and the remove-license option is available in settings. Note: the underlying license validation is native (libanydesk.so) and cannot be patched via bytecode — this patch only affects the Java-layer feature gates.",
           "compatiblePackagesKey": 814
         },
         {
           "name": "Enable Premium",
-          "description": "Forces IptvFreeApplication's pro/trial gate to return true, keeping pro features unlocked after the 20-minute trial expires and suppressing the in-app review / buy-pro upsell prompts.",
+          "description": "Unlocks premium features by bypassing RevenueCat subscription checks.",
           "compatiblePackagesKey": 808
         },
         {
           "name": "Enable Premium",
+          "description": "Forces User.hasPremium() to return true, unlocking premium features locked behind the RevenueCat subscription entitlement.",
+          "compatiblePackagesKey": 815
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Forces IptvFreeApplication's pro/trial gate to return true, keeping pro features unlocked after the 20-minute trial expires and suppressing the in-app review / buy-pro upsell prompts.",
+          "compatiblePackagesKey": 809
+        },
+        {
+          "name": "Enable Premium",
           "description": "Unlocks all features locked behind the Saphe subscription paywall (navigation, car integration, speed limits, voice alarms, roadwork detection, animal nearby, slow-moving traffic, emergency vehicle, etc.).",
-          "compatiblePackagesKey": 811
+          "compatiblePackagesKey": 812
         },
         {
           "name": "Enable Premium",
           "description": "Unlocks AI insights and premium features locked behind subscription.",
-          "compatiblePackagesKey": 805
+          "compatiblePackagesKey": 806
         },
         {
           "name": "Enable Premium+",
           "description": "Enables app features locked behind the subscription paywall.",
-          "compatiblePackagesKey": 815
+          "compatiblePackagesKey": 816
         }
       ],
       "isPreRelease": true
@@ -21637,17 +21640,17 @@
         {
           "name": "Disable ads",
           "description": "Disables all ad display logic in the app.",
-          "compatiblePackagesKey": 816
+          "compatiblePackagesKey": 817
         },
         {
           "name": "Remove AppLovin initialization",
           "description": "Removes AppLovin SDK initialization from the Application class.",
-          "compatiblePackagesKey": 816
+          "compatiblePackagesKey": 817
         },
         {
           "name": "Replace AWPlayer with VLC",
           "description": "Replaces the AWPlayer video player with VLC via system intent chooser.",
-          "compatiblePackagesKey": 816
+          "compatiblePackagesKey": 817
         }
       ]
     },
@@ -21667,7 +21670,7 @@
         {
           "name": "Boost for Tildes",
           "description": "Adds tildes.net to Boost for Lemmy, as an account beside the Lemmy ones.",
-          "compatiblePackagesKey": 817
+          "compatiblePackagesKey": 818
         }
       ]
     },
@@ -21687,22 +21690,22 @@
         {
           "name": "Disable Play Store redirect for Punge",
           "description": "Stops Punge from opening the Play Store on launch when the app was sideloaded or patched instead of installed from Play.",
-          "compatiblePackagesKey": 818
+          "compatiblePackagesKey": 819
         },
         {
           "name": "Disable remote config for Punge",
           "description": "Stops Firebase Remote Config fetches and Play Measurement so feature flags cannot be changed after install.",
-          "compatiblePackagesKey": 818
+          "compatiblePackagesKey": 819
         },
         {
           "name": "Hide ads for Punge",
           "description": "Stops AdMob banners and interstitials from loading or showing.",
-          "compatiblePackagesKey": 818
+          "compatiblePackagesKey": 819
         },
         {
           "name": "Unlock Punge premium",
           "description": "Unlocks Punge's paid feature gates by making RevenueCat report an active entitlement.",
-          "compatiblePackagesKey": 818
+          "compatiblePackagesKey": 819
         }
       ],
       "hotRank": 50
@@ -21724,37 +21727,37 @@
         {
           "name": "Add AMOLED Theme",
           "description": "Adds a selectable Pure Black AMOLED theme using Gboard's native color_black theme package, without replacing Dark, Light, System Auto, or Dynamic Color.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Allow Modified APK",
           "description": "Bypasses internal signature check to allow custom APK execution.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Block Brave Telemetry",
           "description": "Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, and Variations seed fetching.",
-          "compatiblePackagesKey": 820
+          "compatiblePackagesKey": 821
         },
         {
           "name": "Block Telemetry",
           "description": "Disables background metrics dispatch, event logging, daily pings, and crash reporting.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Brave In-Product Notification Scheduler Optimization",
           "description": "Eliminates periodic background wakeups and native library loading caused by Chromium in-product tips/promo scheduler (Job ID 105).",
-          "compatiblePackagesKey": 820
+          "compatiblePackagesKey": 821
         },
         {
           "name": "Brave Origin",
           "description": "Unlocks Brave Origin and enables local feature toggle controls.",
-          "compatiblePackagesKey": 820
+          "compatiblePackagesKey": 821
         },
         {
           "name": "Brave Startup Performance Optimization",
           "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations.",
-          "compatiblePackagesKey": 820
+          "compatiblePackagesKey": 821
         },
         {
           "name": "Clone Gboard",
@@ -21766,92 +21769,92 @@
               "description": "Suffix appended after the original package name and a dot (e.g. 'kveld' -> 'com.google.android.inputmethod.latin.kveld')."
             }
           ],
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Disable Background Sync & Periodic Sync",
           "description": "Eliminates background wakeups, radio modem activity, and battery drain by forcing GooglePlayServicesChecker.shouldDisableBackgroundSync() -> true and neutralizing wakeup tasks.",
-          "compatiblePackagesKey": 820
+          "compatiblePackagesKey": 821
         },
         {
           "name": "Disable Battery Status API & OS Listener",
           "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
-          "compatiblePackagesKey": 820
+          "compatiblePackagesKey": 821
         },
         {
           "name": "Disable Diagnostics",
           "description": "Disables Google's diagnostic and recovery telemetry.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Disable Google Primes",
           "description": "Neutralizes Google Primes performance profiling, jank monitoring, native crash sidecars, and background telemetry threads.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Disable In-App Training",
           "description": "Neutralizes periodic in-app training cache generation and federated-learning background work while preserving normal keyboard functionality and explicit user-requested operations.",
           "default": false,
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Disable MDD Background Sync",
           "description": "Neutralizes Mobile Data Download (MDD) periodic background synchronization, automated polling, and prefetch worker tasks while preserving on-demand and user-requested downloads.",
           "default": false,
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Disable Pull To Refresh",
           "description": "Completely disables the pull-to-refresh overscroll gesture and animation to prevent accidental page reloads.",
-          "compatiblePackagesKey": 820
+          "compatiblePackagesKey": 821
         },
         {
           "name": "Disable Remote Configuration",
           "description": "Disables periodic remote experiment flag synchronization and background updates.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Disable Superpacks Eager Sync",
           "description": "Neutralizes eager background Superpacks synchronization during application startup, eliminating unnecessary disk sweeps and network polling while preserving on-demand pack downloads.",
           "default": false,
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Disable Tenor Share Tracking",
           "description": "Disables Tenor GIF selection and share tracking telemetry.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Disable WorkManager",
           "description": "Neutralizes background WorkManager initialization, database creation, and periodic maintenance workers.",
           "default": false,
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Enable Access Points Menu Redesign",
           "description": "Enables the redesigned access points menu bar and customization panel (Panel V2).",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Enable Free Cursor 2D Trackpad",
           "description": "Unlocks Gboard's 2D Free Cursor navigation through the spacebar, including vertical cursor movement and the magnifier HUD.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Enable Key Shape Selection",
           "description": "Enables the key border shape selection UI (Default, Semi-rounded, Round) in theme customization.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Force Incognito Mode",
           "description": "Forces Gboard to always operate in incognito mode (disabling personalized learning and persistent input logging) while keeping clipboard functionality enabled.",
           "default": false,
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Hardened Intent Security",
           "description": "Enables Gboard internal external intent protection against unauthorized intent hijacking.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Locale PAK Slimmer",
@@ -21863,17 +21866,17 @@
               "description": "Comma-separated locale codes to keep (e.g. 'es, es-419, en-US, pt-BR, fr, de'). English (en-US) is always kept as a safe fallback."
             }
           ],
-          "compatiblePackagesKey": 820
+          "compatiblePackagesKey": 821
         },
         {
           "name": "Resource Slimmer",
           "description": "Strips embedded third-party license text, onboarding tutorial Lottie animations, and promotional GIFs using dynamic content heuristics.",
-          "compatiblePackagesKey": 819
+          "compatiblePackagesKey": 820
         },
         {
           "name": "Skip First Run",
           "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs.",
-          "compatiblePackagesKey": 820
+          "compatiblePackagesKey": 821
         }
       ],
       "hotRank": 27
@@ -21894,52 +21897,52 @@
         {
           "name": "After Motion Z+ Popup Suppression (Complete Suite)",
           "description": "Eliminates all startup, update, and modded-by popups in After Motion Z+ (v5.0.273).",
-          "compatiblePackagesKey": 821
+          "compatiblePackagesKey": 822
         },
         {
           "name": "Alight Motion Pro Popup Suppression (Complete Suite)",
           "description": "Eliminates all startup, update, and modded-by popups in Alight Motion Pro (BangAlbin mod).",
-          "compatiblePackagesKey": 821
+          "compatiblePackagesKey": 822
         },
         {
           "name": "Modded By Satriyaid Dialog Destruction",
           "description": "Completely eradicates and severs all ModdedBySatriyaid and TGSatriyaidChannel popup reflection classes at the root.",
-          "compatiblePackagesKey": 822
+          "compatiblePackagesKey": 823
         },
         {
           "name": "Modded By Satriyaid Dialog Suppression",
           "description": "No-ops zzw.xyz startup dialog entry.",
-          "compatiblePackagesKey": 821
+          "compatiblePackagesKey": 822
         },
         {
           "name": "Native Server 1 Startup Gate Bypass",
           "description": "NOPs native gate cbz branch in libsatriyaid.so at 0x585c0.",
-          "compatiblePackagesKey": 821
+          "compatiblePackagesKey": 822
         },
         {
           "name": "New Project Wizard Suppression",
           "description": "No-ops zzzb.vbd, zzzb.vwp, and forces zzzb.uio to return false.",
-          "compatiblePackagesKey": 821
+          "compatiblePackagesKey": 822
         },
         {
           "name": "Popup Dismisser Daemon",
           "description": "Injects background runtime dialog dismisser and preference seeder to eliminate all modder popups.",
-          "compatiblePackagesKey": 822
+          "compatiblePackagesKey": 823
         },
         {
           "name": "Popup Dismisser Manifest Hook",
           "description": "Registers NoPopupSeedProvider in AndroidManifest.xml for cold-start OS initialization.",
-          "compatiblePackagesKey": 822
+          "compatiblePackagesKey": 823
         },
         {
           "name": "Seed Default Preferences",
           "description": "Seeds initial suppression preferences in shared_prefs/.",
-          "compatiblePackagesKey": 822
+          "compatiblePackagesKey": 823
         },
         {
           "name": "Updates Required Popup Suppression",
           "description": "No-ops fq.ab dialog builder in Firebase Analytics wrapper.",
-          "compatiblePackagesKey": 822
+          "compatiblePackagesKey": 823
         }
       ],
       "hotRank": 51
@@ -21960,12 +21963,12 @@
         {
           "name": "ProxMobo License Check Bypass",
           "description": "Disables Google's Play app-licensing (PairIP) check so ProxMobo does not show license errors or close when it is not installed/licensed through Google Play.",
-          "compatiblePackagesKey": 823
+          "compatiblePackagesKey": 824
         },
         {
           "name": "ProxMobo Premium Unlock",
           "description": "Unlocks Premium by reporting the lifetime product (proxmobo.premium.lifetime) as purchased. On first launch, open Settings and press “Restore Purchases” to activate Premium.",
-          "compatiblePackagesKey": 823
+          "compatiblePackagesKey": 824
         }
       ],
       "hotRank": 58
@@ -21986,17 +21989,17 @@
         {
           "name": "Slowly Pairip license check bypass",
           "description": "Disables Pairip's client-side installer and license enforcement.",
-          "compatiblePackagesKey": 824
+          "compatiblePackagesKey": 825
         },
         {
           "name": "Slowly avatar builder items",
           "description": "Enables Avatar Builder items marked as subscription-only without changing coin-priced item checks.",
-          "compatiblePackagesKey": 824
+          "compatiblePackagesKey": 825
         },
         {
           "name": "Slowly extended Explore filters",
           "description": "Enables verified client-side Explore filters, including Last online within 48 hours and New Members Only, and raises excluded-country and excluded-topic selection limits.",
-          "compatiblePackagesKey": 824
+          "compatiblePackagesKey": 825
         }
       ],
       "hotRank": 34
@@ -22047,7 +22050,7 @@
         {
           "name": "Enable card screenshot",
           "description": "Allows screenshots of cards by clearing the FLAG_SECURE flag.",
-          "compatiblePackagesKey": 825
+          "compatiblePackagesKey": 826
         }
       ]
     },
@@ -22068,12 +22071,12 @@
         {
           "name": "Fix Random Subreddit Button",
           "description": "Reroutes all Random buttons to pick from a custom pre-loaded list of thousands of subreddits.",
-          "compatiblePackagesKey": 826
+          "compatiblePackagesKey": 827
         },
         {
           "name": "Remove Ads",
           "description": "Bypasses startup delays and collapses all ad containers.",
-          "compatiblePackagesKey": 827
+          "compatiblePackagesKey": 828
         }
       ],
       "hotRank": 36
@@ -22095,12 +22098,12 @@
         {
           "name": "Unlock Pro",
           "description": "Enable unlimited photo exports from captured RAW frames, remove the 5-second video recording limit, enable pro tools, apply patched MotionCam branding, and spoof the installer source as Google Play. Installer source spoofing adapted from Morphe.",
-          "compatiblePackagesKey": 828
+          "compatiblePackagesKey": 829
         },
         {
           "name": "Unlock Pro",
           "description": "Unlocks Pro tethering and disables purchase actions in the shop.",
-          "compatiblePackagesKey": 829
+          "compatiblePackagesKey": 830
         }
       ],
       "hotRank": 33
@@ -22121,13 +22124,13 @@
         {
           "name": "Enable Premium",
           "description": "Forces premium state to always be active.",
-          "compatiblePackagesKey": 830
+          "compatiblePackagesKey": 831
         },
         {
           "name": "Trust user certificates",
           "description": "Allows user-installed certificates to be trusted for debugging.",
           "default": false,
-          "compatiblePackagesKey": 830
+          "compatiblePackagesKey": 831
         }
       ],
       "hotRank": 37
@@ -22150,22 +22153,22 @@
         {
           "name": "Add fast playback speeds",
           "description": "Adds 1.25x, 1.5x, 1.75x, and 2.0x playback speed options.",
-          "compatiblePackagesKey": 831
+          "compatiblePackagesKey": 832
         },
         {
           "name": "Aspect ratio control",
           "description": "Adds an aspect ratio toggle button to the player (Fit/Fill/Crop/16:9).",
-          "compatiblePackagesKey": 831
+          "compatiblePackagesKey": 832
         },
         {
           "name": "Enable speed control",
           "description": "Enables playback speed options (0.5x-2.0x) in the video player.",
-          "compatiblePackagesKey": 831
+          "compatiblePackagesKey": 832
         },
         {
           "name": "Playback speed and aspect ratio",
           "description": "Adds a floating panel to change playback speed and stretch, crop or zoom the picture.",
-          "compatiblePackagesKey": 832
+          "compatiblePackagesKey": 833
         }
       ]
     }
@@ -31124,7 +31127,7 @@
         "packageName": "ru.ozon.fintech.finance",
         "targets": [
           {
-            "version": "19.27.0"
+            "version": "19.31.0"
           }
         ]
       }
@@ -31134,7 +31137,7 @@
         "packageName": "ru.ozon.app.android",
         "targets": [
           {
-            "version": "19.28.0"
+            "version": "19.31.0"
           }
         ]
       }
@@ -31496,6 +31499,16 @@
         "targets": [
           {
             "version": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "calendar.agenda.schedule.event.advance.calendar.planner",
+        "targets": [
+          {
+            "version": "1.0.34"
           }
         ]
       }
@@ -36760,8 +36773,7 @@
       "description": "Бесплатная карта с кешбэком до 25%. Быстрые и удобные переводы без комиссии.",
       "minInstalls": 10000000,
       "category": "",
-      "firstSeen": 1785507429669,
-      "isPreRelease": true
+      "firstSeen": 1785507429669
     },
     "com.launcher.hype": {
       "name": "Phi Launcher",
@@ -38135,6 +38147,15 @@
       "minInstalls": 1000000,
       "category": "Strategy",
       "firstSeen": 1787546138425
+    },
+    "calendar.agenda.schedule.event.advance.calendar.planner": {
+      "name": "Calendar",
+      "iconUrl": "https://play-lh.googleusercontent.com/r9GwoC0sO9oINYO3r4tj7QhDUGgGP6kAGggX3WotrKS4tQAIqrjlKwWdok--wotiSxDjhHgMGFRpxN6CkC8KwOY=s64-rw",
+      "description": "Organize your agenda, appointments, assignments, work shifts plans effortlessly",
+      "minInstalls": 1000000,
+      "category": "Productivity",
+      "firstSeen": 1787553385630,
+      "isPreRelease": true
     }
   }
 }

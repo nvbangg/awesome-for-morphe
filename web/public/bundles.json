@@ -22125,6 +22125,43 @@
         }
       ],
       "hotRank": 37
+    },
+    {
+      "source": "github",
+      "repo": "hashtagbasit/aimal-patches",
+      "name": "Aimal",
+      "repoDescription": "Morphe patches adding playback speed and aspect ratio controls to Crunchyroll, HBO Max and Disney+",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/53941105?v=4&s=64",
+      "stars": 0,
+      "updatedAt": 1787531342000,
+      "firstSeen": 1787540142280,
+      "appFirstSeen": {
+        "com.crunchyroll.crunchyroid": 1787540141361,
+        "com.wbd.stream": 1787540141361,
+        "com.disney.disneyplus": 1787540141361
+      },
+      "patches": [
+        {
+          "name": "Add fast playback speeds",
+          "description": "Adds 1.25x, 1.5x, 1.75x, and 2.0x playback speed options.",
+          "compatiblePackagesKey": 830
+        },
+        {
+          "name": "Aspect ratio control",
+          "description": "Adds an aspect ratio toggle button to the player (Fit/Fill/Crop/16:9).",
+          "compatiblePackagesKey": 830
+        },
+        {
+          "name": "Enable speed control",
+          "description": "Enables playback speed options (0.5x-2.0x) in the video player.",
+          "compatiblePackagesKey": 830
+        },
+        {
+          "name": "Playback speed and aspect ratio",
+          "description": "Adds a floating panel to change playback speed and stretch, crop or zoom the picture.",
+          "compatiblePackagesKey": 831
+        }
+      ]
     }
   ],
   "compatibilities": [
@@ -31970,6 +32007,42 @@
           }
         ]
       }
+    ],
+    [
+      {
+        "packageName": "com.crunchyroll.crunchyroid",
+        "targets": [
+          {
+            "version": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.wbd.stream",
+        "targets": [
+          {
+            "version": "7.9.0.84"
+          },
+          {
+            "version": null,
+            "isExperimental": true
+          }
+        ]
+      },
+      {
+        "packageName": "com.disney.disneyplus",
+        "targets": [
+          {
+            "version": "26.14.1+rc2-2026.08.20"
+          },
+          {
+            "version": null,
+            "isExperimental": true
+          }
+        ]
+      }
     ]
   ],
   "store": {
@@ -38030,6 +38103,14 @@
       "minInstalls": 1000000000,
       "category": "Video Players & Editors",
       "firstSeen": 1787515881452
+    },
+    "com.wbd.stream": {
+      "name": "HBO Max: Stream TV & Movies",
+      "iconUrl": "https://play-lh.googleusercontent.com/wKJ5hN5CmSBWXPBVYYuRENzcEVb7FB6NyibjKqPT4SB0eoZ7Fww2jq-OhUDCxEPGALrSekQaazrHLSBwVb6T4A=s64-rw",
+      "description": "Watch hit original series, films, reality, and more on HBO Max.",
+      "minInstalls": 100000000,
+      "category": "Entertainment",
+      "firstSeen": 1787540142280
     }
   }
 }

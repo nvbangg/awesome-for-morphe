@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.0-dev.3",
+  "version": "1.1.0-dev.6",
   "patches": [
     {
       "name": "Add fast playback speeds",
@@ -154,6 +154,63 @@
               "description": null
             }
           ]
+        },
+        {
+          "packageName": "com.viki.android",
+          "name": "Viki",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#0C9CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.5.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Removes pre-roll and mid-roll video ads, and the display banners.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.viki.android",
+          "name": "Viki",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#0C9CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.5.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
       ],
       "options": []
@@ -174,6 +231,39 @@
           "targets": [
             {
               "version": "3.117.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock HD quality",
+      "description": "Unlocks the High (1080p) video quality option.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.viki.android",
+          "name": "Viki",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#0C9CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.5.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

@@ -1,36 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.1",
+  "version": "1.4.1",
   "patches": [
     {
-      "name": "Bypass 64-bit Architecture Gate",
-      "description": "64-bit mimari kontrolunu devre disi birakir: \"Unsupported 64-bit\" uyarisi ve otomatik 64-bit yeniden baslatma olmaz. Uyumsuz mimaride crash riski var — varsayilan kapali.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "io.mrarm.mctoolbox",
-          "name": "Toolbox for Minecraft PE",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#3E2723",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "5.4.58",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Bypass Install Location Check",
-      "description": "Minecraft kurulum konumu kontrolu hep basarili olur: paket sorgusu uygulamanin kendisine yonlendirilir (\"not installed\" hatasi asla cikmaz).",
+      "name": "Bypass Google Play Install Check",
+      "description": "Minecraft'in nereden yuklendigi kontrol edilmez: her zaman Google Play'den kurulmus gibi islem gorur.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -133,34 +107,8 @@
       "options": []
     },
     {
-      "name": "Spoof Google Play Installer",
-      "description": "Minecraft Play Store'dan kurulmus gibi gosterilir; kurulum kaynagina bagli kontroller gecer.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "io.mrarm.mctoolbox",
-          "name": "Toolbox for Minecraft PE",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#3E2723",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "5.4.58",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Unlock All MCPE Versions",
-      "description": "Desteklenen surum kontrolu her zaman gecer: liste disi Minecraft surumlerinde \"not supported\" hatasi cikmaz.",
+      "description": "Desteklenen surum kontrolu her zaman gecer: liste disi Minecraft surumlerinde \"not supported\" ve 32/64-bit uyari ekrani cikmaz.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

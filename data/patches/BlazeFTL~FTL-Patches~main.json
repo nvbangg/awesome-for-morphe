@@ -1,10 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.40.0",
+  "version": "1.41.0",
   "patches": [
     {
       "name": "APK Junk Cleanup",
-      "description": "Removes build artifacts and metadata that bloat the APK: Play Services / Firebase version files, protobuf descriptors, debug probes, kotlin builtins, META-INF subfolder clutter, and misc junk. Safe — only removes files with no runtime purpose.",
+      "description": "Removes junk and useless files with no runtime purpose inside apk.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -84,6 +84,37 @@
       ]
     },
     {
+      "name": "Clean SnapTube Settings Page",
+      "description": "Removes the Download tools and Phone clean categories, and their sub-items, from Settings.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.snaptube.premium",
+          "name": "SnapTube",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.64.0.76450210",
+              "versionCodes": {
+                "ARM64_V8A": 76450210,
+                "ARMEABI_V7A": 76450210,
+                "X86_64": 76450210,
+                "X86": 76450210
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Clean main UI",
       "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
       "default": false,
@@ -110,7 +141,7 @@
       "options": []
     },
     {
-      "name": "Disable Notification Defaults",
+      "name": "Disable Annoying Snaptube Notifications",
       "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default.",
       "default": false,
       "dependencies": [],
@@ -234,6 +265,37 @@
       "options": []
     },
     {
+      "name": "Disable rate us dialog",
+      "description": "Overrides show() on the in-app \"rate us\" dialog so it's still built but never displayed.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rs.explorer.filemanager",
+          "name": "RS File Manager",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.3.0.4",
+              "versionCodes": {
+                "ARM64_V8A": 239,
+                "ARMEABI_V7A": 239,
+                "X86_64": 239,
+                "X86": 239
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "ES File Explorer Ui Cleanup",
       "description": "Removes BookMark, New Files, Cleaner Row In HomePage, Cleans More menu actions",
       "default": false,
@@ -307,37 +369,6 @@
             {
               "version": null,
               "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide Settings Items",
-      "description": "Hides the Download tools and Phone clean categories, and their sub-items, from Settings.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.snaptube.premium",
-          "name": "SnapTube",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "7.64.0.76450210",
-              "versionCodes": {
-                "ARM64_V8A": 76450210,
-                "ARMEABI_V7A": 76450210,
-                "X86_64": 76450210,
-                "X86": 76450210
-              },
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -455,8 +486,8 @@
       "options": []
     },
     {
-      "name": "Remove Ads Lite(Adobo)",
-      "description": "Based On (Adobo's Block Ads+Mobile Ads) It Should Work Where Remove Ads Patch Caused Problem Safer than Remove Ads for apps where you will be stuck in SplashActivity It Is Weaker But Effective, Merged Adobo's Both Patches And Removed The Need Of Selecting A Host File Or Configuring Anything In Future It May Replace Remove Ads Patch If I Find No Problem.",
+      "name": "Remove Ads Lite (Adobo)",
+      "description": "Based On (Adobo's Block Ads+Mobile Ads) Use When Remove Ads Patch Caused Problem. Safer than Remove Ads for apps where you will be stuck in SplashActivity. It Is Weaker But Effective, No Need To Select A Host File Or Configure Anything. In Future It May Replace Remove Ads Patch If I Find No Problems.",
       "default": false,
       "dependencies": [
         "BytecodePatch",
@@ -726,6 +757,37 @@
             {
               "version": "18.8.0.prime",
               "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks premium features and removes ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "calendar.agenda.schedule.event.advance.calendar.planner",
+          "name": "Calendar",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.0.34",
+              "versionCodes": {
+                "ARM64_V8A": 34,
+                "ARMEABI_V7A": 34,
+                "X86_64": 34,
+                "X86": 34
+              },
               "isExperimental": false,
               "minSdk": null,
               "description": null

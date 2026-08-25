@@ -21366,7 +21366,7 @@
       "repoDescription": "Selectable RuStore privacy patches for Morphe with verified automatic releases.",
       "avatarUrl": "https://raw.githubusercontent.com/Freeman022026/rustore-privacy-patches/main/patches-bundle.png",
       "stars": 3,
-      "updatedAt": 1787563639000,
+      "updatedAt": 1787657878000,
       "firstSeen": 1787021898591,
       "appFirstSeen": {
         "ru.vk.store": 1787021898525
@@ -21424,7 +21424,7 @@
         },
         {
           "name": "Restrict background work to updates",
-          "description": "Keeps only the background workers required for automatic update checks, downloads, patch application, and installation, including charging-triggered checks.",
+          "description": "Keeps only the workers required for automatic updates and allows update checks to run while RuStore is foreground or background.",
           "compatiblePackagesKey": 753
         },
         {
@@ -22394,13 +22394,24 @@
       "repoDescription": "legendsciber's Patches - Morphe patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/106559486?v=4&s=64",
       "stars": 2,
-      "updatedAt": 1787583091000,
+      "updatedAt": 1787660641000,
       "firstSeen": 1787620439710,
       "appFirstSeen": {
         "com.fingersoft.hillclimb": 1787620432732,
         "io.mrarm.mctoolbox": 1787620432732
       },
       "patches": [
+        {
+          "name": "Bypass 64-bit Architecture Gate",
+          "description": "64-bit mimari kontrolunu devre disi birakir: \"Unsupported 64-bit\" uyarisi ve otomatik 64-bit yeniden baslatma olmaz. Uyumsuz mimaride crash riski var — varsayilan kapali.",
+          "default": false,
+          "compatiblePackagesKey": 832
+        },
+        {
+          "name": "Bypass Install Location Check",
+          "description": "Minecraft kurulum konumu kontrolu hep basarili olur: paket sorgusu uygulamanin kendisine yonlendirilir (\"not installed\" hatasi asla cikmaz).",
+          "compatiblePackagesKey": 832
+        },
         {
           "name": "Hill Climb Racing Ad Removal",
           "description": "Completely removes ads: banners and interstitials can never be displayed (CFirebaseAds.showBanners/showInterstitial become no-ops) and ad-free is granted once per app start — loadStore() seeds mAdFree = 1, the native engine's poll grants it and the store's own reset (inappPurchasesProcessed) zeroes the field, so no repeated purchase popups.",
@@ -22417,8 +22428,14 @@
           "compatiblePackagesKey": 586
         },
         {
-          "name": "Toolbox Always Valid Install Location",
-          "description": "The Minecraft installation check always succeeds: package lookups resolve to the app itself, and both the generic and the 32/64-bit supported-version gates accept any version (no more \"Unsupported 64-bit Minecraft\").",
+          "name": "Spoof Google Play Installer",
+          "description": "Minecraft Play Store'dan kurulmus gibi gosterilir; kurulum kaynagina bagli kontroller gecer.",
+          "default": false,
+          "compatiblePackagesKey": 832
+        },
+        {
+          "name": "Unlock All MCPE Versions",
+          "description": "Desteklenen surum kontrolu her zaman gecer: liste disi Minecraft surumlerinde \"not supported\" hatasi cikmaz.",
           "compatiblePackagesKey": 832
         }
       ],

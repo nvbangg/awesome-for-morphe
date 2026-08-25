@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "patches": [
     {
       "name": "Disable Kaspersky background scan",
@@ -300,7 +300,7 @@
     },
     {
       "name": "Restrict background work to updates",
-      "description": "Keeps only the background workers required for automatic update checks, downloads, patch application, and installation, including charging-triggered checks.",
+      "description": "Keeps only the workers required for automatic updates and allows update checks to run while RuStore is foreground or background.",
       "default": true,
       "dependencies": [
         "ResourcePatch",

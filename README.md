@@ -11,10 +11,10 @@
 ### ✨ Highlight Features
 
 - 🌐 A curated list of [Morphe](https://morphe.software) resources and community projects.
-- 🔍 Explore all patch bundles from the Morphe community on the [website](https://awesome-morphe.vercel.app/), with data aggregated automatically.
-- 🔔 Automatically notifies via the [Telegram channel](https://t.me/awesome_morphe) whenever there's a new update.
-- 🛡️ Automatically filters out taken-down or unavailable bundles, while detecting archived or renamed (redirected) repositories.
-- 🧩 Ensures all bundles have an available `.mpp` file, parsing patch data from it when `patches-list.json` is missing.
+- 🔍 An interactive [website](https://awesome-morphe.vercel.app/) to explore all patch bundles from the Morphe community, with data aggregated automatically.
+- 🔔 Automatic notifications via the [Telegram channel](https://t.me/awesome_morphe) whenever there's a new update.
+- 🛡️ Automated filtering of taken-down or unavailable bundles, along with detection of archived or renamed repositories.
+- 🧩 Automated fallback parsing from `.mpp` files whenever `patches-list.json` is missing.
 
 ### 📬 Contributing
 

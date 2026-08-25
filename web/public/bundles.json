@@ -21899,7 +21899,7 @@
       "repoDescription": "Unofficial Morphe patch bundle for Boost for Lemmy.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/2766423?v=4&s=64",
       "stars": 1,
-      "updatedAt": 1787124638000,
+      "updatedAt": 1787623525000,
       "firstSeen": 1787200804908,
       "appFirstSeen": {
         "com.rubenmayayo.lemmy": 1787200804158
@@ -22408,37 +22408,6 @@
     },
     {
       "source": "github",
-      "repo": "liongalahad/stremio-androidTV-morphe-patches",
-      "name": "Stremio",
-      "repoDescription": "Multi-account and side-by-side installation patches for Stremio Android TV",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/145302945?v=4&s=64",
-      "stars": 5,
-      "updatedAt": 1787564113000,
-      "firstSeen": 1787620439710,
-      "appFirstSeen": {
-        "com.stremio.one": 1787620432732
-      },
-      "patches": [
-        {
-          "name": "Addon reordering",
-          "description": "Adds remote-friendly hold-OK reordering to Stremio's installed-addon list.",
-          "compatiblePackagesKey": 833
-        },
-        {
-          "name": "Multi-account",
-          "description": "Adds an Android TV account chooser with isolated login, library, addons, watch state, names, colors, and PINs.",
-          "compatiblePackagesKey": 833
-        },
-        {
-          "name": "Side-by-side installation",
-          "description": "Installs the patched app separately as Stremio Morphe instead of replacing official Stremio.",
-          "compatiblePackagesKey": 833
-        }
-      ],
-      "isPreRelease": true
-    },
-    {
-      "source": "github",
       "repo": "legendsciber/morphe-patches",
       "name": "legendsciber",
       "repoDescription": "legendsciber's Patches - Morphe patches",
@@ -22469,9 +22438,40 @@
         {
           "name": "Toolbox Always Valid Install Location",
           "description": "The Minecraft installation check always succeeds: package lookups resolve to the app itself, and both the generic and the 32/64-bit supported-version gates accept any version (no more \"Unsupported 64-bit Minecraft\").",
-          "compatiblePackagesKey": 834
+          "compatiblePackagesKey": 833
         }
       ]
+    },
+    {
+      "source": "github",
+      "repo": "liongalahad/stremio-androidTV-morphe-patches",
+      "name": "Stremio",
+      "repoDescription": "Multi-account and side-by-side installation patches for Stremio Android TV",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/145302945?v=4&s=64",
+      "stars": 5,
+      "updatedAt": 1787564113000,
+      "firstSeen": 1787620439710,
+      "appFirstSeen": {
+        "com.stremio.one": 1787620432732
+      },
+      "patches": [
+        {
+          "name": "Addon reordering",
+          "description": "Adds remote-friendly hold-OK reordering to Stremio's installed-addon list.",
+          "compatiblePackagesKey": 834
+        },
+        {
+          "name": "Multi-account",
+          "description": "Adds an Android TV account chooser with isolated login, library, addons, watch state, names, colors, and PINs.",
+          "compatiblePackagesKey": 834
+        },
+        {
+          "name": "Side-by-side installation",
+          "description": "Installs the patched app separately as Stremio Morphe instead of replacing official Stremio.",
+          "compatiblePackagesKey": 834
+        }
+      ],
+      "isPreRelease": true
     },
     {
       "source": "github",
@@ -32353,20 +32353,20 @@
     ],
     [
       {
-        "packageName": "com.stremio.one",
+        "packageName": "io.mrarm.mctoolbox",
         "targets": [
           {
-            "version": "1.10.4"
+            "version": "5.4.58"
           }
         ]
       }
     ],
     [
       {
-        "packageName": "io.mrarm.mctoolbox",
+        "packageName": "com.stremio.one",
         "targets": [
           {
-            "version": "5.4.58"
+            "version": "1.10.4"
           }
         ]
       }

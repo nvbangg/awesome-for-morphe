@@ -1,0 +1,85 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.1.0",
+  "patches": [
+    {
+      "name": "Add music sources",
+      "description": "Adds music apps to the list of sources RoadSync can browse and control from the handlebar. Apps must expose a media browser service to be browsable.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.honda.ms.dm.sab",
+          "name": "RoadSync",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#E60012",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.4.10",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "extraMusicPackages",
+          "title": "Music app packages",
+          "description": "Package names of the music apps to add. An app is only browsable if it declares an android.media.browse.MediaBrowserService; apps without one keep working as plain transport control targets and do not need to be listed here.",
+          "required": true,
+          "type": "kotlin.collections.List<kotlin.String>",
+          "default": [
+            "com.aspiro.tidal",
+            "app.morphe.android.apps.youtube.music"
+          ],
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Bypass Google login",
+      "description": "Lets RoadSync reach the motorcycle controls without a Google account. Server features (account, trip history, weather) stay unavailable, and pairing a new motorcycle still depends on Honda's server accepting an unauthenticated request.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.honda.ms.dm.sab",
+          "name": "RoadSync",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#E60012",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.4.10",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

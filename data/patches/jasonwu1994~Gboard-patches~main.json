@@ -1,5 +1,5 @@
 {
-  "version": "3.3.0",
+  "version": "3.4.0",
   "patches": [
     {
       "name": "AI Writing Tools",
@@ -332,6 +332,18 @@
     {
       "name": "Quick Insert",
       "description": "啟用快速插入面板與工具列入口\nEnable the Quick Insert panel and toolbar access point.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.google.android.inputmethod.latin": [
+          "18.0.3.954559732-release-arm64-v8a"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Rounded Keyboard Panel",
+      "description": "自訂鍵盤面板哪些角落呈現圓角，並分別設定上方與下方半徑。\nCustomize which corners of the keyboard panel are rounded, and set the top and bottom radii separately.",
       "use": true,
       "dependencies": [],
       "compatiblePackages": {

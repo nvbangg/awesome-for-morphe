@@ -1,5 +1,5 @@
 {
-  "version": "1.29.2",
+  "version": "1.29.3",
   "appNames": {
     "com.fox.foxone": "Fox One Android TV",
     "com.netflix.ninja": "Netflix Android TV",
@@ -328,8 +328,8 @@
     },
     {
       "name": "HBO Max - Block SSAI Ad Origins",
-      "description": "Reproduces the AdGuard DNS ad-block inside the app: fails media3 segment requests to HBO's SSAI ad origins (amer-free/emea-free.prd.media.max.com, gmss, FreeWheel) so the player's resiliency layer falls back to the clean, ad-free manifest — removing the stitched ad VIDEO the default Disable Ads patch leaves behind. Opt-in / experimental; verify playback on-device.",
-      "use": false,
+      "description": "Reproduces the AdGuard DNS ad-block inside the app: fails media3 segment requests to HBO's SSAI ad origins (amer-free/emea-free.prd.media.max.com, gmss, FreeWheel) so the player's resiliency layer falls back to the clean, ad-free manifest — removing the stitched ad VIDEO the default Disable Ads patch leaves behind. On by default (field-verified 7.9.0.61); expect a slightly longer initial spinner while the clean manifest is fetched.",
+      "use": true,
       "dependencies": [],
       "compatiblePackages": {
         "com.wbd.hbomax": [

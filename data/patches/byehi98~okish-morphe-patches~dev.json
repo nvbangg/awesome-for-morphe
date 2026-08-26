@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.17.0",
+  "version": "1.18.0-dev.1",
   "patches": [
     {
       "name": "Adda247 Ad Removal",
@@ -798,6 +798,58 @@
           "targets": [
             {
               "version": "4.0.01.0813.02",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Only One Free Store",
+      "description": "Makes 'Restore Purchases' grant every store item for free (Ultimate Power, all classes, bundles and powers) — also removes ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rebelbinary.onlyone",
+          "name": "Only One",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#E2E2E2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.2983",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Only One License Bypass",
+      "description": "Bypasses the PairIP Play Store license check so the app launches normally.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rebelbinary.onlyone",
+          "name": "Only One",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#E2E2E2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.2983",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

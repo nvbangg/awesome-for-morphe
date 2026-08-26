@@ -38,11 +38,11 @@ def audit_repos_and_links() -> dict[str, list[str]]:
                     details = {"error": str(error)}
 
                 if details.get("is_404"):
-                    errors["unavailable"].append(f"{url}: Not Found (404)")
+                    errors["unavailable"].append(f"{url}: 404 Not Found")
                 elif details.get("is_451"):
-                    errors["unavailable"].append(f"{url}: DMCA Takedown (451)")
+                    errors["unavailable"].append(f"{url}: 451 DMCA Takedown")
                 elif details.get("is_archived"):
-                    errors["warnings"].append(f"{url}: Archived")
+                    errors["warnings"].append(f"{url}: Repository is archived")
                 elif full_name := details.get("full_name"):
                     source, original_repo = parse_repo_url(url)
                     if original_repo and full_name.lower() != original_repo.lower():
@@ -89,6 +89,8 @@ def audit_repos_and_links() -> dict[str, list[str]]:
                 f"### {category_icon} {category_name} ({len(category_errors)})\n"
                 + "\n".join(f"- {error}" for error in sorted(category_errors))
             )
+    if not any(errors.values()):
+        summary_sections.append("- ✅ All repositories and links are active.")
 
     append_step_summary("\n\n".join(summary_sections))
     return errors

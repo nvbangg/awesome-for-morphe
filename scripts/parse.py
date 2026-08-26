@@ -12,7 +12,6 @@ from utils import (
     PENDING_REPOS_PATH,
     REPOS_JSON_PATH,
     UPDATED_FILES_PATH,
-    append_step_summary,
     load_json,
     load_lines,
     save_json,
@@ -28,16 +27,13 @@ def commit_pending_repos(
     updated_files_set = set(updated_files or [])
     successful_parsed_files = set(load_lines(PARSED_FILES_PATH))
 
-    errors = [parse_error] if parse_error else []
+    if parse_error:
+        print(f"[-] {parse_error}")
     if updated_files:
         for file_path in sorted(updated_files):
             target_name = Path(file_path).stem
             if f"{target_name}.json" not in successful_parsed_files:
-                errors.append(f"Failed to parse bundle: {target_name}")
-
-    if errors:
-        markdown_lines = ["### ⚠️ Parse", *[f"- {error}" for error in errors]]
-        append_step_summary("\n".join(markdown_lines))
+                print(f"[-] Failed to parse bundle: {target_name}")
 
     if not (pending_repos := load_json(PENDING_REPOS_PATH, {})):
         return
@@ -53,24 +49,24 @@ def commit_pending_repos(
         if name := repo_updates.get("name"):
             repos_data.setdefault(repo, {})["name"] = name
 
-        for platform in ("github", "gitlab"):
-            if not isinstance(platform_updates := repo_updates.get(platform), dict):
+        for source in ("github", "gitlab"):
+            if not isinstance(source_updates := repo_updates.get(source), dict):
                 continue
 
-            platform_data = repos_data.setdefault(repo, {}).setdefault(platform, {})
-            if "image" in platform_updates:
-                platform_data["image"] = platform_updates["image"]
+            source_data = repos_data.setdefault(repo, {}).setdefault(source, {})
+            if "image" in source_updates:
+                source_data["image"] = source_updates["image"]
                 committed_target_count += 1
 
             for branch in DEFAULT_BRANCHES:
-                if branch in platform_updates:
-                    new_sha = platform_updates[branch]
+                if branch in source_updates:
+                    new_sha = source_updates[branch]
                     is_mpp_target = (
                         f"mpp/{owner}~{repo_name}~{branch}.mpp" in updated_files_set
                     )
                     file_prefix = f"{owner}~{repo_name}~{branch}.json"
                     if not is_mpp_target or file_prefix in successful_parsed_files:
-                        platform_data[branch] = new_sha
+                        source_data[branch] = new_sha
                         committed_target_count += 1
 
     if committed_target_count > 0:
@@ -81,15 +77,15 @@ def commit_pending_repos(
             repo_entry = {}
             if "name" in entry:
                 repo_entry["name"] = entry["name"]
-            for platform in ("github", "gitlab"):
-                if platform in entry and isinstance(entry[platform], dict):
-                    platform_entry = {
-                        "main": entry[platform].get("main"),
-                        "dev": entry[platform].get("dev"),
+            for source in ("github", "gitlab"):
+                if source in entry and isinstance(entry[source], dict):
+                    source_entry = {
+                        "main": entry[source].get("main"),
+                        "dev": entry[source].get("dev"),
                     }
-                    if "image" in entry[platform]:
-                        platform_entry["image"] = entry[platform]["image"]
-                    repo_entry[platform] = platform_entry
+                    if "image" in entry[source]:
+                        source_entry["image"] = entry[source]["image"]
+                    repo_entry[source] = source_entry
             formatted_repos_data[repo] = repo_entry
         save_json(REPOS_JSON_PATH, formatted_repos_data)
         print(

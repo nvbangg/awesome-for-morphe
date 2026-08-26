@@ -154,7 +154,7 @@ def process(
                     source = source_entry.get("source")
                     old_url = build_repo_url(source, old_repo)
                     new_url = build_repo_url(source, full_name)
-                    print(f"[RENAME DETECTED] {old_repo} -> {full_name}")
+                    print(f"[+] Rename detected: {old_repo} -> {full_name}")
                     if errors is not None:
                         errors["warnings"].append(f"{old_url} -> {new_url}")
 

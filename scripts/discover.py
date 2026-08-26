@@ -72,32 +72,32 @@ def _sync_repos(merged: dict, existing_repos: dict) -> dict:
         for existing_repo, existing_metadata in existing_repos.items()
         if isinstance(existing_metadata, dict)
     }
-    repos_platforms = {}
+    repos_sources = {}
     for repo_url, entry in merged.items():
         if entry.get("enabled") is not False:
             source, repo = parse_repo_url(repo_url)
             if source and repo:
                 repo_lower = repo.lower()
-                if repo_lower not in repos_platforms:
+                if repo_lower not in repos_sources:
                     canonical_repo = existing_lower.get(repo_lower, (repo, {}))[0]
-                    repos_platforms[repo_lower] = (canonical_repo, set())
-                repos_platforms[repo_lower][1].add(source)
+                    repos_sources[repo_lower] = (canonical_repo, set())
+                repos_sources[repo_lower][1].add(source)
 
     new_repos_data = {}
-    for repo_lower in sorted(repos_platforms):
-        canonical_repo, platforms = repos_platforms[repo_lower]
+    for repo_lower in sorted(repos_sources):
+        canonical_repo, sources = repos_sources[repo_lower]
         old_entry = existing_lower.get(repo_lower, ("", {}))[1]
         repo_entry = {"name": old_entry["name"]} if "name" in old_entry else {}
-        for platform in ("github", "gitlab"):
-            if platform in platforms:
-                old_platform = old_entry.get(platform, {})
-                platform_entry = {
-                    "main": old_platform.get("main"),
-                    "dev": old_platform.get("dev"),
+        for source in ("github", "gitlab"):
+            if source in sources:
+                old_source = old_entry.get(source, {})
+                source_entry = {
+                    "main": old_source.get("main"),
+                    "dev": old_source.get("dev"),
                 }
-                if "image" in old_platform:
-                    platform_entry["image"] = old_platform["image"]
-                repo_entry[platform] = platform_entry
+                if "image" in old_source:
+                    source_entry["image"] = old_source["image"]
+                repo_entry[source] = source_entry
         new_repos_data[canonical_repo] = repo_entry
     return new_repos_data
 

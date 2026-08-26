@@ -114,7 +114,7 @@ def process_repo_branch(
         )
 
     if remote_sha is None:
-        print(f"[-] {repo_url} ({branch}): patches-bundle.json not found")
+        print(f"[-] {repo_url} ({branch}): `patches-bundle.json` not found")
         return source, repo, branch, None, None, False, True, True, None, None
 
     raw_bundle_url = build_raw_url(source, repo, branch, "patches-bundle.json")
@@ -143,7 +143,7 @@ def process_repo_branch(
             and error.code in UNAVAILABLE_HTTP_CODES
         ):
             print(
-                f"[-] {repo_url} ({branch}): patches-bundle.json not found or taken down (HTTP {error.code})"
+                f"[-] {repo_url} ({branch}): `patches-bundle.json` not found or taken down (HTTP {error.code})"
             )
             return (
                 source,
@@ -191,7 +191,7 @@ def process_repo_branch(
                     and error.code in UNAVAILABLE_HTTP_CODES
                 ):
                     print(
-                        f"[-] {repo_url} ({branch}): .mpp file not found or taken down (HTTP {error.code})"
+                        f"[-] {repo_url} ({branch}): `.mpp` file not found or taken down (HTTP {error.code})"
                     )
                     return (
                         source,
@@ -269,13 +269,13 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
     for repo, repo_metadata in repos_data.items():
         if not isinstance(repo_metadata, dict):
             continue
-        for platform in ("github", "gitlab"):
-            if platform_metadata := repo_metadata.get(platform):
+        for source in ("github", "gitlab"):
+            if source_metadata := repo_metadata.get(source):
                 for branch in DEFAULT_BRANCHES:
-                    current_sha = platform_metadata.get(branch)
-                    tasks.append((platform, repo, branch, current_sha))
+                    current_sha = source_metadata.get(branch)
+                    tasks.append((source, repo, branch, current_sha))
                 if fetch_images:
-                    image_tasks.append((platform, repo, platform_metadata.get("image")))
+                    image_tasks.append((source, repo, source_metadata.get("image")))
 
     print(f"Processing {len(tasks)} branch targets...")
     pending_repos_data = {}

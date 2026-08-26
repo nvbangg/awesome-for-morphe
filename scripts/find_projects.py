@@ -236,13 +236,18 @@ def verify_and_export_repos(candidates: list[dict] | None = None) -> list[dict]:
     summary_sections = [
         f"## 🔍 Find Projects\n- **Query:** `{query_summary}`\n- **Excluded:** non-standalone morphe variants with: {excluded_keywords}\n- **New Repositories Found:** `{len(repos)}`"
     ]
-    for repo in repos:
-        desc = (
-            f"\n- **Description:** {repo['description']}" if repo["description"] else ""
-        )
-        summary_sections.append(
-            f"### [{repo['full_name']}]({repo['url']}) (⭐ {repo['stars']})\n- **Created:** `{repo['created_at']}` | **Updated:** `{repo['pushed_at']}`{desc}"
-        )
+    if not repos:
+        summary_sections.append("- No new standalone repositories found.")
+    else:
+        for repo in repos:
+            desc = (
+                f"\n- **Description:** {repo['description']}"
+                if repo["description"]
+                else ""
+            )
+            summary_sections.append(
+                f"### [{repo['full_name']}]({repo['url']}) (⭐ {repo['stars']})\n- **Created:** `{repo['created_at']}` | **Updated:** `{repo['pushed_at']}`{desc}"
+            )
 
     PROJECTS_DIR.mkdir(parents=True, exist_ok=True)
     NEW_PROJECTS_PATH.write_text(

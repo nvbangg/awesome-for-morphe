@@ -102,16 +102,19 @@ def parse_patches_list(
     discovered_names: dict[str, str],
     is_dev_branch: bool = False,
     main_patch_names: set[str] | None = None,
-) -> list[dict] | None:
-    if not raw_patches_data:
-        return None
+) -> tuple[list[dict] | None, str | None]:
+    if raw_patches_data is None or raw_patches_data == "":
+        return None, "Invalid `patches-list.json`"
+
     raw_list = (
-        raw_patches_data.get("patches", [])
+        raw_patches_data.get("patches")
         if isinstance(raw_patches_data, dict)
-        else (raw_patches_data if isinstance(raw_patches_data, list) else [])
+        else (raw_patches_data if isinstance(raw_patches_data, list) else None)
     )
-    if not raw_list:
-        return None
+    if raw_list is None:
+        return None, "Invalid `patches-list.json`"
+    if len(raw_list) == 0:
+        return None, "Empty `patches-list.json`"
 
     valid_patches = []
     bundle_apps = set()
@@ -131,9 +134,12 @@ def parse_patches_list(
             bundle_apps.add(PACKAGE_UNIVERSAL)
         valid_patches.append(patch_dict)
 
-    return (
-        valid_patches if (valid_patches and bundle_apps != {PACKAGE_EXAMPLE}) else None
-    )
+    if not valid_patches:
+        return None, "Invalid `patches-list.json`"
+    if bundle_apps == {PACKAGE_EXAMPLE}:
+        return None, 'Only contains "com.example.app"'
+
+    return valid_patches, None
 
 
 def load_branch_data(
@@ -143,26 +149,28 @@ def load_branch_data(
     discovered_names: dict[str, str],
     is_dev_branch: bool = False,
     main_patch_names: set[str] | None = None,
-) -> tuple[dict | None, list[dict] | None]:
+) -> tuple[dict | None, list[dict] | None, str | None]:
     if not has_sha:
-        return None, None
+        return None, None, "Missing `patches-bundle.json`"
     bundle_file = BUNDLES_DIR / f"{file_prefix}~{branch}.json"
     list_file = PATCHES_DIR / f"{file_prefix}~{branch}.json"
-    if not bundle_file.exists() or not list_file.exists():
-        return None, None
+    if not bundle_file.exists():
+        return None, None, "Missing `patches-bundle.json`"
     bundle = load_json(bundle_file)
-    if (
-        isinstance(bundle, dict)
-        and bundle.get("download_url")
-        and (raw := load_json(list_file))
-    ):
-        return bundle, parse_patches_list(
-            raw,
-            discovered_names,
-            is_dev_branch=is_dev_branch,
-            main_patch_names=main_patch_names,
-        )
-    return None, None
+    if not isinstance(bundle, dict) or not bundle.get("download_url"):
+        return None, None, "Missing `download_url` in `patches-bundle.json`"
+    if not list_file.exists():
+        return None, None, "Missing `patches-list.json`"
+    raw = load_json(list_file)
+    patches, reason = parse_patches_list(
+        raw,
+        discovered_names,
+        is_dev_branch=is_dev_branch,
+        main_patch_names=main_patch_names,
+    )
+    if not patches:
+        return None, None, reason
+    return bundle, patches, None
 
 
 def process(
@@ -187,8 +195,8 @@ def process(
         f"{repo.replace('/', '~')}~{branch}.json"
         for repo, repo_metadata in repos_data.items()
         if isinstance(repo_metadata, dict)
-        for platform in ("github", "gitlab")
-        if isinstance(repo_metadata.get(platform), dict)
+        for source in ("github", "gitlab")
+        if isinstance(repo_metadata.get(source), dict)
         for branch in DEFAULT_BRANCHES
     }
     for directory in (BUNDLES_DIR, PATCHES_DIR):
@@ -207,26 +215,29 @@ def process(
             continue
         owner, repo_name = repo.split("/", 1)
         file_prefix = f"{owner}~{repo_name}"
-
         repo_metadata = repos_data.get(repo, {})
-        chosen_platform = None
-        main_bundle, main_patches = None, None
-        dev_bundle, dev_patches = None, None
+        chosen_source = None
+        main_bundle = None
+        main_patches = None
+        dev_bundle = None
+        dev_patches = None
         discovered_names = {}
-        has_any_sha = False
+        has_sha = False
+        fail_reason = None
 
-        for platform in ("github", "gitlab"):
-            platform_metadata = repo_metadata.get(platform)
-            if not isinstance(platform_metadata, dict):
+        for source in ("github", "gitlab"):
+            source_metadata = repo_metadata.get(source)
+            if not isinstance(source_metadata, dict):
                 continue
-            main_sha = platform_metadata.get("main")
-            dev_sha = platform_metadata.get("dev")
+            main_sha = source_metadata.get("main")
+            dev_sha = source_metadata.get("dev")
             if not main_sha and not dev_sha:
+                fail_reason = "Missing `patches-bundle.json`"
                 continue
-            has_any_sha = True
+            has_sha = True
 
             cur_discovered_names = {}
-            cur_main_bundle, cur_main_patches = load_branch_data(
+            cur_main_bundle, cur_main_patches, main_reason = load_branch_data(
                 file_prefix, "main", bool(main_sha), cur_discovered_names
             )
             main_patch_names = (
@@ -234,7 +245,7 @@ def process(
                 if cur_main_patches
                 else set()
             )
-            cur_dev_bundle, cur_dev_patches = load_branch_data(
+            cur_dev_bundle, cur_dev_patches, dev_reason = load_branch_data(
                 file_prefix,
                 "dev",
                 bool(dev_sha),
@@ -244,27 +255,32 @@ def process(
             )
 
             if cur_main_patches or cur_dev_patches:
-                chosen_platform = platform
-                main_bundle, main_patches = cur_main_bundle, cur_main_patches
-                dev_bundle, dev_patches = cur_dev_bundle, cur_dev_patches
+                chosen_source = source
+                main_bundle = cur_main_bundle
+                main_patches = cur_main_patches
+                dev_bundle = cur_dev_bundle
+                dev_patches = cur_dev_patches
                 discovered_names = cur_discovered_names
                 break
 
-        if not chosen_platform:
+            fail_reason = main_reason or dev_reason
+
+        if not chosen_source:
             keys_to_remove.append(repo)
+            message = fail_reason or (
+                "Missing `patches-list.json`"
+                if has_sha
+                else "Missing `patches-bundle.json`"
+            )
+            print(f"[-] Excluding {repo}: {message}")
             if errors is not None:
-                message = (
-                    "Missing bundle or patch files"
-                    if has_any_sha
-                    else "Not found or no release bundle"
-                )
-                for platform in ("github", "gitlab"):
-                    if platform in repo_metadata:
-                        repo_url = build_repo_url(platform, repo)
+                for source in ("github", "gitlab"):
+                    if source in repo_metadata:
+                        repo_url = build_repo_url(source, repo)
                         errors["unavailable"].append(f"{repo_url}: {message}")
             continue
 
-        source_entry["source"] = chosen_platform
+        source_entry["source"] = chosen_source
 
         main_timestamp = (
             parse_timestamp(main_bundle.get("created_at"))

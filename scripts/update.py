@@ -151,10 +151,10 @@ def main() -> int:
             issues = []
             if not icon_url:
                 issues.append("missing icon")
-            if not name and alt_name:
+            if not name:
                 issues.append("missing name")
             if issues:
-                display_name = f" ({name or alt_name})" if (name or alt_name) else ""
+                display_name = f" ({name})" if name else ""
                 incomplete_apps.append(
                     f"- `{package_name}`{display_name}: {', '.join(issues)}"
                 )

@@ -1,17 +1,12 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from pathlib import Path
 
 from google_play_scraper import app as gplay_app
 from google_play_scraper.exceptions import NotFoundError
 
 from updater import normalize_image_url
-from utils import load_json
-
-GPLAY_CONCURRENCY = 8
-ROOT_DIR = Path(__file__).resolve().parents[2]
-OFFICIAL_BUNDLES_PATH = ROOT_DIR / "data" / "official-bundles.json"
+from utils import CONCURRENCY, OFFICIAL_BUNDLES_PATH, load_json
 
 SKIP_WORDS = {
     "com",
@@ -112,7 +107,7 @@ def process(apps_dict: dict, mode: str) -> None:
         print(
             f"\nScraping Google Play for {len(apps_to_scrape)} apps (mode: {mode})..."
         )
-        with ThreadPoolExecutor(max_workers=GPLAY_CONCURRENCY) as executor:
+        with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
             future_to_package = {
                 executor.submit(fetch_app_details, package_name): package_name
                 for package_name in apps_to_scrape

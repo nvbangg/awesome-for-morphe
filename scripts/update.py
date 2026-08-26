@@ -5,16 +5,19 @@ import html
 import json
 import sys
 import time
-from pathlib import Path
 
 from updater import gplay_scrape, local_parse, repo_info
-from utils import append_step_summary, load_json, parse_timestamp, save_json
-
-ROOT_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT_DIR / "data"
-REPOS_JSON_PATH = DATA_DIR / "repos.json"
-OFFICIAL_BUNDLES_PATH = DATA_DIR / "official-bundles.json"
-BUNDLES_JSON_PATH = ROOT_DIR / "web" / "public" / "bundles.json"
+from utils import (
+    BUNDLES_JSON_PATH,
+    OFFICIAL_BUNDLES_PATH,
+    PACKAGE_EXAMPLE,
+    PACKAGE_UNIVERSAL,
+    REPOS_JSON_PATH,
+    append_step_summary,
+    load_json,
+    parse_timestamp,
+    save_json,
+)
 
 
 def main() -> int:
@@ -118,7 +121,7 @@ def main() -> int:
                             is_patch_prerelease
                         )
             else:
-                app_patches_status.setdefault(local_parse.PACKAGE_UNIVERSAL, []).append(
+                app_patches_status.setdefault(PACKAGE_UNIVERSAL, []).append(
                     is_patch_prerelease
                 )
 
@@ -144,7 +147,7 @@ def main() -> int:
         if alt_name:
             app_entry["altName"] = alt_name
         apps_store[package_name] = app_entry
-        if package_name not in (local_parse.PACKAGE_UNIVERSAL, "com.example.app"):
+        if package_name not in (PACKAGE_UNIVERSAL, PACKAGE_EXAMPLE):
             issues = []
             if not icon_url:
                 issues.append("missing icon")

@@ -7,9 +7,16 @@ import time
 import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import UTC, datetime, timedelta
-from pathlib import Path
 
 from utils import (
+    CONCURRENCY,
+    DEFAULT_BRANCHES,
+    EXCLUDED_REPOS_PATH,
+    NEW_PROJECTS_PATH,
+    PROJECTS_DIR,
+    README_REPOS_PATH,
+    ROOT_DIR,
+    TEMP_DIR,
     append_step_summary,
     build_raw_url,
     check_link_status,
@@ -20,14 +27,8 @@ from utils import (
     save_json,
 )
 
-ROOT_DIR = Path(__file__).resolve().parents[1]
-PROJECTS_DIR = ROOT_DIR / "data" / "projects"
-TEMP_DIR = ROOT_DIR / "scripts" / "temp"
 RAW_SEARCH_PATH = TEMP_DIR / "raw-search.json"
 RAW_FILTER_PATH = TEMP_DIR / "raw-filter.json"
-README_REPOS_PATH = PROJECTS_DIR / "readme-repos.txt"
-EXCLUDED_REPOS_PATH = PROJECTS_DIR / "excluded-repos.txt"
-OUTPUT_TEXT_PATH = PROJECTS_DIR / "new-projects.txt"
 
 SEARCH_KEYWORDS = ["morphe"]
 CREATED_AFTER = "2026-01-01"
@@ -37,14 +38,12 @@ EXCLUDED_USERS = []
 API_EXCLUDED_KEYWORDS = ["morpheus", "morpheme", "morphelab"]
 API_EXCLUDED_NAME_KEYWORDS = ["patches", "builder"]
 EXCLUDED_KEYWORDS = ["build", "magisk", "patched", "patcher", "youtube", "morphe-labs"]
-CHECK_BRANCHES = ["main", "dev"]
 
 PAGE_SIZE = 100
 MAX_PAGES = 10
 PAGE_DELAY_SECONDS = 1
 SEARCH_TIMEOUT = 15
 HEAD_TIMEOUT = 5
-CONCURRENCY = 8
 
 MORPHE_NAME_RE = re.compile(r"(?<![a-zA-Z0-9])morphe(?![a-zA-Z0-9])", re.IGNORECASE)
 
@@ -73,7 +72,7 @@ def build_search_query(keyword: str) -> str:
 
 
 def is_patch_bundle(repo: str) -> bool:
-    for branch in CHECK_BRANCHES:
+    for branch in DEFAULT_BRANCHES:
         if not (url := build_raw_url("github", repo, branch, "patches-bundle.json")):
             continue
         status = check_link_status(url, timeout=HEAD_TIMEOUT)
@@ -195,7 +194,7 @@ def verify_and_export_repos(candidates: list[dict] | None = None) -> list[dict]:
         return []
 
     print(
-        f"Checking {len(candidates)} candidates for patches-bundle.json across branches {CHECK_BRANCHES}...\n"
+        f"Checking {len(candidates)} candidates for patches-bundle.json across branches {list(DEFAULT_BRANCHES)}...\n"
     )
     valid_repos = []
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
@@ -210,6 +209,7 @@ def verify_and_export_repos(candidates: list[dict] | None = None) -> list[dict]:
 
     repos = [
         {
+            "name": repo.get("name", ""),
             "full_name": repo.get("full_name", ""),
             "stars": repo.get("stargazers_count", 0),
             "description": repo.get("description") or "",
@@ -245,13 +245,13 @@ def verify_and_export_repos(candidates: list[dict] | None = None) -> list[dict]:
         )
 
     PROJECTS_DIR.mkdir(parents=True, exist_ok=True)
-    OUTPUT_TEXT_PATH.write_text(
+    NEW_PROJECTS_PATH.write_text(
         "\n".join(repo["url"] for repo in repos) + "\n", encoding="utf-8"
     )
     append_step_summary("\n\n".join(summary_sections))
 
     print(
-        f"Saved {len(repos)} URLs to {OUTPUT_TEXT_PATH.relative_to(ROOT_DIR)} (excluded {len(candidates) - len(repos)} patch bundles)"
+        f"Saved {len(repos)} URLs to {NEW_PROJECTS_PATH.relative_to(ROOT_DIR)} (excluded {len(candidates) - len(repos)} patch bundles)"
     )
     return repos
 

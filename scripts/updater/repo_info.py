@@ -3,10 +3,14 @@
 import time
 import urllib.error
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from pathlib import Path
 
 from updater import normalize_image_url
 from utils import (
+    CONCURRENCY,
+    CUSTOM_JSON_PATH,
+    HISTORY_PATH,
+    REPOS_JSON_PATH,
+    UNAVAILABLE_HTTP_CODES,
     build_raw_url,
     build_repo_url,
     fetch,
@@ -14,13 +18,6 @@ from utils import (
     parse_repo_url,
     save_json,
 )
-
-GITHUB_CONCURRENCY = 8
-ROOT_DIR = Path(__file__).resolve().parents[2]
-DATA_DIR = ROOT_DIR / "data"
-CUSTOM_JSON_PATH = DATA_DIR / "discover" / "custom.json"
-HISTORY_PATH = DATA_DIR / "history.json"
-REPOS_JSON_PATH = DATA_DIR / "repos.json"
 
 
 def fetch_repo_details(repo_url: str) -> dict:
@@ -57,11 +54,13 @@ def fetch_repo_details(repo_url: str) -> dict:
             "is_archived": bool(response.get("archived")),
         }
     except Exception as error:
-        if isinstance(error, urllib.error.HTTPError):
-            if error.code == 404:
-                return {"is_404": True, "error": "404 Not Found"}
+        if (
+            isinstance(error, urllib.error.HTTPError)
+            and error.code in UNAVAILABLE_HTTP_CODES
+        ):
             if error.code == 451:
                 return {"is_451": True, "error": "451 DMCA Takedown"}
+            return {"is_404": True, "error": "404 Not Found"}
         return {"error": str(error)}
 
 
@@ -90,7 +89,7 @@ def process(
 
     custom_data = load_json(CUSTOM_JSON_PATH, {})
     repos_data = load_json(REPOS_JSON_PATH, {})
-    with ThreadPoolExecutor(max_workers=GITHUB_CONCURRENCY) as executor:
+    with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
         future_to_repo = {
             executor.submit(fetch_repo_details, url): repo
             for repo, url in tasks.items()
@@ -101,12 +100,15 @@ def process(
                 details = future.result()
                 if not details:
                     continue
-                if details.get("is_404"):
-                    print(f"[-] Excluding {repo} due to 404 Not Found")
+                if details.get("is_404") or details.get("is_451"):
+                    reason = (
+                        "451 DMCA Takedown"
+                        if details.get("is_451")
+                        else "404 Not Found"
+                    )
+                    print(f"[-] Excluding {repo} due to {reason}")
                     if errors is not None:
-                        errors["unavailable"].append(
-                            f"{tasks[repo]}: Not found or no release bundle"
-                        )
+                        errors["unavailable"].append(f"{tasks[repo]}: {reason}")
                     bundle_sources.pop(repo, None)
                     continue
 

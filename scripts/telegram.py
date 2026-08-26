@@ -9,7 +9,7 @@ import urllib.request
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-WHATS_NEW_PATH = Path("whats-new.md")
+from utils import WHATS_NEW_PATH
 
 
 def convert_to_html(text: str) -> str:

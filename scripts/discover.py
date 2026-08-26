@@ -2,15 +2,18 @@
 
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from pathlib import Path
 
 from providers import jman, morphe_archive, official
-from utils import append_step_summary, load_json, parse_repo_url, save_json
+from utils import (
+    DISCOVER_DIR,
+    REPOS_JSON_PATH,
+    ROOT_DIR,
+    append_step_summary,
+    load_json,
+    parse_repo_url,
+    save_json,
+)
 
-ROOT_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT_DIR / "data"
-DISCOVER_DIR = DATA_DIR / "discover"
-REPOS_JSON_PATH = DATA_DIR / "repos.json"
 PROVIDERS = [
     "custom",
     "official",

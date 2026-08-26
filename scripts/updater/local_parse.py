@@ -3,17 +3,20 @@
 import json
 import re
 import time
-from pathlib import Path
 from typing import Any
 
-from utils import build_repo_url, load_json, parse_timestamp
+from utils import (
+    BUNDLES_DIR,
+    DEFAULT_BRANCHES,
+    PACKAGE_EXAMPLE,
+    PACKAGE_UNIVERSAL,
+    PATCHES_DIR,
+    REPOS_JSON_PATH,
+    build_repo_url,
+    load_json,
+    parse_timestamp,
+)
 
-ROOT_DIR = Path(__file__).resolve().parents[2]
-DATA_DIR = ROOT_DIR / "data"
-BUNDLES_DIR = DATA_DIR / "bundles"
-PATCHES_DIR = DATA_DIR / "patches"
-REPOS_JSON_PATH = DATA_DIR / "repos.json"
-PACKAGE_UNIVERSAL = "__universal__"
 _BUNDLE_NAME_SUFFIX_RE = re.compile(
     r"(?i)(?: for use with morphe| for morphe|['\u2019]s morphe patches|['\u2019]s patches| morphe| patches| patch)+$"
 )
@@ -129,9 +132,7 @@ def parse_patches_list(
         valid_patches.append(patch_dict)
 
     return (
-        valid_patches
-        if (valid_patches and bundle_apps != {"com.example.app"})
-        else None
+        valid_patches if (valid_patches and bundle_apps != {PACKAGE_EXAMPLE}) else None
     )
 
 
@@ -188,7 +189,7 @@ def process(
         if isinstance(repo_metadata, dict)
         for platform in ("github", "gitlab")
         if isinstance(repo_metadata.get(platform), dict)
-        for branch in ("main", "dev")
+        for branch in DEFAULT_BRANCHES
     }
     for directory in (BUNDLES_DIR, PATCHES_DIR):
         if directory.exists():

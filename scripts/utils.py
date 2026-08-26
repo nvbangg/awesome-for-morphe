@@ -10,6 +10,47 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+ROOT_DIR = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT_DIR / "data"
+PUBLIC_DIR = ROOT_DIR / "web" / "public"
+SCRIPTS_DIR = ROOT_DIR / "scripts"
+TEMP_DIR = SCRIPTS_DIR / "temp"
+
+BUNDLES_DIR = DATA_DIR / "bundles"
+PATCHES_DIR = DATA_DIR / "patches"
+DISCOVER_DIR = DATA_DIR / "discover"
+PROJECTS_DIR = DATA_DIR / "projects"
+BUNDLE_PARSER_DIR = SCRIPTS_DIR / "bundle-parser"
+MPP_DIR = BUNDLE_PARSER_DIR / "mpp"
+
+README_PATH = ROOT_DIR / "README.md"
+WHATS_NEW_PATH = ROOT_DIR / "whats-new.md"
+
+REPOS_JSON_PATH = DATA_DIR / "repos.json"
+HISTORY_PATH = DATA_DIR / "history.json"
+OFFICIAL_BUNDLES_PATH = DATA_DIR / "official-bundles.json"
+CUSTOM_JSON_PATH = DISCOVER_DIR / "custom.json"
+
+BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
+WHATS_NEW_JSON_PATH = PUBLIC_DIR / "whats-new.json"
+
+README_REPOS_PATH = PROJECTS_DIR / "readme-repos.txt"
+README_LINKS_PATH = PROJECTS_DIR / "readme-links.txt"
+EXCLUDED_REPOS_PATH = PROJECTS_DIR / "excluded-repos.txt"
+NEW_PROJECTS_PATH = PROJECTS_DIR / "new-projects.txt"
+
+PENDING_REPOS_PATH = BUNDLE_PARSER_DIR / "pending_repos.json"
+UPDATED_FILES_PATH = BUNDLE_PARSER_DIR / "updated_files.txt"
+PARSED_FILES_PATH = BUNDLE_PARSER_DIR / "parsed_files.txt"
+
+DEFAULT_BRANCHES = ("main", "dev")
+PACKAGE_UNIVERSAL = "__universal__"
+PACKAGE_EXAMPLE = "com.example.app"
+CONCURRENCY = 8
+
+UNAVAILABLE_HTTP_CODES = (404, 451)
+DEAD_LINK_HTTP_CODES = (404, 410)
+
 
 def get_auth_headers(url: str, headers: dict[str, str] | None = None) -> dict[str, str]:
     result_headers = dict(headers) if headers else {}
@@ -51,13 +92,9 @@ def fetch(
                 decoded = content.decode("utf-8")
                 return json.loads(decoded) if as_json else decoded
 
-        except Exception as error:
-            if isinstance(error, urllib.error.HTTPError) and error.code not in (
-                401,
-                403,
-                429,
-            ):
-                raise
+        except urllib.error.HTTPError:
+            raise
+        except Exception:
             if attempt < 2:
                 time.sleep(1)
             else:
@@ -169,7 +206,7 @@ def check_link_status(url: str, timeout: int = 5) -> dict:
                 return {"is_redirect": True, "final_url": final_url}
             return {"is_active": True}
     except urllib.error.HTTPError as error:
-        if error.code in (404, 410):
+        if error.code in DEAD_LINK_HTTP_CODES:
             return {"is_dead": True, "error": f"HTTP {error.code}"}
         return {"error": f"HTTP {error.code}"}
     except Exception as error:

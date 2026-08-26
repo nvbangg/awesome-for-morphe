@@ -11,6 +11,15 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from utils import (
+    BUNDLES_DIR,
+    CONCURRENCY,
+    DEFAULT_BRANCHES,
+    MPP_DIR,
+    PATCHES_DIR,
+    PENDING_REPOS_PATH,
+    REPOS_JSON_PATH,
+    UNAVAILABLE_HTTP_CODES,
+    UPDATED_FILES_PATH,
     append_step_summary,
     build_raw_url,
     build_repo_url,
@@ -19,19 +28,6 @@ from utils import (
     load_json,
     save_json,
 )
-
-ROOT_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT_DIR / "data"
-REPOS_JSON_PATH = DATA_DIR / "repos.json"
-BUNDLES_DIR = DATA_DIR / "bundles"
-PATCHES_DIR = DATA_DIR / "patches"
-BUNDLE_PARSER_DIR = ROOT_DIR / "scripts" / "bundle-parser"
-MPP_DIR = BUNDLE_PARSER_DIR / "mpp"
-PENDING_REPOS_PATH = BUNDLE_PARSER_DIR / "pending_repos.json"
-UPDATED_FILES_PATH = BUNDLE_PARSER_DIR / "updated_files.txt"
-BRANCHES = ["main", "dev"]
-CONCURRENCY = 8
-UNAVAILABLE_HTTP_CODES = (404, 451)
 
 
 def extract_mpp_name(mpp_file: Path) -> str | None:
@@ -275,7 +271,7 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
             continue
         for platform in ("github", "gitlab"):
             if platform_metadata := repo_metadata.get(platform):
-                for branch in BRANCHES:
+                for branch in DEFAULT_BRANCHES:
                     current_sha = platform_metadata.get(branch)
                     tasks.append((platform, repo, branch, current_sha))
                 if fetch_images:

@@ -5,16 +5,19 @@ import subprocess
 import sys
 from pathlib import Path
 
-from utils import append_step_summary, load_json, load_lines, save_json
+from utils import (
+    BUNDLE_PARSER_DIR,
+    DEFAULT_BRANCHES,
+    PARSED_FILES_PATH,
+    PENDING_REPOS_PATH,
+    REPOS_JSON_PATH,
+    UPDATED_FILES_PATH,
+    append_step_summary,
+    load_json,
+    load_lines,
+    save_json,
+)
 
-ROOT_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT_DIR / "data"
-PATCHES_DIR = DATA_DIR / "patches"
-REPOS_JSON_PATH = DATA_DIR / "repos.json"
-BUNDLE_PARSER_DIR = ROOT_DIR / "scripts" / "bundle-parser"
-UPDATED_FILES_PATH = BUNDLE_PARSER_DIR / "updated_files.txt"
-PENDING_REPOS_PATH = BUNDLE_PARSER_DIR / "pending_repos.json"
-PARSED_FILES_PATH = BUNDLE_PARSER_DIR / "parsed_files.txt"
 GRADLE_EXECUTABLE_NAME = "gradlew.bat" if sys.platform == "win32" else "gradlew"
 GRADLE_EXECUTABLE_PATH = BUNDLE_PARSER_DIR / GRADLE_EXECUTABLE_NAME
 
@@ -59,7 +62,7 @@ def commit_pending_repos(
                 platform_data["image"] = platform_updates["image"]
                 committed_target_count += 1
 
-            for branch in ("main", "dev"):
+            for branch in DEFAULT_BRANCHES:
                 if branch in platform_updates:
                     new_sha = platform_updates[branch]
                     is_mpp_target = (

@@ -1,15 +1,10 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
-from pathlib import Path
-
 from providers import export_provider
-from utils import build_repo_url, fetch, save_json
+from utils import DISCOVER_DIR, OFFICIAL_BUNDLES_PATH, build_repo_url, fetch, save_json
 
-ROOT_DIR = Path(__file__).resolve().parents[2]
-DATA_DIR = ROOT_DIR / "data"
 BUNDLES_URL = "https://morphe-patches.software/data/bundles.json"
-OUTPUT_PATH = DATA_DIR / "discover" / "official.json"
-SNAPSHOT_PATH = DATA_DIR / "official-bundles.json"
+OUTPUT_PATH = DISCOVER_DIR / "official.json"
 HEADERS = {
     "Referer": "https://morphe-patches.software/",
     "User-Agent": "AwesomeMorphe/1.0 (+https://github.com/nvbangg/awesome-morphe)",
@@ -19,7 +14,7 @@ HEADERS = {
 def discover() -> str | None:
     try:
         data = fetch(BUNDLES_URL, headers=HEADERS, timeout=30, as_json=True)
-        save_json(SNAPSHOT_PATH, data)
+        save_json(OFFICIAL_BUNDLES_PATH, data)
     except Exception as error:
         warning_message = (
             f"[official] Failed: {error}. Kept existing sources in official.json"

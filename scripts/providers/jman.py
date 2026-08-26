@@ -1,20 +1,24 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from pathlib import Path
 
 from providers import export_provider
-from utils import build_repo_url, fetch, load_json, parse_repo_url, save_json
+from utils import (
+    CONCURRENCY,
+    DISCOVER_DIR,
+    build_repo_url,
+    fetch,
+    load_json,
+    parse_repo_url,
+    save_json,
+)
 
-ROOT_DIR = Path(__file__).resolve().parents[2]
-DISCOVER_DIR = ROOT_DIR / "data" / "discover"
 TREE_API_URL = "https://api.github.com/repos/Jman-Github/ReVanced-Patch-Bundles/git/trees/bundles?recursive=1"
 RAW_BASE = (
     "https://raw.githubusercontent.com/Jman-Github/ReVanced-Patch-Bundles/bundles"
 )
 OUTPUT_PATH = DISCOVER_DIR / "jman.json"
 SNAPSHOT_PATH = DISCOVER_DIR / "snapshot.json"
-CONCURRENCY = 8
 
 
 def _extract_canonical_key(bundle_json: dict) -> str | None:

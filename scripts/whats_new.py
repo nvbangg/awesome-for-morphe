@@ -2,18 +2,18 @@
 
 import urllib.parse
 from datetime import UTC, datetime, timedelta
-from pathlib import Path
 
-from updater.local_parse import PACKAGE_UNIVERSAL
-from utils import load_json, save_json
+from utils import (
+    BUNDLES_JSON_PATH,
+    HISTORY_PATH,
+    PACKAGE_EXAMPLE,
+    PACKAGE_UNIVERSAL,
+    WHATS_NEW_JSON_PATH,
+    WHATS_NEW_PATH,
+    load_json,
+    save_json,
+)
 
-ROOT_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT_DIR / "data"
-PUBLIC_DIR = ROOT_DIR / "web" / "public"
-HISTORY_PATH = DATA_DIR / "history.json"
-BUNDLES_JSON_PATH = PUBLIC_DIR / "bundles.json"
-WHATS_NEW_PATH = ROOT_DIR / "whats-new.md"
-WHATS_NEW_JSON_PATH = PUBLIC_DIR / "whats-new.json"
 WHATS_NEW_MAX_ENTRIES = 21
 
 
@@ -21,7 +21,7 @@ def is_valid_package_name(package_name: str) -> bool:
     return (
         "." in package_name
         and " " not in package_name
-        and package_name != PACKAGE_UNIVERSAL
+        and package_name not in (PACKAGE_UNIVERSAL, PACKAGE_EXAMPLE)
     )
 
 

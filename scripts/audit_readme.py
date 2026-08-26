@@ -2,22 +2,18 @@
 
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from pathlib import Path
 
 from updater.repo_info import fetch_repo_details
 from utils import (
+    CONCURRENCY,
+    README_LINKS_PATH,
+    README_REPOS_PATH,
     append_step_summary,
     build_repo_url,
     check_link_status,
     load_lines,
     parse_repo_url,
 )
-
-ROOT_DIR = Path(__file__).resolve().parents[1]
-PROJECTS_DIR = ROOT_DIR / "data" / "projects"
-README_REPOS_PATH = PROJECTS_DIR / "readme-repos.txt"
-README_LINKS_PATH = PROJECTS_DIR / "readme-links.txt"
-CONCURRENCY = 8
 
 
 def audit_repos_and_links() -> dict[str, list[str]]:

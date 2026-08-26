@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.18.0",
+  "version": "1.19.0",
   "patches": [
     {
       "name": "Adda247 Ad Removal",
@@ -382,6 +382,32 @@
           "targets": [
             {
               "version": "1.0.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "HAAK Free Purchases and Unlocked Paid Content",
+      "description": "Redirects purchase failure callbacks to their success twins: cancelling the Google Play dialog, a billing error, or an \"not purchased\" query result all grant the product instead.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.blingame.haaktestb",
+          "name": "HAAK",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#00BCD4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

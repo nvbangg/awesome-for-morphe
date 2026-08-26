@@ -1,0 +1,32 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks Sleepa premium: removes ads and unlocks all premium sounds and features by forcing the app's premium check to always report purchased.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "net.relaxio.sleepo",
+          "name": "Sleepa",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#2549A6",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.3.0(135)",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

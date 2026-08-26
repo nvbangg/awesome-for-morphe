@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.0-dev.1",
+  "version": "1.1.0-dev.2",
   "patches": [
     {
       "name": "Hide ads",
@@ -44,6 +44,58 @@
           "targets": [
             {
               "version": "4.9.15",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove security notice",
+      "description": "Suppresses the modified-build security notice by disabling the risk SDK dialog entry point and the isCracking flag writer.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.lemon.lvoverseas",
+          "name": "CapCut",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00C4CC",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "19.2.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Forces the VIP flag to true so premium features are unlocked client-side. Server-validated assets (cloud effects/templates) are not affected.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.lemon.lvoverseas",
+          "name": "CapCut",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00C4CC",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "19.2.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

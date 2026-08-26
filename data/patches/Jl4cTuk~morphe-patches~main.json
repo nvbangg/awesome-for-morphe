@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "patches": [
     {
       "name": "Disable Mine redesign",
@@ -14,7 +14,9 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#0077FF",
-          "signatures": null,
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
           "targets": [
             {
               "version": "1.108.0.2",
@@ -66,9 +68,11 @@
     },
     {
       "name": "Disable ads",
-      "description": "Removes advertisements, search recommendations, and the unsolicited VK ID prompt, with options for additional interface cleanup.",
+      "description": "Removes advertisements and search recommendations, clears advertising identifiers, keeps advertising consent disabled, and removes the unsolicited VK ID prompt, with options for additional interface cleanup.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "ru.vk.store",
@@ -76,7 +80,9 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#0077FF",
-          "signatures": null,
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
           "targets": [
             {
               "version": "1.108.0.2",
@@ -94,15 +100,6 @@
         }
       ],
       "options": [
-        {
-          "key": "disableGamingProfile",
-          "title": "Disable gaming profile",
-          "description": "Removes the Game Profile section and usage statistics screen.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": true,
-          "values": null
-        },
         {
           "key": "disableLoyaltyProgram",
           "title": "Disable loyalty program",
@@ -147,7 +144,44 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#0077FF",
-          "signatures": null,
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
+          "targets": [
+            {
+              "version": "1.108.0.2",
+              "versionCodes": {
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable background hooks",
+      "description": "Disables RuStore network-state monitoring, built-in VPN sessions, and startup hooks.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0077FF",
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
           "targets": [
             {
               "version": "1.108.0.2",
@@ -170,7 +204,9 @@
       "name": "Disable background scan",
       "description": "Disables the periodic Kaspersky background device scan.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "ru.vk.store",
@@ -178,7 +214,9 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#0077FF",
-          "signatures": null,
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
           "targets": [
             {
               "version": "1.108.0.2",
@@ -229,6 +267,76 @@
       "options": []
     },
     {
+      "name": "Disable gaming profile",
+      "description": "Removes the Game Profile and usage statistics access, hides both gaming cards, and blocks navigation to the profile.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0077FF",
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
+          "targets": [
+            {
+              "version": "1.108.0.2",
+              "versionCodes": {
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable invasive permissions",
+      "description": "Removes privileged, phone, SMS, location, storage, billing, USB, and vendor access.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0077FF",
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
+          "targets": [
+            {
+              "version": "1.108.0.2",
+              "versionCodes": {
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable lottery and in-app pushes",
       "description": "Disables lottery onboarding and the in-app push SDK used for reward popups.",
       "default": true,
@@ -252,6 +360,41 @@
               },
               "isExperimental": false,
               "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable push services",
+      "description": "Disables RuStore and VK remote push services and background tasks.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0077FF",
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
+          "targets": [
+            {
+              "version": "1.108.0.2",
+              "versionCodes": {
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
+              },
+              "isExperimental": false,
+              "minSdk": null,
               "description": null
             }
           ]
@@ -293,6 +436,37 @@
       "options": []
     },
     {
+      "name": "Disable tip notifications",
+      "description": "Suppresses Ozon push notifications asking the user to leave a pickup-point tip.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.ozon.app.android",
+          "name": "Ozon",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#005BFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "19.31.0",
+              "versionCodes": {
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
+              },
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Exclude Google Play apps from updates",
       "description": "Excludes Google Play installs from RuStore update checks while keeping RuStore and sideloaded apps.",
       "default": true,
@@ -304,7 +478,9 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#0077FF",
-          "signatures": null,
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
           "targets": [
             {
               "version": "1.108.0.2",
@@ -557,6 +733,77 @@
       ]
     },
     {
+      "name": "Restore secure-session compatibility",
+      "description": "Preserves RuStore secure-session requests when the APK is re-signed.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0077FF",
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
+          "targets": [
+            {
+              "version": "1.108.0.2",
+              "versionCodes": {
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Restrict background work to updates",
+      "description": "Keeps background workers required for update checks, downloads, patching, and installation.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0077FF",
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
+          "targets": [
+            {
+              "version": "1.108.0.2",
+              "versionCodes": {
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Show final prices only",
       "description": "Hides crossed-out prices, discount percentages, and redundant price rows in the cart total.",
       "default": true,
@@ -580,6 +827,39 @@
               },
               "isExperimental": false,
               "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip update authentication",
+      "description": "Skips the VK ID authorization suggestion shown during app installs and updates.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0077FF",
+          "signatures": [
+            "661f20828ef780de0b79bc59f26a30864316355f30e4f91cfa14a20791839914"
+          ],
+          "targets": [
+            {
+              "version": "1.108.0.2",
+              "versionCodes": {
+                "ARM64_V8A": 1108002,
+                "ARMEABI_V7A": 1108002,
+                "X86_64": 1108002,
+                "X86": 1108002
+              },
+              "isExperimental": false,
+              "minSdk": null,
               "description": null
             }
           ]

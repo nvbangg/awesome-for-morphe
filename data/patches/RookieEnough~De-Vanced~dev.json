@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0-dev.1",
+  "version": "1.3.0-dev.2",
   "patches": [
     {
       "name": "Add 'Give Kudos' button to 'Group Activity'",
@@ -34,6 +34,35 @@
     {
       "name": "Add media download",
       "description": "Extends the full-screen media viewer menu with items to copy or open their URLs or download them directly.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.strava",
+          "name": "Strava",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FC6925",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "473.11",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Add route export",
+      "description": "Allows exporting and downloading Strava routes as GPX or TCX files directly from the app.",
       "default": true,
       "dependencies": [
         "ResourcePatch",

@@ -5594,7 +5594,7 @@
       "repoDescription": "Patches for Android TV apks",
       "avatarUrl": "https://avatars.githubusercontent.com/u/229211337?v=4&s=64",
       "stars": 151,
-      "updatedAt": 1787690157000,
+      "updatedAt": 1787709566000,
       "firstSeen": 1779671144000,
       "appFirstSeen": {
         "tv.pluto.android": 1783087807450,
@@ -5668,7 +5668,7 @@
         },
         {
           "name": "HBO Max - Block SSAI Ad Origins",
-          "description": "Reproduces the AdGuard DNS ad-block inside the app: fails media3 segment requests to HBO's SSAI ad origins (amer-free/emea-free.prd.media.max.com, gmss, FreeWheel) so the player's resiliency layer falls back to the clean, ad-free manifest — removing the stitched ad VIDEO the default Disable Ads patch leaves behind. On by default (field-verified 7.9.0.61); expect a slightly longer initial spinner while the clean manifest is fetched.",
+          "description": "Reproduces the AdGuard DNS ad-block inside the app: fails media3 segment requests to HBO's SSAI ad origins (amer-free/emea-free.prd.media.max.com, gmss, FreeWheel) so the player's resiliency layer falls back to the clean, ad-free manifest — removing the stitched ad VIDEO the default Disable Ads patch leaves behind. OPT-IN: works on a fresh start, but a RESUMED session that reaches a mid-roll throws a fatal 'Couldn't Play Content' (39999) error, so it is default-off pending the upstream connection-layer fix.",
           "compatiblePackagesKey": 191
         },
         {
@@ -22740,7 +22740,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/7357354?v=4&s=64",
       "stars": 1,
-      "updatedAt": 1787698928000,
+      "updatedAt": 1787712589000,
       "firstSeen": 1787675089909,
       "appFirstSeen": {
         "com.facebook.katana": 1787675088808
@@ -22850,6 +22850,33 @@
           "name": "Bypass Google login",
           "description": "Lets RoadSync reach the motorcycle controls without a Google account. Server features (account, trip history, weather) stay unavailable, and pairing a new motorcycle still depends on Honda's server accepting an unauthenticated request.",
           "compatiblePackagesKey": 840
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "repo": "AzukiSensei/aniskip-stremio",
+      "name": "AZK Stremio AniSkip",
+      "repoDescription": "",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/58147897?v=4&s=64",
+      "stars": 0,
+      "updatedAt": 1787702363000,
+      "firstSeen": 1787713003565,
+      "appFirstSeen": {
+        "com.stremio.one": 1787713003093
+      },
+      "patches": [
+        {
+          "name": "Stremio AniSkip",
+          "description": "Adds intro, outro and recap skip controls for anime playback in Stremio.\n\nAniSkip v1.1.1\nRepository: https://github.com/AzukiSensei/aniskip-stremio",
+          "options": [
+            {
+              "key": "debug",
+              "title": "Activer le mode debug",
+              "description": "Ouvre le journal AniSkip au démarrage du lecteur pour diagnostiquer le titre, la saison, l’épisode et les requêtes API."
+            }
+          ],
+          "compatiblePackagesKey": 841
         }
       ]
     }
@@ -32848,6 +32875,17 @@
           }
         ]
       }
+    ],
+    [
+      {
+        "packageName": "com.stremio.one",
+        "targets": [
+          {
+            "version": null,
+            "isExperimental": true
+          }
+        ]
+      }
     ]
   ],
   "store": {
@@ -38937,8 +38975,7 @@
       "description": "All the video content you enjoy in one place",
       "minInstalls": 10000000,
       "category": "Entertainment",
-      "firstSeen": 1787620439710,
-      "isPreRelease": true
+      "firstSeen": 1787620439710
     },
     "com.candylink.openvpn": {
       "name": "CandyLink VPN",

@@ -1,10 +1,36 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.7.4",
+  "version": "1.8.1",
   "patches": [
     {
+      "name": "Ad Removal + Subscription",
+      "description": "Removes all ads and simulates an active subscription.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.block.juggle",
+          "name": "Block Blast",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#1A237E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "10.4.5",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Bypass Google Play Install Check",
-      "description": "Minecraft'in nereden yuklendigi kontrol edilmez: her zaman Google Play'den kurulmus gibi islem gorur.",
+      "description": "App always behaves as if installed from Google Play, bypassing the install source check.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -108,8 +134,8 @@
     },
     {
       "name": "Watch Ad Instant Reward",
-      "description": "\"Watch ad\" butonuna basmak yeterli: reklam yukleme denemeleri beklemeden 15 dakikalik premium aninda eklenir.",
-      "default": true,
+      "description": "Pressing \"Watch ad\" grants +15 min premium instantly without loading ads. (TESTING)",
+      "default": false,
       "dependencies": [],
       "compatiblePackages": [
         {

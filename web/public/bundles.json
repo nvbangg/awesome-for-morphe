@@ -19427,7 +19427,7 @@
       "repoDescription": "Personal repo for creating and releasing custom Morphe patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/209016228?v=4&s=64",
       "stars": 4,
-      "updatedAt": 1786717316000,
+      "updatedAt": 1787750737000,
       "firstSeen": 1785872490309,
       "appFirstSeen": {
         "com.battlelancer.seriesguide": 1785872489962,
@@ -19990,7 +19990,7 @@
       "repoDescription": "Morphe patches to remove ads, analytics, apk junk, debug info, duplicate graphics, unused languages, and use custom dpi☠️",
       "avatarUrl": "https://avatars.githubusercontent.com/u/139938337?v=4&s=64",
       "stars": 13,
-      "updatedAt": 1787637482000,
+      "updatedAt": 1787748995000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
         "com.snaptube.premium": 1786360281622,
@@ -20039,6 +20039,20 @@
           ]
         },
         {
+          "name": "Boost Splash Screen",
+          "description": "Fixes Remove Ads And Remove Ads Lite Gettings Stuck In Splash Screen Useless if you also select skip splash and language activity patchAlso stops the splash from hiding the on-screen navigation buttons.",
+          "isPreRelease": true,
+          "default": false,
+          "options": [
+            {
+              "key": "boostDelayMs",
+              "title": "Splash duration (ms)",
+              "description": "How long the splash screen stays visible before continuing."
+            }
+          ],
+          "compatiblePackagesKey": 781
+        },
+        {
           "name": "Change Display Size",
           "description": "Change any app's display size without touching your phone's system settings. Make it bigger if things look too small, or smaller to fit more on screen. You Need To Configure 100(No Change), 90(10% Smaller App Ui), 110(10% Bigger App Ui).",
           "default": false,
@@ -20054,31 +20068,31 @@
           "name": "Clean SnapTube Settings Page",
           "description": "Removes the Download tools and Phone clean categories, and their sub-items, from Settings.",
           "default": false,
-          "compatiblePackagesKey": 781
+          "compatiblePackagesKey": 782
         },
         {
           "name": "Clean main UI",
           "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
           "default": false,
-          "compatiblePackagesKey": 782
+          "compatiblePackagesKey": 783
         },
         {
           "name": "Disable Annoying Snaptube Notifications",
           "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default.",
           "default": false,
-          "compatiblePackagesKey": 781
+          "compatiblePackagesKey": 782
         },
         {
           "name": "Disable ad dialog when reopening app",
           "description": "Prevents the full-screen \"loading ad\" dialog from appearing when the app is reopened after being minimized.",
           "default": false,
-          "compatiblePackagesKey": 783
+          "compatiblePackagesKey": 781
         },
         {
           "name": "Disable downloader from download menu",
           "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
           "default": false,
-          "compatiblePackagesKey": 783
+          "compatiblePackagesKey": 781
         },
         {
           "name": "Disable downloader from download menu",
@@ -20135,12 +20149,12 @@
         },
         {
           "name": "Remove Ads",
-          "description": "Removes Ads And Hides Ads From Apps Layout. Cleans Apps Code From Ads Junk Currently In Some Apps It Makes Them Stuck In SplashActivity Due To Their Custom Check Of Ads Load But It Is Superior.",
+          "description": "Cleans Apps Code From Ads Junk. Works In Most Apps Where There Isn't Any Check For Ads Loaded Or Not. If There Is A Check You Will Be Stuck In SplashActivity Due To Custom Ads Load Checks But It Is Superior.",
           "default": false
         },
         {
           "name": "Remove Ads Lite (Adobo)",
-          "description": "Based On (Adobo's Block Ads+Mobile Ads) Use When Remove Ads Patch Caused Problem. Safer than Remove Ads for apps where you will be stuck in SplashActivity. It Is Weaker But Effective, No Need To Select A Host File Or Configure Anything. In Future It May Replace Remove Ads Patch If I Find No Problems.",
+          "description": "Based On (Adobo's Block Ads+Mobile Ads) Use When Remove Ads Patch Caused Problem. It Is Weaker But Effective, No Need To Select A Host File Or Configure Anything. In Future It May Replace Remove Ads Patch If I Find No Problems.",
           "default": false,
           "options": [
             {
@@ -20157,7 +20171,7 @@
         },
         {
           "name": "Remove Ads Ultra Lite",
-          "description": "Call finish on ad activities (AdMob, AppLovin MAX, BIGO, InMobi, Liftoff/Vungle, Meta Audience Network, Unity Ads, Mintegral, Pangle). Use Where Remove Ads Lite (Adobo) Caused Problem. Its In Very Early Stage So Test And Provide FeedBack If You Still See Ads In Some App.",
+          "description": "Call finish on ad activities. Use Where Remove Ads And Remove Ads Lite (Adobo) Caused Problem. Its In Very Early Stage So Test And Provide FeedBack If You Still See Ads In Some App.",
           "default": false
         },
         {
@@ -20198,13 +20212,13 @@
           "name": "Remove Watch Ad To Download",
           "description": "Removes the requirement to watch a rewarded ad before a download starts.",
           "default": false,
-          "compatiblePackagesKey": 781
+          "compatiblePackagesKey": 782
         },
         {
           "name": "Skip splash and language screens",
           "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
           "default": false,
-          "compatiblePackagesKey": 783
+          "compatiblePackagesKey": 781
         },
         {
           "name": "Skip splash screen",
@@ -20216,7 +20230,7 @@
           "name": "Skip splash screen",
           "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
           "default": false,
-          "compatiblePackagesKey": 782
+          "compatiblePackagesKey": 783
         },
         {
           "name": "Skip welcome screen",
@@ -20225,10 +20239,28 @@
           "compatiblePackagesKey": 784
         },
         {
+          "name": "Skip/Boost splash screen",
+          "description": "By default, skips the splash screen entirely on launch. Turn on \"Boost splash\" to instead keep it briefly on screen (configurable delay) rather than skipping it outright. Useless To Boost Splash Screen If You Select Unlock Premium Patch Too Use If You Want To Skip Splash Screen Entirely",
+          "isPreRelease": true,
+          "options": [
+            {
+              "key": "boostSplash",
+              "title": "Boost splash instead of skipping",
+              "description": "Off: splash is skipped entirely. On: splash briefly shows, then proceeds after the configured delay."
+            },
+            {
+              "key": "boostDelayMs",
+              "title": "Boost delay (ms)",
+              "description": "Only used when \"Boost splash\" is on. How long to show the splash before proceeding."
+            }
+          ],
+          "compatiblePackagesKey": 785
+        },
+        {
           "name": "Speed up splash screen",
           "description": "Enters the main activity directly after the splash permission check instead of delaying for the additional external-storage check.",
           "default": false,
-          "compatiblePackagesKey": 782
+          "compatiblePackagesKey": 783
         },
         {
           "name": "Unlock premium",
@@ -22745,6 +22777,37 @@
     },
     {
       "source": "github",
+      "repo": "liongalahad/liongalahad-stremio-morphe-patches",
+      "name": "Stremio",
+      "repoDescription": "Multi-account and side-by-side installation patches for Stremio Android TV",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/145302945?v=4&s=64",
+      "stars": 7,
+      "updatedAt": 1787564113000,
+      "firstSeen": 1787754878373,
+      "appFirstSeen": {
+        "com.stremio.one": 1787754877882
+      },
+      "patches": [
+        {
+          "name": "Addon reordering",
+          "description": "Adds remote-friendly hold-OK reordering to Stremio's installed-addon list.",
+          "compatiblePackagesKey": 835
+        },
+        {
+          "name": "Multi-account",
+          "description": "Adds an Android TV account chooser with isolated login, library, addons, watch state, names, colors, and PINs.",
+          "compatiblePackagesKey": 835
+        },
+        {
+          "name": "Side-by-side installation",
+          "description": "Installs the patched app separately as Stremio Morphe instead of replacing official Stremio.",
+          "compatiblePackagesKey": 835
+        }
+      ],
+      "isPreRelease": true
+    },
+    {
+      "source": "github",
       "repo": "legendsciber/morphe-patches",
       "name": "legendsciber",
       "repoDescription": "legendsciber's Patches - Morphe patches",
@@ -22760,7 +22823,7 @@
         {
           "name": "Bypass Google Play Install Check",
           "description": "Minecraft'in nereden yuklendigi kontrol edilmez: her zaman Google Play'den kurulmus gibi islem gorur.",
-          "compatiblePackagesKey": 835
+          "compatiblePackagesKey": 836
         },
         {
           "name": "Hill Climb Racing Ad Removal",
@@ -22780,7 +22843,7 @@
         {
           "name": "Watch Ad Instant Reward",
           "description": "\"Watch ad\" butonuna basmak yeterli: reklam yukleme denemeleri beklemeden 15 dakikalik premium aninda eklenir.",
-          "compatiblePackagesKey": 835
+          "compatiblePackagesKey": 836
         }
       ],
       "hotRank": 43
@@ -22801,17 +22864,17 @@
         {
           "name": "Addon reordering",
           "description": "Adds remote-friendly hold-OK reordering to Stremio's installed-addon list.",
-          "compatiblePackagesKey": 836
+          "compatiblePackagesKey": 835
         },
         {
           "name": "Multi-account",
           "description": "Adds an Android TV account chooser with isolated login, library, addons, watch state, names, colors, and PINs.",
-          "compatiblePackagesKey": 836
+          "compatiblePackagesKey": 835
         },
         {
           "name": "Side-by-side installation",
           "description": "Installs the patched app separately as Stremio Morphe instead of replacing official Stremio.",
-          "compatiblePackagesKey": 836
+          "compatiblePackagesKey": 835
         }
       ],
       "hotRank": 44,
@@ -22871,6 +22934,75 @@
         }
       ],
       "hotRank": 29
+    },
+    {
+      "source": "github",
+      "repo": "liongalahad/liongalahad-nuviotv-morphe-patches",
+      "name": "NuvioTV",
+      "repoDescription": "Prerelease Morphe patches for the official NuvioTV Android application",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/145302945?v=4&s=64",
+      "stars": 20,
+      "updatedAt": 1787632111000,
+      "firstSeen": 1787754878373,
+      "appFirstSeen": {
+        "com.nuvio.tv": 1787754877882
+      },
+      "patches": [
+        {
+          "name": "Allow Importing Subs from Local Storage",
+          "description": "Imports device subtitle files into Nuvio's ExoPlayer subtitle menu without rebuilding active playback.",
+          "default": false,
+          "compatiblePackagesKey": 800
+        },
+        {
+          "name": "Library Mode Focus Fix",
+          "description": "Returns Library focus to the previously selected Saved or Cloud mode.",
+          "default": false,
+          "compatiblePackagesKey": 800
+        },
+        {
+          "name": "Local Downloads",
+          "description": "Downloads selected direct movie and episode sources to local storage for exact local playback.",
+          "default": false,
+          "compatiblePackagesKey": 800
+        },
+        {
+          "name": "Local Media",
+          "description": "Adds Library > Storage playback, folder selection, and same-basename sidecar subtitles for local video files.",
+          "default": false,
+          "compatiblePackagesKey": 800
+        },
+        {
+          "name": "Mark SDH Subtitles",
+          "description": "Marks explicitly labelled SDH tracks and detected English SDH subtitle files.",
+          "default": false,
+          "compatiblePackagesKey": 800
+        },
+        {
+          "name": "Random Episode",
+          "description": "Adds Morphe > Detail Page > Show Random Episode Button and random series playback.",
+          "default": false,
+          "compatiblePackagesKey": 800
+        },
+        {
+          "name": "Remove SDH Annotations",
+          "description": "Adds Settings → Morphe → Subtitles to normalize music symbols and remove SDH annotations from Media3 subtitles.",
+          "default": false,
+          "compatiblePackagesKey": 800
+        },
+        {
+          "name": "Restore Source Selection",
+          "description": "Returns the source picker to the source played before leaving the player.",
+          "default": false,
+          "compatiblePackagesKey": 800
+        },
+        {
+          "name": "Side-by-side installation",
+          "description": "Installs the patched app separately as Nuvio Morphe instead of replacing NuvioTV.",
+          "compatiblePackagesKey": 800
+        }
+      ],
+      "isPreRelease": true
     },
     {
       "source": "github",
@@ -22999,7 +23131,7 @@
       "repoDescription": "Morphe patches for Honda RoadSync",
       "avatarUrl": "https://avatars.githubusercontent.com/u/11498775?v=4&s=64",
       "stars": 1,
-      "updatedAt": 1787736492000,
+      "updatedAt": 1787752700000,
       "firstSeen": 1787696166321,
       "appFirstSeen": {
         "com.honda.ms.dm.sab": 1787696165462
@@ -32062,6 +32194,9 @@
             "version": "2026.3.0"
           },
           {
+            "version": "2026.3.1"
+          },
+          {
             "version": "2026.4.0"
           }
         ]
@@ -32354,6 +32489,16 @@
     ],
     [
       {
+        "packageName": "videoplayer.videodownloader.downloader",
+        "targets": [
+          {
+            "version": "1.9.7"
+          }
+        ]
+      }
+    ],
+    [
+      {
         "packageName": "com.snaptube.premium",
         "targets": [
           {
@@ -32368,16 +32513,6 @@
         "targets": [
           {
             "version": "18.8.0.prime"
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "videoplayer.videodownloader.downloader",
-        "targets": [
-          {
-            "version": "1.9.7"
           }
         ]
       }
@@ -32984,20 +33119,20 @@
     ],
     [
       {
-        "packageName": "io.mrarm.mctoolbox",
+        "packageName": "com.stremio.one",
         "targets": [
           {
-            "version": "5.4.58"
+            "version": "1.10.4"
           }
         ]
       }
     ],
     [
       {
-        "packageName": "com.stremio.one",
+        "packageName": "io.mrarm.mctoolbox",
         "targets": [
           {
-            "version": "1.10.4"
+            "version": "5.4.58"
           }
         ]
       }

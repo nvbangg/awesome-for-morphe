@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "patches": [
     {
       "name": "Add music sources",
@@ -51,6 +51,39 @@
     {
       "name": "Bypass Google login",
       "description": "Lets RoadSync reach the motorcycle controls without a Google account. Server features (account, trip history, weather) stay unavailable, and pairing a new motorcycle still depends on Honda's server accepting an unauthenticated request.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.honda.ms.dm.sab",
+          "name": "RoadSync",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#E60012",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.4.10",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Offline pairing",
+      "description": "Lets RoadSync pair a new motorcycle and reach the handlebar controls with no Google account and no network, by serving the vehicle catalog locally instead of from Honda's server. Complements \"Bypass Google login\". Control pages fall back to defaults for the placeholder model.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

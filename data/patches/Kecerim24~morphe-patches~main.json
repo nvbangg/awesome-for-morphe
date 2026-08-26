@@ -1,7 +1,44 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "patches": [
+    {
+      "name": "Remove ads",
+      "description": "Removes the rewarded ads shown after adding expenses.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "cz.destil.settleup",
+          "name": "Settle Up",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#E47048",
+          "signatures": [
+            "e3cc443274d899c540326e620ae730112316a9d02e566a6e3dbbcbdf11c01264"
+          ],
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "11.0.2280",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Unlock premium",
       "description": "Unlocks all premium features, removes ads and disables the online license check.",
@@ -28,6 +65,43 @@
             },
             {
               "version": "14.1.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks all premium features that the app gates on the client.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "cz.destil.settleup",
+          "name": "Settle Up",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#E47048",
+          "signatures": [
+            "e3cc443274d899c540326e620ae730112316a9d02e566a6e3dbbcbdf11c01264"
+          ],
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "11.0.2280",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

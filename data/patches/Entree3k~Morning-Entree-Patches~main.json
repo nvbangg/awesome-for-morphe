@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "patches": [
     {
       "name": "Always incognito mode",
@@ -35,7 +35,7 @@
     },
     {
       "name": "Block tracking and analytics",
-      "description": "Redirects Gboard's known tracking, analytics, and ad host literals to 0.0.0.0 using a built-in blocklist. Note: telemetry sent through Google Play Services is not affected; use the always-incognito patch for that.",
+      "description": "Redirects Gboard's known tracking, analytics, and ad host to 0.0.0.0. Note: telemetry sent through Google Play Services is not affected; use the always-incognito patch for that.",
       "default": false,
       "dependencies": [
         "BytecodePatch"
@@ -295,6 +295,37 @@
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable telemetry & federated learning",
+      "description": "Forces Gboard's \"Improve Gboard\" / usage-statistics and federated-learning flags off at startup, regardless of the in-app settings, so your typing is not used for training or metrics. Best combined with the \"Network privacy\" patch.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.inputmethod.latin",
+          "name": "Gboard",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": [
+            "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+            "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+          ],
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
@@ -885,7 +916,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.25.1.2",
+              "version": "1.25.1.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1268,6 +1299,61 @@
       "options": []
     },
     {
+      "name": "Network privacy",
+      "description": "Controls what Gboard is allowed to talk to. Choose a network level: block only telemetry (keep all features), lock it down to GIFs and voice typing only, or block all internet access.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.inputmethod.latin",
+          "name": "Gboard",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": [
+            "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+            "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+          ],
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "gboardNetworkLevel",
+          "title": "Network level",
+          "description": "How much of Gboard's network access to cut. \"Telemetry only\" keeps every feature working. \"Privacy lockdown\" keeps GIF search and cloud voice typing but blocks everything else. \"Block all internet\" removes network access entirely.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "telemetry",
+          "values": {
+            "Block telemetry only (keep all features)": "telemetry",
+            "Privacy lockdown (keep GIFs & voice typing)": "lockdown",
+            "Block all internet": "block_all"
+          }
+        },
+        {
+          "key": "isWildcard",
+          "title": "Wildcard blocking",
+          "description": "When enabled, a blocked entry like \"example.com\" also covers subdomains such as \"sub.example.com\".",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
+        }
+      ]
+    },
+    {
       "name": "Provide original app certificate",
       "description": "Extracts and Base64-encodes the original app's signing certificate. Applied automatically by 'Spoof signature verification'; you normally do not need to touch it. Use 'Certificate source' to control where the certificate comes from.",
       "default": false,
@@ -1364,6 +1450,37 @@
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove promotional banners",
+      "description": "Hides Gboard's in-keyboard promotional / \"try this feature\" banners by forcing their promo flags off. Does not disable the underlying features, only their nag banners.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.inputmethod.latin",
+          "name": "Gboard",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": [
+            "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+            "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+          ],
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
@@ -1553,6 +1670,56 @@
           "required": true,
           "type": "kotlin.String",
           "default": "+15551234567",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Toggle feature flags",
+      "description": "Toggles Gboard feature flags to enable or disable experimental or hidden features.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.inputmethod.latin",
+          "name": "Gboard",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": null,
+          "signatures": [
+            "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+            "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+          ],
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "featureFlags",
+          "title": "Feature flags",
+          "description": "The Gboard feature flags to toggle, such as experimental or hidden features.",
+          "required": true,
+          "type": "kotlin.collections.List<kotlin.String>",
+          "default": null,
+          "values": null
+        },
+        {
+          "key": "enableFlags",
+          "title": "Enable feature flags",
+          "description": "Enables or disables all specified feature flags.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
           "values": null
         }
       ]

@@ -39,64 +39,48 @@ def make_url(
     app: str | None = None,
     patch: str | None = None,
 ) -> str:
-    query = {}
-    if patch and app:
-        query["app"] = app
-        query["patch"] = patch
-    elif app:
-        query["app"] = app
-    elif bundle_source and bundle_repo:
-        query[bundle_source] = bundle_repo
-
-    base_url = "https://awesome-morphe.vercel.app/"
-    if query:
-        query_string = urllib.parse.urlencode(
-            query, quote_via=urllib.parse.quote_plus
-        ).replace("%2F", "/")
-        return f"{base_url}?{query_string}#whats-new"
-    return f"{base_url}#whats-new"
+    parts = []
+    if bundle_source and bundle_repo:
+        parts.append(f"{bundle_source}={urllib.parse.quote(bundle_repo)}")
+    if app:
+        parts.append(f"app={urllib.parse.quote(app)}")
+    if patch:
+        parts.append(f"patch={urllib.parse.quote(patch)}")
+    return f"https://awesome-morphe.vercel.app/?{'&'.join(parts)}" if parts else ""
 
 
 def extract_bundle_metadata(
     bundles: list[dict],
 ) -> tuple[dict[str, str], dict[str, str], dict[str, int]]:
-    def bundle_sort_key(bundle: dict) -> tuple:
-        hot_rank = bundle.get("hotRank")
-        name = (bundle.get("name") or bundle.get("repo", "")).lower()
-        updated_at = bundle.get("updatedAt", 0)
-        if hot_rank is not None:
-            return (0, hot_rank, -updated_at, name)
-        return (1, 9999, -updated_at, name)
+    bundle_names = {}
+    bundle_sources = {}
+    bundle_order = {}
 
-    sorted_bundles = sorted(bundles, key=bundle_sort_key)
-    bundle_order = {
-        bundle["repo"]: index
-        for index, bundle in enumerate(sorted_bundles)
-        if bundle.get("repo")
-    }
-    names = {
-        bundle["repo"]: bundle.get("name") or bundle["repo"].split("/")[-1]
-        for bundle in bundles
-        if bundle.get("repo")
-    }
-    sources = {
-        bundle["repo"]: bundle.get("source") or "github"
-        for bundle in bundles
-        if bundle.get("repo")
-    }
-    return names, sources, bundle_order
+    for rank, bundle in enumerate(bundles):
+        source = bundle.get("source", "github")
+        repo = bundle.get("repo", "")
+        if not repo:
+            continue
+
+        bundle_names[repo] = bundle.get("name") or repo.split("/")[-1]
+        bundle_sources[repo] = source
+        bundle_order[repo] = rank
+
+    return bundle_names, bundle_sources, bundle_order
 
 
 def build_new_bundles(bundles_json: dict) -> dict:
     compatibilities = bundles_json.get("compatibilities", [])
-    new_bundles = {}
+    new_bundles: dict[str, dict[str, list[str]]] = {}
 
     for bundle in bundles_json.get("bundles", []):
-        if not (repo := bundle.get("repo")):
+        repo = bundle.get("repo")
+        patches = bundle.get("patches", [])
+        if not repo or not patches:
             continue
-        patches_dict = {}
 
-        for patch in bundle.get("patches", []):
+        patches_dict: dict[str, set[str]] = {}
+        for patch in patches:
             if not (patch_name := patch.get("name")):
                 continue
 

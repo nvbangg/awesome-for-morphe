@@ -6,7 +6,6 @@ import { Badge } from "@/components/common/Badge";
 import { GooglePlayButton } from "@/components/common/ActionButtons";
 import { PackageNameCopy } from "@/components/common/PackageNameCopy";
 import { AppAvatar } from "@/components/common/ItemAvatar";
-import { Card } from "@heroui/react";
 import {
   PACKAGE_UNIVERSAL,
   CATEGORY_UNIVERSAL,
@@ -29,7 +28,7 @@ export const AppCard = memo(function AppCard({
     appItem.categorySlug !== CATEGORY_UNIVERSAL;
 
   return (
-    <Card
+    <div
       className="cursor-pointer p-5 md:p-4 flex flex-col gap-4 md:gap-3 border border-divider rounded-2xl transition-all hover:border-primary hover:shadow-md hover:-translate-y-0.5 h-full bg-card"
       onClick={() => onClick(appItem.packageName)}
     >
@@ -79,6 +78,6 @@ export const AppCard = memo(function AppCard({
           />
         )}
       </div>
-    </Card>
+    </div>
   );
 });

@@ -1,6 +1,5 @@
 import { ActiveData, WhatsNewHistoryItem } from "@/types/data";
-import { Spinner } from "@heroui/react";
-import { Sparkles, Calendar } from "lucide-react";
+import { Sparkles, Calendar, Loader2 } from "lucide-react";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { WHATS_NEW_DAYS_PER_PAGE } from "@/constants";
 import { WhatsNewBundleCard } from "./WhatsNewBundleCard";
@@ -30,7 +29,7 @@ export function WhatsNewList({
   if (isLoading) {
     return (
       <div className="py-12 flex flex-col items-center justify-center text-center gap-3">
-        <Spinner size="lg" color="warning" />
+        <Loader2 className="size-8 animate-spin text-warning shrink-0" />
         <p className="text-sm font-medium text-foreground-muted">
           Loading What's New data...
         </p>

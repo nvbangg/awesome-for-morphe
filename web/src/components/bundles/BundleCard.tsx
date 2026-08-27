@@ -5,7 +5,6 @@ import { Badge } from "@/components/common/Badge";
 import { AddToMorpheButton } from "@/components/common/ActionButtons";
 import { RepoLink } from "@/components/common/RepoLink";
 import { BundleAvatar } from "@/components/common/ItemAvatar";
-import { Card } from "@heroui/react";
 
 interface BundleCardProps {
   bundleItem: Bundle;
@@ -20,7 +19,7 @@ export const BundleCard = memo(function BundleCard({
   const formattedDate = formatDate(bundleItem.updatedAt);
 
   return (
-    <Card
+    <div
       className="cursor-pointer p-5 md:p-4 flex flex-col gap-4 md:gap-3 border border-divider rounded-2xl transition-all hover:border-primary hover:shadow-md hover:-translate-y-0.5 h-full bg-card"
       onClick={() => onClick(bundleItem.key)}
     >
@@ -75,6 +74,6 @@ export const BundleCard = memo(function BundleCard({
         </div>
         <AddToMorpheButton deepLink={deepLink} className="ml-auto" />
       </div>
-    </Card>
+    </div>
   );
 });

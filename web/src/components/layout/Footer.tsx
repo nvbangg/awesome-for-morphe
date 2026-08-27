@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Button } from "@heroui/react";
 import { ArrowUp } from "lucide-react";
 
 export function Footer() {
@@ -63,15 +62,14 @@ export function Footer() {
         </div>
       </footer>
 
-      <Button
-        isIconOnly
-        variant="primary"
-        className={`fixed bottom-6 right-6 z-50 size-12 rounded-full shadow-xl transition-all duration-300 ${isScrollTopVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
+      <button
+        type="button"
         aria-label="Scroll to top"
-        onPress={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className={`fixed bottom-6 right-6 z-50 size-12 rounded-full shadow-xl transition-all duration-300 bg-primary text-background dark:text-foreground flex items-center justify-center border-none cursor-pointer hover:opacity-90 active:scale-95 ${isScrollTopVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
       >
         <ArrowUp className="size-6" />
-      </Button>
+      </button>
     </>
   );
 }

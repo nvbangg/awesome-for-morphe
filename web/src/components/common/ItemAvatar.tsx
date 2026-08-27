@@ -1,6 +1,5 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { Smartphone, Package, type LucideIcon } from "lucide-react";
-import { Avatar } from "@heroui/react";
 
 type AvatarSize = "sm" | "md" | "lg";
 
@@ -23,28 +22,41 @@ interface BaseAvatarProps extends AvatarProps {
 
 const BaseAvatar = memo(function BaseAvatar({
   src,
-  alt,
+  alt = "",
   size = "md",
   className = "",
   fallbackIcon: Icon,
 }: BaseAvatarProps) {
+  const [hasError, setHasError] = useState(false);
+  const [prevSrc, setPrevSrc] = useState(src);
+
+  if (src !== prevSrc) {
+    setPrevSrc(src);
+    setHasError(false);
+  }
+
   const { container, icon } = sizeConfig[size];
 
-  return (
-    <Avatar
-      className={`${container} border border-divider bg-card shrink-0 ${className}`}
-    >
-      <Avatar.Image
-        src={src || undefined}
+  if (src && !hasError) {
+    return (
+      <img
+        src={src}
         alt={alt}
-        className="object-cover"
+        onError={() => setHasError(true)}
+        className={`${container} border border-divider bg-card object-cover shrink-0 ${className}`}
         loading="lazy"
         decoding="async"
       />
-      <Avatar.Fallback className="flex items-center justify-center bg-transparent">
-        <Icon className={`${icon} text-foreground-subtle`} />
-      </Avatar.Fallback>
-    </Avatar>
+    );
+  }
+
+  return (
+    <div
+      className={`${container} border border-divider bg-card flex items-center justify-center shrink-0 ${className}`}
+      aria-label={alt}
+    >
+      <Icon className={`${icon} text-foreground-subtle`} />
+    </div>
   );
 });
 

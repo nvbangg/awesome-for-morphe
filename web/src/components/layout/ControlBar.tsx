@@ -10,7 +10,6 @@ import { ActiveStats } from "@/types/data";
 import { Badge } from "@/components/common/Badge";
 import { SearchInput } from "@/components/common/SearchInput";
 import { CustomSelect } from "@/components/common/CustomSelect";
-import { Tabs, TabListContainer, TabList, Tab } from "@heroui/react";
 
 interface ControlBarProps {
   activeTab: TabType;
@@ -22,7 +21,7 @@ interface ControlBarProps {
   selectedCategory?: string;
   onCategoryChange?: (categoryValue: string) => void;
   categories?: { key: string; label: string }[];
-  statistics: ActiveStats;
+  stats: ActiveStats;
 }
 
 const BUNDLE_SORT_OPTIONS = [
@@ -42,8 +41,8 @@ const APP_SORT_OPTIONS = [
   { key: "alpha", label: "Alphabetical" },
 ];
 
-const TAB_ITEM_CLASS =
-  "flex-1 sm:flex-initial px-3.5 py-1.5 text-xs font-bold rounded-lg cursor-pointer transition-all flex items-center justify-center gap-1.5 outline-none text-foreground-muted hover:text-foreground data-[selected=true]:bg-background dark:data-[selected=true]:bg-divider data-[selected=true]:text-foreground data-[selected=true]:shadow-sm";
+const TAB_ITEM_BASE =
+  "flex-1 sm:flex-initial h-full px-3.5 text-xs rounded-lg cursor-pointer transition-all flex items-center justify-center gap-1.5 outline-none border-none select-none";
 
 export function ControlBar({
   activeTab,
@@ -55,7 +54,7 @@ export function ControlBar({
   selectedCategory = "all",
   onCategoryChange,
   categories = [],
-  statistics,
+  stats,
 }: ControlBarProps) {
   const sortOptions =
     activeTab === "bundles" ? BUNDLE_SORT_OPTIONS : APP_SORT_OPTIONS;
@@ -65,43 +64,66 @@ export function ControlBar({
       className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-3 sm:gap-4 mt-2 mb-3 relative"
       id="browse-bar"
     >
-      <div
-        className="w-full sm:w-auto"
-        onKeyDownCapture={(e: React.KeyboardEvent<HTMLDivElement>) => {
-          if (e.key === "Home" || e.key === "End") {
-            e.stopPropagation();
-            (e.target as HTMLElement)?.blur();
-          }
-        }}
+      <nav
+        role="tablist"
+        aria-label="Navigation Tabs"
+        className="w-full sm:w-auto h-10 p-1 bg-card border border-divider rounded-xl flex items-center justify-between sm:justify-start box-border"
       >
-        <Tabs
-          selectedKey={activeTab}
-          onSelectionChange={(key) =>
-            key && onTabChange(String(key) as TabType)
-          }
-          aria-label="Navigation Tabs"
-          className="w-full sm:w-auto p-1 bg-card border border-divider rounded-xl"
+        <button
+          type="button"
+          role="tab"
+          id="tab-apps"
+          aria-selected={activeTab === "apps"}
+          aria-controls="apps"
+          onClick={() => onTabChange("apps")}
+          className={`${TAB_ITEM_BASE} ${
+            activeTab === "apps"
+              ? "bg-background dark:bg-divider text-foreground font-bold shadow-sm"
+              : "text-foreground-muted hover:text-foreground font-semibold"
+          }`}
         >
-          <TabListContainer className="w-full bg-transparent p-0">
-            <TabList className="flex items-center justify-between sm:justify-start bg-transparent p-0 border-none outline-none divide-x divide-divider">
-              <Tab id="apps" className={TAB_ITEM_CLASS}>
-                <Grid className="size-4 shrink-0 text-primary" />
-                <span>Apps</span>
-              </Tab>
+          <Grid className="size-4 shrink-0 text-primary" />
+          <span>Apps</span>
+        </button>
 
-              <Tab id="bundles" className={TAB_ITEM_CLASS}>
-                <Layers className="size-4 shrink-0 text-secondary" />
-                <span>Bundles</span>
-              </Tab>
+        <div className="w-px h-4 bg-divider shrink-0 mx-0.5" />
 
-              <Tab id="whats-new" className={TAB_ITEM_CLASS}>
-                <Sparkles className="size-4 shrink-0 text-warning fill-current" />
-                <span className="whitespace-nowrap">What's New</span>
-              </Tab>
-            </TabList>
-          </TabListContainer>
-        </Tabs>
-      </div>
+        <button
+          type="button"
+          role="tab"
+          id="tab-bundles"
+          aria-selected={activeTab === "bundles"}
+          aria-controls="bundles"
+          onClick={() => onTabChange("bundles")}
+          className={`${TAB_ITEM_BASE} ${
+            activeTab === "bundles"
+              ? "bg-background dark:bg-divider text-foreground font-bold shadow-sm"
+              : "text-foreground-muted hover:text-foreground font-semibold"
+          }`}
+        >
+          <Layers className="size-4 shrink-0 text-secondary" />
+          <span>Bundles</span>
+        </button>
+
+        <div className="w-px h-4 bg-divider shrink-0 mx-0.5" />
+
+        <button
+          type="button"
+          role="tab"
+          id="tab-whats-new"
+          aria-selected={activeTab === "whats-new"}
+          aria-controls="whats-new"
+          onClick={() => onTabChange("whats-new")}
+          className={`${TAB_ITEM_BASE} ${
+            activeTab === "whats-new"
+              ? "bg-background dark:bg-divider text-foreground font-bold shadow-sm"
+              : "text-foreground-muted hover:text-foreground font-semibold"
+          }`}
+        >
+          <Sparkles className="size-4 shrink-0 text-warning fill-current" />
+          <span className="whitespace-nowrap">What's New</span>
+        </button>
+      </nav>
 
       {activeTab === "whats-new" ? (
         <div className="w-full sm:w-auto sm:absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 flex items-center justify-center gap-2.5 text-sm text-foreground font-semibold py-1 select-text">
@@ -152,8 +174,8 @@ export function ControlBar({
             <div className="shrink-0 sm:ml-auto">
               <Badge variant="count">
                 {activeTab === "apps"
-                  ? `${statistics.appsCount.toLocaleString()} Apps`
-                  : `${statistics.bundlesCount.toLocaleString()} Bundles`}
+                  ? `${stats.appsCount.toLocaleString()} Apps`
+                  : `${stats.bundlesCount.toLocaleString()} Bundles`}
               </Badge>
             </div>
           </div>

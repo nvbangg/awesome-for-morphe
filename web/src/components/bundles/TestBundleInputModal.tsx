@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Spinner } from "@heroui/react";
+import { Loader2 } from "lucide-react";
 import { CustomModal, ModalBody } from "@/components/common/CustomModal";
 import { SearchInput } from "@/components/common/SearchInput";
 
@@ -66,7 +66,7 @@ export function TestBundleInputModal({
             >
               {isLoading ? (
                 <>
-                  <Spinner size="sm" color="current" />
+                  <Loader2 className="size-4 animate-spin shrink-0" />
                   Loading...
                 </>
               ) : (

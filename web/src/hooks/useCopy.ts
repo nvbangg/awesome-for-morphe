@@ -6,27 +6,26 @@ export function useCopy(resetDurationMilliseconds = UI_COPY_TIMEOUT_MS) {
   const timeoutRef = useRef<number | null>(null);
 
   const copyToClipboard = useCallback(
-    (textToCopy: string, customIdentifier?: string) => {
+    async (textToCopy: string, customIdentifier?: string) => {
       if (!textToCopy) return;
 
       const activeIdentifier = customIdentifier || textToCopy;
 
-      navigator.clipboard
-        .writeText(textToCopy)
-        .then(() => {
-          setCopiedIdentifier(activeIdentifier);
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        setCopiedIdentifier(activeIdentifier);
 
-          if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-          }
-          timeoutRef.current = window.setTimeout(() => {
-            setCopiedIdentifier(null);
-            timeoutRef.current = null;
-          }, resetDurationMilliseconds);
-        })
-        .catch((copyError) => {
-          console.error("Failed to copy text to clipboard:", copyError);
-        });
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+
+        timeoutRef.current = window.setTimeout(() => {
+          setCopiedIdentifier(null);
+          timeoutRef.current = null;
+        }, resetDurationMilliseconds);
+      } catch (copyError) {
+        console.error("Failed to copy text to clipboard:", copyError);
+      }
     },
     [resetDurationMilliseconds],
   );

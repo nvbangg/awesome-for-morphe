@@ -6,9 +6,9 @@ export function useInfiniteScroll<T>(items: T[], chunkSize = ITEMS_PER_PAGE) {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
-  const [previousItems, setPreviousItems] = useState(items);
-  if (items !== previousItems) {
-    setPreviousItems(items);
+  const [prevItems, setPrevItems] = useState(items);
+  if (items !== prevItems) {
+    setPrevItems(items);
     setVisibleCount(chunkSize);
   }
 
@@ -16,8 +16,8 @@ export function useInfiniteScroll<T>(items: T[], chunkSize = ITEMS_PER_PAGE) {
     (entries: IntersectionObserverEntry[]) => {
       const target = entries[0];
       if (target.isIntersecting) {
-        setVisibleCount((previousCount) =>
-          Math.min(previousCount + chunkSize, items.length),
+        setVisibleCount((prevCount) =>
+          Math.min(prevCount + chunkSize, items.length),
         );
       }
     },

@@ -73,13 +73,10 @@ function buildHash(
   const categorySlug = category && category !== "all" ? category : "";
   const sortSlug = getSortSlug(sort);
 
-  if (!categorySlug && !sortSlug) return `#${tab}`;
-  if (categorySlug && !sortSlug) return `#${tab}:${categorySlug}`;
-  if (!categorySlug && sortSlug) return `#${tab}:${sortSlug}`;
-  return `#${tab}:${categorySlug}:${sortSlug}`;
+  return [`#${tab}`, categorySlug, sortSlug].filter(Boolean).join(":");
 }
 
-function getInitialState() {
+function getInitState() {
   if (typeof window === "undefined") {
     return {
       activeTab: DEFAULT_TAB,
@@ -139,25 +136,25 @@ function getInitialState() {
 }
 
 export function useUrlSync() {
-  const [initialState] = useState(getInitialState);
+  const [initState] = useState(getInitState);
 
   const [activeTab, setActiveTab] = useState<NavigationTabType>(
-    initialState.activeTab,
+    initState.activeTab,
   );
-  const [appsCategory, setAppsCategory] = useState(initialState.appsCategory);
+  const [appsCategory, setAppsCategory] = useState(initState.appsCategory);
   const [bundlesCategory, setBundlesCategory] = useState(
-    initialState.bundlesCategory,
+    initState.bundlesCategory,
   );
-  const [appsSort, setAppsSort] = useState(initialState.appsSort);
-  const [bundlesSort, setBundlesSort] = useState(initialState.bundlesSort);
+  const [appsSort, setAppsSort] = useState(initState.appsSort);
+  const [bundlesSort, setBundlesSort] = useState(initState.bundlesSort);
   const [selectedAppPackageName, setSelectedAppPackageName] = useState<
     string | null
-  >(initialState.selectedAppPackageName);
+  >(initState.selectedAppPackageName);
   const [popupBundleKey, setPopupBundleKey] = useState<string | null>(
-    initialState.popupBundleKey,
+    initState.popupBundleKey,
   );
   const [popupSearchQuery, setPopupSearchQuery] = useState(
-    initialState.popupSearchQuery,
+    initState.popupSearchQuery,
   );
 
   const selectedCategory =
@@ -172,39 +169,16 @@ export function useUrlSync() {
       window.history.replaceState(null, "", cleanSearchUrl);
     }
 
-    const searchParams = new URLSearchParams(window.location.search);
-    const parsedHash = parseHash(window.location.hash);
+    const nextState = getInitState();
 
-    setActiveTab(parsedHash.tab);
-    if (parsedHash.tab === "apps") {
-      setAppsCategory(parsedHash.category);
-      setAppsSort(parsedHash.sort);
-    } else if (parsedHash.tab === "bundles") {
-      setBundlesCategory(parsedHash.category);
-      setBundlesSort(parsedHash.sort);
-    }
-
-    setSelectedAppPackageName(searchParams.get("app"));
-
-    const githubRepo = searchParams.get("github");
-    const gitlabRepo = searchParams.get("gitlab");
-    const isTestBundleUrl =
-      searchParams.has("test-bundle") ||
-      window.location.hash.includes("test-bundle");
-
-    if (!isTestBundleUrl) {
-      if (githubRepo) {
-        setPopupBundleKey(`github:${githubRepo}`);
-      } else if (gitlabRepo) {
-        setPopupBundleKey(`gitlab:${gitlabRepo}`);
-      } else {
-        setPopupBundleKey(null);
-      }
-    } else {
-      setPopupBundleKey(null);
-    }
-
-    setPopupSearchQuery(searchParams.get("patch") || "");
+    setActiveTab(nextState.activeTab);
+    setAppsCategory(nextState.appsCategory);
+    setBundlesCategory(nextState.bundlesCategory);
+    setAppsSort(nextState.appsSort);
+    setBundlesSort(nextState.bundlesSort);
+    setSelectedAppPackageName(nextState.selectedAppPackageName);
+    setPopupBundleKey(nextState.popupBundleKey);
+    setPopupSearchQuery(nextState.popupSearchQuery);
   }, []);
 
   useEffect(() => {
@@ -238,16 +212,14 @@ export function useUrlSync() {
       }
 
       if (urlUpdates.bundle !== undefined) {
-        targetUrl.searchParams.delete("github");
-        targetUrl.searchParams.delete("gitlab");
-
         if (urlUpdates.bundle) {
-          const colonIndex = urlUpdates.bundle.indexOf(":");
-          if (colonIndex !== -1) {
-            const repoSource = urlUpdates.bundle.substring(0, colonIndex);
-            const repoPath = urlUpdates.bundle.substring(colonIndex + 1);
-            targetUrl.searchParams.set(repoSource, repoPath);
+          const [source, repo] = urlUpdates.bundle.split(":");
+          if (source && repo) {
+            targetUrl.searchParams.set(source, repo);
           }
+        } else {
+          targetUrl.searchParams.delete("github");
+          targetUrl.searchParams.delete("gitlab");
         }
       }
 
@@ -259,9 +231,18 @@ export function useUrlSync() {
         }
       }
 
-      const nextTab = urlUpdates.tab ?? activeTab;
-      let nextCategory = nextTab === "bundles" ? bundlesCategory : appsCategory;
-      let nextSort = nextTab === "bundles" ? bundlesSort : appsSort;
+      let nextTab = activeTab;
+      let nextCategory =
+        activeTab === "bundles" ? bundlesCategory : appsCategory;
+      let nextSort = activeTab === "bundles" ? bundlesSort : appsSort;
+
+      if (urlUpdates.tab !== undefined) {
+        nextTab = urlUpdates.tab;
+        setActiveTab(urlUpdates.tab);
+        nextCategory =
+          urlUpdates.tab === "bundles" ? bundlesCategory : appsCategory;
+        nextSort = urlUpdates.tab === "bundles" ? bundlesSort : appsSort;
+      }
 
       if (urlUpdates.category !== undefined) {
         nextCategory = urlUpdates.category;

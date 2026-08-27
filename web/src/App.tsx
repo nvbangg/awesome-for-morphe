@@ -12,7 +12,7 @@ import { useUrlSync, NavigationTabType } from "@/hooks/useUrlSync";
 import { usePatchData } from "@/hooks/usePatchData";
 import { getAvailableCategories } from "@/services";
 import { BUNDLE_CATEGORY_OPTIONS } from "@/constants";
-import { Alert, AlertTitle, AlertDescription } from "@heroui/react";
+import { TriangleAlert } from "lucide-react";
 import { useMemo, useCallback } from "react";
 import { TestBundleInputModal } from "@/components/bundles/TestBundleInputModal";
 import { TestBundleViewModal } from "@/components/bundles/TestBundleViewModal";
@@ -106,10 +106,13 @@ export default function App() {
         <div id="apps" />
         <div className="container mx-auto px-6 max-w-300">
           {errorMessage ? (
-            <Alert status="warning" className="my-8">
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription>{errorMessage}</AlertDescription>
-            </Alert>
+            <div className="my-8 p-4 rounded-xl border border-warning/30 bg-card flex items-start gap-3 text-warning">
+              <TriangleAlert className="size-5 shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-bold text-sm text-foreground">Error</h3>
+                <p className="text-sm text-foreground-muted">{errorMessage}</p>
+              </div>
+            </div>
           ) : (
             <>
               <ControlBar
@@ -122,7 +125,7 @@ export default function App() {
                 selectedCategory={selectedCategory}
                 onCategoryChange={handleCategoryChange}
                 categories={categories}
-                statistics={stats}
+                stats={stats}
               />
 
               {isLoading ? (

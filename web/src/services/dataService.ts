@@ -61,7 +61,7 @@ interface BundlesResponseData {
   store: Record<string, AppNameMeta>;
 }
 
-export function loadInitialData(): Promise<ActiveData> {
+export function loadInitData(): Promise<ActiveData> {
   if (activeDataPromise) {
     return activeDataPromise;
   }
@@ -163,7 +163,7 @@ export function loadInitialData(): Promise<ActiveData> {
           id: `${patchId}:${targetIndex}`,
           bundleKey,
           patchName: patchItem.name,
-          patchDescription: patchItem.description,
+          patchDesc: patchItem.description,
           packageName: targetPackage.packageName ?? PACKAGE_UNIVERSAL,
           isPatchPreRelease:
             Boolean(jsonBundle.isPreRelease) || Boolean(patchItem.isPreRelease),

@@ -1,6 +1,5 @@
 import { memo } from "react";
 import { Sun, Moon } from "lucide-react";
-import { Button } from "@heroui/react";
 import { useTheme } from "next-themes";
 
 export const ThemeToggle = memo(function ThemeToggle() {
@@ -8,13 +7,12 @@ export const ThemeToggle = memo(function ThemeToggle() {
   const isDarkMode = resolvedTheme === "dark" || theme === "dark";
 
   return (
-    <Button
+    <button
+      type="button"
       id="theme-toggle"
-      variant="ghost"
-      size="sm"
       aria-label="Toggle theme"
-      onPress={() => setTheme(isDarkMode ? "light" : "dark")}
-      className="font-semibold text-xs gap-1.5 transition-all bg-foreground text-background hover:opacity-90 border-none"
+      onClick={() => setTheme(isDarkMode ? "light" : "dark")}
+      className="inline-flex items-center justify-center size-8 md:w-auto md:pl-2 md:pr-2.5 rounded-full font-semibold text-xs gap-1 transition-all bg-foreground text-background hover:opacity-90 border-none cursor-pointer shrink-0"
     >
       {isDarkMode ? (
         <>
@@ -27,6 +25,6 @@ export const ThemeToggle = memo(function ThemeToggle() {
           <span className="hidden md:inline">Dark</span>
         </>
       )}
-    </Button>
+    </button>
   );
 });

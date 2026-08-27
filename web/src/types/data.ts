@@ -51,7 +51,7 @@ export interface RowItem {
   id: string;
   bundleKey: string;
   patchName: string;
-  patchDescription: string;
+  patchDesc: string;
   packageName: string;
   isPatchPreRelease: boolean;
   versions: VersionItem[];

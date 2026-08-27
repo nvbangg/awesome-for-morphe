@@ -25,6 +25,8 @@ export function CustomSelect({
     options.find((option) => option.key === value) || options[0];
 
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleClickOutside = (event: MouseEvent) => {
       if (
         containerRef.current &&
@@ -47,7 +49,7 @@ export function CustomSelect({
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [isOpen]);
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>

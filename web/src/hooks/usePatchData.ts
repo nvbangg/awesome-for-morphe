@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { ActiveData, WhatsNewHistoryItem } from "@/types/data";
-import { loadInitialData, fetchWhatsNewHistory } from "@/services";
+import { loadInitData, fetchWhatsNewHistory } from "@/services";
 
 export function usePatchData(activeTab?: string) {
   const [activeData, setActiveData] = useState<ActiveData | null>(null);
@@ -13,7 +13,7 @@ export function usePatchData(activeTab?: string) {
 
   useEffect(() => {
     let isComponentMounted = true;
-    loadInitialData()
+    loadInitData()
       .then((loadedData) => {
         if (isComponentMounted) {
           setActiveData(loadedData);

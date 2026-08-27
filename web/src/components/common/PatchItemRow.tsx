@@ -88,9 +88,9 @@ export const PatchItemRow = memo(function PatchItemRow({
         />
       </div>
 
-      {patchItem.patchDescription && (
+      {patchItem.patchDesc && (
         <p className="text-xs text-foreground-muted leading-relaxed select-text">
-          {patchItem.patchDescription}
+          {patchItem.patchDesc}
         </p>
       )}
 

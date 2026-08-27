@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Search, X } from "lucide-react";
-import { Input } from "@heroui/react";
 
 interface SearchInputProps {
   value: string;
@@ -49,8 +48,9 @@ export function SearchInput({
         <Search className="size-4" />
       </div>
 
-      <Input
+      <input
         ref={inputRef}
+        type="text"
         id={id}
         value={localValue}
         onChange={(event) => setLocalValue(event.target.value)}

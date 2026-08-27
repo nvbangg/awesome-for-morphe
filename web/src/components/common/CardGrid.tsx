@@ -1,6 +1,5 @@
 import { memo, ReactNode, RefObject } from "react";
 import { SearchX } from "lucide-react";
-import { Skeleton } from "@heroui/react";
 
 interface CardGridProps {
   children: ReactNode;
@@ -37,16 +36,16 @@ export function SkeletonGrid({ count = 6 }: SkeletonGridProps) {
       {Array.from({ length: count }).map((_, skeletonIndex) => (
         <div
           key={skeletonIndex}
-          className="p-4 border border-divider rounded-2xl bg-card flex flex-col gap-3"
+          className="p-4 border border-divider rounded-2xl bg-card flex flex-col gap-4"
         >
           <div className="flex gap-4">
-            <Skeleton className="w-14 h-14 rounded-xl shrink-0" />
-            <div className="space-y-2 flex-1">
-              <Skeleton className="h-4 w-3/4" />
-              <Skeleton className="h-3 w-1/2" />
+            <div className="size-14 rounded-xl shrink-0 bg-divider animate-pulse" />
+            <div className="flex flex-col gap-2 flex-1 justify-center">
+              <div className="h-4 w-3/4 rounded bg-divider animate-pulse" />
+              <div className="h-3 w-1/2 rounded bg-divider animate-pulse" />
             </div>
           </div>
-          <Skeleton className="h-10 w-full mt-2" />
+          <div className="h-10 w-full rounded-xl bg-divider animate-pulse mt-auto" />
         </div>
       ))}
     </CardGrid>

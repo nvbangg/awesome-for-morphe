@@ -1,0 +1,86 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Disable Analytics",
+      "description": "Prevents Adjust and Firebase Analytics from collecting or sending analytics.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "org.monroeinstitute.expand",
+          "name": "Expand",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2C2C31",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Plus",
+      "description": "Unlocks Expand Plus without a subscription.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.monroeinstitute.expand",
+          "name": "Expand",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2C2C31",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks Lumenate Premium without a subscription.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.lumenate.lumenateaa",
+          "name": "Lumenate",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1AABB8",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,14 +1,40 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "patches": [
     {
-      "name": "Pin playlists",
-      "description": "Pins playlists to the top of the YouTube Music Library.",
+      "name": "Bunny",
+      "description": "Revives the Bunny Discord client mod without Xposed or LSPosed.",
       "default": true,
       "dependencies": [
         "ResourcePatch"
       ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.discord",
+          "name": "Discord",
+          "description": null,
+          "apkFileType": "APKM_REQUIRED",
+          "appIconColor": "#5864F0",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "341.13 - Stable",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Pin playlists",
+      "description": "Pins playlists to the top of the YouTube Music Library.",
+      "default": true,
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "com.google.android.apps.youtube.music",
@@ -22,9 +48,30 @@
           ],
           "targets": [
             {
-              "version": "9.15.51",
+              "version": "9.28.51",
               "versionCodes": null,
-              "isExperimental": false,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.26.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.25.50",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.24.51",
+              "versionCodes": null,
+              "isExperimental": true,
               "minSdk": 26,
               "description": null
             }

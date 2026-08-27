@@ -1,0 +1,366 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.1.0-dev.2",
+  "patches": [
+    {
+      "name": "Bounty Daily Reward Shortcut",
+      "description": "Tap Bounty to open Daily Reward; long press it to open Bounty.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "me.pokeraid",
+          "name": "PokeRaid - Worldwide Remote Raids",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#395FAA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.48.9",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Custom Branding",
+      "description": "Changes DeFit's app name, header title, and displayed version.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fitness.debugger",
+          "name": "DeFit - Debugger of Fitness Apps",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#008577",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.2a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "appName",
+          "title": "App name",
+          "description": "Launcher/app display name.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "DeFit++",
+          "values": null
+        },
+        {
+          "key": "topBarText",
+          "title": "Top bar text",
+          "description": "Text shown in DeFit's top action bar.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "DeFit++ - Unlimited Debugging",
+          "values": null
+        },
+        {
+          "key": "version",
+          "title": "Version",
+          "description": "Version text shown at the bottom of the main screen.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "0.8.2a-patched",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Disable Ads",
+      "description": "Disables ads locally using PokeRaid's built-in Disabled ad strategy.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "me.pokeraid",
+          "name": "PokeRaid - Worldwide Remote Raids",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#395FAA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.48.9",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Analytics",
+      "description": "Disables Firebase Analytics, Crashlytics, Performance Monitoring, and Advertising ID collection while preserving app functionality.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "me.pokeraid",
+          "name": "PokeRaid - Worldwide Remote Raids",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#395FAA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.48.9",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide News Banners",
+      "description": "Hides PokeRaid announcement carousels without breaking Data Binding.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "me.pokeraid",
+          "name": "PokeRaid - Worldwide Remote Raids",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#395FAA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.48.9",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Material You Theme",
+      "description": "Uses Android 12+ wallpaper-derived colors and enables safe system Force Dark without changing DeFit's AppCompat theme parent.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fitness.debugger",
+          "name": "DeFit - Debugger of Fitness Apps",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#008577",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.2a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Material You Theme",
+      "description": "Uses Android 12+ wallpaper-derived Material You colors throughout PokeRaid while preserving semantic status and raid-type colors.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "me.pokeraid",
+          "name": "PokeRaid - Worldwide Remote Raids",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#395FAA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.48.9",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Quick Join Button",
+      "description": "Adds an optimistic JOIN button to room cards using PokeRaid's stock authenticated join request.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "me.pokeraid",
+          "name": "PokeRaid - Worldwide Remote Raids",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#395FAA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.48.9",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove Bottom Banner Ad",
+      "description": "Removes DeFit's bottom banner-ad container from the main layout.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fitness.debugger",
+          "name": "DeFit - Debugger of Fitness Apps",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#008577",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.2a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlimited Time Bypass",
+      "description": "Removes the ad requirement and grants maximum active time when the button is pressed.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fitness.debugger",
+          "name": "DeFit - Debugger of Fitness Apps",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#008577",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.8.2a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}

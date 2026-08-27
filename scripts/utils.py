@@ -174,6 +174,8 @@ def parse_repo_url(repo_url: str) -> tuple[str, str] | tuple[None, None]:
 
 
 def build_repo_url(source: str, repo: str, mode: str = "repo") -> str | None:
+    if not source or not repo:
+        return None
     if mode == "repo":
         return f"https://{source}.com/{repo}"
     if mode == "api":
@@ -186,6 +188,8 @@ def build_repo_url(source: str, repo: str, mode: str = "repo") -> str | None:
 
 
 def build_raw_url(source: str, repo: str, branch: str, file_path: str) -> str | None:
+    if not source or not repo or not branch or not file_path:
+        return None
     if source == "github":
         return f"https://raw.githubusercontent.com/{repo}/{branch}/{file_path}"
     if source == "gitlab":

@@ -8,6 +8,7 @@
     "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
   --color-background: var(--background);
+  --color-background-translucent: var(--background-translucent);
   --color-foreground: var(--foreground);
   --color-foreground-muted: var(--foreground-muted);
   --color-foreground-subtle: var(--foreground-subtle);
@@ -24,6 +25,7 @@
 
 :root {
   --background: #ffffff;
+  --background-translucent: rgba(255, 255, 255, 0.85);
   --foreground: #18181b;
   --foreground-muted: #52525b;
   --foreground-subtle: #a1a1aa;
@@ -41,6 +43,7 @@
 
 .dark {
   --background: #18181b;
+  --background-translucent: rgba(24, 24, 27, 0.85);
   --foreground: #fafafa;
   --foreground-muted: #b8b8b8;
   --foreground-subtle: #71717a;

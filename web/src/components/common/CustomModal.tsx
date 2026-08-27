@@ -62,7 +62,7 @@ interface ModalHeaderProps {
 export function ModalHeader({ children, className = "" }: ModalHeaderProps) {
   return (
     <div
-      className={`px-3.5 sm:px-6 pt-5 pb-3 border-b border-divider flex flex-col gap-3 sticky top-0 bg-background/80 backdrop-blur-xl z-20 shrink-0 ${className}`}
+      className={`px-3.5 sm:px-6 pt-5 pb-3 border-b border-divider flex flex-col gap-3 sticky top-0 bg-background-translucent backdrop-blur-xl z-20 shrink-0 ${className}`}
     >
       {children}
     </div>

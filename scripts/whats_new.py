@@ -10,6 +10,7 @@ from utils import (
     PACKAGE_UNIVERSAL,
     WHATS_NEW_JSON_PATH,
     WHATS_NEW_PATH,
+    append_step_summary,
     load_json,
     save_json,
 )
@@ -252,6 +253,17 @@ def main() -> None:
 
     if not json_diff:
         print("No changes detected in patch bundles. Skipping What's New generation.")
+        return
+
+    latest_entry = (
+        whats_new_data[0]
+        if whats_new_data and isinstance(whats_new_data[0], dict)
+        else {}
+    )
+    if latest_entry.get("date") == today_str:
+        warning_message = f"Date '{today_str}' already exists in `{WHATS_NEW_JSON_PATH.name}`. Skipping What's New generation."
+        print(f"[-] {warning_message}")
+        append_step_summary(f"### ⚠️ What's new\n- {warning_message}")
         return
 
     if markdown_str := generate_markdown(

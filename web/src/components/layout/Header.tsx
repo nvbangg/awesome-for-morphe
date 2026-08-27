@@ -3,7 +3,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-divider transition-shadow h-16">
+    <nav className="sticky top-0 z-50 bg-background-translucent backdrop-blur-md border-b border-divider transition-shadow h-16">
       <div className="container mx-auto px-6 max-w-300 h-full flex items-center justify-between">
         <div className="flex items-center gap-3 shrink-0">
           <a

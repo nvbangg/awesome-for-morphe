@@ -1,7 +1,42 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.0",
+  "version": "1.2.0-dev.1",
   "patches": [
+    {
+      "name": "Czech translation",
+      "description": "Translates the app's interface into Czech.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.labs.merlinbirdid.app",
+          "name": "Merlin Bird ID",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#EC1C24",
+          "signatures": [
+            "4bf47cfe281374265431aacc08fdbf5be4fbcecad4868f352be6468b8652988d"
+          ],
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "4.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Remove ads",
       "description": "Removes the rewarded ads shown after adding expenses.",

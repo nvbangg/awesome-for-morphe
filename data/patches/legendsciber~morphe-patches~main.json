@@ -1,10 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.8.1",
+  "version": "1.10.0",
   "patches": [
     {
-      "name": "Ad Removal + Subscription",
-      "description": "Removes all ads and simulates an active subscription.",
+      "name": "Ad Removal",
+      "description": "Removes all ads (banner, interstitial, rewarded).",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -74,6 +74,13 @@
               "isExperimental": false,
               "minSdk": null,
               "description": null
+            },
+            {
+              "version": "1.71.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
             }
           ]
         }
@@ -100,6 +107,13 @@
               "isExperimental": false,
               "minSdk": null,
               "description": null
+            },
+            {
+              "version": "1.71.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
             }
           ]
         }
@@ -122,6 +136,39 @@
           "targets": [
             {
               "version": "1.70.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.71.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Premium (Subscription Simulation)",
+      "description": "Simulates an active subscription to unlock premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.block.juggle",
+          "name": "Block Blast",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#1A237E",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "10.4.5",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

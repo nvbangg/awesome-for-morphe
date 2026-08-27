@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.42.0-dev.1",
+  "version": "1.42.0-dev.2",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -65,7 +65,7 @@
     },
     {
       "name": "Boost Splash Screen",
-      "description": "Fixes Remove Ads And Remove Ads Lite Gettings Stuck In Splash Screen Useless if you also select skip splash and language activity patchAlso stops the splash from hiding the on-screen navigation buttons.",
+      "description": "Fixes Remove Ads And Remove Ads Lite Gettings Stuck In Splash Screen Useless if you also select skip splash and language activity patch. Also stops the splash from hiding the on-screen navigation buttons.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -508,6 +508,32 @@
       "options": []
     },
     {
+      "name": "Material Colors Upgrade Peach And Purple",
+      "description": "Updates Accent/Primary/CardBgDark to the newer Material color palette.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.gombosdev.ampere",
+          "name": "Ampere",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Png Optimizer",
       "description": "Compresses PNG images without losing quality and strips hidden metadata (DPI, timestamps, text) to make the app smaller. Only rewrites files when the result is actually smaller.",
       "default": false,
@@ -630,6 +656,33 @@
             "en",
             "ru"
           ],
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Remove Splash Screen - Expert Only",
+      "description": "EXPERT USERS ONLY. Renames the app's launcher activity in AndroidManifest.xml so the OS launches the real main screen directly, skipping the splash/intro. Manually Configure It To Point At Real Splash And Main Activity As Many Apps Use Other Names check the log, since the launcher activity may own other intent-filters (share, ",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "sourceSuffix",
+          "title": "Splash activity name",
+          "description": "Type just the class name, e.g. \"SplashActivity\" - no leading dot, it's added automatically. Leave blank to auto-detect the launcher activity and require it to score as a confident splash guess.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        },
+        {
+          "key": "targetSuffix",
+          "title": "Real main activity name",
+          "description": "Type just the class name, e.g. \"MainActivity\" - no leading dot, it's added automatically. Leave blank to auto-detect the app's own most main-screen-like activity.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
           "values": null
         }
       ]

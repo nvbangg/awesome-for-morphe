@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.29.1",
+  "version": "1.31.0",
   "patches": [
     {
       "name": "Skip Consent Popup",
@@ -1470,6 +1470,14 @@
       "options": []
     },
     {
+      "name": "Bypass Permission Check",
+      "description": "Forces permission checks to report granted so permission-gated features skip dialogs",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
       "name": "Bypass Picture-in-Picture Mode",
       "description": "Makes Activity.isInPictureInPictureMode() report false so apps that change behavior in PiP keep their full UI.",
       "default": false,
@@ -2308,6 +2316,14 @@
       "options": []
     },
     {
+      "name": "Force Has System Feature",
+      "description": "Makes PackageManager.hasSystemFeature always return true so feature-gated installs pass runtime checks",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
       "name": "Force Idle Call State",
       "description": "Makes TelephonyManager.getCallState() report CALL_STATE_IDLE (0) so apps that react to active calls behave as if none are in progress.",
       "default": false,
@@ -2567,6 +2583,14 @@
       ]
     },
     {
+      "name": "Hide Accessibility Services",
+      "description": "Makes AccessibilityManager return empty lists so apps cannot detect TalkBack or automation services",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
       "name": "Hide Accessibility Usage",
       "description": "Makes AccessibilityManager.isEnabled() report false so apps cannot tell an accessibility service is running.",
       "default": false,
@@ -2591,8 +2615,24 @@
       "options": []
     },
     {
+      "name": "Hide Clipboard Description",
+      "description": "Makes ClipboardManager.getPrimaryClipDescription return null to block MIME and type harvesting",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
       "name": "Hide Debugger Connection",
       "description": "Makes Debug.isDebuggerConnected and waitingForDebugger always return false so apps that refuse to run under a debugger keep working",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Hide Default Sensor",
+      "description": "Makes SensorManager.getDefaultSensor return null so sensor fingerprint and VR gates see no hardware",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -2617,6 +2657,30 @@
     {
       "name": "Hide Installed Apps",
       "description": "Redirects PackageManager.getInstalledPackages/getInstalledApplications to Collections.emptyList() so the app sees no other installed apps.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Hide Nfc Adapter",
+      "description": "Makes NfcAdapter.getDefaultAdapter return null so NFC probes fail uniformly",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Hide Storage Volumes",
+      "description": "Makes StorageManager return empty lists so volume enumeration for fingerprint sees nothing",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Hide Usage Stats",
+      "description": "Makes UsageStatsManager return empty lists so app usage fingerprinting sees nothing",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -2921,6 +2985,14 @@
       "options": []
     },
     {
+      "name": "Spoof Bluetooth Profile State",
+      "description": "Forces BluetoothAdapter.getProfileConnectionState to report connected so headset and A2DP gates proceed",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
       "name": "Spoof Build Serial",
       "description": "Reports a fake device serial through Build.getSerial() so apps that fingerprint by serial number see a constant value.",
       "default": false,
@@ -2977,6 +3049,33 @@
       "dependencies": [],
       "compatiblePackages": null,
       "options": []
+    },
+    {
+      "name": "Spoof Fixed Location",
+      "description": "Returns fixed GPS coordinates for all location requests instead of the real device location. Useful for region-locked apps like rajiko that require a specific location.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "latitude",
+          "title": "Latitude",
+          "description": "Fixed latitude to return (e.g. 35.681236 for Tokyo, Japan).",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "35.681236",
+          "values": null
+        },
+        {
+          "key": "longitude",
+          "title": "Longitude",
+          "description": "Fixed longitude to return (e.g. 139.767125 for Tokyo, Japan).",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "139.767125",
+          "values": null
+        }
+      ]
     },
     {
       "name": "Spoof Group ID Level 1",
@@ -3200,7 +3299,25 @@
     },
     {
       "name": "Spoof Time Zone",
-      "description": "Forces TimeZone.getDefault().getID() to return UTC so region- or time-zone-locked apps see a constant zone.",
+      "description": "Forces TimeZone.getDefault() to return a fixed timezone so region-locked apps see a constant zone (e.g. Europe/London for All4).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "timeZoneId",
+          "title": "Time zone ID",
+          "description": "IANA time zone ID to spoof (e.g. UTC, Europe/London, America/New_York, Asia/Tokyo).",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "UTC",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Spoof UiMode Night State",
+      "description": "Forces UiModeManager to report TYPE_NORMAL and night mode off so car/TV/night gates never trigger",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,

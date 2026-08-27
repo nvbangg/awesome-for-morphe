@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "patches": [
     {
       "name": "AMOLED dark theme",
@@ -40,7 +40,9 @@
       "name": "AMOLED dark theme",
       "description": "Replaces the dark theme background with pure black. Disables over-the-air updates that would restore the original background.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.kick.mobile",
@@ -447,8 +449,8 @@
     },
     {
       "name": "Inspect AI requests",
-      "description": "Tails every AI request live and keeps the log, so you can watch your photo fly to China or the US.",
-      "default": false,
+      "description": "Shows the network calls an AI tool makes, such as HTTP requests and Firebase uploads, and keeps a log, so you can watch your photo fly to China or the US.",
+      "default": true,
       "dependencies": [
         "BytecodePatch"
       ],
@@ -610,6 +612,39 @@
       "options": []
     },
     {
+      "name": "Remove pairip protection",
+      "description": "Removes the Play Integrity protection that crashes a patched install on startup and sends it to Google Play. Background receivers the protection virtualized stop running.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "all.in.one.calculator",
+          "name": "All-In-One Calculator",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#455A64",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.0",
+              "versionCodes": {
+                "ARM64_V8A": 340,
+                "ARMEABI_V7A": 340,
+                "X86_64": 340,
+                "X86": 340
+              },
+              "isExperimental": false,
+              "minSdk": 24,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Show AI progress",
       "description": "Reads the current stage off the real network activity instead of the fake progress bar InShot ships.",
       "default": true,
@@ -676,8 +711,41 @@
       "options": []
     },
     {
+      "name": "Spoof iOS platform",
+      "description": "Reports the AI requests as coming from the iOS app, so the server does not ask for a Play Integrity token. Required for the AI tools on any device that passes Play Integrity.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "photo.editor.photoeditor.photoeditorpro",
+          "name": "Photo Editor Pro",
+          "description": null,
+          "apkFileType": "APKS_REQUIRED",
+          "appIconColor": "#FA2A80",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.791.265",
+              "versionCodes": {
+                "ARM64_V8A": 265100,
+                "ARMEABI_V7A": 265100,
+                "X86_64": 265100,
+                "X86": 265100
+              },
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Spoof signature",
-      "description": "Restores the AI tools and stops the app killing itself by spoofing the original app signature.",
+      "description": "Spoofs the original app signature and disables the pairip client-side license check. Required: the app does not start without it.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -813,6 +881,39 @@
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Grants the pro entitlement, which removes the ads and the paywalled tools.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "all.in.one.calculator",
+          "name": "All-In-One Calculator",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#455A64",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.0",
+              "versionCodes": {
+                "ARM64_V8A": 340,
+                "ARMEABI_V7A": 340,
+                "X86_64": 340,
+                "X86": 340
+              },
+              "isExperimental": false,
+              "minSdk": 24,
               "description": null
             }
           ]

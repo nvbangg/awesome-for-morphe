@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.42.0-dev.2",
+  "version": "1.42.0-dev.3",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -234,6 +234,32 @@
                 "X86_64": 24011893,
                 "X86": 24011893
               },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable download chooser duplicates",
+      "description": "Removes the ACTION_VIEW http/https intent filters from MiXplorer's Explore/Download/Copy to/Extract to shell activities so the app stops showing up multiple times in Firefox's (and other browsers') download-complete chooser. Share-to (SEND/SEND_MULTIPLE) entries and local/ftp/smb file handling are untouched.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mixplorer",
+          "name": "MiXplorer",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -662,7 +688,7 @@
     },
     {
       "name": "Remove Splash Screen - Expert Only",
-      "description": "EXPERT USERS ONLY. Renames the app's launcher activity in AndroidManifest.xml so the OS launches the real main screen directly, skipping the splash/intro. Manually Configure It To Point At Real Splash And Main Activity As Many Apps Use Other Names check the log, since the launcher activity may own other intent-filters (share, ",
+      "description": "EXPERT USERS ONLY. Manually Configure It To Point At Real Splash And Main Activity As Many Apps Use Other Names. Check the log to know what the patch is doing Ensure App Doesnt Ask For Permission In Splash Screen.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -690,6 +716,68 @@
     {
       "name": "Remove Watch Ad To Download",
       "description": "Removes the requirement to watch a rewarded ad before a download starts.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.snaptube.premium",
+          "name": "SnapTube",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.64.0.76450210",
+              "versionCodes": {
+                "ARM64_V8A": 76450210,
+                "ARMEABI_V7A": 76450210,
+                "X86_64": 76450210,
+                "X86": 76450210
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove from default browser list",
+      "description": "Removes the unscoped http/https <data> entries from MainActivity's intent-filters (matched by scheme value, not position) so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser. Other schemes and mimeTypes on the same filters (about, javascript, inline, file, text/html, etc., used for the app's internal WebView) are left in place.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "videoplayer.videodownloader.downloader",
+          "name": "All Video Downloader & Ace Player",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.9.7",
+              "versionCodes": {
+                "ARM64_V8A": 24011893,
+                "ARMEABI_V7A": 24011893,
+                "X86_64": 24011893,
+                "X86": 24011893
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove from default browser list",
+      "description": "Strips the data schemes from the LinkHandleActivity alias's unscoped http/https intent-filter (identified by its unique snaptube.intent.action.OPEN_WEBVIEW action, not by position) so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser. The other host-scoped deep-link filters on the same alias (facebook.com, tiktok.com, youtube.com, etc.) are untouched.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [

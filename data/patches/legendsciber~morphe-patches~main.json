@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.10.0",
+  "version": "1.17.3",
   "patches": [
     {
       "name": "Ad Removal",
@@ -69,13 +69,6 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.70.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
               "version": "1.71.1",
               "versionCodes": null,
               "isExperimental": false,
@@ -101,13 +94,6 @@
           "appIconColor": "#2E7D32",
           "signatures": null,
           "targets": [
-            {
-              "version": "1.70.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
             {
               "version": "1.71.1",
               "versionCodes": null,
@@ -135,14 +121,33 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.70.0",
+              "version": "1.71.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
               "description": null
-            },
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Premium",
+      "description": "Enables premium directly without watching ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "io.mrarm.mctoolbox",
+          "name": "Toolbox for Minecraft PE",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#3E2723",
+          "signatures": null,
+          "targets": [
             {
-              "version": "1.71.1",
+              "version": "5.4.58",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -180,21 +185,21 @@
       "options": []
     },
     {
-      "name": "Watch Ad Instant Reward",
-      "description": "Pressing \"Watch ad\" grants +15 min premium instantly without loading ads. (TESTING)",
-      "default": false,
+      "name": "Smash Hit Premium Unlock",
+      "description": "Unlocks premium and all game modes without purchase.",
+      "default": true,
       "dependencies": [],
       "compatiblePackages": [
         {
-          "packageName": "io.mrarm.mctoolbox",
-          "name": "Toolbox for Minecraft PE",
+          "packageName": "com.mediocre.smashhit",
+          "name": "Smash Hit",
           "description": null,
           "apkFileType": "APK",
-          "appIconColor": "#3E2723",
+          "appIconColor": "#00BCD4",
           "signatures": null,
           "targets": [
             {
-              "version": "5.4.58",
+              "version": "1.5.14",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

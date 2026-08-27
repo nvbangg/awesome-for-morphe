@@ -1,14 +1,14 @@
 name: Sync
 run-name: >-
-  ${{ (inputs.mode == 'daily' || github.event.schedule == '0 0 2-31 * *') && 'Sync (daily)' ||
-      (inputs.mode == 'month' || github.event.schedule == '0 0 1 * *') && 'Sync (month)' ||
+  ${{ (inputs.mode == 'daily' || github.event.schedule == '15 0 2-31 * *') && 'Sync (daily)' ||
+      (inputs.mode == 'month' || github.event.schedule == '15 0 1 * *') && 'Sync (month)' ||
       '' }}
 
 on:
   schedule:
-    - cron: "0 2-22/2 * * *"
-    - cron: "0 0 2-31 * *"
-    - cron: "0 0 1 * *"
+    - cron: "15 2-22/2 * * *"
+    - cron: "15 0 2-31 * *"
+    - cron: "15 0 1 * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -43,9 +43,9 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             MODE="${{ inputs.mode }}"
-          elif [ "${{ github.event.schedule }}" = "0 0 1 * *" ]; then
+          elif [ "${{ github.event.schedule }}" = "15 0 1 * *" ]; then
             MODE="month"
-          elif [ "${{ github.event.schedule }}" = "0 0 2-31 * *" ]; then
+          elif [ "${{ github.event.schedule }}" = "15 0 2-31 * *" ]; then
             MODE="daily"
           else
             MODE="default"
@@ -108,7 +108,7 @@ jobs:
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
             if [ "${{ steps.config.outputs.mode }}" != "default" ]; then
-              TAG=$(date -d "-12 hours" +'%Y.%m.%d')
+              TAG=$(date -u +'%Y.%m.%d')
               git commit -m "Update history (${TAG})"
             else
               git commit -m "Sync bundles"

@@ -1,7 +1,7 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 import urllib.parse
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, datetime
 
 from utils import (
     BUNDLES_JSON_PATH,
@@ -245,7 +245,7 @@ def main() -> None:
         bundles_json.get("bundles", [])
     )
 
-    current_time = datetime.now(UTC) - timedelta(hours=12)
+    current_time = datetime.now(UTC)
     today_str = current_time.strftime(f"%B {current_time.day}, %Y")
 
     new_bundles = build_new_bundles(bundles_json)

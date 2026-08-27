@@ -93,7 +93,7 @@ function getInitialState() {
     };
   }
 
-  const searchParameters = new URLSearchParams(window.location.search);
+  const searchParams = new URLSearchParams(window.location.search);
   const parsedHash = parseHash(window.location.hash);
 
   const activeTab = parsedHash.tab;
@@ -105,12 +105,12 @@ function getInitialState() {
   const bundlesSort =
     parsedHash.tab === "bundles" ? parsedHash.sort : "default";
 
-  const selectedAppPackageName = searchParameters.get("app");
+  const selectedAppPackageName = searchParams.get("app");
 
-  const githubRepo = searchParameters.get("github");
-  const gitlabRepo = searchParameters.get("gitlab");
+  const githubRepo = searchParams.get("github");
+  const gitlabRepo = searchParams.get("gitlab");
   const isTestBundleUrl =
-    searchParameters.has("test-bundle") ||
+    searchParams.has("test-bundle") ||
     window.location.hash.includes("test-bundle");
 
   let popupBundleKey: string | null = null;
@@ -124,7 +124,7 @@ function getInitialState() {
     }
   }
 
-  const popupSearchQuery = searchParameters.get("patch") || "";
+  const popupSearchQuery = searchParams.get("patch") || "";
 
   return {
     activeTab,
@@ -172,7 +172,7 @@ export function useUrlSync() {
       window.history.replaceState(null, "", cleanSearchUrl);
     }
 
-    const searchParameters = new URLSearchParams(window.location.search);
+    const searchParams = new URLSearchParams(window.location.search);
     const parsedHash = parseHash(window.location.hash);
 
     setActiveTab(parsedHash.tab);
@@ -184,12 +184,12 @@ export function useUrlSync() {
       setBundlesSort(parsedHash.sort);
     }
 
-    setSelectedAppPackageName(searchParameters.get("app"));
+    setSelectedAppPackageName(searchParams.get("app"));
 
-    const githubRepo = searchParameters.get("github");
-    const gitlabRepo = searchParameters.get("gitlab");
+    const githubRepo = searchParams.get("github");
+    const gitlabRepo = searchParams.get("gitlab");
     const isTestBundleUrl =
-      searchParameters.has("test-bundle") ||
+      searchParams.has("test-bundle") ||
       window.location.hash.includes("test-bundle");
 
     if (!isTestBundleUrl) {
@@ -204,7 +204,7 @@ export function useUrlSync() {
       setPopupBundleKey(null);
     }
 
-    setPopupSearchQuery(searchParameters.get("patch") || "");
+    setPopupSearchQuery(searchParams.get("patch") || "");
   }, []);
 
   useEffect(() => {

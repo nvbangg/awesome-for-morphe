@@ -1,7 +1,5 @@
 import { AppItem, RowItem, Bundle, ActiveData } from "@/types/data";
-
-import { simplifyString, getAppMeta } from "@/utils";
-import { AppMeta } from "@/utils/domainUtils";
+import { simplifyString, getAppMeta, AppMeta } from "@/utils";
 import {
   CATEGORY_UNIVERSAL,
   CATEGORY_LABEL_UNIVERSAL,
@@ -375,10 +373,7 @@ export function groupPatchesByApp(
   }
 
   return result.sort((groupA, groupB) =>
-    compareDefaultApp(
-      { packageName: groupA.packageName, ...groupA.appMeta },
-      { packageName: groupB.packageName, ...groupB.appMeta },
-    ),
+    compareDefaultApp(groupA.appMeta, groupB.appMeta),
   );
 }
 

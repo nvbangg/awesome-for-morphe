@@ -4,7 +4,7 @@ import { simplifyString } from "@/utils";
 
 export interface TestBundleData {
   repoName: string;
-  platform: "github" | "gitlab";
+  source: "github" | "gitlab";
   repoUrl: string;
   branches: Record<string, RowItem[]>;
   availableBranches: string[];
@@ -14,7 +14,7 @@ const BRANCHES_TO_TRY = ["main", "dev"];
 
 function parseRepoInput(
   input: string,
-): { owner: string; repo: string; platform: "github" | "gitlab" } | null {
+): { owner: string; repo: string; source: "github" | "gitlab" } | null {
   try {
     const cleanInput = input.trim();
     if (!cleanInput.startsWith("http")) return null;
@@ -26,7 +26,7 @@ function parseRepoInput(
       return {
         owner: parts[0],
         repo: parts[1].replace(/\.git$/, ""),
-        platform: url.hostname.includes("gitlab") ? "gitlab" : "github",
+        source: url.hostname.includes("gitlab") ? "gitlab" : "github",
       };
     }
   } catch {
@@ -36,13 +36,13 @@ function parseRepoInput(
 }
 
 function getRawUrls(
-  platform: "github" | "gitlab",
+  source: "github" | "gitlab",
   owner: string,
   repo: string,
   branch: string,
 ): string[] {
   const file = "patches-list.json";
-  if (platform === "gitlab") {
+  if (source === "gitlab") {
     const encodedProject = encodeURIComponent(`${owner}/${repo}`);
     const encodedFile = encodeURIComponent(file);
     return [
@@ -91,7 +91,7 @@ function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
     if (!patch || typeof patch !== "object" || !patch.name) continue;
 
     const patchName = patch.name;
-    const patchDescription = patch.description || "";
+    const patchDesc = patch.description || "";
     const isPatchPreRelease = !!patch.isPreRelease;
     const options: PatchOption[] = patch.options || [];
     const isDefault = patch.default !== false;
@@ -116,11 +116,11 @@ function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
         id: `${bundleKey}-no-pkg-${patchName}`,
         bundleKey,
         patchName,
-        patchDescription,
+        patchDescription: patchDesc,
         packageName: PACKAGE_UNIVERSAL,
         isPatchPreRelease,
         versions: [],
-        searchPatchesText: simplifyString(`${patchName} ${patchDescription}`),
+        searchPatchesText: simplifyString(`${patchName} ${patchDesc}`),
         options,
         default: isDefault,
       });
@@ -165,11 +165,11 @@ function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
         id: `${bundleKey}-${packageName}-${patchName}`,
         bundleKey,
         patchName,
-        patchDescription,
+        patchDescription: patchDesc,
         packageName,
         isPatchPreRelease,
         versions,
-        searchPatchesText: simplifyString(`${patchName} ${patchDescription}`),
+        searchPatchesText: simplifyString(`${patchName} ${patchDesc}`),
         options,
         default: isDefault,
       });
@@ -185,7 +185,7 @@ export async function fetchTestBundle(input: string): Promise<TestBundleData> {
     throw new Error("Invalid repository link format.");
   }
 
-  const { owner, repo, platform } = repoInfo;
+  const { owner, repo, source } = repoInfo;
   const repoName = `${owner}/${repo}`;
   const branchesData: Record<string, RowItem[]> = {};
   const availableBranches: string[] = [];
@@ -193,7 +193,7 @@ export async function fetchTestBundle(input: string): Promise<TestBundleData> {
   let fetchSuccess = false;
 
   for (const branch of BRANCHES_TO_TRY) {
-    const urls = getRawUrls(platform, owner, repo, branch);
+    const urls = getRawUrls(source, owner, repo, branch);
     const data = await fetchFromUrls(urls);
     if (data) {
       fetchSuccess = true;
@@ -217,11 +217,8 @@ export async function fetchTestBundle(input: string): Promise<TestBundleData> {
 
   return {
     repoName,
-    platform,
-    repoUrl:
-      platform === "github"
-        ? `https://github.com/${repoName}`
-        : `https://gitlab.com/${repoName}`,
+    source,
+    repoUrl: `https://${source}.com/${repoName}`,
     branches: branchesData,
     availableBranches,
   };

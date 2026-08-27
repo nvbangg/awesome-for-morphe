@@ -13,7 +13,6 @@ import {
   getAppMeta,
   extractVersions,
   simplifyString,
-  slugifyCategory,
 } from "@/utils";
 
 import { PACKAGE_UNIVERSAL } from "@/constants";
@@ -198,7 +197,6 @@ export function loadInitialData(): Promise<ActiveData> {
       const existingApp = appMap.get(packageName);
       if (!existingApp) {
         const appMeta = getAppMeta(packageName, appNamesMap);
-        const categorySlug = slugifyCategory(appMeta.category);
         const searchableText = simplifyString(
           `${appMeta.appName} ${packageName} ${appMeta.description}`,
         );
@@ -211,7 +209,7 @@ export function loadInitialData(): Promise<ActiveData> {
           category: appMeta.category,
           firstSeen: appMeta.firstSeen,
           patchCount: 1,
-          categorySlug,
+          categorySlug: appMeta.categorySlug,
           searchableText,
           isPreRelease: appMeta.isPreRelease,
         });

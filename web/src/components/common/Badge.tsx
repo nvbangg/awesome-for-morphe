@@ -115,12 +115,16 @@ export const Badge = memo(function Badge({
   }
 
   if (variant === "patches") {
+    const content =
+      value !== undefined
+        ? `${value} ${value === 1 ? "patch" : "patches"}`
+        : children;
     return (
       <span
         className={`inline-flex items-center justify-center align-middle px-1.5 py-0.5 text-xs font-semibold whitespace-nowrap text-foreground-muted border border-divider rounded-full shrink-0 ${className}`}
         title={title}
       >
-        {children}
+        {content}
       </span>
     );
   }

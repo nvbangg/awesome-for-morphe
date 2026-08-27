@@ -6,8 +6,6 @@ import { ModalHeader, CloseButton } from "@/components/common/CustomModal";
 import { isNew } from "@/utils/formatters";
 import { BundleMeta } from "@/utils/domainUtils";
 
-export type BundleModalMeta = BundleMeta;
-
 interface BundleModalHeaderProps {
   bundleMeta: BundleMeta;
   formattedDate: string;

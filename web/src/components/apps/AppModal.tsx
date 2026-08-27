@@ -29,7 +29,7 @@ export function AppModal({
 }: AppModalProps) {
   const { copiedText, copyToClipboard } = useCopy();
 
-  const applicationMeta = useMemo(() => {
+  const appMeta = useMemo(() => {
     if (!packageName || !activeData) return null;
     return getAppMeta(packageName, activeData.namesMap);
   }, [packageName, activeData]);
@@ -58,12 +58,12 @@ export function AppModal({
     ).size;
   }, [packageName, activeData]);
 
-  if (!applicationMeta || !packageName) return null;
+  if (!appMeta || !packageName) return null;
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose}>
       <AppModalHeader
-        applicationMeta={applicationMeta}
+        appMeta={appMeta}
         packageName={packageName}
         copiedText={copiedText}
         copyToClipboard={copyToClipboard}
@@ -95,8 +95,8 @@ export function AppModal({
                   toggleBundleGroup={toggleBundleGroup}
                   copiedText={copiedText}
                   copyToClipboard={copyToClipboard}
-                  isAppNew={isNew(applicationMeta.firstSeen)}
-                  isAppPreRelease={applicationMeta.isPreRelease}
+                  isAppNew={isNew(appMeta.firstSeen)}
+                  isAppPreRelease={appMeta.isPreRelease}
                 />
               );
             })

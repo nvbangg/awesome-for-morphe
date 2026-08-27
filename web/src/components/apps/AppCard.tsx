@@ -10,7 +10,6 @@ import { Card } from "@heroui/react";
 import {
   PACKAGE_UNIVERSAL,
   CATEGORY_UNIVERSAL,
-  CATEGORY_LABEL_UNIVERSAL,
   MIN_DISPLAY_INSTALLS,
 } from "@/constants";
 
@@ -46,15 +45,13 @@ export const AppCard = memo(function AppCard({
             {appItem.isPreRelease && (
               <Badge variant="prerelease" className="ml-1.5" />
             )}
-            {appItem.minInstalls >= MIN_DISPLAY_INSTALLS &&
-              appItem.packageName !== PACKAGE_UNIVERSAL &&
-              appItem.categorySlug !== CATEGORY_UNIVERSAL && (
-                <Badge
-                  variant="downloads"
-                  value={appItem.minInstalls}
-                  className="ml-1.5"
-                />
-              )}
+            {showGooglePlay && appItem.minInstalls >= MIN_DISPLAY_INSTALLS && (
+              <Badge
+                variant="downloads"
+                value={appItem.minInstalls}
+                className="ml-1.5"
+              />
+            )}
           </div>
           <PackageNameCopy
             packageName={appItem.packageName}
@@ -72,9 +69,7 @@ export const AppCard = memo(function AppCard({
 
       <div className="flex items-center justify-between gap-2 mt-auto w-full">
         <Badge variant="category" className="truncate max-w-[60%]">
-          {appItem.categorySlug === CATEGORY_UNIVERSAL
-            ? CATEGORY_LABEL_UNIVERSAL
-            : appItem.category}
+          {appItem.category}
         </Badge>
 
         {showGooglePlay && (

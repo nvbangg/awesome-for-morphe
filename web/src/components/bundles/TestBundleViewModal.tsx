@@ -5,6 +5,7 @@ import { useCopy } from "@/hooks/useCopy";
 import { useExpandedKeys } from "@/hooks/useExpandedKeys";
 import { CustomModal, ModalBody } from "@/components/common/CustomModal";
 import { TestBundleData, groupPatchesByApp } from "@/services";
+import { buildBundleUrls } from "@/utils";
 import { TestBundleViewModalHeader } from "./TestBundleViewModalHeader";
 import { BundleAppGroup } from "./BundleAppGroup";
 
@@ -47,15 +48,8 @@ export function TestBundleViewModal({
 
   const deepLink = useMemo(() => {
     if (!data) return "";
-    const repo = data.repoName;
-    const platform = data.platform || "github";
-    const branchPart =
-      currentBranch === "dev"
-        ? platform === "gitlab"
-          ? `${repo}/-/tree/dev`
-          : `${repo}/tree/dev`
-        : repo;
-    return `https://morphe.software/add-source?${platform}=${branchPart}`;
+    return buildBundleUrls(data.source, data.repoName, currentBranch === "dev")
+      .deepLink;
   }, [data, currentBranch]);
 
   const appGroups = useMemo(() => {

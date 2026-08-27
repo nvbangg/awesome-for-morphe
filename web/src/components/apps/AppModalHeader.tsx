@@ -7,12 +7,11 @@ import { isNew } from "@/utils/formatters";
 import {
   PACKAGE_UNIVERSAL,
   CATEGORY_LABEL_UNIVERSAL,
-  CATEGORY_UNIVERSAL,
   MIN_DISPLAY_INSTALLS,
 } from "@/constants";
 
 interface AppModalHeaderProps {
-  applicationMeta: {
+  appMeta: {
     appName: string;
     appIcon: string;
     description: string;
@@ -29,7 +28,7 @@ interface AppModalHeaderProps {
 }
 
 export function AppModalHeader({
-  applicationMeta,
+  appMeta,
   packageName,
   copiedText,
   copyToClipboard,
@@ -37,32 +36,24 @@ export function AppModalHeader({
 }: AppModalHeaderProps) {
   const showGooglePlay =
     packageName !== PACKAGE_UNIVERSAL &&
-    applicationMeta.category !== CATEGORY_LABEL_UNIVERSAL;
+    appMeta.category !== CATEGORY_LABEL_UNIVERSAL;
 
   return (
     <ModalHeader>
       <div className="flex flex-row items-start justify-between gap-4 w-full">
         <div className="flex flex-row items-center gap-4 flex-1 min-w-0">
-          <AppAvatar
-            src={applicationMeta.appIcon}
-            alt={applicationMeta.appName}
-            size="lg"
-          />
+          <AppAvatar src={appMeta.appIcon} alt={appMeta.appName} size="lg" />
           <div className="flex flex-col min-w-0 justify-center">
             <div className="flex items-center gap-2 flex-wrap">
               <h2 className="text-xl font-bold tracking-tight text-foreground truncate">
-                {applicationMeta.appName}
+                {appMeta.appName}
               </h2>
-              {isNew(applicationMeta.firstSeen) && <Badge variant="new" />}
-              {applicationMeta.isPreRelease && <Badge variant="prerelease" />}
-              {applicationMeta.minInstalls !== undefined &&
-                applicationMeta.minInstalls >= MIN_DISPLAY_INSTALLS &&
-                packageName !== PACKAGE_UNIVERSAL &&
-                applicationMeta.category !== CATEGORY_LABEL_UNIVERSAL && (
-                  <Badge
-                    variant="downloads"
-                    value={applicationMeta.minInstalls}
-                  />
+              {isNew(appMeta.firstSeen) && <Badge variant="new" />}
+              {appMeta.isPreRelease && <Badge variant="prerelease" />}
+              {showGooglePlay &&
+                appMeta.minInstalls !== undefined &&
+                appMeta.minInstalls >= MIN_DISPLAY_INSTALLS && (
+                  <Badge variant="downloads" value={appMeta.minInstalls} />
                 )}
             </div>
             <PackageNameCopy
@@ -74,12 +65,8 @@ export function AppModalHeader({
         </div>
 
         <div className="hidden sm:flex items-center gap-2 shrink-0">
-          {applicationMeta.category && (
-            <Badge variant="category">
-              {applicationMeta.categorySlug === CATEGORY_UNIVERSAL
-                ? CATEGORY_LABEL_UNIVERSAL
-                : applicationMeta.category}
-            </Badge>
+          {appMeta.category && (
+            <Badge variant="category">{appMeta.category}</Badge>
           )}
           {showGooglePlay && packageName && (
             <GooglePlayButton packageName={packageName} />
@@ -92,19 +79,15 @@ export function AppModalHeader({
         </div>
       </div>
 
-      {applicationMeta.description && (
+      {appMeta.description && (
         <p className="text-sm text-foreground-muted leading-relaxed wrap-break-word">
-          {applicationMeta.description}
+          {appMeta.description}
         </p>
       )}
 
       <div className="flex sm:hidden items-center justify-between gap-3 mt-1 w-full">
-        {applicationMeta.category && (
-          <Badge variant="category">
-            {applicationMeta.categorySlug === CATEGORY_UNIVERSAL
-              ? CATEGORY_LABEL_UNIVERSAL
-              : applicationMeta.category}
-          </Badge>
+        {appMeta.category && (
+          <Badge variant="category">{appMeta.category}</Badge>
         )}
         {showGooglePlay && packageName && (
           <GooglePlayButton packageName={packageName} className="shrink-0" />

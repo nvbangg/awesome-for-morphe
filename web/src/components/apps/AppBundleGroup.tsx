@@ -39,12 +39,7 @@ export function AppBundleGroup({
   const showBundlePreReleaseBadge = !isAppPreRelease && isBundleRowPreRelease;
   const hidePatchPreReleaseBadge = isAppPreRelease || isBundleRowPreRelease;
 
-  const patchBadge = (
-    <Badge variant="patches">
-      {group.totalPatchCount}{" "}
-      {group.totalPatchCount === 1 ? "patch" : "patches"}
-    </Badge>
-  );
+  const patchBadge = <Badge variant="patches" value={group.totalPatchCount} />;
 
   const dateBadge = group.bundleMeta.updatedAt > 0 && (
     <Badge variant="updated" href={group.bundleMeta.changelogUrl}>

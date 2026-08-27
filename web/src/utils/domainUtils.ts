@@ -58,6 +58,7 @@ export function getAppMeta(
 ) {
   const appMeta = appNamesMap[packageName];
   return {
+    packageName,
     appName: appMeta?.name || packageName,
     appIcon: appMeta?.iconUrl || "",
     description: appMeta?.description || "",
@@ -71,35 +72,11 @@ export function getAppMeta(
 
 export type AppMeta = ReturnType<typeof getAppMeta>;
 
+export type BundleMeta = Bundle;
+
 export function getBundleMeta(
   bundleKey: string,
   bundleMap: Record<string, Bundle>,
-) {
-  const lowerKey = bundleKey.toLowerCase();
-  const bundle = bundleMap[lowerKey];
-  if (!bundle) return null;
-
-  return {
-    source: bundle.source,
-    repo: bundle.repo,
-    name: bundle.name || bundle.repo,
-    repoDescription: bundle.repoDescription,
-    avatarUrl: bundle.avatarUrl,
-    stars: bundle.stars,
-    updatedAt: bundle.updatedAt,
-    firstSeen: bundle.firstSeen,
-    hotRank: bundle.hotRank,
-    isPreRelease: bundle.isPreRelease,
-    appFirstSeen: bundle.appFirstSeen,
-
-    key: bundle.key,
-    repoUrl: bundle.repoUrl,
-    deepLink: bundle.deepLink,
-    changelogUrl: bundle.changelogUrl,
-    appCount: bundle.appCount,
-    patchCount: bundle.patchCount,
-    isUnofficial: bundle.isUnofficial,
-  };
+): Bundle | null {
+  return bundleMap[bundleKey.toLowerCase()] || null;
 }
-
-export type BundleMeta = NonNullable<ReturnType<typeof getBundleMeta>>;

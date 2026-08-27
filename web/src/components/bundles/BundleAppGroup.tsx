@@ -39,12 +39,7 @@ export function BundleAppGroup({
 
   const hidePatchPreReleaseBadge = isBundlePreRelease || isAppPreRelease;
 
-  const patchBadge = (
-    <Badge variant="patches">
-      {group.totalPatchCount}{" "}
-      {group.totalPatchCount === 1 ? "patch" : "patches"}
-    </Badge>
-  );
+  const patchBadge = <Badge variant="patches" value={group.totalPatchCount} />;
 
   return (
     <div className="border border-divider rounded-xl bg-card flex flex-col">

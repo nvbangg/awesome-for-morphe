@@ -24,12 +24,11 @@ export function useTestBundle(activeData: ActiveData | null) {
 
         if (isFromSubmit) {
           const repoInfo = data.repoName;
-          const platformParam =
-            data.platform === "gitlab" ? "gitlab" : "github";
+          const sourceParam = data.source === "gitlab" ? "gitlab" : "github";
           window.history.replaceState(
             null,
             "",
-            `${window.location.pathname}?${platformParam}=${repoInfo}&test-bundle#bundles`,
+            `${window.location.pathname}?${sourceParam}=${repoInfo}&test-bundle#bundles`,
           );
         }
       } catch (error: unknown) {

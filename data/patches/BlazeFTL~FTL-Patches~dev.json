@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.42.0",
+  "version": "1.43.0-dev.2",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -1079,7 +1079,7 @@
     },
     {
       "name": "Unlock Pro",
-      "description": "Manually Kill Signature First Or Use Doom's(rushiranpise) Patch (Spoof App Signature).",
+      "description": "Only Use In V2.7.2, Manually Kill Signature First Or Use Doom's(rushiranpise) Patch (Spoof App Signature).",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -1092,8 +1092,13 @@
           "signatures": null,
           "targets": [
             {
-              "version": null,
-              "versionCodes": null,
+              "version": "2.7.2",
+              "versionCodes": {
+                "ARM64_V8A": 172,
+                "ARMEABI_V7A": 172,
+                "X86_64": 172,
+                "X86": 172
+              },
               "isExperimental": false,
               "minSdk": null,
               "description": null

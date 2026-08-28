@@ -18,6 +18,7 @@ def convert_to_html(text: str) -> str:
     escaped_text = re.sub(r"\*\*(.*?)\*\*", r"<b>\1</b>", escaped_text)
     escaped_text = re.sub(r"\*(.*?)\*", r"<b>\1</b>", escaped_text)
     escaped_text = re.sub(r"`(.*?)`", r"<code>\1</code>", escaped_text)
+    escaped_text = re.sub(r"(?<!\w)_(.+?)_(?!\w)", r"<i>\1</i>", escaped_text)
 
     def replace_link(link_match: re.Match) -> str:
         link_text = link_match.group(1)
@@ -26,7 +27,7 @@ def convert_to_html(text: str) -> str:
         return f'<a href="{quoted_url}">{link_text}</a>'
 
     return re.sub(
-        r"\[([^\]]+)\]\((https?://[^\s()]+(?:\([^\s()]+\)[^\s()]*)*)\)",
+        r"\[((?:\[[^\]]*\]|[^\]])+)\]\((https?://[^\s()]+(?:\([^\s()]+\)[^\s()]*)*)\)",
         replace_link,
         escaped_text,
     )

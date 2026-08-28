@@ -137,7 +137,7 @@ def parse_patches_list(
     if not valid_patches:
         return None, "Invalid `patches-list.json`"
     if bundle_apps == {PACKAGE_EXAMPLE}:
-        return None, 'Only contains "com.example.app"'
+        return None, "Only contains `com.example.app`"
 
     return valid_patches, None
 

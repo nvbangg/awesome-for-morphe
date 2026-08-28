@@ -1,5 +1,5 @@
 {
-  "version": "0.7.0-dev.8",
+  "version": "0.8.0-dev.1",
   "appNames": {
     "com.zhiliaoapp.musically": "TikTok"
   },
@@ -31,6 +31,110 @@
         }
       ],
       "options": []
+    },
+    {
+      "name": "Bypass regional restrictions",
+      "description": "Uses a selected default region to help bypass regional restrictions.",
+      "use": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "46.2.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "46.2.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "defaultRegion",
+          "title": "Default region",
+          "description": "Region to use when applying this patch.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "ae_du",
+          "values": {
+            "United Arab Emirates (du)": "ae_du",
+            "United Arab Emirates (Etisalat)": "ae_etisalat",
+            "United States (T-Mobile)": "us_t_mobile",
+            "United Kingdom (EE)": "gb_ee",
+            "Canada (Rogers)": "ca_rogers",
+            "Russia (MTS)": "ru_mts",
+            "Germany (Telekom.de)": "de_telekom_de",
+            "France (Orange)": "fr_orange",
+            "Italy (TIM)": "it_tim",
+            "Spain (Movistar)": "es_movistar",
+            "Netherlands (KPN)": "nl_kpn",
+            "Poland (Orange)": "pl_orange",
+            "Portugal (MEO)": "pt_meo",
+            "Belgium (Proximus)": "be_proximus",
+            "Switzerland (Swisscom)": "ch_swisscom",
+            "Austria (A1)": "at_a1",
+            "Sweden (Telia)": "se_telia",
+            "Norway (Telenor)": "no_telenor",
+            "Denmark (TDC)": "dk_tdc",
+            "Greece (Cosmote)": "gr_cosmote",
+            "Ukraine (Kyivstar)": "ua_kyivstar",
+            "Romania (Orange)": "ro_orange",
+            "Czech Republic (T-Mobile)": "cz_t_mobile",
+            "Hungary (Magyar Telekom)": "hu_magyar_telekom",
+            "Ireland (Vodafone)": "ie_vodafone",
+            "Turkey (Turkcell)": "tr_turkcell",
+            "Saudi Arabia (stc)": "sa_stc",
+            "Qatar (Ooredoo)": "qa_ooredoo",
+            "Kuwait (Zain)": "kw_zain",
+            "Oman (Omantel)": "om_omantel",
+            "Jordan (Zain)": "jo_zain",
+            "Iraq (Zain)": "iq_zain",
+            "Lebanon (Alfa)": "lb_alfa",
+            "Egypt (Vodafone)": "eg_vodafone",
+            "Morocco (Maroc Telecom)": "ma_maroc_telecom",
+            "Algeria (Mobilis)": "dz_mobilis",
+            "Tunisia (Tunisie Telecom)": "tn_tunisie_telecom",
+            "India (Jio)": "in_jio",
+            "Pakistan (Jazz)": "pk_jazz",
+            "Bangladesh (Grameenphone)": "bd_grameenphone",
+            "Sri Lanka (Dialog)": "lk_dialog",
+            "Nepal (Ncell)": "np_ncell",
+            "Indonesia (Telkomsel)": "id_telkomsel",
+            "Philippines (Smart)": "ph_smart",
+            "Thailand (AIS)": "th_ais",
+            "Vietnam (Viettel)": "vn_viettel",
+            "Malaysia (Maxis)": "my_maxis",
+            "Singapore (Singtel)": "sg_singtel",
+            "Hong Kong (CSL)": "hk_csl",
+            "Taiwan (Chunghwa Telecom)": "tw_chunghwa_telecom",
+            "Japan (NTT DOCOMO)": "jp_ntt_docomo",
+            "South Korea (SK Telecom)": "kr_sk_telecom",
+            "Australia (Telstra)": "au_telstra",
+            "New Zealand (Spark)": "nz_spark",
+            "Brazil (Vivo)": "br_vivo",
+            "Mexico (Telcel)": "mx_telcel",
+            "Argentina (Claro)": "ar_claro",
+            "Colombia (Claro)": "co_claro",
+            "Chile (Entel)": "cl_entel",
+            "Peru (Claro)": "pe_claro",
+            "South Africa (Vodacom)": "za_vodacom",
+            "Nigeria (MTN)": "ng_mtn",
+            "Kenya (Safaricom)": "ke_safaricom",
+            "Ghana (MTN)": "gh_mtn",
+            "Ethiopia (Ethio Telecom)": "et_ethio_telecom"
+          }
+        }
+      ]
     },
     {
       "name": "Copy comments without username",
@@ -588,6 +692,35 @@
       "options": []
     },
     {
+      "name": "Region spoof",
+      "description": "Adds in-app controls for changing the region TikTok reads.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "46.2.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "46.2.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remember clear display",
       "description": "Remembers TikTok's clear-display state between videos.",
       "use": true,
@@ -618,35 +751,6 @@
       "description": "Continues supported videos from where playback stopped when returning after a scroll.",
       "use": true,
       "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.zhiliaoapp.musically": [
-          "46.2.3"
-        ]
-      },
-      "compatibility": [
-        {
-          "name": "TikTok",
-          "packageName": "com.zhiliaoapp.musically",
-          "description": null,
-          "appIconColor": 16657493,
-          "targets": [
-            {
-              "version": "46.2.3",
-              "experimental": false
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "SIM spoof",
-      "description": "Spoofs SIM country and operator information retrieved by TikTok, with country presets for easier setup.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {

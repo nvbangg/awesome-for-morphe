@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.42.0-dev.3",
+  "version": "1.42.0-dev.11",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -80,10 +80,10 @@
             {
               "version": "1.9.7",
               "versionCodes": {
-                "ARM64_V8A": 24011893,
-                "ARMEABI_V7A": 24011893,
-                "X86_64": 24011893,
-                "X86": 24011893
+                "ARM64_V8A": 97,
+                "ARMEABI_V7A": 97,
+                "X86_64": 97,
+                "X86": 97
               },
               "isExperimental": false,
               "minSdk": null,
@@ -213,6 +213,32 @@
       "options": []
     },
     {
+      "name": "Disable From Download Menu Of Browsers",
+      "description": "Removes only the http/https <data> entries from MiXplorer's Explore/Download/Copy to/Extract to shell activities' VIEW intent filters, so the app stops showing up multiple times in browsers download link chooser.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mixplorer",
+          "name": "MiXplorer",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable ad dialog when reopening app",
       "description": "Prevents the full-screen \"loading ad\" dialog from appearing when the app is reopened after being minimized.",
       "default": false,
@@ -229,37 +255,11 @@
             {
               "version": "1.9.7",
               "versionCodes": {
-                "ARM64_V8A": 24011893,
-                "ARMEABI_V7A": 24011893,
-                "X86_64": 24011893,
-                "X86": 24011893
+                "ARM64_V8A": 97,
+                "ARMEABI_V7A": 97,
+                "X86_64": 97,
+                "X86": 97
               },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Disable download chooser duplicates",
-      "description": "Removes the ACTION_VIEW http/https intent filters from MiXplorer's Explore/Download/Copy to/Extract to shell activities so the app stops showing up multiple times in Firefox's (and other browsers') download-complete chooser. Share-to (SEND/SEND_MULTIPLE) entries and local/ftp/smb file handling are untouched.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.mixplorer",
-          "name": "MiXplorer",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -286,10 +286,10 @@
             {
               "version": "1.9.7",
               "versionCodes": {
-                "ARM64_V8A": 24011893,
-                "ARMEABI_V7A": 24011893,
-                "X86_64": 24011893,
-                "X86": 24011893
+                "ARM64_V8A": 97,
+                "ARMEABI_V7A": 97,
+                "X86_64": 97,
+                "X86": 97
               },
               "isExperimental": false,
               "minSdk": null,
@@ -322,6 +322,32 @@
                 "X86_64": 239,
                 "X86": 239
               },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable downloader from download menu",
+      "description": "Removes the unscoped http/https <data> entries from BrowserDownloaderActivity's mimeType-scoped intent-filter (identified by having mimeType children but no pathPattern children, not by position) so the app stops offering itself in the system \"Download file with\" chooser for ordinary web downloads. The ftp/sftp schemes and mimeType entries on the same filter, and the separate extension-pathPattern filter used for direct file-link downloads, are left in place.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "video.downloader.videodownloader",
+          "name": "Video Downloader",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -675,11 +701,12 @@
         {
           "key": "keepLanguages",
           "title": "Languages to keep",
-          "description": "Language codes (e.g. en, ru, es) to preserve. All other language variants are deleted.",
+          "description": "Exact resource variants to preserve. \"ru\" keeps ONLY the unqualified ru dir (values-ru); it does NOT pull in ru-rRU or any other region. \"en-rIN\" keeps ONLY that region. List every variant you want kept, e.g. en, en-rIN, ru — anything not listed is removed.",
           "required": false,
           "type": "kotlin.collections.List<kotlin.String>",
           "default": [
             "en",
+            "en-rIN",
             "ru"
           ],
           "values": null
@@ -746,7 +773,7 @@
     },
     {
       "name": "Remove from default browser list",
-      "description": "Removes the unscoped http/https <data> entries from MainActivity's intent-filters (matched by scheme value, not position) so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser. Other schemes and mimeTypes on the same filters (about, javascript, inline, file, text/html, etc., used for the app's internal WebView) are left in place.",
+      "description": "Removes the unscoped http/https <data> entries from MainActivity's first intent-filter carrying them so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser. Other schemes and mimeTypes on the same and other filters (about, javascript, inline, file, text/html, etc., used for the app's internal WebView) are left in place.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -761,10 +788,10 @@
             {
               "version": "1.9.7",
               "versionCodes": {
-                "ARM64_V8A": 24011893,
-                "ARMEABI_V7A": 24011893,
-                "X86_64": 24011893,
-                "X86": 24011893
+                "ARM64_V8A": 97,
+                "ARMEABI_V7A": 97,
+                "X86_64": 97,
+                "X86": 97
               },
               "isExperimental": false,
               "minSdk": null,
@@ -807,6 +834,32 @@
       "options": []
     },
     {
+      "name": "Remove from default browser list",
+      "description": "Removes the unscoped http/https <data> entries from MainTabsActivity's mimeType-free intent-filter (identified by having no mimeType on any of its <data> children, not by position) so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser. The about/javascript schemes on the same filter, and the other mimeType-scoped filters used for the app's internal WebView, are left in place.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "video.downloader.videodownloader",
+          "name": "Video Downloader",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Skip splash and language screens",
       "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
       "default": false,
@@ -823,10 +876,10 @@
             {
               "version": "1.9.7",
               "versionCodes": {
-                "ARM64_V8A": 24011893,
-                "ARMEABI_V7A": 24011893,
-                "X86_64": 24011893,
-                "X86": 24011893
+                "ARM64_V8A": 97,
+                "ARMEABI_V7A": 97,
+                "X86_64": 97,
+                "X86": 97
               },
               "isExperimental": false,
               "minSdk": null,
@@ -861,6 +914,32 @@
                 "X86_64": 239,
                 "X86": 239
               },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Skip splash screen",
+      "description": "Renames the launcher activity's android:name from MainActivity to MainTabsActivity, so the app opens directly to the main screen instead of showing the splash screen first.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "video.downloader.videodownloader",
+          "name": "Video Downloader",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
               "description": null

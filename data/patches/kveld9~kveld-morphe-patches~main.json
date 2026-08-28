@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "patches": [
     {
       "name": "Add AMOLED Theme",
@@ -112,8 +112,62 @@
       "options": []
     },
     {
-      "name": "Brave In-Product Notification Scheduler Optimization",
-      "description": "Eliminates periodic background wakeups and native library loading caused by Chromium in-product tips/promo scheduler (Job ID 105).",
+      "name": "Block Vivaldi Sync",
+      "description": "Redirects bifrost.vivaldi.com to 0.0.0.0 in libchrome.so to completely disable Vivaldi account synchronization for an air-gapped experience.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block Vivaldi Telemetry",
+      "description": "Blocks Vivaldi usage statistics, crash reporting, Crashpad endpoints, and DirectMatch suggestions.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Brave In-Product & Commercial Notification Optimizer",
+      "description": "Eliminates background wakeups and notifications from Chromium tips scheduler (Job ID 105), Brave Rewards onboarding promo, and retention marketing campaigns.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -192,6 +246,34 @@
       "options": []
     },
     {
+      "name": "Clean Speed Dial Bookmarks",
+      "description": "Removes sponsored commercial affiliate bookmarks, hides the 3-dot customize button, and disables phantom touch actions on the blank Start Page.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Clone Gboard",
       "description": "Changes the package name by appending a dot and custom suffix (defaults to 'kveld') to allow installing Gboard alongside the original application.",
       "default": true,
@@ -256,6 +338,32 @@
       "options": []
     },
     {
+      "name": "Disable Background Sync & Periodic Sync",
+      "description": "Eliminates background wakeups, radio modem activity, and battery drain by neutralizing periodic and one-shot background sync tasks.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable Battery Status API & OS Listener",
       "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
       "default": true,
@@ -271,6 +379,49 @@
           "targets": [
             {
               "version": "1.93.138",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Chromium Tips & Notification Scheduler",
+      "description": "Eliminates periodic background wakeups, native library loading, and in-product promotional tips from Chromium tips scheduler.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -490,6 +641,32 @@
       "options": []
     },
     {
+      "name": "Disable Vivaldi Prompts & In-App Popups",
+      "description": "Disables in-app donation prompts, search engine switch promos, rate-app popups, background privacy report alarms, and default browser promotional handlers.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable WorkManager",
       "description": "Neutralizes background WorkManager initialization, database creation, and periodic maintenance workers.",
       "default": false,
@@ -641,6 +818,23 @@
               "description": null
             }
           ]
+        },
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
         }
       ],
       "options": [
@@ -656,8 +850,8 @@
       ]
     },
     {
-      "name": "Resource Slimmer",
-      "description": "Strips embedded third-party license text, onboarding tutorial Lottie animations, and promotional GIFs using dynamic content heuristics.",
+      "name": "Locale Resource Slimmer",
+      "description": "Strips unselected language translation directories from res/ (e.g. values-*, raw-*, xml-*). Base fallback resources with no language qualifiers are always preserved.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -671,6 +865,154 @@
           "targets": [
             {
               "version": "18.0.3.954559732-lite_beta-arm64-v8a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "locales",
+          "title": "Locales to keep",
+          "description": "Comma-separated language codes to preserve (e.g. 'en, es, pt, fr, de'). English fallback is always retained.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "en, es",
+          "values": null
+        }
+      ]
+    },
+    {
+      "name": "Native Bloat Slimmer",
+      "description": "Strips unused native companion binaries (Impress Vision AI, WireGuard VPN, and Android XR) to significantly reduce APK size.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.brave.browser",
+          "name": "Brave Private Web Browser, VPN",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.93.138",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "PNG Asset Optimizer",
+      "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.brave.browser",
+          "name": "Brave Private Web Browser, VPN",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.93.138",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.google.android.inputmethod.latin",
+          "name": "Gboard Lite",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4285F4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "18.0.3.954559732-lite_beta-arm64-v8a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Resource Slimmer",
+      "description": "Strips embedded third-party license text, onboarding tutorial Lottie animations, promotional GIFs, and APK root metadata/junk files.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.inputmethod.latin",
+          "name": "Gboard Lite",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4285F4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "18.0.3.954559732-lite_beta-arm64-v8a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Resource Slimmer",
+      "description": "Strips bundled stock wallpapers and sponsored Speed Dial thumbnails to reduce APK size.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -697,6 +1039,49 @@
           "targets": [
             {
               "version": "1.93.138",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Vivaldi Startup Performance Optimization",
+      "description": "Optimizes cold startup time, eliminates background CPU/disk overhead, and guards against early CompositorView LayoutStateObserver crashes.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.vivaldi.browser.snapshot",
+          "name": "Vivaldi Browser Snapshot",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#EF3939",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.2.4143.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

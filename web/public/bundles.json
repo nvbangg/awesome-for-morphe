@@ -2836,7 +2836,7 @@
       "repoDescription": "morphe patches for twitter and instagram",
       "avatarUrl": "https://avatars.githubusercontent.com/u/44558091?v=4&s=64",
       "stars": 2818,
-      "updatedAt": 1786938098000,
+      "updatedAt": 1787887597000,
       "firstSeen": 1773129596000,
       "appFirstSeen": {
         "com.instagram.android": 1773154796000,
@@ -23625,7 +23625,7 @@
       "repoDescription": "legendsciber's Patches - Morphe patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/106559486?v=4&s=64",
       "stars": 4,
-      "updatedAt": 1787862411000,
+      "updatedAt": 1787886227000,
       "firstSeen": 1787620439710,
       "appFirstSeen": {
         "com.fingersoft.hillclimb": 1787620432732,
@@ -23778,7 +23778,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/7357354?v=4&s=64",
       "stars": 10,
-      "updatedAt": 1787877906000,
+      "updatedAt": 1787890069000,
       "firstSeen": 1787675089909,
       "appFirstSeen": {
         "com.facebook.katana": 1787675088808
@@ -24118,7 +24118,7 @@
       "repoDescription": "Random QoL Patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/245246866?v=4&s=64",
       "stars": 4,
-      "updatedAt": 1787864933000,
+      "updatedAt": 1787890802000,
       "firstSeen": 1787772633989,
       "appFirstSeen": {
         "com.discord": 1787772633145,
@@ -24180,11 +24180,12 @@
       "repoDescription": "",
       "avatarUrl": "https://raw.githubusercontent.com/Dan1elTheMan1el/Morphe-Patches/main/patches-bundle.png",
       "stars": 1,
-      "updatedAt": 1787812282000,
+      "updatedAt": 1787889625000,
       "firstSeen": 1787805801523,
       "appFirstSeen": {
         "me.pokeraid": 1787805792543,
-        "com.fitness.debugger": 1787805792543
+        "com.fitness.debugger": 1787805792543,
+        "de.humbergsoftware.keyboarddesigner": 1787890956507
       },
       "patches": [
         {
@@ -24257,6 +24258,12 @@
           "name": "Unlimited Time Bypass",
           "description": "Removes the ad requirement and grants maximum active time when the button is pressed.",
           "compatiblePackagesKey": 868
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks all premium features, extended design package, and extended keyboard package.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 869
         }
       ],
       "hotRank": 33
@@ -24279,17 +24286,17 @@
           "name": "Disable Analytics",
           "description": "Prevents Adjust and Firebase Analytics from collecting or sending analytics.",
           "default": false,
-          "compatiblePackagesKey": 869
+          "compatiblePackagesKey": 870
         },
         {
           "name": "Unlock Plus",
           "description": "Unlocks Expand Plus without a subscription.",
-          "compatiblePackagesKey": 869
+          "compatiblePackagesKey": 870
         },
         {
           "name": "Unlock Premium",
           "description": "Unlocks Lumenate Premium without a subscription.",
-          "compatiblePackagesKey": 870
+          "compatiblePackagesKey": 871
         }
       ],
       "hotRank": 35
@@ -24310,27 +24317,27 @@
         {
           "name": "Disable Keyboard Discrimination",
           "description": "Prevents the app from detecting specific keyboards.",
-          "compatiblePackagesKey": 871
+          "compatiblePackagesKey": 872
         },
         {
           "name": "Disable Root Detection",
           "description": "Disables all root detection checks in MobilKincstár.",
-          "compatiblePackagesKey": 871
+          "compatiblePackagesKey": 872
         },
         {
           "name": "Disable SSL Pinning",
           "description": "Disables SSL certificate pinning in MobilKincstár, allowing traffic interception.",
-          "compatiblePackagesKey": 871
+          "compatiblePackagesKey": 872
         },
         {
           "name": "Disable Screenshot Protection",
           "description": "Allows taking screenshots and screen recording in MobilKincstár.",
-          "compatiblePackagesKey": 871
+          "compatiblePackagesKey": 872
         },
         {
           "name": "Disable Tamper Protection",
           "description": "Aggressively bypasses the protector's monitoring services and initialization.",
-          "compatiblePackagesKey": 871
+          "compatiblePackagesKey": 872
         }
       ]
     },
@@ -24351,10 +24358,30 @@
           "name": "Use patched YouTube Music in Scene",
           "description": "Redirects the YouTube Music Scene integration to the patched YouTube Music package.",
           "default": false,
-          "compatiblePackagesKey": 872
+          "compatiblePackagesKey": 873
         }
       ],
       "hotRank": 31
+    },
+    {
+      "source": "github",
+      "repo": "NullWaypoint/morphe-patches",
+      "name": "NullWaypoint",
+      "repoDescription": "Custom Android patches for the Morphe patching framework.",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/321500030?v=4&s=64",
+      "stars": 1,
+      "updatedAt": 1787875573000,
+      "firstSeen": 1787890957382,
+      "appFirstSeen": {
+        "com.crunchyroll.crunchyroid": 1787890956507
+      },
+      "patches": [
+        {
+          "name": "Enable Picture-in-Picture",
+          "description": "Enables Crunchyroll's native Picture-in-Picture while respecting playback state.",
+          "compatiblePackagesKey": 843
+        }
+      ]
     }
   ],
   "compatibilities": [
@@ -34732,6 +34759,20 @@
     ],
     [
       {
+        "packageName": "de.humbergsoftware.keyboarddesigner",
+        "targets": [
+          {
+            "version": "5.B8.8"
+          },
+          {
+            "version": null,
+            "isExperimental": true
+          }
+        ]
+      }
+    ],
+    [
+      {
         "packageName": "org.monroeinstitute.expand",
         "targets": [
           {
@@ -41100,6 +41141,15 @@
       "minInstalls": 100000,
       "category": "Communication",
       "firstSeen": 1787880473133
+    },
+    "de.humbergsoftware.keyboarddesigner": {
+      "name": "Custom Keyboard Designer",
+      "iconUrl": "https://play-lh.googleusercontent.com/PcHgzeb19Mq_bWk0vKSP5Wz_QXDUbWGdsV9AfN5_A3hVI1mB-OT-RDWnkQ1D_opqWWKCLsz9I3dLH84L0MggMQ=s64-rw",
+      "description": "Design your custom keyboard — control every layout, key and function",
+      "minInstalls": 100000,
+      "category": "Tools",
+      "firstSeen": 1787890957382,
+      "isPreRelease": true
     }
   }
 }

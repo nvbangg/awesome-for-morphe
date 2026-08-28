@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.0",
+  "version": "1.2.0-dev.1",
   "patches": [
     {
       "name": "Bounty Daily Reward Shortcut",
@@ -345,6 +345,39 @@
           "targets": [
             {
               "version": "0.8.2a",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all premium features, extended design package, and extended keyboard package.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "de.humbergsoftware.keyboarddesigner",
+          "name": "Custom+ Keyboard Designer",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#83B6E4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.B8.8",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

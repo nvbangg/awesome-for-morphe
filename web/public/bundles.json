@@ -1204,7 +1204,7 @@
           "compatiblePackagesKey": 14
         }
       ],
-      "hotRank": 27
+      "hotRank": 28
     },
     {
       "source": "github",
@@ -1273,7 +1273,7 @@
       "repoDescription": "🍃 Patches for Morphe",
       "avatarUrl": "https://avatars.githubusercontent.com/u/207470673?v=4&s=64",
       "stars": 1017,
-      "updatedAt": 1787940377000,
+      "updatedAt": 1788018477000,
       "firstSeen": 1768916001000,
       "appFirstSeen": {
         "kr.co.yjteam.dailypay": 1768941201000,
@@ -2217,7 +2217,7 @@
       "repoDescription": "De-Vanced exists because the old way started getting frustrating, so I migrated everything to Morphe and turned it into a better, cleaner place to keep the experience alive.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/128968367?v=4&s=64",
       "stars": 1182,
-      "updatedAt": 1787830550000,
+      "updatedAt": 1788014612000,
       "firstSeen": 1772359809000,
       "appFirstSeen": {
         "com.disney.disneyplus": 1773594609000,
@@ -2260,6 +2260,12 @@
         {
           "name": "Add 'Give Kudos' button to 'Group Activity'",
           "description": "Adds a button that triggers the same action as shaking your phone would.",
+          "compatiblePackagesKey": 78
+        },
+        {
+          "name": "Add activity export",
+          "description": "Adds an \"Export GPX\" item to the activity overflow menu, which saves the activity's GPS track as a GPX file in Downloads/Strava.",
+          "isPreRelease": true,
           "compatiblePackagesKey": 78
         },
         {
@@ -3627,7 +3633,7 @@
           "compatiblePackagesKey": 112
         }
       ],
-      "hotRank": 113
+      "hotRank": 112
     },
     {
       "source": "github",
@@ -4323,7 +4329,7 @@
           "compatiblePackagesKey": 113
         }
       ],
-      "hotRank": 22
+      "hotRank": 23
     },
     {
       "source": "github",
@@ -4576,7 +4582,7 @@
           "compatiblePackagesKey": 86
         }
       ],
-      "hotRank": 67
+      "hotRank": 66
     },
     {
       "source": "github",
@@ -4653,7 +4659,7 @@
           "compatiblePackagesKey": 127
         }
       ],
-      "hotRank": 75
+      "hotRank": 74
     },
     {
       "source": "github",
@@ -5481,7 +5487,7 @@
           "compatiblePackagesKey": 170
         }
       ],
-      "hotRank": 14
+      "hotRank": 16
     },
     {
       "source": "github",
@@ -5607,7 +5613,7 @@
           "compatiblePackagesKey": 175
         }
       ],
-      "hotRank": 46
+      "hotRank": 45
     },
     {
       "source": "github",
@@ -5658,7 +5664,7 @@
       "repoDescription": "Patches for Android TV apks",
       "avatarUrl": "https://avatars.githubusercontent.com/u/229211337?v=4&s=64",
       "stars": 157,
-      "updatedAt": 1787948777000,
+      "updatedAt": 1788019386000,
       "firstSeen": 1779671144000,
       "appFirstSeen": {
         "tv.pluto.android": 1783087807450,
@@ -6110,7 +6116,7 @@
           "compatiblePackagesKey": 201
         }
       ],
-      "hotRank": 78
+      "hotRank": 77
     },
     {
       "source": "github",
@@ -8824,7 +8830,7 @@
           "compatiblePackagesKey": 466
         }
       ],
-      "hotRank": 15
+      "hotRank": 18
     },
     {
       "source": "github",
@@ -8874,7 +8880,7 @@
           "compatiblePackagesKey": 467
         }
       ],
-      "hotRank": 41
+      "hotRank": 40
     },
     {
       "source": "github",
@@ -9337,7 +9343,7 @@
           "compatiblePackagesKey": 479
         }
       ],
-      "hotRank": 17
+      "hotRank": 19
     },
     {
       "source": "github",
@@ -11358,7 +11364,7 @@
           "compatiblePackagesKey": 550
         }
       ],
-      "hotRank": 20
+      "hotRank": 21
     },
     {
       "source": "github",
@@ -11533,7 +11539,7 @@
           "compatiblePackagesKey": 553
         }
       ],
-      "hotRank": 37
+      "hotRank": 41
     },
     {
       "source": "github",
@@ -11810,7 +11816,7 @@
       "repoDescription": "A curated collection of Morphe patches that tune, unlock and declutter Android games. Skip ads, bypass license checks, hide root, force orientations and more, all from a single patcher.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/122532548?v=4&s=64",
       "stars": 454,
-      "updatedAt": 1787999100000,
+      "updatedAt": 1788005761000,
       "firstSeen": 1782996119000,
       "appFirstSeen": {
         "__universal__": 1785178161626,
@@ -13732,8 +13738,15 @@
         },
         {
           "name": "Free In-app Purchases (Experimental)",
-          "description": "Makes Unity in-app purchases appear successful without paying. Supports Unity IAP and Google Play Billing. Use for offline games only — online verification may still block.",
-          "default": false
+          "description": "Spoofs in-app purchases to appear successful. Covers Google Play Billing, Unity IAP, Xsolla, and common receipt verification. Server-side verification may still block in online games.",
+          "default": false,
+          "options": [
+            {
+              "key": "fakeReceipt",
+              "title": "Fake receipt data",
+              "description": "Generate fake purchase receipt data for games that validate receipts locally."
+            }
+          ]
         },
         {
           "name": "GmsCore support (MicroG)",
@@ -14477,7 +14490,7 @@
         },
         {
           "name": "Unlimited Currencies",
-          "description": "Makes currency checks return a huge amount so you never run out. Covers PlayerPrefs, SharedPreferences and common Unity fields.",
+          "description": "Spoofs currency checks so you never run out. Covers PlayerPrefs, SharedPreferences and common Unity fields. WARNING: Only works on Mono-based Unity games and traditional Java/Android games. IL2CPP games (check for libil2cpp.so in the APK) store currencies in native memory — this patch cannot reach them.",
           "default": false,
           "options": [
             {
@@ -14489,6 +14502,21 @@
               "key": "currencyCustomKeys",
               "title": "Extra keys",
               "description": "Comma-separated extra keys to spoof (e.g. my_gem,my_coin). Leave empty for default list."
+            },
+            {
+              "key": "infiniteMode",
+              "title": "Infinite mode",
+              "description": "ON: all currencies set to huge amount. OFF: currencies set to the Amount value above."
+            },
+            {
+              "key": "multiplyMode",
+              "title": "Multiply income",
+              "description": "When ON, every time a currency is saved it gets multiplied by the Multiplier value. Useful when infinite mode doesn't work."
+            },
+            {
+              "key": "currencyMultiplier",
+              "title": "Multiplier",
+              "description": "Multiplier value used in Multiply income mode."
             }
           ]
         },
@@ -14502,6 +14530,11 @@
           "description": "Bandcamp: applies the playback-rate control to every track instead of podcasts only, so 1x, 1.5x and 2x speeds work for music too.",
           "default": false,
           "compatiblePackagesKey": 99
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks premium features, subscriptions, and ownership checks. Makes isPremium/isOwned/isVip/hasReceipt return true, and forces SharedPreferences purchase keys to true.",
+          "default": false
         },
         {
           "name": "Unmark Test Only",
@@ -14612,7 +14645,7 @@
           "compatiblePackagesKey": 573
         }
       ],
-      "hotRank": 77
+      "hotRank": 76
     },
     {
       "source": "gitlab",
@@ -15032,7 +15065,7 @@
           "compatiblePackagesKey": 601
         }
       ],
-      "hotRank": 18
+      "hotRank": 13
     },
     {
       "source": "github",
@@ -15209,7 +15242,7 @@
           "compatiblePackagesKey": 606
         }
       ],
-      "hotRank": 23
+      "hotRank": 22
     },
     {
       "source": "github",
@@ -15337,7 +15370,7 @@
           "compatiblePackagesKey": 613
         }
       ],
-      "hotRank": 34
+      "hotRank": 33
     },
     {
       "source": "github",
@@ -15374,7 +15407,7 @@
           "compatiblePackagesKey": 620
         }
       ],
-      "hotRank": 76
+      "hotRank": 75
     },
     {
       "source": "github",
@@ -16612,7 +16645,7 @@
           "compatiblePackagesKey": 663
         }
       ],
-      "hotRank": 110
+      "hotRank": 109
     },
     {
       "source": "github",
@@ -16856,7 +16889,7 @@
           "compatiblePackagesKey": 673
         }
       ],
-      "hotRank": 38
+      "hotRank": 32
     },
     {
       "source": "github",
@@ -16877,7 +16910,7 @@
           "compatiblePackagesKey": 674
         }
       ],
-      "hotRank": 111
+      "hotRank": 110
     },
     {
       "source": "github",
@@ -18060,7 +18093,7 @@
           "default": false
         }
       ],
-      "hotRank": 49
+      "hotRank": 42
     },
     {
       "source": "github",
@@ -18125,7 +18158,7 @@
           "compatiblePackagesKey": 679
         }
       ],
-      "hotRank": 28
+      "hotRank": 26
     },
     {
       "source": "github",
@@ -18359,7 +18392,7 @@
           "compatiblePackagesKey": 701
         }
       ],
-      "hotRank": 112
+      "hotRank": 113
     },
     {
       "source": "github",
@@ -18469,7 +18502,7 @@
           "compatiblePackagesKey": 704
         }
       ],
-      "hotRank": 59
+      "hotRank": 60
     },
     {
       "source": "github",
@@ -18544,7 +18577,7 @@
           "compatiblePackagesKey": 708
         }
       ],
-      "hotRank": 36
+      "hotRank": 37
     },
     {
       "source": "github",
@@ -19329,7 +19362,7 @@
           "compatiblePackagesKey": 721
         }
       ],
-      "hotRank": 13
+      "hotRank": 14
     },
     {
       "source": "github",
@@ -20120,7 +20153,7 @@
           "compatiblePackagesKey": 762
         }
       ],
-      "hotRank": 26
+      "hotRank": 27
     },
     {
       "source": "github",
@@ -20156,7 +20189,7 @@
           "compatiblePackagesKey": 763
         }
       ],
-      "hotRank": 53
+      "hotRank": 51
     },
     {
       "source": "github",
@@ -20217,7 +20250,7 @@
           "compatiblePackagesKey": 764
         }
       ],
-      "hotRank": 63
+      "hotRank": 62
     },
     {
       "source": "github",
@@ -20599,7 +20632,7 @@
           "compatiblePackagesKey": 774
         }
       ],
-      "hotRank": 65
+      "hotRank": 64
     },
     {
       "source": "github",
@@ -20696,7 +20729,7 @@
           "compatiblePackagesKey": 775
         }
       ],
-      "hotRank": 50
+      "hotRank": 47
     },
     {
       "source": "github",
@@ -20892,7 +20925,7 @@
           "compatiblePackagesKey": 785
         }
       ],
-      "hotRank": 109
+      "hotRank": 111
     },
     {
       "source": "github",
@@ -20922,7 +20955,7 @@
       "repoDescription": "Repo for steamlink Galaxy XR or other brands patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/53372897?v=4&s=64",
       "stars": 5,
-      "updatedAt": 1787945009000,
+      "updatedAt": 1788012475000,
       "firstSeen": 1786129326657,
       "appFirstSeen": {
         "com.valvesoftware.steamlinkvr": 1786129322302
@@ -21000,6 +21033,20 @@
         {
           "name": "Experimental Single Projection Reconstruction",
           "description": "5002322-only permission-free experiment. Reconstructs Steam Link's opaque full-FOV underside and alpha-foveated inset into one stereo projection before submission.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 790
+        },
+        {
+          "name": "Experimental Three Projection Sampler Proxy",
+          "description": "5002322-only permission-free discriminator. Preserves Steam Link's three projection layers while resolving their source images into controlled sampleCount-1 proxy swapchains.",
+          "isPreRelease": true,
+          "default": false,
+          "compatiblePackagesKey": 790
+        },
+        {
+          "name": "Experimental Two Projection Drop Base",
+          "description": "5002322-only permission-free discriminator. Drops only the redundant first opaque full-FOV projection while forwarding Steam Link's original underside and alpha-foveated projections unchanged.",
           "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 790
@@ -21126,7 +21173,7 @@
           "compatiblePackagesKey": 787
         }
       ],
-      "hotRank": 57
+      "hotRank": 59
     },
     {
       "source": "github",
@@ -22566,7 +22613,7 @@
           "compatiblePackagesKey": 470
         }
       ],
-      "hotRank": 79
+      "hotRank": 78
     },
     {
       "source": "github",
@@ -22778,7 +22825,7 @@
           "compatiblePackagesKey": 810
         }
       ],
-      "hotRank": 83
+      "hotRank": 82
     },
     {
       "source": "github",
@@ -22914,7 +22961,7 @@
           "compatiblePackagesKey": 310
         }
       ],
-      "hotRank": 21
+      "hotRank": 15
     },
     {
       "source": "github",
@@ -22976,7 +23023,7 @@
           "compatiblePackagesKey": 120
         }
       ],
-      "hotRank": 39
+      "hotRank": 31
     },
     {
       "source": "github",
@@ -23083,7 +23130,7 @@
           "compatiblePackagesKey": 765
         }
       ],
-      "hotRank": 32
+      "hotRank": 36
     },
     {
       "source": "github",
@@ -23294,7 +23341,7 @@
           "compatiblePackagesKey": 820
         }
       ],
-      "hotRank": 64
+      "hotRank": 63
     },
     {
       "source": "github",
@@ -23452,7 +23499,7 @@
           "compatiblePackagesKey": 832
         }
       ],
-      "hotRank": 35
+      "hotRank": 34
     },
     {
       "source": "github",
@@ -23739,7 +23786,7 @@
           "compatiblePackagesKey": 837
         }
       ],
-      "hotRank": 19
+      "hotRank": 20
     },
     {
       "source": "github",
@@ -23805,7 +23852,7 @@
           "compatiblePackagesKey": 841
         }
       ],
-      "hotRank": 70
+      "hotRank": 68
     },
     {
       "source": "github",
@@ -23862,7 +23909,7 @@
           "compatiblePackagesKey": 843
         }
       ],
-      "hotRank": 80
+      "hotRank": 79
     },
     {
       "source": "github",
@@ -23948,7 +23995,7 @@
       "repoDescription": "A collection of my patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/30569190?v=4&s=64",
       "stars": 2,
-      "updatedAt": 1788000733000,
+      "updatedAt": 1788020395000,
       "firstSeen": 1787437810697,
       "appFirstSeen": {
         "com.robskie.tether": 1787437809989,
@@ -23973,7 +24020,7 @@
           "compatiblePackagesKey": 849
         }
       ],
-      "hotRank": 68
+      "hotRank": 57
     },
     {
       "source": "github",
@@ -24000,7 +24047,7 @@
           "compatiblePackagesKey": 850
         }
       ],
-      "hotRank": 82
+      "hotRank": 80
     },
     {
       "source": "github",
@@ -24066,7 +24113,7 @@
       "repoDescription": "legendsciber's Patches - Morphe patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/106559486?v=4&s=64",
       "stars": 4,
-      "updatedAt": 1787905501000,
+      "updatedAt": 1788017924000,
       "firstSeen": 1787620439710,
       "appFirstSeen": {
         "com.fingersoft.hillclimb": 1787620432732,
@@ -24116,7 +24163,7 @@
           "compatiblePackagesKey": 597
         }
       ],
-      "hotRank": 74
+      "hotRank": 83
     },
     {
       "source": "github",
@@ -24171,7 +24218,7 @@
           "compatiblePackagesKey": 860
         }
       ],
-      "hotRank": 40
+      "hotRank": 39
     },
     {
       "source": "github",
@@ -24219,7 +24266,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/7357354?v=4&s=64",
       "stars": 14,
-      "updatedAt": 1788001262000,
+      "updatedAt": 1788001876000,
       "firstSeen": 1787675089909,
       "appFirstSeen": {
         "com.facebook.katana": 1787675088808
@@ -24251,7 +24298,7 @@
           "compatiblePackagesKey": 865
         }
       ],
-      "hotRank": 16
+      "hotRank": 17
     },
     {
       "source": "github",
@@ -24288,7 +24335,7 @@
           "compatiblePackagesKey": 866
         }
       ],
-      "hotRank": 48
+      "hotRank": 50
     },
     {
       "source": "github",
@@ -24352,7 +24399,7 @@
           "compatiblePackagesKey": 867
         }
       ],
-      "hotRank": 31
+      "hotRank": 35
     },
     {
       "source": "github",
@@ -24380,7 +24427,7 @@
           "compatiblePackagesKey": 868
         }
       ],
-      "hotRank": 66
+      "hotRank": 65
     },
     {
       "source": "github",
@@ -24481,7 +24528,7 @@
           "compatiblePackagesKey": 870
         }
       ],
-      "hotRank": 69,
+      "hotRank": 67,
       "isPreRelease": true
     },
     {
@@ -24503,7 +24550,7 @@
           "compatiblePackagesKey": 871
         }
       ],
-      "hotRank": 60
+      "hotRank": 69
     },
     {
       "source": "github",
@@ -24524,7 +24571,7 @@
           "compatiblePackagesKey": 872
         }
       ],
-      "hotRank": 62
+      "hotRank": 70
     },
     {
       "source": "github",
@@ -24586,7 +24633,7 @@
           "compatiblePackagesKey": 875
         }
       ],
-      "hotRank": 52
+      "hotRank": 53
     },
     {
       "source": "github",
@@ -24692,7 +24739,7 @@
           "compatiblePackagesKey": 878
         }
       ],
-      "hotRank": 47
+      "hotRank": 49
     },
     {
       "source": "github",
@@ -24731,7 +24778,7 @@
           "compatiblePackagesKey": 881
         }
       ],
-      "hotRank": 51
+      "hotRank": 52
     },
     {
       "source": "github",
@@ -24772,7 +24819,7 @@
           "compatiblePackagesKey": 882
         }
       ],
-      "hotRank": 42
+      "hotRank": 46
     },
     {
       "source": "github",
@@ -24794,7 +24841,7 @@
           "compatiblePackagesKey": 883
         }
       ],
-      "hotRank": 45
+      "hotRank": 48
     },
     {
       "source": "github",
@@ -24821,7 +24868,7 @@
           "compatiblePackagesKey": 851
         }
       ],
-      "hotRank": 33
+      "hotRank": 38
     },
     {
       "source": "github",

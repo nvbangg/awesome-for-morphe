@@ -397,7 +397,7 @@
       "appFirstSeen": {
         "com.theclashsoft.sofatime": 1785522950930
       },
-      "hotRank": 53
+      "hotRank": 51
     },
     {
       "source": "github",
@@ -544,7 +544,7 @@
         "com.android.chrome": 1787040197454,
         "com.pixilart.app": 1787040197454
       },
-      "hotRank": 50
+      "hotRank": 47
     },
     {
       "source": "github",
@@ -1670,7 +1670,7 @@
         "kr.co.nowcom.mobile.afreeca": 1781342043327,
         "com.samsung.android.honeyboard": 1786888657660
       },
-      "hotRank": 22
+      "hotRank": 23
     },
     {
       "source": "github",
@@ -2348,26 +2348,42 @@
           "options": [],
           "preRelease": true,
           "compatiblePackagesKey": 49
+        },
+        {
+          "name": "Experimental Three Projection Sampler Proxy",
+          "description": "5002322-only permission-free discriminator. Preserves Steam Link's three projection layers while resolving their source images into controlled sampleCount-1 proxy swapchains.",
+          "default": false,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 49
+        },
+        {
+          "name": "Experimental Two Projection Drop Base",
+          "description": "5002322-only permission-free discriminator. Drops only the redundant first opaque full-FOV projection while forwarding Steam Link's original underside and alpha-foveated projections unchanged.",
+          "default": false,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 49
         }
       ],
-      "changelog": "## [1.10.1-dev.3](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.2...v1.10.1-dev.3) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* try with single projection reconstruction ([df8de0f](https://github.com/AngelDark92/steamlink-patches/commit/df8de0f2e721d2bd76ab883b49e1b60aee936347))\n\n## [1.10.1-dev.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.1...v1.10.1-dev.2) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* experiments not successful, new experiment based on VD ([d81643d](https://github.com/AngelDark92/steamlink-patches/commit/d81643de871caf9ad4b8542cf3c6decbae67e7ae))\n\n## [1.10.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0...v1.10.1-dev.1) (2026-08-26)\n\n### 🐛 Bug Fixes\n\n* more experiments with resolution ([c7f5401](https://github.com/AngelDark92/steamlink-patches/commit/c7f5401d297eb7025fdcf5e2937db0afe141fea3))\n\n## [1.10.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.1...v1.10.0) (2026-08-25)\n\n### 🐛 Bug Fixes\n\n* added compatibility with 2.0.22 5002313 ([f78fa02](https://github.com/AngelDark92/steamlink-patches/commit/f78fa02af800f5da0946ab15389e777c548f940c))\n* added controller cadence with options ([6cac547](https://github.com/AngelDark92/steamlink-patches/commit/6cac5476098af88af5470ba62b2f3ee6a3be1298))\n* added resources and installation helpers ([3649c86](https://github.com/AngelDark92/steamlink-patches/commit/3649c86e6c2ccaa1fe833641861c3cbe728b53ef))\n* bundle direct Galaxy XR tongue bridge ([#39](https://github.com/AngelDark92/steamlink-patches/issues/39)) ([cfae7c9](https://github.com/AngelDark92/steamlink-patches/commit/cfae7c9c05fbc64d04c1764eb63b6ee406d3a35e))\n* controllervelocity patch xml now parses correctly ([914e0eb](https://github.com/AngelDark92/steamlink-patches/commit/914e0eb4b3ba3327199d1aec8b2bcab1a9f4768b))\n* delete telemetry patch ([ea3fcf8](https://github.com/AngelDark92/steamlink-patches/commit/ea3fcf8654134aec375a1012001c5779ed1ef8d7))\n* new resolution tests, delete old probes ([9b512f6](https://github.com/AngelDark92/steamlink-patches/commit/9b512f674183913ea25f41a751af785a906637b5))\n* no banding patch through glsl dither and experimental rgb10 ([cbf47e9](https://github.com/AngelDark92/steamlink-patches/commit/cbf47e9a74cba646938af0e38843e00040415e22))\n* patches are now still default true for older builds ([1bb0e36](https://github.com/AngelDark92/steamlink-patches/commit/1bb0e368cbcbf4b437ffb32d40465bb2a44e9681))\n* patches now compatible with 5002322 ([d0d14e8](https://github.com/AngelDark92/steamlink-patches/commit/d0d14e805c1543f238dda53f1896d3092af2aabb))\n* permission on 5002313 ([4954510](https://github.com/AngelDark92/steamlink-patches/commit/4954510248391236465a9b6dd92ebd271f89390f))\n* possibly better dithering ([ac5cda0](https://github.com/AngelDark92/steamlink-patches/commit/ac5cda0d2a6169d2847714390d92b73e74e70816))\n* removed unneeded patches ([0940942](https://github.com/AngelDark92/steamlink-patches/commit/0940942a20bcf8b2cbdea17371d343bb13d757a9))\n* resolution experiment updated with new findings ([fcd8ee5](https://github.com/AngelDark92/steamlink-patches/commit/fcd8ee5b36ec06c42257df4c7b88055ef69923c7))\n* telemetry fix and defaults changed ([caa5ed3](https://github.com/AngelDark92/steamlink-patches/commit/caa5ed3e599c00b044bbf40ef60cc8482662f23a))\n* unrestricted battery onResume() bug and wrong target versions ([73df9cf](https://github.com/AngelDark92/steamlink-patches/commit/73df9cf25f4f152f4a36075878215f5f70e8f3f3))\n* updated tests ([5edf756](https://github.com/AngelDark92/steamlink-patches/commit/5edf75673623a55c737e7d73388088739640fe92))\n\n### ✨ New Features\n\n* add compatibility for 2.0.22 build 5002318 ([b99cdbf](https://github.com/AngelDark92/steamlink-patches/commit/b99cdbf927c72a85a05a4b29f5cd959d6cdbf888))\n* add configurable microphone input preset ([1216773](https://github.com/AngelDark92/steamlink-patches/commit/1216773ddda44803c625cbc9501675ecd9ec566f))\n* add sliders to patches ([cc5fe22](https://github.com/AngelDark92/steamlink-patches/commit/cc5fe22de1d238c737101bcc43311b3fb2238465))\n* added resolution probe and experiment instructions ([22ff902](https://github.com/AngelDark92/steamlink-patches/commit/22ff9028b195ef06fea7fba1ace7e30ac6188065))\n* Merge pull request [#36](https://github.com/AngelDark92/steamlink-patches/issues/36) from AngelDark92/dev ([631466e](https://github.com/AngelDark92/steamlink-patches/commit/631466e4f1fd5110fa8dbb12ef2963bee448141b))\n* Merge pull request [#37](https://github.com/AngelDark92/steamlink-patches/issues/37) from compdoge/agent/microphone-input-preset ([32ccdd0](https://github.com/AngelDark92/steamlink-patches/commit/32ccdd0371076dccaf691256479dc749d1f3cfcc))\n* patches now targeting the latest 2.0.22-5002322 build with fixes from valve ([1548aec](https://github.com/AngelDark92/steamlink-patches/commit/1548aec8f7a1ab8e58fd5346dcf41f16165c5f3f))\n\n## [1.10.0-dev.18](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.17...v1.10.0-dev.18) (2026-08-25)\n\n### ✨ New Features\n\n* patches now targeting the latest 2.0.22-5002322 build with fixes from valve ([1548aec](https://github.com/AngelDark92/steamlink-patches/commit/1548aec8f7a1ab8e58fd5346dcf41f16165c5f3f))\n\n## [1.10.0-dev.17](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.16...v1.10.0-dev.17) (2026-08-24)\n\n### 🐛 Bug Fixes\n\n* controllervelocity patch xml now parses correctly ([914e0eb](https://github.com/AngelDark92/steamlink-patches/commit/914e0eb4b3ba3327199d1aec8b2bcab1a9f4768b))\n\n## [1.10.0-dev.16](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.15...v1.10.0-dev.16) (2026-08-24)\n\n### 🐛 Bug Fixes\n\n* delete telemetry patch ([ea3fcf8](https://github.com/AngelDark92/steamlink-patches/commit/ea3fcf8654134aec375a1012001c5779ed1ef8d7))\n\n## [1.10.0-dev.15](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.14...v1.10.0-dev.15) (2026-08-24)\n\n### 🐛 Bug Fixes\n\n* telemetry fix and defaults changed ([caa5ed3](https://github.com/AngelDark92/steamlink-patches/commit/caa5ed3e599c00b044bbf40ef60cc8482662f23a))\n\n## [1.10.0-dev.14](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.13...v1.10.0-dev.14) (2026-08-21)\n\n### 🐛 Bug Fixes\n\n* patches now compatible with 5002322 ([d0d14e8](https://github.com/AngelDark92/steamlink-patches/commit/d0d14e805c1543f238dda53f1896d3092af2aabb))\n\n## [1.10.0-dev.13](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.12...v1.10.0-dev.13) (2026-08-16)\n\n### ✨ New Features\n\n* add sliders to patches ([cc5fe22](https://github.com/AngelDark92/steamlink-patches/commit/cc5fe22de1d238c737101bcc43311b3fb2238465))\n\n## [1.10.0-dev.12](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.11...v1.10.0-dev.12) (2026-08-15)\n\n### 🐛 Bug Fixes\n\n* patches are now still default true for older builds ([1bb0e36](https://github.com/AngelDark92/steamlink-patches/commit/1bb0e368cbcbf4b437ffb32d40465bb2a44e9681))\n\n## [1.10.0-dev.11](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.10...v1.10.0-dev.11) (2026-08-15)\n\n### 🐛 Bug Fixes\n\n* removed unneeded patches ([0940942](https://github.com/AngelDark92/steamlink-patches/commit/0940942a20bcf8b2cbdea17371d343bb13d757a9))\n\n## [1.10.0-dev.10](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.9...v1.10.0-dev.10) (2026-08-15)\n\n### ✨ New Features\n\n* add compatibility for 2.0.22 build 5002318 ([b99cdbf](https://github.com/AngelDark92/steamlink-patches/commit/b99cdbf927c72a85a05a4b29f5cd959d6cdbf888))\n\n## [1.10.0-dev.9](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.8...v1.10.0-dev.9) (2026-08-13)\n\n### 🐛 Bug Fixes\n\n* bundle direct Galaxy XR tongue bridge ([#39](https://github.com/AngelDark92/steamlink-patches/issues/39)) ([cfae7c9](https://github.com/AngelDark92/steamlink-patches/commit/cfae7c9c05fbc64d04c1764eb63b6ee406d3a35e))\n\n## [1.10.0-dev.8](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.7...v1.10.0-dev.8) (2026-08-13)\n\n### 🐛 Bug Fixes\n\n* permission on 5002313 ([4954510](https://github.com/AngelDark92/steamlink-patches/commit/4954510248391236465a9b6dd92ebd271f89390f))",
+      "changelog": "## [1.10.1-dev.8](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.7...v1.10.1-dev.8) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* single projection resolution and double projection recognition ([69f63ef](https://github.com/AngelDark92/steamlink-patches/commit/69f63efad45cd30711ce230147a88f16ba85e054))\n\n## [1.10.1-dev.7](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.6...v1.10.1-dev.7) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* three projection sampler 3rd try ([fb0df3b](https://github.com/AngelDark92/steamlink-patches/commit/fb0df3b37b719824c5e54c29ecd431138052c39f))\n\n## [1.10.1-dev.6](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.5...v1.10.1-dev.6) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* fix for three projection run ([011290c](https://github.com/AngelDark92/steamlink-patches/commit/011290cdd524de49a9c141cf018f0727fc8dc55d))\n\n## [1.10.1-dev.5](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.4...v1.10.1-dev.5) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* patch with three projection samples but mods to make it high res ([53fe27d](https://github.com/AngelDark92/steamlink-patches/commit/53fe27dd97dc6d2a110f91eb1e507c8dcba25209))\n\n## [1.10.1-dev.4](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.3...v1.10.1-dev.4) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* try wth 2 projections ([8356c75](https://github.com/AngelDark92/steamlink-patches/commit/8356c75c2223eb2ec1c33477d6a30c1fbeab1396))\n\n## [1.10.1-dev.3](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.2...v1.10.1-dev.3) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* try with single projection reconstruction ([df8de0f](https://github.com/AngelDark92/steamlink-patches/commit/df8de0f2e721d2bd76ab883b49e1b60aee936347))\n\n## [1.10.1-dev.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.1...v1.10.1-dev.2) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* experiments not successful, new experiment based on VD ([d81643d](https://github.com/AngelDark92/steamlink-patches/commit/d81643de871caf9ad4b8542cf3c6decbae67e7ae))\n\n## [1.10.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0...v1.10.1-dev.1) (2026-08-26)\n\n### 🐛 Bug Fixes\n\n* more experiments with resolution ([c7f5401](https://github.com/AngelDark92/steamlink-patches/commit/c7f5401d297eb7025fdcf5e2937db0afe141fea3))\n\n## [1.10.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.9.1...v1.10.0) (2026-08-25)\n\n### 🐛 Bug Fixes\n\n* added compatibility with 2.0.22 5002313 ([f78fa02](https://github.com/AngelDark92/steamlink-patches/commit/f78fa02af800f5da0946ab15389e777c548f940c))\n* added controller cadence with options ([6cac547](https://github.com/AngelDark92/steamlink-patches/commit/6cac5476098af88af5470ba62b2f3ee6a3be1298))\n* added resources and installation helpers ([3649c86](https://github.com/AngelDark92/steamlink-patches/commit/3649c86e6c2ccaa1fe833641861c3cbe728b53ef))\n* bundle direct Galaxy XR tongue bridge ([#39](https://github.com/AngelDark92/steamlink-patches/issues/39)) ([cfae7c9](https://github.com/AngelDark92/steamlink-patches/commit/cfae7c9c05fbc64d04c1764eb63b6ee406d3a35e))\n* controllervelocity patch xml now parses correctly ([914e0eb](https://github.com/AngelDark92/steamlink-patches/commit/914e0eb4b3ba3327199d1aec8b2bcab1a9f4768b))\n* delete telemetry patch ([ea3fcf8](https://github.com/AngelDark92/steamlink-patches/commit/ea3fcf8654134aec375a1012001c5779ed1ef8d7))\n* new resolution tests, delete old probes ([9b512f6](https://github.com/AngelDark92/steamlink-patches/commit/9b512f674183913ea25f41a751af785a906637b5))\n* no banding patch through glsl dither and experimental rgb10 ([cbf47e9](https://github.com/AngelDark92/steamlink-patches/commit/cbf47e9a74cba646938af0e38843e00040415e22))\n* patches are now still default true for older builds ([1bb0e36](https://github.com/AngelDark92/steamlink-patches/commit/1bb0e368cbcbf4b437ffb32d40465bb2a44e9681))\n* patches now compatible with 5002322 ([d0d14e8](https://github.com/AngelDark92/steamlink-patches/commit/d0d14e805c1543f238dda53f1896d3092af2aabb))\n* permission on 5002313 ([4954510](https://github.com/AngelDark92/steamlink-patches/commit/4954510248391236465a9b6dd92ebd271f89390f))\n* possibly better dithering ([ac5cda0](https://github.com/AngelDark92/steamlink-patches/commit/ac5cda0d2a6169d2847714390d92b73e74e70816))\n* removed unneeded patches ([0940942](https://github.com/AngelDark92/steamlink-patches/commit/0940942a20bcf8b2cbdea17371d343bb13d757a9))\n* resolution experiment updated with new findings ([fcd8ee5](https://github.com/AngelDark92/steamlink-patches/commit/fcd8ee5b36ec06c42257df4c7b88055ef69923c7))\n* telemetry fix and defaults changed ([caa5ed3](https://github.com/AngelDark92/steamlink-patches/commit/caa5ed3e599c00b044bbf40ef60cc8482662f23a))\n* unrestricted battery onResume() bug and wrong target versions ([73df9cf](https://github.com/AngelDark92/steamlink-patches/commit/73df9cf25f4f152f4a36075878215f5f70e8f3f3))\n* updated tests ([5edf756](https://github.com/AngelDark92/steamlink-patches/commit/5edf75673623a55c737e7d73388088739640fe92))\n\n### ✨ New Features\n\n* add compatibility for 2.0.22 build 5002318 ([b99cdbf](https://github.com/AngelDark92/steamlink-patches/commit/b99cdbf927c72a85a05a4b29f5cd959d6cdbf888))\n* add configurable microphone input preset ([1216773](https://github.com/AngelDark92/steamlink-patches/commit/1216773ddda44803c625cbc9501675ecd9ec566f))\n* add sliders to patches ([cc5fe22](https://github.com/AngelDark92/steamlink-patches/commit/cc5fe22de1d238c737101bcc43311b3fb2238465))\n* added resolution probe and experiment instructions ([22ff902](https://github.com/AngelDark92/steamlink-patches/commit/22ff9028b195ef06fea7fba1ace7e30ac6188065))\n* Merge pull request [#36](https://github.com/AngelDark92/steamlink-patches/issues/36) from AngelDark92/dev ([631466e](https://github.com/AngelDark92/steamlink-patches/commit/631466e4f1fd5110fa8dbb12ef2963bee448141b))\n* Merge pull request [#37](https://github.com/AngelDark92/steamlink-patches/issues/37) from compdoge/agent/microphone-input-preset ([32ccdd0](https://github.com/AngelDark92/steamlink-patches/commit/32ccdd0371076dccaf691256479dc749d1f3cfcc))\n* patches now targeting the latest 2.0.22-5002322 build with fixes from valve ([1548aec](https://github.com/AngelDark92/steamlink-patches/commit/1548aec8f7a1ab8e58fd5346dcf41f16165c5f3f))\n\n## [1.10.0-dev.18](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.17...v1.10.0-dev.18) (2026-08-25)\n\n### ✨ New Features\n\n* patches now targeting the latest 2.0.22-5002322 build with fixes from valve ([1548aec](https://github.com/AngelDark92/steamlink-patches/commit/1548aec8f7a1ab8e58fd5346dcf41f16165c5f3f))\n\n## [1.10.0-dev.17](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.16...v1.10.0-dev.17) (2026-08-24)\n\n### 🐛 Bug Fixes\n\n* controllervelocity patch xml now parses correctly ([914e0eb](https://github.com/AngelDark92/steamlink-patches/commit/914e0eb4b3ba3327199d1aec8b2bcab1a9f4768b))\n\n## [1.10.0-dev.16](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.15...v1.10.0-dev.16) (2026-08-24)\n\n### 🐛 Bug Fixes\n\n* delete telemetry patch ([ea3fcf8](https://github.com/AngelDark92/steamlink-patches/commit/ea3fcf8654134aec375a1012001c5779ed1ef8d7))\n\n## [1.10.0-dev.15](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.14...v1.10.0-dev.15) (2026-08-24)\n\n### 🐛 Bug Fixes\n\n* telemetry fix and defaults changed ([caa5ed3](https://github.com/AngelDark92/steamlink-patches/commit/caa5ed3e599c00b044bbf40ef60cc8482662f23a))\n\n## [1.10.0-dev.14](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.13...v1.10.0-dev.14) (2026-08-21)\n\n### 🐛 Bug Fixes\n\n* patches now compatible with 5002322 ([d0d14e8](https://github.com/AngelDark92/steamlink-patches/commit/d0d14e805c1543f238dda53f1896d3092af2aabb))\n\n## [1.10.0-dev.13](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.12...v1.10.0-dev.13) (2026-08-16)\n\n### ✨ New Features\n\n* add sliders to patches ([cc5fe22](https://github.com/AngelDark92/steamlink-patches/commit/cc5fe22de1d238c737101bcc43311b3fb2238465))",
       "fullChangelogUrl": "https://github.com/AngelDark92/steamlink-patches/blob/dev/CHANGELOG.md",
       "repoDescription": "Repo for steamlink Galaxy XR or other brands patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/53372897?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=AngelDark92/steamlink-patches",
-      "patchCount": 20,
+      "patchCount": 22,
       "targetApps": [
         "com.valvesoftware.steamlinkvr"
       ],
       "appUpdates": {},
       "stars": 5,
-      "updatedAt": 1787875200000,
+      "updatedAt": 1787961600000,
       "firstSeen": 1786091478160,
       "appFirstSeen": {
         "com.valvesoftware.steamlinkvr": 1786091478160
       },
-      "hotRank": 57
+      "hotRank": 59
     },
     {
       "source": "github",
@@ -2463,7 +2479,7 @@
       "appFirstSeen": {
         "com.alightcreative.motion": 1787300539778
       },
-      "hotRank": 70
+      "hotRank": 68
     },
     {
       "source": "github",
@@ -3095,7 +3111,7 @@
       "appFirstSeen": {
         "com.stremio.one": 1787731056985
       },
-      "hotRank": 66
+      "hotRank": 65
     },
     {
       "source": "github",
@@ -3392,7 +3408,7 @@
         "com.ufovpn.connect.velnet": 1781596395094,
         "com.vpn.free.hotspot.secure.vpnify": 1781425538311
       },
-      "hotRank": 46
+      "hotRank": 45
     },
     {
       "source": "github",
@@ -3556,7 +3572,7 @@
         "app.symfonik.music.player": 1776003728000,
         "org.withouthat.acalendar": 1776003728000
       },
-      "hotRank": 75
+      "hotRank": 74
     },
     {
       "source": "github",
@@ -4627,7 +4643,7 @@
         "com.pinterest": 1782206425615,
         "easy.sudoku.puzzle.solver.free": 1785577233427
       },
-      "hotRank": 20
+      "hotRank": 21
     },
     {
       "source": "github",
@@ -4760,7 +4776,7 @@
         "com.Splitwise.SplitwiseMobile": 1783348412813,
         "com.overdevs.at4k": 1783348412813
       },
-      "hotRank": 23
+      "hotRank": 22
     },
     {
       "source": "github",
@@ -5187,7 +5203,7 @@
         "com.generalcomp.truecloud": 1783246898450,
         "com.nekki.vector": 1787150036176
       },
-      "hotRank": 18
+      "hotRank": 13
     },
     {
       "source": "github",
@@ -5241,7 +5257,7 @@
       "appFirstSeen": {
         "com.viber.voip": 1787811967882
       },
-      "hotRank": 52
+      "hotRank": 53
     },
     {
       "source": "github",
@@ -5282,13 +5298,13 @@
         "com.anime.witcher"
       ],
       "appUpdates": {},
-      "stars": 3,
+      "stars": 4,
       "updatedAt": 1787184000000,
       "firstSeen": 1787957215907,
       "appFirstSeen": {
         "com.anime.witcher": 1787957215907
       },
-      "hotRank": 35
+      "hotRank": 34
     },
     {
       "source": "github",
@@ -5521,7 +5537,7 @@
         "com.x8bit.bitwarden": 1785156172223,
         "com.instagram.android": 1787989042119
       },
-      "hotRank": 28
+      "hotRank": 26
     },
     {
       "source": "github",
@@ -6623,7 +6639,7 @@
         "com.instagram.android": 1787875200000,
         "com.twitter.android": 1787875200000
       },
-      "stars": 4954,
+      "stars": 4958,
       "updatedAt": 1787875200000,
       "firstSeen": 1773154796000,
       "appFirstSeen": {
@@ -6691,7 +6707,7 @@
       "appFirstSeen": {
         "hu.dorsum.clavis.kincstar.mobile": 1787902864057
       },
-      "hotRank": 42
+      "hotRank": 46
     },
     {
       "source": "github",
@@ -6880,7 +6896,7 @@
         "com.fitness.debugger": 1787811911189,
         "de.humbergsoftware.keyboarddesigner": 1787902864057
       },
-      "hotRank": 47
+      "hotRank": 49
     },
     {
       "source": "github",
@@ -6970,7 +6986,7 @@
         "com.brave.browser": 1787270400000,
         "net.quetta.browser": 1786492800000
       },
-      "stars": 40,
+      "stars": 41,
       "updatedAt": 1787529600000,
       "firstSeen": 1786104963166,
       "appFirstSeen": {
@@ -6980,7 +6996,7 @@
         "com.brave.browser_nightly": 1786104963166,
         "io.github.jqssun.helium": 1786104963166
       },
-      "hotRank": 13
+      "hotRank": 14
     },
     {
       "source": "github",
@@ -7122,7 +7138,7 @@
       "appFirstSeen": {
         "com.jscti.nextgp_f1motogp": 1787469942128
       },
-      "hotRank": 82
+      "hotRank": 80
     },
     {
       "source": "github",
@@ -7155,7 +7171,7 @@
       "appFirstSeen": {
         "com.imperihome.lite": 1784316101094
       },
-      "hotRank": 112
+      "hotRank": 113
     },
     {
       "source": "github",
@@ -7383,7 +7399,7 @@
       "appFirstSeen": {
         "fr.t2c.t2c": 1787958222499
       },
-      "hotRank": 37
+      "hotRank": 41
     },
     {
       "source": "github",
@@ -8042,7 +8058,7 @@
         "com.mediocre.commute": 1784733902553,
         "jp.firstascent.cryanalyzer": 1784733902553
       },
-      "hotRank": 17
+      "hotRank": 19
     },
     {
       "source": "gitlab",
@@ -8286,7 +8302,7 @@
       "appFirstSeen": {
         "aculix.viddit.downloader": 1787773503306
       },
-      "hotRank": 60
+      "hotRank": 69
     },
     {
       "source": "github",
@@ -9452,7 +9468,7 @@
         "eu.darken.bluemusic": 1786413608053,
         "com.javiersantos.mlmanager": 1787689227794
       },
-      "hotRank": 26
+      "hotRank": 27
     },
     {
       "source": "github",
@@ -9727,7 +9743,7 @@
         "com.rawcam.app": 1785468401751,
         "com.bolpatranepal.axios": 1786889351093
       },
-      "hotRank": 34
+      "hotRank": 33
     },
     {
       "source": "github",
@@ -9839,7 +9855,7 @@
       "appFirstSeen": {
         "ru.vk.store": 1787957737967
       },
-      "hotRank": 32
+      "hotRank": 36
     },
     {
       "source": "github",
@@ -9997,7 +10013,7 @@
       "appFirstSeen": {
         "com.sankakucomplex.channel.black": 1782472442332
       },
-      "hotRank": 111
+      "hotRank": 110
     },
     {
       "source": "github",
@@ -10383,7 +10399,7 @@
         "com.techkitlabs.movieparadise": 1785616305457,
         "com.astrapaging.vff": 1786984311736
       },
-      "hotRank": 63
+      "hotRank": 62
     },
     {
       "source": "github",
@@ -10430,7 +10446,7 @@
       "appFirstSeen": {
         "com.slowlyapp": 1787469771325
       },
-      "hotRank": 80
+      "hotRank": 79
     },
     {
       "source": "github",
@@ -11158,7 +11174,7 @@
         "cn.wps.moffice_eng": 1771286400000,
         "com.bowerydigital.bend": 1787875200000
       },
-      "stars": 1017,
+      "stars": 1018,
       "updatedAt": 1787875200000,
       "firstSeen": 1768941201000,
       "appFirstSeen": {
@@ -11263,7 +11279,7 @@
         "se.hedekonsult.sparkle": 1786949194669,
         "com.overdevs.at4k": 1786949194669
       },
-      "hotRank": 83
+      "hotRank": 82
     },
     {
       "source": "github",
@@ -12095,7 +12111,7 @@
       "appUpdates": {
         "com.zhiliaoapp.musically": 1787443200000
       },
-      "stars": 297,
+      "stars": 299,
       "updatedAt": 1787788800000,
       "firstSeen": 1780156086693,
       "appFirstSeen": {
@@ -12320,7 +12336,7 @@
         "com.laurencedawson.reddit_sync": 1781583945043,
         "tv.trakt.trakt": 1779377400000
       },
-      "hotRank": 64
+      "hotRank": 63
     },
     {
       "source": "gitlab",
@@ -12476,7 +12492,7 @@
       "appFirstSeen": {
         "net.relaxio.sleepo": 1787773478877
       },
-      "hotRank": 62
+      "hotRank": 70
     },
     {
       "source": "github",
@@ -12534,7 +12550,7 @@
         "com.toleio.us": 1787956507545,
         "com.lumenate.lumenateaa": 1787811882522
       },
-      "hotRank": 51
+      "hotRank": 52
     },
     {
       "source": "github",
@@ -12832,7 +12848,7 @@
       "appUpdates": {
         "com.google.android.inputmethod.latin": 1787875200000
       },
-      "stars": 374,
+      "stars": 375,
       "updatedAt": 1787875200000,
       "firstSeen": 1775543003000,
       "appFirstSeen": {
@@ -13683,7 +13699,7 @@
       "appFirstSeen": {
         "com.tantantribe.tribe": 1786030630476
       },
-      "hotRank": 109
+      "hotRank": 111
     },
     {
       "source": "github",
@@ -13814,13 +13830,13 @@
       "appUpdates": {
         "com.google.android.inputmethod.latin": 1787788800000
       },
-      "stars": 10,
+      "stars": 12,
       "updatedAt": 1787788800000,
       "firstSeen": 1786958060481,
       "appFirstSeen": {
         "com.google.android.inputmethod.latin": 1786958060481
       },
-      "hotRank": 39
+      "hotRank": 31
     },
     {
       "source": "github",
@@ -14392,7 +14408,7 @@
         "jp.pxv.android": 1787212251235,
         "io.github.sds100.keymapper": 1784342313600
       },
-      "hotRank": 15
+      "hotRank": 18
     },
     {
       "source": "github",
@@ -15053,7 +15069,7 @@
         "com.brave.browser": 1787303946650,
         "com.vivaldi.browser.snapshot": 1787902864057
       },
-      "hotRank": 19
+      "hotRank": 20
     },
     {
       "source": "github",
@@ -15206,7 +15222,7 @@
           "compatiblePackagesKey": 468
         }
       ],
-      "changelog": "## [1.17.13](https://github.com/legendsciber/morphe-patches/compare/v1.17.12...v1.17.13) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - clean up naming and docs ([2b02262](https://github.com/legendsciber/morphe-patches/commit/2b0226237de3bfc9b3d7ac255f740bfe0a6495f7))\n\n## [1.17.12](https://github.com/legendsciber/morphe-patches/compare/v1.17.11...v1.17.12) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium - make tz0.a() no-op to prevent overlay crash ([78690b0](https://github.com/legendsciber/morphe-patches/commit/78690b0d59e31f84d373081ecd2d21dd09d23f5a))\n\n## [1.17.11](https://github.com/legendsciber/morphe-patches/compare/v1.17.10...v1.17.11) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium - bypass tz0.a() Q check to prevent overlay crash, keep UI working ([e0ec5b1](https://github.com/legendsciber/morphe-patches/commit/e0ec5b17cb854be0c8a9322dde68d106afd330a8))\n\n## [1.17.10](https://github.com/legendsciber/morphe-patches/compare/v1.17.9...v1.17.10) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium - block xs0.g() to prevent all popup crash chains ([32347e3](https://github.com/legendsciber/morphe-patches/commit/32347e3f802951703fd3843ecc8d9623686ef89f))\n\n## [1.17.9](https://github.com/legendsciber/morphe-patches/compare/v1.17.8...v1.17.9) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium - patch jz0.a() to prevent showAtLocation crash during init ([8444d59](https://github.com/legendsciber/morphe-patches/commit/8444d59602d3df1f3cb949989e6e3342e6733af4))\n\n## [1.17.8](https://github.com/legendsciber/morphe-patches/compare/v1.17.7...v1.17.8) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium - force Q=true, skip F() to prevent BadTokenException crash ([8939dc9](https://github.com/legendsciber/morphe-patches/commit/8939dc96945449110c930753d1f5234489b5bba4))\n\n## [1.17.7](https://github.com/legendsciber/morphe-patches/compare/v1.17.6...v1.17.7) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** patch ya0 only - skip F() to prevent data binding popup crash ([ffe4835](https://github.com/legendsciber/morphe-patches/commit/ffe4835e208e5c7e95e4e297dffd91e4d093d941))\n\n## [1.17.6](https://github.com/legendsciber/morphe-patches/compare/v1.17.5...v1.17.6) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** minimal 2-point patch on ya0 only - no UI code touched ([c1cb5e6](https://github.com/legendsciber/morphe-patches/commit/c1cb5e698248e7c00e0c5cfa58b0286e88afa29d))\n\n## [1.17.5](https://github.com/legendsciber/morphe-patches/compare/v1.17.4...v1.17.5) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** use Handler.postDelayed for overlay to fix crash while keeping floating logo ([2df7107](https://github.com/legendsciber/morphe-patches/commit/2df710721cd1269e8c58d3bc7c416cb7bc444c18))\n\n## [1.17.4](https://github.com/legendsciber/morphe-patches/compare/v1.17.3...v1.17.4) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** patch tz0.a() to prevent WindowManager.addView overlay crash ([3e567fa](https://github.com/legendsciber/morphe-patches/commit/3e567fa3f1d5caac979bf7f27a2cd8a086b0451b))\n\n## [1.17.3](https://github.com/legendsciber/morphe-patches/compare/v1.17.2...v1.17.3) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** patch all 4 premium popup classes to prevent BadTokenException ([f7762f1](https://github.com/legendsciber/morphe-patches/commit/f7762f121bc69f054e8c821c35fd7be942406b12))\n\n## [1.17.2](https://github.com/legendsciber/morphe-patches/compare/v1.17.1...v1.17.2) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** patch jz0.a() to skip premium popup and fix BadTokenException ([0108e04](https://github.com/legendsciber/morphe-patches/commit/0108e04cea4f02277c8364cade569068b3b30bdc))\n\n## [1.17.1](https://github.com/legendsciber/morphe-patches/compare/v1.17.0...v1.17.1) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** remove F() notification from premium patch to fix BadTokenException crash ([1781510](https://github.com/legendsciber/morphe-patches/commit/1781510ef7424ad1da1d38cbf227f27e3300b71f))\n\n## [1.17.0](https://github.com/legendsciber/morphe-patches/compare/v1.16.0...v1.17.0) (2026-08-27)\n\n### ✨ New Features\n\n* **mctoolbox:** replace Watch Ad patch with direct Premium enable; remove Smash Hit ad removal ([4a66c24](https://github.com/legendsciber/morphe-patches/commit/4a66c2401b1503653713aafc8a0f970d96774e6b))\n\n## [1.16.0](https://github.com/legendsciber/morphe-patches/compare/v1.15.1...v1.16.0) (2026-08-27)\n\n### ✨ New Features\n\n* **smashhit:** rewrite premium patch based on working Entree3k/okish approaches ([e611da3](https://github.com/legendsciber/morphe-patches/commit/e611da3c1d74bfaf9c2f8636fe1f8b43cf7c1a63))",
+      "changelog": "## [1.17.23](https://github.com/legendsciber/morphe-patches/compare/v1.17.22...v1.17.23) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - set Q on mz0.d + bridge.b.c + write native SharedPrefs ([dc52342](https://github.com/legendsciber/morphe-patches/commit/dc523422db308a62a88b3a8da5ed09bd06922380))\n\n## [1.17.22](https://github.com/legendsciber/morphe-patches/compare/v1.17.21...v1.17.22) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - simplify xs0 fingerprint ([3fdbc12](https://github.com/legendsciber/morphe-patches/commit/3fdbc127e025b5436685080fcdad407567b65fc8))\n\n## [1.17.21](https://github.com/legendsciber/morphe-patches/compare/v1.17.20...v1.17.21) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - fix compile errors ([6f0814e](https://github.com/legendsciber/morphe-patches/commit/6f0814ec2e323684791fcd108748784b031b0267))\n* **mctoolbox:** premium (under testing) - try-catch xs0.g() + set Q=true directly ([3328b04](https://github.com/legendsciber/morphe-patches/commit/3328b04ea8c6fc6d00ba426bf0686f2eebd972f0))\n\n## [1.17.20](https://github.com/legendsciber/morphe-patches/compare/v1.17.19...v1.17.20) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - escape dollar signs in smali strings ([34c48ed](https://github.com/legendsciber/morphe-patches/commit/34c48ed757a69e121a8b8a54615763ecf30c9406))\n* **mctoolbox:** premium (under testing) - use Handler.post + hz0 for deferred bridge refresh ([284a566](https://github.com/legendsciber/morphe-patches/commit/284a5665589c8445a7bab323c7b6921ac63ca1e6))\n\n## [1.17.19](https://github.com/legendsciber/morphe-patches/compare/v1.17.18...v1.17.19) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - defer overlay to onResume when window is ready ([ed13354](https://github.com/legendsciber/morphe-patches/commit/ed13354205d00f490b721d074efa7ebc582649dc))\n\n## [1.17.18](https://github.com/legendsciber/morphe-patches/compare/v1.17.17...v1.17.18) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - block tz0.a() to stop ALL overlay crashes ([1cabefc](https://github.com/legendsciber/morphe-patches/commit/1cabefc3e84eb222cb219ce888789138afdeafa9))\n\n## [1.17.17](https://github.com/legendsciber/morphe-patches/compare/v1.17.16...v1.17.17) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - delay t20 overlay with Handler.postDelayed ([f5e6d45](https://github.com/legendsciber/morphe-patches/commit/f5e6d4547069392af45e2a3d633b02554ea686b4))\n\n## [1.17.16](https://github.com/legendsciber/morphe-patches/compare/v1.17.15...v1.17.16) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - add tz0.a() back to block t20.run crash ([8509cb3](https://github.com/legendsciber/morphe-patches/commit/8509cb355ff6d8b629591ef00660022fc4f8e5a2))\n\n## [1.17.15](https://github.com/legendsciber/morphe-patches/compare/v1.17.14...v1.17.15) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - remove invalid bz0 fingerprint ([dc8efbd](https://github.com/legendsciber/morphe-patches/commit/dc8efbdc2d11a1fbaada78f5ea15211414753650))\n\n## [1.17.14](https://github.com/legendsciber/morphe-patches/compare/v1.17.13...v1.17.14) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - block all 4 popup crash paths ([f7a1233](https://github.com/legendsciber/morphe-patches/commit/f7a12330923fec252095d32e38bb3bb7f1490153))\n\n## [1.17.13](https://github.com/legendsciber/morphe-patches/compare/v1.17.12...v1.17.13) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium (under testing) - clean up naming and docs ([2b02262](https://github.com/legendsciber/morphe-patches/commit/2b0226237de3bfc9b3d7ac255f740bfe0a6495f7))\n\n## [1.17.12](https://github.com/legendsciber/morphe-patches/compare/v1.17.11...v1.17.12) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium - make tz0.a() no-op to prevent overlay crash ([78690b0](https://github.com/legendsciber/morphe-patches/commit/78690b0d59e31f84d373081ecd2d21dd09d23f5a))\n\n## [1.17.11](https://github.com/legendsciber/morphe-patches/compare/v1.17.10...v1.17.11) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium - bypass tz0.a() Q check to prevent overlay crash, keep UI working ([e0ec5b1](https://github.com/legendsciber/morphe-patches/commit/e0ec5b17cb854be0c8a9322dde68d106afd330a8))\n\n## [1.17.10](https://github.com/legendsciber/morphe-patches/compare/v1.17.9...v1.17.10) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium - block xs0.g() to prevent all popup crash chains ([32347e3](https://github.com/legendsciber/morphe-patches/commit/32347e3f802951703fd3843ecc8d9623686ef89f))\n\n## [1.17.9](https://github.com/legendsciber/morphe-patches/compare/v1.17.8...v1.17.9) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** premium - patch jz0.a() to prevent showAtLocation crash during init ([8444d59](https://github.com/legendsciber/morphe-patches/commit/8444d59602d3df1f3cb949989e6e3342e6733af4))",
       "fullChangelogUrl": "https://github.com/legendsciber/morphe-patches/blob/main/CHANGELOG.md",
       "repoDescription": "legendsciber's Patches - Morphe patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/106559486?v=4&size=168",
@@ -15220,12 +15236,12 @@
         "com.mediocre.smashhit"
       ],
       "appUpdates": {
-        "io.mrarm.mctoolbox": 1787875200000,
+        "io.mrarm.mctoolbox": 1787961600000,
         "com.mediocre.smashhit": 1787788800000,
         "com.fingersoft.hillclimb": 1787788800000
       },
       "stars": 4,
-      "updatedAt": 1787875200000,
+      "updatedAt": 1787961600000,
       "firstSeen": 1787647499829,
       "appFirstSeen": {
         "com.block.juggle": 1787811882522,
@@ -15233,7 +15249,7 @@
         "com.fingersoft.hillclimb": 1787647499829,
         "com.mediocre.smashhit": 1787845534294
       },
-      "hotRank": 74
+      "hotRank": 83
     },
     {
       "source": "github",
@@ -15378,7 +15394,7 @@
       "appFirstSeen": {
         "com.stremio.one": 1787647391952
       },
-      "hotRank": 69
+      "hotRank": 67
     },
     {
       "source": "github",
@@ -15519,7 +15535,7 @@
       "appFirstSeen": {
         "com.facebook.katana": 1775943939000
       },
-      "hotRank": 67
+      "hotRank": 66
     },
     {
       "source": "github",
@@ -18641,10 +18657,20 @@
         },
         {
           "name": "Free In-app Purchases (Experimental)",
-          "description": "Makes Unity in-app purchases appear successful without paying. Supports Unity IAP and Google Play Billing. Use for offline games only — online verification may still block.",
+          "description": "Spoofs in-app purchases to appear successful. Covers Google Play Billing, Unity IAP, Xsolla, and common receipt verification. Server-side verification may still block in online games.",
           "default": false,
           "compatiblePackages": null,
-          "options": []
+          "options": [
+            {
+              "key": "fakeReceipt",
+              "title": "Fake receipt data",
+              "description": "Generate fake purchase receipt data for games that validate receipts locally.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            }
+          ]
         },
         {
           "name": "GmsCore support (MicroG)",
@@ -19729,7 +19755,7 @@
         },
         {
           "name": "Unlimited Currencies",
-          "description": "Makes currency checks return a huge amount so you never run out. Covers PlayerPrefs, SharedPreferences and common Unity fields.",
+          "description": "Spoofs currency checks so you never run out. Covers PlayerPrefs, SharedPreferences and common Unity fields. WARNING: Only works on Mono-based Unity games and traditional Java/Android games. IL2CPP games (check for libil2cpp.so in the APK) store currencies in native memory — this patch cannot reach them.",
           "default": false,
           "compatiblePackages": null,
           "options": [
@@ -19750,6 +19776,33 @@
               "type": "kotlin.String",
               "default": "",
               "values": null
+            },
+            {
+              "key": "infiniteMode",
+              "title": "Infinite mode",
+              "description": "ON: all currencies set to huge amount. OFF: currencies set to the Amount value above.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": true,
+              "values": null
+            },
+            {
+              "key": "multiplyMode",
+              "title": "Multiply income",
+              "description": "When ON, every time a currency is saved it gets multiplied by the Multiplier value. Useful when infinite mode doesn't work.",
+              "required": false,
+              "type": "kotlin.Boolean",
+              "default": false,
+              "values": null
+            },
+            {
+              "key": "currencyMultiplier",
+              "title": "Multiplier",
+              "description": "Multiplier value used in Multiply income mode.",
+              "required": false,
+              "type": "kotlin.Int",
+              "default": 10,
+              "values": null
             }
           ]
         },
@@ -19768,6 +19821,13 @@
           "compatiblePackagesKey": 485
         },
         {
+          "name": "Unlock Premium",
+          "description": "Unlocks premium features, subscriptions, and ownership checks. Makes isPremium/isOwned/isVip/hasReceipt return true, and forces SharedPreferences purchase keys to true.",
+          "default": false,
+          "compatiblePackages": null,
+          "options": []
+        },
+        {
           "name": "Unmark Test Only",
           "description": "Removes android:testOnly from the manifest so builds marked as test-only can be installed and launched like normal apps",
           "default": false,
@@ -19782,19 +19842,19 @@
           "options": []
         }
       ],
-      "changelog": "## [1.35.1](https://github.com/Nai64/Nai64Patches/compare/1.35.0...1.35.1) (2026-08-28)\n\n### Bug Fixes\n\n* reduce free iap heap usage ([32e82f6](https://github.com/Nai64/Nai64Patches/commit/32e82f6ac4967afb4d4d11d45a8b37596b1fce0d))\n* unlimited currency hotfix ([b4fcd56](https://github.com/Nai64/Nai64Patches/commit/b4fcd56b6c1328e89356c2892ca227e32808124a))\n\n## [1.35.0](https://github.com/Nai64/Nai64Patches/compare/1.34.1...1.35.0) (2026-08-28)\n\n### Bug Fixes\n\n* improve free in-app purchases patch ([0643afe](https://github.com/Nai64/Nai64Patches/commit/0643afe57b552816b38a436c6409b4277c4967ff))\n* populate time evolve currency variables in unlimited currencies patch ([e9f59e1](https://github.com/Nai64/Nai64Patches/commit/e9f59e1fda204c1f6d11835bb66b4dd677abd029))\n* remove time evolve references ([1c520a5](https://github.com/Nai64/Nai64Patches/commit/1c520a571321787026d3836e07732cfe1477c473))\n\n### New Features\n\n* add free in-app purchases patch ([c3bd264](https://github.com/Nai64/Nai64Patches/commit/c3bd264e6eb9f6d945ad2a78091cba6744981982))\n* add hide app ops patch ([a25ffcd](https://github.com/Nai64/Nai64Patches/commit/a25ffcda82f94018f7c4d9e06afcdbdf767b877f))\n* add hide app tasks patch ([e23386a](https://github.com/Nai64/Nai64Patches/commit/e23386aebf1a4bb2968834d08af53f292f4602fc))\n* add hide cell location patch ([d6a2e3e](https://github.com/Nai64/Nai64Patches/commit/d6a2e3ed8cf5e5b11042ef985ec088da13da29c9))\n* add hide current location patch ([cf4bb54](https://github.com/Nai64/Nai64Patches/commit/cf4bb545cb3a8aedce148b5a5ce7cffe0b511305))\n* add hide input methods patch ([3ddbee5](https://github.com/Nai64/Nai64Patches/commit/3ddbee55e7cf39bf7860e9700b3a242eb5ad5683))\n* add hide neighboring cells patch ([aa66cd0](https://github.com/Nai64/Nai64Patches/commit/aa66cd09aa491c85dd381d72f8f9666c4f129379))\n* add hide query intents patch ([b26b3a1](https://github.com/Nai64/Nai64Patches/commit/b26b3a1b025c685d49e8002dc2a1c3ae9d5de3dd))\n* add hide running processes patch ([96dab09](https://github.com/Nai64/Nai64Patches/commit/96dab09bb92f33fabc57183dbc851ca27555ba88))\n* add hide running services patch ([260f6af](https://github.com/Nai64/Nai64Patches/commit/260f6af519a07bfc8bb547085ab15597801107e5))\n* add hide usage events patch ([33ad738](https://github.com/Nai64/Nai64Patches/commit/33ad738d24ce1ff1445fad775650ec8bd900d8ca))\n* add unlimited currencies patch ([30ed870](https://github.com/Nai64/Nai64Patches/commit/30ed8705556db24baa9d715ccbcbda5123903af1))\n* make recommended patches default enabled ([23185a4](https://github.com/Nai64/Nai64Patches/commit/23185a4485e9b103f9753c4ac2a481665d5eafbc))\n\n## [1.34.1](https://github.com/Nai64/Nai64Patches/compare/1.34.0...1.34.1) (2026-08-28)\n\n### Bug Fixes\n\n* fixed the issue when custom startup dialog crashed and showed black screen ([e6447e4](https://github.com/Nai64/Nai64Patches/commit/e6447e4b0dc8143d55b83d82764c3886a9d204fc))\n* fixed the issue when disable logcat logging patch didnt handle high registers ([b297e2d](https://github.com/Nai64/Nai64Patches/commit/b297e2dc0405622995bf8b5ec8875f36618888b9))\n* fixed the issue when disable telemetry patch crashed on some apps ([bf1f73b](https://github.com/Nai64/Nai64Patches/commit/bf1f73be5c6e4ef1191c997215ce2cac65256d65))\n* fixed the issue when enable unrestricted background work patch didnt work on some apps ([d17c8d4](https://github.com/Nai64/Nai64Patches/commit/d17c8d40fbfcc882f91450e2f18c60de16fea57e))\n* fixed the issue when strip buildconfig debug patch didnt work ([ddf79f5](https://github.com/Nai64/Nai64Patches/commit/ddf79f55ed6f6ff533d0aa25c58cccd40bd5a839))\n\n## [1.34.0](https://github.com/Nai64/Nai64Patches/compare/1.33.0...1.34.0) (2026-08-28)\n\n### Bug Fixes\n\n* update ads free rewards version dropdown ([375653d](https://github.com/Nai64/Nai64Patches/commit/375653d80181dc8b5fbf72a3ee66df20cb906a41))\n\n### New Features\n\n* add disable autofill patch ([c3e6e65](https://github.com/Nai64/Nai64Patches/commit/c3e6e6554893731452fb6515afb8aec441660cf3))\n* add Disable Edge-To-Edge Enforcement patch ([24f9a87](https://github.com/Nai64/Nai64Patches/commit/24f9a87fd3f70e75cf71329d3a3338801df42f89))\n* add disable haptic on scroll patch ([cd7f7f1](https://github.com/Nai64/Nai64Patches/commit/cd7f7f1fad8435c2726b44f575dc23260587b508))\n* add Disable Logcat Logging patch ([3c443c8](https://github.com/Nai64/Nai64Patches/commit/3c443c8c82a6c283435928437399c2b52a4b219c))\n* add Enable Unrestricted Background Work patch ([94003ef](https://github.com/Nai64/Nai64Patches/commit/94003ef402cdd5e89c31ea4db803bc1ef0e522fa))\n* add enable unrestricted clipboard access patch ([8ca0f97](https://github.com/Nai64/Nai64Patches/commit/8ca0f9734b19c3e209a9448c450a458ead028bdc))\n* add fake animation scales patch ([b70260d](https://github.com/Nai64/Nai64Patches/commit/b70260d881415803ed15b758c11ca74c2046002b))\n* add fake pointer location patch ([1a60030](https://github.com/Nai64/Nai64Patches/commit/1a60030e34f3477adde17420653b3b2bd55865b0))\n* add fake show touches patch ([91a412c](https://github.com/Nai64/Nai64Patches/commit/91a412ccf4725c4c7dad5024bb63e1f3e38947c4))\n* add fake sound effects enabled patch ([c2992a2](https://github.com/Nai64/Nai64Patches/commit/c2992a2057a7b222a112bf6f44e8c38f2f4e109c))\n* add force battery health good patch ([5c4ddf4](https://github.com/Nai64/Nai64Patches/commit/5c4ddf4e41ad60b11ab73db823b44e3accc9e243))\n* add Force Ignore Audio Focus patch ([d96ccf2](https://github.com/Nai64/Nai64Patches/commit/d96ccf2ae9046be906948835d83326f0aca1f9d9))\n* add hide stylus handwriting patch ([7af5e15](https://github.com/Nai64/Nai64Patches/commit/7af5e15a03308d9a41db1b022247fec43cbd4cb7))\n* add Strip BuildConfig DEBUG patch ([2e81140](https://github.com/Nai64/Nai64Patches/commit/2e8114094c5fda22f77f526a0c42b9a1dacbdb53))\n* add Strip Exif Location patch ([52c2c34](https://github.com/Nai64/Nai64Patches/commit/52c2c346ed1760de10a01ebb165a1b8c042a4122))\n* add strip package verifier patch ([ba3d3fa](https://github.com/Nai64/Nai64Patches/commit/ba3d3fa9a5b244dc91c9cba42b378f36479ca53e))\n* expand ads free rewards versions ([c90333b](https://github.com/Nai64/Nai64Patches/commit/c90333b793c7576477f2925f14d67b87053ebdef))\n* improve Force Resizable Activity patch ([ed3976b](https://github.com/Nai64/Nai64Patches/commit/ed3976bd083d2be7273caa8a6a6b99732807b626))\n* pkjhgjfdjfghsldkfjghlskdjfhgksdfg ([f714acd](https://github.com/Nai64/Nai64Patches/commit/f714acdcc9b08c6f02a244ca1d2acf8b24180d28))\n\n## [1.33.0](https://github.com/Nai64/Nai64Patches/compare/1.32.0...1.33.0) (2026-08-28)\n\n### New Features\n\n* add icon effects to Custom App Icon patch ([4babf1a](https://github.com/Nai64/Nai64Patches/commit/4babf1abfbd9dccfb7229bc2a628e78a85b9ee6b))\n* add Unlock Notification Channels patch ([58e18f2](https://github.com/Nai64/Nai64Patches/commit/58e18f23689102de3e2d4e3273bb4f7f6fd3f863)), closes [#45](https://github.com/Nai64/Nai64Patches/issues/45)\n* improve AMOLED Theme patch ([20ceecf](https://github.com/Nai64/Nai64Patches/commit/20ceecfe9e64dd47a9a08d06565aad19eefeebde))\n\n## [1.32.0](https://github.com/Nai64/Nai64Patches/compare/1.31.2...1.32.0) (2026-08-27)\n\n### New Features\n\n* add Fake ADB Enabled patch ([3212ecc](https://github.com/Nai64/Nai64Patches/commit/3212ecc0a27c1a5d7afb0108d297e4b16b108f28))\n* add Fake Auto Rotate On patch ([0be784f](https://github.com/Nai64/Nai64Patches/commit/0be784f4ad655ec28640b15439b05e73abfb1f01))\n* add Fake Auto Time patch ([e7c870c](https://github.com/Nai64/Nai64Patches/commit/e7c870c4fd4574bee12871cbf39b53be638b160f))\n* add Fake Auto Time Zone patch ([a80fdd6](https://github.com/Nai64/Nai64Patches/commit/a80fdd6b49d85bd7f70a67b979f76abaf0d2c867))\n* add Fake Available Processors patch ([23f2e3b](https://github.com/Nai64/Nai64Patches/commit/23f2e3b4eeb4ecb87fbb32a6a8af547425d7f5f2))\n* add Fake Bluetooth Bonded Devices Empty patch ([d5e5e42](https://github.com/Nai64/Nai64Patches/commit/d5e5e4212577b56b97bc594e5f0a3166218ebd19))\n* add Fake Brightness Auto Mode patch ([7ec1879](https://github.com/Nai64/Nai64Patches/commit/7ec1879a3a0928e4b4385c66293f9cbbd36ab5c1))\n* add Fake Cell Info Empty patch ([05a46ae](https://github.com/Nai64/Nai64Patches/commit/05a46aeabbc2faa20c93ad14ec9368911347ab2b))\n* add Fake Device Idle Mode patch ([e7af18a](https://github.com/Nai64/Nai64Patches/commit/e7af18a242a6d42dcb473c1632f4f74bd60f8db5))\n* add Fake Doze Always On patch ([d034ed9](https://github.com/Nai64/Nai64Patches/commit/d034ed94425be28f53f91fb29fa72d26a694cf8e))\n* add Fake DTMF Tone Enabled patch ([67bda31](https://github.com/Nai64/Nai64Patches/commit/67bda3179103ceceecdf693a235bafa9954fbd98))\n* add Fake Font Scale patch ([ccd03fb](https://github.com/Nai64/Nai64Patches/commit/ccd03fb5d82c167da6b0bd325f52a55061a1ace9))\n* add Fake Location Accuracy patch ([d195573](https://github.com/Nai64/Nai64Patches/commit/d1955737e55a05af216333e9f9c4abd92b1d7deb))\n* add Fake Memory Class patch ([a79c3ef](https://github.com/Nai64/Nai64Patches/commit/a79c3ef18f2aaf82add938273bcdd3f4d67a853c))\n* add Fake Notification Policy Access patch ([339aa5f](https://github.com/Nai64/Nai64Patches/commit/339aa5f7e180656b0bc62461d34e061551a3d190))\n* add Fake Play Store Install Source patch ([d15b213](https://github.com/Nai64/Nai64Patches/commit/d15b213e5651a927082bb95d988650f6177d604b))\n* add Fake Screen Timeout patch ([9153e11](https://github.com/Nai64/Nai64Patches/commit/9153e1102a1c73fc092fb12eb84c767441f922e3))\n* add Fake Stay On While Plugged patch ([d953297](https://github.com/Nai64/Nai64Patches/commit/d9532971fe63e17fa5ed47b8378c026775e2e29e))\n* add Fake Storage Available patch ([1e811df](https://github.com/Nai64/Nai64Patches/commit/1e811df28d7917d97af501af96514648ef2f6744))\n* add Fake Vibrate When Ringing patch ([cc63d42](https://github.com/Nai64/Nai64Patches/commit/cc63d42b3f8bdfdac202ae5114943a719c29d9f3))\n* add Fake WiFi Scan Results Empty patch ([893a316](https://github.com/Nai64/Nai64Patches/commit/893a3166dea29aefabad735a8f9a5a0563d6bab9))\n* add Force Battery Temperature patch ([fde2586](https://github.com/Nai64/Nai64Patches/commit/fde25868b0b73f299c2c67fe1d773be7240921a2))\n* add Force Charging Status patch ([f7f1526](https://github.com/Nai64/Nai64Patches/commit/f7f15264a1778f48e48ee178553c8e73881255e1))\n* add Spoof Network Operator Name patch ([cd4b88c](https://github.com/Nai64/Nai64Patches/commit/cd4b88cab346b2cab979b2dc4eaa616617ab640f))\n* make older spoof patches customizable ([76ef72f](https://github.com/Nai64/Nai64Patches/commit/76ef72f04fde22e11776074c030e75a21848a705))\n\n## [1.31.2](https://github.com/Nai64/Nai64Patches/compare/1.31.1...1.31.2) (2026-08-27)\n\n### Bug Fixes\n\n* make Custom App Icon work on Android ([5c25ed3](https://github.com/Nai64/Nai64Patches/commit/5c25ed39d943669cad1951752e72380640ce48bf))\n\n## [1.31.1](https://github.com/Nai64/Nai64Patches/compare/1.31.0...1.31.1) (2026-08-27)\n\n### Bug Fixes\n\n* improve No Ads patch UX and tighten ad detection [skip ci] ([24ae8f1](https://github.com/Nai64/Nai64Patches/commit/24ae8f16dbe72e29af4ccff8b53a7a2c8fadc87c))\n\n## [1.31.0](https://github.com/Nai64/Nai64Patches/compare/1.30.0...1.31.0) (2026-08-27)\n\n### Bug Fixes\n\n* remove secrets check from job if for Discord notify ([54420c4](https://github.com/Nai64/Nai64Patches/commit/54420c441fa03c22ae5ee111d524e6a53e1886c4))\n\n### New Features\n\n* add Bypass Permission Check patch ([2bc41ac](https://github.com/Nai64/Nai64Patches/commit/2bc41ac56279a3c71f690b78a6de85266325ac18))\n* add Force Has System Feature patch ([14bfacb](https://github.com/Nai64/Nai64Patches/commit/14bfacbb6cb29b6c6fc33abb5a998ff8363b7851))\n* add Hide Accessibility Services patch ([8cd6008](https://github.com/Nai64/Nai64Patches/commit/8cd6008814c8cbc0a7f0e593972e6953cff8170c))\n* add Hide Clipboard Description patch ([6713924](https://github.com/Nai64/Nai64Patches/commit/6713924f96871e204b90cb7f3daef8788f5b9d42))\n* add Hide Default Sensor patch ([a99dfa7](https://github.com/Nai64/Nai64Patches/commit/a99dfa79f57e8183bb6f09ce2a121994552d4218))\n* add Hide Nfc Adapter patch ([6cb1027](https://github.com/Nai64/Nai64Patches/commit/6cb1027d641440dd1d6aee75dc771ca6c909bf8f))\n* add Hide Storage Volumes patch ([7284f9e](https://github.com/Nai64/Nai64Patches/commit/7284f9e34f7490bca69679e772675e1e709b6bbc))\n* add Hide Usage Stats patch ([75428eb](https://github.com/Nai64/Nai64Patches/commit/75428eb4a8e2d8629ac3eabce5121c400c3ed622))\n* add Spoof Bluetooth Profile State patch ([adf66de](https://github.com/Nai64/Nai64Patches/commit/adf66deb9f2987cb5bd55b5e3dfa09b673e535cf))\n* add Spoof UiMode Night State patch ([54c7ba3](https://github.com/Nai64/Nai64Patches/commit/54c7ba3897cb8958bf46a258e74f11582df14816))\n\n## [1.30.0](https://github.com/Nai64/Nai64Patches/compare/1.29.1...1.30.0) (2026-08-27)\n\n### New Features\n\n* add Spoof Fixed Location patch ([73fa7a0](https://github.com/Nai64/Nai64Patches/commit/73fa7a0773d607ad36a8fe11de9cb6d69c0ce55b))\n* enhance Spoof Time Zone to be selectable ([2c8b608](https://github.com/Nai64/Nai64Patches/commit/2c8b6089da10a9b88af3061c0569c79594473829))\n\n## [1.29.1](https://github.com/Nai64/Nai64Patches/compare/1.29.0...1.29.1) (2026-08-26)\n\n### Bug Fixes\n\n* cover Genre.isSpokenWord fallback in Unlock Playback Speed for Bandcamp ([f40cf22](https://github.com/Nai64/Nai64Patches/commit/f40cf227f3c65848104dd940bc9225221e603619))\n* expand Disable Bandcamp Tracker to cover stats pipeline for Bandcamp ([cf69d3b](https://github.com/Nai64/Nai64Patches/commit/cf69d3bd3a6df3da947504f515d21c735f358f18))\n* harden Show Search Result Scores patch for Bandcamp ([3636b28](https://github.com/Nai64/Nai64Patches/commit/3636b2837d3ef424af45d5a5d4a390141db854ca))\n\n## [1.29.0](https://github.com/Nai64/Nai64Patches/compare/1.28.0...1.29.0) (2026-08-26)\n\n### Bug Fixes\n\n* guard Spoof Developer Options against MinSdkVersionException during signing ([f4cb076](https://github.com/Nai64/Nai64Patches/commit/f4cb0768b5e81247c2c3af30a03083f8e079df3c))\n\n### New Features\n\n* add ANGLE graphics driver preference ([d166bc4](https://github.com/Nai64/Nai64Patches/commit/d166bc40cde8b55ec22bc5c08158f5f7800286cc))\n* add Change Package Name patch ([5564867](https://github.com/Nai64/Nai64Patches/commit/5564867774ca16240bf109dcd82beed22656906e))\n* add GmsCore support (MicroG) patch ([65cca26](https://github.com/Nai64/Nai64Patches/commit/65cca26bb7d42b39b172b11a62dbcfb12d1220d4))\n* add Huawei Ads Kit support ([f227219](https://github.com/Nai64/Nai64Patches/commit/f2272192c10d4369cdc6d120f91be2a762b86407))\n* add modern Android compatibility patches ([cec3ad1](https://github.com/Nai64/Nai64Patches/commit/cec3ad1dbe2f9902b4c6cb4f428193a6e3035cd6))\n* add new patches from PR [#47](https://github.com/Nai64/Nai64Patches/issues/47) (BypassForcedUpdates, GraphicsApiOverride, FrameRatePreference, DisableForcedOnlineChecks) and enhance Ads patches ([09fefa9](https://github.com/Nai64/Nai64Patches/commit/09fefa9c724b69a57b993d7bac2328eb8ed13b5c))\n* add Spoof App Signature patch ([ba86a3d](https://github.com/Nai64/Nai64Patches/commit/ba86a3dae57873552aa2b15b568477bac8ab29e4))\n* add storage permission compatibility patch ([29417ff](https://github.com/Nai64/Nai64Patches/commit/29417ffa255760dc8f977e7f7f6e225a7038232a))\n\n\n## [1.28.2](https://github.com/Zanuaimi/Nai64Patches/compare/1.28.1...1.28.2) (2026-08-25)\n\n### Improvements\n\n- sync upstream patches, including the new Gemini, Veo, Bandcamp, Steam, and universal patches\n- retain fork-specific RuStore/Yandex ad support alongside upstream LevelPlay support\n\n## [1.28.1](https://github.com/Zanuaimi/Nai64Patches/compare/1.28.0...1.28.1) (2026-08-25)\n\n### Bug Fixes\n\n- restore standalone patch list ([9f2b647](https://github.com/Zanuaimi/Nai64Patches/commit/9f2b647ea89317c254c5b4f1b5dc58baa0de3a4f))\n\n## [1.28.1](https://github.com/Zanuaimi/Nai64Patches/compare/1.28.0...1.28.1) (2026-08-25)\n\n### Bug Fixes\n\n- restore standalone patches to Morphe search results instead of category settings\n- move Hide Emulator Radio and Spoof Build Extras into Bypass Emulator Detection settings\n- exclude internal helper patches from the generated patch list\n\n### Improvements\n\n- sync the fork with upstream patch changes",
+      "changelog": "## [1.36.0](https://github.com/Nai64/Nai64Patches/compare/1.35.3...1.36.0) (2026-08-29)\n\n### Bug Fixes\n\n* free iap polish ([a4ef888](https://github.com/Nai64/Nai64Patches/commit/a4ef888c53af7b87f5d721cbad6808f727b30547))\n* unlim currency v2 ([10cc715](https://github.com/Nai64/Nai64Patches/commit/10cc71578bde131c29308326317eb24cd8412ebe))\n\n### New Features\n\n* add unlock premium patch ([26c5f65](https://github.com/Nai64/Nai64Patches/commit/26c5f65fc19fd6c6b05d22dd6e1f1b233fa45755))\n\n## [1.35.3](https://github.com/Nai64/Nai64Patches/compare/1.35.2...1.35.3) (2026-08-29)\n\n### Bug Fixes\n\n* some new shit for the unlimited currencies patch ([c874eaf](https://github.com/Nai64/Nai64Patches/commit/c874eafe033aa17c766c5e53162fe784aced4108))\n\n## [1.35.2](https://github.com/Nai64/Nai64Patches/compare/1.35.1...1.35.2) (2026-08-29)\n\n### Bug Fixes\n\n* reduce heap usage for free iap and unlimited currencies ([b903a2a](https://github.com/Nai64/Nai64Patches/commit/b903a2a98a18c5e8331f6034375e31b72375ee78))\n\n## [1.35.1](https://github.com/Nai64/Nai64Patches/compare/1.35.0...1.35.1) (2026-08-28)\n\n### Bug Fixes\n\n* reduce free iap heap usage ([32e82f6](https://github.com/Nai64/Nai64Patches/commit/32e82f6ac4967afb4d4d11d45a8b37596b1fce0d))\n* unlimited currency hotfix ([b4fcd56](https://github.com/Nai64/Nai64Patches/commit/b4fcd56b6c1328e89356c2892ca227e32808124a))\n\n## [1.35.0](https://github.com/Nai64/Nai64Patches/compare/1.34.1...1.35.0) (2026-08-28)\n\n### Bug Fixes\n\n* improve free in-app purchases patch ([0643afe](https://github.com/Nai64/Nai64Patches/commit/0643afe57b552816b38a436c6409b4277c4967ff))\n* populate time evolve currency variables in unlimited currencies patch ([e9f59e1](https://github.com/Nai64/Nai64Patches/commit/e9f59e1fda204c1f6d11835bb66b4dd677abd029))\n* remove time evolve references ([1c520a5](https://github.com/Nai64/Nai64Patches/commit/1c520a571321787026d3836e07732cfe1477c473))\n\n### New Features\n\n* add free in-app purchases patch ([c3bd264](https://github.com/Nai64/Nai64Patches/commit/c3bd264e6eb9f6d945ad2a78091cba6744981982))\n* add hide app ops patch ([a25ffcd](https://github.com/Nai64/Nai64Patches/commit/a25ffcda82f94018f7c4d9e06afcdbdf767b877f))\n* add hide app tasks patch ([e23386a](https://github.com/Nai64/Nai64Patches/commit/e23386aebf1a4bb2968834d08af53f292f4602fc))\n* add hide cell location patch ([d6a2e3e](https://github.com/Nai64/Nai64Patches/commit/d6a2e3ed8cf5e5b11042ef985ec088da13da29c9))\n* add hide current location patch ([cf4bb54](https://github.com/Nai64/Nai64Patches/commit/cf4bb545cb3a8aedce148b5a5ce7cffe0b511305))\n* add hide input methods patch ([3ddbee5](https://github.com/Nai64/Nai64Patches/commit/3ddbee55e7cf39bf7860e9700b3a242eb5ad5683))\n* add hide neighboring cells patch ([aa66cd0](https://github.com/Nai64/Nai64Patches/commit/aa66cd09aa491c85dd381d72f8f9666c4f129379))\n* add hide query intents patch ([b26b3a1](https://github.com/Nai64/Nai64Patches/commit/b26b3a1b025c685d49e8002dc2a1c3ae9d5de3dd))\n* add hide running processes patch ([96dab09](https://github.com/Nai64/Nai64Patches/commit/96dab09bb92f33fabc57183dbc851ca27555ba88))\n* add hide running services patch ([260f6af](https://github.com/Nai64/Nai64Patches/commit/260f6af519a07bfc8bb547085ab15597801107e5))\n* add hide usage events patch ([33ad738](https://github.com/Nai64/Nai64Patches/commit/33ad738d24ce1ff1445fad775650ec8bd900d8ca))\n* add unlimited currencies patch ([30ed870](https://github.com/Nai64/Nai64Patches/commit/30ed8705556db24baa9d715ccbcbda5123903af1))\n* make recommended patches default enabled ([23185a4](https://github.com/Nai64/Nai64Patches/commit/23185a4485e9b103f9753c4ac2a481665d5eafbc))\n\n## [1.34.1](https://github.com/Nai64/Nai64Patches/compare/1.34.0...1.34.1) (2026-08-28)\n\n### Bug Fixes\n\n* fixed the issue when custom startup dialog crashed and showed black screen ([e6447e4](https://github.com/Nai64/Nai64Patches/commit/e6447e4b0dc8143d55b83d82764c3886a9d204fc))\n* fixed the issue when disable logcat logging patch didnt handle high registers ([b297e2d](https://github.com/Nai64/Nai64Patches/commit/b297e2dc0405622995bf8b5ec8875f36618888b9))\n* fixed the issue when disable telemetry patch crashed on some apps ([bf1f73b](https://github.com/Nai64/Nai64Patches/commit/bf1f73be5c6e4ef1191c997215ce2cac65256d65))\n* fixed the issue when enable unrestricted background work patch didnt work on some apps ([d17c8d4](https://github.com/Nai64/Nai64Patches/commit/d17c8d40fbfcc882f91450e2f18c60de16fea57e))\n* fixed the issue when strip buildconfig debug patch didnt work ([ddf79f5](https://github.com/Nai64/Nai64Patches/commit/ddf79f55ed6f6ff533d0aa25c58cccd40bd5a839))\n\n## [1.34.0](https://github.com/Nai64/Nai64Patches/compare/1.33.0...1.34.0) (2026-08-28)\n\n### Bug Fixes\n\n* update ads free rewards version dropdown ([375653d](https://github.com/Nai64/Nai64Patches/commit/375653d80181dc8b5fbf72a3ee66df20cb906a41))\n\n### New Features\n\n* add disable autofill patch ([c3e6e65](https://github.com/Nai64/Nai64Patches/commit/c3e6e6554893731452fb6515afb8aec441660cf3))\n* add Disable Edge-To-Edge Enforcement patch ([24f9a87](https://github.com/Nai64/Nai64Patches/commit/24f9a87fd3f70e75cf71329d3a3338801df42f89))\n* add disable haptic on scroll patch ([cd7f7f1](https://github.com/Nai64/Nai64Patches/commit/cd7f7f1fad8435c2726b44f575dc23260587b508))\n* add Disable Logcat Logging patch ([3c443c8](https://github.com/Nai64/Nai64Patches/commit/3c443c8c82a6c283435928437399c2b52a4b219c))\n* add Enable Unrestricted Background Work patch ([94003ef](https://github.com/Nai64/Nai64Patches/commit/94003ef402cdd5e89c31ea4db803bc1ef0e522fa))\n* add enable unrestricted clipboard access patch ([8ca0f97](https://github.com/Nai64/Nai64Patches/commit/8ca0f9734b19c3e209a9448c450a458ead028bdc))\n* add fake animation scales patch ([b70260d](https://github.com/Nai64/Nai64Patches/commit/b70260d881415803ed15b758c11ca74c2046002b))\n* add fake pointer location patch ([1a60030](https://github.com/Nai64/Nai64Patches/commit/1a60030e34f3477adde17420653b3b2bd55865b0))\n* add fake show touches patch ([91a412c](https://github.com/Nai64/Nai64Patches/commit/91a412ccf4725c4c7dad5024bb63e1f3e38947c4))\n* add fake sound effects enabled patch ([c2992a2](https://github.com/Nai64/Nai64Patches/commit/c2992a2057a7b222a112bf6f44e8c38f2f4e109c))\n* add force battery health good patch ([5c4ddf4](https://github.com/Nai64/Nai64Patches/commit/5c4ddf4e41ad60b11ab73db823b44e3accc9e243))\n* add Force Ignore Audio Focus patch ([d96ccf2](https://github.com/Nai64/Nai64Patches/commit/d96ccf2ae9046be906948835d83326f0aca1f9d9))\n* add hide stylus handwriting patch ([7af5e15](https://github.com/Nai64/Nai64Patches/commit/7af5e15a03308d9a41db1b022247fec43cbd4cb7))\n* add Strip BuildConfig DEBUG patch ([2e81140](https://github.com/Nai64/Nai64Patches/commit/2e8114094c5fda22f77f526a0c42b9a1dacbdb53))\n* add Strip Exif Location patch ([52c2c34](https://github.com/Nai64/Nai64Patches/commit/52c2c346ed1760de10a01ebb165a1b8c042a4122))\n* add strip package verifier patch ([ba3d3fa](https://github.com/Nai64/Nai64Patches/commit/ba3d3fa9a5b244dc91c9cba42b378f36479ca53e))\n* expand ads free rewards versions ([c90333b](https://github.com/Nai64/Nai64Patches/commit/c90333b793c7576477f2925f14d67b87053ebdef))\n* improve Force Resizable Activity patch ([ed3976b](https://github.com/Nai64/Nai64Patches/commit/ed3976bd083d2be7273caa8a6a6b99732807b626))\n* pkjhgjfdjfghsldkfjghlskdjfhgksdfg ([f714acd](https://github.com/Nai64/Nai64Patches/commit/f714acdcc9b08c6f02a244ca1d2acf8b24180d28))\n\n## [1.33.0](https://github.com/Nai64/Nai64Patches/compare/1.32.0...1.33.0) (2026-08-28)\n\n### New Features\n\n* add icon effects to Custom App Icon patch ([4babf1a](https://github.com/Nai64/Nai64Patches/commit/4babf1abfbd9dccfb7229bc2a628e78a85b9ee6b))\n* add Unlock Notification Channels patch ([58e18f2](https://github.com/Nai64/Nai64Patches/commit/58e18f23689102de3e2d4e3273bb4f7f6fd3f863)), closes [#45](https://github.com/Nai64/Nai64Patches/issues/45)\n* improve AMOLED Theme patch ([20ceecf](https://github.com/Nai64/Nai64Patches/commit/20ceecfe9e64dd47a9a08d06565aad19eefeebde))\n\n## [1.32.0](https://github.com/Nai64/Nai64Patches/compare/1.31.2...1.32.0) (2026-08-27)\n\n### New Features\n\n* add Fake ADB Enabled patch ([3212ecc](https://github.com/Nai64/Nai64Patches/commit/3212ecc0a27c1a5d7afb0108d297e4b16b108f28))\n* add Fake Auto Rotate On patch ([0be784f](https://github.com/Nai64/Nai64Patches/commit/0be784f4ad655ec28640b15439b05e73abfb1f01))\n* add Fake Auto Time patch ([e7c870c](https://github.com/Nai64/Nai64Patches/commit/e7c870c4fd4574bee12871cbf39b53be638b160f))\n* add Fake Auto Time Zone patch ([a80fdd6](https://github.com/Nai64/Nai64Patches/commit/a80fdd6b49d85bd7f70a67b979f76abaf0d2c867))\n* add Fake Available Processors patch ([23f2e3b](https://github.com/Nai64/Nai64Patches/commit/23f2e3b4eeb4ecb87fbb32a6a8af547425d7f5f2))\n* add Fake Bluetooth Bonded Devices Empty patch ([d5e5e42](https://github.com/Nai64/Nai64Patches/commit/d5e5e4212577b56b97bc594e5f0a3166218ebd19))\n* add Fake Brightness Auto Mode patch ([7ec1879](https://github.com/Nai64/Nai64Patches/commit/7ec1879a3a0928e4b4385c66293f9cbbd36ab5c1))\n* add Fake Cell Info Empty patch ([05a46ae](https://github.com/Nai64/Nai64Patches/commit/05a46aeabbc2faa20c93ad14ec9368911347ab2b))\n* add Fake Device Idle Mode patch ([e7af18a](https://github.com/Nai64/Nai64Patches/commit/e7af18a242a6d42dcb473c1632f4f74bd60f8db5))\n* add Fake Doze Always On patch ([d034ed9](https://github.com/Nai64/Nai64Patches/commit/d034ed94425be28f53f91fb29fa72d26a694cf8e))\n* add Fake DTMF Tone Enabled patch ([67bda31](https://github.com/Nai64/Nai64Patches/commit/67bda3179103ceceecdf693a235bafa9954fbd98))\n* add Fake Font Scale patch ([ccd03fb](https://github.com/Nai64/Nai64Patches/commit/ccd03fb5d82c167da6b0bd325f52a55061a1ace9))\n* add Fake Location Accuracy patch ([d195573](https://github.com/Nai64/Nai64Patches/commit/d1955737e55a05af216333e9f9c4abd92b1d7deb))\n* add Fake Memory Class patch ([a79c3ef](https://github.com/Nai64/Nai64Patches/commit/a79c3ef18f2aaf82add938273bcdd3f4d67a853c))\n* add Fake Notification Policy Access patch ([339aa5f](https://github.com/Nai64/Nai64Patches/commit/339aa5f7e180656b0bc62461d34e061551a3d190))\n* add Fake Play Store Install Source patch ([d15b213](https://github.com/Nai64/Nai64Patches/commit/d15b213e5651a927082bb95d988650f6177d604b))\n* add Fake Screen Timeout patch ([9153e11](https://github.com/Nai64/Nai64Patches/commit/9153e1102a1c73fc092fb12eb84c767441f922e3))\n* add Fake Stay On While Plugged patch ([d953297](https://github.com/Nai64/Nai64Patches/commit/d9532971fe63e17fa5ed47b8378c026775e2e29e))\n* add Fake Storage Available patch ([1e811df](https://github.com/Nai64/Nai64Patches/commit/1e811df28d7917d97af501af96514648ef2f6744))\n* add Fake Vibrate When Ringing patch ([cc63d42](https://github.com/Nai64/Nai64Patches/commit/cc63d42b3f8bdfdac202ae5114943a719c29d9f3))\n* add Fake WiFi Scan Results Empty patch ([893a316](https://github.com/Nai64/Nai64Patches/commit/893a3166dea29aefabad735a8f9a5a0563d6bab9))\n* add Force Battery Temperature patch ([fde2586](https://github.com/Nai64/Nai64Patches/commit/fde25868b0b73f299c2c67fe1d773be7240921a2))\n* add Force Charging Status patch ([f7f1526](https://github.com/Nai64/Nai64Patches/commit/f7f15264a1778f48e48ee178553c8e73881255e1))\n* add Spoof Network Operator Name patch ([cd4b88c](https://github.com/Nai64/Nai64Patches/commit/cd4b88cab346b2cab979b2dc4eaa616617ab640f))\n* make older spoof patches customizable ([76ef72f](https://github.com/Nai64/Nai64Patches/commit/76ef72f04fde22e11776074c030e75a21848a705))\n\n## [1.31.2](https://github.com/Nai64/Nai64Patches/compare/1.31.1...1.31.2) (2026-08-27)\n\n### Bug Fixes\n\n* make Custom App Icon work on Android ([5c25ed3](https://github.com/Nai64/Nai64Patches/commit/5c25ed39d943669cad1951752e72380640ce48bf))\n\n## [1.31.1](https://github.com/Nai64/Nai64Patches/compare/1.31.0...1.31.1) (2026-08-27)\n\n### Bug Fixes\n\n* improve No Ads patch UX and tighten ad detection [skip ci] ([24ae8f1](https://github.com/Nai64/Nai64Patches/commit/24ae8f16dbe72e29af4ccff8b53a7a2c8fadc87c))\n\n## [1.31.0](https://github.com/Nai64/Nai64Patches/compare/1.30.0...1.31.0) (2026-08-27)\n\n### Bug Fixes\n\n* remove secrets check from job if for Discord notify ([54420c4](https://github.com/Nai64/Nai64Patches/commit/54420c441fa03c22ae5ee111d524e6a53e1886c4))\n\n### New Features\n\n* add Bypass Permission Check patch ([2bc41ac](https://github.com/Nai64/Nai64Patches/commit/2bc41ac56279a3c71f690b78a6de85266325ac18))\n* add Force Has System Feature patch ([14bfacb](https://github.com/Nai64/Nai64Patches/commit/14bfacbb6cb29b6c6fc33abb5a998ff8363b7851))\n* add Hide Accessibility Services patch ([8cd6008](https://github.com/Nai64/Nai64Patches/commit/8cd6008814c8cbc0a7f0e593972e6953cff8170c))\n* add Hide Clipboard Description patch ([6713924](https://github.com/Nai64/Nai64Patches/commit/6713924f96871e204b90cb7f3daef8788f5b9d42))\n* add Hide Default Sensor patch ([a99dfa7](https://github.com/Nai64/Nai64Patches/commit/a99dfa79f57e8183bb6f09ce2a121994552d4218))\n* add Hide Nfc Adapter patch ([6cb1027](https://github.com/Nai64/Nai64Patches/commit/6cb1027d641440dd1d6aee75dc771ca6c909bf8f))\n* add Hide Storage Volumes patch ([7284f9e](https://github.com/Nai64/Nai64Patches/commit/7284f9e34f7490bca69679e772675e1e709b6bbc))\n* add Hide Usage Stats patch ([75428eb](https://github.com/Nai64/Nai64Patches/commit/75428eb4a8e2d8629ac3eabce5121c400c3ed622))\n* add Spoof Bluetooth Profile State patch ([adf66de](https://github.com/Nai64/Nai64Patches/commit/adf66deb9f2987cb5bd55b5e3dfa09b673e535cf))\n* add Spoof UiMode Night State patch ([54c7ba3](https://github.com/Nai64/Nai64Patches/commit/54c7ba3897cb8958bf46a258e74f11582df14816))\n\n## [1.30.0](https://github.com/Nai64/Nai64Patches/compare/1.29.1...1.30.0) (2026-08-27)\n\n### New Features\n\n* add Spoof Fixed Location patch ([73fa7a0](https://github.com/Nai64/Nai64Patches/commit/73fa7a0773d607ad36a8fe11de9cb6d69c0ce55b))\n* enhance Spoof Time Zone to be selectable ([2c8b608](https://github.com/Nai64/Nai64Patches/commit/2c8b6089da10a9b88af3061c0569c79594473829))\n\n## [1.29.1](https://github.com/Nai64/Nai64Patches/compare/1.29.0...1.29.1) (2026-08-26)\n\n### Bug Fixes\n\n* cover Genre.isSpokenWord fallback in Unlock Playback Speed for Bandcamp ([f40cf22](https://github.com/Nai64/Nai64Patches/commit/f40cf227f3c65848104dd940bc9225221e603619))\n* expand Disable Bandcamp Tracker to cover stats pipeline for Bandcamp ([cf69d3b](https://github.com/Nai64/Nai64Patches/commit/cf69d3bd3a6df3da947504f515d21c735f358f18))\n* harden Show Search Result Scores patch for Bandcamp ([3636b28](https://github.com/Nai64/Nai64Patches/commit/3636b2837d3ef424af45d5a5d4a390141db854ca))\n\n## [1.29.0](https://github.com/Nai64/Nai64Patches/compare/1.28.0...1.29.0) (2026-08-26)\n\n### Bug Fixes\n\n* guard Spoof Developer Options against MinSdkVersionException during signing ([f4cb076](https://github.com/Nai64/Nai64Patches/commit/f4cb0768b5e81247c2c3af30a03083f8e079df3c))\n\n### New Features\n\n* add ANGLE graphics driver preference ([d166bc4](https://github.com/Nai64/Nai64Patches/commit/d166bc40cde8b55ec22bc5c08158f5f7800286cc))\n* add Change Package Name patch ([5564867](https://github.com/Nai64/Nai64Patches/commit/5564867774ca16240bf109dcd82beed22656906e))\n* add GmsCore support (MicroG) patch ([65cca26](https://github.com/Nai64/Nai64Patches/commit/65cca26bb7d42b39b172b11a62dbcfb12d1220d4))\n* add Huawei Ads Kit support ([f227219](https://github.com/Nai64/Nai64Patches/commit/f2272192c10d4369cdc6d120f91be2a762b86407))\n* add modern Android compatibility patches ([cec3ad1](https://github.com/Nai64/Nai64Patches/commit/cec3ad1dbe2f9902b4c6cb4f428193a6e3035cd6))\n* add new patches from PR [#47](https://github.com/Nai64/Nai64Patches/issues/47) (BypassForcedUpdates, GraphicsApiOverride, FrameRatePreference, DisableForcedOnlineChecks) and enhance Ads patches ([09fefa9](https://github.com/Nai64/Nai64Patches/commit/09fefa9c724b69a57b993d7bac2328eb8ed13b5c))\n* add Spoof App Signature patch ([ba86a3d](https://github.com/Nai64/Nai64Patches/commit/ba86a3dae57873552aa2b15b568477bac8ab29e4))\n* add storage permission compatibility patch ([29417ff](https://github.com/Nai64/Nai64Patches/commit/29417ffa255760dc8f977e7f7f6e225a7038232a))",
       "fullChangelogUrl": "https://github.com/Nai64/Nai64Patches/blob/main/CHANGELOG.md",
       "repoDescription": "A curated collection of Morphe patches that tune, unlock and declutter Android games. Skip ads, bypass license checks, hide root, force orientations and more, all from a single patcher.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/122532548?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=Nai64/Nai64Patches",
-      "patchCount": 340,
+      "patchCount": 341,
       "targetApps": [
         "com.bandcamp.android"
       ],
       "appUpdates": {},
-      "stars": 454,
-      "updatedAt": 1787875200000,
+      "stars": 457,
+      "updatedAt": 1787961600000,
       "firstSeen": 1783021319050,
       "appFirstSeen": {
         "com.bandcamp.android": 1787647391952
@@ -19855,7 +19915,7 @@
         "com.ddsx_ayla_android": 1787262235126,
         "com.crunchyroll.crunchyroid": 1783420111086
       },
-      "hotRank": 76
+      "hotRank": 75
     },
     {
       "source": "github",
@@ -19869,26 +19929,34 @@
           "default": true,
           "options": [],
           "compatiblePackagesKey": 488
+        },
+        {
+          "name": "Remove from Continue Watching",
+          "description": "Adds an option to remove titles from Continue Watching.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 488
         }
       ],
-      "changelog": "## 1.0.0 (2026-08-28)\n\n### ✨ New Features\n\n* add Crunchyroll Picture-in-Picture patch ([082e646](https://github.com/NullWaypoint/morphe-patches/commit/082e646539ee104dbd5b0095bb08eefb67276ea3))",
+      "changelog": "## [1.1.0-dev.1](https://github.com/NullWaypoint/morphe-patches/compare/v1.0.0...v1.1.0-dev.1) (2026-08-29)\n\n### ✨ New Features\n\n* add contextual Skip Intro and Skip Credits controls to PiP ([0162576](https://github.com/NullWaypoint/morphe-patches/commit/01625764a2588910aaf875d7c6903287391731f4))\n* add Remove from Continue Watching ([a7d15e5](https://github.com/NullWaypoint/morphe-patches/commit/a7d15e593aeb21a2945ace4ac3a16cb146ce5325))\n\n## 1.0.0 (2026-08-28)\n\n### ✨ New Features\n\n* add Crunchyroll Picture-in-Picture patch ([082e646](https://github.com/NullWaypoint/morphe-patches/commit/082e646539ee104dbd5b0095bb08eefb67276ea3))",
       "fullChangelogUrl": null,
       "repoDescription": "Custom Android patches for the Morphe patching framework.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/321500030?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=NullWaypoint/morphe-patches",
-      "patchCount": 1,
+      "patchCount": 2,
       "targetApps": [
         "com.crunchyroll.crunchyroid"
       ],
       "appUpdates": {},
       "stars": 2,
-      "updatedAt": 1787875200000,
+      "updatedAt": 1787961600000,
       "firstSeen": 1787934681636,
       "appFirstSeen": {
         "com.crunchyroll.crunchyroid": 1787934681636
       },
-      "hotRank": 33
+      "hotRank": 38
     },
     {
       "source": "github",
@@ -20418,7 +20486,7 @@
         "com.frontrow.vlog": 1778457600000,
         "com.roehl.habitkit": 1786121044505
       },
-      "hotRank": 14
+      "hotRank": 16
     },
     {
       "source": "github",
@@ -20451,7 +20519,7 @@
       "appFirstSeen": {
         "tv.trakt.trakt": 1774254496000
       },
-      "hotRank": 113
+      "hotRank": 112
     },
     {
       "source": "github",
@@ -20659,7 +20727,7 @@
       "appFirstSeen": {
         "com.microsoft.emmx": 1780738576635
       },
-      "hotRank": 41
+      "hotRank": 40
     },
     {
       "source": "github",
@@ -20755,7 +20823,7 @@
       "appFirstSeen": {
         "com.alibaba.aliexpresshd": 1782824605539
       },
-      "hotRank": 78
+      "hotRank": 77
     },
     {
       "source": "github",
@@ -20907,7 +20975,7 @@
         "io.funswitch.blocker": 1787331231206,
         "droom.sleepIfUCan": 1769904000000
       },
-      "hotRank": 36
+      "hotRank": 37
     },
     {
       "source": "github",
@@ -20940,7 +21008,7 @@
       "appFirstSeen": {
         "com.sony.songpal.mdr": 1787845534294
       },
-      "hotRank": 45
+      "hotRank": 48
     },
     {
       "source": "github",
@@ -21013,7 +21081,7 @@
       "appFirstSeen": {
         "com.nfo.me.android": 1784629087177
       },
-      "hotRank": 110
+      "hotRank": 109
     },
     {
       "source": "github",
@@ -21178,7 +21246,7 @@
       "appUpdates": {
         "com.lemon.lvoverseas": 1787961600000
       },
-      "stars": 11,
+      "stars": 12,
       "updatedAt": 1787961600000,
       "firstSeen": 1786949256911,
       "appFirstSeen": {
@@ -21187,7 +21255,7 @@
         "com.Meteosolutions.Meteo3b": 1786949256911,
         "de.komoot.android": 1787505654989
       },
-      "hotRank": 21
+      "hotRank": 15
     },
     {
       "source": "github",
@@ -21882,6 +21950,14 @@
           "compatiblePackagesKey": 536
         },
         {
+          "name": "Add activity export",
+          "description": "Adds an \"Export GPX\" item to the activity overflow menu, which saves the activity's GPS track as a GPX file in Downloads/Strava.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 560
+        },
+        {
           "name": "Add route export",
           "description": "Allows exporting and downloading Strava routes as GPX or TCX files directly from the app.",
           "default": true,
@@ -21898,13 +21974,13 @@
           "compatiblePackagesKey": 551
         }
       ],
-      "changelog": "## [1.3.0-dev.4](https://github.com/RookieEnough/De-Vanced/compare/v1.3.0-dev.3...v1.3.0-dev.4) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **Google Photos:** Improve OneGoogle avatar support with GmsCore ([#114](https://github.com/RookieEnough/De-Vanced/issues/114)) ([267c89f](https://github.com/RookieEnough/De-Vanced/commit/267c89fb72334ab2b2e077b60ca3a770a8389461))\n\n## [1.3.0-dev.3](https://github.com/RookieEnough/De-Vanced/compare/v1.3.0-dev.2...v1.3.0-dev.3) (2026-08-26)\n\n### 🚀 Updated App Support\n\n* **Strava:** Add support for `477.14` ([#113](https://github.com/RookieEnough/De-Vanced/issues/113)) ([4dd9025](https://github.com/RookieEnough/De-Vanced/commit/4dd902544736a03a3ced48c48a74f2ed7026bea2))\n\n## [1.3.0-dev.2](https://github.com/RookieEnough/De-Vanced/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-08-26)\n\n### ✨ New Features\n\n* **Strava:** Add route export patch for GPX and TCX files ([#112](https://github.com/RookieEnough/De-Vanced/issues/112)) ([fbe54e5](https://github.com/RookieEnough/De-Vanced/commit/fbe54e5b8967eab18fd19b7f4bb7b04ceb446053))\n\n## [1.3.0-dev.1](https://github.com/RookieEnough/De-Vanced/compare/v1.2.3-dev.1...v1.3.0-dev.1) (2026-08-23)\n\n### ✨ New Features\n\n* **Pixiv:** Add `Remove popular search time limit` patch ([#108](https://github.com/RookieEnough/De-Vanced/issues/108)) ([ddd7d78](https://github.com/RookieEnough/De-Vanced/commit/ddd7d78210cfe240fd1fc09735041b0930d8df12))\n\n## [1.2.3-dev.1](https://github.com/RookieEnough/De-Vanced/compare/v1.2.2...v1.2.3-dev.1) (2026-08-23)\n\n### 🐛 Bug Fixes\n\n* **Google Photos:** Clone app-owned permissions ([5e13642](https://github.com/RookieEnough/De-Vanced/commit/5e136425b7c1923d8180d22c04518adb479f4558))\n\n## [1.2.2](https://github.com/RookieEnough/De-Vanced/compare/v1.2.1...v1.2.2) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **Strava:** Add app recommendation of the latest fully working app version ([8e2074e](https://github.com/RookieEnough/De-Vanced/commit/8e2074e89c917e9e4c64d103954d2035ca8b5a7b))\n\n## [1.2.1](https://github.com/RookieEnough/De-Vanced/compare/v1.2.0...v1.2.1) (2026-08-12)\n\n### 🐛 Bug Fixes\n\n* **Messenger:** Change recommended app version to `573.0.0.44.88` ([b58dc31](https://github.com/RookieEnough/De-Vanced/commit/b58dc314f17c1f826fc198486fe3fbeb249e8daf))\n\n## [1.2.1-dev.1](https://github.com/RookieEnough/De-Vanced/compare/v1.2.0...v1.2.1-dev.1) (2026-08-12)\n\n### 🐛 Bug Fixes\n\n* **Messenger:** Change recommended app version to `573.0.0.44.88` ([b58dc31](https://github.com/RookieEnough/De-Vanced/commit/b58dc314f17c1f826fc198486fe3fbeb249e8daf))\n\n## [1.2.0](https://github.com/RookieEnough/De-Vanced/compare/v1.1.1...v1.2.0) (2026-08-12)\n\n### ✨ New Features\n\n* remove outdated apps maintained in other repos ([#94](https://github.com/RookieEnough/De-Vanced/issues/94)) ([e554c2b](https://github.com/RookieEnough/De-Vanced/commit/e554c2b5daeeaccd77279b777a6e5d32388bfdc6))\n\n## [1.1.1](https://github.com/RookieEnough/De-Vanced/compare/v1.1.0...v1.1.1) (2026-08-12)\n\n### 🐛 Bug Fixes\n\n* **Facebook:** Fix version to last known version that patches and works correctly ([133a0e7](https://github.com/RookieEnough/De-Vanced/commit/133a0e77985d2b18b387e297e6af60c5c6d59671))\n* **Messenger:** Fix version to last known version that patches and works correctly ([4f5edef](https://github.com/RookieEnough/De-Vanced/commit/4f5edef137a687f8c504f6edcd23584cdc184cde))\n\n## [1.1.1-dev.1](https://github.com/RookieEnough/De-Vanced/compare/v1.1.0...v1.1.1-dev.1) (2026-08-11)\n\n### 🐛 Bug Fixes\n\n* **Facebook:** Fix version to last known version that patches and works correctly ([133a0e7](https://github.com/RookieEnough/De-Vanced/commit/133a0e77985d2b18b387e297e6af60c5c6d59671))\n* **Messenger:** Fix version to last known version that patches and works correctly ([4f5edef](https://github.com/RookieEnough/De-Vanced/commit/4f5edef137a687f8c504f6edcd23584cdc184cde))\n\n# [1.1.0](https://github.com/RookieEnough/De-Vanced/compare/v1.0.4...v1.1.0) (2026-08-05)\n\n\n### Bug Fixes\n\n* constrain versionCode range and tighten AiFabComponent fingerprint ([c88625b](https://github.com/RookieEnough/De-Vanced/commit/c88625bdfe6e71b9ab5b764d9d139793f363115e))\n* fix inbox ads patch errors in newer versions ([de0a110](https://github.com/RookieEnough/De-Vanced/commit/de0a110ac8ce36423144c841a0f1ec6e05383356))\n* **google-photos:** restore account persistence patch on 7.87 ([f7cb7f0](https://github.com/RookieEnough/De-Vanced/commit/f7cb7f061d4b86f4e21f1a30064863a35e0258ee))\n* remove trailing comma in resourcePatch ([c4d673b](https://github.com/RookieEnough/De-Vanced/commit/c4d673bfe0077fe285dd6e0a0e7c6b0ad1466bd2))\n\n\n### Features\n\n* add patch to open links externally always ([397c720](https://github.com/RookieEnough/De-Vanced/commit/397c7202069ebcb6a11c4841bc10c513d78b3fbc))\n* add patch to spoof app version ([abe0dde](https://github.com/RookieEnough/De-Vanced/commit/abe0dde474db0df9c56450ed4d1285d1e806d8ea))\n* Amazon Music - add Rename shared permissions patch ([f273b5a](https://github.com/RookieEnough/De-Vanced/commit/f273b5aa866a786312bcc91c8596e2ee64970552))\n* extend hide facebook button to hide facebook navigation from multiple places ([c50ad2b](https://github.com/RookieEnough/De-Vanced/commit/c50ad2b9efa9215bed1eb37a44d1541d31a5618d))\n* remove meta ai elements from few more pages ([b2ebbe4](https://github.com/RookieEnough/De-Vanced/commit/b2ebbe4127c9d7fea1f50b91e88d23b7f4877c80))\n\n## [1.0.4](https://github.com/RookieEnough/De-Vanced/compare/v1.0.3...v1.0.4) (2026-05-13)\n\n\n### Bug Fixes\n\n* avoid forcing Photos frictionless login ([9cb1e11](https://github.com/RookieEnough/De-Vanced/commit/9cb1e117551bf759c11163417cef160b3f9bac37))\n* release v1.0.4 (Photos account persistence + TikTok defaults) ([b04a57e](https://github.com/RookieEnough/De-Vanced/commit/b04a57e97d82d8e236e0979ff1069c540380f353))\n* stabilize Google Photos GmsCore support ([b3ef0b6](https://github.com/RookieEnough/De-Vanced/commit/b3ef0b672fd411d468fc80ca827056266352ba14))\n\n\n\n\n\n### Bug Fixes\n\n* **Google Photos:** fix “Select account” prompt on every restart under MicroG by preventing internal account-selection validation from clearing the selected account (tested on **7.66.00**).\n* **Google Recorder:** improve `Remove device restrictions` fingerprint reliability with `custom` matching plus a bytecode-content fallback when class names move.\n\n### TikTok\n\n* Enable **all** TikTok patches by default on **43.6.2** and **43.8.3**.\n* Keep **Settings** + **Enable Open Debug** as **43.6.2-only** (not compatible with 43.8.3).\n\n## [1.0.4](https://github.com/RookieEnough/De-ReVanced/compare/v1.0.3...v1.0.4) (2026-04-14)\n\n### Bug Fixes\n\n* **Google Photos:** fix “Select account” prompt on every restart under MicroG by preventing internal account-selection validation from clearing the selected account (tested on **7.66.00**).\n* **Google Recorder:** improve `Remove device restrictions` fingerprint reliability with `custom` matching plus a bytecode-content fallback when class names move.\n\n### TikTok\n\n* Enable **all** TikTok patches by default on **43.6.2** and **43.8.3**.\n* Keep **Settings** + **Enable Open Debug** as **43.6.2-only** (not compatible with 43.8.3).\n\n## [1.0.3](https://github.com/RookieEnough/De-ReVanced/compare/v1.0.2...v1.0.3) (2026-04-02)\n\n\n### Bug Fixes\n\n* release v1.0.3 with Google Recorder fix ([c03c701](https://github.com/RookieEnough/De-ReVanced/commit/c03c701a6ba658afb4f4f2093faca9e6bc91e49c))\n\n\n\n\n\n### Bug Fixes\n\n* **Google Recorder — Remove device restrictions:** fingerprint and bytecode hook updated for current app builds — match `RecorderApplication.onCreate` without a fixed feature string, detect any `com.google.android.feature…PIXEL…` `const-string`, and apply the restriction bypass (fixes fingerprint mismatch on newer Recorder versions).\n\n### Maintenance\n\n* **Attribution:** add a standard `Forked from` source header across Kotlin sources that were still missing it.",
+      "changelog": "## [1.3.0-dev.5](https://github.com/RookieEnough/De-Vanced/compare/v1.3.0-dev.4...v1.3.0-dev.5) (2026-08-29)\n\n### ✨ New Features\n\n* **Strava:** Add `Add activity export` patch ([#117](https://github.com/RookieEnough/De-Vanced/issues/117)) ([ba5d516](https://github.com/RookieEnough/De-Vanced/commit/ba5d516e7c976c3ed6e676c81c950141c2f4d3aa))\n\n## [1.3.0-dev.4](https://github.com/RookieEnough/De-Vanced/compare/v1.3.0-dev.3...v1.3.0-dev.4) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **Google Photos:** Improve OneGoogle avatar support with GmsCore ([#114](https://github.com/RookieEnough/De-Vanced/issues/114)) ([267c89f](https://github.com/RookieEnough/De-Vanced/commit/267c89fb72334ab2b2e077b60ca3a770a8389461))\n\n## [1.3.0-dev.3](https://github.com/RookieEnough/De-Vanced/compare/v1.3.0-dev.2...v1.3.0-dev.3) (2026-08-26)\n\n### 🚀 Updated App Support\n\n* **Strava:** Add support for `477.14` ([#113](https://github.com/RookieEnough/De-Vanced/issues/113)) ([4dd9025](https://github.com/RookieEnough/De-Vanced/commit/4dd902544736a03a3ced48c48a74f2ed7026bea2))\n\n## [1.3.0-dev.2](https://github.com/RookieEnough/De-Vanced/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-08-26)\n\n### ✨ New Features\n\n* **Strava:** Add route export patch for GPX and TCX files ([#112](https://github.com/RookieEnough/De-Vanced/issues/112)) ([fbe54e5](https://github.com/RookieEnough/De-Vanced/commit/fbe54e5b8967eab18fd19b7f4bb7b04ceb446053))\n\n## [1.3.0-dev.1](https://github.com/RookieEnough/De-Vanced/compare/v1.2.3-dev.1...v1.3.0-dev.1) (2026-08-23)\n\n### ✨ New Features\n\n* **Pixiv:** Add `Remove popular search time limit` patch ([#108](https://github.com/RookieEnough/De-Vanced/issues/108)) ([ddd7d78](https://github.com/RookieEnough/De-Vanced/commit/ddd7d78210cfe240fd1fc09735041b0930d8df12))\n\n## [1.2.3-dev.1](https://github.com/RookieEnough/De-Vanced/compare/v1.2.2...v1.2.3-dev.1) (2026-08-23)\n\n### 🐛 Bug Fixes\n\n* **Google Photos:** Clone app-owned permissions ([5e13642](https://github.com/RookieEnough/De-Vanced/commit/5e136425b7c1923d8180d22c04518adb479f4558))\n\n## [1.2.2](https://github.com/RookieEnough/De-Vanced/compare/v1.2.1...v1.2.2) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **Strava:** Add app recommendation of the latest fully working app version ([8e2074e](https://github.com/RookieEnough/De-Vanced/commit/8e2074e89c917e9e4c64d103954d2035ca8b5a7b))\n\n## [1.2.1](https://github.com/RookieEnough/De-Vanced/compare/v1.2.0...v1.2.1) (2026-08-12)\n\n### 🐛 Bug Fixes\n\n* **Messenger:** Change recommended app version to `573.0.0.44.88` ([b58dc31](https://github.com/RookieEnough/De-Vanced/commit/b58dc314f17c1f826fc198486fe3fbeb249e8daf))\n\n## [1.2.1-dev.1](https://github.com/RookieEnough/De-Vanced/compare/v1.2.0...v1.2.1-dev.1) (2026-08-12)\n\n### 🐛 Bug Fixes\n\n* **Messenger:** Change recommended app version to `573.0.0.44.88` ([b58dc31](https://github.com/RookieEnough/De-Vanced/commit/b58dc314f17c1f826fc198486fe3fbeb249e8daf))\n\n## [1.2.0](https://github.com/RookieEnough/De-Vanced/compare/v1.1.1...v1.2.0) (2026-08-12)\n\n### ✨ New Features\n\n* remove outdated apps maintained in other repos ([#94](https://github.com/RookieEnough/De-Vanced/issues/94)) ([e554c2b](https://github.com/RookieEnough/De-Vanced/commit/e554c2b5daeeaccd77279b777a6e5d32388bfdc6))\n\n## [1.1.1](https://github.com/RookieEnough/De-Vanced/compare/v1.1.0...v1.1.1) (2026-08-12)\n\n### 🐛 Bug Fixes\n\n* **Facebook:** Fix version to last known version that patches and works correctly ([133a0e7](https://github.com/RookieEnough/De-Vanced/commit/133a0e77985d2b18b387e297e6af60c5c6d59671))\n* **Messenger:** Fix version to last known version that patches and works correctly ([4f5edef](https://github.com/RookieEnough/De-Vanced/commit/4f5edef137a687f8c504f6edcd23584cdc184cde))\n\n## [1.1.1-dev.1](https://github.com/RookieEnough/De-Vanced/compare/v1.1.0...v1.1.1-dev.1) (2026-08-11)\n\n### 🐛 Bug Fixes\n\n* **Facebook:** Fix version to last known version that patches and works correctly ([133a0e7](https://github.com/RookieEnough/De-Vanced/commit/133a0e77985d2b18b387e297e6af60c5c6d59671))\n* **Messenger:** Fix version to last known version that patches and works correctly ([4f5edef](https://github.com/RookieEnough/De-Vanced/commit/4f5edef137a687f8c504f6edcd23584cdc184cde))\n\n# [1.1.0](https://github.com/RookieEnough/De-Vanced/compare/v1.0.4...v1.1.0) (2026-08-05)\n\n\n### Bug Fixes\n\n* constrain versionCode range and tighten AiFabComponent fingerprint ([c88625b](https://github.com/RookieEnough/De-Vanced/commit/c88625bdfe6e71b9ab5b764d9d139793f363115e))\n* fix inbox ads patch errors in newer versions ([de0a110](https://github.com/RookieEnough/De-Vanced/commit/de0a110ac8ce36423144c841a0f1ec6e05383356))\n* **google-photos:** restore account persistence patch on 7.87 ([f7cb7f0](https://github.com/RookieEnough/De-Vanced/commit/f7cb7f061d4b86f4e21f1a30064863a35e0258ee))\n* remove trailing comma in resourcePatch ([c4d673b](https://github.com/RookieEnough/De-Vanced/commit/c4d673bfe0077fe285dd6e0a0e7c6b0ad1466bd2))\n\n\n### Features\n\n* add patch to open links externally always ([397c720](https://github.com/RookieEnough/De-Vanced/commit/397c7202069ebcb6a11c4841bc10c513d78b3fbc))\n* add patch to spoof app version ([abe0dde](https://github.com/RookieEnough/De-Vanced/commit/abe0dde474db0df9c56450ed4d1285d1e806d8ea))\n* Amazon Music - add Rename shared permissions patch ([f273b5a](https://github.com/RookieEnough/De-Vanced/commit/f273b5aa866a786312bcc91c8596e2ee64970552))\n* extend hide facebook button to hide facebook navigation from multiple places ([c50ad2b](https://github.com/RookieEnough/De-Vanced/commit/c50ad2b9efa9215bed1eb37a44d1541d31a5618d))\n* remove meta ai elements from few more pages ([b2ebbe4](https://github.com/RookieEnough/De-Vanced/commit/b2ebbe4127c9d7fea1f50b91e88d23b7f4877c80))\n\n## [1.0.4](https://github.com/RookieEnough/De-Vanced/compare/v1.0.3...v1.0.4) (2026-05-13)\n\n\n### Bug Fixes\n\n* avoid forcing Photos frictionless login ([9cb1e11](https://github.com/RookieEnough/De-Vanced/commit/9cb1e117551bf759c11163417cef160b3f9bac37))\n* release v1.0.4 (Photos account persistence + TikTok defaults) ([b04a57e](https://github.com/RookieEnough/De-Vanced/commit/b04a57e97d82d8e236e0979ff1069c540380f353))\n* stabilize Google Photos GmsCore support ([b3ef0b6](https://github.com/RookieEnough/De-Vanced/commit/b3ef0b672fd411d468fc80ca827056266352ba14))\n\n\n\n\n\n### Bug Fixes\n\n* **Google Photos:** fix “Select account” prompt on every restart under MicroG by preventing internal account-selection validation from clearing the selected account (tested on **7.66.00**).\n* **Google Recorder:** improve `Remove device restrictions` fingerprint reliability with `custom` matching plus a bytecode-content fallback when class names move.\n\n### TikTok\n\n* Enable **all** TikTok patches by default on **43.6.2** and **43.8.3**.\n* Keep **Settings** + **Enable Open Debug** as **43.6.2-only** (not compatible with 43.8.3).\n\n## [1.0.4](https://github.com/RookieEnough/De-ReVanced/compare/v1.0.3...v1.0.4) (2026-04-14)\n\n### Bug Fixes\n\n* **Google Photos:** fix “Select account” prompt on every restart under MicroG by preventing internal account-selection validation from clearing the selected account (tested on **7.66.00**).\n* **Google Recorder:** improve `Remove device restrictions` fingerprint reliability with `custom` matching plus a bytecode-content fallback when class names move.\n\n### TikTok\n\n* Enable **all** TikTok patches by default on **43.6.2** and **43.8.3**.\n* Keep **Settings** + **Enable Open Debug** as **43.6.2-only** (not compatible with 43.8.3).",
       "fullChangelogUrl": "https://github.com/RookieEnough/De-Vanced/blob/dev/CHANGELOG.md",
       "repoDescription": "ReVanced patches, migrated to Morphe.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/128968367?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=RookieEnough/De-Vanced",
-      "patchCount": 60,
+      "patchCount": 61,
       "targetApps": [
         "com.strava",
         "com.amazon.mShop.android.shopping",
@@ -21931,7 +22007,7 @@
         "ginlemon.iconpackstudio"
       ],
       "appUpdates": {
-        "com.strava": 1787702400000,
+        "com.strava": 1787961600000,
         "com.facebook.orca": 1786492800000,
         "com.facebook.katana": 1786492800000,
         "com.google.android.apps.photos": 1787788800000,
@@ -21940,8 +22016,8 @@
         "com.zhiliaoapp.musically": 1775088000000,
         "jp.pxv.android": 1787443200000
       },
-      "stars": 1182,
-      "updatedAt": 1787788800000,
+      "stars": 1183,
+      "updatedAt": 1787961600000,
       "firstSeen": 1772385009000,
       "appFirstSeen": {
         "com.strava": 1772385009000,
@@ -22001,7 +22077,7 @@
       "appFirstSeen": {
         "com.battlelancer.seriesguide": 1785869077043
       },
-      "hotRank": 65
+      "hotRank": 64
     },
     {
       "source": "github",
@@ -25487,7 +25563,7 @@
         "com.facebook.orca": 1786924800000,
         "com.google.android.apps.photos": 1787875200000
       },
-      "stars": 521,
+      "stars": 524,
       "updatedAt": 1787875200000,
       "firstSeen": 1780395687718,
       "appFirstSeen": {
@@ -26942,11 +27018,11 @@
       "patchCount": 27,
       "targetApps": [],
       "appUpdates": {},
-      "stars": 22,
+      "stars": 23,
       "updatedAt": 1784246400000,
       "firstSeen": 1784191866679,
       "appFirstSeen": {},
-      "hotRank": 49
+      "hotRank": 42
     },
     {
       "source": "github",
@@ -26993,7 +27069,7 @@
           "compatiblePackagesKey": 798
         }
       ],
-      "changelog": "## [1.2.0-dev.22](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.21...v1.2.0-dev.22) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** cover hot start stale refresh ([8937947](https://github.com/SapitoSucio/FroggoMorphePatches/commit/8937947ab7f23d05b99dbb8b7162b6e95de81934))\n\n## [1.2.0-dev.21](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.20...v1.2.0-dev.21) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** encode refresh register moves ([1ada422](https://github.com/SapitoSucio/FroggoMorphePatches/commit/1ada422e958ae8a2c3c1643f120d77615cfc9499))\n\n## [1.2.0-dev.20](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.19...v1.2.0-dev.20) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** avoid empty refresh labels ([744f3f2](https://github.com/SapitoSucio/FroggoMorphePatches/commit/744f3f2bc667b718cba844b27da61da4b1c70e82))\n\n## [1.2.0-dev.19](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.18...v1.2.0-dev.19) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** isolate automatic refresh callsites ([0542975](https://github.com/SapitoSucio/FroggoMorphePatches/commit/0542975284616c11087eacc0e5bb9f226cf79c38))\n\n## [1.2.0-dev.18](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.17...v1.2.0-dev.18) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** mark refresh patch unstable ([495247c](https://github.com/SapitoSucio/FroggoMorphePatches/commit/495247ce11cb1e933d9235fba1d0c2344a8b9ffc))\n\n## [1.2.0-dev.17](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.16...v1.2.0-dev.17) (2026-08-29)\n\n### ✨ New Features\n\n* **facebook:** split feed and reels ad patches ([203df53](https://github.com/SapitoSucio/FroggoMorphePatches/commit/203df5386a180c4bc66270f3d8c9488cdb898f72))\n\n## [1.2.0-dev.16](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.15...v1.2.0-dev.16) (2026-08-29)\n\n### ✨ New Features\n\n* **facebook:** trace story notify internals ([d296b61](https://github.com/SapitoSucio/FroggoMorphePatches/commit/d296b611efcb1d2619935fd8d83e8eff7eb7a468))\n\n## [1.2.0-dev.15](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.14...v1.2.0-dev.15) (2026-08-28)\n\n### ✨ New Features\n\n* **facebook:** trace story notify exceptions ([980c5af](https://github.com/SapitoSucio/FroggoMorphePatches/commit/980c5af4e2cb9ecafe83445351457c925eb0929b))\n\n## [1.2.0-dev.14](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.13...v1.2.0-dev.14) (2026-08-28)\n\n### ✨ New Features\n\n* **facebook:** trace story subscriber handoff ([5b898bf](https://github.com/SapitoSucio/FroggoMorphePatches/commit/5b898bf23f03348b643e2960b59f4adb64ad16e4))\n\n## [1.2.0-dev.13](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.12...v1.2.0-dev.13) (2026-08-28)\n\n### ✨ New Features\n\n* **facebook:** trace story publish fallthrough ([5ebb5d7](https://github.com/SapitoSucio/FroggoMorphePatches/commit/5ebb5d7bc8a53ae676f430d63ab68e2c1e8da4bd))\n\n## [1.2.0-dev.12](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.11...v1.2.0-dev.12) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **facebook:** filter story ads inside x68 providers ([11b23cb](https://github.com/SapitoSucio/FroggoMorphePatches/commit/11b23cbbc94b807cdf8568c2afcb36e891fb7f4f))\n\n## [1.2.0-dev.11](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.10...v1.2.0-dev.11) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **facebook:** define diagnostic helper parameters ([9187062](https://github.com/SapitoSucio/FroggoMorphePatches/commit/918706248a2499e9d6394a77dd58597989191fe1))\n\n### ✨ New Features\n\n* **facebook:** trace story snapshot equality ([52288e4](https://github.com/SapitoSucio/FroggoMorphePatches/commit/52288e4cd2017c9691705da03cfc9a777cecc98f))\n\n## [1.2.0-dev.10](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.9...v1.2.0-dev.10) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **facebook:** expose story diagnostic helpers ([b3527c0](https://github.com/SapitoSucio/FroggoMorphePatches/commit/b3527c00e5e90293af3915d8e7f6fd8c487a31be))\n\n## [1.2.0-dev.9](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.8...v1.2.0-dev.9) (2026-08-28)\n\n### ✨ New Features\n\n* **facebook:** trace story subscriber race ([dbaf49b](https://github.com/SapitoSucio/FroggoMorphePatches/commit/dbaf49bcd36cb51cfd80b0dfece17d679cea9cdf))\n\n## [1.2.0-dev.8](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.7...v1.2.0-dev.8) (2026-08-28)\n\n### ✨ New Features\n\n* **facebook:** add story publication diagnostics ([132fd61](https://github.com/SapitoSucio/FroggoMorphePatches/commit/132fd61fc961d547590d7c24b75e8686057e03be))",
+      "changelog": "## [1.2.0-dev.27](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.26...v1.2.0-dev.27) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** use encodable refresh guard registers ([9597008](https://github.com/SapitoSucio/FroggoMorphePatches/commit/959700823f739670716476fddad7c9ff9bcd7a4c))\n\n## [1.2.0-dev.26](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.25...v1.2.0-dev.26) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** block automatic CSR response refresh ([95f623e](https://github.com/SapitoSucio/FroggoMorphePatches/commit/95f623e22a1b4a190e9e9ba9b3c05f613e079b42))\n\n## [1.2.0-dev.25](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.24...v1.2.0-dev.25) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** block stale tab data refresh ([a40d9cc](https://github.com/SapitoSucio/FroggoMorphePatches/commit/a40d9ccf68ecb740d5f17aba44164d40eb43fc7f))\n\n## [1.2.0-dev.24](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.23...v1.2.0-dev.24) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** cancel feed background prefetch ([9ef38d1](https://github.com/SapitoSucio/FroggoMorphePatches/commit/9ef38d1a441f016efa542763e7b793dd39ffabbf))\n\n## [1.2.0-dev.23](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.22...v1.2.0-dev.23) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** suppress main feed warm refresh ([7fc47af](https://github.com/SapitoSucio/FroggoMorphePatches/commit/7fc47af5bdc220d481f798f6a0cee6ceb7674cdb))\n\n## [1.2.0-dev.22](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.21...v1.2.0-dev.22) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** cover hot start stale refresh ([8937947](https://github.com/SapitoSucio/FroggoMorphePatches/commit/8937947ab7f23d05b99dbb8b7162b6e95de81934))\n\n## [1.2.0-dev.21](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.20...v1.2.0-dev.21) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** encode refresh register moves ([1ada422](https://github.com/SapitoSucio/FroggoMorphePatches/commit/1ada422e958ae8a2c3c1643f120d77615cfc9499))\n\n## [1.2.0-dev.20](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.19...v1.2.0-dev.20) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** avoid empty refresh labels ([744f3f2](https://github.com/SapitoSucio/FroggoMorphePatches/commit/744f3f2bc667b718cba844b27da61da4b1c70e82))\n\n## [1.2.0-dev.19](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.18...v1.2.0-dev.19) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** isolate automatic refresh callsites ([0542975](https://github.com/SapitoSucio/FroggoMorphePatches/commit/0542975284616c11087eacc0e5bb9f226cf79c38))\n\n## [1.2.0-dev.18](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.17...v1.2.0-dev.18) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** mark refresh patch unstable ([495247c](https://github.com/SapitoSucio/FroggoMorphePatches/commit/495247ce11cb1e933d9235fba1d0c2344a8b9ffc))\n\n## [1.2.0-dev.17](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.16...v1.2.0-dev.17) (2026-08-29)\n\n### ✨ New Features\n\n* **facebook:** split feed and reels ad patches ([203df53](https://github.com/SapitoSucio/FroggoMorphePatches/commit/203df5386a180c4bc66270f3d8c9488cdb898f72))\n\n## [1.2.0-dev.16](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.15...v1.2.0-dev.16) (2026-08-29)\n\n### ✨ New Features\n\n* **facebook:** trace story notify internals ([d296b61](https://github.com/SapitoSucio/FroggoMorphePatches/commit/d296b611efcb1d2619935fd8d83e8eff7eb7a468))\n\n## [1.2.0-dev.15](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.14...v1.2.0-dev.15) (2026-08-28)\n\n### ✨ New Features\n\n* **facebook:** trace story notify exceptions ([980c5af](https://github.com/SapitoSucio/FroggoMorphePatches/commit/980c5af4e2cb9ecafe83445351457c925eb0929b))\n\n## [1.2.0-dev.14](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.13...v1.2.0-dev.14) (2026-08-28)\n\n### ✨ New Features\n\n* **facebook:** trace story subscriber handoff ([5b898bf](https://github.com/SapitoSucio/FroggoMorphePatches/commit/5b898bf23f03348b643e2960b59f4adb64ad16e4))\n\n## [1.2.0-dev.13](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.12...v1.2.0-dev.13) (2026-08-28)\n\n### ✨ New Features\n\n* **facebook:** trace story publish fallthrough ([5ebb5d7](https://github.com/SapitoSucio/FroggoMorphePatches/commit/5ebb5d7bc8a53ae676f430d63ab68e2c1e8da4bd))",
       "fullChangelogUrl": "https://github.com/SapitoSucio/FroggoMorphePatches/blob/dev/CHANGELOG.md",
       "repoDescription": null,
       "avatarUrl": "https://avatars.githubusercontent.com/u/7357354?v=4&size=168",
@@ -27012,7 +27088,7 @@
       "appFirstSeen": {
         "com.facebook.katana": 1787675763757
       },
-      "hotRank": 16
+      "hotRank": 17
     },
     {
       "source": "github",
@@ -27150,7 +27226,7 @@
         "com.marsvard.stickermakerforwhatsapp": 1787614808700,
         "com.vpnbottle.melon.free.unblock.fast.vpn": 1787648170434
       },
-      "hotRank": 40
+      "hotRank": 39
     },
     {
       "source": "github",
@@ -27268,13 +27344,13 @@
         "com.pinterest"
       ],
       "appUpdates": {},
-      "stars": 26,
+      "stars": 27,
       "updatedAt": 1786233600000,
       "firstSeen": 1784136283489,
       "appFirstSeen": {
         "com.pinterest": 1784136283489
       },
-      "hotRank": 38
+      "hotRank": 32
     },
     {
       "source": "github",
@@ -27367,7 +27443,7 @@
       "appFirstSeen": {
         "com.honda.ms.dm.sab": 1787957215907
       },
-      "hotRank": 31
+      "hotRank": 35
     },
     {
       "source": "github",
@@ -27504,7 +27580,7 @@
         "com.roasterygames.devicestycoon": 1784887231838,
         "com.candywriter.bitlife": 1786886780404
       },
-      "hotRank": 59
+      "hotRank": 60
     },
     {
       "source": "github",
@@ -27711,7 +27787,7 @@
       "appFirstSeen": {
         "com.soundcloud.android": 1787782574232
       },
-      "hotRank": 48
+      "hotRank": 50
     },
     {
       "source": "github",
@@ -28280,7 +28356,7 @@
         "org.cygnusx1.continuum": 1767402720000,
         "me.edgan.redditslide": 1767402720000
       },
-      "hotRank": 27
+      "hotRank": 28
     },
     {
       "source": "github",
@@ -28334,7 +28410,7 @@
       "appFirstSeen": {
         "com.graymatrix.did": 1786703322126
       },
-      "hotRank": 79
+      "hotRank": 78
     },
     {
       "source": "github",
@@ -28475,7 +28551,7 @@
         "com.sysops.thenx": 1783598694226,
         "video.player.videoplayer": 1783542931373
       },
-      "hotRank": 77
+      "hotRank": 76
     },
     {
       "source": "github",
@@ -28729,28 +28805,38 @@
           "default": true,
           "options": [],
           "compatiblePackagesKey": 851
+        },
+        {
+          "name": "Enable Google Rambler",
+          "description": "Exposes options to enable Google Rambler on any phone.",
+          "default": true,
+          "options": [],
+          "preRelease": true,
+          "compatiblePackagesKey": 852
         }
       ],
-      "changelog": "## [1.1.0](https://github.com/XTapped/morphe-patches/compare/v1.0.0...v1.1.0) (2026-08-23)\n\n### 🐛 Bug Fixes\n\n* use decoded MotionCam resource paths ([296b3db](https://github.com/XTapped/morphe-patches/commit/296b3db9939d86ddf17fa9fc68f5eb7951962f07))\n\n### ✨ New Features\n\n* add MotionCam Unlock Pro patch ([e08d476](https://github.com/XTapped/morphe-patches/commit/e08d476526bc6f05dd50844413ede7095a432ba0))\n* extend MotionCam Unlock Pro branding ([7b23096](https://github.com/XTapped/morphe-patches/commit/7b230966551ed50a4f6f4a6c6ddbb500763d5c70))\n* spoof MotionCam installer source ([6571ab6](https://github.com/XTapped/morphe-patches/commit/6571ab63308233ed2f452443f9360b2c97134775))\n\n## [1.1.0-dev.4](https://github.com/XTapped/morphe-patches/compare/v1.1.0-dev.3...v1.1.0-dev.4) (2026-08-23)\n\n### ✨ New Features\n\n* spoof MotionCam installer source ([6571ab6](https://github.com/XTapped/morphe-patches/commit/6571ab63308233ed2f452443f9360b2c97134775))\n\n## [1.1.0-dev.3](https://github.com/XTapped/morphe-patches/compare/v1.1.0-dev.2...v1.1.0-dev.3) (2026-08-23)\n\n### 🐛 Bug Fixes\n\n* use decoded MotionCam resource paths ([296b3db](https://github.com/XTapped/morphe-patches/commit/296b3db9939d86ddf17fa9fc68f5eb7951962f07))\n\n## [1.1.0-dev.2](https://github.com/XTapped/morphe-patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-08-23)\n\n### ✨ New Features\n\n* extend MotionCam Unlock Pro branding ([7b23096](https://github.com/XTapped/morphe-patches/commit/7b230966551ed50a4f6f4a6c6ddbb500763d5c70))\n\n## [1.1.0-dev.1](https://github.com/XTapped/morphe-patches/compare/v1.0.0...v1.1.0-dev.1) (2026-08-23)\n\n### ✨ New Features\n\n* add MotionCam Unlock Pro patch ([e08d476](https://github.com/XTapped/morphe-patches/commit/e08d476526bc6f05dd50844413ede7095a432ba0))\n\n## 1.0.0 (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* add patch bundle contact metadata ([57ec4f3](https://github.com/XTapped/morphe-patches/commit/57ec4f36d3a6424f466ffdf3c2d78a5bcdd3d3b2))\n* enable Unlock Pro by default ([c52bac9](https://github.com/XTapped/morphe-patches/commit/c52bac95a9aa7a6291408f5b2169de37134674ba))\n* support high shop button registers ([d9b68bb](https://github.com/XTapped/morphe-patches/commit/d9b68bb069275e1db5924fe0f9b0a9ab63f2b171))\n\n### ✨ New Features\n\n* add Unlock Pro patch for Tetrd ([76a2f1d](https://github.com/XTapped/morphe-patches/commit/76a2f1d5d46c42c204f46f519c6784e087af211c))\n\n## [1.0.0-dev.2](https://github.com/XTapped/morphe-patches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* enable Unlock Pro by default ([c52bac9](https://github.com/XTapped/morphe-patches/commit/c52bac95a9aa7a6291408f5b2169de37134674ba))\n\n## 1.0.0-dev.1 (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* add patch bundle contact metadata ([57ec4f3](https://github.com/XTapped/morphe-patches/commit/57ec4f36d3a6424f466ffdf3c2d78a5bcdd3d3b2))\n* support high shop button registers ([d9b68bb](https://github.com/XTapped/morphe-patches/commit/d9b68bb069275e1db5924fe0f9b0a9ab63f2b171))\n\n### ✨ New Features\n\n* add Unlock Pro patch for Tetrd ([76a2f1d](https://github.com/XTapped/morphe-patches/commit/76a2f1d5d46c42c204f46f519c6784e087af211c))",
+      "changelog": "## [1.2.0-dev.6](https://github.com/XTapped/morphe-patches/compare/v1.2.0-dev.5...v1.2.0-dev.6) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* enable Rambler runtime and feedback ([adb16bc](https://github.com/XTapped/morphe-patches/commit/adb16bc95d9b5395961606aaaae0647c98669eef))\n* resolve Rambler feedback fingerprint in patch context ([a4ab05a](https://github.com/XTapped/morphe-patches/commit/a4ab05a9a67b87f83176994c928c14dff5f8fb1e))\n\n## [1.2.0-dev.5](https://github.com/XTapped/morphe-patches/compare/v1.2.0-dev.4...v1.2.0-dev.5) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* expose Rambler detail settings flags ([041028e](https://github.com/XTapped/morphe-patches/commit/041028e3192fe8d93a7c02f05a229ef24495a246))\n* restore Rambler selector and details route ([347fea3](https://github.com/XTapped/morphe-patches/commit/347fea38210d18192259b51611f8378f01214138))\n\n## [1.2.0-dev.4](https://github.com/XTapped/morphe-patches/compare/v1.2.0-dev.3...v1.2.0-dev.4) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* avoid unsupported Rambler settings probes ([de29504](https://github.com/XTapped/morphe-patches/commit/de2950491e443b7cb41e5cf7c9598eebb0e9d45e))\n\n## [1.2.0-dev.3](https://github.com/XTapped/morphe-patches/compare/v1.2.0-dev.2...v1.2.0-dev.3) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* keep unsupported Rambler dictionary settings hidden ([3ae9e99](https://github.com/XTapped/morphe-patches/commit/3ae9e9955a4e11517a99fde7c8219bcf1d233bee))\n\n## [1.2.0-dev.2](https://github.com/XTapped/morphe-patches/compare/v1.2.0-dev.1...v1.2.0-dev.2) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* add Gboard extension manifest ([2a4fe30](https://github.com/XTapped/morphe-patches/commit/2a4fe30ee9eb0b31299e8b536a559ebc407374f9))\n* scope Google Rambler capability to selector ([a6bd77e](https://github.com/XTapped/morphe-patches/commit/a6bd77e20d80263ba89eb5f8e2d14bfb6ebf2e08))\n\n## [1.2.0-dev.1](https://github.com/XTapped/morphe-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* use pinned Morphe instruction APIs ([647deb1](https://github.com/XTapped/morphe-patches/commit/647deb17db9e980952b79346a8723626c4ebdb5f))\n\n### ✨ New Features\n\n* enable Google Rambler in Gboard ([19d00db](https://github.com/XTapped/morphe-patches/commit/19d00db99dc70358d8c14fac163a49c27c48193d))\n\n## [1.1.0](https://github.com/XTapped/morphe-patches/compare/v1.0.0...v1.1.0) (2026-08-23)\n\n### 🐛 Bug Fixes\n\n* use decoded MotionCam resource paths ([296b3db](https://github.com/XTapped/morphe-patches/commit/296b3db9939d86ddf17fa9fc68f5eb7951962f07))\n\n### ✨ New Features\n\n* add MotionCam Unlock Pro patch ([e08d476](https://github.com/XTapped/morphe-patches/commit/e08d476526bc6f05dd50844413ede7095a432ba0))\n* extend MotionCam Unlock Pro branding ([7b23096](https://github.com/XTapped/morphe-patches/commit/7b230966551ed50a4f6f4a6c6ddbb500763d5c70))\n* spoof MotionCam installer source ([6571ab6](https://github.com/XTapped/morphe-patches/commit/6571ab63308233ed2f452443f9360b2c97134775))\n\n## [1.1.0-dev.4](https://github.com/XTapped/morphe-patches/compare/v1.1.0-dev.3...v1.1.0-dev.4) (2026-08-23)\n\n### ✨ New Features\n\n* spoof MotionCam installer source ([6571ab6](https://github.com/XTapped/morphe-patches/commit/6571ab63308233ed2f452443f9360b2c97134775))\n\n## [1.1.0-dev.3](https://github.com/XTapped/morphe-patches/compare/v1.1.0-dev.2...v1.1.0-dev.3) (2026-08-23)\n\n### 🐛 Bug Fixes\n\n* use decoded MotionCam resource paths ([296b3db](https://github.com/XTapped/morphe-patches/commit/296b3db9939d86ddf17fa9fc68f5eb7951962f07))\n\n## [1.1.0-dev.2](https://github.com/XTapped/morphe-patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-08-23)\n\n### ✨ New Features\n\n* extend MotionCam Unlock Pro branding ([7b23096](https://github.com/XTapped/morphe-patches/commit/7b230966551ed50a4f6f4a6c6ddbb500763d5c70))\n\n## [1.1.0-dev.1](https://github.com/XTapped/morphe-patches/compare/v1.0.0...v1.1.0-dev.1) (2026-08-23)\n\n### ✨ New Features\n\n* add MotionCam Unlock Pro patch ([e08d476](https://github.com/XTapped/morphe-patches/commit/e08d476526bc6f05dd50844413ede7095a432ba0))\n\n## 1.0.0 (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* add patch bundle contact metadata ([57ec4f3](https://github.com/XTapped/morphe-patches/commit/57ec4f36d3a6424f466ffdf3c2d78a5bcdd3d3b2))\n* enable Unlock Pro by default ([c52bac9](https://github.com/XTapped/morphe-patches/commit/c52bac95a9aa7a6291408f5b2169de37134674ba))\n* support high shop button registers ([d9b68bb](https://github.com/XTapped/morphe-patches/commit/d9b68bb069275e1db5924fe0f9b0a9ab63f2b171))\n\n### ✨ New Features\n\n* add Unlock Pro patch for Tetrd ([76a2f1d](https://github.com/XTapped/morphe-patches/commit/76a2f1d5d46c42c204f46f519c6784e087af211c))\n\n## [1.0.0-dev.2](https://github.com/XTapped/morphe-patches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* enable Unlock Pro by default ([c52bac9](https://github.com/XTapped/morphe-patches/commit/c52bac95a9aa7a6291408f5b2169de37134674ba))\n\n## 1.0.0-dev.1 (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* add patch bundle contact metadata ([57ec4f3](https://github.com/XTapped/morphe-patches/commit/57ec4f36d3a6424f466ffdf3c2d78a5bcdd3d3b2))\n* support high shop button registers ([d9b68bb](https://github.com/XTapped/morphe-patches/commit/d9b68bb069275e1db5924fe0f9b0a9ab63f2b171))\n\n### ✨ New Features\n\n* add Unlock Pro patch for Tetrd ([76a2f1d](https://github.com/XTapped/morphe-patches/commit/76a2f1d5d46c42c204f46f519c6784e087af211c))",
       "fullChangelogUrl": null,
       "repoDescription": "A collection of my patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/30569190?v=4&size=168",
       "bundleIconUrl": null,
       "deepLink": "https://morphe.software/add-source?github=XTapped/morphe-patches",
-      "patchCount": 2,
+      "patchCount": 3,
       "targetApps": [
         "com.motioncam",
-        "com.robskie.tether"
+        "com.robskie.tether",
+        "com.google.android.inputmethod.latin"
       ],
       "appUpdates": {},
       "stars": 2,
-      "updatedAt": 1787443200000,
+      "updatedAt": 1787961600000,
       "firstSeen": 1787469911694,
       "appFirstSeen": {
         "com.motioncam": 1787469911694,
-        "com.robskie.tether": 1787469911694
+        "com.robskie.tether": 1787469911694,
+        "com.google.android.inputmethod.latin": 1788015971071
       },
-      "hotRank": 68
+      "hotRank": 57
     },
     {
       "source": "github",
@@ -28763,14 +28849,14 @@
           "description": "Changes the launcher name to R3D StandBy.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 852
+          "compatiblePackagesKey": 853
         },
         {
           "name": "Unlock Premium",
           "description": "Unlock Premium Features.",
           "default": true,
           "options": [],
-          "compatiblePackagesKey": 852
+          "compatiblePackagesKey": 853
         }
       ],
       "changelog": "## 1.0.0 (2026-08-11)\n\n### 🐛 Bug Fixes\n\n* make PairIP internal and update stable metadata ([eff23bc](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/eff23bce91e53cbdfe97d17f909f22b23e56a001))\n* regenerate Morphe release metadata ([967b2d1](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/967b2d124d0678945bb5b7a08d2808691c055315))\n* restrict StandBy patches to target app ([da473e3](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/da473e301bb3aeb83c06464237b642cdd3815445))\n\n### ✨ New Features\n\n* add initial patches ([8950b79](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/8950b790ccd762fa23a8edb2d291492be5342cb4))\n* add StandBy app metadata ([a9f5601](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/a9f5601ee18224d89e65d4a0bb2e66ace6826aef))\n* update StandBy patches ([1d7c7a1](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/1d7c7a16abc426094357cf47bc4fc3951652f887))\n\n## [1.0.1-dev.2](https://github.com/xxxR3Dxxx/R3D-PatchLab/compare/v1.0.1-dev.1...v1.0.1-dev.2) (2026-08-11)\n\n### 🐛 Bug Fixes\n\n* regenerate Morphe release metadata ([967b2d1](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/967b2d124d0678945bb5b7a08d2808691c055315))\n\n## [1.0.0-dev.4](https://github.com/xxxR3Dxxx/R3D-PatchLab/compare/v1.0.0-dev.3...v1.0.0-dev.4) (2026-08-10)\n\n### ✨ New Features\n\n* add StandBy app metadata ([a9f5601](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/a9f5601ee18224d89e65d4a0bb2e66ace6826aef))\n\n## [1.0.0-dev.3](https://github.com/xxxR3Dxxx/R3D-PatchLab/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2026-08-10)\n\n### ✨ New Features\n\n* update StandBy patches ([1d7c7a1](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/1d7c7a16abc426094357cf47bc4fc3951652f887))\n\n## [1.0.0-dev.2](https://github.com/xxxR3Dxxx/R3D-PatchLab/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-08-10)\n\n### 🐛 Bug Fixes\n\n* restrict StandBy patches to target app ([da473e3](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/da473e301bb3aeb83c06464237b642cdd3815445))\n\n## 1.0.0-dev.1 (2026-08-10)\n\n### ✨ New Features\n\n* add initial patches ([8950b79](https://github.com/xxxR3Dxxx/R3D-PatchLab/commit/8950b790ccd762fa23a8edb2d291492be5342cb4))",
@@ -29055,6 +29141,13 @@
       "category": "Tools & Utilities",
       "firstSeen": 1787469911694
     },
+    "com.google.android.inputmethod.latin": {
+      "name": "Gboard",
+      "iconUrl": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA=s128-rw",
+      "description": "Fast and smart typing with Emojis, GIFs, and more",
+      "category": "Productivity",
+      "firstSeen": 1771585164000
+    },
     "com.slowlyapp": {
       "name": "Slowly",
       "iconUrl": "https://play-lh.googleusercontent.com/zlOJPeF3ZtgFCzivKZs7yUjvN2XbZcrZl5jEUIiCXyJvfWNgEJYg07HDMHpSh2Nbc8ibqPhG1VMVvmbCIsULJA=s128-rw",
@@ -29082,13 +29175,6 @@
       "description": "Scan &amp; clean sensitive media from your library. 100% on-device. 100% private.",
       "category": "Productivity",
       "firstSeen": 1787386528816
-    },
-    "com.google.android.inputmethod.latin": {
-      "name": "Gboard",
-      "iconUrl": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA=s128-rw",
-      "description": "Fast and smart typing with Emojis, GIFs, and more",
-      "category": "Productivity",
-      "firstSeen": 1771585164000
     },
     "com.brave.browser": {
       "name": "Brave Browser",
@@ -52589,6 +52675,25 @@
         "targets": [
           {
             "version": "1.3.2",
+            "versionCodes": null,
+            "isExperimental": false,
+            "minSdk": null,
+            "description": null
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.google.android.inputmethod.latin",
+        "name": "Gboard",
+        "description": null,
+        "apkFileType": "APK",
+        "appIconColor": null,
+        "signatures": null,
+        "targets": [
+          {
+            "version": "18.1.3.962075747-release-arm64-v8a",
             "versionCodes": null,
             "isExperimental": false,
             "minSdk": null,

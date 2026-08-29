@@ -31,8 +31,9 @@ RAW_SEARCH_PATH = TEMP_DIR / "raw-search.json"
 RAW_FILTER_PATH = TEMP_DIR / "raw-filter.json"
 
 SEARCH_KEYWORDS = ["morphe"]
+TARGET_USERS = ["MorpheApp", "rushiranpise"]
 CREATED_AFTER = "2026-01-01"
-CREATED_WITHIN_DAYS = 90
+CREATED_WITHIN_DAYS = 60
 PUSHED_WITHIN_DAYS = 30
 EXCLUDED_USERS = []
 API_EXCLUDED_KEYWORDS = ["morpheus", "morpheme", "morphelab"]
@@ -71,6 +72,10 @@ def build_search_query(keyword: str) -> str:
     return " ".join(parts)
 
 
+def build_user_query(user: str) -> str:
+    return f"user:{user} size:>0 archived:false fork:false"
+
+
 def is_patch_bundle(repo: str) -> bool:
     for branch in DEFAULT_BRANCHES:
         if not (url := build_raw_url("github", repo, branch, "patches-bundle.json")):
@@ -84,6 +89,11 @@ def is_patch_bundle(repo: str) -> bool:
 
 
 def matches_filter_criteria(repo: dict) -> bool:
+    owner = repo.get("full_name", "").split("/")[0].lower()
+    is_target_user = owner in {user.lower() for user in TARGET_USERS}
+    if is_target_user:
+        return True
+
     repo_name = repo.get("name", "")
     desc = repo.get("description") or ""
     combined_text = f"{repo.get('full_name', '')} {desc}".lower()
@@ -96,10 +106,12 @@ def matches_filter_criteria(repo: dict) -> bool:
 
 def search_repos() -> list[dict]:
     unique_repos = {}
+    queries = [build_search_query(kw) for kw in SEARCH_KEYWORDS] + [
+        build_user_query(user) for user in TARGET_USERS
+    ]
 
-    for keyword in SEARCH_KEYWORDS:
-        query = build_search_query(keyword)
-        print(f"Searching GitHub: {query}\n")
+    for query in queries:
+        print(f"\nSearching GitHub: {query}")
         page = 1
 
         while True:
@@ -131,7 +143,7 @@ def search_repos() -> list[dict]:
     repos_list = list(unique_repos.values())
     save_json(RAW_SEARCH_PATH, repos_list)
     print(
-        f"Saved {len(repos_list)} raw repositories to {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}\n"
+        f"\nSaved {len(repos_list)} raw repositories to {RAW_SEARCH_PATH.relative_to(ROOT_DIR)}\n"
     )
     return repos_list
 
@@ -229,12 +241,13 @@ def verify_and_export_repos(candidates: list[dict] | None = None) -> list[dict]:
         reverse=True,
     )
 
-    query_summary = ", ".join(
-        build_search_query(keyword) for keyword in SEARCH_KEYWORDS
-    )
+    queries = [build_search_query(kw) for kw in SEARCH_KEYWORDS] + [
+        build_user_query(user) for user in TARGET_USERS
+    ]
+    query_lines = "\n".join(f"  - `{query}`" for query in queries)
     excluded_keywords = ", ".join(EXCLUDED_KEYWORDS)
     summary_sections = [
-        f"## 🔍 Find Projects\n- **Query:** `{query_summary}`\n- **Excluded:** non-standalone morphe variants with: {excluded_keywords}\n- **New Repositories Found:** `{len(repos)}`"
+        f"## 🔍 Find Projects\n- **Queries:**\n{query_lines}\n- **Excluded:** non-standalone morphe variants with: {excluded_keywords}\n- **New Repositories Found:** `{len(repos)}`"
     ]
     if not repos:
         summary_sections.append("- No new standalone repositories found.")

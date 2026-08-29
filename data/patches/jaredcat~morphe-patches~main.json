@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "patches": [
     {
       "name": "Disable Analytics",
@@ -54,6 +54,35 @@
               "isExperimental": false,
               "minSdk": null,
               "description": "Download the arm64 XAPK from APKPure (not APKMirror). Use Morphe’s file picker if Continue opens Google."
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks ASL Bloom Premium lessons and features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.toleio.us",
+          "name": "ASL Bloom",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#232A63",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.36.63",
+              "versionCodes": {
+                "ARM64_V8A": 871,
+                "ARMEABI_V7A": 871
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": "Use the XAPK matching your device architecture."
             }
           ]
         }

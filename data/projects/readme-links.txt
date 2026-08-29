@@ -23,3 +23,4 @@ https://www.reddit.com/r/MorpheApp/comments/1s3w1er/regarding_the_morphe_dmca
 https://www.reddit.com/r/MorpheApp/comments/1ta0bek/how_to_patch_more_apps_with_morphe
 https://www.reddit.com/r/MorpheApp/comments/1vmfizy/how_to_request_app_patches
 https://x.com/MorpheApp
+https://www.reddit.com/r/MorpheApp/comments/1w0o641/pothelper_is_here_youtube_playback_with_no/

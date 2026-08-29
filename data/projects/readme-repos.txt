@@ -31,3 +31,4 @@ https://github.com/shakir2117/Patch-Atlas
 https://github.com/thedjchi/Shizuku
 https://github.com/Xisrr1/Revancify-Xisr
 https://gitlab.com/Paresh-Maheshwari/patch-explorer
+https://github.com/MorpheApp/PotHelper

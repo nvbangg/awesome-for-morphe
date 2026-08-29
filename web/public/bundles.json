@@ -11016,7 +11016,7 @@
       "repoDescription": "基于 Morphe Patcher 的纯字节码补丁，用于还原被 pairip 加固或代码抽离的 Android 应用。",
       "avatarUrl": "https://avatars.githubusercontent.com/u/98471248?v=4&s=64",
       "stars": 49,
-      "updatedAt": 1783910527000,
+      "updatedAt": 1787969509000,
       "firstSeen": 1781749101000,
       "appFirstSeen": {
         "__universal__": 1785178161666
@@ -11024,15 +11024,18 @@
       "patches": [
         {
           "name": "Inline pairip call wrappers",
-          "description": "Inlines pairip's static call-wrapper stubs ($<number>) back into their call sites and removes the stubs."
+          "description": "Inlines pairip's static call-wrapper stubs ($<number>) back into their call sites and removes the stubs.",
+          "default": false
         },
         {
           "name": "Remove pairip protection",
-          "description": "Restores obfuscated strings and removes pairip bytecode protection."
+          "description": "Restores obfuscated strings and removes pairip bytecode protection.",
+          "default": false
         },
         {
           "name": "Restore extracted methods",
-          "description": "Inlines methods hidden in $c<number> helper classes back into the host class, then removes those helper and reflection method-holder classes."
+          "description": "Inlines methods hidden in $c<number> helper classes back into the host class, then removes those helper and reflection method-holder classes.",
+          "default": false
         },
         {
           "name": "Strip debug info",
@@ -14745,7 +14748,7 @@
       "repoDescription": "AI was used in the making of these patches.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/203759836?v=4&s=64",
       "stars": 24,
-      "updatedAt": 1787927697000,
+      "updatedAt": 1787969662000,
       "firstSeen": 1783221698000,
       "appFirstSeen": {
         "com.generalcomp.truecloud": 1783246898450,
@@ -14809,7 +14812,6 @@
         {
           "name": "Doodle Jump Resurrection Bypass",
           "description": "Resurrect instantly after death without watching a rewarded ad.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 582
         },
         {
@@ -31364,6 +31366,9 @@
         "targets": [
           {
             "version": "1.70.0"
+          },
+          {
+            "version": "1.71.1"
           }
         ]
       }
@@ -31444,6 +31449,9 @@
         "targets": [
           {
             "version": "4.23.0"
+          },
+          {
+            "version": "4.24.0"
           }
         ]
       }

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.0-dev.17",
+  "version": "1.2.0-dev.26",
   "patches": [
     {
       "name": "Block Facebook Feed ads (573)",
@@ -60,7 +60,7 @@
     },
     {
       "name": "Block Facebook Story ads (573)",
-      "description": "Pre-release experiment: filters Story ad buckets only at the concrete X68 provider return boundary.",
+      "description": "Filters Story ad buckets only at the concrete X68 provider return boundary.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -88,35 +88,7 @@
     },
     {
       "name": "Block Facebook automatic refresh (573)",
-      "description": "Suppresses lifecycle feed refresh while preserving explicit refresh paths.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.facebook.katana",
-          "name": "Facebook",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#1877F2",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "573.0.0.37.74",
-              "versionCodes": {
-                "ARM64_V8A": 473623755
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "[Diag A1] Facebook 573 ads - CSR tail-load",
-      "description": "DEV diagnostic: only disables MainFeedCSRDataLoaderImpl async-ad tail-load dispatch.",
+      "description": "Experimental: blocks automatic foreground/hot-start/stale-tab/stale-post feed refresh while preserving cold initialization, manual, activity-result and fullscreen refresh paths.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -133,147 +105,7 @@
               "versionCodes": {
                 "ARM64_V8A": 473623755
               },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "[Diag A2] Facebook 573 ads - CSR converter",
-      "description": "DEV diagnostic: only nulls the bZU Feed CSR response converter.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.facebook.katana",
-          "name": "Facebook",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#1877F2",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "573.0.0.37.74",
-              "versionCodes": {
-                "ARM64_V8A": 473623755
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "[Diag A3] Facebook 573 ads - Async controller",
-      "description": "DEV diagnostic: only replaces FeedAsyncAdsController output with an empty C6Ke.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.facebook.katana",
-          "name": "Facebook",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#1877F2",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "573.0.0.37.74",
-              "versionCodes": {
-                "ARM64_V8A": 473623755
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "[Diag B] Facebook 573 ads - Final feed filter",
-      "description": "DEV diagnostic: only filters SPONSORED/PROMOTION feed edges and MultiAds sponsored data.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.facebook.katana",
-          "name": "Facebook",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#1877F2",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "573.0.0.37.74",
-              "versionCodes": {
-                "ARM64_V8A": 473623755
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "[Diag C] Facebook 573 ads - Reels/video",
-      "description": "DEV diagnostic: only disables Reels/video and commercial-break ad fetch/success paths.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.facebook.katana",
-          "name": "Facebook",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#1877F2",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "573.0.0.37.74",
-              "versionCodes": {
-                "ARM64_V8A": 473623755
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "[Diag D] Facebook 573 Stories - publication lifecycle",
-      "description": "DEV diagnostic: logs Story bucket publication, cached replay and viewer notification without changing behavior.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.facebook.katana",
-          "name": "Facebook",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#1877F2",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "573.0.0.37.74",
-              "versionCodes": {
-                "ARM64_V8A": 473623755
-              },
-              "isExperimental": false,
+              "isExperimental": true,
               "minSdk": null,
               "description": null
             }

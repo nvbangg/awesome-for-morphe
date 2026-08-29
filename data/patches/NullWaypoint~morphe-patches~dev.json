@@ -1,14 +1,47 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0",
+  "version": "1.1.0-dev.1",
   "patches": [
     {
       "name": "Enable Picture-in-Picture",
-      "description": "Enables Crunchyroll's native Picture-in-Picture while respecting playback state.",
+      "description": "Enables Crunchyroll's native Picture-in-Picture and adds a PiP button to the player.",
       "default": true,
       "dependencies": [
         "ResourcePatch"
       ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.crunchyroll.crunchyroid",
+          "name": "Crunchyroll",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FF5C00",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.117.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove from Continue Watching",
+      "description": "Adds an option to remove titles from Continue Watching.",
+      "default": true,
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "com.crunchyroll.crunchyroid",

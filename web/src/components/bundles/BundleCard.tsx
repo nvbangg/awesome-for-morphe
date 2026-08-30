@@ -24,11 +24,7 @@ export const BundleCard = memo(function BundleCard({
       onClick={() => onClick(bundleItem.key)}
     >
       <div className="flex items-center gap-3.5">
-        <BundleAvatar
-          src={bundleItem.avatarUrl}
-          alt={bundleItem.name}
-          size="lg"
-        />
+        <BundleAvatar src={bundleItem.avatarUrl} size="lg" />
 
         <div className="flex-1 min-w-0 flex flex-col justify-center">
           <div className="text-base font-bold text-foreground mb-0.5 whitespace-normal wrap-break-word">

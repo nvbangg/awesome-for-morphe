@@ -21,8 +21,9 @@ export function Footer() {
             className="flex items-center gap-3 no-underline group w-fit"
           >
             <img
-              alt="Awesome Morphe"
-              className="h-8 w-auto"
+              alt=""
+              aria-hidden="true"
+              className="h-8 w-auto select-none"
               src="assets/favicon.svg"
               loading="lazy"
               decoding="async"

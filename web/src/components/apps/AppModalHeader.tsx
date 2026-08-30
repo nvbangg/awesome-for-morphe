@@ -42,7 +42,7 @@ export function AppModalHeader({
     <ModalHeader>
       <div className="flex flex-row items-start justify-between gap-4 w-full">
         <div className="flex flex-row items-center gap-4 flex-1 min-w-0">
-          <AppAvatar src={appMeta.appIcon} alt={appMeta.appName} size="lg" />
+          <AppAvatar src={appMeta.appIcon} size="lg" />
           <div className="flex flex-col min-w-0 justify-center">
             <div className="flex items-center gap-2 flex-wrap">
               <h2 className="text-xl font-bold tracking-tight text-foreground truncate">

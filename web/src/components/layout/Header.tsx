@@ -11,8 +11,9 @@ export function Header() {
             className="no-underline shrink-0 flex items-center"
           >
             <img
-              alt="Awesome Morphe"
-              className="size-9 object-contain"
+              alt=""
+              aria-hidden="true"
+              className="size-9 object-contain select-none"
               src="assets/favicon.svg"
               decoding="async"
             />

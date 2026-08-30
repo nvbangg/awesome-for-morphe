@@ -33,7 +33,7 @@ export const AppCard = memo(function AppCard({
       onClick={() => onClick(appItem.packageName)}
     >
       <div className="flex items-center gap-3.5">
-        <AppAvatar src={appItem.appIcon} alt={appItem.appName} size="lg" />
+        <AppAvatar src={appItem.appIcon} size="lg" />
 
         <div className="flex-1 min-w-0 flex flex-col justify-center">
           <div className="text-base font-bold text-foreground mb-0.5 whitespace-normal wrap-break-word">

@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { Package } from "lucide-react";
 import { Badge } from "@/components/common/Badge";
+import { BundleAvatar } from "@/components/common/ItemAvatar";
 import { WhatsNewBundleChange, ActiveData } from "@/types/data";
 import { getAppMeta } from "@/utils";
 import { WhatsNewAppCard } from "./WhatsNewAppCard";
@@ -47,7 +47,7 @@ export const WhatsNewBundleCard = memo(function WhatsNewBundleCard({
         title="Open bundle details"
       >
         <div className="flex items-center gap-2.5 min-w-0">
-          <Package className="size-4 text-primary shrink-0" />
+          <BundleAvatar src={bundle?.avatarUrl} size="md" />
           <div className="flex flex-col min-w-0">
             <div className="flex items-center gap-2 text-base font-semibold text-foreground group-hover:text-primary transition-colors min-w-0">
               <span className="truncate">{displayName}</span>

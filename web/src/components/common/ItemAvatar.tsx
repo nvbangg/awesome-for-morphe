@@ -5,7 +5,6 @@ type AvatarSize = "sm" | "md" | "lg";
 
 interface AvatarProps {
   src?: string | null;
-  alt?: string;
   size?: AvatarSize;
   className?: string;
 }
@@ -22,7 +21,6 @@ interface BaseAvatarProps extends AvatarProps {
 
 const BaseAvatar = memo(function BaseAvatar({
   src,
-  alt = "",
   size = "md",
   className = "",
   fallbackIcon: Icon,
@@ -41,9 +39,10 @@ const BaseAvatar = memo(function BaseAvatar({
     return (
       <img
         src={src}
-        alt={alt}
+        alt=""
+        aria-hidden="true"
         onError={() => setHasError(true)}
-        className={`${container} border border-divider bg-card object-cover shrink-0 ${className}`}
+        className={`${container} border border-divider bg-card object-cover shrink-0 select-none ${className}`}
         loading="lazy"
         decoding="async"
       />
@@ -52,24 +51,18 @@ const BaseAvatar = memo(function BaseAvatar({
 
   return (
     <div
-      className={`${container} border border-divider bg-card flex items-center justify-center shrink-0 ${className}`}
-      aria-label={alt}
+      className={`${container} border border-divider bg-card flex items-center justify-center shrink-0 select-none ${className}`}
+      aria-hidden="true"
     >
       <Icon className={`${icon} text-foreground-subtle`} />
     </div>
   );
 });
 
-export const AppAvatar = memo(function AppAvatar({
-  alt = "App",
-  ...props
-}: AvatarProps) {
-  return <BaseAvatar alt={alt} fallbackIcon={Smartphone} {...props} />;
+export const AppAvatar = memo(function AppAvatar(props: AvatarProps) {
+  return <BaseAvatar fallbackIcon={Smartphone} {...props} />;
 });
 
-export const BundleAvatar = memo(function BundleAvatar({
-  alt = "Bundle",
-  ...props
-}: AvatarProps) {
-  return <BaseAvatar alt={alt} fallbackIcon={Package} {...props} />;
+export const BundleAvatar = memo(function BundleAvatar(props: AvatarProps) {
+  return <BaseAvatar fallbackIcon={Package} {...props} />;
 });

@@ -29,7 +29,7 @@ export const WhatsNewAppCard = memo(function WhatsNewAppCard({
       className="flex flex-col gap-2 p-2.5 rounded-xl bg-card border border-divider transition-all hover:border-primary hover:shadow-md hover:-translate-y-0.5 cursor-pointer group"
     >
       <div className="flex items-center gap-2 text-sm font-semibold text-foreground group-hover:text-primary transition-colors min-w-0">
-        <AppAvatar src={icon} alt={appName} size="sm" />
+        <AppAvatar src={icon} size="sm" />
         <span className="truncate">{appName}</span>
         {isAppNew && <Badge variant="new" />}
       </div>

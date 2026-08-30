@@ -48,7 +48,7 @@ export function BundleAppGroup({
         className={`sticky -top-4 z-20 flex flex-col gap-2 px-4 py-3 bg-card cursor-pointer rounded-t-xl ${isExpanded ? "border-b border-divider shadow-sm" : "rounded-b-xl"}`}
       >
         <div className="flex items-center justify-between gap-3 w-full">
-          <AppAvatar src={group.appMeta.appIcon} alt={group.appMeta.appName} />
+          <AppAvatar src={group.appMeta.appIcon} />
 
           <div className="flex-1 min-w-0 flex flex-col justify-center">
             <div className="flex items-center gap-2 min-w-0 flex-wrap">

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "patches": [
     {
       "name": "Always incognito mode",
@@ -1415,6 +1415,39 @@
       "options": []
     },
     {
+      "name": "Enable call recording",
+      "description": "Enables call recorder, check local laws before using it.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.dialer",
+          "name": "Google Phone",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#1A73E8",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "161.0.726587057",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "161.0.726587057-downloadable",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "GmsCore support (MicroG)",
       "description": "Routes Google Play Services calls through MicroG instead of real GPS.\n\nWorks for: Google apps (YouTube, Maps, News, Photos) and third-party apps using classic Google Sign-In (Android 13 and below).\n\nDoes not work for: Android 14+ Credential Manager sign-in (most modern third-party apps), Play Integrity / SafetyNet checks, or apps with custom auth.\n\nRequires MicroG RE installed. Apply with the original app certificate patch.",
       "default": false,
@@ -1472,7 +1505,7 @@
     },
     {
       "name": "Network privacy",
-      "description": "Controls what Gboard is allowed to talk to. Choose a network level: block only telemetry (keep all features), lock it down to GIFs and voice typing only, or block all internet access.",
+      "description": "Controls what Gboard is allowed to talk to. Choose a network level: block core telemetry, block ads & telemetry more aggressively (all typing features still work), or block all internet access.",
       "default": false,
       "dependencies": [
         "BytecodePatch",
@@ -1504,13 +1537,13 @@
         {
           "key": "gboardNetworkLevel",
           "title": "Network level",
-          "description": "How much of Gboard's network access to cut. \"Telemetry only\" keeps every feature working. \"Privacy lockdown\" keeps GIF search and cloud voice typing but blocks everything else. \"Block all internet\" removes network access entirely.",
+          "description": "How much of Gboard's network access to cut. \"Telemetry only\" nulls the core analytics/logging hosts. \"Ads & telemetry\" is a wider deny-list of known ad, analytics, and federated-learning hosts — GIF search, cloud voice typing, stickers and translation keep working because their hosts are never touched. \"Block all internet\" removes network access entirely (which also disables GIFs and cloud voice typing).",
           "required": true,
           "type": "kotlin.String",
           "default": "telemetry",
           "values": {
             "Block telemetry only": "telemetry",
-            "Allow only GIFs & voice typing)": "lockdown",
+            "Block ads & telemetry (keeps GIFs & voice)": "lockdown",
             "Block all internet": "block_all"
           }
         },
@@ -1606,6 +1639,32 @@
           "targets": [
             {
               "version": "1.4.22",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove device restrictions",
+      "description": "Removes restrictions from using the app on any device. Requires mounting patched app over original.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.recorder",
+          "name": "Google Recorder",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#EA4335",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

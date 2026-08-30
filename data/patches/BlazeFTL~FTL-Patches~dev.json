@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.43.0-dev.9",
+  "version": "1.43.0-dev.10",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -1155,6 +1155,37 @@
                 "ARMEABI_V7A": 172,
                 "X86_64": 172,
                 "X86": 172
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Pro",
+      "description": "Forces the Pro flag true at every read and write site in the dex, unlocking Pro.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.tester.wpswpatester",
+          "name": "WIFI WPS WPA TESTER",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "rc-5.164",
+              "versionCodes": {
+                "ARM64_V8A": 1883,
+                "ARMEABI_V7A": 1883,
+                "X86_64": 1883,
+                "X86": 1883
               },
               "isExperimental": false,
               "minSdk": null,

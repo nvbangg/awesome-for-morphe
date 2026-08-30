@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "patches": [
     {
       "name": "AMOLED dark theme",
@@ -243,6 +243,40 @@
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "GmsCore support",
+      "description": "Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "all.in.one.calculator",
+          "name": "All-In-One Calculator",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#455A64",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.0",
+              "versionCodes": {
+                "ARM64_V8A": 340,
+                "ARMEABI_V7A": 340,
+                "X86_64": 340,
+                "X86": 340
+              },
+              "isExperimental": false,
+              "minSdk": 24,
               "description": null
             }
           ]
@@ -645,6 +679,32 @@
       "options": []
     },
     {
+      "name": "Remove pairip protection",
+      "description": "Removes the Play Integrity license check.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sry.rateglance",
+          "name": "RateGlance",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#0D192C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Show AI progress",
       "description": "Reads the current stage off the real network activity instead of the fake progress bar InShot ships.",
       "default": true,
@@ -1023,6 +1083,32 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#F08029",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock premium",
+      "description": "Unlocks all premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sry.rateglance",
+          "name": "RateGlance",
+          "description": null,
+          "apkFileType": "APKS",
+          "appIconColor": "#0D192C",
           "signatures": null,
           "targets": [
             {

@@ -4377,7 +4377,7 @@
       "repoDescription": "Morphe patches for Gboard with practical upgrades for global users and Taiwan-focused enhancements.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/21318815?v=4&s=64",
       "stars": 377,
-      "updatedAt": 1788076650000,
+      "updatedAt": 1788127902000,
       "firstSeen": 1775517803000,
       "appFirstSeen": {
         "com.google.android.inputmethod.latin": 1775543003000
@@ -5895,7 +5895,7 @@
       "repoDescription": "This repository is a Morphe patch source for TikTok.  It continues the work from earlier community TikTok patch sets, including ReVanced, with the patches adapted for Morphe and tested against newer TikTok builds. The current target version is TikTok 46.2.3",
       "avatarUrl": "https://raw.githubusercontent.com/icysymmetra/tiktok-patches-for-morphe/main/patches-bundle.png",
       "stars": 299,
-      "updatedAt": 1787868593000,
+      "updatedAt": 1788121796000,
       "firstSeen": 1780130886000,
       "appFirstSeen": {
         "com.zhiliaoapp.musically": 1780156086693
@@ -5904,19 +5904,6 @@
         {
           "name": "Always show publish date",
           "description": "Always shows the publish date in video author information. Thanks to lyyako for the original implementation.",
-          "compatiblePackagesKey": 200
-        },
-        {
-          "name": "Bypass regional restrictions",
-          "description": "Uses a selected default region to help bypass regional restrictions.",
-          "isPreRelease": true,
-          "options": [
-            {
-              "key": "defaultRegion",
-              "title": "Default region",
-              "description": "Region to use when applying this patch."
-            }
-          ],
           "compatiblePackagesKey": 200
         },
         {
@@ -23527,7 +23514,7 @@
       "repoDescription": "Custom Morphe patches for Brave Browser and GBoard Lite on Android.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/179108235?v=4&s=64",
       "stars": 17,
-      "updatedAt": 1788047783000,
+      "updatedAt": 1788124695000,
       "firstSeen": 1787251436744,
       "appFirstSeen": {
         "com.brave.browser": 1787251436098,
@@ -23597,6 +23584,12 @@
             }
           ],
           "compatiblePackagesKey": 840
+        },
+        {
+          "name": "Close Tabs on Exit",
+          "description": "Prevents tab restoration on startup, ensuring Vivaldi always opens with a clean Start Page session regardless of how the app was terminated.",
+          "default": false,
+          "compatiblePackagesKey": 842
         },
         {
           "name": "Disable Background Sync & Periodic Sync",
@@ -23690,6 +23683,7 @@
         {
           "name": "Locale PAK Slimmer",
           "description": "Strips unselected language resource PAKs from assets/locales/.",
+          "default": false,
           "options": [
             {
               "key": "locales",
@@ -23714,6 +23708,7 @@
         {
           "name": "Native Bloat Slimmer",
           "description": "Strips unused native companion binaries (Impress Vision AI, WireGuard VPN, and Android XR) to significantly reduce APK size.",
+          "default": false,
           "compatiblePackagesKey": 841
         },
         {
@@ -24229,7 +24224,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/7357354?v=4&s=64",
       "stars": 16,
-      "updatedAt": 1788077341000,
+      "updatedAt": 1788127153000,
       "firstSeen": 1787675089909,
       "appFirstSeen": {
         "com.facebook.katana": 1787675088808,
@@ -24280,6 +24275,18 @@
               "description": "Update provider names declared by the app. Enabling this can fix installation conflicts, but this can also break features in certain apps."
             }
           ]
+        },
+        {
+          "name": "Download Facebook Media (573)",
+          "description": "Adds direct downloads for the visible Story, Reel, and video media through MediaStore.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 870
+        },
+        {
+          "name": "Stop Facebook Story auto-advance (573)",
+          "description": "Leaves photo and video Stories on their completed frame until the viewer navigates manually.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 870
         }
       ],
       "hotRank": 12

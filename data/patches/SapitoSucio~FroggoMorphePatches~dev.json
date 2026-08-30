@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0-dev.1",
+  "version": "1.3.0-dev.2",
   "patches": [
     {
       "name": "Block Facebook Feed ads (573)",
@@ -153,6 +153,62 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Download Facebook Media (573)",
+      "description": "Adds direct downloads for the visible Story, Reel, and video media through MediaStore.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.facebook.katana",
+          "name": "Facebook",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1877F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "573.0.0.37.74",
+              "versionCodes": {
+                "ARM64_V8A": 473623755
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Stop Facebook Story auto-advance (573)",
+      "description": "Leaves photo and video Stories on their completed frame until the viewer navigates manually.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.facebook.katana",
+          "name": "Facebook",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1877F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "573.0.0.37.74",
+              "versionCodes": {
+                "ARM64_V8A": 473623755
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     }
   ]
 }

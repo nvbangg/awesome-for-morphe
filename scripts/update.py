@@ -132,7 +132,6 @@ def main() -> int:
         app_data.pop("updatedAt", None)
         statuses = app_patches_status.get(package_name, [])
         name = app_data.get("name")
-        alt_name = app_data.get("altName")
         icon_url = app_data.get("iconUrl")
         app_entry = {
             "name": name,
@@ -144,8 +143,6 @@ def main() -> int:
         }
         if statuses and all(statuses):
             app_entry["isPreRelease"] = True
-        if alt_name:
-            app_entry["altName"] = alt_name
         apps_store[package_name] = app_entry
         if package_name not in (PACKAGE_UNIVERSAL, PACKAGE_EXAMPLE):
             issues = []

@@ -19,17 +19,19 @@ WHATS_NEW_MAX_ENTRIES = 21
 
 
 def is_valid_package_name(package_name: str) -> bool:
-    return (
+    return package_name == PACKAGE_UNIVERSAL or (
         "." in package_name
         and " " not in package_name
-        and package_name not in (PACKAGE_UNIVERSAL, PACKAGE_EXAMPLE)
+        and package_name != PACKAGE_EXAMPLE
     )
 
 
 def format_app_name(package_name: str, app_metadata: dict) -> str:
+    if package_name == PACKAGE_UNIVERSAL:
+        return "Universal"
     metadata = app_metadata.get(package_name)
     if isinstance(metadata, dict):
-        return metadata.get("name") or metadata.get("altName") or package_name
+        return metadata.get("name") or package_name
     return metadata if isinstance(metadata, str) else package_name
 
 
@@ -86,6 +88,7 @@ def build_new_bundles(bundles_json: dict) -> dict:
 
             compat_key = patch.get("compatiblePackagesKey")
             if compat_key is not None and compat_key < len(compatibilities):
+                has_valid_package = False
                 for item in compatibilities[compat_key]:
                     if (
                         isinstance(item, dict)
@@ -93,6 +96,11 @@ def build_new_bundles(bundles_json: dict) -> dict:
                         and is_valid_package_name(package_name)
                     ):
                         patches_dict.setdefault(package_name, set()).add(patch_name)
+                        has_valid_package = True
+                if not has_valid_package:
+                    patches_dict.setdefault(PACKAGE_UNIVERSAL, set()).add(patch_name)
+            else:
+                patches_dict.setdefault(PACKAGE_UNIVERSAL, set()).add(patch_name)
 
         if patches_dict:
             new_bundles[repo] = {
@@ -111,16 +119,13 @@ def build_json_diff(
     json_diff = {}
 
     def app_sort_key(package_name: str) -> tuple:
+        app_name = format_app_name(package_name, app_metadata)
         metadata = app_metadata.get(package_name)
-        if isinstance(metadata, dict):
-            return (
-                -metadata.get("minInstalls", 0),
-                metadata.get("firstSeen", 0),
-                (
-                    metadata.get("name") or metadata.get("altName") or package_name
-                ).lower(),
-            )
-        return (0, 0, package_name.lower())
+        min_installs = (
+            metadata.get("minInstalls", 0) if isinstance(metadata, dict) else 0
+        )
+        first_seen = metadata.get("firstSeen", 0) if isinstance(metadata, dict) else 0
+        return (-min_installs, first_seen, app_name.lower())
 
     for repo, patches_dict in sorted(
         new_bundles.items(),

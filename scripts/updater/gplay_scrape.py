@@ -8,55 +8,6 @@ from google_play_scraper.exceptions import NotFoundError
 from updater import normalize_image_url
 from utils import CONCURRENCY, OFFICIAL_BUNDLES_PATH, load_json
 
-SKIP_WORDS = {
-    "com",
-    "org",
-    "net",
-    "io",
-    "co",
-    "tv",
-    "me",
-    "xyz",
-    "ai",
-    "cn",
-    "ru",
-    "jp",
-    "ch",
-    "cz",
-    "de",
-    "fr",
-    "kr",
-    "in",
-    "nl",
-    "pl",
-    "se",
-    "dk",
-    "ee",
-    "eu",
-    "it",
-    "android",
-    "app",
-    "apps",
-    "player",
-    "client",
-    "mobile",
-    "thirdpartyclient",
-    "free",
-    "pro",
-    "lite",
-    "dev",
-    "beta",
-    "premium",
-    "inc",
-    "corp",
-    "llc",
-    "studio",
-    "studios",
-    "game",
-    "games",
-    "software",
-}
-
 
 def fetch_app_details(package_name: str) -> tuple[dict | None, bool]:
     try:
@@ -143,19 +94,6 @@ def process(apps_dict: dict, mode: str) -> None:
                 if field_value:
                     app_data[field_name] = field_value
 
-    def derive_name(package_name: str) -> str:
-        parts = [
-            part
-            for part in package_name.split(".")
-            if part not in SKIP_WORDS and len(part) > 1
-        ]
-        name = parts[-1] if parts else package_name.split(".")[-1]
-        return name.replace("-", " ").replace("_", " ").title()
-
-    for package_name, app_data in apps_dict.items():
-        if not app_data.get("name"):
-            app_data["altName"] = derive_name(package_name)
-        else:
-            app_data.pop("altName", None)
+    for app_data in apps_dict.values():
         if app_data.get("iconUrl"):
             app_data["iconUrl"] = normalize_image_url(app_data["iconUrl"])

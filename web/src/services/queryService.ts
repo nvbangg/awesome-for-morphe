@@ -4,6 +4,7 @@ import {
   CATEGORY_UNIVERSAL,
   CATEGORY_LABEL_UNIVERSAL,
   PACKAGE_UNIVERSAL,
+  BUNDLE_CATEGORY_OPTIONS,
 } from "@/constants";
 
 function parseSearchQuery(query: string): string[] {
@@ -108,6 +109,10 @@ export const VALID_BUNDLE_SORTS = new Set([
   ...Object.keys(BUNDLE_SORT_KEY_MAP),
   "alpha",
 ]);
+
+export const VALID_BUNDLE_CATEGORIES = new Set(
+  BUNDLE_CATEGORY_OPTIONS.map((categoryOption) => categoryOption.key),
+);
 
 export function getAppItems(
   appItems: AppItem[],

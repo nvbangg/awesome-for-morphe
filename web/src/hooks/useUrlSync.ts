@@ -1,5 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
-import { VALID_APP_SORTS, VALID_BUNDLE_SORTS } from "@/services";
+import {
+  VALID_APP_SORTS,
+  VALID_BUNDLE_SORTS,
+  VALID_BUNDLE_CATEGORIES,
+} from "@/services";
 import { DEFAULT_TAB } from "@/constants";
 
 export type NavigationTabType = "apps" | "bundles" | "whats-new";
@@ -7,17 +11,23 @@ export type NavigationTabType = "apps" | "bundles" | "whats-new";
 function parseTabSegments(
   segments: string[],
   validSorts: Set<string>,
+  validCategories?: Set<string>,
 ): { category: string; sort: string } {
-  const firstSegment = segments[0] || "";
-  const secondSegment = segments[1] || "";
+  let category = "all";
+  let sort = "default";
 
-  const isFirstSegmentSort = validSorts.has(firstSegment);
-  const category = (isFirstSegmentSort ? secondSegment : firstSegment) || "all";
-  const sort = isFirstSegmentSort
-    ? firstSegment
-    : validSorts.has(secondSegment)
-      ? secondSegment
-      : "default";
+  for (const segment of segments) {
+    if (!segment) continue;
+    if (validSorts.has(segment)) {
+      sort = segment;
+    } else if (validCategories) {
+      if (validCategories.has(segment)) {
+        category = segment;
+      }
+    } else if (/^[a-z0-9-]+$/.test(segment)) {
+      category = segment;
+    }
+  }
 
   return { category, sort };
 }
@@ -43,6 +53,7 @@ function parseHash(hash: string): {
     const { category, sort } = parseTabSegments(
       parts.slice(1),
       VALID_BUNDLE_SORTS,
+      VALID_BUNDLE_CATEGORIES,
     );
     return { tab: "bundles", category, sort };
   }
@@ -74,6 +85,28 @@ function buildHash(
   const sortSlug = getSortSlug(sort);
 
   return [`#${tab}`, categorySlug, sortSlug].filter(Boolean).join(":");
+}
+
+function normalizeUrlHash(
+  tab: NavigationTabType,
+  category: string,
+  sort: string,
+) {
+  if (typeof window === "undefined") return;
+
+  const expectedCanonicalHash = buildHash(tab, category, sort);
+  const currentHash = window.location.hash.toLowerCase();
+  const hasEncodingMismatch = /%2F/i.test(window.location.search);
+
+  if (
+    currentHash !== expectedCanonicalHash.toLowerCase() ||
+    hasEncodingMismatch
+  ) {
+    const targetUrl = new URL(window.location.href);
+    targetUrl.hash = expectedCanonicalHash;
+    const formattedUrl = targetUrl.toString().replace(/%2F/gi, "/");
+    window.history.replaceState(null, "", formattedUrl);
+  }
 }
 
 function getInitState() {
@@ -164,11 +197,6 @@ export function useUrlSync() {
   const syncFromUrl = useCallback(() => {
     if (typeof window === "undefined") return;
 
-    if (/%2F/i.test(window.location.search)) {
-      const cleanSearchUrl = window.location.href.replace(/%2F/gi, "/");
-      window.history.replaceState(null, "", cleanSearchUrl);
-    }
-
     const nextState = getInitState();
 
     setActiveTab(nextState.activeTab);
@@ -179,16 +207,38 @@ export function useUrlSync() {
     setSelectedAppPackageName(nextState.selectedAppPackageName);
     setPopupBundleKey(nextState.popupBundleKey);
     setPopupSearchQuery(nextState.popupSearchQuery);
+
+    const nextCategory =
+      nextState.activeTab === "bundles"
+        ? nextState.bundlesCategory
+        : nextState.appsCategory;
+    const nextSort =
+      nextState.activeTab === "bundles"
+        ? nextState.bundlesSort
+        : nextState.appsSort;
+
+    normalizeUrlHash(nextState.activeTab, nextCategory, nextSort);
   }, []);
 
   useEffect(() => {
+    const initCategory =
+      initState.activeTab === "bundles"
+        ? initState.bundlesCategory
+        : initState.appsCategory;
+    const initSort =
+      initState.activeTab === "bundles"
+        ? initState.bundlesSort
+        : initState.appsSort;
+
+    normalizeUrlHash(initState.activeTab, initCategory, initSort);
+
     window.addEventListener("popstate", syncFromUrl);
     window.addEventListener("hashchange", syncFromUrl);
     return () => {
       window.removeEventListener("popstate", syncFromUrl);
       window.removeEventListener("hashchange", syncFromUrl);
     };
-  }, [syncFromUrl]);
+  }, [initState, syncFromUrl]);
 
   const updateUrl = useCallback(
     (urlUpdates: {

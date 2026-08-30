@@ -1,10 +1,66 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.24",
+  "version": "1.2.2",
   "patches": [
     {
-      "name": "Block Facebook ads (573)",
-      "description": "Stops feed, Reels/video, and commercial-break ads without modifying the Story viewer pipeline.",
+      "name": "Block Facebook Feed ads (573)",
+      "description": "Blocks sponsored and promoted units in the Facebook 573 Feed without touching Reels or Stories.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.facebook.katana",
+          "name": "Facebook",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1877F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "573.0.0.37.74",
+              "versionCodes": {
+                "ARM64_V8A": 473623755
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block Facebook Reels ads (573)",
+      "description": "Blocks sponsored Reels in the swipe feed plus Reels/video banners, video ads, and commercial breaks.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.facebook.katana",
+          "name": "Facebook",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1877F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "573.0.0.37.74",
+              "versionCodes": {
+                "ARM64_V8A": 473623755
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Block Facebook Story ads (573)",
+      "description": "Filters Story ad buckets only at the concrete X68 provider return boundary.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

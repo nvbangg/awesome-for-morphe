@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0-dev.1",
+  "version": "1.4.2",
   "patches": [
     {
       "name": "Bounty Daily Reward Shortcut",
@@ -36,7 +36,7 @@
     {
       "name": "Change keyboard name",
       "description": "Changes the name shown for Keyboard Designer in Android's keyboard/input-method switcher.",
-      "default": false,
+      "default": true,
       "dependencies": [],
       "compatiblePackages": [
         {
@@ -134,7 +134,7 @@
       ]
     },
     {
-      "name": "Daily Reward Background Status & Auto-Claim",
+      "name": "Daily Reward Background Auto-Claim",
       "description": "Checks daily reward eligibility and automatically claims it (bypassing ads) if available. Invoke by sending intent as broadcast, with action app.danielthemaniel.pokeraid.CHECK_DAILY_REWARD, and package me.pokeraid.",
       "default": true,
       "dependencies": [

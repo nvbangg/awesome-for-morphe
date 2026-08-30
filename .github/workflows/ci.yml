@@ -107,7 +107,7 @@ jobs:
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-            if [ "${{ steps.config.outputs.mode }}" != "default" ]; then
+            if [ "${{ steps.config.outputs.mode }}" != "default" ] && git diff --staged --name-only | grep -q "web/public/whats-new.json"; then
               TAG=$(date -u +'%Y.%m.%d')
               git commit -m "Update history (${TAG})"
             else

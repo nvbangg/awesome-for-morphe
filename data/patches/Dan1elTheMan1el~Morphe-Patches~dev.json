@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.2",
+  "version": "1.5.0-dev.1",
   "patches": [
     {
       "name": "Bounty Daily Reward Shortcut",
@@ -78,7 +78,9 @@
       "name": "Custom Branding",
       "description": "Changes DeFit's app name, header title, and displayed version.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "BytecodePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.fitness.debugger",
@@ -97,6 +99,18 @@
                 "X86": 821
               },
               "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "0.9.3",
+              "versionCodes": {
+                "ARM64_V8A": 930,
+                "ARMEABI_V7A": 930,
+                "X86_64": 930,
+                "X86": 930
+              },
+              "isExperimental": true,
               "minSdk": null,
               "description": null
             }
@@ -125,10 +139,10 @@
         {
           "key": "version",
           "title": "Version",
-          "description": "Version text shown at the bottom of the main screen.",
+          "description": "Version text shown in the app. Use \"auto\" to display the patched target version automatically.",
           "required": true,
           "type": "kotlin.String",
-          "default": "0.8.2a-patched",
+          "default": "auto",
           "values": null
         }
       ]
@@ -286,6 +300,18 @@
               "isExperimental": false,
               "minSdk": null,
               "description": null
+            },
+            {
+              "version": "0.9.3",
+              "versionCodes": {
+                "ARM64_V8A": 930,
+                "ARMEABI_V7A": 930,
+                "X86_64": 930,
+                "X86": 930
+              },
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
             }
           ]
         }
@@ -315,6 +341,18 @@
                 "X86": 821
               },
               "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "0.9.3",
+              "versionCodes": {
+                "ARM64_V8A": 930,
+                "ARMEABI_V7A": 930,
+                "X86_64": 930,
+                "X86": 930
+              },
+              "isExperimental": true,
               "minSdk": null,
               "description": null
             }
@@ -412,6 +450,18 @@
               "isExperimental": false,
               "minSdk": null,
               "description": null
+            },
+            {
+              "version": "0.9.3",
+              "versionCodes": {
+                "ARM64_V8A": 930,
+                "ARMEABI_V7A": 930,
+                "X86_64": 930,
+                "X86": 930
+              },
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
             }
           ]
         }
@@ -451,7 +501,7 @@
     },
     {
       "name": "Unlimited Time Bypass",
-      "description": "Removes the ad requirement and grants maximum active time when the button is pressed.",
+      "description": "Removes the ad requirement and grants the target DeFit version's maximum active time when the button is pressed.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -472,6 +522,18 @@
                 "X86": 821
               },
               "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "0.9.3",
+              "versionCodes": {
+                "ARM64_V8A": 930,
+                "ARMEABI_V7A": 930,
+                "X86_64": 930,
+                "X86": 930
+              },
+              "isExperimental": true,
               "minSdk": null,
               "description": null
             }

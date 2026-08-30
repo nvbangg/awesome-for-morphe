@@ -1,10 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0",
+  "version": "1.4.1",
   "patches": [
     {
-      "name": "Hide AI Lab Tab",
-      "description": "Removes the third bottom navigation tab ('AI Lab' / 'Lab. IA') by forcing its visibility observer to always hide the tab.",
+      "name": "Hide Promotional UI",
+      "description": "Suppresses home banners, export promos, subscription paywalls, Pro badges, Lynx promo modals, and PC diversion popups.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -29,138 +29,8 @@
       "options": []
     },
     {
-      "name": "Hide AI Sounds Tab",
-      "description": "Disables the cloud-gated AI sounds category inside the sound-effects panel.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.lemon.lvoverseas",
-          "name": "CapCut",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#00C4CC",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "19.2.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide False Hopes Features",
-      "description": "Hides 'IA ultra HD' (Export Super Resolution) and 'Flusso ottico' (Slow Motion Optical Flow) options since they are cloud-gated.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.lemon.lvoverseas",
-          "name": "CapCut",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#00C4CC",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "19.2.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide Home Bottom Banner",
-      "description": "Suppresses the promotional bottom banner on the home screen (e.g. Twitch / subscription promos).",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.lemon.lvoverseas",
-          "name": "CapCut",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#00C4CC",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "19.2.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide Home Top Banner",
-      "description": "Suppresses the promotional header banner on the home screen.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.lemon.lvoverseas",
-          "name": "CapCut",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#00C4CC",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "19.2.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide Inbox Tab",
-      "description": "Removes the inbox / notifications bottom navigation tab by forcing its visibility observer to always hide the tab.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.lemon.lvoverseas",
-          "name": "CapCut",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#00C4CC",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "19.2.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide Templates Tab",
-      "description": "Removes the second bottom navigation tab ('Templates' / 'Modelli') by forcing its visibility observer to always hide the tab.",
+      "name": "Hide Unavailable Features",
+      "description": "Hides cloud-gated editor options that won't work offline: AI sounds, super resolution, optical flow, and smart frame interpolation.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -237,7 +107,7 @@
       "options": []
     },
     {
-      "name": "Remove security notice",
+      "name": "Remove Security Notice",
       "description": "Suppresses the modified-build security notice by disabling the risk SDK dialog entry point and the isCracking flag writer.",
       "default": true,
       "dependencies": [],
@@ -263,7 +133,33 @@
       "options": []
     },
     {
-      "name": "Suppress Telemetry and Trackers",
+      "name": "Simplify Navigation",
+      "description": "Removes the Templates, Inbox, and AI Lab bottom navigation tabs.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.lemon.lvoverseas",
+          "name": "CapCut",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00C4CC",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "19.2.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Suppress Telemetry",
       "description": "Disables background monitoring and analytics frameworks including ByteDance Helios, AppLog, and AppsFlyer.",
       "default": true,
       "dependencies": [],

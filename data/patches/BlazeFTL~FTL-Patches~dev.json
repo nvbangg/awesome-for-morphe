@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.43.0-dev.3",
+  "version": "1.43.0-dev.9",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -594,51 +594,6 @@
       "options": []
     },
     {
-      "name": "Provide Original app certificate",
-      "description": "Automatically reads the signing certificate from the APK you are patching — no original app installed or file provided needed. Only fill the options below if you are patching an APK that was already re-signed (e.g. a previously patched build): in that case point to the original APK file, or enter the certificate manually.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": null,
-      "options": [
-        {
-          "key": "originalApkPath",
-          "title": "Path to original APK (if uninstalled)",
-          "description": "Full path to the original APK or .apks bundle. Example: /sdcard/Download/App.apks",
-          "required": false,
-          "type": "kotlin.String",
-          "default": null,
-          "values": null
-        },
-        {
-          "key": "manualCertSha1",
-          "title": "Certificate SHA-1 (manual)",
-          "description": "40-char hex. Found on APKMirror under app signature info.",
-          "required": false,
-          "type": "kotlin.String",
-          "default": null,
-          "values": null
-        },
-        {
-          "key": "manualCertSha256",
-          "title": "Certificate SHA-256 (manual)",
-          "description": "64-char hex. Optional companion to SHA-1.",
-          "required": false,
-          "type": "kotlin.String",
-          "default": null,
-          "values": null
-        },
-        {
-          "key": "manualCertBase64",
-          "title": "Certificate Base64 DER (manual)",
-          "description": "Needed only for Signature spoof patch. Get it with: apksigner verify --print-certs original.apk",
-          "required": false,
-          "type": "kotlin.String",
-          "default": null,
-          "values": null
-        }
-      ]
-    },
-    {
       "name": "Remove Ads",
       "description": "Cleans Apps Code From Ads Junk. Works In Most Apps Where There Isn't Any Check For Ads Loaded Or Not. If There Is A Check You Will Be Stuck In SplashActivity Due To Custom Ads Load Checks But It Is Superior.",
       "default": false,
@@ -905,7 +860,7 @@
     },
     {
       "name": "Skip Splash Screen - Expert Only",
-      "description": "EXPERT USERS ONLY. Manually Configure It To Point At Real Splash And Main Activity As Many Apps Use Other Names. Check the log to know what the patch is doing Ensure App Doesnt Ask For Permission In Splash Screen.",
+      "description": "EXPERT USERS ONLY. Manually Configure It To Point At Real Splash And Main Activity As Many Apps Use Other Names. Check the log to know what the patch is doing. Ensure App Doesnt Ask For Permissions In Splash Screen.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -1125,8 +1080,8 @@
       "options": []
     },
     {
-      "name": "Spoof app signature",
-      "description": "Makes the app think its signing certificate is unchanged after Morphe re-signs it.\n\nUseful when an app crashes or shows a tamper warning because it checks its own certificate.\n\nDoes not bypass Play Integrity / SafetyNet hardware attestation.",
+      "name": "Spoof App Signature",
+      "description": "Makes the app think its signing certificate is unchanged after Morphe re-signs it, useful when an app crashes or shows a tamper warning because it checks its own certificate. Does not bypass Play Integrity / SafetyNet hardware attestation. Apply with Original app certificate patch.",
       "default": false,
       "dependencies": [
         "ResourcePatch",
@@ -1145,6 +1100,37 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Unlock Pro",
+      "description": "Forces the purchase check to always return true, unlocking Pro.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.hdictionary.bn",
+          "name": "Bangla Dictionary",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.5.1",
+              "versionCodes": {
+                "ARM64_V8A": 1151,
+                "ARMEABI_V7A": 1151,
+                "X86_64": 1151,
+                "X86": 1151
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     },
     {
       "name": "Unlock Pro",
@@ -1196,10 +1182,10 @@
             {
               "version": "9.4",
               "versionCodes": {
-                "ARM64_V8A": 24011893,
-                "ARMEABI_V7A": 24011893,
-                "X86_64": 24011893,
-                "X86": 24011893
+                "ARM64_V8A": 149,
+                "ARMEABI_V7A": 149,
+                "X86_64": 149,
+                "X86": 149
               },
               "isExperimental": false,
               "minSdk": null,

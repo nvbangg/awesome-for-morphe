@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.43.0-dev.10",
+  "version": "1.43.0-dev.14",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -105,6 +105,37 @@
       ]
     },
     {
+      "name": "Change Cleaner & Media Tab Defaults",
+      "description": "Changes first-run defaults: hides the Image, Video, Audio and Cleaner tabs, and shows hidden files by default. Only affects users who have never changed the setting themselves - the preference override still takes priority.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "files.fileexplorer.filemanager",
+          "name": "File Manager - XFolder",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.5.7",
+              "versionCodes": {
+                "ARM64_V8A": 1557000,
+                "ARMEABI_V7A": 1557000,
+                "X86_64": 1557000,
+                "X86": 1557000
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Change Display Size",
       "description": "Change any app's display size without touching your phone's system settings. Make it bigger if things look too small, or smaller to fit more on screen. You Need To Configure 100(No Change), 90(10% Smaller App Ui), 110(10% Bigger App Ui).",
       "default": false,
@@ -182,6 +213,37 @@
       "options": []
     },
     {
+      "name": "Clean sidebar",
+      "description": "Hides the remote-connection and Category sections from the navigation sidebar, and hides Encrypt and Downloader from the Storage section.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rs.explorer.filemanager",
+          "name": "RS File Manager",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.3.0.4",
+              "versionCodes": {
+                "ARM64_V8A": 239,
+                "ARMEABI_V7A": 239,
+                "X86_64": 239,
+                "X86": 239
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable Annoying Snaptube Notifications",
       "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default.",
       "default": false,
@@ -229,6 +291,37 @@
             {
               "version": null,
               "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Rate Us Dialog",
+      "description": "Prevents the in-app rate-us dialog from ever being shown.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "files.fileexplorer.filemanager",
+          "name": "File Manager - XFolder",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.5.7",
+              "versionCodes": {
+                "ARM64_V8A": 1557000,
+                "ARMEABI_V7A": 1557000,
+                "X86_64": 1557000,
+                "X86": 1557000
+              },
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -1217,6 +1310,39 @@
                 "ARMEABI_V7A": 149,
                 "X86_64": 149,
                 "X86": 149
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Pro & Skip Splash Screen",
+      "description": "Forces the ad-removed/Pro check to always return true, and renames the launcher activity from SplashActivity to MainActivity so the splash screen is skipped.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "files.fileexplorer.filemanager",
+          "name": "File Manager - XFolder",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.5.7",
+              "versionCodes": {
+                "ARM64_V8A": 1557000,
+                "ARMEABI_V7A": 1557000,
+                "X86_64": 1557000,
+                "X86": 1557000
               },
               "isExperimental": false,
               "minSdk": null,

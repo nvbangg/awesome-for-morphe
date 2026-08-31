@@ -1,12 +1,13 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0-dev.30",
+  "version": "1.0.0-dev.31",
   "patches": [
     {
       "name": "Allow Importing Subs from Local Storage",
       "description": "Imports device subtitle files into Nuvio's ExoPlayer subtitle menu without rebuilding active playback.",
       "default": false,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch"
       ],
@@ -37,6 +38,7 @@
       "default": false,
       "dependencies": [
         "BytecodePatch",
+        "BytecodePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": [
@@ -65,6 +67,7 @@
       "description": "Adds Library > Storage playback, folder selection, and same-basename sidecar subtitles for local video files.",
       "default": false,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch"
       ],
@@ -95,6 +98,7 @@
       "default": false,
       "dependencies": [
         "BytecodePatch",
+        "BytecodePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": [
@@ -120,9 +124,10 @@
     },
     {
       "name": "Random Episode",
-      "description": "Adds Morphe > Detail Page > Show Random Episode Button and random series playback.",
+      "description": "Adds persistent per-show random playback with All or Unwatched episode pools.",
       "default": false,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch"
       ],
@@ -153,6 +158,7 @@
       "default": false,
       "dependencies": [
         "BytecodePatch",
+        "BytecodePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": [
@@ -180,7 +186,9 @@
       "name": "Side-by-side installation",
       "description": "Installs the patched app separately as Nuvio Morphe instead of replacing NuvioTV.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "BytecodePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.nuvio.tv",

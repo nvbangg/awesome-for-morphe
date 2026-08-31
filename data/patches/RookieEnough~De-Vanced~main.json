@@ -1,13 +1,42 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "patches": [
     {
       "name": "Add 'Give Kudos' button to 'Group Activity'",
       "description": "Adds a button that triggers the same action as shaking your phone would.",
       "default": true,
       "dependencies": [
+        "BytecodePatch",
         "ResourcePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.strava",
+          "name": "Strava",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FC6925",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "477.14",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Add activity export",
+      "description": "Adds an \"Export GPX\" item to the activity overflow menu, which saves the activity's GPS track as a GPX file in Downloads/Strava.",
+      "default": true,
+      "dependencies": [
         "BytecodePatch"
       ],
       "compatiblePackages": [
@@ -20,7 +49,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "473.11",
+              "version": "477.14",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -49,7 +78,36 @@
           "signatures": null,
           "targets": [
             {
-              "version": "473.11",
+              "version": "477.14",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Add route export",
+      "description": "Allows exporting and downloading Strava routes as GPX or TCX files directly from the app.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.strava",
+          "name": "Strava",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FC6925",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "477.14",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -134,7 +192,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "473.11",
+              "version": "477.14",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -356,7 +414,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "473.11",
+              "version": "477.14",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -463,7 +521,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "473.11",
+              "version": "477.14",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -875,7 +933,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "473.11",
+              "version": "477.14",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1201,7 +1259,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "473.11",
+              "version": "477.14",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1365,6 +1423,32 @@
           "targets": [
             {
               "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove popular search time limit",
+      "description": "Removes the 7-day trial countdown on popular search results so the free popular-search preview (30 works) never expires.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "jp.pxv.android",
+          "name": "Pixiv",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0096FA",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.141.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1807,7 +1891,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "473.11",
+              "version": "477.14",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

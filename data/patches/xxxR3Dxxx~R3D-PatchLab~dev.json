@@ -1,33 +1,7 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.1-dev.4",
+  "version": "1.0.1",
   "patches": [
-    {
-      "name": "Fingerprint Probe",
-      "description": "Tests structural fingerprint matching.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "br.com.zetabit.ios_standby",
-          "name": "StandBy Mode",
-          "description": null,
-          "apkFileType": "APKM",
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
     {
       "name": "Rename StandBy",
       "description": "Changes the launcher name to R3D StandBy.",
@@ -58,7 +32,7 @@
     },
     {
       "name": "Unlock Premium",
-      "description": "Unlock Premium Features.",
+      "description": "Unlocks Premium Features.",
       "default": true,
       "dependencies": [
         "BytecodePatch"
@@ -73,9 +47,16 @@
           "signatures": null,
           "targets": [
             {
-              "version": null,
+              "version": "2.1.22.561",
               "versionCodes": null,
               "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
               "minSdk": null,
               "description": null
             }

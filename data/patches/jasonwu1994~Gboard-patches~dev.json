@@ -1,5 +1,5 @@
 {
-  "version": "3.7.0-dev.2",
+  "version": "3.8.0-dev.3",
   "patches": [
     {
       "name": "AI Writing Tools",
@@ -196,6 +196,18 @@
     {
       "name": "English QWERTY Up-Flick Uppercase",
       "description": "英文 QWERTY 鍵盤上滑大小寫\nFlick up on the English QWERTY keyboard to toggle uppercase and lowercase.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.google.android.inputmethod.latin": [
+          "18.0.3.954559732-release-arm64-v8a"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "FTP Server",
+      "description": "新增區域網路 FTP 伺服器，支援檔案瀏覽、傳輸與下載續傳\nAdd a LAN FTP server with file browsing, transfers, and download resume.",
       "use": true,
       "dependencies": [],
       "compatiblePackages": {

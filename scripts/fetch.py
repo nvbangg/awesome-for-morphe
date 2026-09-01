@@ -319,17 +319,18 @@ def fetch_all_repos(fetch_images: bool = False) -> None:
                 owner, repo_name = repo.split("/", 1)
                 file_prefix = f"{owner}~{repo_name}~{branch}"
                 if bundle_text:
-                    (BUNDLES_DIR / f"{file_prefix}.json").write_text(
-                        bundle_text, encoding="utf-8"
+                    save_json(
+                        BUNDLES_DIR / f"{file_prefix}.json",
+                        json.loads(bundle_text),
                     )
 
                 has_patch_list = False
                 if patches_list_url := get_patches_list_url(source, repo, branch):
                     with contextlib.suppress(Exception):
                         content = fetch(patches_list_url)
-                        json.loads(content)
-                        (PATCHES_DIR / f"{file_prefix}.json").write_text(
-                            content, encoding="utf-8"
+                        save_json(
+                            PATCHES_DIR / f"{file_prefix}.json",
+                            json.loads(content),
                         )
                         has_patch_list = True
 

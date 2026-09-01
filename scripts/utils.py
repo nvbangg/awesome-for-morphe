@@ -127,7 +127,7 @@ def load_json(path: str | Path, default: Any = None) -> Any:
 def save_json(path: str | Path, data: Any) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="") as file:
+    with path.open("w", encoding="utf-8", newline="\n") as file:
         json.dump(data, file, indent=2, ensure_ascii=False)
         file.write("\n")
 

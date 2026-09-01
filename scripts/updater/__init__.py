@@ -13,9 +13,9 @@ def normalize_image_url(url: str) -> str:
     if url.startswith("/"):
         url = f"https://gitlab.com{url}"
     if "googleusercontent.com" in url or "ggpht.com" in url:
-        return re.sub(r"=(?:s|w)\d+.*$", "", url) + "=s64-rw"
+        return re.sub(r"=(?:s|w)\d+.*$", "", url) + "=s128-rw"
     if "avatars.githubusercontent.com" in url or "gravatar.com" in url:
-        return _set_query_param(url, r"([?&])(?:size|s)=\d+", "s=64")
+        return _set_query_param(url, r"([?&])(?:size|s)=\d+", "s=128")
     if "gitlab.com" in url:
-        return _set_query_param(url, r"([?&])width=\d+", "width=64")
+        return _set_query_param(url, r"([?&])width=\d+", "width=128")
     return url

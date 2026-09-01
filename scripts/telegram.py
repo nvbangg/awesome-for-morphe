@@ -12,25 +12,38 @@ from pathlib import Path
 from utils import WHATS_NEW_PATH
 
 
-def convert_to_html(text: str) -> str:
+def format_inline_markdown(text: str) -> str:
     escaped_text = html.escape(text)
     escaped_text = re.sub(r"~~(.*?)~~", r"<s>\1</s>", escaped_text)
     escaped_text = re.sub(r"\*\*(.*?)\*\*", r"<b>\1</b>", escaped_text)
     escaped_text = re.sub(r"\*(.*?)\*", r"<b>\1</b>", escaped_text)
     escaped_text = re.sub(r"`(.*?)`", r"<code>\1</code>", escaped_text)
-    escaped_text = re.sub(r"(?<!\w)_(.+?)_(?!\w)", r"<i>\1</i>", escaped_text)
+    return re.sub(r"(?<!\w)_(.+?)_(?!\w)", r"<i>\1</i>", escaped_text)
 
-    def replace_link(link_match: re.Match) -> str:
-        link_text = link_match.group(1)
-        url_string = html.unescape(link_match.group(2))
-        quoted_url = urllib.parse.quote(url_string, safe=":/%#?=&@+$,-_.!~*'()")
-        return f'<a href="{quoted_url}">{link_text}</a>'
 
-    return re.sub(
+def convert_to_html(text: str) -> str:
+    links: list[tuple[str, str]] = []
+
+    def save_link(link_match: re.Match) -> str:
+        link_index = len(links)
+        links.append((link_match.group(1), link_match.group(2)))
+        return f"\x00LINK_{link_index}\x00"
+
+    text_with_placeholders = re.sub(
         r"\[((?:\[[^\]]*\]|[^\]])+)\]\((https?://[^\s()]+(?:\([^\s()]+\)[^\s()]*)*)\)",
-        replace_link,
-        escaped_text,
+        save_link,
+        text,
     )
+
+    formatted_text = format_inline_markdown(text_with_placeholders)
+    for link_index, (link_text, url_string) in enumerate(links):
+        formatted_link_text = format_inline_markdown(link_text)
+        quoted_url = urllib.parse.quote(url_string, safe=":/%#?=&@+$,-_.!~*'()")
+        formatted_text = formatted_text.replace(
+            f"\x00LINK_{link_index}\x00",
+            f'<a href="{quoted_url}">{formatted_link_text}</a>',
+        )
+    return formatted_text
 
 
 def main() -> None:

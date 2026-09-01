@@ -1,0 +1,119 @@
+{
+    "version": "",
+    "patches": [
+        {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features by overriding the PremiumResponse.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.azefsw.audioconnect",
+                    "name": "AudioRelay",
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "0.26.1",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Freedium paywall bypass",
+            "description": "Opens a webview to Freedium for locked articles.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.medium.reader",
+                    "name": "Medium",
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.5.1784910415",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": [
+                {
+                    "key": "freedium_mirror_url",
+                    "title": "Freedium Mirror URL",
+                    "description": "URL of the Freedium mirror to use",
+                    "required": false,
+                    "type": "kotlin.String",
+                    "default": "https://freedium-mirror.cfd/",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "name": "Bypass Play Store Check",
+            "description": "Bypasses PairIP signature and license checks (Play Store version error).",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.medium.reader",
+                    "name": "Medium",
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.5.1784910415",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "Hide Premium Banners",
+            "description": "Hides 'Get Premium' banners by mocking the MembershipTier to MEMBER.",
+            "default": true,
+            "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.medium.reader",
+                    "name": "Medium",
+                    "description": null,
+                    "apkFileType": null,
+                    "appIconColor": null,
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "4.5.1784910415",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        }
+    ]
+}

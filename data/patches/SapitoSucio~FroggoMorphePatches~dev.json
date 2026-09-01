@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0-dev.2",
+  "version": "1.3.0-dev.4",
   "patches": [
     {
       "name": "Block Facebook Feed ads (573)",
@@ -180,7 +180,30 @@
           ]
         }
       ],
-      "options": []
+      "options": [
+        {
+          "key": "facebookImageFolder",
+          "title": "Facebook image folder",
+          "description": "Relative MediaStore folder prefix. The creator name is appended after @.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Pictures/FroggoPatches/Facebook/@",
+          "values": {
+            "Pictures/FroggoPatches/Facebook/@": "Pictures/FroggoPatches/Facebook/@"
+          }
+        },
+        {
+          "key": "facebookVideoFolder",
+          "title": "Facebook video folder",
+          "description": "Folder below Movies. The creator name is appended after @.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "FroggoPatches/Facebook/@",
+          "values": {
+            "Movies/FroggoPatches/Facebook/@": "FroggoPatches/Facebook/@"
+          }
+        }
+      ]
     },
     {
       "name": "Stop Facebook Story auto-advance (573)",
@@ -208,7 +231,17 @@
           ]
         }
       ],
-      "options": []
+      "options": [
+        {
+          "key": "loopStories",
+          "title": "Loop Stories",
+          "description": "When enabled, each completed Story restarts instead of advancing to the next Story.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        }
+      ]
     }
   ]
 }

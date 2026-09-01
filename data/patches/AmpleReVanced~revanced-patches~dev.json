@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0-dev.2",
   "patches": [
     {
       "name": "Add Packet Handler",
@@ -1805,6 +1805,34 @@
             {
               "version": "5.3.4",
               "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable navigation live updates",
+      "description": "Shows navigation progress with Android Live Updates.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "net.daum.android.map",
+          "name": "KakaoMap",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#FEE500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.28.1",
+              "isExperimental": true,
               "minSdk": null,
               "description": null
             }

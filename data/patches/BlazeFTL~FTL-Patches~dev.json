@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.43.0-dev.25",
+  "version": "1.43.0-dev.26",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -807,6 +807,37 @@
       ]
     },
     {
+      "name": "Remove License Verification",
+      "description": "Spoofs every PackageManager.getInstallerPackageName() check to report \"com.android.vending\", so Pro features unlock regardless of install source.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.themausoft.wpsapppro",
+          "name": "WPSApp Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.7.05",
+              "versionCodes": {
+                "ARM64_V8A": 118,
+                "ARMEABI_V7A": 118,
+                "X86_64": 118,
+                "X86": 118
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remove Watch Ad To Download",
       "description": "Removes the requirement to watch a rewarded ad before a download starts.",
       "default": false,
@@ -916,37 +947,6 @@
             {
               "version": null,
               "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Remove license verification",
-      "description": "Spoofs every PackageManager.getInstallerPackageName() check to report \"com.android.vending\", so Pro features unlock regardless of install source.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.themausoft.wpsapppro",
-          "name": "WPSApp Pro",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": null,
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.7.05",
-              "versionCodes": {
-                "ARM64_V8A": 118,
-                "ARMEABI_V7A": 118,
-                "X86_64": 118,
-                "X86": 118
-              },
               "isExperimental": false,
               "minSdk": null,
               "description": null

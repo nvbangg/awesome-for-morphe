@@ -53,7 +53,13 @@ export function usePatchData(activeTab?: string) {
   }, [activeTab, whatsNewHistory.length]);
 
   const stats = useMemo(
-    () => activeData?.stats || { bundlesCount: 0, appsCount: 0 },
+    () =>
+      activeData?.stats || {
+        bundlesCount: 0,
+        appsCount: 0,
+        categoryAppsCount: {},
+        categoryBundlesCount: {},
+      },
     [activeData],
   );
 

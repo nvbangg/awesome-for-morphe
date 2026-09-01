@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   Grid,
   Layers,
@@ -58,6 +59,19 @@ export function ControlBar({
 }: ControlBarProps) {
   const sortOptions =
     activeTab === "bundles" ? BUNDLE_SORT_OPTIONS : APP_SORT_OPTIONS;
+
+  const count = useMemo(() => {
+    if (activeTab === "apps") {
+      if (!selectedCategory || selectedCategory === "all") {
+        return stats.appsCount;
+      }
+      return stats.categoryAppsCount?.[selectedCategory] ?? 0;
+    }
+    if (!selectedCategory || selectedCategory === "all") {
+      return stats.bundlesCount;
+    }
+    return stats.categoryBundlesCount?.[selectedCategory] ?? 0;
+  }, [activeTab, selectedCategory, stats]);
 
   return (
     <div
@@ -174,8 +188,8 @@ export function ControlBar({
             <div className="shrink-0 sm:ml-auto">
               <Badge variant="count">
                 {activeTab === "apps"
-                  ? `${stats.appsCount.toLocaleString()} Apps`
-                  : `${stats.bundlesCount.toLocaleString()} Bundles`}
+                  ? `${count.toLocaleString()} Apps`
+                  : `${count.toLocaleString()} Bundles`}
               </Badge>
             </div>
           </div>

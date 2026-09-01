@@ -219,6 +219,27 @@ export function loadInitData(): Promise<ActiveData> {
     }
     const appItems = Array.from(appMap.values());
 
+    const categoryAppsCount: Record<string, number> = {};
+    for (const appItem of appItems) {
+      categoryAppsCount[appItem.categorySlug] =
+        (categoryAppsCount[appItem.categorySlug] || 0) + 1;
+    }
+
+    let officialBundlesCount = 0;
+    let unofficialBundlesCount = 0;
+    for (const bundle of bundleList) {
+      if (bundle.isUnofficial) {
+        unofficialBundlesCount += 1;
+      } else {
+        officialBundlesCount += 1;
+      }
+    }
+
+    const categoryBundlesCount: Record<string, number> = {
+      official: officialBundlesCount,
+      unofficial: unofficialBundlesCount,
+    };
+
     const stats: ActiveStats = {
       bundlesCount: bundleList.length,
       appsCount: appItems.reduce(
@@ -226,6 +247,8 @@ export function loadInitData(): Promise<ActiveData> {
           count + (appItem.packageName !== PACKAGE_UNIVERSAL ? 1 : 0),
         0,
       ),
+      categoryAppsCount,
+      categoryBundlesCount,
     };
 
     return {

@@ -103,6 +103,8 @@ export interface WhatsNewHistoryItem {
 export interface ActiveStats {
   bundlesCount: number;
   appsCount: number;
+  categoryAppsCount: Record<string, number>;
+  categoryBundlesCount: Record<string, number>;
 }
 
 export interface ActiveData {

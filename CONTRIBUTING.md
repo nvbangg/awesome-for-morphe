@@ -124,14 +124,14 @@ Supported execution modes:
 
 ### `whats_new.py`
 
-Generates `web/public/whats-new.json` (rolling changelog for the website) and `whats-new.md` (used for Telegram notifications) by comparing current patch data against the previous state in `data/history.json`.
+Generates `web/public/whats-new.json` (rolling changelog for the website) and `scripts/temp/whats-new.md` (used for Telegram notifications) by comparing current patch data against the previous state in `data/history.json`.
 
 ### `telegram.py`
 
 Sends update notifications to a Telegram channel (`TG_CHAT`) using the Telegram Bot API (`TG_TOKEN`). Supports the following usage:
 
-- **Default**: Posts `whats-new.md` with an auto-generated title (`🔔 What's New (Month Day)`).
-- With `"Custom Title"`: Posts `whats-new.md` with the specified title.
+- **Default**: Posts `scripts/temp/whats-new.md` with an auto-generated title (`🔔 What's New (Month Day)`).
+- With `"Custom Title"`: Posts `scripts/temp/whats-new.md` with the specified title.
 - With `"Custom Title" "path/to/file.md"`: Posts the specified markdown file with the specified title.
 
 ### `audit_readme.py`

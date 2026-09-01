@@ -121,7 +121,7 @@ jobs:
           fi
 
       - name: Send Telegram notification
-        if: steps.config.outputs.mode != 'default' && steps.commit.outputs.changed == 'true' && hashFiles('whats-new.md') != ''
+        if: steps.config.outputs.mode != 'default' && steps.commit.outputs.changed == 'true' && hashFiles('scripts/temp/whats-new.md') != ''
         env:
           TG_CHAT: ${{ secrets.TG_CHAT }}
           TG_TOKEN: ${{ secrets.TG_TOKEN }}

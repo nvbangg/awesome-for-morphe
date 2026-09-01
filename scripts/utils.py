@@ -24,7 +24,7 @@ BUNDLE_PARSER_DIR = SCRIPTS_DIR / "bundle-parser"
 MPP_DIR = BUNDLE_PARSER_DIR / "mpp"
 
 README_PATH = ROOT_DIR / "README.md"
-WHATS_NEW_PATH = ROOT_DIR / "whats-new.md"
+WHATS_NEW_PATH = TEMP_DIR / "whats-new.md"
 
 REPOS_JSON_PATH = DATA_DIR / "repos.json"
 HISTORY_PATH = DATA_DIR / "history.json"

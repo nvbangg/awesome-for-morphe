@@ -419,6 +419,7 @@ def main() -> None:
         bundle_sources,
         bundle_order,
     ):
+        WHATS_NEW_PATH.parent.mkdir(parents=True, exist_ok=True)
         WHATS_NEW_PATH.write_text(markdown_str + "\n", encoding="utf-8")
         print(f"Generated {WHATS_NEW_PATH.name}")
 

@@ -3,10 +3,13 @@ import { CATEGORY_UNIVERSAL } from "@/constants";
 export function simplifyString(inputString: string | null | undefined): string {
   return inputString
     ? inputString
+        .normalize("NFKC")
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
+        .normalize("NFC")
         .toLowerCase()
-        .replace(/[^a-z0-9]/g, "")
+        .replace(/đ/g, "d")
+        .replace(/[^\p{L}\p{N}]/gu, "")
     : "";
 }
 

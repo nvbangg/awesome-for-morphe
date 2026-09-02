@@ -682,12 +682,27 @@ fun main(args: Array<String>) {
     println("\nParsed ${successCount.get()}/$totalCount bundles successfully.")
 }
 
+private fun extractVersionFromMpp(mppFile: File): String {
+    return try {
+        java.util.jar.JarFile(mppFile).use { jar ->
+            val attrs = jar.manifest?.mainAttributes
+            attrs?.getValue("Version")?.trim()
+                ?: attrs?.getValue("Bundle-Version")?.trim()
+                ?: attrs?.getValue("Implementation-Version")?.trim()
+                ?: ""
+        }
+    } catch (_: Exception) {
+        ""
+    }
+}
+
 private fun processTargetFile(file: File, outDir: File): Boolean {
     if (file.extension.equals("mpp", ignoreCase = true)) {
         val outFileName = file.nameWithoutExtension + ".json"
         val outputFile = File(outDir, outFileName)
         val generated = generateMorphePatchList(file) ?: return false
-        writePatchList(outputFile, "", generated)
+        val version = extractVersionFromMpp(file)
+        writePatchList(outputFile, version, generated)
         return true
     }
     return processSingleBundleFile(file, outDir)

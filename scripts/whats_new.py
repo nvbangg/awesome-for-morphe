@@ -50,6 +50,20 @@ def normalize_patch_name(name: str) -> str:
     return " ".join(text.split())
 
 
+def should_show_bundle_owner(display_name: str, owner: str) -> bool:
+    if not owner:
+        return False
+    clean_name = re.sub(r"[^a-zA-Z]", "", display_name).lower()
+    clean_owner = re.sub(r"[^a-zA-Z]", "", owner).lower()
+    if not clean_owner or not clean_name:
+        return display_name.lower() != owner.lower()
+    return not (
+        clean_name == clean_owner
+        or clean_owner in clean_name
+        or clean_name in clean_owner
+    )
+
+
 def make_url(
     bundle_source: str | None = None,
     bundle_repo: str | None = None,
@@ -317,7 +331,7 @@ def generate_markdown(
             owner = repo.split("/")[0] if "/" in repo else ""
             owner_suffix = (
                 f" (by {owner})"
-                if owner and display_name.lower() != owner.lower()
+                if should_show_bundle_owner(display_name, owner)
                 else ""
             )
             bundle_url = make_url(bundle_source=source, bundle_repo=repo)
@@ -362,7 +376,7 @@ def generate_markdown(
             owner = repo.split("/")[0] if "/" in repo else ""
             owner_suffix = (
                 f" (by {owner})"
-                if owner and display_name.lower() != owner.lower()
+                if should_show_bundle_owner(display_name, owner)
                 else ""
             )
             bundle_url = make_url(bundle_source=source, bundle_repo=repo)

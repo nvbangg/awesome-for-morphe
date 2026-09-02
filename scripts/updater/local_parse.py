@@ -27,7 +27,7 @@ def parse_version_item(item: Any) -> dict | None:
         return {"version": item}
     if isinstance(item, dict) and "version" in item:
         entry = {"version": item["version"]}
-        if item.get("isExperimental"):
+        if item.get("isExperimental") or item.get("experimental"):
             entry["isExperimental"] = True
         return entry
     return None

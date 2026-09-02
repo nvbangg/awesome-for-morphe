@@ -163,11 +163,14 @@ function parsePatchesToRows(
             const targetObject = target as {
               version: unknown;
               isExperimental?: unknown;
+              experimental?: unknown;
             };
             if (typeof targetObject.version === "string") {
               versions.push({
                 version: targetObject.version,
-                isExperimental: !!targetObject.isExperimental,
+                isExperimental: Boolean(
+                  targetObject.isExperimental || targetObject.experimental,
+                ),
               });
             }
           }

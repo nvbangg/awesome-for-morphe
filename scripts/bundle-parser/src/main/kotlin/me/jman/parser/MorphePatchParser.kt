@@ -244,7 +244,7 @@ private fun convertMorpheCompatibility(compatibilityList: List<*>): JsonElement 
             if (target == null) continue
             val version = readStringMember(target, "version")
             val versionCodes = readMemberValue(target, "versionCodes")
-            val isExperimental = readBooleanMember(target, "isExperimental") ?: false
+            val isExperimental = readBooleanMember(target, "isExperimental") ?: readBooleanMember(target, "experimental") ?: false
             val minSdk = (readMemberValue(target, "minSdk") as? Number)?.toInt()
             val targetDescription = readStringMember(target, "description")
 

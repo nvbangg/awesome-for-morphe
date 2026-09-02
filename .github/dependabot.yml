@@ -1,5 +1,22 @@
 version: 2
+
+registries:
+  morphe-packages:
+    type: maven-repository
+    url: https://maven.pkg.github.com/MorpheApp/morphe-patcher
+    username: nvbangg
+    password: ${{ secrets.PAT_TOKEN }}
+
 updates:
+  - package-ecosystem: "gradle"
+    directory: "/scripts/bundle-parser"
+    schedule:
+      interval: "weekly"
+    registries:
+      - morphe-packages
+    allow:
+      - dependency-name: "app.morphe:*"
+
   - package-ecosystem: "npm"
     directory: "/web"
     schedule:

@@ -93,6 +93,7 @@ dependencies {
     implementation(libs.asm)
     implementation(libs.smali)
     compileOnly(libs.jsr305)
+    testImplementation(kotlin("test"))
 
     morpheRuntime(libs.morphe.patcher)
     implementation(libs.morphe.patcher)

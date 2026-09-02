@@ -35,7 +35,7 @@ private val prioritizedReleaseTags = listOf("latest", "dev", "stable")
 private val prettyJson = Json { prettyPrint = true }
 private val parsingJson = Json { ignoreUnknownKeys = true }
 
-private val patchCache = mutableMapOf<String, PatchListResult>()
+private val patchCache = mutableMapOf<String, JsonArray>()
 private val githubAuthToken = sequenceOf(
     System.getenv("GH_PAT"),
     System.getenv("GITHUB_TOKEN")
@@ -381,7 +381,24 @@ private fun removeNullFields(element: JsonElement): JsonElement {
     }
 }
 
-private fun sanitizeCompatiblePackages(patches: JsonArray): JsonArray {
+private fun deriveTargetVersions(packageObject: JsonObject): JsonArray? {
+    if ("versions" in packageObject) {
+        return null
+    }
+
+    val targets = packageObject["targets"] as? JsonArray ?: return null
+    val versions = targets.mapNotNull { target ->
+        val targetObject = target as? JsonObject ?: return@mapNotNull null
+        val version = (targetObject["version"] as? JsonPrimitive)?.contentOrNull
+        version?.takeIf { it.isNotBlank() }
+    }.distinct()
+
+    return versions.takeIf { it.isNotEmpty() }?.let { values ->
+        JsonArray(values.map(::JsonPrimitive))
+    }
+}
+
+internal fun sanitizeCompatiblePackages(patches: JsonArray): JsonArray {
     return JsonArray(
         patches.map { element ->
             val obj = element as? JsonObject ?: return@map element
@@ -394,12 +411,21 @@ private fun sanitizeCompatiblePackages(patches: JsonArray): JsonArray {
                     if (packageName.isNullOrBlank()) {
                         return@mapNotNull null
                     }
+                    val derivedVersions = deriveTargetVersions(packageObject)
                     buildJsonObject {
                         put("name", JsonPrimitive(packageName))
                         for ((key, value) in packageObject) {
-                            if (key != "name" && value != JsonNull) {
+                            if (key == "name") {
+                                continue
+                            }
+                            if (key == "versions" && value == JsonNull) {
+                                put(key, value)
+                            } else if (value != JsonNull) {
                                 put(key, removeNullFields(value))
                             }
+                        }
+                        if (derivedVersions != null) {
+                            put("versions", derivedVersions)
                         }
                     }
                 }
@@ -417,16 +443,16 @@ private fun sanitizeCompatiblePackages(patches: JsonArray): JsonArray {
     )
 }
 
-private fun generateModernPatchList(downloadUri: URI, expectedVersion: String? = null): PatchListResult? {
+private fun generateModernPatchList(downloadUri: URI, expectedVersion: String? = null): JsonArray? {
     val result = if (isMorphePatchBundle(downloadUri)) {
         generateMorphePatchListFromUri(downloadUri)
     } else {
         generateRevancedPatchList(downloadUri)
     } ?: return null
-    return PatchListResult(canonicalizePatchArray(result.patches), result.name)
+    return canonicalizePatchArray(result)
 }
 
-private fun generateMorphePatchListFromUri(downloadUri: URI): PatchListResult? {
+private fun generateMorphePatchListFromUri(downloadUri: URI): JsonArray? {
     val tempFile = File.createTempFile("morphe-patches", ".mpp")
     return try {
         downloadToFile(downloadUri.toURL(), tempFile)
@@ -473,9 +499,9 @@ private fun requireNonEmptyPatchArray(jsonText: String, source: String): JsonArr
     return parsed
 }
 
-private fun generateRevancedPatchList(downloadUri: URI): PatchListResult? {
+private fun generateRevancedPatchList(downloadUri: URI): JsonArray? {
     return try {
-        PatchListResult(requireNonEmptyPatchArray(generatePatchesFromUrl(downloadUri), "Patcher 22"))
+        requireNonEmptyPatchArray(generatePatchesFromUrl(downloadUri), "Patcher 22")
     } catch (_: FileNotFoundException) {
         Logger.warning("The patch bundle file was not found.")
         null
@@ -483,10 +509,10 @@ private fun generateRevancedPatchList(downloadUri: URI): PatchListResult? {
         Logger.warning("Failed to generate patches from ${downloadUri} with patcher 22. ${e.formatForLog()}")
         try {
             Logger.info("Retrying ${downloadUri} with legacy patcher 21.1.0-dev.5...")
-            PatchListResult(requireNonEmptyPatchArray(
+            requireNonEmptyPatchArray(
                 generatePatchesFromUrlWithLegacyPatcher(downloadUri),
                 "Legacy patcher 21.1.0-dev.5"
-            ))
+            )
         } catch (legacyError: Exception) {
             Logger.warning(
                 "Legacy patcher fallback also failed for ${downloadUri}. ${legacyError.formatForLog()}"
@@ -496,16 +522,16 @@ private fun generateRevancedPatchList(downloadUri: URI): PatchListResult? {
     }
 }
 
-private fun generateLegacyPatchList(downloadUri: URI): PatchListResult? {
+private fun generateLegacyPatchList(downloadUri: URI): JsonArray? {
     val patchesFile = File.createTempFile("legacy-patches", ".jar")
     return try {
         downloadToFile(downloadUri.toURL(), patchesFile)
         val parsed = parseLegacyPatchBundle(patchesFile)
-        if (parsed.patches.isEmpty()) {
+        if (parsed.isEmpty()) {
             Logger.warning("No patches were found in the legacy patch bundle.")
             null
         } else {
-            PatchListResult(canonicalizePatchArray(parsed.patches), parsed.name)
+            canonicalizePatchArray(parsed)
         }
     } catch (_: FileNotFoundException) {
         Logger.warning("The patch bundle file was not found.")
@@ -524,7 +550,7 @@ private fun generateLegacyPatchList(downloadUri: URI): PatchListResult? {
     }
 }
 
-private fun generatePatchListFromReleaseAsset(downloadUri: URI, expectedVersion: String): PatchListResult? {
+private fun generatePatchListFromReleaseAsset(downloadUri: URI, expectedVersion: String): JsonArray? {
     val location = parseReleaseLocation(downloadUri) ?: return null
     val releaseJson = fetchReleaseMetadata(location) ?: return generatePatchListFromRepositoryFile(location, expectedVersion)
     val assetUrl = findPatchMetadataAsset(releaseJson) ?: run {
@@ -533,10 +559,10 @@ private fun generatePatchListFromReleaseAsset(downloadUri: URI, expectedVersion:
     }
     val payload = downloadPlainText(assetUrl) ?: return generatePatchListFromRepositoryFile(location, expectedVersion)
     val parsed = convertPatchMetadataPayload(payload) ?: return generatePatchListFromRepositoryFile(location, expectedVersion)
-    return PatchListResult(canonicalizePatchArray(parsed))
+    return canonicalizePatchArray(parsed)
 }
 
-internal fun generateMorphePatchListFromSource(downloadUri: URI, expectedVersion: String): PatchListResult? {
+internal fun generateMorphePatchListFromSource(downloadUri: URI, expectedVersion: String): JsonArray? {
     parseReleaseLocation(downloadUri)?.let { location ->
         return generatePatchListFromRepositoryFile(location, expectedVersion, logMissing = false)
     }
@@ -548,8 +574,8 @@ internal fun generateMorphePatchListFromSource(downloadUri: URI, expectedVersion
     return null
 }
 
-private fun writePatchList(outputFile: File, version: String, result: PatchListResult) {
-    val payload = LocalPatchesFile(version, result.name, result.patches)
+private fun writePatchList(outputFile: File, version: String, patches: JsonArray) {
+    val payload = LocalPatchesFile(version, patches)
     outputFile.writeText(prettyJson.encodeToString(payload))
 }
 
@@ -595,7 +621,7 @@ private fun processBundle(bundleFolder: File) {
                 created
             }
 
-            if (existingContent != null && existingContent.version == parsedBundle.version && existingContent.patches == generated.patches) {
+            if (existingContent != null && existingContent.version == parsedBundle.version && existingContent.patches == generated) {
                 Logger.info("Patches are up to date.")
                 return@processVariant
             }
@@ -790,7 +816,7 @@ private fun generatePatchListFromRepositoryFile(
     location: ReleaseLocation,
     expectedVersion: String,
     logMissing: Boolean = true,
-): PatchListResult? {
+): JsonArray? {
     val attempts = listOf(location.tag, null)
 
     for (ref in attempts) {
@@ -805,7 +831,7 @@ private fun generatePatchListFromRepositoryFile(
             continue
         }
         Logger.info("Using repository patches-list.json from ${location.owner}/${location.repo} ($sourceLabel).")
-        return PatchListResult(canonicalizePatchArray(parsed.patches), parsed.name)
+        return canonicalizePatchArray(parsed.patches)
     }
 
     if (logMissing) {
@@ -820,7 +846,7 @@ private fun generatePatchListFromRepositoryFile(
 private fun generatePatchListFromGitLabRepositoryFile(
     location: GitLabReleaseLocation,
     expectedVersion: String,
-): PatchListResult? {
+): JsonArray? {
     val attempts = listOf(location.tag, "main", "master")
 
     for (ref in attempts) {
@@ -836,7 +862,7 @@ private fun generatePatchListFromGitLabRepositoryFile(
         Logger.info(
             "Using repository patches-list.json from ${location.projectPath} (ref $ref)."
         )
-        return PatchListResult(canonicalizePatchArray(parsed.patches), parsed.name)
+        return canonicalizePatchArray(parsed.patches)
     }
 
     return null
@@ -1033,7 +1059,7 @@ private fun convertExternalPatchObject(element: JsonElement): JsonObject? {
     }
 }
 
-private fun convertCompatibilityArray(array: JsonArray?): JsonObject {
+internal fun convertCompatibilityArray(array: JsonArray?): JsonObject {
     if (array == null) {
         return JsonObject(emptyMap())
     }
@@ -1044,7 +1070,9 @@ private fun convertCompatibilityArray(array: JsonArray?): JsonObject {
         val versions = when (versionsElement) {
             is JsonArray -> versionsElement.mapNotNull { it.jsonPrimitive.contentOrNull }
             is JsonPrimitive -> versionsElement.contentOrNull?.let { listOf(it) } ?: emptyList()
-            else -> emptyList()
+            else -> deriveTargetVersions(compatObj)
+                ?.mapNotNull { (it as? JsonPrimitive)?.contentOrNull }
+                ?: emptyList()
         }
         packageName to JsonArray(versions.map(::JsonPrimitive))
     }

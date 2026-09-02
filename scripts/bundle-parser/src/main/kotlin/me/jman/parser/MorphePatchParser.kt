@@ -16,7 +16,7 @@ import java.util.jar.JarFile
 
 private const val MORPHE_PATCHER_CLASSPATH_PROPERTY = "morphe.patcher.classpath"
 
-internal fun generateMorphePatchList(mppFile: File): PatchListResult? {
+internal fun generateMorphePatchList(mppFile: File): JsonArray? {
     if (!mppFile.isFile) {
         Logger.warning("The patch bundle file was not found: ${mppFile.name}")
         return null
@@ -29,7 +29,7 @@ internal fun generateMorphePatchList(mppFile: File): PatchListResult? {
             Logger.warning("No patches were found in the Morphe patch bundle.")
             null
         } else {
-            PatchListResult(JsonArray(jsonPatches))
+            JsonArray(jsonPatches)
         }
     } catch (e: Exception) {
         Logger.warning("Failed to parse Morphe patch bundle. ${e.describeForLog()}")

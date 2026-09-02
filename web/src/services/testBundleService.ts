@@ -63,7 +63,12 @@ async function fetchFromUrls(urls: string[]): Promise<unknown | null> {
         const text = await response.text();
         try {
           const json = JSON.parse(text);
-          if (Array.isArray(json) || (json && Array.isArray(json.patches))) {
+          if (
+            json &&
+            typeof json === "object" &&
+            !Array.isArray(json) &&
+            Array.isArray((json as Record<string, unknown>).patches)
+          ) {
             return json;
           }
         } catch {
@@ -77,31 +82,39 @@ async function fetchFromUrls(urls: string[]): Promise<unknown | null> {
   return null;
 }
 
-function parsePatchesToRows(data: unknown, bundleKey: string): RowItem[] {
+function parsePatchesToRows(
+  data: unknown,
+  bundleKey: string,
+  mainPatchNames?: Set<string>,
+  isDevBranch = false,
+): RowItem[] {
+  if (!data || typeof data !== "object" || Array.isArray(data)) return [];
   const dataObject = data as Record<string, unknown>;
-  const patchesList = Array.isArray(data)
-    ? data
-    : Array.isArray(dataObject?.patches)
-      ? dataObject.patches
-      : [];
+  const patchesList = Array.isArray(dataObject.patches)
+    ? (dataObject.patches as Array<Record<string, unknown>>)
+    : [];
 
   const rows: RowItem[] = [];
 
   for (const patch of patchesList) {
     if (!patch || typeof patch !== "object" || !patch.name) continue;
 
-    const patchName = patch.name;
-    const patchDesc = patch.description || "";
-    const isPatchPreRelease = !!patch.isPreRelease;
-    const options: PatchOption[] = patch.options || [];
-    const isDefault = patch.default !== false;
+    const patchName = String(patch.name);
+    const patchDesc = patch.description ? String(patch.description) : "";
+    const options: PatchOption[] = (patch.options as PatchOption[]) || [];
+    const defaultVal = patch.default !== undefined ? patch.default : patch.use;
+    const isDefault = defaultVal !== false;
+    const isPatchPreRelease =
+      isDevBranch && (!mainPatchNames || !mainPatchNames.has(patchName));
 
     const compatiblePackages: Array<{
       packageName: string;
       targets?: unknown[];
-      isPreRelease?: boolean;
     }> = Array.isArray(patch.compatiblePackages)
-      ? patch.compatiblePackages
+      ? (patch.compatiblePackages as Array<{
+          packageName: string;
+          targets?: unknown[];
+        }>)
       : patch.compatiblePackages && typeof patch.compatiblePackages === "object"
         ? Object.entries(patch.compatiblePackages).map(
             ([packageNameString, targets]) => ({
@@ -191,14 +204,24 @@ export async function fetchTestBundle(input: string): Promise<TestBundleData> {
   const availableBranches: string[] = [];
 
   let fetchSuccess = false;
+  let mainPatchNames: Set<string> | undefined;
 
   for (const branch of BRANCHES_TO_TRY) {
     const urls = getRawUrls(source, owner, repo, branch);
     const data = await fetchFromUrls(urls);
     if (data) {
       fetchSuccess = true;
-      const rows = parsePatchesToRows(data, `test-${repoName}-${branch}`);
+      const isDev = branch === "dev";
+      const rows = parsePatchesToRows(
+        data,
+        `test-${repoName}-${branch}`,
+        mainPatchNames,
+        isDev,
+      );
       if (rows.length > 0) {
+        if (branch === "main") {
+          mainPatchNames = new Set(rows.map((row) => row.patchName));
+        }
         branchesData[branch] = rows;
         availableBranches.push(branch);
       }

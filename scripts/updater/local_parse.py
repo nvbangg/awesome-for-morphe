@@ -42,7 +42,8 @@ def strip_patch(patch: dict, discovered_names: dict[str, str]) -> dict | None:
         output["description"] = desc
     if patch.get("isPreRelease"):
         output["isPreRelease"] = True
-    if patch.get("default") is False:
+    default_val = patch.get("default", patch.get("use", True))
+    if default_val is False:
         output["default"] = False
 
     if options := patch.get("options"):
@@ -103,15 +104,11 @@ def parse_patches_list(
     is_dev_branch: bool = False,
     main_patch_names: set[str] | None = None,
 ) -> tuple[list[dict] | None, str | None]:
-    if raw_patches_data is None or raw_patches_data == "":
+    if not isinstance(raw_patches_data, dict):
         return None, "Invalid `patches-list.json`"
 
-    raw_list = (
-        raw_patches_data.get("patches")
-        if isinstance(raw_patches_data, dict)
-        else (raw_patches_data if isinstance(raw_patches_data, list) else None)
-    )
-    if raw_list is None:
+    raw_list = raw_patches_data.get("patches")
+    if not isinstance(raw_list, list):
         return None, "Invalid `patches-list.json`"
     if len(raw_list) == 0:
         return None, "Empty `patches-list.json`"

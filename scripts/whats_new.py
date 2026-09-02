@@ -408,7 +408,11 @@ def main() -> None:
     json_diff = build_json_diff(old_history, new_bundles, app_metadata, bundle_order)
 
     if not json_diff:
-        print("No changes detected in patch bundles. Skipping What's New generation.")
+        info_message = (
+            "No changes detected in patch bundles. Skipping What's New generation."
+        )
+        print(f"[-] {info_message}")
+        append_step_summary(f"### ⚠️ What's new\n- {info_message}")
         return
 
     latest_entry = (
@@ -436,6 +440,14 @@ def main() -> None:
         WHATS_NEW_PATH.parent.mkdir(parents=True, exist_ok=True)
         WHATS_NEW_PATH.write_text(markdown_str + "\n", encoding="utf-8")
         print(f"Generated {WHATS_NEW_PATH.name}")
+        append_step_summary(f"### ✨ What's new\n{markdown_str}")
+    else:
+        info_message = (
+            "No new patches or apps to announce. Skipped"
+            f" `{WHATS_NEW_PATH.name}` generation."
+        )
+        print(f"[-] {info_message}")
+        append_step_summary(f"### ⚠️ What's new\n- {info_message}")
 
     whats_new_data.insert(0, {"date": today_str, "bundles": json_diff})
     save_json(WHATS_NEW_JSON_PATH, whats_new_data[:WHATS_NEW_MAX_ENTRIES])

@@ -157,8 +157,10 @@ def load_branch_data(
     if not bundle_file.exists():
         return None, None, "Missing `patches-bundle.json`"
     bundle = load_json(bundle_file)
-    if not isinstance(bundle, dict) or not bundle.get("download_url"):
+    if not isinstance(bundle, dict) or not (download_url := bundle.get("download_url")):
         return None, None, "Missing `download_url` in `patches-bundle.json`"
+    if not isinstance(download_url, str) or not download_url.lower().endswith(".mpp"):
+        return None, None, "Invalid `download_url` in `patches-bundle.json`"
     if not list_file.exists():
         return None, None, "Missing `patches-list.json`"
     raw = load_json(list_file)

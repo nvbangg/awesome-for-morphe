@@ -1,38 +1,14 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.43.0-dev.28",
+  "version": "1.43.0-dev.33",
   "patches": [
     {
       "name": "APK Junk Cleanup",
-      "description": "Removes junk and useless files with no runtime purpose inside apk.",
+      "description": "Removes junk and useless files with no runtime purpose inside apk. To keep only one CPU architecture, use the patcher's strip-libs option (Morphe Manager) or --striplibs (Morphe Desktop).",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
-      "options": [
-        {
-          "key": "splitByArch",
-          "title": "Keep Only One Architecture",
-          "description": "Keep native libraries (.so files) for only one CPU architecture. To generate separate APKs for each architecture, run this patch multiple times with a different architecture selected each time.",
-          "required": false,
-          "type": "kotlin.Boolean",
-          "default": false,
-          "values": null
-        },
-        {
-          "key": "targetArch",
-          "title": "Target architecture",
-          "description": "Which architecture to keep when splitting is enabled.",
-          "required": false,
-          "type": "kotlin.String",
-          "default": "arm64-v8a",
-          "values": {
-            "arm64-v8a": "ARM64 (arm64-v8a)",
-            "armeabi-v7a": "ARMv7 (armeabi-v7a)",
-            "x86": "x86",
-            "x86_64": "x86_64"
-          }
-        }
-      ]
+      "options": []
     },
     {
       "name": "Add Save Data",
@@ -95,7 +71,7 @@
           "description": "On: the toast only shows on the first launch. Off: it shows on every launch.",
           "required": false,
           "type": "kotlin.Boolean",
-          "default": true,
+          "default": false,
           "values": null
         }
       ]

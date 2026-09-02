@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.20.0",
+  "version": "1.21.0",
   "patches": [
     {
       "name": "Always incognito mode",
@@ -254,6 +254,24 @@
         }
       ],
       "options": []
+    },
+    {
+      "name": "Disable Pairip protection",
+      "description": "Neutralizes Pairip's client-side signature and license checks (including the LicenseActivity paywall/close-app enforcement) so the re-signed APK launches and stays open. Optionally guts the Pairip VM as well. Does not bypass server-side Play Integrity.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "gutVmRunner",
+          "title": "Gut Pairip VM",
+          "description": "Also neutralizes the Pairip VM: makes VMRunner.invoke() return null, drops the pairipcore native library load, and no-ops StartupLauncher.launch(). Only enable this for apps whose VM merely runs the startup integrity/license program (its result is discarded). If the app routes real functionality through the VM — e.g. broadcast receivers or IAP — enabling this breaks those features. Leave off unless the app needs it.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        }
+      ]
     },
     {
       "name": "Disable Signature Verification",
@@ -536,6 +554,34 @@
           "targets": [
             {
               "version": "1.5.5",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Unlocks Droplert Premium",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.shahzaman.pricetracker",
+          "name": "Droplert",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#DE5C53",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.2.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1376,6 +1422,34 @@
           "targets": [
             {
               "version": "12.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Pro",
+      "description": "Unlocks Fylo File Manager Pro",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.aeroloom.fylofilemanager",
+          "name": "Fylo — File Manager",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#3DDC84",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.9",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

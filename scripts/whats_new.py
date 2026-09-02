@@ -21,7 +21,8 @@ WHATS_NEW_MAX_ENTRIES = 21
 DISPLAY_ITEM_THRESHOLD = 4
 DISPLAY_ITEM_LIMIT = 3
 DEFAULT_BUNDLE_RANK = 9999
-FULL_CHANGELOG_URL = "https://awesome-morphe.vercel.app/#whats-new"
+BASE_WEB_URL = "https://awesome-morphe.vercel.app"
+WHATS_NEW_TAB = "#whats-new"
 
 
 def is_valid_package_name(package_name: str) -> bool:
@@ -77,7 +78,7 @@ def make_url(
         parts.append(f"app={urllib.parse.quote(app)}")
     if patch:
         parts.append(f"patch={urllib.parse.quote(patch)}")
-    return f"https://awesome-morphe.vercel.app/?{'&'.join(parts)}" if parts else ""
+    return f"{BASE_WEB_URL}/?{'&'.join(parts)}{WHATS_NEW_TAB}" if parts else ""
 
 
 def extract_bundle_metadata(
@@ -321,7 +322,7 @@ def generate_markdown(
     ):
         return ""
 
-    markdown_sections = [f"✨ [_View full changelog_]({FULL_CHANGELOG_URL})"]
+    markdown_sections = [f"✨ [_View full changelog_]({BASE_WEB_URL}/{WHATS_NEW_TAB})"]
 
     if new_bundle_repos:
         bundle_lines = []

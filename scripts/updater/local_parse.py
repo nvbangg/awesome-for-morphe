@@ -314,7 +314,7 @@ def process(
             if isinstance(source_entry.get("appFirstSeen"), dict)
             else {}
         )
-        has_universal_patch = False
+        current_apps_in_bundle: set[str] = set()
 
         for patch_dict in chosen_patches:
             compat_packages = patch_dict.pop("compatiblePackages", None)
@@ -322,6 +322,7 @@ def process(
                 for compat_package in compat_packages:
                     package_name = compat_package.get("packageName")
                     if package_name and package_name != PACKAGE_UNIVERSAL:
+                        current_apps_in_bundle.add(package_name)
                         valid_apps_from_bundles.add(package_name)
                         apps_dict.setdefault(package_name, {})
                         if (
@@ -332,13 +333,20 @@ def process(
                             app_first_seen_map[package_name] = now_ms
                 patch_dict["compatiblePackagesKey"] = get_compat_key(compat_packages)
             else:
-                has_universal_patch = True
+                current_apps_in_bundle.add(PACKAGE_UNIVERSAL)
 
-        if has_universal_patch and PACKAGE_UNIVERSAL not in app_first_seen_map:
+        if (
+            PACKAGE_UNIVERSAL in current_apps_in_bundle
+            and PACKAGE_UNIVERSAL not in app_first_seen_map
+        ):
             app_first_seen_map[PACKAGE_UNIVERSAL] = now_ms
 
         source_entry["patches"] = chosen_patches
-        source_entry["appFirstSeen"] = app_first_seen_map
+        source_entry["appFirstSeen"] = {
+            package_name: first_seen
+            for package_name, first_seen in app_first_seen_map.items()
+            if package_name in current_apps_in_bundle
+        }
 
     for key in keys_to_remove:
         bundle_sources.pop(key, None)

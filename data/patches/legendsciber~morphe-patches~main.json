@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.28.5",
+  "version": "1.29.1",
   "patches": [
     {
       "name": "Ad Removal",
@@ -265,6 +265,58 @@
     {
       "name": "Shadow Fight 2 Dump Trigger",
       "description": "Triggers ShadowDump via UnityPlayerActivity.onCreate",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nekki.shadowfight",
+          "name": "Shadow Fight 2",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1A1A1A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.46.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Shadow Fight 2 Hardcode 999999999",
+      "description": "Direct memory hardcode for BFBONKPKBNL/ECENNHNBAME ObscuredInt (Gems/Coins) to 999999999. No runtime scan.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nekki.shadowfight",
+          "name": "Shadow Fight 2",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1A1A1A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.46.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Shadow Fight 2 Hardcode Trigger",
+      "description": "Triggers hardcode via UnityPlayerActivity.onCreate",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

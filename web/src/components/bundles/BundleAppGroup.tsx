@@ -45,7 +45,7 @@ export function BundleAppGroup({
     <div className="border border-divider rounded-xl bg-card flex flex-col">
       <div
         onClick={() => toggleAppGroup(group.packageName)}
-        className={`sticky -top-4 z-20 flex flex-col gap-2 px-4 py-3 bg-card cursor-pointer rounded-t-xl ${isExpanded ? "border-b border-divider shadow-sm" : "rounded-b-xl"}`}
+        className={`flex flex-col gap-2 px-4 py-3 bg-card cursor-pointer rounded-t-xl ${isExpanded ? "border-b border-divider shadow-sm" : "rounded-b-xl"}`}
       >
         <div className="flex items-center justify-between gap-3 w-full">
           <AppAvatar src={group.appMeta.appIcon} />
@@ -90,7 +90,7 @@ export function BundleAppGroup({
       </div>
 
       {isExpanded && (
-        <div className="flex flex-col">
+        <div className="flex flex-col max-h-[50dvh] overflow-y-auto pr-1">
           {group.patches.map((patchItem) => (
             <PatchItemRow
               key={patchItem.id}

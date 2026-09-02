@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.43.0-dev.26",
+  "version": "1.43.0-dev.27",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -31,6 +31,45 @@
             "x86": "x86",
             "x86_64": "x86_64"
           }
+        }
+      ]
+    },
+    {
+      "name": "Add Save Data",
+      "description": "Unpacks bundled save-data zip(s) into the app's storage on first launch.",
+      "default": false,
+      "dependencies": [
+        "RawResourcePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "addToast",
+          "title": "Add toast",
+          "description": "Also show a toast message on first launch.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
+        },
+        {
+          "key": "message",
+          "title": "Toast message",
+          "description": "Only used if 'Add toast' is on.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "Mod By BlazeFTL",
+          "values": null
+        },
+        {
+          "key": "showOnce",
+          "title": "Show toast once",
+          "description": "On: the toast only shows on the first launch. Off: it shows on every launch.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": true,
+          "values": null
         }
       ]
     },

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.43.0-dev.27",
+  "version": "1.43.0-dev.28",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -44,6 +44,33 @@
       ],
       "compatiblePackages": null,
       "options": [
+        {
+          "key": "internalDataZip",
+          "title": "1. Select data/data zip",
+          "description": "Zip of the app's internal storage. Restored to /data/data/<package> on first launch.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        },
+        {
+          "key": "externalDataZip",
+          "title": "2. Select Android/data zip",
+          "description": "Zip of the app's external storage folder. Restored to Android/data/<package> on first launch.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        },
+        {
+          "key": "obbZip",
+          "title": "3. Select Android/obb zip",
+          "description": "Zip of the app's OBB files. Restored to Android/obb/<package> on first launch.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        },
         {
           "key": "addToast",
           "title": "Add toast",

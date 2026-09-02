@@ -1,90 +1,317 @@
 {
-  "version": "1.12.0",
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.12.1",
   "patches": [
     {
       "name": "Block data collection",
       "description": "Block Didomi & Matomo tracking SDKs, hide consent prompts for 3rd party & geolocation data",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "com.jcdecaux.vls.lyon": [
-          "3.1.1"
-        ]
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "com.jcdecaux.vls.lyon",
+          "name": "Vélo'v",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F42F34",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
       "name": "Bypass PairIp",
       "description": "Bypass the PairIp license check preventing app modification",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "ee.dustland.android.dustlandsudoku": null
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "ee.dustland.android.dustlandsudoku",
+          "name": "Sudoku The Clean One",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#3C3C3C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.18.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
       "name": "Disable Internet and Telemetry",
       "description": "Disable Internet and Telemetry by removing all non-necessary permissions from the manifest",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "ee.dustland.android.dustlandsudoku": null,
-        "ee.dustland.android.minesweeper": null,
-        "ee.dustland.android.solitaire": null
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "ee.dustland.android.dustlandsudoku",
+          "name": "Sudoku The Clean One",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#3C3C3C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.18.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "ee.dustland.android.minesweeper",
+          "name": "Minesweeper The Clean One",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#3C3C3C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.21.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "ee.dustland.android.solitaire",
+          "name": "Solitaire The Clean One",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#3C3C3C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.20.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
       "name": "Disable map animations",
       "description": "Disable the map zoom-in animation",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "com.jcdecaux.vls.lyon": [
-          "3.1.1"
-        ]
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "com.jcdecaux.vls.lyon",
+          "name": "Vélo'v",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F42F34",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
       "name": "Easy deeplinks configuration",
       "description": "Allows easy configuration of deeplinks (velov.cyclocity.fr, velov.grandlyon.com) required by the app to sign-in",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "com.jcdecaux.vls.lyon": [
-          "3.1.1"
-        ]
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "com.jcdecaux.vls.lyon",
+          "name": "Vélo'v",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F42F34",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
       "name": "Enable Club",
       "description": "Enable Citymapper Club subscription",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "com.citymapper.app.release": null
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "com.citymapper.app.release",
+          "name": "Citymapper",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#37AA2F",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.57.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
       "name": "Enable Premium",
       "description": "Unlock all purchasables options",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "ee.dustland.android.dustlandsudoku": null,
-        "ee.dustland.android.minesweeper": null,
-        "ee.dustland.android.solitaire": null
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "ee.dustland.android.dustlandsudoku",
+          "name": "Sudoku The Clean One",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#3C3C3C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.18.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "ee.dustland.android.minesweeper",
+          "name": "Minesweeper The Clean One",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#3C3C3C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.21.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "ee.dustland.android.solitaire",
+          "name": "Solitaire The Clean One",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#3C3C3C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.20.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
       "name": "Export all activities",
       "description": "Makes all activities launchable externally by setting android:exported=\"true\" in the manifest",
-      "use": false,
+      "default": false,
       "dependencies": [],
       "compatiblePackages": null,
       "options": []
@@ -92,14 +319,51 @@
     {
       "name": "Google Maps API key",
       "description": "Use a different Google Maps API key to fix modified apps",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "com.citymapper.app.release": null,
-        "com.jcdecaux.vls.lyon": [
-          "3.1.1"
-        ]
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "com.citymapper.app.release",
+          "name": "Citymapper",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#37AA2F",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.57.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.jcdecaux.vls.lyon",
+          "name": "Vélo'v",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F42F34",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": [
         {
           "key": "mapApiKey",
@@ -114,50 +378,106 @@
     },
     {
       "name": "Hide onboarding screen",
-      "description": "Hide the onboarding \"Plan you journey\" screen",
-      "use": true,
+      "description": "Hide the onboarding \"Plan your journey\" screen",
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "com.jcdecaux.vls.lyon": [
-          "3.1.1"
-        ]
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "com.jcdecaux.vls.lyon",
+          "name": "Vélo'v",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F42F34",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
       "name": "No geolocalisation check",
       "description": "Allows you to unlock a bike even if you're not near the station.",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "com.jcdecaux.vls.lyon": [
-          "3.1.1"
-        ]
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "com.jcdecaux.vls.lyon",
+          "name": "Vélo'v",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F42F34",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
       "name": "Spoof package signature",
       "description": "Spoofs the package signature required for Firebase, fixes notifications",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "com.jcdecaux.vls.lyon": [
-          "3.1.1"
-        ]
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "com.jcdecaux.vls.lyon",
+          "name": "Vélo'v",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F42F34",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
       "name": "Use multiple devices",
       "description": "Fix the login error \"Access denied. This account is already in use on another device.\" by pretending to be the web client",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "com.jcdecaux.vls.lyon": [
-          "3.1.1"
-        ]
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "com.jcdecaux.vls.lyon",
+          "name": "Vélo'v",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#F42F34",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     }
   ]

@@ -17,17 +17,18 @@ jobs:
   check-projects:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: main
 
-      - name: Check projects
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python scripts/audit_readme.py
-          python scripts/find_projects.py
+      - name: Audit README projects
+        run: python scripts/audit_readme.py
+
+      - name: Find new projects
+        run: python scripts/find_projects.py
 
       - name: Commit and push changes
         run: |

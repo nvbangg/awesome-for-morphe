@@ -3,16 +3,19 @@ updates:
   - package-ecosystem: "npm"
     directory: "/web"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     groups:
       npm-dependencies:
         patterns:
           - "*"
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     groups:
       actions-dependencies:
         patterns:
@@ -21,7 +24,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "/scripts"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     groups:
       python-dependencies:
         patterns:

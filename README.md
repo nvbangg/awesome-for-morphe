@@ -165,7 +165,7 @@
 <div align="center">
 
 Maintained with ❤️ by **[@nvbangg](https://github.com/nvbangg)**  
-⭐ Star [this repo](https://github.com/nvbangg/awesome-morphe) if you find it useful!
+⭐ Star [this repository](https://github.com/nvbangg/awesome-morphe) if you find it useful!
 
 </div>
 

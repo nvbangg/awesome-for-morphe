@@ -166,6 +166,8 @@ def process(
 
                 if "error" in details:
                     print(f"[-] Failed to fetch {repo}: {details['error']}")
+                    if errors is not None:
+                        errors["warnings"].append(f"{tasks[repo]}: {details['error']}")
                     continue
 
                 source_entry = bundle_sources[repo]

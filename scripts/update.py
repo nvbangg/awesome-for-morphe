@@ -181,11 +181,19 @@ def main() -> int:
         bundle["repo"] for bundle in final_bundles if bundle.get("repo")
     }
     invalid_repos = [repo for repo in repos_data if repo not in final_bundle_repos]
+    has_update_errors = bool(
+        invalid_repos or errors["unavailable"] or errors["warnings"]
+    )
 
-    if invalid_repos:
-        note_message = f"Note: {len(invalid_repos)}/{len(repos_data)} repos are invalid or excluded"
-        print(f"[-] {note_message}")
-        update_lines = [f"## ⚠️ Update\n{note_message}:"]
+    if has_update_errors:
+        update_lines = []
+        if invalid_repos:
+            note_message = f"Note: {len(invalid_repos)}/{len(repos_data)} repos are invalid or excluded"
+            print(f"[-] {note_message}")
+            update_lines.append(f"## ⚠️ Update\n{note_message}:")
+        else:
+            update_lines.append("## ⚠️ Update:")
+
         for category_name, category_icon, category_errors in (
             ("Unavailable", "⛔", errors["unavailable"]),
             ("Warnings", "⚠️", errors["warnings"]),

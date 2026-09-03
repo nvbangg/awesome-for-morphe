@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.28.6",
+  "version": "1.31.4",
   "patches": [
     {
       "name": "Ad Removal",
@@ -237,6 +237,58 @@
       "options": []
     },
     {
+      "name": "Shadow Fight 2 Crash Log",
+      "description": "Saves crash info to a file if the game crashes.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nekki.shadowfight",
+          "name": "Shadow Fight 2",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1A1A1A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Shadow Fight 2 Crash Trigger",
+      "description": "Enables crash logging.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nekki.shadowfight",
+          "name": "Shadow Fight 2",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1A1A1A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Shadow Fight 2 Dump Trigger",
       "description": "Triggers ShadowDump via UnityPlayerActivity.onCreate",
       "default": true,
@@ -265,6 +317,58 @@
     {
       "name": "Shadow Fight 2 Runtime Dump",
       "description": "Dumps all Unity classes/fields with ObscuredInt to logcat and files. Use logcat -s ShadowDump or cat shizuku-terminal/shadowdump-log.txt",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nekki.shadowfight",
+          "name": "Shadow Fight 2",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1A1A1A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Shadow Fight 2 Unlimited Values",
+      "description": "Sets in-game values to unlimited.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.nekki.shadowfight",
+          "name": "Shadow Fight 2",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#1A1A1A",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Shadow Fight 2 Values Trigger",
+      "description": "Enables unlimited values.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

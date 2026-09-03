@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.43.0-dev.33",
+  "version": "1.43.0-dev.39",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -786,6 +786,16 @@
     {
       "name": "Remove Analytics",
       "description": "Disables tracking and crash-reporting tools, corrupts analytics web links inside the code, and removes background tracking services.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Remove Analytics New",
+      "description": "Corrupts analytics network URLs and split-scheme string obfuscation inside the code, and strips matching manifest components.",
       "default": false,
       "dependencies": [
         "ResourcePatch"

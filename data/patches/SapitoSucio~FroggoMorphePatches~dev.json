@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0-dev.5",
+  "version": "1.3.0-dev.6",
   "patches": [
     {
       "name": "Block Facebook Feed ads (573)",
@@ -115,6 +115,47 @@
       "options": []
     },
     {
+      "name": "Change Facebook app theme (573)",
+      "description": "Adds AMOLED Black and Material You palettes while preserving Facebook's light/dark mode selection.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.facebook.katana",
+          "name": "Facebook",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1877F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "573.0.0.37.74",
+              "versionCodes": {
+                "ARM64_V8A": 473623755
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "theme",
+          "title": "Theme",
+          "description": "AMOLED Black changes only Facebook's dark palette. Material You follows the system dynamic palette in both light and dark mode.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "Material You",
+          "values": {
+            "AMOLED Black": "AMOLED Black",
+            "Material You": "Material You"
+          }
+        }
+      ]
+    },
+    {
       "name": "Clone app",
       "description": "Changes the app package name to allow installing the same app multiple times. By default \".morphe\" is appended to the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior.",
       "default": false,
@@ -204,6 +245,118 @@
           }
         }
       ]
+    },
+    {
+      "name": "Facebook 573 AI content diagnostics",
+      "description": "Logs Facebook GenAI structural flags for Feed stories without filtering them.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.facebook.katana",
+          "name": "Facebook",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1877F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "573.0.0.37.74",
+              "versionCodes": {
+                "ARM64_V8A": 473623755
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Facebook 573 AI filter + recommendation diagnostics",
+      "description": "Filters detected AI Feed stories and logs structural metadata for DiscoverFeedUnit recommendation candidates in one bytecode injection.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.facebook.katana",
+          "name": "Facebook",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1877F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "573.0.0.37.74",
+              "versionCodes": {
+                "ARM64_V8A": 473623755
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Facebook 573 Feed recommendation diagnostics",
+      "description": "Logs structural metadata for injected Feed stories without filtering them.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.facebook.katana",
+          "name": "Facebook",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1877F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "573.0.0.37.74",
+              "versionCodes": {
+                "ARM64_V8A": 473623755
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide Facebook AI content (573)",
+      "description": "Filters Feed posts carrying Facebook's GenAI transparency metadata (Contenido de IA).",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.facebook.katana",
+          "name": "Facebook",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1877F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "573.0.0.37.74",
+              "versionCodes": {
+                "ARM64_V8A": 473623755
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     },
     {
       "name": "Stop Facebook Story auto-advance (573)",

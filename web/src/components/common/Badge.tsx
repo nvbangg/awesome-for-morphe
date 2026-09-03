@@ -2,6 +2,7 @@ import { memo } from "react";
 import {
   Sparkles,
   FlaskConical,
+  Archive,
   Star,
   Download,
   Calendar,
@@ -13,6 +14,7 @@ import { MIN_DISPLAY_INSTALLS } from "@/constants";
 type BadgeVariant =
   | "new"
   | "prerelease"
+  | "archived"
   | "unofficial"
   | "off"
   | "stars"
@@ -59,6 +61,18 @@ export const Badge = memo(function Badge({
       >
         <FlaskConical className="size-3 text-warning shrink-0" />
         Pre-release
+      </span>
+    );
+  }
+
+  if (variant === "archived") {
+    return (
+      <span
+        className={`inline-flex items-center justify-center align-middle gap-1 px-1 py-0.5 text-xs font-semibold whitespace-nowrap text-warning border border-warning/30 rounded-md shrink-0 ${className}`}
+        title={title || "Repository is archived and read-only"}
+      >
+        <Archive className="size-3 text-warning shrink-0" />
+        Archived
       </span>
     );
   }

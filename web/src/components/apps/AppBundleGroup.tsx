@@ -63,6 +63,7 @@ export function AppBundleGroup({
               </div>
               {showBundleNewBadge && <Badge variant="new" />}
               {showBundlePreReleaseBadge && <Badge variant="prerelease" />}
+              {group.bundleMeta.isArchived && <Badge variant="archived" />}
               {group.bundleMeta.isUnofficial && <Badge variant="unofficial" />}
               {group.bundleMeta.stars > 0 && (
                 <Badge variant="stars" value={group.bundleMeta.stars} />

@@ -29,6 +29,7 @@ export interface Bundle {
   firstSeen: number;
   hotRank: number | null;
   isPreRelease: boolean;
+  isArchived?: boolean;
   appFirstSeen: Record<string, number>;
   patches: PatchItem[];
 

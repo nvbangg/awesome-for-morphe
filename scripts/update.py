@@ -41,7 +41,13 @@ def main() -> int:
             continue
         existing = existing_bundles.get(repo, {})
         source_entry = {"repo": repo}
-        for field in ("stars", "avatarUrl", "repoDescription", "appFirstSeen"):
+        for field in (
+            "stars",
+            "avatarUrl",
+            "repoDescription",
+            "appFirstSeen",
+            "isArchived",
+        ):
             if field in existing:
                 source_entry[field] = existing[field]
         bundle_sources[repo] = source_entry
@@ -92,6 +98,8 @@ def main() -> int:
             ordered_bundle["hotRank"] = hot_rank
         if bundle.get("isPreRelease"):
             ordered_bundle["isPreRelease"] = True
+        if bundle.get("isArchived"):
+            ordered_bundle["isArchived"] = True
         final_bundles.append(ordered_bundle)
 
     app_patches_status: dict[str, list[bool]] = {}

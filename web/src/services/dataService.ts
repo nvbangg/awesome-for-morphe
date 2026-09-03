@@ -118,6 +118,7 @@ export function loadInitData(): Promise<ActiveData> {
           `${jsonBundle.name} ${jsonBundle.source} ${jsonBundle.repo}`,
         ),
         isUnofficial: hotRank === null,
+        isArchived: !!jsonBundle.isArchived,
       };
 
       bundleList.push(bundleItem);

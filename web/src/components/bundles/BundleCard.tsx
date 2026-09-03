@@ -35,6 +35,9 @@ export const BundleCard = memo(function BundleCard({
             {bundleItem.isPreRelease && (
               <Badge variant="prerelease" className="ml-1.5" />
             )}
+            {bundleItem.isArchived && (
+              <Badge variant="archived" className="ml-1.5" />
+            )}
             {bundleItem.isUnofficial && (
               <Badge variant="unofficial" className="ml-1.5" />
             )}

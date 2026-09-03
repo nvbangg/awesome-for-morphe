@@ -29,6 +29,7 @@ export function BundleModalHeader({
               </h2>
               {isNew(bundleMeta.firstSeen) && <Badge variant="new" />}
               {bundleMeta.isPreRelease && <Badge variant="prerelease" />}
+              {bundleMeta.isArchived && <Badge variant="archived" />}
               {bundleMeta.isUnofficial && <Badge variant="unofficial" />}
               {bundleMeta.stars > 0 && (
                 <Badge variant="stars" value={bundleMeta.stars} />

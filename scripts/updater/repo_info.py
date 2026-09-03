@@ -1,7 +1,10 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
+import contextlib
+import json
 import time
 import urllib.error
+import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from updater import normalize_image_url
@@ -20,10 +23,66 @@ from utils import (
 )
 
 
+def fetch_gitlab_repo_details(repo: str) -> dict:
+    query = """
+    query GetProject($path: ID!) {
+      project(fullPath: $path) {
+        fullPath
+        description
+        archived
+        starCount
+        avatarUrl
+      }
+    }
+    """
+    payload = json.dumps({"query": query, "variables": {"path": repo}}).encode("utf-8")
+    request = urllib.request.Request(
+        "https://gitlab.com/api/graphql",
+        data=payload,
+        headers={"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"},
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=10) as response:
+            data = json.loads(response.read().decode("utf-8"))
+            project = data.get("data", {}).get("project")
+            if not project:
+                return {"is_404": True, "error": "404 Not Found"}
+            avatar = project.get("avatarUrl")
+            if not avatar and "/" in repo:
+                owner = repo.split("/")[0]
+                with contextlib.suppress(Exception):
+                    user_request = urllib.request.Request(
+                        f"https://gitlab.com/api/v4/users?username={owner}",
+                        headers={"User-Agent": "Mozilla/5.0"},
+                    )
+                    with urllib.request.urlopen(
+                        user_request, timeout=5
+                    ) as user_response:
+                        user_data = json.loads(user_response.read().decode("utf-8"))
+                        if user_data and isinstance(user_data, list):
+                            avatar = user_data[0].get("avatar_url")
+
+            if avatar and avatar.startswith("/"):
+                avatar = f"https://gitlab.com{avatar}"
+            return {
+                "stars": project.get("starCount", 0),
+                "description": project.get("description"),
+                "avatar_url": avatar,
+                "full_name": project.get("fullPath"),
+                "is_archived": bool(project.get("archived")),
+            }
+    except Exception as error:
+        return {"error": str(error)}
+
+
 def fetch_repo_details(repo_url: str) -> dict:
     source, repo = parse_repo_url(repo_url)
     if not source or not repo:
         return {}
+
+    if source == "gitlab":
+        time.sleep(0.1)
+        return fetch_gitlab_repo_details(repo)
 
     api_url = build_repo_url(source, repo, mode="api")
     if not api_url:
@@ -35,16 +94,9 @@ def fetch_repo_details(repo_url: str) -> dict:
         if not response or not isinstance(response, dict):
             return {}
 
-        if source == "github":
-            avatar = response.get("owner", {}).get("avatar_url")
-            full_name = response.get("full_name")
-            stars = response.get("stargazers_count", 0)
-        else:
-            avatar = response.get("avatar_url") or response.get("namespace", {}).get(
-                "avatar_url"
-            )
-            full_name = response.get("path_with_namespace")
-            stars = response.get("star_count", 0)
+        avatar = response.get("owner", {}).get("avatar_url")
+        full_name = response.get("full_name")
+        stars = response.get("stargazers_count", 0)
 
         return {
             "stars": stars,
@@ -112,14 +164,20 @@ def process(
                     bundle_sources.pop(repo, None)
                     continue
 
+                if "error" in details:
+                    print(f"[-] Failed to fetch {repo}: {details['error']}")
+                    continue
+
+                source_entry = bundle_sources[repo]
                 if details.get("is_archived"):
                     print(f"[-] Repository archived: {repo}")
                     if errors is not None:
                         errors["warnings"].append(
                             f"{tasks[repo]}: Repository is archived"
                         )
-
-                source_entry = bundle_sources[repo]
+                    source_entry["isArchived"] = True
+                else:
+                    source_entry.pop("isArchived", None)
                 repo_url = tasks[repo]
                 custom_entry = custom_data.get(repo_url, {})
                 source_entry["stars"] = details.get("stars", 0) - custom_entry.get(

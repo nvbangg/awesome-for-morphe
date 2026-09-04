@@ -6,7 +6,7 @@
       "name": "MorpheApp",
       "repoDescription": "Morphe Patches",
       "avatarUrl": "https://raw.githubusercontent.com/MorpheApp/morphe-patches/main/patches-bundle.png",
-      "stars": 3512,
+      "stars": 3514,
       "updatedAt": 1788521711000,
       "firstSeen": 1767200400000,
       "appFirstSeen": {
@@ -1281,7 +1281,7 @@
       "name": "Hoodles",
       "repoDescription": "🍃 Patches for Morphe",
       "avatarUrl": "https://avatars.githubusercontent.com/u/207470673?v=4&s=128",
-      "stars": 1054,
+      "stars": 1055,
       "updatedAt": 1788239961000,
       "firstSeen": 1768916001000,
       "appFirstSeen": {
@@ -2242,7 +2242,7 @@
       "name": "De-Vanced",
       "repoDescription": "De-Vanced exists because the old way started getting frustrating, so I migrated everything to Morphe and turned it into a better, cleaner place to keep the experience alive.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/128968367?v=4&s=128",
-      "stars": 1199,
+      "stars": 1200,
       "updatedAt": 1788205013000,
       "firstSeen": 1772359809000,
       "appFirstSeen": {
@@ -2883,7 +2883,7 @@
       "name": "Piko",
       "repoDescription": "morphe patches for twitter and instagram",
       "avatarUrl": "https://avatars.githubusercontent.com/u/44558091?v=4&s=128",
-      "stars": 2985,
+      "stars": 2989,
       "updatedAt": 1788497302000,
       "firstSeen": 1773129596000,
       "appFirstSeen": {
@@ -5936,7 +5936,7 @@
       "name": "Metra TikTok",
       "repoDescription": "This repository is a Morphe patch source for TikTok.  It continues the work from earlier community TikTok patch sets, including ReVanced, with the patches adapted for Morphe and tested against newer TikTok builds. The current target version is TikTok 46.2.3",
       "avatarUrl": "https://raw.githubusercontent.com/icysymmetra/tiktok-patches-for-morphe/main/patches-bundle.png",
-      "stars": 312,
+      "stars": 313,
       "updatedAt": 1788121796000,
       "firstSeen": 1780130886000,
       "appFirstSeen": {
@@ -8089,7 +8089,7 @@
       "name": "Lain",
       "repoDescription": "Morphe patches ✨",
       "avatarUrl": "https://raw.githubusercontent.com/kiraio-moe/Lain-Patches/main/patches-bundle.png",
-      "stars": 51,
+      "stars": 49,
       "updatedAt": 1787203043000,
       "firstSeen": 1780624125000,
       "appFirstSeen": {
@@ -11365,7 +11365,7 @@
       "name": "Prathxm",
       "repoDescription": "Custom Patches for Chess.com with offline Stockfish 16.1 integration, puzzle system, and local analysis tools for learning chess",
       "avatarUrl": "https://avatars.githubusercontent.com/u/185752095?v=4&s=128",
-      "stars": 63,
+      "stars": 64,
       "updatedAt": 1787588104000,
       "firstSeen": 1782779087000,
       "appFirstSeen": {
@@ -11455,7 +11455,7 @@
       "name": "Nai",
       "repoDescription": "A curated collection of Morphe patches that tune, unlock and declutter Android games. Skip ads, bypass license checks, hide root, force orientations and more, all from a single patcher.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/122532548?v=4&s=128",
-      "stars": 484,
+      "stars": 485,
       "updatedAt": 1788464421000,
       "firstSeen": 1782996119000,
       "appFirstSeen": {
@@ -14939,7 +14939,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/300474278?v=4&s=128",
       "stars": 19,
-      "updatedAt": 1788509582000,
+      "updatedAt": 1788548111000,
       "firstSeen": 1783378026000,
       "appFirstSeen": {
         "com.providelite.epicplay": 1783724425944,
@@ -15028,8 +15028,14 @@
           "compatiblePackagesKey": 616
         },
         {
+          "name": "Unlock Edge",
+          "description": "Unlocks the Fricam Edge feature for free. Edge is a self-hosted companion sidecar that runs beside your Frigate NVR and streams low-latency + AI-detection frames into the app over WebRTC. Unlike Pro there is no local persistence for Edge: on every RevenueCat sync the app recomputes the \"fricam_edge\" entitlement and publishes it into an in-memory StateFlow that drives the pairing/settings/diagnostics UI. The patch forces that published flag true so the Edge UI and the self-hosted (edge-local / Frigate-direct) routes open without a subscription. Note: Fricam's managed Cloudflare relay (edge-remote, monthly allowance) is authenticated server-side and is not bypassed - run the open-source sidecar yourself to get the full value.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 613
+        },
+        {
           "name": "Unlock Premium",
-          "description": "Unlocks all Fricam Pro features for free. Fricam's Pro state terminates in a plain SharedPreferences boolean (pro_unlocked in fricam_billing) written only by PurchaseManager.d(Z); every UI feature gate re-reads it via the static MasterProGate.K(). The patch forces the RevenueCat entitlement check and the master gate to always return true (layered P1+P2), hardens the persist path so no refresh can downgrade, and neutralizes the PairIP Play Store license check that gates the app on launch.",
+          "description": "Unlocks all Fricam Pro features for free. Fricam's Pro state terminates in a plain SharedPreferences boolean (pro_unlocked in fricam_billing) written by a single PurchaseManager writer; every UI feature gate re-reads it via the static master ProGate. Fingerprints anchor on the stable prefs keys + signatures, so they survive the R8 class/method renames between 1.3.x and 1.4.0.1. The patch forces the RevenueCat entitlement check and the master gate to always return true (layered P1+P2), hardens the persist path so no refresh can downgrade, and neutralizes the PairIP Play Store license check that gates the app on launch.",
           "compatiblePackagesKey": 613
         },
         {
@@ -20974,7 +20980,7 @@
       "repoDescription": "Morphe patches to remove ads, analytics, apk junk, debug info, duplicate graphics, unused languages, and use custom dpi☠️",
       "avatarUrl": "https://avatars.githubusercontent.com/u/139938337?v=4&s=128",
       "stars": 23,
-      "updatedAt": 1788516934000,
+      "updatedAt": 1788550273000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
         "com.snaptube.premium": 1786360281622,
@@ -23484,18 +23490,33 @@
       "source": "github",
       "repo": "catsmoker/anime-witcher-patches",
       "name": "Anime Witcher",
-      "repoDescription": "",
+      "repoDescription": "Anime Witcher Morphe Patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/119059457?v=4&s=128",
-      "stars": 4,
-      "updatedAt": 1787188019000,
+      "stars": 5,
+      "updatedAt": 1788550109000,
       "firstSeen": 1787194765188,
       "appFirstSeen": {
         "com.anime.witcher": 1787194764368
       },
       "patches": [
         {
+          "name": "Android TV support",
+          "description": "Adds Android TV / Fire TV support (manifest declarations + TV launcher entry).",
+          "compatiblePackagesKey": 843
+        },
+        {
+          "name": "Disable VPN detection and alerts",
+          "description": "Removes VPN/DNS detection and the VPN alert dialogs.",
+          "compatiblePackagesKey": 843
+        },
+        {
           "name": "Disable ads",
           "description": "Disables all ad display logic in the app.",
+          "compatiblePackagesKey": 843
+        },
+        {
+          "name": "Play with external player",
+          "description": "Opens episodes in a system intent chooser so the user can pick their favorite video player (VLC, MX Player, etc.).",
           "compatiblePackagesKey": 843
         },
         {
@@ -23504,8 +23525,13 @@
           "compatiblePackagesKey": 843
         },
         {
-          "name": "Replace AWPlayer with VLC",
-          "description": "Replaces the AWPlayer video player with VLC via system intent chooser.",
+          "name": "Remove startup popup",
+          "description": "Removes the update/changelog popup that appears when the app starts.",
+          "compatiblePackagesKey": 843
+        },
+        {
+          "name": "TV D-pad navigation",
+          "description": "Makes the app fully navigable with a TV / Fire TV remote (focusable content rows, D-pad focus out of the top bar, dialog focus).",
           "compatiblePackagesKey": 843
         }
       ],
@@ -23573,7 +23599,7 @@
       "name": "kveld9",
       "repoDescription": "Custom Morphe patches for Brave Browser and GBoard Lite on Android.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/179108235?v=4&s=128",
-      "stars": 28,
+      "stars": 30,
       "updatedAt": 1788473217000,
       "firstSeen": 1787251436744,
       "appFirstSeen": {
@@ -24098,7 +24124,7 @@
       "repoDescription": "legendsciber's Patches - Morphe patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/106559486?v=4&s=128",
       "stars": 6,
-      "updatedAt": 1788540728000,
+      "updatedAt": 1788550478000,
       "firstSeen": 1787620439710,
       "appFirstSeen": {
         "com.fingersoft.hillclimb": 1787620432732,
@@ -25001,7 +25027,7 @@
       "name": "Piko",
       "repoDescription": "New X on Android compatible piko builds",
       "avatarUrl": "https://avatars.githubusercontent.com/u/44558091?v=4&s=128",
-      "stars": 227,
+      "stars": 230,
       "updatedAt": 1788508024000,
       "firstSeen": 1787987199523,
       "appFirstSeen": {
@@ -33281,6 +33307,9 @@
       {
         "packageName": "com.tgezginis.fricam",
         "targets": [
+          {
+            "version": "1.4.0.1"
+          },
           {
             "version": "1.3.7"
           }

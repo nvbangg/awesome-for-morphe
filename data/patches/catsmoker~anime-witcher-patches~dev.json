@@ -1,10 +1,88 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0-dev.1",
+  "version": "1.1.0",
   "patches": [
+    {
+      "name": "Android TV support",
+      "description": "Adds Android TV / Fire TV support (manifest declarations + TV launcher entry).",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.anime.witcher",
+          "name": "Anime Witcher",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable VPN detection and alerts",
+      "description": "Removes VPN/DNS detection and the VPN alert dialogs.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.anime.witcher",
+          "name": "Anime Witcher",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Disable ads",
       "description": "Disables all ad display logic in the app.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.anime.witcher",
+          "name": "Anime Witcher",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Play with external player",
+      "description": "Opens episodes in a system intent chooser so the user can pick their favorite video player (VLC, MX Player, etc.).",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -57,8 +135,34 @@
       "options": []
     },
     {
-      "name": "Replace AWPlayer with VLC",
-      "description": "Replaces the AWPlayer video player with VLC via system intent chooser.",
+      "name": "Remove startup popup",
+      "description": "Removes the update/changelog popup that appears when the app starts.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.anime.witcher",
+          "name": "Anime Witcher",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "TV D-pad navigation",
+      "description": "Makes the app fully navigable with a TV / Fire TV remote (focusable content rows, D-pad focus out of the top bar, dialog focus).",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

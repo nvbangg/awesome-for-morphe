@@ -27,7 +27,7 @@ def _extract_canonical_key(bundle_json: dict) -> str | None:
         return None
 
     source, repo = parse_repo_url(download_url)
-    return build_repo_url(source, repo) if source and repo else None
+    return build_repo_url(source, repo)
 
 
 def _process_bundle(

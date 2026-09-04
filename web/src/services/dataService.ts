@@ -226,19 +226,12 @@ export function loadInitData(): Promise<ActiveData> {
         (categoryAppsCount[appItem.categorySlug] || 0) + 1;
     }
 
-    let officialBundlesCount = 0;
-    let unofficialBundlesCount = 0;
-    for (const bundle of bundleList) {
-      if (bundle.isUnofficial) {
-        unofficialBundlesCount += 1;
-      } else {
-        officialBundlesCount += 1;
-      }
-    }
-
+    const officialBundlesCount = bundleList.filter(
+      (bundle) => !bundle.isUnofficial,
+    ).length;
     const categoryBundlesCount: Record<string, number> = {
       official: officialBundlesCount,
-      unofficial: unofficialBundlesCount,
+      unofficial: bundleList.length - officialBundlesCount,
     };
 
     const stats: ActiveStats = {

@@ -1,6 +1,7 @@
 # Copyright (c) 2026 nvbangg (github.com/nvbangg)
 
 import contextlib
+import functools
 import json
 import time
 import urllib.error
@@ -21,6 +22,20 @@ from utils import (
     parse_repo_url,
     save_json,
 )
+
+
+@functools.cache
+def fetch_gitlab_user_avatar(owner: str) -> str | None:
+    with contextlib.suppress(Exception):
+        if (
+            data := fetch(
+                f"https://gitlab.com/api/v4/users?username={owner}",
+                timeout=5,
+                as_json=True,
+            )
+        ) and isinstance(data, list):
+            return data[0].get("avatar_url")
+    return None
 
 
 def fetch_gitlab_repo_details(repo: str) -> dict:
@@ -49,21 +64,8 @@ def fetch_gitlab_repo_details(repo: str) -> dict:
                 return {"is_404": True, "error": "404 Not Found"}
             avatar = project.get("avatarUrl")
             if not avatar and "/" in repo:
-                owner = repo.split("/")[0]
-                with contextlib.suppress(Exception):
-                    user_request = urllib.request.Request(
-                        f"https://gitlab.com/api/v4/users?username={owner}",
-                        headers={"User-Agent": "Mozilla/5.0"},
-                    )
-                    with urllib.request.urlopen(
-                        user_request, timeout=5
-                    ) as user_response:
-                        user_data = json.loads(user_response.read().decode("utf-8"))
-                        if user_data and isinstance(user_data, list):
-                            avatar = user_data[0].get("avatar_url")
+                avatar = fetch_gitlab_user_avatar(repo.split("/")[0])
 
-            if avatar and avatar.startswith("/"):
-                avatar = f"https://gitlab.com{avatar}"
             return {
                 "stars": project.get("starCount", 0),
                 "description": project.get("description"),
@@ -84,9 +86,7 @@ def fetch_repo_details(repo_url: str) -> dict:
         time.sleep(0.1)
         return fetch_gitlab_repo_details(repo)
 
-    api_url = build_repo_url(source, repo, mode="api")
-    if not api_url:
-        return {}
+    api_url = f"https://api.github.com/repos/{repo}"
 
     try:
         time.sleep(0.1)

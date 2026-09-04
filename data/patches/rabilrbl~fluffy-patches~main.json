@@ -1,16 +1,83 @@
 {
-  "version": "1.0.0",
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.1.0",
   "patches": [
+    {
+      "name": "Bypass Instant Approval",
+      "description": "Bypasses the local coin redemption step for Instant Approval actions.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "io.funswitch.blocker",
+          "name": "BlockerX",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#5B4BDB",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.0.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable Premium",
+      "description": "Enables BlockerX premium gates and premium module access.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "io.funswitch.blocker",
+          "name": "BlockerX",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#5B4BDB",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.0.81",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Unlock Premium",
       "description": "Unlocks premium features and disables ads by forcing both premium gates true.",
-      "use": true,
+      "default": true,
       "dependencies": [],
-      "compatiblePackages": {
-        "droom.sleepIfUCan": [
-          "26.32.1"
-        ]
-      },
+      "compatiblePackages": [
+        {
+          "packageName": "droom.sleepIfUCan",
+          "name": "Alarmy",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF6B4C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.32.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     }
   ]

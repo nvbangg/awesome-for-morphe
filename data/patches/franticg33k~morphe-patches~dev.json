@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.8-dev.2",
+  "version": "1.3.9-dev.1",
   "patches": [
     {
       "name": "Enable Online Pro",
@@ -474,7 +474,7 @@
     },
     {
       "name": "Unlock Premium",
-      "description": "Forces the premium entitlement in Native Camera. Premium status is a local 'is_premium' SharedPreferences flag read on startup behind PairIP's Play Store licensing, so this unlocks RAW DNG, 10-bit video, HLG/UHDR and the boosted-ISO seekbar.",
+      "description": "Forces the premium entitlement in Native Camera. Premium status is a local 'is_premium' SharedPreferences flag (in the 'rawcam_prefs' file) read on cold start into a StateFlow. Unlocks RAW DNG, 10-bit/HLG/UHDR video, custom boosted modes and the sub-40-Mbps bitrate cap. It also neutralizes PairIP's Play Store licensing (fired from both Application.attachBaseContext and LicenseContentProvider.onCreate, so a repacked copy no longer gets bounced to the Play Store paywall at launch).",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -487,7 +487,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.1.7",
+              "version": "1.4",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "patches": [
     {
       "name": "Brighter Watched-by stars",
@@ -93,6 +93,47 @@
         }
       ],
       "options": []
+    },
+    {
+      "name": "Hide ratings until watched",
+      "description": "Hides the community rating (average + histogram) on a film's page until you have marked that film as watched, covering it with a tap-to-reveal control. The reveal is per visit — leave the film and come back and it is hidden again. Only the film page is affected; ratings shown in lists, search and elsewhere are unchanged.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.letterboxd.letterboxd",
+          "name": "Letterboxd",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF8000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.5.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "revealStyle",
+          "title": "Reveal style",
+          "description": "How the hidden rating is covered. 'Frosted panel' is an opaque panel with a label; 'Tap-to-show link' is a plain text link under the section title; 'Shimmer' is a continuously animating particle field; 'Tap to burst' is a static particle field that scatters when tapped.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "panel",
+          "values": {
+            "Frosted panel": "panel",
+            "Tap-to-show link": "link",
+            "Shimmer (Telegram-style)": "shimmer",
+            "Tap to burst": "burst"
+          }
+        }
+      ]
     },
     {
       "name": "Match bottom nav to top bar color",

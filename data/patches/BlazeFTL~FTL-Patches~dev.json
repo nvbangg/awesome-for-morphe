@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.43.0-dev.41",
+  "version": "1.43.0-dev.45",
   "patches": [
     {
       "name": "APK Junk Cleanup",
@@ -8,6 +8,32 @@
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Add Network Stream To Me Tab",
+      "description": "Repurposes the Video Playlists tile on the Me tab into a Network Stream tile.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mxtech.videoplayer.ad",
+          "name": "MX Player",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
@@ -198,6 +224,35 @@
       ]
     },
     {
+      "name": "Clean Me Tab",
+      "description": "Removes promo rows and unused tiles from the Me tab: WhatsApp Status Saver, Legal/Help, the local-tiles pager, Local Network, Music Player, Cloud Drive, MX Share, and Private Folder.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mxtech.videoplayer.ad",
+          "name": "MX Player",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Clean SnapTube Settings Page",
       "description": "Removes the Download tools and Phone clean categories, and their sub-items, from Settings.",
       "default": false,
@@ -307,6 +362,34 @@
                 "X86_64": 76450210,
                 "X86": 76450210
               },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Bottom Bar And Add Me Tab To Top",
+      "description": "Hides the bottom navigation bar and adds a Me tab button to the toolbar.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mxtech.videoplayer.ad",
+          "name": "MX Player",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
               "description": null

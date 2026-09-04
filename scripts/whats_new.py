@@ -81,6 +81,35 @@ def make_url(
     return f"{BASE_WEB_URL}/?{'&'.join(parts)}{WHATS_NEW_TAB}" if parts else ""
 
 
+def bundle_sort_key(bundle: dict) -> tuple:
+    hot_rank = bundle.get("hotRank")
+    is_unofficial = 1 if hot_rank is None else 0
+    rank_value = hot_rank if hot_rank is not None else 0
+    stars = bundle.get("stars", 0) or 0
+    updated_at = bundle.get("updatedAt", 0) or 0
+    name = (bundle.get("name") or bundle.get("repo", "")).lower()
+    repo = (bundle.get("repo") or "").lower()
+    return (is_unofficial, rank_value, -stars, -updated_at, name, repo)
+
+
+def get_app_sort_key(
+    package_name: str,
+    app_metadata: dict,
+    patch_count: int = 0,
+) -> tuple:
+    is_universal = 1 if package_name == PACKAGE_UNIVERSAL else 0
+    app_name = format_app_name(package_name, app_metadata)
+    metadata = app_metadata.get(package_name)
+    min_installs = metadata.get("minInstalls", 0) if isinstance(metadata, dict) else 0
+    return (
+        is_universal,
+        -min_installs,
+        -patch_count,
+        app_name.lower(),
+        package_name.lower(),
+    )
+
+
 def extract_bundle_metadata(
     bundles: list[dict],
 ) -> tuple[dict[str, str], dict[str, str], dict[str, int]]:
@@ -88,7 +117,8 @@ def extract_bundle_metadata(
     bundle_sources = {}
     bundle_order = {}
 
-    for rank, bundle in enumerate(bundles):
+    sorted_bundles = sorted(bundles, key=bundle_sort_key)
+    for rank, bundle in enumerate(sorted_bundles):
         source = bundle.get("source", "github")
         repo = bundle.get("repo", "")
         if not repo:
@@ -148,21 +178,9 @@ def build_json_diff(
 ) -> dict:
     json_diff = {}
 
-    def app_sort_key(package_name: str) -> tuple:
-        app_name = format_app_name(package_name, app_metadata)
-        metadata = app_metadata.get(package_name)
-        min_installs = (
-            metadata.get("minInstalls", 0) if isinstance(metadata, dict) else 0
-        )
-        first_seen = metadata.get("firstSeen", 0) if isinstance(metadata, dict) else 0
-        return (-min_installs, first_seen, app_name.lower())
-
     for repo, patches_dict in sorted(
         new_bundles.items(),
-        key=lambda item: (
-            0 if item[0] not in old_bundles else 1,
-            bundle_order.get(item[0], DEFAULT_BUNDLE_RANK),
-        ),
+        key=lambda item: bundle_order.get(item[0], DEFAULT_BUNDLE_RANK),
     ):
         if repo not in old_bundles:
             apps = {
@@ -170,7 +188,12 @@ def build_json_diff(
                     "patches": sorted(patches_dict[package_name]),
                     "isNew": True,
                 }
-                for package_name in sorted(patches_dict, key=app_sort_key)
+                for package_name in sorted(
+                    patches_dict,
+                    key=lambda package_name: get_app_sort_key(
+                        package_name, app_metadata, len(patches_dict[package_name])
+                    ),
+                )
             }
             if apps:
                 json_diff[repo] = {
@@ -183,9 +206,8 @@ def build_json_diff(
 
             for package_name in sorted(
                 patches_dict,
-                key=lambda package_name: (
-                    0 if package_name not in old_patches_dict else 1,
-                    *app_sort_key(package_name),
+                key=lambda package_name: get_app_sort_key(
+                    package_name, app_metadata, len(patches_dict[package_name])
                 ),
             ):
                 if package_name not in old_patches_dict:
@@ -266,15 +288,6 @@ def generate_markdown(
     ]
     new_bundle_repos.sort(key=lambda repo: bundle_order.get(repo, DEFAULT_BUNDLE_RANK))
 
-    def app_sort_key(package_name: str) -> tuple:
-        app_name = format_app_name(package_name, app_metadata)
-        metadata = app_metadata.get(package_name)
-        min_installs = (
-            metadata.get("minInstalls", 0) if isinstance(metadata, dict) else 0
-        )
-        first_seen = metadata.get("firstSeen", 0) if isinstance(metadata, dict) else 0
-        return (-min_installs, first_seen, app_name.lower())
-
     new_apps_map: dict[str, dict[str, str]] = {}
     existing_apps_new_patches_map: dict[str, dict[str, str]] = {}
     bundle_added_apps_map: dict[str, list[str]] = {}
@@ -343,7 +356,12 @@ def generate_markdown(
 
     if new_apps_map:
         app_lines = []
-        for package_name in sorted(new_apps_map.keys(), key=app_sort_key):
+        for package_name in sorted(
+            new_apps_map.keys(),
+            key=lambda package_name: get_app_sort_key(
+                package_name, app_metadata, len(new_apps_map[package_name])
+            ),
+        ):
             app_name = format_app_name(package_name, app_metadata)
             app_url = make_url(app=package_name)
             app_lines.append(f"+ 📱 (✨New) [{app_name}]({app_url})")
@@ -354,7 +372,12 @@ def generate_markdown(
     if existing_apps_new_patches_map:
         app_lines = []
         for package_name in sorted(
-            existing_apps_new_patches_map.keys(), key=app_sort_key
+            existing_apps_new_patches_map.keys(),
+            key=lambda package_name: get_app_sort_key(
+                package_name,
+                app_metadata,
+                len(existing_apps_new_patches_map[package_name]),
+            ),
         ):
             app_name = format_app_name(package_name, app_metadata)
             app_lines.append(f"- 📱 {app_name}")
@@ -368,7 +391,20 @@ def generate_markdown(
             bundle_added_apps_map.keys(),
             key=lambda item_repo: bundle_order.get(item_repo, DEFAULT_BUNDLE_RANK),
         ):
-            package_names = sorted(bundle_added_apps_map[repo], key=app_sort_key)
+            package_names = sorted(
+                bundle_added_apps_map[repo],
+                key=lambda package_name: get_app_sort_key(
+                    package_name,
+                    app_metadata,
+                    len(
+                        json_diff.get(repo, {})
+                        .get("apps", {})
+                        .get(package_name, {})
+                        .get("patches", [])
+                    ),
+                ),
+            )
+
             if not package_names:
                 continue
 

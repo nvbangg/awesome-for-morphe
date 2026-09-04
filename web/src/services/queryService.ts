@@ -30,26 +30,28 @@ export function compareUniversalApp(
 }
 
 export function compareAppFallback(
-  appItemA: { firstSeen: number; appName: string },
-  appItemB: { firstSeen: number; appName: string },
+  appItemA: { patchCount?: number; appName: string; packageName?: string },
+  appItemB: { patchCount?: number; appName: string; packageName?: string },
 ): number {
-  const firstSeenDifference = appItemA.firstSeen - appItemB.firstSeen;
-  if (firstSeenDifference !== 0) return firstSeenDifference;
-  return appItemA.appName.localeCompare(appItemB.appName);
+  return (
+    (appItemB.patchCount ?? 0) - (appItemA.patchCount ?? 0) ||
+    appItemA.appName.localeCompare(appItemB.appName) ||
+    (appItemA.packageName || "").localeCompare(appItemB.packageName || "")
+  );
 }
 
 export function compareDefaultApp(
   appItemA: {
     packageName?: string;
     minInstalls: number;
-    firstSeen: number;
     appName: string;
+    patchCount?: number;
   },
   appItemB: {
     packageName?: string;
     minInstalls: number;
-    firstSeen: number;
     appName: string;
+    patchCount?: number;
   },
 ): number {
   return (
@@ -63,9 +65,12 @@ export function compareBundleFallback(
   bundleItemA: Bundle,
   bundleItemB: Bundle,
 ): number {
-  const updatedAtDifference = bundleItemB.updatedAt - bundleItemA.updatedAt;
-  if (updatedAtDifference !== 0) return updatedAtDifference;
-  return bundleItemA.name.localeCompare(bundleItemB.name);
+  return (
+    bundleItemB.stars - bundleItemA.stars ||
+    bundleItemB.updatedAt - bundleItemA.updatedAt ||
+    bundleItemA.name.localeCompare(bundleItemB.name) ||
+    bundleItemA.key.localeCompare(bundleItemB.key)
+  );
 }
 
 export function compareDefaultBundle(
@@ -76,13 +81,10 @@ export function compareDefaultBundle(
   const rankB = bundleItemB.hotRank;
 
   if (rankA !== null && rankB !== null) {
-    const rankDiff = rankA - rankB;
-    if (rankDiff !== 0) return rankDiff;
-  } else if (rankA !== null) {
-    return -1;
-  } else if (rankB !== null) {
-    return 1;
+    return rankA - rankB || compareBundleFallback(bundleItemA, bundleItemB);
   }
+  if (rankA !== null) return -1;
+  if (rankB !== null) return 1;
 
   return compareBundleFallback(bundleItemA, bundleItemB);
 }
@@ -378,7 +380,10 @@ export function groupPatchesByApp(
   }
 
   return result.sort((groupA, groupB) =>
-    compareDefaultApp(groupA.appMeta, groupB.appMeta),
+    compareDefaultApp(
+      { ...groupA.appMeta, patchCount: groupA.totalPatchCount },
+      { ...groupB.appMeta, patchCount: groupB.totalPatchCount },
+    ),
   );
 }
 

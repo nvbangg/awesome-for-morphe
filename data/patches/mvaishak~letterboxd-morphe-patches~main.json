@@ -1,0 +1,197 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.4.0",
+  "patches": [
+    {
+      "name": "Brighter Watched-by stars",
+      "description": "Other people's star ratings in a film's \"Watched by\" row use a very dark grey (#445566) that is hard to read, especially on a black theme. This switches them to the lighter grey (#99AABB) the rest of the app already uses for other people's ratings. A small legibility fix, on by default.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.letterboxd.letterboxd",
+          "name": "Letterboxd",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF8000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.5.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Denser poster grid",
+      "description": "Tightens the spacing around posters in grids so they render larger and closer together. Does not change the number of columns.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.letterboxd.letterboxd",
+          "name": "Letterboxd",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF8000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.5.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "density",
+          "title": "Grid density",
+          "description": "How tightly posters are packed.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "compact",
+          "values": {
+            "Cozy (near default)": "cozy",
+            "Compact": "compact",
+            "Dense": "dense"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hide Video Store on home",
+      "description": "Removes the \"Letterboxd Video Store\" promo row from the Films tab. The Video Store itself, its settings and every other entry point are left untouched.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.letterboxd.letterboxd",
+          "name": "Letterboxd",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF8000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.5.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Match bottom nav to top bar color",
+      "description": "Sets Letterboxd's bottom navigation bar background to the same color as the top bar (@color/black100), so it blends into the app's dark chrome instead of showing the default slate bar.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.letterboxd.letterboxd",
+          "name": "Letterboxd",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF8000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.5.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Material You theme",
+      "description": "Repaints Letterboxd's dark chrome — window background, surfaces, cards, the top bar, tab strip and bottom nav. 'Wallpaper tint' follows the device's Material You palette on Android 12+ (no effect below). 'Pure black (OLED)' forces true black on any version. Optional accent colour recolours Letterboxd's green; optional bottom-nav selected style replaces the grey pill. No effect on Jetpack Compose screens. Overlaps \"Match bottom nav to top bar color\" — enable one, not both.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.letterboxd.letterboxd",
+          "name": "Letterboxd",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF8000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.5.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "surfaceStyle",
+          "title": "Surface style",
+          "description": "How the dark chrome is recoloured.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "wallpaper",
+          "values": {
+            "Wallpaper tint (Android 12+)": "wallpaper",
+            "Pure black (OLED)": "black"
+          }
+        },
+        {
+          "key": "accent",
+          "title": "Accent colour",
+          "description": "Recolours Letterboxd's green (stars, rating indicators, primary buttons). Pick a preset swatch or any custom colour. Letterboxd green is left untouched, except in OLED mode where it is brightened for contrast; lighter and darker shades for gradients and pressed states are derived automatically.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "#FF00E054",
+          "values": {
+            "Letterboxd green": "#FF00E054",
+            "Amber": "#FFC24B",
+            "Orange": "#FF8A3D",
+            "Coral": "#FF6B6B",
+            "Pink": "#FF7DC4",
+            "Violet": "#B69CFF",
+            "Blue": "#5AA9FF",
+            "Teal": "#3DD9C8",
+            "Mono (near-white)": "#E6E6E6"
+          }
+        },
+        {
+          "key": "bottomNavIndicator",
+          "title": "Bottom nav selected style",
+          "description": "How the selected tab in the bottom navigation bar is shown. The green + button is never affected.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "stock",
+          "values": {
+            "Stock (grey pill + blue icon)": "stock",
+            "No pill (keep blue icon)": "nopill",
+            "No pill, white selected icon": "white",
+            "No pill, accent selected icon": "accent",
+            "Accent pill + accent icon": "accentPill"
+          }
+        }
+      ]
+    }
+  ]
+}

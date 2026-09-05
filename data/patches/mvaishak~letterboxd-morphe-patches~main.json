@@ -1,7 +1,36 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "patches": [
+    {
+      "name": "Appearance",
+      "description": "In-app appearance controls, adjustable from the Letterboxd Mods screen without re-patching: a true-black OLED surface, a custom accent colour (presets or any hex), and the bottom-navigation selected style. Applied at runtime via resource overlays on Android 12 and later. Needs the \"Mod settings\" patch. If the separate \"Material You theme\" patch is also applied, its OLED and nav-bar-match switches are disabled here automatically — the two theming systems can't run at once.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.letterboxd.letterboxd",
+          "name": "Letterboxd",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF8000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Brighter Watched-by stars",
       "description": "Other people's star ratings in a film's \"Watched by\" row use a very dark grey (#445566) that is hard to read, especially on a black theme. This switches them to the lighter grey (#99AABB) the rest of the app already uses for other people's ratings. A small legibility fix, on by default.",
@@ -17,7 +46,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.5.4",
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -31,7 +60,7 @@
     {
       "name": "Denser poster grid",
       "description": "Tightens the spacing around posters in grids so they render larger and closer together. Does not change the number of columns.",
-      "default": false,
+      "default": true,
       "dependencies": [],
       "compatiblePackages": [
         {
@@ -43,7 +72,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.5.4",
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -69,8 +98,8 @@
       ]
     },
     {
-      "name": "Hide Video Store on home",
-      "description": "Removes the \"Letterboxd Video Store\" promo row from the Films tab. The Video Store itself, its settings and every other entry point are left untouched.",
+      "name": "Material You theme",
+      "description": "Repaints Letterboxd's dark chrome — window background, surfaces, cards, the top bar, tab strip, bottom nav and sheets — from the device's Material You palette on Android 12+ (no effect below). No accent or OLED options here; those live in the \"Mod settings\" screen — but that screen's \"Pure black (OLED)\" and \"Match bottom nav\" switches turn themselves off while this patch is applied, since it already repaints those surfaces on its own. No effect on Jetpack Compose screens.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -83,7 +112,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.5.4",
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -95,10 +124,12 @@
       "options": []
     },
     {
-      "name": "Hide ratings until watched",
-      "description": "Hides the community rating (average + histogram) on a film's page until you have marked that film as watched, covering it with a tap-to-reveal control. The reveal is per visit — leave the film and come back and it is hidden again. Only the film page is affected; ratings shown in lists, search and elsewhere are unchanged.",
-      "default": false,
-      "dependencies": [],
+      "name": "Mod settings",
+      "description": "HOW TO OPEN: long-press the settings gear on your profile tab. — This adds a \"Letterboxd Mods\" screen that collects the other patches' options (theme, accent, hide ratings, hide video store, hide where to watch, open in player, match bottom nav, etc.) so you can change them inside the app instead of re-patching. Some changes apply immediately, others after a restart, and you'll be prompted either way.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.letterboxd.letterboxd",
@@ -109,7 +140,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.5.4",
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -121,8 +152,8 @@
       "options": [
         {
           "key": "revealStyle",
-          "title": "Reveal style",
-          "description": "How the hidden rating is covered. 'Frosted panel' is an opaque panel with a label; 'Tap-to-show link' is a plain text link under the section title; 'Shimmer' is a continuously animating particle field; 'Tap to burst' is a static particle field that scatters when tapped.",
+          "title": "Cover",
+          "description": "How the hidden rating is covered, before you've changed it from the Mods screen. 'Frosted panel' is an opaque panel with an eye glyph; 'Tap-to-show link' is a plain text link under the section title; 'Shimmer' is a continuously animating particle field; 'Tap to burst' is a static particle field that scatters when tapped. The Mods screen also has a separate \"Reveal animation\" (default / crumble / confetti) that changes how tapping any of the three opaque covers disappears, independent of which one you pick here.",
           "required": false,
           "type": "kotlin.String",
           "default": "panel",
@@ -131,105 +162,6 @@
             "Tap-to-show link": "link",
             "Shimmer (Telegram-style)": "shimmer",
             "Tap to burst": "burst"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Match bottom nav to top bar color",
-      "description": "Sets Letterboxd's bottom navigation bar background to the same color as the top bar (@color/black100), so it blends into the app's dark chrome instead of showing the default slate bar.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.letterboxd.letterboxd",
-          "name": "Letterboxd",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF8000",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "3.5.4",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Material You theme",
-      "description": "Repaints Letterboxd's dark chrome — window background, surfaces, cards, the top bar, tab strip and bottom nav. 'Wallpaper tint' follows the device's Material You palette on Android 12+ (no effect below). 'Pure black (OLED)' forces true black on any version. Optional accent colour recolours Letterboxd's green; optional bottom-nav selected style replaces the grey pill. No effect on Jetpack Compose screens. Overlaps \"Match bottom nav to top bar color\" — enable one, not both.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.letterboxd.letterboxd",
-          "name": "Letterboxd",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF8000",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "3.5.4",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": [
-        {
-          "key": "surfaceStyle",
-          "title": "Surface style",
-          "description": "How the dark chrome is recoloured.",
-          "required": false,
-          "type": "kotlin.String",
-          "default": "wallpaper",
-          "values": {
-            "Wallpaper tint (Android 12+)": "wallpaper",
-            "Pure black (OLED)": "black"
-          }
-        },
-        {
-          "key": "accent",
-          "title": "Accent colour",
-          "description": "Recolours Letterboxd's green (stars, rating indicators, primary buttons). Pick a preset swatch or any custom colour. Letterboxd green is left untouched, except in OLED mode where it is brightened for contrast; lighter and darker shades for gradients and pressed states are derived automatically.",
-          "required": false,
-          "type": "kotlin.String",
-          "default": "#FF00E054",
-          "values": {
-            "Letterboxd green": "#FF00E054",
-            "Amber": "#FFC24B",
-            "Orange": "#FF8A3D",
-            "Coral": "#FF6B6B",
-            "Pink": "#FF7DC4",
-            "Violet": "#B69CFF",
-            "Blue": "#5AA9FF",
-            "Teal": "#3DD9C8",
-            "Mono (near-white)": "#E6E6E6"
-          }
-        },
-        {
-          "key": "bottomNavIndicator",
-          "title": "Bottom nav selected style",
-          "description": "How the selected tab in the bottom navigation bar is shown. The green + button is never affected.",
-          "required": false,
-          "type": "kotlin.String",
-          "default": "stock",
-          "values": {
-            "Stock (grey pill + blue icon)": "stock",
-            "No pill (keep blue icon)": "nopill",
-            "No pill, white selected icon": "white",
-            "No pill, accent selected icon": "accent",
-            "Accent pill + accent icon": "accentPill"
           }
         }
       ]

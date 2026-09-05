@@ -1,14 +1,13 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.6.0-dev.1",
+  "version": "2.0.0",
   "patches": [
     {
       "name": "Appearance",
-      "description": "In-app appearance controls, adjustable from the Letterboxd Mods screen without re-patching: a true-black OLED surface, a custom accent colour (presets or any hex), and the bottom-navigation selected style. Applied at runtime via resource overlays on Android 12 and later. Needs the \"Mod settings\" patch.",
+      "description": "In-app appearance controls, adjustable from the Letterboxd Mods screen without re-patching: a true-black OLED surface, a custom accent colour (presets or any hex), and the bottom-navigation selected style. Applied at runtime via resource overlays on Android 12 and later. Needs the \"Mod settings\" patch. If the separate \"Material You theme\" patch is also applied, its OLED and nav-bar-match switches are disabled here automatically — the two theming systems can't run at once.",
       "default": true,
       "dependencies": [
         "ResourcePatch",
-        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
@@ -21,7 +20,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.5.4",
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -47,7 +46,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.5.4",
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -73,7 +72,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.5.4",
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -99,101 +98,8 @@
       ]
     },
     {
-      "name": "Hide Video Store on home",
-      "description": "Removes the \"Letterboxd Video Store\" promo row from the Films tab. The Video Store itself, its settings and every other entry point are left untouched. Can be toggled from the \"Mod settings\" screen if that patch is also enabled.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.letterboxd.letterboxd",
-          "name": "Letterboxd",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF8000",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "3.5.4",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hide ratings until watched",
-      "description": "Hides the community rating (average + histogram) on a film's page until you have marked that film as watched, covering it with a tap-to-reveal control. The reveal is per visit — leave the film and come back and it is hidden again. Only the film page is affected; ratings shown in lists, search and elsewhere are unchanged.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.letterboxd.letterboxd",
-          "name": "Letterboxd",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF8000",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "3.5.4",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": [
-        {
-          "key": "revealStyle",
-          "title": "Reveal style",
-          "description": "How the hidden rating is covered. 'Frosted panel' is an opaque panel with a label; 'Tap-to-show link' is a plain text link under the section title; 'Shimmer' is a continuously animating particle field; 'Tap to burst' is a static particle field that scatters when tapped.",
-          "required": false,
-          "type": "kotlin.String",
-          "default": "panel",
-          "values": {
-            "Frosted panel": "panel",
-            "Tap-to-show link": "link",
-            "Shimmer (Telegram-style)": "shimmer",
-            "Tap to burst": "burst"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Match bottom nav to top bar color",
-      "description": "Paints Letterboxd's bottom navigation bar black (#000000), matching the top bar, instead of the default slate. Can be toggled from the \"Mod settings\" screen if that patch is also enabled; the change applies on the next app start. With \"Material You theme\" also on, this wins — turn it off to keep the Material You nav tint.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.letterboxd.letterboxd",
-          "name": "Letterboxd",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF8000",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "3.5.4",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Material You theme",
-      "description": "Repaints Letterboxd's dark chrome — window background, surfaces, cards, the top bar, tab strip, bottom nav and sheets — from the device's Material You palette on Android 12+ (no effect below). No accent or OLED options here; those live in the \"Mod settings\" screen. No effect on Jetpack Compose screens.",
+      "description": "Repaints Letterboxd's dark chrome — window background, surfaces, cards, the top bar, tab strip, bottom nav and sheets — from the device's Material You palette on Android 12+ (no effect below). No accent or OLED options here; those live in the \"Mod settings\" screen — but that screen's \"Pure black (OLED)\" and \"Match bottom nav\" switches turn themselves off while this patch is applied, since it already repaints those surfaces on its own. No effect on Jetpack Compose screens.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -206,7 +112,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.5.4",
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -219,7 +125,7 @@
     },
     {
       "name": "Mod settings",
-      "description": "HOW TO OPEN: long-press the settings gear on your profile tab. — This adds a \"Letterboxd Mods\" screen that collects the other patches' options (theme, accent, hide ratings, hide video store, etc.) so you can change them inside the app instead of re-patching. Some changes apply immediately, others after a restart, and you'll be prompted either way.",
+      "description": "HOW TO OPEN: long-press the settings gear on your profile tab. — This adds a \"Letterboxd Mods\" screen that collects the other patches' options (theme, accent, hide ratings, hide video store, hide where to watch, open in player, match bottom nav, etc.) so you can change them inside the app instead of re-patching. Some changes apply immediately, others after a restart, and you'll be prompted either way.",
       "default": true,
       "dependencies": [
         "ResourcePatch"
@@ -234,7 +140,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.5.4",
+              "version": null,
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -243,7 +149,22 @@
           ]
         }
       ],
-      "options": []
+      "options": [
+        {
+          "key": "revealStyle",
+          "title": "Cover",
+          "description": "How the hidden rating is covered, before you've changed it from the Mods screen. 'Frosted panel' is an opaque panel with an eye glyph; 'Tap-to-show link' is a plain text link under the section title; 'Shimmer' is a continuously animating particle field; 'Tap to burst' is a static particle field that scatters when tapped. The Mods screen also has a separate \"Reveal animation\" (default / crumble / confetti) that changes how tapping any of the three opaque covers disappears, independent of which one you pick here.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "panel",
+          "values": {
+            "Frosted panel": "panel",
+            "Tap-to-show link": "link",
+            "Shimmer (Telegram-style)": "shimmer",
+            "Tap to burst": "burst"
+          }
+        }
+      ]
     }
   ]
 }

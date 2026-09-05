@@ -1,5 +1,5 @@
 {
-  "version": "1.30.4",
+  "version": "1.31.0",
   "appNames": {
     "com.fox.foxone": "Fox One Android TV",
     "com.netflix.ninja": "Netflix Android TV",
@@ -10,6 +10,7 @@
     "tv.twitch.android.app": "Twitch",
     "com.univision.prendetv": "ViX Android TV",
     "com.disney.disneyplus": "Disney+ Android TV",
+    "com.espn.score_center": "ESPN Android TV",
     "com.wbd.hbomax": "HBO Max Android TV",
     "com.bamnetworks.mobile.android.gameday.atbat": "MLB.tv Android TV",
     "com.cbs.ott": "Paramount+ Android TV"
@@ -319,6 +320,32 @@
             },
             {
               "version": "26.12.1+rc1-2026.07.15",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "ESPN Android TV",
+      "description": "Suppresses ESPN VOD/scheduled ads (DMP SGAI isAdDisabled) and masks LIVE passthrough-SSAI commercial breaks with a full-screen \"Commercial Break\" slate + mute (the live ad can't be removed, only covered). Optional slate media is user-supplied local files; disable the live slate with a `slate_off` marker file. No DNS dependency.",
+      "use": true,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.espn.score_center": [
+          "6.11.1"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "ESPN Android TV",
+          "packageName": "com.espn.score_center",
+          "description": null,
+          "appIconColor": 13369344,
+          "targets": [
+            {
+              "version": "6.11.1",
               "experimental": false
             }
           ]

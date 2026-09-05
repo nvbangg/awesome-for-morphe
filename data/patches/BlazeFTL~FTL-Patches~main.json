@@ -1,36 +1,109 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.42.0",
+  "version": "1.43.0",
   "patches": [
     {
       "name": "APK Junk Cleanup",
-      "description": "Removes junk and useless files with no runtime purpose inside apk.",
+      "description": "Removes junk and useless files with no runtime purpose inside apk. To keep only one CPU architecture, use the patcher's strip-libs option (Morphe Manager) or --striplibs (Morphe Desktop).",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Add Network Stream To Me Tab",
+      "description": "WARNING MX PLAYER HAS INTEGRITY CHECK. Mod By Youarefinished Also Has Their Own Integrity Check. So Download From Play Store Use URV Manager With Signing Turned Off, Patch And Then Kill Signature Verification With MT Manager Enhanced (VIP Only) Or Modded Build.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mxtech.videoplayer.ad",
+          "name": "MX Player",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.4",
+              "versionCodes": {
+                "ARM64_V8A": 2001003524,
+                "ARMEABI_V7A": 2001003524,
+                "X86_64": 2001003524,
+                "X86": 2001003524
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Add Save Data",
+      "description": "Unpacks bundled save-data zip(s) into the app's storage on first launch.",
+      "default": false,
+      "dependencies": [
+        "RawResourcePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
       "options": [
         {
-          "key": "splitByArch",
-          "title": "Keep Only One Architecture",
-          "description": "Keep native libraries (.so files) for only one CPU architecture. To generate separate APKs for each architecture, run this patch multiple times with a different architecture selected each time.",
+          "key": "internalDataZip",
+          "title": "1. Select data/data zip",
+          "description": "Zip of the app's internal storage. Restored to /data/data/<package> on first launch.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        },
+        {
+          "key": "externalDataZip",
+          "title": "2. Select Android/data zip",
+          "description": "Zip of the app's external storage folder. Restored to Android/data/<package> on first launch.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        },
+        {
+          "key": "obbZip",
+          "title": "3. Select Android/obb zip",
+          "description": "Zip of the app's OBB files. Restored to Android/obb/<package> on first launch.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        },
+        {
+          "key": "addToast",
+          "title": "Add toast",
+          "description": "Also show a toast message on first launch.",
           "required": false,
           "type": "kotlin.Boolean",
           "default": false,
           "values": null
         },
         {
-          "key": "targetArch",
-          "title": "Target architecture",
-          "description": "Which architecture to keep when splitting is enabled.",
+          "key": "message",
+          "title": "Toast message",
+          "description": "Only used if 'Add toast' is on.",
           "required": false,
           "type": "kotlin.String",
-          "default": "arm64-v8a",
-          "values": {
-            "arm64-v8a": "ARM64 (arm64-v8a)",
-            "armeabi-v7a": "ARMv7 (armeabi-v7a)",
-            "x86": "x86",
-            "x86_64": "x86_64"
-          }
+          "default": "Mod By BlazeFTL",
+          "values": null
+        },
+        {
+          "key": "showOnce",
+          "title": "Show toast once",
+          "description": "On: the toast only shows on the first launch. Off: it shows on every launch.",
+          "required": false,
+          "type": "kotlin.Boolean",
+          "default": false,
+          "values": null
         }
       ]
     },
@@ -105,6 +178,37 @@
       ]
     },
     {
+      "name": "Change Cleaner & Media Tab Defaults",
+      "description": "Changes first-run defaults: hides the Image, Video, Audio and Cleaner tabs, and shows hidden files by default. Only affects users who have never changed the setting themselves - the preference override still takes priority.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "files.fileexplorer.filemanager",
+          "name": "File Manager - XFolder",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.5.7",
+              "versionCodes": {
+                "ARM64_V8A": 1557000,
+                "ARMEABI_V7A": 1557000,
+                "X86_64": 1557000,
+                "X86": 1557000
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Change Display Size",
       "description": "Change any app's display size without touching your phone's system settings. Make it bigger if things look too small, or smaller to fit more on screen. You Need To Configure 100(No Change), 90(10% Smaller App Ui), 110(10% Bigger App Ui).",
       "default": false,
@@ -123,6 +227,40 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Clean Me Tab",
+      "description": "Removes promo rows and unused tiles from the Me tab: WhatsApp Status Saver, Legal/Help, the local-tiles pager, Local Network, Music Player, Cloud Drive, MX Share, and Private Folder.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mxtech.videoplayer.ad",
+          "name": "MX Player",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.4",
+              "versionCodes": {
+                "ARM64_V8A": 2001003524,
+                "ARMEABI_V7A": 2001003524,
+                "X86_64": 2001003524,
+                "X86": 2001003524
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     },
     {
       "name": "Clean SnapTube Settings Page",
@@ -182,6 +320,37 @@
       "options": []
     },
     {
+      "name": "Clean sidebar",
+      "description": "Hides the Bookmarks, remote-connection and Category sections from the navigation sidebar, and hides Encrypt and Downloader from the Storage section.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rs.explorer.filemanager",
+          "name": "RS File Manager",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.3.0.4",
+              "versionCodes": {
+                "ARM64_V8A": 239,
+                "ARMEABI_V7A": 239,
+                "X86_64": 239,
+                "X86": 239
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable Annoying Snaptube Notifications",
       "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default.",
       "default": false,
@@ -213,6 +382,39 @@
       "options": []
     },
     {
+      "name": "Disable Bottom Bar And Add Me Tab To Top",
+      "description": "Hides the bottom navigation bar and adds a Me tab button to the toolbar.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.mxtech.videoplayer.ad",
+          "name": "MX Player",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.1.4",
+              "versionCodes": {
+                "ARM64_V8A": 2001003524,
+                "ARMEABI_V7A": 2001003524,
+                "X86_64": 2001003524,
+                "X86": 2001003524
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable From Download Menu Of Browsers",
       "description": "Removes only the http/https <data> entries from MiXplorer's Explore/Download/Copy to/Extract to shell activities' VIEW intent filters, so the app stops showing up multiple times in browsers download link chooser.",
       "default": false,
@@ -229,6 +431,37 @@
             {
               "version": null,
               "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Rate Us Dialog",
+      "description": "Prevents the in-app rate-us dialog from ever being shown.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "files.fileexplorer.filemanager",
+          "name": "File Manager - XFolder",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.5.7",
+              "versionCodes": {
+                "ARM64_V8A": 1557000,
+                "ARMEABI_V7A": 1557000,
+                "X86_64": 1557000,
+                "X86": 1557000
+              },
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -659,6 +892,16 @@
       "options": []
     },
     {
+      "name": "Remove Analytics New",
+      "description": "Corrupts analytics network URLs and split-scheme string obfuscation inside the code, and strips matching manifest components.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": []
+    },
+    {
       "name": "Remove Debug Info",
       "description": "Removes debug information (line numbers, variable names, source file references) from every class in the .dex files to reduce overall APK size.",
       "default": false,
@@ -712,6 +955,37 @@
           "values": null
         }
       ]
+    },
+    {
+      "name": "Remove License Verification",
+      "description": "Spoofs every PackageManager.getInstallerPackageName() check to report \"com.android.vending\", so Pro features unlock regardless of install source.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.themausoft.wpsapppro",
+          "name": "WPSApp Pro",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.7.05",
+              "versionCodes": {
+                "ARM64_V8A": 118,
+                "ARMEABI_V7A": 118,
+                "X86_64": 118,
+                "X86": 118
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     },
     {
       "name": "Remove Watch Ad To Download",
@@ -860,7 +1134,7 @@
     },
     {
       "name": "Skip Splash Screen - Expert Only",
-      "description": "EXPERT USERS ONLY. Manually Configure It To Point At Real Splash And Main Activity As Many Apps Use Other Names. Check the log to know what the patch is doing Ensure App Doesnt Ask For Permission In Splash Screen.",
+      "description": "EXPERT USERS ONLY. Manually Configure It To Point At Real Splash And Main Activity As Many Apps Use Other Names. Check the log to know what the patch is doing. Ensure App Doesnt Ask For Permissions In Splash Screen.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -889,7 +1163,9 @@
       "name": "Skip splash and language screens",
       "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "BytecodePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "videoplayer.videodownloader.downloader",
@@ -1078,10 +1354,65 @@
       "options": []
     },
     {
+      "name": "Spoof App Signature",
+      "description": "Makes the app think its signing certificate is unchanged after Morphe re-signs it, useful when an app crashes or shows a tamper warning because it checks its own certificate. Does not bypass Play Integrity / SafetyNet hardware attestation. Apply with Original app certificate patch.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch",
+        "RawResourcePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "packageName",
+          "title": "Package name override (optional)",
+          "description": "Leave blank — read automatically from the app. Only set this if you changed the app's package name and the patch is using the wrong one.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        }
+      ]
+    },
+    {
       "name": "Unlock Pro",
-      "description": "Manually Kill Signature First Or Use Doom's(rushiranpise) Patch (Spoof App Signature).",
+      "description": "Forces the purchase check to always return true, unlocking Pro.",
       "default": true,
       "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.hdictionary.bn",
+          "name": "Bangla Dictionary",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.5.1",
+              "versionCodes": {
+                "ARM64_V8A": 1151,
+                "ARMEABI_V7A": 1151,
+                "X86_64": 1151,
+                "X86": 1151
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Pro",
+      "description": "Only Use In V2.7.2. Signature verification is spoofed automatically so the purchase check passes without manually applying Spoof app signature.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "video.downloader.videodownloader",
@@ -1092,8 +1423,108 @@
           "signatures": null,
           "targets": [
             {
-              "version": null,
-              "versionCodes": null,
+              "version": "2.7.2",
+              "versionCodes": {
+                "ARM64_V8A": 172,
+                "ARMEABI_V7A": 172,
+                "X86_64": 172,
+                "X86": 172
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Pro",
+      "description": "Forces the Pro flag true at every read and write site in the dex, unlocking Pro.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.tester.wpswpatester",
+          "name": "WIFI WPS WPA TESTER",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "rc-5.164",
+              "versionCodes": {
+                "ARM64_V8A": 1883,
+                "ARMEABI_V7A": 1883,
+                "X86_64": 1883,
+                "X86": 1883
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Pro & Disable Rate Dialog",
+      "description": "Forces the premium check to always return true, unlocking every Pro feature, and stops the in-app \"rate us\" dialog from ever triggering.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "abdelrahman.wifianalyzerpro",
+          "name": "WiFi Analyzer",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "9.4",
+              "versionCodes": {
+                "ARM64_V8A": 149,
+                "ARMEABI_V7A": 149,
+                "X86_64": 149,
+                "X86": 149
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Pro & Skip Splash Screen",
+      "description": "Forces the ad-removed/Pro check to always return true, and renames the launcher activity from SplashActivity to MainActivity so the splash screen is skipped.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "files.fileexplorer.filemanager",
+          "name": "File Manager - XFolder",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": null,
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.5.5.7",
+              "versionCodes": {
+                "ARM64_V8A": 1557000,
+                "ARMEABI_V7A": 1557000,
+                "X86_64": 1557000,
+                "X86": 1557000
+              },
               "isExperimental": false,
               "minSdk": null,
               "description": null

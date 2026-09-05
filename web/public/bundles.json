@@ -6,7 +6,7 @@
       "name": "MorpheApp",
       "repoDescription": "Morphe Patches",
       "avatarUrl": "https://raw.githubusercontent.com/MorpheApp/morphe-patches/main/patches-bundle.png",
-      "stars": 3519,
+      "stars": 3521,
       "updatedAt": 1788597918000,
       "firstSeen": 1767200400000,
       "appFirstSeen": {
@@ -1281,7 +1281,7 @@
       "name": "Hoodles",
       "repoDescription": "🍃 Patches for Morphe",
       "avatarUrl": "https://avatars.githubusercontent.com/u/207470673?v=4&s=128",
-      "stars": 1058,
+      "stars": 1060,
       "updatedAt": 1788239961000,
       "firstSeen": 1768916001000,
       "appFirstSeen": {
@@ -2242,7 +2242,7 @@
       "name": "De-Vanced",
       "repoDescription": "De-Vanced exists because the old way started getting frustrating, so I migrated everything to Morphe and turned it into a better, cleaner place to keep the experience alive.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/128968367?v=4&s=128",
-      "stars": 1203,
+      "stars": 1204,
       "updatedAt": 1788205013000,
       "firstSeen": 1772359809000,
       "appFirstSeen": {
@@ -2883,7 +2883,7 @@
       "name": "Piko",
       "repoDescription": "morphe patches for twitter and instagram",
       "avatarUrl": "https://avatars.githubusercontent.com/u/44558091?v=4&s=128",
-      "stars": 3000,
+      "stars": 3001,
       "updatedAt": 1788559903000,
       "firstSeen": 1773129596000,
       "appFirstSeen": {
@@ -5043,7 +5043,7 @@
       "name": "xob0t",
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/32616886?v=4&s=128",
-      "stars": 38,
+      "stars": 39,
       "updatedAt": 1788432488000,
       "firstSeen": 1778211405000,
       "appFirstSeen": {
@@ -5936,7 +5936,7 @@
       "name": "Metra TikTok",
       "repoDescription": "This repository is a Morphe patch source for TikTok.  It continues the work from earlier community TikTok patch sets, including ReVanced, with the patches adapted for Morphe and tested against newer TikTok builds. The current target version is TikTok 46.2.3",
       "avatarUrl": "https://raw.githubusercontent.com/icysymmetra/tiktok-patches-for-morphe/main/patches-bundle.png",
-      "stars": 313,
+      "stars": 314,
       "updatedAt": 1788121796000,
       "firstSeen": 1780130886000,
       "appFirstSeen": {
@@ -11455,8 +11455,8 @@
       "name": "Nai",
       "repoDescription": "A curated collection of Morphe patches that tune, unlock and declutter Android games. Skip ads, bypass license checks, hide root, force orientations and more, all from a single patcher.",
       "avatarUrl": "https://avatars.githubusercontent.com/u/122532548?v=4&s=128",
-      "stars": 486,
-      "updatedAt": 1788464421000,
+      "stars": 487,
+      "updatedAt": 1788616162000,
       "firstSeen": 1782996119000,
       "appFirstSeen": {
         "__universal__": 1785178161626,
@@ -13586,6 +13586,243 @@
           "name": "Ignore Touch Exploration",
           "description": "Makes AccessibilityManager.isTouchExplorationEnabled always return false so games that disable or alter gameplay under TalkBack behave normally",
           "default": false
+        },
+        {
+          "name": "Nai64Patches Universal Overlay Patch v1.0 (Experimental)",
+          "description": "Universal in-app overlay for Android apps and games. Optional modules include System Time, FPS,\nfullscreen, app brightness, and haptic controls. Modules are excluded and disabled by default;\nselect them in Morphe settings before patching. Statistic modules show information, Activity modules\ncontrol the current Activity, and Hook modules control internal app behavior, such as disabling\nanimations, through best-effort runtime changes. A selected local image automatically replaces\nthe legacy icon; empty or invalid image input falls back to the legacy icon. This is experimental\nand may not work on all apps.\n\nThe idea and initial works of this Universal Overlay Patch are from Zanuaimi / Noobite.",
+          "default": false,
+          "options": [
+            {
+              "key": "runtimeOverlayTitle",
+              "title": "General - Overlay title",
+              "description": "Title shown in the overlay menu. Limited to 80 characters."
+            },
+            {
+              "key": "runtimeOverlayDescription",
+              "title": "General - Overlay description",
+              "description": "Description below the title. Limited to 500 characters."
+            },
+            {
+              "key": "runtimeOverlayRepositoryText",
+              "title": "General - Repository button text",
+              "description": "Text of the always-present repository button."
+            },
+            {
+              "key": "runtimeOverlayRepositoryUrl",
+              "title": "General - Repository button URL",
+              "description": "URL opened by the repository button."
+            },
+            {
+              "key": "runtimeOverlayBackgroundColor",
+              "title": "General - Overlay background color",
+              "description": "Overlay background as #RRGGBB or #AARRGGBB."
+            },
+            {
+              "key": "runtimeOverlayOutlineColor",
+              "title": "General - Overlay outline color",
+              "description": "Overlay outline as #RRGGBB or #AARRGGBB."
+            },
+            {
+              "key": "runtimeOverlayOutlineWidthDp",
+              "title": "UI - Menu outline width (dp)",
+              "description": "Width of the menu, monitor, and confirmation outlines, from 1 to 8dp."
+            },
+            {
+              "key": "runtimeOverlayButtonText",
+              "title": "UI - Legacy icon text",
+              "description": "Text shown by the legacy icon. Maximum three characters."
+            },
+            {
+              "key": "runtimeOverlayIconBold",
+              "title": "UI - Legacy icon bold text",
+              "description": "Use bold text in the legacy icon. Enabled by default."
+            },
+            {
+              "key": "runtimeOverlayButtonTextColor",
+              "title": "UI - Legacy icon text color",
+              "description": "Text color used by the legacy icon."
+            },
+            {
+              "key": "runtimeOverlayIconGradientBackground",
+              "title": "UI - Gradient background",
+              "description": "Blend legacy icon background 1 into background 2. When disabled, only background 1 is used."
+            },
+            {
+              "key": "runtimeOverlayButtonBackgroundColor",
+              "title": "UI - Legacy icon background 1",
+              "description": "First color of the legacy icon gradient."
+            },
+            {
+              "key": "runtimeOverlayIconBackgroundColor2",
+              "title": "UI - Legacy icon background 2",
+              "description": "Second color of the legacy icon gradient. Background 1 is the existing overlay button background color."
+            },
+            {
+              "key": "runtimeOverlayIconGradientAngle",
+              "title": "UI - Legacy icon gradient angle (degrees)",
+              "description": "Gradient direction: 0 degrees runs top to bottom, 90 runs left to right, and 30 runs diagonally down and right. Values wrap through 360 degrees."
+            },
+            {
+              "key": "runtimeOverlayIconOutline",
+              "title": "UI - Icon outline",
+              "description": "Add a separate outline around the legacy text icon. Disabled by default."
+            },
+            {
+              "key": "runtimeOverlayIconOutlineColor",
+              "title": "UI - Icon outline color",
+              "description": "Color used only when the icon outline is enabled."
+            },
+            {
+              "key": "runtimeOverlayCustomIconImage",
+              "title": "UI - Custom image icon",
+              "description": "Select a local PNG, JPG, JPEG, or WebP image file. A valid image automatically replaces the legacy icon, including its outline. Prefer a transparent square image around 128x128 or 256x256 pixels. Images are embedded during patching and scaled proportionally. Leave blank or use an invalid file to fall back to the legacy icon with a one-time launch notice."
+            },
+            {
+              "key": "runtimeOverlayButtonShape",
+              "title": "UI - Overlay button shape",
+              "description": "Shape of the legacy text icon background."
+            },
+            {
+              "key": "runtimeOverlayButtonSizeDp",
+              "title": "UI - Overlay button size (dp)",
+              "description": "Button size in density-independent pixels."
+            },
+            {
+              "key": "runtimeOverlayButtonIdleOpacityPercent",
+              "title": "UI - Overlay button idle opacity (%)",
+              "description": "Idle opacity from 10 to 100 percent. Higher values make the button less transparent."
+            },
+            {
+              "key": "runtimeOverlayButtonDragVisibilityDurationSeconds",
+              "title": "UI - Overlay button fully visible duration (seconds)",
+              "description": "How long the overlay button stays fully visible after dragging before fading to its idle opacity. The timer resets while dragging and starts again when the finger is released. Use a value from 1 to 10 seconds."
+            },
+            {
+              "key": "runtimeOverlayButtonPosition",
+              "title": "UI - Overlay button position",
+              "description": "Initial floating button position."
+            },
+            {
+              "key": "runtimeOverlayActivityNameOverride",
+              "title": "Advanced - Overlay Activity name override",
+              "description": "Optional fallback Activity class used only when Application startup cannot be found. Leave blank for universal automatic discovery. Example: com.example.MainActivity or Lcom/example/MainActivity;."
+            },
+            {
+              "key": "runtimeOverlayActivateStatisticsOnLaunch",
+              "title": "Settings to Modules - Activate statistic modules on launch",
+              "description": "Start selected statistic modules as soon as the app launches. Active is disabled by default."
+            },
+            {
+              "key": "runtimeOverlayEnableMonitorsOnLaunch",
+              "title": "Settings to Modules - Enable monitors for statistic modules on launch",
+              "description": "Show selected statistic monitors as soon as the app launches. Monitor is disabled by default."
+            },
+            {
+              "key": "runtimeOverlayStatisticMonitorPosition",
+              "title": "Settings to Modules - Statistic monitor position",
+              "description": "Show enabled statistic monitors from statistic modules above or below the overlay button."
+            },
+            {
+              "key": "runtimeOverlayMonitorScale",
+              "title": "Settings to Modules - Monitor panel size",
+              "description": "Size multiplier for statistic monitor panels."
+            },
+            {
+              "key": "runtimeOverlayMonitorColumns",
+              "title": "Settings to Modules - Monitor columns",
+              "description": "Number of statistic monitor columns."
+            },
+            {
+              "key": "runtimeOverlayTemperatureFormat",
+              "title": "Settings to Modules - Temperature stat format",
+              "description": "Temperature unit used by the Device Temperature menu value and monitor."
+            },
+            {
+              "key": "runtimeOverlayTimeFormat",
+              "title": "Settings to Modules - System time format",
+              "description": "Clock format used by the System Time menu value and monitor. Timezone is shown in the menu value."
+            },
+            {
+              "key": "runtimeOverlayIncludeDeviceInformation",
+              "title": "Statistic modules - Device Information",
+              "description": "Include read-only phone and Android device information."
+            },
+            {
+              "key": "runtimeOverlayIncludeFps",
+              "title": "Statistic modules - FPS",
+              "description": "Include the approximate display frame-rate statistic module."
+            },
+            {
+              "key": "runtimeOverlayIncludeDeviceTemperature",
+              "title": "Statistic modules - Device Temperature",
+              "description": "Include battery-reported temperature in the selected temperature format."
+            },
+            {
+              "key": "runtimeOverlayIncludeSystemTime",
+              "title": "Statistic modules - System Time",
+              "description": "Include the phone system time statistic module."
+            },
+            {
+              "key": "runtimeOverlayIncludeSessionTime",
+              "title": "Statistic modules - App Session Time",
+              "description": "Include the in-process overlay session timer statistic module."
+            },
+            {
+              "key": "runtimeOverlayIncludeBatteryStatus",
+              "title": "Statistic modules - Battery Status",
+              "description": "Include the current battery percentage statistic module."
+            },
+            {
+              "key": "runtimeOverlayIncludeAppMemory",
+              "title": "Statistic modules - App Memory Usage",
+              "description": "Include approximate memory used by the current app process."
+            },
+            {
+              "key": "runtimeOverlayIncludeNetworkStatus",
+              "title": "Statistic modules - Network Status",
+              "description": "Include incoming and outgoing app network traffic monitors."
+            },
+            {
+              "key": "runtimeOverlayIncludeKeepScreenAwake",
+              "title": "Activity modules - Keep screen awake",
+              "description": "Include the keep-screen-awake activity module."
+            },
+            {
+              "key": "runtimeOverlayIncludeFullscreen",
+              "title": "Activity modules - Fullscreen",
+              "description": "Include the fullscreen activity module."
+            },
+            {
+              "key": "runtimeOverlayIncludeScreenshots",
+              "title": "Activity modules - Allow screenshots",
+              "description": "Include the allow-screenshots activity module."
+            },
+            {
+              "key": "runtimeOverlayIncludeAppBrightness",
+              "title": "Activity modules - App brightness",
+              "description": "Include a per-Activity brightness slider."
+            },
+            {
+              "key": "runtimeOverlayIncludeRotationMode",
+              "title": "Activity modules - Rotation mode",
+              "description": "Include a per-Activity rotation mode selector."
+            },
+            {
+              "key": "runtimeOverlayIncludeAppAudioMute",
+              "title": "Activity modules - App audio mute",
+              "description": "Include a best-effort app audio mute toggle."
+            },
+            {
+              "key": "runtimeOverlayIncludeDisableHaptics",
+              "title": "Hook modules - Disable haptic feedback / vibrations",
+              "description": "Include a best-effort runtime haptic and vibration suppression module."
+            },
+            {
+              "key": "runtimeOverlayIncludeDisableAnimations",
+              "title": "Hook modules - Disable app animations",
+              "description": "Include a best-effort runtime animation suppression module."
+            }
+          ]
         },
         {
           "name": "No Ads (Experimental)",
@@ -19135,7 +19372,7 @@
       "name": "Morning Entree",
       "repoDescription": "A collection of unofficial Android patches built with the Morphe framework. Patches are for educational purposes only, modifying apps can be against terms and services",
       "avatarUrl": "https://avatars.githubusercontent.com/u/28127566?v=4&s=128",
-      "stars": 28,
+      "stars": 29,
       "updatedAt": 1788382572000,
       "firstSeen": 1785036993248,
       "appFirstSeen": {
@@ -20394,7 +20631,7 @@
       "name": "GoldRift",
       "repoDescription": "Strong (fitness tracker) patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/69951941?v=4&s=128",
-      "stars": 5,
+      "stars": 6,
       "updatedAt": 1783845334000,
       "firstSeen": 1785872490309,
       "appFirstSeen": {
@@ -20415,7 +20652,7 @@
       "name": "RoundSalmon4",
       "repoDescription": "Personal repo for creating and releasing custom Morphe patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/209016228?v=4&s=128",
-      "stars": 4,
+      "stars": 5,
       "updatedAt": 1788561099000,
       "firstSeen": 1785872490309,
       "appFirstSeen": {
@@ -20751,7 +20988,7 @@
       "repoDescription": "Repo for steamlink Galaxy XR or other brands patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/53372897?v=4&s=128",
       "stars": 5,
-      "updatedAt": 1788556875000,
+      "updatedAt": 1788610246000,
       "firstSeen": 1786129326657,
       "appFirstSeen": {
         "com.valvesoftware.steamlinkvr": 1786129322302
@@ -20849,14 +21086,12 @@
         {
           "name": "GXR face bridge (version 5002318 and below)",
           "description": "For exact older Steam Link builds only. Installs libgxr_face_bridge.so (XR_FB_face_tracking2 → XR_ANDROID_face_tracking API layer) and adds android.permission.FACE_TRACKING to the manifest. See the [GXR Face Bridge source](https://github.com/compdoge/gxr-face-bridge) and matching [Galaxy XR VRCFT module](https://github.com/compdoge/LinkFT).",
-          "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 786
         },
         {
           "name": "GXR tongue bridge (version 5002322 and above)",
           "description": "For modern Steam Link builds with Valve's native Android XR face mapping. Currently verified and enabled only for exact build 5002322; newer builds require a separately verified native layout. Preserves Valve's face expressions and standard TongueOut while exposing Galaxy XR tongue out/left/right/up/down to the matching Galaxy XR VRCFT module.",
-          "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 787
         },
@@ -20986,7 +21221,7 @@
       "repoDescription": "Morphe patches to remove ads, analytics, apk junk, debug info, duplicate graphics, unused languages, and use custom dpi☠️",
       "avatarUrl": "https://avatars.githubusercontent.com/u/139938337?v=4&s=128",
       "stars": 25,
-      "updatedAt": 1788593326000,
+      "updatedAt": 1788609947000,
       "firstSeen": 1786240845995,
       "appFirstSeen": {
         "com.snaptube.premium": 1786360281622,
@@ -22613,7 +22848,7 @@
       "name": "hxreborn TikTok",
       "repoDescription": "Feed filters for ads, AI slop, paid partnerships, live and shop cards, plus telemetry blocking.",
       "avatarUrl": "https://raw.githubusercontent.com/hxreborn/hxreborn-tiktok-patches/main/patches-bundle.png",
-      "stars": 26,
+      "stars": 27,
       "updatedAt": 1788600709000,
       "firstSeen": 1786899918235,
       "appFirstSeen": {
@@ -22941,7 +23176,7 @@
       "name": "Flexboard",
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/10971263?v=4&s=128",
-      "stars": 17,
+      "stars": 18,
       "updatedAt": 1788564635000,
       "firstSeen": 1786962892864,
       "appFirstSeen": {
@@ -24120,7 +24355,7 @@
       "repoDescription": "legendsciber's Patches - Morphe patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/106559486?v=4&s=128",
       "stars": 7,
-      "updatedAt": 1788566392000,
+      "updatedAt": 1788609785000,
       "firstSeen": 1787620439710,
       "appFirstSeen": {
         "com.fingersoft.hillclimb": 1787620432732,
@@ -25022,7 +25257,7 @@
       "name": "Piko",
       "repoDescription": "New X on Android compatible piko builds",
       "avatarUrl": "https://avatars.githubusercontent.com/u/44558091?v=4&s=128",
-      "stars": 238,
+      "stars": 239,
       "updatedAt": 1788603122000,
       "firstSeen": 1787987199523,
       "appFirstSeen": {
@@ -25401,7 +25636,7 @@
       "repoDescription": "Unofficial Dual VoT patches: Google/other and Yandex voice-over translation in one Morphe Manager source",
       "avatarUrl": "https://avatars.githubusercontent.com/u/235972620?v=4&s=128",
       "stars": 11,
-      "updatedAt": 1788522472000,
+      "updatedAt": 1788605133000,
       "firstSeen": 1788323754967,
       "appFirstSeen": {
         "com.google.android.youtube": 1788323746993,
@@ -26416,7 +26651,7 @@
       "name": "mvaishak Letterboxd",
       "repoDescription": " Morphe patches that re-theme Letterboxd for Android — Material You, OLED black, custom accent colour, and layout tweaks",
       "avatarUrl": "https://avatars.githubusercontent.com/u/27264154?v=4&s=128",
-      "stars": 3,
+      "stars": 8,
       "updatedAt": 1788576992000,
       "firstSeen": 1788491531808,
       "appFirstSeen": {
@@ -26526,7 +26761,7 @@
       "name": "Zanuaimi's Morphe UniPatches",
       "repoDescription": "Curated list of universal patches for Morphe, including community-driven patches with enhancements and original patches, focusing on quality over quantity",
       "avatarUrl": "https://raw.githubusercontent.com/Zanuaimi/UniPatches/main/patches-bundle.png",
-      "stars": 2,
+      "stars": 4,
       "updatedAt": 1788586243000,
       "firstSeen": 1788582465944,
       "appFirstSeen": {

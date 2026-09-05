@@ -1,7 +1,42 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "patches": [
+    {
+      "name": "Anti-disappearing media",
+      "description": "Keeps view-once and self-destructing media viewable forever; the sender sees them as expired.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.telegram.messenger.web",
+          "name": "Telegram",
+          "description": "Telegram messenger",
+          "apkFileType": "APK",
+          "appIconColor": "#2AABEE",
+          "signatures": [
+            "49c1522548ebacd46ce322b6fd47f6092bb745d0f88082145caf35e14dcc38e1"
+          ],
+          "targets": [
+            {
+              "version": "12.8.3",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            },
+            {
+              "version": "12.10.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Bundle native ad-strip hook",
       "description": "Packages the Prime Video libignite interception library for this APK's ABIs.",

@@ -1,7 +1,33 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0",
+  "version": "1.2.0",
   "patches": [
+    {
+      "name": "AMOLED black theme",
+      "description": "Sets the dark theme backgrounds (window, toolbars, cards, dialogs) to pure black (#000000) so OLED and AMOLED screens turn those pixels off and battery is saved. Light appearance is unchanged. Original APK: https://www.animewitcher.com/",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.anime.witcher",
+          "name": "Anime Witcher",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.4.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "Android TV",
       "description": "Adds full Android TV / Fire TV support: manifest declarations, TV launcher entry and D-pad remote navigation (focusable content rows, focus out of the top bar, dialog focus). Original APK: https://www.animewitcher.com/",
@@ -137,7 +163,7 @@
     {
       "name": "Rebranding",
       "description": "Renames the app to 'Anime Witcher +', changes the package id to app.catsmoker.anime.witcher, badges the icon with a red +, points Telegram links to https://t.me/CATSM0KER and credits the About screen. Original APK: https://www.animewitcher.com/",
-      "default": false,
+      "default": true,
       "dependencies": [
         "BytecodePatch"
       ],

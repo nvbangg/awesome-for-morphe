@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "appNames": {
     "com.zhiliaoapp.musically": "TikTok"
   },
@@ -701,6 +701,35 @@
       "options": []
     },
     {
+      "name": "Region spoof",
+      "description": "Adds in-app controls for changing the region TikTok reads.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "46.2.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "46.2.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remember clear display",
       "description": "Remembers TikTok's clear-display state between videos.",
       "use": true,
@@ -731,35 +760,6 @@
       "description": "Continues supported videos from where playback stopped when returning after a scroll.",
       "use": true,
       "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": {
-        "com.zhiliaoapp.musically": [
-          "46.2.3"
-        ]
-      },
-      "compatibility": [
-        {
-          "name": "TikTok",
-          "packageName": "com.zhiliaoapp.musically",
-          "description": null,
-          "appIconColor": 16657493,
-          "targets": [
-            {
-              "version": "46.2.3",
-              "experimental": false
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "SIM spoof",
-      "description": "Spoofs SIM country and operator information retrieved by TikTok, with country presets for easier setup.",
-      "use": true,
-      "dependencies": [
-        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {

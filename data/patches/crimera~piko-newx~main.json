@@ -1,5 +1,5 @@
 {
-    "version": "3.10.4",
+    "version": "3.10.5",
     "patches": [
         {
             "name": "NewX: Remove ads",
@@ -1277,6 +1277,70 @@
             "description": "Unlocks media downloads and offline video saving in NewX.",
             "default": true,
             "dependencies": [],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.twitter.android",
+                    "name": "NewX",
+                    "description": null,
+                    "apkFileType": "APKM",
+                    "appIconColor": "#000000",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "12.20.5-prod.01",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        },
+                        {
+                            "version": "12.21.1-prod.05",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        },
+                        {
+                            "version": "12.22.0-beta.01",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        },
+                        {
+                            "version": "12.22.0-prod.01",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        },
+                        {
+                            "version": "12.23.0-prod.01",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        },
+                        {
+                            "version": "12.23.1-prod.01",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "NewX: Customize timeline tabs",
+            "description": "Lets you hide the For You or Following tab from the NewX home timeline.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch",
+                "BytecodePatch"
+            ],
             "compatiblePackages": [
                 {
                     "packageName": "com.twitter.android",

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.3.0-dev.2",
+  "version": "2.3.0-dev.3",
   "patches": [
     {
       "name": "Bigger Toolbar",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Hidden: Emoji Kitchen browse",
-      "description": "Turns on one finished Gboard feature that a resigned build can never receive: browsing Emoji Kitchen rather than only being offered its suggestions. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+      "description": "Turns on one finished Gboard feature that a resigned build can never receive: browsing Emoji Kitchen rather than only being offered its suggestions. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
       "default": false,
       "dependencies": [
         "BytecodePatch"
@@ -97,7 +97,7 @@
     },
     {
       "name": "Hidden: custom sticker tab",
-      "description": "Turns on one finished Gboard feature that a resigned build can never receive: a tab for stickers you added yourself. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+      "description": "Turns on one finished Gboard feature that a resigned build can never receive: a tab for stickers you added yourself. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
       "default": false,
       "dependencies": [
         "BytecodePatch"
@@ -128,7 +128,7 @@
     },
     {
       "name": "Hidden: dismissable chips",
-      "description": "Turns on one finished Gboard feature that a resigned build can never receive: a close control on the chips Gboard offers unprompted. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+      "description": "Turns on one finished Gboard feature that a resigned build can never receive: a close control on the chips Gboard offers unprompted. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
       "default": false,
       "dependencies": [
         "BytecodePatch"
@@ -159,7 +159,7 @@
     },
     {
       "name": "Hidden: grammar check",
-      "description": "Turns on one finished Gboard feature that a resigned build can never receive: grammar mistakes underlined as you type, and the settings row that switches them on. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+      "description": "Turns on one finished Gboard feature that a resigned build can never receive: grammar mistakes underlined as you type, and the settings row that switches them on. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
       "default": false,
       "dependencies": [
         "BytecodePatch"
@@ -190,38 +190,7 @@
     },
     {
       "name": "Hidden: offline translate",
-      "description": "Turns on one finished Gboard feature that a resigned build can never receive: translation without a network round trip. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
-      "default": false,
-      "dependencies": [
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.google.android.inputmethod.latin",
-          "name": "Gboard",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#1A73E8",
-          "signatures": [
-            "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
-            "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
-          ],
-          "targets": [
-            {
-              "version": "18.0.3.954559732-release-arm64-v8a",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Hidden: proofread",
-      "description": "Turns on one finished Gboard feature that a resigned build can never receive: on-device proofreading, the grammar checker's sibling. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+      "description": "Turns on one finished Gboard feature that a resigned build can never receive: translation without a network round trip. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
       "default": false,
       "dependencies": [
         "BytecodePatch"
@@ -252,7 +221,7 @@
     },
     {
       "name": "Hidden: settings search",
-      "description": "Turns on one finished Gboard feature that a resigned build can never receive: search within Gboard's own settings. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+      "description": "Turns on one finished Gboard feature that a resigned build can never receive: search within Gboard's own settings. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
       "default": false,
       "dependencies": [
         "BytecodePatch"

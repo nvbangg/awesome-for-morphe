@@ -1,7 +1,5 @@
 https://github.com/brosssh/morphe-mcp
 https://github.com/brosssh/revanced-external-bundles
-https://github.com/dmh84/morphe-space-explorer
-https://github.com/drnx64/morphe-track-patches
 https://github.com/Graywizard888/Enhancify
 https://github.com/hoo-dles/jadx-morphe
 https://github.com/Jman-Github/Awesome-ReVanced

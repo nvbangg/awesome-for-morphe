@@ -1,11 +1,9 @@
 https://awesome-morphe.vercel.app
 https://crowdin.com/project/morphe
-https://dmh84.github.io/morphe-space-explorer
 https://gist.github.com/akshay-abraham/01d63dc1911a8879943d781efd04ddfe
 https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/questions.md
 https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/troubleshooting.md
 https://github.com/thedjchi/Shizuku/wiki
-https://morphe-patches-drnx64.vercel.app
 https://morphe-patches.software
 https://morphe.software
 https://opencollective.com/morpheapp

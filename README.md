@@ -81,8 +81,8 @@
   </details>
 
 - [Revanced External Bundles](https://revanced-external-bundles.brosssh.com/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/brosssh/revanced-external-bundles)
-- [Community Patch Space Explorer](https://dmh84.github.io/morphe-space-explorer/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/dmh84/morphe-space-explorer)
-- [Morphe Patch Tracker](https://morphe-patches-drnx64.vercel.app/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/drnx64/morphe-track-patches)
+<!-- - [Community Patch Space Explorer](https://dmh84.github.io/morphe-space-explorer/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/dmh84/morphe-space-explorer)
+- [Morphe Patch Tracker](https://morphe-patches-drnx64.vercel.app/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/drnx64/morphe-track-patches) -->
 - [Patch Atlas](https://patch-atlas.vercel.app/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/shakir2117/Patch-Atlas)
 - [Morphe Archive](https://rushiforai.github.io/morphe-archive/) [![Repo](https://img.shields.io/badge/Repo-black?style=social&logo=github)](https://github.com/rushiforai/morphe-archive)
 - [Patch Index sticky post](https://www.reddit.com/r/MorpheApp/comments/1ta0bek/how_to_patch_more_apps_with_morphe/)
@@ -90,10 +90,10 @@
 
 ## <a id="projects"></a> 🛠️ Other Projects
 
-<a href="https://github.com/rushiranpise/apk-download-helper">
+<a href="https://github.com/rushiranpise/helper-for-morphe">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=rushiranpise&repo=apk-download-helper&border_radius=20&theme=dracula&show_owner=true" />
-    <img src="https://github-stats-extended.vercel.app/api/pin/?username=rushiranpise&repo=apk-download-helper&border_radius=20&show_owner=true" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/pin/?username=rushiranpise&repo=helper-for-morphe&border_radius=20&theme=dracula&show_owner=true" />
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=rushiranpise&repo=helper-for-morphe&border_radius=20&show_owner=true" />
   </picture>
 </a>
 <a href="https://github.com/Paresh-Maheshwari/morphe-ai">

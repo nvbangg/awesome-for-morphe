@@ -16915,7 +16915,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/103234275?v=4&s=128",
       "stars": 2,
-      "updatedAt": 1788340291000,
+      "updatedAt": 1788716044000,
       "firstSeen": 1784164349000,
       "appFirstSeen": {
         "com.reddit.frontpage": 1784164349000,
@@ -17465,6 +17465,11 @@
           "name": "Mute button",
           "description": "Adds an option to show a player button that mutes the video audio.",
           "compatiblePackagesKey": 676
+        },
+        {
+          "name": "NSFW mode",
+          "description": "Adds an option that hides everything except NSFW (18+) posts from the feed. Turned off until it is enabled in Morphe settings. Reddit only sends 18+ posts to accounts that have 'Show NSFW content' enabled, so the feed is empty without that account setting.",
+          "compatiblePackagesKey": 2
         },
         {
           "name": "Navigation bar",
@@ -21064,7 +21069,7 @@
       "repoDescription": "Repo for steamlink Galaxy XR or other brands patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/53372897?v=4&s=128",
       "stars": 5,
-      "updatedAt": 1788711388000,
+      "updatedAt": 1788717833000,
       "firstSeen": 1786129326657,
       "appFirstSeen": {
         "com.valvesoftware.steamlinkvr": 1786129322302
@@ -21130,7 +21135,7 @@
         },
         {
           "name": "Device identity",
-          "description": "Overrides the HMD identity reported to SteamVR. Recommended selects Meta Quest Pro for exact legacy bundle targets through 5002244, including 2.0.20/5001712; otherwise Galaxy XR. The Galaxy profile installs its complete transport identity while preserving stock controller/hand routing and extensions.",
+          "description": "Overrides the HMD identity reported to SteamVR. Recommended selects Meta Quest Pro for exact legacy bundle targets through 5002244, including 2.0.20/5001712; otherwise Galaxy XR. The Galaxy profile installs its complete transport identity while preserving stock controller/hand routing and extensions. Optional on 2.0.22/5002322; explicit Quest Pro and Pico profiles populate exact Galaxy XR product entries.",
           "default": false,
           "options": [
             {
@@ -21139,7 +21144,7 @@
               "description": "Recommended uses Meta Quest Pro on exact legacy bundle targets through 5002244 (including 5001712), and Galaxy XR otherwise. Explicit profiles override that choice. Native-XR routing and verified legacy payloads are preserved."
             }
           ],
-          "compatiblePackagesKey": 788
+          "compatiblePackagesKey": 789
         },
         {
           "name": "Force HMD initialization gates",
@@ -21169,33 +21174,33 @@
           "name": "GXR tongue bridge (version 5002322 and above)",
           "description": "For modern Steam Link builds with Valve's native Android XR face mapping. Currently verified and enabled only for exact build 5002322; newer builds require a separately verified native layout. Preserves Valve's face expressions and standard TongueOut while exposing Galaxy XR tongue out/left/right/up/down to the matching Galaxy XR VRCFT module.",
           "default": false,
-          "compatiblePackagesKey": 789
+          "compatiblePackagesKey": 790
         },
         {
           "name": "Galaxy XR high-resolution 3-projection fix",
           "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves each build's native projection layout (2 layers on 2.0.20/5001712; 3 layers on supported 2.0.22 builds) and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
           "default": false,
-          "compatiblePackagesKey": 790
+          "compatiblePackagesKey": 791
         },
         {
           "name": "Galaxy XR legacy foundation (through 2.0.22/5002244)",
           "description": "Selects the 17-patch Galaxy XR legacy set, including Meta Quest Pro identity, native gates, face bridge, OLED calibration, microphone, battery, Visual Delay, explicit startup permissions and splash, and XR foundation. High-resolution output is guarded to verified layouts; unavailable on 5001740.",
-          "compatiblePackagesKey": 791
+          "compatiblePackagesKey": 792
         },
         {
           "name": "Galaxy XR recommended set (2.0.20/5001712)",
           "description": "Applies the 17-patch Galaxy XR legacy set for exact Steam Link 2.0.20 build 5001712, including explicit startup permissions and splash, Meta Quest Pro identity, permission-free high resolution, and the Final balanced tested OLED profile.",
-          "compatiblePackagesKey": 792
+          "compatiblePackagesKey": 793
         },
         {
           "name": "Galaxy XR recommended set (2.0.22/5002318)",
           "description": "Applies the 9-patch Galaxy XR set for exact Steam Link 2.0.22 build 5002318, including separately listed startup permissions and splash/XR launch mode.",
-          "compatiblePackagesKey": 789
+          "compatiblePackagesKey": 790
         },
         {
           "name": "Galaxy XR recommended set (2.0.22/5002322)",
           "description": "Applies the 6-patch Galaxy XR set for exact Steam Link 2.0.22 build 5002322. Preserves stock startup and permission requests except battery settings; includes the Final balanced tested OLED profile.",
-          "compatiblePackagesKey": 789
+          "compatiblePackagesKey": 790
         },
         {
           "name": "Microphone input preset",
@@ -21208,7 +21213,7 @@
               "description": "Voice Recognition was the clearest usable-level mode in Galaxy XR recordings. Voice Performance and Unprocessed were substantially quieter; Voice Communication sounded more processed."
             }
           ],
-          "compatiblePackagesKey": 793
+          "compatiblePackagesKey": 789
         },
         {
           "name": "OLED color calibration",
@@ -21241,27 +21246,25 @@
               "description": "Adds fine noise after calibration, before linear conversion. Preserves exact black/white and fades noise near endpoints. Compare gradients, grain and shimmer. This is app-side noise, not final compositor dithering or proof of extra panel bits."
             }
           ],
-          "compatiblePackagesKey": 793
+          "compatiblePackagesKey": 789
         },
         {
           "name": "Startup permission requests (before 5002322)",
           "description": "Requests hand, eye and face tracking, microphone and Bluetooth permissions before opening Steam Link on exact older builds. Battery settings and the visible startup splash are separate patches.",
-          "isPreRelease": true,
           "default": false,
-          "compatiblePackagesKey": 793
+          "compatiblePackagesKey": 789
         },
         {
           "name": "Startup splash and XR launch mode (before 5002322)",
           "description": "Adds the Launching Steam Link splash, older-build panel sizing and explicit unmanaged VRLink startup. Does not request tracking, microphone or Bluetooth permissions; select Startup permission requests separately.",
-          "isPreRelease": true,
           "default": false,
-          "compatiblePackagesKey": 793
+          "compatiblePackagesKey": 789
         },
         {
           "name": "Unrestricted battery usage",
           "description": "Opens Android's per-app Battery usage page at startup so Unrestricted can be selected for XR streaming.",
           "default": false,
-          "compatiblePackagesKey": 793
+          "compatiblePackagesKey": 789
         },
         {
           "name": "Visual Delay Fix",
@@ -21274,7 +21277,7 @@
               "description": "libvrlink_scene.so: AArch64 MOVZ/MOVK at PLT cave adds value×1e6 ns to X2 in QSVLDeviceHmd::GetPose. Tested default: 60 ms. Allowed range: 0 to 4000 ms."
             }
           ],
-          "compatiblePackagesKey": 793
+          "compatiblePackagesKey": 789
         },
         {
           "name": "XR Core Runtime",
@@ -23240,7 +23243,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/10971263?v=4&s=128",
       "stars": 19,
-      "updatedAt": 1788713331000,
+      "updatedAt": 1788714338000,
       "firstSeen": 1786962892864,
       "appFirstSeen": {
         "com.google.android.inputmethod.latin": 1786962892801
@@ -23257,43 +23260,14 @@
           "compatiblePackagesKey": 123
         },
         {
-          "name": "Hidden: Emoji Kitchen browse",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: browsing Emoji Kitchen rather than only being offered its suggestions. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
+          "name": "Hidden Features",
+          "description": "Turns on two finished Gboard features that a resigned build can never receive: grammar check, and a close control on the chips Gboard offers unprompted. Their flags are delivered per app signature, so resigning the APK means they never arrive and stay off. Both are confirmed working on a device; five other flags were tried and dropped.",
           "isPreRelease": true,
-          "default": false,
           "compatiblePackagesKey": 123
         },
         {
-          "name": "Hidden: custom sticker tab",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: a tab for stickers you added yourself. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
-          "isPreRelease": true,
-          "default": false,
-          "compatiblePackagesKey": 123
-        },
-        {
-          "name": "Hidden: dismissable chips",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: a close control on the chips Gboard offers unprompted. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
-          "isPreRelease": true,
-          "default": false,
-          "compatiblePackagesKey": 123
-        },
-        {
-          "name": "Hidden: grammar check",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: grammar mistakes underlined as you type, and the settings row that switches them on. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
-          "isPreRelease": true,
-          "default": false,
-          "compatiblePackagesKey": 123
-        },
-        {
-          "name": "Hidden: offline translate",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: translation without a network round trip. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
-          "isPreRelease": true,
-          "default": false,
-          "compatiblePackagesKey": 123
-        },
-        {
-          "name": "Hidden: settings search",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: search within Gboard's own settings. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in until seen working on a device: these are flags Google never sends this build, so nothing but a device can confirm the feature behind one is really there.",
+          "name": "Hidden Features (unconfirmed)",
+          "description": "Turns on four finished Gboard features that a resigned build can never receive: Emoji Kitchen browse, the custom sticker tab, offline translation, and search in Gboard's settings. Off by default because none of the four has been seen working on a device — the flags flip, but each also depends on data Google only sends to an unpatched install. Safe to try: none of them crashes.",
           "isPreRelease": true,
           "default": false,
           "compatiblePackagesKey": 123
@@ -23305,7 +23279,7 @@
         },
         {
           "name": "Suggested Settings",
-          "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings. Grammar check is the switch, not the feature: the row only exists on a resigned build if the Hidden: grammar check patch is applied too.",
+          "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings. Grammar check is the switch, not the feature: the row only exists on a resigned build if Hidden Features is applied too.",
           "compatiblePackagesKey": 123
         },
         {
@@ -39055,6 +39029,56 @@
         "packageName": "com.valvesoftware.steamlinkvr",
         "targets": [
           {
+            "version": "2.0.20"
+          }
+        ]
+      },
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.20"
+          }
+        ]
+      },
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22"
+          }
+        ]
+      },
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22"
+          }
+        ]
+      },
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22"
+          }
+        ]
+      },
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
+            "version": "2.0.22"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "packageName": "com.valvesoftware.steamlinkvr",
+        "targets": [
+          {
             "version": "2.0.22"
           }
         ]
@@ -39134,56 +39158,6 @@
         "targets": [
           {
             "version": "2.0.20"
-          }
-        ]
-      }
-    ],
-    [
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.20"
-          }
-        ]
-      },
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.20"
-          }
-        ]
-      },
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
-          }
-        ]
-      },
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
-          }
-        ]
-      },
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
-          }
-        ]
-      },
-      {
-        "packageName": "com.valvesoftware.steamlinkvr",
-        "targets": [
-          {
-            "version": "2.0.22"
           }
         ]
       }

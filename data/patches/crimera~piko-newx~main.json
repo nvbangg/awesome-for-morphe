@@ -1,5 +1,5 @@
 {
-    "version": "3.10.1",
+    "version": "3.10.4",
     "patches": [
         {
             "name": "NewX: Remove ads",
@@ -195,6 +195,7 @@
             "description": "Opens the expanded (canonical) URL directly when clicking links instead of the shortened t.co link.",
             "default": true,
             "dependencies": [
+                "BytecodePatch",
                 "BytecodePatch",
                 "BytecodePatch"
             ],
@@ -1400,6 +1401,7 @@
             "description": "Restricts the NewX For You timeline to selected topics.",
             "default": true,
             "dependencies": [
+                "BytecodePatch",
                 "BytecodePatch"
             ],
             "compatiblePackages": [
@@ -1972,6 +1974,7 @@
             "description": "Hides posts and replies authored by selected timeline-reported verification types.",
             "default": true,
             "dependencies": [
+                "BytecodePatch",
                 "BytecodePatch",
                 "BytecodePatch"
             ],

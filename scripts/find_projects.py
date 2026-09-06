@@ -31,14 +31,17 @@ RAW_SEARCH_PATH = TEMP_DIR / "raw-search.json"
 RAW_FILTER_PATH = TEMP_DIR / "raw-filter.json"
 
 SEARCH_KEYWORDS = ["morphe"]
-TARGET_USERS = ["MorpheApp", "rushiranpise"]
-CREATED_AFTER = "2026-01-01"
-CREATED_WITHIN_DAYS = 60
-PUSHED_WITHIN_DAYS = 30
 EXCLUDED_USERS = []
 API_EXCLUDED_KEYWORDS = ["morpheus", "morpheme", "morphelab"]
-API_EXCLUDED_NAME_KEYWORDS = ["patches", "builder"]
-EXCLUDED_KEYWORDS = ["build", "magisk", "patched", "patcher", "youtube", "morphe-labs"]
+API_EXCLUDED_NAME_KEYWORDS = ["builder", "magisk"]
+STANDALONE_NAME_KEYWORDS = []
+EXCLUDED_KEYWORDS = []
+
+TARGET_USERS = ["MorpheApp", "rushiranpise"]
+
+CREATED_AFTER = "2026-01-01"
+CREATED_WITHIN_DAYS = None
+PUSHED_WITHIN_DAYS = 30
 
 PAGE_SIZE = 100
 MAX_PAGES = 10
@@ -46,13 +49,9 @@ PAGE_DELAY_SECONDS = 1
 SEARCH_TIMEOUT = 15
 HEAD_TIMEOUT = 5
 
-MORPHE_NAME_RE = re.compile(r"(?<![a-zA-Z0-9])morphe(?![a-zA-Z0-9])", re.IGNORECASE)
 
-
-def build_search_query(keyword: str) -> str:
-    parts = [keyword, "size:>0", "archived:false", "fork:false"]
-    parts.extend(f"-user:{user}" for user in EXCLUDED_USERS)
-
+def build_date_filters() -> list[str]:
+    parts = []
     if CREATED_WITHIN_DAYS:
         created_after = (
             datetime.now(UTC) - timedelta(days=CREATED_WITHIN_DAYS)
@@ -66,14 +65,22 @@ def build_search_query(keyword: str) -> str:
             datetime.now(UTC) - timedelta(days=PUSHED_WITHIN_DAYS)
         ).strftime("%Y-%m-%d")
         parts.append(f"pushed:>{pushed_after}")
+    return parts
 
+
+def build_search_query(keyword: str) -> str:
+    parts = [keyword, "size:>0", "archived:false", "fork:false"]
+    parts.extend(f"-user:{user}" for user in EXCLUDED_USERS)
+    parts.extend(build_date_filters())
     parts.extend(f"NOT {forbidden}" for forbidden in API_EXCLUDED_KEYWORDS)
     parts.extend(f"NOT in:name {forbidden}" for forbidden in API_EXCLUDED_NAME_KEYWORDS)
     return " ".join(parts)
 
 
 def build_user_query(user: str) -> str:
-    return f"user:{user} size:>0 archived:false fork:false"
+    parts = [f"user:{user}", "size:>0", "archived:false", "fork:false"]
+    parts.extend(build_date_filters())
+    return " ".join(parts)
 
 
 def is_patch_bundle(repo: str) -> bool:
@@ -86,6 +93,24 @@ def is_patch_bundle(repo: str) -> bool:
         if status.get("error") and not status.get("is_dead"):
             print(f"[-] Failed to check {repo} ({branch}): {status['error']}")
     return False
+
+
+def has_readme(repo: str, branch: str = "main") -> bool:
+    if not (url := build_raw_url("github", repo, branch, "README.md")):
+        return False
+    status = check_link_status(url, timeout=HEAD_TIMEOUT)
+    if status.get("is_active"):
+        return True
+    if status.get("error") and not status.get("is_dead"):
+        print(f"[-] Failed to check README for {repo} ({branch}): {status['error']}")
+    return False
+
+
+def is_valid_candidate(repo: dict) -> bool:
+    full_name = repo.get("full_name", "")
+    if is_patch_bundle(full_name):
+        return False
+    return has_readme(full_name, repo.get("default_branch") or "main")
 
 
 def matches_filter_criteria(repo: dict) -> bool:
@@ -101,7 +126,17 @@ def matches_filter_criteria(repo: dict) -> bool:
     if any(keyword.lower() in combined_text for keyword in EXCLUDED_KEYWORDS):
         return False
 
-    return bool(MORPHE_NAME_RE.search(repo_name))
+    if STANDALONE_NAME_KEYWORDS:
+        return any(
+            re.search(
+                rf"(?<![a-zA-Z0-9]){re.escape(kw)}(?![a-zA-Z0-9])",
+                repo_name,
+                re.IGNORECASE,
+            )
+            for kw in STANDALONE_NAME_KEYWORDS
+        )
+        
+    return True
 
 
 def search_repos() -> list[dict]:
@@ -206,18 +241,16 @@ def verify_and_export_repos(candidates: list[dict] | None = None) -> list[dict]:
         return []
 
     print(
-        f"Checking {len(candidates)} candidates for patches-bundle.json across branches {list(DEFAULT_BRANCHES)}...\n"
+        f"Checking {len(candidates)} candidates for patches-bundle.json and README...\n"
     )
     valid_repos = []
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as executor:
         future_to_repo = {
-            executor.submit(is_patch_bundle, repo.get("full_name", "")): repo
-            for repo in candidates
+            executor.submit(is_valid_candidate, repo): repo for repo in candidates
         }
         for future in as_completed(future_to_repo):
-            repo = future_to_repo[future]
-            if not future.result():
-                valid_repos.append(repo)
+            if future.result():
+                valid_repos.append(future_to_repo[future])
 
     repos = [
         {
@@ -269,7 +302,7 @@ def verify_and_export_repos(candidates: list[dict] | None = None) -> list[dict]:
     append_step_summary("\n\n".join(summary_sections))
 
     print(
-        f"Saved {len(repos)} URLs to {NEW_PROJECTS_PATH.relative_to(ROOT_DIR)} (excluded {len(candidates) - len(repos)} patch bundles)"
+        f"Saved {len(repos)} URLs to {NEW_PROJECTS_PATH.relative_to(ROOT_DIR)} (excluded {len(candidates) - len(repos)} patch bundles or without README)"
     )
     return repos
 

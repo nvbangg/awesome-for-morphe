@@ -24,7 +24,7 @@ https://github.com/nvbangg/builder-for-morphe
 https://github.com/Paresh-Maheshwari/morphe-ai
 https://github.com/Paresh-Maheshwari/patch-explorer
 https://github.com/rushiforai/morphe-archive
-https://github.com/rushiranpise/apk-download-helper
+https://github.com/rushiranpise/helper-for-morphe
 https://github.com/shakir2117/Patch-Atlas
 https://github.com/thedjchi/Shizuku
 https://github.com/Xisrr1/Revancify-Xisr

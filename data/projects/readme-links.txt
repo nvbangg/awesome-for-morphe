@@ -1,8 +1,7 @@
 https://awesome-morphe.vercel.app
 https://crowdin.com/project/morphe
 https://gist.github.com/akshay-abraham/01d63dc1911a8879943d781efd04ddfe
-https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/questions.md
-https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/troubleshooting.md
+https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/troubleshooting_questions.md
 https://github.com/thedjchi/Shizuku/wiki
 https://morphe-patches.software
 https://morphe.software
@@ -22,3 +21,6 @@ https://www.reddit.com/r/MorpheApp/comments/1ta0bek/how_to_patch_more_apps_with_
 https://www.reddit.com/r/MorpheApp/comments/1vmfizy/how_to_request_app_patches
 https://x.com/MorpheApp
 https://www.reddit.com/r/MorpheApp/comments/1w0o641/pothelper_is_here_youtube_playback_with_no/
+https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md
+https://github.com/MorpheApp/morphe-desktop/blob/main/docs/documentation.md
+https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-development/README.md

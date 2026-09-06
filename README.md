@@ -55,8 +55,10 @@
 ## <a id="resources"></a> 📚 Resources
 
 - [Morphe Documentation](https://github.com/MorpheApp/morphe-documentation)
-  - [Frequently asked questions](https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/questions.md)
-  - [Troubleshooting Help](https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/troubleshooting.md)
+  - [Troubleshooting and Frequently asked questions](https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-resources/troubleshooting_questions.md)
+  - [📱 Using Morphe Manager](https://github.com/MorpheApp/morphe-manager/blob/main/docs/README.md): Illustrated guides for patching, installing, updating, and customizing on your phone
+  - [💻 Using Morphe Desktop](https://github.com/MorpheApp/morphe-desktop/blob/main/docs/documentation.md): Using Morphe Desktop with a computer
+  - [🛠️ Morphe Development](https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-development/README.md): Setting up a development environment for Morphe and creating patches
 - [Morphe links, help, guides, and troubleshooting](https://www.reddit.com/r/MorpheApp/comments/1pverk7/morphe_links_help_guides_and_troubleshooting/)
   - [If you have playback issues](https://www.reddit.com/r/MorpheApp/comments/1pverk7/comment/oag938k/)
   - [Shorts player has no buttons](https://www.reddit.com/r/MorpheApp/comments/1pverk7/comment/ogdw6mk/)

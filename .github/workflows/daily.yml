@@ -1,9 +1,18 @@
-name: Sync
+name: Daily Sync
+run-name: >-
+  ${{ inputs.mode == 'month' && 'Sync (month)' || 'Sync (daily)' }}
 
 on:
-  schedule:
-    - cron: "17 * * * *"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Select mode"
+        required: true
+        default: "daily"
+        type: choice
+        options:
+          - daily
+          - month
 
 concurrency:
   group: ci
@@ -14,7 +23,7 @@ permissions:
   actions: write
 
 jobs:
-  sync:
+  daily:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -24,31 +33,13 @@ jobs:
         with:
           ref: main
 
-      - name: Check schedule
-        id: check
-        run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            MODE=$(jq -r --arg today "$(date -u +'%Y-%m-%d')" '
-              if .lastMonth != ($today[0:7]) then "month"
-              elif .lastDaily != $today then "daily"
-              else empty end' data/ci.json 2>/dev/null)
-
-            if [ -n "$MODE" ]; then
-              gh workflow run daily.yml -f mode="$MODE"
-              echo "::notice title=Workflow Triggered::Dispatched daily.yml with mode=$MODE"
-              echo "skip=true" >> $GITHUB_OUTPUT
-            fi
-          fi
-
       - name: Discover repositories
-        if: steps.check.outputs.skip != 'true'
         run: python scripts/discover.py
 
       - name: Fetch new bundles
-        if: steps.check.outputs.skip != 'true'
         id: fetch
         run: |
-          python scripts/fetch.py
+          python scripts/fetch.py --image
 
           if [ -n "$(git status --porcelain)" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
@@ -63,7 +54,7 @@ jobs:
           fi
 
       - name: Setup Java environment
-        if: steps.fetch.outputs.need_java == 'true'
+        if: steps.fetch.outputs.changed == 'true' && steps.fetch.outputs.need_java == 'true'
         uses: actions/setup-java@dd06d9cba3e5552c54d9f8ea23572deb30010f7c # v6.0.0
         with:
           distribution: "temurin"
@@ -71,22 +62,41 @@ jobs:
           cache: "gradle"
 
       - name: Parse bundles
-        if: steps.fetch.outputs.changed == 'true'
         run: python scripts/parse.py
 
       - name: Update bundles data
-        if: steps.fetch.outputs.changed == 'true'
         run: |
           pip install -e scripts/
-          python scripts/update.py
+          python scripts/update.py --${{ inputs.mode }}
+
+      - name: Generate What's New
+        run: python scripts/whats_new.py
 
       - name: Commit and push changes
-        if: steps.fetch.outputs.changed == 'true'
+        id: commit
         run: |
+          TODAY=$(date -u +'%Y-%m-%d')
+          jq --arg d "$TODAY" --arg m "${{ inputs.mode }}" \
+            '.lastDaily = $d | if $m == "month" then .lastMonth = ($d[0:7]) else . end' data/ci.json > data/ci.tmp && mv data/ci.tmp data/ci.json
+
           git add data/ web/public/
           if ! git diff --staged --quiet; then
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git commit -m "Sync bundles"
+            git commit -m "Update history (${TODAY})"
             git push origin HEAD:main
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Send Telegram notification
+        if: steps.commit.outputs.changed == 'true' && hashFiles('scripts/temp/whats-new.md') != ''
+        env:
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+        run: python scripts/telegram.py
+
+      - name: Cleanup old workflow runs
+        run: |
+          gh run list -L 200 --json databaseId -q '.[].databaseId' | tail -n +91 | xargs -IID gh api "repos/$GITHUB_REPOSITORY/actions/runs/ID" -X DELETE || :

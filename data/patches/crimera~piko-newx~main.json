@@ -1,5 +1,5 @@
 {
-    "version": "3.10.5",
+    "version": "3.10.6",
     "patches": [
         {
             "name": "NewX: Remove ads",
@@ -1782,6 +1782,69 @@
         {
             "name": "NewX: Hide Spaces bar",
             "description": "Hides the Spaces bar above NewX timelines.",
+            "default": true,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "compatiblePackages": [
+                {
+                    "packageName": "com.twitter.android",
+                    "name": "NewX",
+                    "description": null,
+                    "apkFileType": "APKM",
+                    "appIconColor": "#000000",
+                    "signatures": [],
+                    "targets": [
+                        {
+                            "version": "12.20.5-prod.01",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        },
+                        {
+                            "version": "12.21.1-prod.05",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        },
+                        {
+                            "version": "12.22.0-beta.01",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        },
+                        {
+                            "version": "12.22.0-prod.01",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        },
+                        {
+                            "version": "12.23.0-prod.01",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        },
+                        {
+                            "version": "12.23.1-prod.01",
+                            "versionCodes": null,
+                            "isExperimental": false,
+                            "minSdk": null,
+                            "description": null
+                        }
+                    ]
+                }
+            ],
+            "options": []
+        },
+        {
+            "name": "NewX: Hide timeline tabs bar",
+            "description": "Removes the For You and Following tabs bar from NewX home timelines.",
             "default": true,
             "dependencies": [
                 "BytecodePatch"

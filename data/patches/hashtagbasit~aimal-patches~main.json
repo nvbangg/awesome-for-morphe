@@ -1,40 +1,7 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "patches": [
-    {
-      "name": "Add fast playback speeds",
-      "description": "Adds 1.25x, 1.5x, 1.75x, and 2.0x playback speed options.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.crunchyroll.crunchyroid",
-          "name": "Crunchyroll",
-          "description": null,
-          "apkFileType": "APKM",
-          "appIconColor": "#F47521",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "3.117.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
     {
       "name": "Aspect ratio control",
       "description": "Adds a Fit/Stretch toggle to the player.",
@@ -69,8 +36,8 @@
       "options": []
     },
     {
-      "name": "Enable speed control",
-      "description": "Enables playback speed options (0.5x-2.0x) in the video player.",
+      "name": "Playback speed",
+      "description": "Unhides the player's speed menu and fills it out to 0.5x-2.0x.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -141,6 +108,129 @@
           "targets": [
             {
               "version": "26.14.1+rc2-2026.08.20",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.viki.android",
+          "name": "Viki",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#0C9CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.5.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Removes pre-roll and mid-roll video ads, and the display banners.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.viki.android",
+          "name": "Viki",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#0C9CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.5.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Subtitle styling",
+      "description": "Adds subtitle size, font and outline controls to the player.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.crunchyroll.crunchyroid",
+          "name": "Crunchyroll",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#F47521",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.117.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Use the whole screen for video",
+      "description": "Hides the comments panel beside the player on tablets and unfolded foldables.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.viki.android",
+          "name": "Viki",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#0C9CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "26.5.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

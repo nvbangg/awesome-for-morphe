@@ -5728,7 +5728,7 @@
       "repoDescription": "Patches for Android TV apks",
       "avatarUrl": "https://avatars.githubusercontent.com/u/229211337?v=4&s=128",
       "stars": 175,
-      "updatedAt": 1788618064000,
+      "updatedAt": 1788734096000,
       "firstSeen": 1779671144000,
       "appFirstSeen": {
         "tv.pluto.android": 1783087807450,
@@ -5806,7 +5806,7 @@
         },
         {
           "name": "ESPN Android TV",
-          "description": "Suppresses ESPN VOD/scheduled ads (DMP SGAI isAdDisabled) and masks LIVE passthrough-SSAI commercial breaks with a full-screen \"Commercial Break\" slate + mute (the live ad can't be removed, only covered). Optional slate media is user-supplied local files; disable the live slate with a `slate_off` marker file. No DNS dependency.",
+          "description": "Suppresses ESPN Android TV VOD/scheduled ads (DMP SGAI isAdDisabled) and masks LIVE passthrough-SSAI commercial breaks with a full-screen \"Commercial Break\" slate + mute (the live ad can't be removed, only covered). Optional slate media is user-supplied local files; disable the live slate with a `slate_off` marker file. No DNS dependency.",
           "compatiblePackagesKey": 196
         },
         {
@@ -5883,7 +5883,7 @@
         },
         {
           "name": "Skip ads",
-          "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
+          "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102, v7.6.100 and v7.8.100.",
           "compatiblePackagesKey": 193
         },
         {
@@ -5954,7 +5954,7 @@
       "repoDescription": "This repository is a Morphe patch source for TikTok.  It continues the work from earlier community TikTok patch sets, including ReVanced, with the patches adapted for Morphe and tested against newer TikTok builds. The current target version is TikTok 46.2.3",
       "avatarUrl": "https://raw.githubusercontent.com/icysymmetra/tiktok-patches-for-morphe/main/patches-bundle.png",
       "stars": 319,
-      "updatedAt": 1788693208000,
+      "updatedAt": 1788738057000,
       "firstSeen": 1780130886000,
       "appFirstSeen": {
         "com.zhiliaoapp.musically": 1780156086693
@@ -6002,8 +6002,14 @@
           "compatiblePackagesKey": 204
         },
         {
+          "name": "Download stories",
+          "description": "Adds TikTok's native save action to each story's share menu. The current story item is preserved so profiles with several stories download the intended media.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 204
+        },
+        {
           "name": "Downloads",
-          "description": "Adds watermark-free downloads, comment sticker saving, configurable folders, and filename templates.",
+          "description": "Adds watermark-free downloads, video quality selection, comment sticker saving, configurable folders, and filename templates.",
           "compatiblePackagesKey": 204
         },
         {
@@ -6014,6 +6020,12 @@
         {
           "name": "Enable non-personalized search",
           "description": "Uses TikTok's non-personalized search mode instead of its saved account choice.",
+          "compatiblePackagesKey": 204
+        },
+        {
+          "name": "Enable voice comments",
+          "description": "Enables TikTok's native voice-comment recording and publishing entry points.",
+          "isPreRelease": true,
           "compatiblePackagesKey": 204
         },
         {
@@ -6079,6 +6091,12 @@
         {
           "name": "Hide quick comment reactions",
           "description": "Hides TikTok's exposed quick emoji row in supported comment inputs.",
+          "compatiblePackagesKey": 204
+        },
+        {
+          "name": "Hide suggested accounts",
+          "description": "Removes suggested-account cards from profile and inbox surfaces. Thanks to tymmesyde for the original implementation.",
+          "isPreRelease": true,
           "compatiblePackagesKey": 204
         },
         {
@@ -16915,7 +16933,7 @@
       "repoDescription": "",
       "avatarUrl": "https://avatars.githubusercontent.com/u/103234275?v=4&s=128",
       "stars": 2,
-      "updatedAt": 1788728567000,
+      "updatedAt": 1788738968000,
       "firstSeen": 1784164349000,
       "appFirstSeen": {
         "com.reddit.frontpage": 1784164349000,
@@ -17468,7 +17486,7 @@
         },
         {
           "name": "NSFW mode",
-          "description": "Adds an option that hides everything except NSFW (18+) posts from the feed. Turned off until it is enabled in Morphe settings. Reddit only sends 18+ posts to accounts that have 'Show NSFW content' enabled, so the feed is empty without that account setting.",
+          "description": "Adds an NSFW row to the navigation drawer that reduces the home feed to its 18+ posts. Turned off until it is switched on. Reddit only sends 18+ posts to accounts that have 'Show NSFW content' enabled, so the feed is empty without that account setting.",
           "compatiblePackagesKey": 2
         },
         {
@@ -24428,7 +24446,7 @@
       "repoDescription": "Morphe patches adding playback speed and aspect ratio controls to Crunchyroll, HBO Max and Disney+",
       "avatarUrl": "https://avatars.githubusercontent.com/u/53941105?v=4&s=128",
       "stars": 2,
-      "updatedAt": 1787701770000,
+      "updatedAt": 1788736775000,
       "firstSeen": 1787540142280,
       "appFirstSeen": {
         "com.crunchyroll.crunchyroid": 1787540141361,
@@ -24438,18 +24456,13 @@
       },
       "patches": [
         {
-          "name": "Add fast playback speeds",
-          "description": "Adds 1.25x, 1.5x, 1.75x, and 2.0x playback speed options.",
-          "compatiblePackagesKey": 864
-        },
-        {
           "name": "Aspect ratio control",
           "description": "Adds a Fit/Stretch toggle to the player.",
           "compatiblePackagesKey": 864
         },
         {
-          "name": "Enable speed control",
-          "description": "Enables playback speed options (0.5x-2.0x) in the video player.",
+          "name": "Playback speed",
+          "description": "Unhides the player's speed menu and fills it out to 0.5x-2.0x.",
           "compatiblePackagesKey": 864
         },
         {
@@ -24460,19 +24473,16 @@
         {
           "name": "Remove ads",
           "description": "Removes pre-roll and mid-roll video ads, and the display banners.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 866
         },
         {
           "name": "Subtitle styling",
           "description": "Adds subtitle size, font and outline controls to the player.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 864
         },
         {
           "name": "Use the whole screen for video",
           "description": "Hides the comments panel beside the player on tablets and unfolded foldables.",
-          "isPreRelease": true,
           "compatiblePackagesKey": 866
         }
       ],
@@ -24485,7 +24495,7 @@
       "repoDescription": "legendsciber's Patches - Morphe patches",
       "avatarUrl": "https://avatars.githubusercontent.com/u/106559486?v=4&s=128",
       "stars": 7,
-      "updatedAt": 1788725460000,
+      "updatedAt": 1788731671000,
       "firstSeen": 1787620439710,
       "appFirstSeen": {
         "com.fingersoft.hillclimb": 1787620432732,
@@ -24543,7 +24553,7 @@
         },
         {
           "name": "Shadow Fight 2 IAP Bypass",
-          "description": "Bypasses Google Play billing. Intercepts Purchase and triggers OnPurchaseSucceeded directly.",
+          "description": "Bypasses in-app purchases.",
           "compatiblePackagesKey": 870
         },
         {
@@ -25122,12 +25132,13 @@
       "repoDescription": "Pokémon GO related patches for apps I use.",
       "avatarUrl": "https://raw.githubusercontent.com/Dan1elTheMan1el/Morphe-Patches/main/patches-bundle.png",
       "stars": 3,
-      "updatedAt": 1788504129000,
+      "updatedAt": 1788733176000,
       "firstSeen": 1787805801523,
       "appFirstSeen": {
         "me.pokeraid": 1787805792543,
         "com.fitness.debugger": 1787805792543,
-        "de.humbergsoftware.keyboarddesigner": 1787890956507
+        "de.humbergsoftware.keyboarddesigner": 1787890956507,
+        "com.izorg.munchkin": 1788739054185
       },
       "patches": [
         {
@@ -25215,6 +25226,12 @@
           "compatiblePackagesKey": 892
         },
         {
+          "name": "Session Distance Notification",
+          "description": "Shows the total distance added during the current sync session in the persistent notification.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 892
+        },
+        {
           "name": "Start with PokeGenie keyboard",
           "description": "Adds my PokeGenie-inspired keyboard design on fresh setup and makes it the portrait text-input default.",
           "compatiblePackagesKey": 891
@@ -25223,6 +25240,12 @@
           "name": "Unlimited Time Bypass",
           "description": "Removes the ad requirement and grants the target DeFit version's maximum active time when the button is pressed.",
           "compatiblePackagesKey": 892
+        },
+        {
+          "name": "Unlock Full Version",
+          "description": "Unlocks Counter's built-in full-version features, including the Color menu.",
+          "isPreRelease": true,
+          "compatiblePackagesKey": 893
         },
         {
           "name": "Unlock Premium",
@@ -25251,22 +25274,22 @@
           "name": "Disable Analytics",
           "description": "Prevents Adjust and Firebase Analytics from collecting or sending analytics.",
           "default": false,
-          "compatiblePackagesKey": 893
+          "compatiblePackagesKey": 894
         },
         {
           "name": "Unlock Plus",
           "description": "Unlocks Expand Plus without a subscription.",
-          "compatiblePackagesKey": 893
-        },
-        {
-          "name": "Unlock Premium",
-          "description": "Unlocks ASL Bloom Premium lessons and features.",
           "compatiblePackagesKey": 894
         },
         {
           "name": "Unlock Premium",
-          "description": "Unlocks Lumenate Premium without a subscription.",
+          "description": "Unlocks ASL Bloom Premium lessons and features.",
           "compatiblePackagesKey": 895
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks Lumenate Premium without a subscription.",
+          "compatiblePackagesKey": 896
         }
       ],
       "hotRank": 83
@@ -25287,27 +25310,27 @@
         {
           "name": "Disable Keyboard Discrimination",
           "description": "Prevents the app from detecting specific keyboards.",
-          "compatiblePackagesKey": 896
+          "compatiblePackagesKey": 897
         },
         {
           "name": "Disable Root Detection",
           "description": "Disables all root detection checks in MobilKincstár.",
-          "compatiblePackagesKey": 896
+          "compatiblePackagesKey": 897
         },
         {
           "name": "Disable SSL Pinning",
           "description": "Disables SSL certificate pinning in MobilKincstár, allowing traffic interception.",
-          "compatiblePackagesKey": 896
+          "compatiblePackagesKey": 897
         },
         {
           "name": "Disable Screenshot Protection",
           "description": "Allows taking screenshots and screen recording in MobilKincstár.",
-          "compatiblePackagesKey": 896
+          "compatiblePackagesKey": 897
         },
         {
           "name": "Disable Tamper Protection",
           "description": "Aggressively bypasses the protector's monitoring services and initialization.",
-          "compatiblePackagesKey": 896
+          "compatiblePackagesKey": 897
         }
       ],
       "hotRank": 102
@@ -25329,7 +25352,7 @@
           "name": "Use patched YouTube Music in Scene",
           "description": "Redirects the YouTube Music Scene integration to the patched YouTube Music package.",
           "default": false,
-          "compatiblePackagesKey": 897
+          "compatiblePackagesKey": 898
         }
       ],
       "hotRank": 90
@@ -25368,7 +25391,7 @@
       "repoDescription": "New X on Android compatible piko builds",
       "avatarUrl": "https://avatars.githubusercontent.com/u/44558091?v=4&s=128",
       "stars": 246,
-      "updatedAt": 1788711631000,
+      "updatedAt": 1788738276000,
       "firstSeen": 1787987199523,
       "appFirstSeen": {
         "com.twitter.android": 1787987192449
@@ -25377,175 +25400,180 @@
         {
           "name": "NewX: Remove ads",
           "description": "Filters promoted posts and modules from NewX timelines.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Restore Twitter branding",
           "description": "Bring back old Twitter icons and name",
           "default": false,
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Browse tweet object",
           "description": "Adds a debug option to browse the tweet object in NewX post menus.",
           "default": false,
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Open canonical URLs",
           "description": "Opens the expanded (canonical) URL directly when clicking links instead of the shortened t.co link.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Custom font",
           "description": "Customise font style",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Custom sharing domain",
           "description": "Allows for using domains like fxtwitter when sharing tweets/posts.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Customize drawer items",
           "description": "Lets you hide selected items from the NewX navigation drawer.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Dynamic color",
           "description": "Applies the system Material You palette to NewX.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Feature switch overrides",
           "description": "Adds searchable, typed NewX feature switch overrides.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Customize inline actions",
           "description": "Lets you hide selected actions from NewX post action bars.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Inline download button",
           "description": "Adds a Download button below NewX posts and saves images to Pictures/Twitter and videos to Movies/Twitter.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Force highest video/audio quality",
           "description": "Forces video playback to always select the highest available video and audio stream quality without adaptive quality downscaling or network bitrate caps.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Customize default media tab",
           "description": "Lets you choose the default sub-tab (Photos or Videos) for the NewX profile media tab.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Customize navigation bar items",
           "description": "Lets you hide selected items from the NewX bottom navigation bar.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Customize default reply sorting",
           "description": "Lets you choose the default reply sorting order for NewX post detail.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Server error logging",
           "description": "Captures parsed NewX server errors in memory and exports them on demand.",
           "default": false,
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Share post as image",
           "description": "Adds a rendered-image share action to NewX post menus.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Disable video player scrolling",
           "description": "Disables vertical swipes in the NewX video player while keeping playback controls and other gestures available.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Hide premium upsell",
           "description": "Hides the premium upsell chip from the NewX home top bar.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Unlock color customization",
           "description": "Unlocks the built-in app color selector for non-Premium users.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Unlock downloads",
           "description": "Unlocks media downloads and offline video saving in NewX.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Customize timeline tabs",
           "description": "Lets you hide the For You or Following tab from the NewX home timeline.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Disable automatic timeline refresh",
           "description": "Prevents automatic timeline jumps on startup and foregrounding.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Filter For You by topic",
           "description": "Restricts the NewX For You timeline to selected topics.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Hide AI-generated posts",
           "description": "Hides selected AI-generated posts from NewX timelines.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Hide Discover more",
           "description": "Removes the Discover more module from post-detail timelines.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Hide compose button",
           "description": "Removes the compose button from NewX timelines.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Hide new posts pill",
           "description": "Hides the new posts pill in NewX timelines.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Hide Spaces bar",
           "description": "Hides the Spaces bar above NewX timelines.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
+        },
+        {
+          "name": "NewX: Hide timeline tabs bar",
+          "description": "Removes the For You and Following tabs bar from NewX home timelines.",
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Hide who to follow",
           "description": "Hides recommended-user sections (\"Who to follow\") from NewX timelines and profile pages.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Restore timeline position",
           "description": "Persists the timeline index and offset, then restores them after the app process restarts.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Show sensitive media",
           "description": "Shows sensitive media without requiring confirmation in NewX.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Hide posts by verified account type",
           "description": "Hides posts and replies authored by selected timeline-reported verification types.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         },
         {
           "name": "NewX: Filter posts by keyword",
           "description": "Filters NewX posts using user-defined words and phrases.",
-          "compatiblePackagesKey": 898
+          "compatiblePackagesKey": 899
         }
       ]
     },
@@ -25565,22 +25593,22 @@
         {
           "name": "Disable ads",
           "description": "Stubs AppLovin, AdMob, InMobi and other ad SDKs at the bytecode level to prevent ads from loading without breaking the app.",
-          "compatiblePackagesKey": 899
+          "compatiblePackagesKey": 900
         },
         {
           "name": "Disable forced update",
           "description": "Bypasses PairIP license check ('Download from Play Store'), Play Integrity, and signature verification to allow modified and sideloaded app usage.",
-          "compatiblePackagesKey": 899
+          "compatiblePackagesKey": 900
         },
         {
           "name": "Patch native libraries",
           "description": "Neutralizes PairIP traps in native .so libraries and patches Hermes bundle.",
-          "compatiblePackagesKey": 899
+          "compatiblePackagesKey": 900
         },
         {
           "name": "Unlock premium",
           "description": "Makes RevenueCat entitlements appear active so ads-free and premium features are unlocked.",
-          "compatiblePackagesKey": 899
+          "compatiblePackagesKey": 900
         }
       ],
       "hotRank": 55
@@ -25601,7 +25629,7 @@
         {
           "name": "Unlock Pro (IPTV)",
           "description": "Deactivates subscription_needed, forces the pro entitlement active, and spoofs Google Play for app-internal installer-source checks.",
-          "compatiblePackagesKey": 900
+          "compatiblePackagesKey": 901
         }
       ],
       "hotRank": 60
@@ -25623,7 +25651,7 @@
         {
           "name": "Unlock Premium",
           "description": "Unlocks premium features by overriding the PremiumResponse.",
-          "compatiblePackagesKey": 901
+          "compatiblePackagesKey": 902
         },
         {
           "name": "Freedium paywall bypass",
@@ -25635,17 +25663,17 @@
               "description": "URL of the Freedium mirror to use"
             }
           ],
-          "compatiblePackagesKey": 902
+          "compatiblePackagesKey": 903
         },
         {
           "name": "Bypass Play Store Check",
           "description": "Bypasses PairIP signature and license checks (Play Store version error).",
-          "compatiblePackagesKey": 902
+          "compatiblePackagesKey": 903
         },
         {
           "name": "Hide Premium Banners",
           "description": "Hides 'Get Premium' banners by mocking the MembershipTier to MEMBER.",
-          "compatiblePackagesKey": 902
+          "compatiblePackagesKey": 903
         }
       ]
     },
@@ -25665,22 +25693,22 @@
         {
           "name": "DNS Hardcoding",
           "description": "Hardcodes DNS lookup in OkHttp to fail locally with UnknownHostException, preventing any remote DNS or HTTP traffic.",
-          "compatiblePackagesKey": 903
+          "compatiblePackagesKey": 904
         },
         {
           "name": "Hide Navigation Tabs (Layout)",
           "description": "Statically collapses Mall, Sport, and Mine tabs to 0dp in activity_main.xml, keeping Data and Device tabs.",
-          "compatiblePackagesKey": 903
+          "compatiblePackagesKey": 904
         },
         {
           "name": "Manifest Debloat",
           "description": "Prunes background telemetry upload services, aggressive keepalive daemons, and cloud activities from AndroidManifest.xml.",
-          "compatiblePackagesKey": 903
+          "compatiblePackagesKey": 904
         },
         {
           "name": "Offline Network Mode",
           "description": "Forces network utilities to report disconnected and disables network change listeners.",
-          "compatiblePackagesKey": 903
+          "compatiblePackagesKey": 904
         }
       ],
       "hotRank": 73
@@ -25703,17 +25731,17 @@
         {
           "name": "Remove Ads",
           "description": "Forces the ads-removed check to always return true.",
-          "compatiblePackagesKey": 904
+          "compatiblePackagesKey": 905
         },
         {
           "name": "Unlock Premium",
           "description": "Bypasses license validation and forces all premium flags to true.",
-          "compatiblePackagesKey": 905
+          "compatiblePackagesKey": 906
         },
         {
           "name": "Unlock Pro",
           "description": "Unlock pro features (no ads, no bookmark limit)",
-          "compatiblePackagesKey": 906
+          "compatiblePackagesKey": 907
         }
       ],
       "hotRank": 68
@@ -25734,12 +25762,12 @@
         {
           "name": "Unlock Plus",
           "description": "Unlocks the Plus subscription.",
-          "compatiblePackagesKey": 907
+          "compatiblePackagesKey": 908
         },
         {
           "name": "Unlock Pur",
           "description": "Unlocks the Pur subscription.",
-          "compatiblePackagesKey": 907
+          "compatiblePackagesKey": 908
         }
       ],
       "hotRank": 72
@@ -26617,34 +26645,34 @@
         {
           "name": "Bypass signature check",
           "description": "Neutralizes Smart Launcher's internal anti-tamper signature verification to prevent instant shutdown on launch.",
-          "compatiblePackagesKey": 908
+          "compatiblePackagesKey": 909
         },
         {
           "name": "Contextual app menu actions",
           "description": "Adds a dedicated Archive App entry into the long-press popup menu.",
-          "compatiblePackagesKey": 908
+          "compatiblePackagesKey": 909
         },
         {
           "name": "Hide archived apps",
           "description": "Filters archived apps out of the app drawer.",
-          "compatiblePackagesKey": 908
+          "compatiblePackagesKey": 909
         },
         {
           "name": "Morphe settings UI integration",
           "description": "Integrates the Morphe Patches & App Archiving settings panel into Smart Launcher Settings (under Dev options / Experimental features).",
-          "compatiblePackagesKey": 908
+          "compatiblePackagesKey": 909
         },
         {
           "name": "Native app archiving",
           "description": "Enables system PackageInstaller/LauncherApps native archiving runtime on Android 15+ / One UI 7.",
           "default": false,
-          "compatiblePackagesKey": 908
+          "compatiblePackagesKey": 909
         },
         {
           "name": "Shizuku app archiving",
           "description": "Enables Shizuku binder-level privileged app archiving execution in Smart Launcher 6.",
           "default": false,
-          "compatiblePackagesKey": 908
+          "compatiblePackagesKey": 909
         }
       ],
       "hotRank": 54
@@ -26678,7 +26706,7 @@
               "description": "A new app name (label). Entering \"Journal\" skips changing the label."
             }
           ],
-          "compatiblePackagesKey": 909
+          "compatiblePackagesKey": 910
         },
         {
           "name": "Custom substances database",
@@ -26691,7 +26719,7 @@
               "description": "Absolute path on your machine to the replacement Substances.json file."
             }
           ],
-          "compatiblePackagesKey": 909
+          "compatiblePackagesKey": 910
         },
         {
           "name": "Hide bottom tabs",
@@ -26713,18 +26741,18 @@
               "description": "Removes the Safer tab from the bottom navigation bar."
             }
           ],
-          "compatiblePackagesKey": 909
+          "compatiblePackagesKey": 910
         },
         {
           "name": "Hide feedback section",
           "description": "Removes the \"Feedback\" section (FAQ, bug report, copy support info) from Settings.",
-          "compatiblePackagesKey": 909
+          "compatiblePackagesKey": 910
         },
         {
           "name": "Purge RevenueCat",
           "description": "Stops the app from ever talking to RevenueCat's servers: skips SDK initialization on startup and neuters the app's periodic \"refresh entitlement\" network calls. Requires Unlock premium to also be enabled - without it, premium status has no way to ever resolve as active.",
           "default": false,
-          "compatiblePackagesKey": 909
+          "compatiblePackagesKey": 910
         },
         {
           "name": "Remove internet permission",
@@ -26736,12 +26764,12 @@
               "description": "Also removes the INTERNET permission. Requires \"Purge RevenueCat\" to also be enabled - without it, RevenueCat's SDK crashes on startup when it can't find INTERNET declared in the manifest."
             }
           ],
-          "compatiblePackagesKey": 909
+          "compatiblePackagesKey": 910
         },
         {
           "name": "Unlock premium",
           "description": "Forces the RevenueCat \"premium\" entitlement check to always resolve as active, including before the app has ever reached RevenueCat's servers.",
-          "compatiblePackagesKey": 909
+          "compatiblePackagesKey": 910
         }
       ],
       "hotRank": 58
@@ -26762,7 +26790,7 @@
         {
           "name": "GmsCore support",
           "description": "Adds MicroG support metadata for YouTube Studio.",
-          "compatiblePackagesKey": 910
+          "compatiblePackagesKey": 911
         }
       ]
     },
@@ -26840,17 +26868,17 @@
         {
           "name": "Enable Premium",
           "description": "Enables the premium features of the app.",
-          "compatiblePackagesKey": 911
-        },
-        {
-          "name": "Enable Premium",
-          "description": "Enables the premium features of the app.",
           "compatiblePackagesKey": 912
         },
         {
           "name": "Enable Premium",
           "description": "Enables the premium features of the app.",
           "compatiblePackagesKey": 913
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Enables the premium features of the app.",
+          "compatiblePackagesKey": 914
         }
       ],
       "hotRank": 40
@@ -26871,7 +26899,7 @@
         {
           "name": "Unlock premium",
           "description": "Unlock Reclub Supporter via backend entitlements API and RevenueCat bridge.",
-          "compatiblePackagesKey": 914
+          "compatiblePackagesKey": 915
         }
       ],
       "hotRank": 42
@@ -27638,17 +27666,17 @@
         {
           "name": "Camera common visibility",
           "description": "Lets the camera app see and use com.sonymobile.cameracommon (camera status provider, gyro calibration) when both are sideloaded: adds the <queries> entry and declares the CAMERA_STATUS_PROVIDER and CAMERA_ADDON permissions.",
-          "compatiblePackagesKey": 915
+          "compatiblePackagesKey": 916
         },
         {
           "name": "Storage fallback",
           "description": "Fixes \"Memory unavailable\" on ROMs that cannot create Android/data/<pkg>/files (LineageOS on the Xperia 1 V): the storage probe falls back to the app's internal storage. Photos still go to DCIM through MediaStore.",
-          "compatiblePackagesKey": 916
+          "compatiblePackagesKey": 917
         },
         {
           "name": "Xperia 1 V camera HAL compatibility",
           "description": "Makes the Xperia 1 VI camera app work on the Xperia 1 V camera HAL: truncates objectSelectTriggerArea to the 4 ints the 1 V HAL defines and sends conditionDetectMode alongside sceneDetectMode, which the 1 V HAL validates together.",
-          "compatiblePackagesKey": 915
+          "compatiblePackagesKey": 916
         }
       ],
       "hotRank": 34
@@ -27669,17 +27697,17 @@
         {
           "name": "Hide gift button",
           "description": "Hides the gift button in the chat message composer.",
-          "compatiblePackagesKey": 917
+          "compatiblePackagesKey": 918
         },
         {
           "name": "Hide quest promo banner",
           "description": "Hides the quest promo banner at the top of the server channel list.",
-          "compatiblePackagesKey": 917
+          "compatiblePackagesKey": 918
         },
         {
           "name": "Pin app to built-in bundle",
           "description": "Forces Discord to always run the bundle inside the APK and ignore downloaded (OTA) updates, which would otherwise silently undo the other patches. Turn this off (or update the APK) to receive official updates.",
-          "compatiblePackagesKey": 917
+          "compatiblePackagesKey": 918
         }
       ],
       "hotRank": 27
@@ -28467,7 +28495,7 @@
           "name": "Sort by number of ratings",
           "description": "Adds a 'Sort: Most rated' button on Flipkart listing pages (WebView-rendered surfaces) that re-orders loaded results by ratings count.",
           "default": false,
-          "compatiblePackagesKey": 918
+          "compatiblePackagesKey": 919
         },
         {
           "name": "Spoof WARP+ Unlimited UI",
@@ -29606,69 +29634,69 @@
           "name": "Account Switch Lock Bypass",
           "description": "アカウント切り替えロックのタイムアウトをスキップし、スプラッシュ画面からの即時初期化を可能にします。",
           "default": false,
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         },
         {
           "name": "Account Sync Binder Loop Fix",
           "description": "AccountSyncService へのバインド失敗による無限リトライと Binder リミットクラッシュを防止します。",
           "default": false,
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         },
         {
           "name": "Account ID Fallback for Clone",
           "description": "AGSA アカウント名から Account ID への変換失敗例外（flgu）を防止し、デフォルト AccountId でフォールバックします。",
           "default": false,
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         },
         {
           "name": "Gemini Standalone Support",
           "description": "Gemini アプリの AndroidManifest.xml から Split APK 制約（requiredSplitTypes等）を除去し単体インストール可能にします。",
-          "compatiblePackagesKey": 920
+          "compatiblePackagesKey": 921
         },
         {
           "name": "Gemini Redirect to Cloned Google App",
           "description": "Gemini アプリからの連携先 Google アプリをクローン版（com.google.android.googlequicksearchbox.morphe）へリダイレクトします。",
-          "compatiblePackagesKey": 920
+          "compatiblePackagesKey": 921
         },
         {
           "name": "Google App Manifest Tweaks",
           "description": "アプリ表示名を 'Google (Morphe)' に変更し、MicroG可視性を付与し、Split制約解除とクラッシュレシーバー無効化を行います。",
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         },
         {
           "name": "GmsCore Bytecode Redirect (MicroG RE 7.0.0)",
           "description": "Google アプリ内部の GMS パッケージ名・権限・Provider authority を MicroG RE へリダイレクトします。",
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         },
         {
           "name": "GmsCore Signature and Availability Bypass",
           "description": "Google Play Services の署名不一致 (SERVICE_INVALID) や可用性チェックを常時成功 (SUCCESS / true) にバイパスします。",
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         },
         {
           "name": "MicroG Account Permissions",
           "description": "Requests account access and microG extended access on Gemini startup.",
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         },
         {
           "name": "Google App Package Clone Support",
           "description": "クローン版 Google アプリ内の完全一致パッケージ名を .morphe へリダイレクトします。",
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         },
         {
           "name": "Process Name Spoofing for Clone Support",
           "description": "クローン環境下でプロセス名から .morphe を自動除去し、Dagger DI コンポーネントの初期化クラッシュを防止します。",
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         },
         {
           "name": "Bypass Work Profile Gemini Restriction",
           "description": "セキュアフォルダ（Work Profile）環境下でGeminiネイティブUIの起動を拒否しWeb版へリダイレクトする制限をバイパスします。",
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         },
         {
           "name": "Allow Work Profile Gemini Eligibility",
           "description": "Secure FolderでのWORK_PROFILE_NOT_SUPPORTED (19)を、既存のプロファイル許可分岐で回避します。",
-          "compatiblePackagesKey": 919
+          "compatiblePackagesKey": 920
         }
       ],
       "hotRank": 21
@@ -31943,6 +31971,9 @@
           },
           {
             "version": "7.6.100"
+          },
+          {
+            "version": "7.8.100"
           }
         ]
       }
@@ -40365,6 +40396,16 @@
     ],
     [
       {
+        "packageName": "com.izorg.munchkin",
+        "targets": [
+          {
+            "version": "16.2.3"
+          }
+        ]
+      }
+    ],
+    [
+      {
         "packageName": "org.monroeinstitute.expand",
         "targets": [
           {
@@ -47227,6 +47268,15 @@
       "minInstalls": 1000000000,
       "category": "Shopping",
       "firstSeen": 1788714386506
+    },
+    "com.izorg.munchkin": {
+      "name": "Level Counter",
+      "iconUrl": "https://play-lh.googleusercontent.com/_Brq0Xd743147ql7QI4AxgGf25-HNGNz-Bu1hfFe3CT5ExjOaXqcWix_4q1oWgPatjP9SjoAuKrBSzz6sinZtuM=s128-rw",
+      "description": "Simple but powerful level counter",
+      "minInstalls": 500000,
+      "category": "Entertainment",
+      "firstSeen": 1788739054696,
+      "isPreRelease": true
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "version": "0.8.0-dev.4",
+  "version": "0.8.0-dev.5",
   "appNames": {
     "com.zhiliaoapp.musically": "TikTok"
   },
@@ -226,8 +226,36 @@
       "options": []
     },
     {
+      "name": "Download stories",
+      "description": "Adds TikTok's native save action to each story's share menu. The current story item is preserved so profiles with several stories download the intended media.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "46.2.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "46.2.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Downloads",
-      "description": "Adds watermark-free downloads, comment sticker saving, configurable folders, and filename templates.",
+      "description": "Adds watermark-free downloads, video quality selection, comment sticker saving, configurable folders, and filename templates.",
       "use": true,
       "dependencies": [
         "BytecodePatch"
@@ -288,6 +316,32 @@
       "dependencies": [
         "BytecodePatch"
       ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "46.2.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "46.2.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable voice comments",
+      "description": "Enables TikTok's native voice-comment recording and publishing entry points.",
+      "use": true,
+      "dependencies": [],
       "compatiblePackages": {
         "com.zhiliaoapp.musically": [
           "46.2.3"
@@ -618,6 +672,34 @@
     {
       "name": "Hide quick comment reactions",
       "description": "Hides TikTok's exposed quick emoji row in supported comment inputs.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "46.2.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "46.2.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide suggested accounts",
+      "description": "Removes suggested-account cards from profile and inbox surfaces. Thanks to tymmesyde for the original implementation.",
       "use": true,
       "dependencies": [
         "BytecodePatch"

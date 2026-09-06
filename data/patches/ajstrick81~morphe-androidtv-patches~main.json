@@ -1,5 +1,5 @@
 {
-  "version": "1.31.0",
+  "version": "1.32.0",
   "appNames": {
     "com.fox.foxone": "Fox One Android TV",
     "com.netflix.ninja": "Netflix Android TV",
@@ -102,7 +102,8 @@
       "compatiblePackages": {
         "com.peacocktv.peacockandroid": [
           "7.5.102",
-          "7.6.100"
+          "7.6.100",
+          "7.8.100"
         ]
       },
       "compatibility": [
@@ -118,6 +119,10 @@
             },
             {
               "version": "7.6.100",
+              "experimental": false
+            },
+            {
+              "version": "7.8.100",
               "experimental": false
             }
           ]
@@ -211,7 +216,8 @@
       "compatiblePackages": {
         "com.peacocktv.peacockandroid": [
           "7.5.102",
-          "7.6.100"
+          "7.6.100",
+          "7.8.100"
         ]
       },
       "compatibility": [
@@ -227,6 +233,10 @@
             },
             {
               "version": "7.6.100",
+              "experimental": false
+            },
+            {
+              "version": "7.8.100",
               "experimental": false
             }
           ]
@@ -329,7 +339,7 @@
     },
     {
       "name": "ESPN Android TV",
-      "description": "Suppresses ESPN VOD/scheduled ads (DMP SGAI isAdDisabled) and masks LIVE passthrough-SSAI commercial breaks with a full-screen \"Commercial Break\" slate + mute (the live ad can't be removed, only covered). Optional slate media is user-supplied local files; disable the live slate with a `slate_off` marker file. No DNS dependency.",
+      "description": "Suppresses ESPN Android TV VOD/scheduled ads (DMP SGAI isAdDisabled) and masks LIVE passthrough-SSAI commercial breaks with a full-screen \"Commercial Break\" slate + mute (the live ad can't be removed, only covered). Optional slate media is user-supplied local files; disable the live slate with a `slate_off` marker file. No DNS dependency.",
       "use": true,
       "dependencies": [],
       "compatiblePackages": {
@@ -791,13 +801,14 @@
     },
     {
       "name": "Skip ads",
-      "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
+      "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102, v7.6.100 and v7.8.100.",
       "use": true,
       "dependencies": [],
       "compatiblePackages": {
         "com.peacocktv.peacockandroid": [
           "7.5.102",
-          "7.6.100"
+          "7.6.100",
+          "7.8.100"
         ]
       },
       "compatibility": [
@@ -813,6 +824,10 @@
             },
             {
               "version": "7.6.100",
+              "experimental": false
+            },
+            {
+              "version": "7.8.100",
               "experimental": false
             }
           ]

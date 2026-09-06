@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.23.0",
+  "version": "1.24.0-dev.1",
   "patches": [
     {
       "name": "Adda247 Ad Removal",
@@ -396,6 +396,58 @@
           "targets": [
             {
               "version": "1.0.30",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix app opening",
+      "description": "Required so the modified app opens without crashing — skips signature, root and emulator checks.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kongregate.mobile.burritobison3.google",
+          "name": "Burrito Bison: Launcha Libre",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#E65100",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.75",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Free purchases",
+      "description": "Get paid items for free — tapping buy grants the item instantly without Google Play payment popup.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kongregate.mobile.burritobison3.google",
+          "name": "Burrito Bison: Launcha Libre",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#E65100",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.75",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

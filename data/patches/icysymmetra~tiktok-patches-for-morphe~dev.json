@@ -1,5 +1,5 @@
 {
-  "version": "0.8.0-dev.3",
+  "version": "0.8.0-dev.4",
   "appNames": {
     "com.zhiliaoapp.musically": "TikTok"
   },
@@ -420,6 +420,34 @@
       "options": []
     },
     {
+      "name": "Foldable split comment view",
+      "description": "Forces TikTok's tablet-style split layout (video beside comments instead of a bottom sheet) once the screen is at least as wide as a configurable threshold, for foldables TikTok doesn't already recognize as tablet-class.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "46.2.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "46.2.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Hide CAPTCHA popups",
       "description": "Adds a default-off setting to hide browsing and LIVE puzzle dialogs while preserving login and account verification.",
       "use": true,
@@ -813,6 +841,34 @@
     {
       "name": "Settings",
       "description": "Adds the Metra patches settings menu to TikTok. Supports TikTok 46.2.3.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "46.2.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "46.2.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Share sheet modification",
+      "description": "Adds toggles and allow-lists for the video share sheet's \"Send to\", \"Share via app\", and \"Video Actions\" sections.",
       "use": true,
       "dependencies": [
         "BytecodePatch"

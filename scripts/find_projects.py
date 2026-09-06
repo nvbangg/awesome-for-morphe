@@ -135,7 +135,7 @@ def matches_filter_criteria(repo: dict) -> bool:
             )
             for kw in STANDALONE_NAME_KEYWORDS
         )
-        
+
     return True
 
 

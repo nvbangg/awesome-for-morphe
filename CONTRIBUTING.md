@@ -1,4 +1,4 @@
-### [nvbangg/awesome-morphe](https://github.com/nvbangg/awesome-morphe)
+## [nvbangg/awesome-morphe](https://github.com/nvbangg/awesome-morphe)
 
 > [!NOTE]
 > This document contains the project structure and automation workflows for the [Awesome Morphe Website](https://awesome-morphe.vercel.app/).

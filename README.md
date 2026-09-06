@@ -164,19 +164,20 @@
 
 ## <a id="about"></a> ℹ️ About
 
-<div align="center">
+<div align="center"><i>
 
 Maintained with ❤️ by **[@nvbangg](https://github.com/nvbangg)**  
 ⭐ Star [this repository](https://github.com/nvbangg/awesome-morphe) if you find it useful!
 
-</div>
+</i></div>
 
-#### ⚠️ Disclaimer
+### ⚠️ Disclaimer
 
 - [This project](https://github.com/nvbangg/awesome-morphe) is not affiliated with [Morphe](https://morphe.software/) or any authors mentioned here.
 - Only use patch sources or projects you trust. This project is for informational purposes only and is not responsible for any arising issues.
 
-#### 🙏 Credits
+### 🙏 Credits
 
 - Patch data is automatically aggregated from: [nvbangg's custom sources](data/discover/custom.json), [Morphe Community Patches](https://morphe-patches.software), [ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) and [Morphe Archive](https://github.com/rushiforai/morphe-archive).
-- Website design is inspired by [Morphe Community Patches](https://morphe-patches.software), with other references credited in [CONTRIBUTING.md](CONTRIBUTING.md) and the source code.
+- Website design is inspired by [Morphe Community Patches](https://morphe-patches.software).
+- Bundle parser is adapted from [Jman's ReVanced Patch Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles) to fit this project and Morphe.

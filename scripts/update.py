@@ -23,9 +23,9 @@ from utils import (
 def main() -> int:
     parser = argparse.ArgumentParser(description="Update Morphe patches and bundles")
     parser.add_argument("--daily", action="store_true", help="Daily update")
-    parser.add_argument("--month", action="store_true", help="Monthly update")
+    parser.add_argument("--weekly", action="store_true", help="Weekly update")
     args = parser.parse_args()
-    mode = "month" if args.month else "daily" if args.daily else "default"
+    mode = "weekly" if args.weekly else "daily" if args.daily else "default"
 
     repos_data = load_json(REPOS_JSON_PATH, {})
     existing_bundles_data = load_json(BUNDLES_JSON_PATH, {})

@@ -37,7 +37,7 @@ def process(apps_dict: dict, mode: str) -> None:
         official_data.get("store", {}) if isinstance(official_data, dict) else {}
     )
 
-    if mode == "month":
+    if mode == "weekly":
         apps_to_scrape = list(apps_dict.keys())
     else:
         apps_to_scrape = [

@@ -28,8 +28,10 @@ jobs:
         id: check
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            MODE=$(jq -r --arg today "$(date -u -d '+1 hour' +'%Y-%m-%d')" '
-              if .lastMonth != ($today[0:7]) then "month"
+            MODE=$(jq -r \
+              --arg today "$(date -u -d '+1 hour' +'%Y-%m-%d')" \
+              --arg week "$(date -u -d '+1 hour' +'%G-W%V')" '
+              if .lastWeek != $week then "weekly"
               elif .lastDaily != $today then "daily"
               else empty end' data/ci.json 2>/dev/null)
 

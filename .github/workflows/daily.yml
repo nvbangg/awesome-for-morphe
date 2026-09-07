@@ -1,5 +1,5 @@
 name: Daily
-run-name: ${{ inputs.mode == 'month' && 'Sync (month)' || 'Sync (daily)' }}
+run-name: ${{ inputs.mode == 'weekly' && 'Sync (weekly)' || 'Sync (daily)' }}
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ on:
         type: choice
         options:
           - daily
-          - month
+          - weekly
 
 concurrency:
   group: ci
@@ -71,8 +71,9 @@ jobs:
         id: commit
         run: |
           TODAY=$(date -u -d '+1 hour' +'%Y-%m-%d')
-          jq --arg d "$TODAY" --arg m "${{ inputs.mode }}" \
-            '.lastDaily = $d | if $m == "month" then .lastMonth = ($d[0:7]) else . end' data/ci.json > data/ci.tmp && mv data/ci.tmp data/ci.json
+          WEEK=$(date -u -d '+1 hour' +'%G-W%V')
+          jq --arg d "$TODAY" --arg w "$WEEK" --arg m "${{ inputs.mode }}" \
+            '.lastDaily = $d | if $m == "weekly" then .lastWeek = $w else . end' data/ci.json > data/ci.tmp && mv data/ci.tmp data/ci.json
 
           git add data/ web/public/
           if ! git diff --staged --quiet; then

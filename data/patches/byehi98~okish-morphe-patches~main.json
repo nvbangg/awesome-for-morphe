@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.23.0",
+  "version": "1.24.0",
   "patches": [
     {
       "name": "Adda247 Ad Removal",
@@ -396,6 +396,58 @@
           "targets": [
             {
               "version": "1.0.30",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fix app opening",
+      "description": "Required so the modified app opens without crashing — skips signature, root and emulator checks.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kongregate.mobile.burritobison3.google",
+          "name": "Burrito Bison: Launcha Libre",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#E65100",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.75",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Free purchases",
+      "description": "Get paid items for free — tapping buy grants the item instantly without Google Play payment popup.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.kongregate.mobile.burritobison3.google",
+          "name": "Burrito Bison: Launcha Libre",
+          "description": null,
+          "apkFileType": "XAPK",
+          "appIconColor": "#E65100",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.75",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1067,6 +1119,84 @@
           "targets": [
             {
               "version": "1.25.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Prince of Persia: Anti-tamper bypass",
+      "description": "The game has a built-in self-check that shuts it down if it detects the app was modified. This patch quietly turns that check off so the game can start.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ubisoft.princeofpersia.thelostcrown.mobile.action.adventure.platform",
+          "name": "Prince of Persia: The Lost Crown",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#0F4C5C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.1.9",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Prince of Persia: Full Game Unlock Engine",
+      "description": "Adds a tiny hidden helper into the game. About 30 seconds after the game starts, it presses the game's own secret 'unlock full game' button — no purchases needed.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ubisoft.princeofpersia.thelostcrown.mobile.action.adventure.platform",
+          "name": "Prince of Persia: The Lost Crown",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#0F4C5C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.1.9",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Prince of Persia: Full Game Unlock Trigger",
+      "description": "Tells the game to start that hidden helper the moment the app opens, so the unlock happens automatically.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ubisoft.princeofpersia.thelostcrown.mobile.action.adventure.platform",
+          "name": "Prince of Persia: The Lost Crown",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#0F4C5C",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.1.9",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

@@ -28,7 +28,7 @@ jobs:
         id: check
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            MODE=$(jq -r --arg today "$(date -u +'%Y-%m-%d')" '
+            MODE=$(jq -r --arg today "$(date -u -d '+1 hour' +'%Y-%m-%d')" '
               if .lastMonth != ($today[0:7]) then "month"
               elif .lastDaily != $today then "daily"
               else empty end' data/ci.json 2>/dev/null)
@@ -52,14 +52,9 @@ jobs:
 
           if [ -n "$(git status --porcelain)" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-          fi
-
-          if [ -s scripts/bundle-parser/updated_files.txt ]; then
-            echo "need_java=true" >> $GITHUB_OUTPUT
-          else
-            echo "need_java=false" >> $GITHUB_OUTPUT
+            if [ -s scripts/bundle-parser/updated_files.txt ]; then
+              echo "need_java=true" >> $GITHUB_OUTPUT
+            fi
           fi
 
       - name: Setup Java environment
